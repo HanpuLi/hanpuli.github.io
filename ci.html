@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>甲乙十六首 · Hanpu Li</title>
 <meta name="description" content="甲乙十六首——一人分作两声的唱和集。A poem cycle in two voices, by Hanpu Li.">
+<meta property="og:title" content="甲乙十六首 · Hanpu Li">
+<meta property="og:description" content="一人分作两声的唱和集，甲详序，乙无题。A poem cycle in two voices by one hand.">
+<meta property="og:url" content="https://hanpuli.github.io/ci.html">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#fcfcfa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161513" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>词</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #1a1a1a; --muted: #767676; --faint: #b5b5b5;
@@ -17,6 +27,7 @@
     }
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     background: var(--paper); color: var(--ink);
     font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
@@ -26,18 +37,21 @@
   header { padding: 14vh 0 8vh; }
   h1 { font-size: 26px; font-weight: 600; letter-spacing: .3em; }
   .sub { color: var(--muted); margin-top: 1.2em; font-size: 15px; line-height: 1.9; }
-  .back { font-size: 13px; letter-spacing: .15em; margin-top: 2.5em; }
-  .back a, footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
-  .back a:hover, footer a:hover { color: var(--accent); border-color: var(--accent); }
-  .poem { padding: 4.5vh 0; border-top: 1px solid var(--line); }
+  .toc { margin-top: 2.5em; font-size: 14px; line-height: 2.2; letter-spacing: .08em; }
+  .toc a { color: var(--muted); text-decoration: none; margin-right: 1.1em; white-space: nowrap; }
+  .toc a:hover { color: var(--accent); }
+  .toc .waibian { color: var(--faint); }
+  .poem { padding: 4.5vh 0; border-top: 1px solid var(--line); scroll-margin-top: 4vh; }
   .poem h2 {
     font-size: 16px; font-weight: 600; letter-spacing: .06em;
     line-height: 1.8; margin-bottom: 1.4em;
   }
   .poem.yi h2 { color: var(--muted); }
-  .poem .body { font-size: 16.5px; line-height: 2.35; white-space: pre-line; }
+  .poem .body { font-size: 17px; line-height: 2.25; white-space: pre-line; }
   .poem .date { color: var(--faint); font-size: 13px; margin-top: 1.2em; }
-  footer { padding: 7vh 0 12vh; border-top: 1px solid var(--line); color: var(--faint); font-size: 14px; font-family: -apple-system, "PingFang SC", sans-serif; }
+  footer { padding: 7vh 0 12vh; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; font-family: -apple-system, "PingFang SC", sans-serif; }
+  footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+  footer a:hover { color: var(--accent); border-color: var(--accent); }
 </style>
 </head>
 <body>
@@ -45,12 +59,14 @@
 
   <header>
     <h1>甲乙十六首</h1>
-    <p class="sub">一人分作两声的唱和集:甲详序,乙无题。附自撰笺注,备索。<br>
-    A poem cycle written in two voices by one hand — 甲 keeps prefaces, 乙 refuses titles. With the author’s own philological apparatus, available on request.</p>
-    <p class="back"><a href="index.html">← Hanpu Li</a></p>
+    <p class="sub">一人分作两声的唱和集：甲详序，乙无题。附自撰笺注，备索。<br>
+    <span lang="en">A poem cycle written in two voices by one hand — 甲 keeps prefaces, 乙 refuses titles. With the author’s own philological apparatus, available on request.</span></p>
+    <p class="toc">
+      <a href="#a1">甲一</a><a href="#b1">乙一</a><a href="#a2">甲二</a><a href="#b2">乙二</a><a href="#b3">乙三</a><a href="#b4">乙四</a><a href="#b5">乙五</a><a href="#a3">甲三</a><a href="#a4">甲四</a><a href="#a5">甲五</a><a href="#a6">甲六</a><a href="#a7">甲七</a><a href="#b6">乙六</a><a href="#a8">甲八</a><a href="#b7">乙七</a><a href="#a9">甲九</a><a href="#a10" class="waibian">集外</a>
+    </p>
   </header>
 
-  <div class="poem jia">
+  <div class="poem jia" id="a1">
     <h2>甲一《临江仙 · 与同砚灯下夜坐，侵晓方别》</h2>
     <div class="body">几度深宵同默坐，孤灯红泪垂迟。
 一秋心绪有谁知。
@@ -61,7 +77,7 @@
 慵来还指日，明日又今时。</div>
   </div>
 
-  <div class="poem yi">
+  <div class="poem yi" id="b1">
     <h2>乙一《无题 · 临江仙》</h2>
     <div class="body">虚廊月好人初定，同携花径迟迟。
 灯前笑语两無疑。
@@ -71,7 +87,7 @@
 漏残晨露上，风过落花时。</div>
   </div>
 
-  <div class="poem jia">
+  <div class="poem jia" id="a2">
     <h2>甲二《临江仙 · 醉后扶靥登楼，夤夜同倚，人问不避》</h2>
     <div class="body">沈醉曾扶相并倚，登楼未肯人知。
 今宵灯影渐迷离。
@@ -82,7 +98,7 @@
 朝霞浑未记，宿雾已盈墀。</div>
   </div>
 
-  <div class="poem yi">
+  <div class="poem yi" id="b2">
     <h2>乙二《无题 · 踏莎行》</h2>
     <div class="body">一室香温，两痕影并。
 笑声沉向欢边暝。
@@ -92,7 +108,7 @@
 残灰散尽各归时，余釭独照空庭静。</div>
   </div>
 
-  <div class="poem yi">
+  <div class="poem yi" id="b3">
     <h2>乙三《无题 · 临江仙》</h2>
     <div class="body">烛暗蛩寒帘影瘦，残酲阁角微温。
 笔停纸涩墨先吞。
@@ -102,7 +118,7 @@
 相逢原是客，客作主家恩。</div>
   </div>
 
-  <div class="poem yi">
+  <div class="poem yi" id="b4">
     <h2>乙四《无题 · 渡江云》</h2>
     <div class="body">清铜新样齿，欲封还止，残热指间弹。
 忽灯前小影，缄浅香微，半晌已潸然。
@@ -115,12 +131,12 @@
 灯灭后、丁宁只是加餐。</div>
   </div>
 
-  <div class="poem yi">
+  <div class="poem yi" id="b5">
     <h2>乙五《无题 · 十六字令》</h2>
     <div class="body">铜。钥齿新裁付掌中。天寒了，加饭且从容。</div>
   </div>
 
-  <div class="poem jia">
+  <div class="poem jia" id="a3">
     <h2>甲三《鹧鸪天 · 卿赠钥，附书数字，灯下展读》</h2>
     <div class="body">钥齿新裁心自珍，欲题书字语难申。
 拆开只有三行字，半晌绸缪一晌嗔。
@@ -129,7 +145,7 @@
 案前字暖春封浅，犹有残香绕指温。</div>
   </div>
 
-  <div class="poem jia">
+  <div class="poem jia" id="a4">
     <h2>甲四，忆甲一《临江仙 · 曩与同砚默坐数夕，别后音尘寖薄，久乃自定》</h2>
     <div class="body">曾共虚廊默坐，当时只道寻常。
 孤灯红泪共商量。
@@ -140,7 +156,7 @@
 思忘还入枕，避迹反成双。</div>
   </div>
 
-  <div class="poem jia">
+  <div class="poem jia" id="a5">
     <h2>甲五，忆甲二《临江仙 · 记醉后扶靥登楼，夤夜人问，始无避焉》</h2>
     <div class="body">曾倚微醺乘月，并肩同倚更阑。
 当筵人问不曾瞒。
@@ -151,7 +167,7 @@
 思忘偏又记，相对鬓先斑。</div>
   </div>
 
-  <div class="poem jia">
+  <div class="poem jia" id="a6">
     <h2>甲六，忆甲三《鹧鸪天 · 箧中故钥铜花满眼，追念往还书字，怅然有作》</h2>
     <div class="body">小钥经年锈暗生，故笺翻罢眼犹明。
 当时避却鸳鸯字，却把鸳鸯写几层。
@@ -160,7 +176,7 @@
 相看似隔前生事，啮尽痴根草又青。</div>
   </div>
 
-  <div class="poem jia">
+  <div class="poem jia" id="a7">
     <h2>甲七《临江仙 · 分蕙寄某，忆昔赠兰荪时，惘然有作》</h2>
     <div class="body">手分旧蕙移新种，凭君可记春温。
 那年玉指赠兰荪。
@@ -171,7 +187,7 @@
 偶然风过处，依约暗香闻。</div>
   </div>
 
-  <div class="poem yi">
+  <div class="poem yi" id="b6">
     <h2>乙六《得某所寄》</h2>
     <div class="body">故盆移蕙草，几度误春痕。
 邻圃分新种，行人折故根。
@@ -193,7 +209,7 @@
 君舟自沧海，我亦各天涯。</div>
   </div>
 
-  <div class="poem jia">
+  <div class="poem jia" id="a8">
     <h2>甲八《夜闻旧曲》</h2>
     <div class="body">当时窗下别，今作檐前雨。
 怕听旧时曲，声声催天曙。
@@ -206,7 +222,7 @@
 似响疑相答，馀音何处传。</div>
   </div>
 
-  <div class="poem yi">
+  <div class="poem yi" id="b7">
     <h2>乙七《忘川 · 检箧得旧稿，不复携，悉以寄某，并题》</h2>
     <div class="body">灯下读旧词，夜深方得眠。
 当时浑不异，往事付流年。
@@ -216,17 +232,18 @@
 忘川人自渡，各自有归边。</div>
   </div>
 
-  <div class="poem jia">
+  <div class="poem jia" id="a9">
     <h2>甲九《鹧鸪天 · 得某所寄旧稿，灯下读竟，与箧中所存合编，第其甲乙。装成，客至辄出以相示，题其尾》</h2>
     <div class="body">两叠残笺一夜看，当时灯影共成篇。
 亲将一线缝卿我，鸳鸯只向脊边眠。
+
 茶屡冷，烛频残。尊前话到漏声阑。
 每遇人疑微哂处，指点卿行在我边。</div>
     <div class="date">二〇二六年六月九日</div>
   </div>
 
-  <div class="poem jia">
-    <h2>甲十《中吕 · 山坡羊 · 又过旧庐》</h2>
+  <div class="poem jia" id="a10">
+    <h2>集外 · 甲十《中吕 · 山坡羊 · 又过旧庐》</h2>
     <div class="body">风迎面，人立此，
 鼻尖一动魂先至。
 认不真，却认真，
@@ -240,7 +257,7 @@
   </div>
 
   <footer>
-    <p><a href="index.html">← Hanpu Li</a> · 笺注全文备索 annotations available on request</p>
+    <p><a href="index.html">← Hanpu Li</a> · 笺注全文备索 <span lang="en">annotations available on request</span></p>
   </footer>
 
 </div>
