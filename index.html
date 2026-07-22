@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hanpu Li</title>
+<meta name="description" content="Hanpu Li — film, words, photographs. London.">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #767676;
+    --faint: #b5b5b5;
+    --paper: #fcfcfa;
+    --line: #e8e8e4;
+    --accent: #8a2f1d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e6e4df;
+      --muted: #9a988f;
+      --faint: #5f5e58;
+      --paper: #161513;
+      --line: #2a2925;
+      --accent: #c96b52;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font: 16px/1.85 "Optima", "Candara", -apple-system, "PingFang SC", "Noto Sans SC", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 660px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 18vh 0 10vh; }
+  h1 {
+    font-size: 28px; font-weight: 600; letter-spacing: .04em;
+  }
+  h1 span { color: var(--faint); font-weight: 400; margin-left: .6em; font-size: 20px; }
+  .bio { margin-top: 1.4em; color: var(--muted); }
+  .bio p { margin: .1em 0; }
+  nav { margin-top: 3.5em; font-size: 14px; letter-spacing: .12em; }
+  nav a { color: var(--muted); text-decoration: none; margin-right: 2.2em; }
+  nav a:hover { color: var(--accent); }
+  section { padding: 7vh 0; border-top: 1px solid var(--line); }
+  h2 {
+    font-size: 13px; font-weight: 500; letter-spacing: .3em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 2.5em;
+  }
+  h2 .zh { letter-spacing: .5em; margin-right: 1em; }
+
+  /* 摄影:单列,由亮入暗,画廊节奏 */
+  .col { display: flex; flex-direction: column; gap: 9vh; }
+  .col img {
+    width: 100%; height: auto; display: block;
+    filter: saturate(.96);
+  }
+  .caption { color: var(--faint); font-size: 13px; margin-top: 1.2em; }
+
+  /* 词 */
+  .ci { font-family: "Songti SC", "Noto Serif SC", serif; }
+  .ci .poem { margin-bottom: 3em; }
+  .ci .tune { font-size: 15px; color: var(--muted); margin-bottom: 1em; letter-spacing: .1em; }
+  .ci .body { font-size: 17px; line-height: 2.2; white-space: pre-line; }
+
+  /* writing / projects */
+  .item { margin-bottom: 2.4em; }
+  .item .t { font-weight: 600; }
+  .item .t a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--faint); }
+  .item .t a:hover { color: var(--accent); border-color: var(--accent); }
+  .item .d { color: var(--muted); font-size: 15px; margin-top: .3em; }
+  .item .m { color: var(--faint); font-size: 13px; margin-top: .3em; font-style: italic; }
+
+  footer {
+    padding: 8vh 0 12vh; border-top: 1px solid var(--line);
+    color: var(--faint); font-size: 14px;
+  }
+  footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+  footer a:hover { color: var(--accent); }
+  @media (max-width: 540px) { .grid { grid-template-columns: 1fr; } header { padding-top: 12vh; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Hanpu Li<span>Cait</span></h1>
+    <div class="bio">
+      <p>看电影的，也写写词。</p>
+      <p>Worked on festival-finalist films.</p>
+      <p>York linguistics → QMUL film. London.</p>
+    </div>
+    <nav>
+      <a href="#photo">photographs</a>
+      <a href="#ci">词</a>
+      <a href="#writing">writing</a>
+      <a href="#projects">projects</a>
+    </nav>
+  </header>
+
+  <section id="photo">
+    <h2><span class="zh">摄影</span>photographs</h2>
+    <div class="col">
+      <img src="assets/photos/03.jpg" alt="Great Court, British Museum — film" loading="lazy">
+      <img src="assets/photos/11.jpg" alt="Red umbrella under carved wood — film" loading="lazy">
+      <img src="assets/photos/19.jpg" alt="Seated between two beasts — instant film" loading="lazy">
+      <img src="assets/photos/14.jpg" alt="Tower Bridge dissolving in fog — instant film" loading="lazy">
+      <img src="assets/photos/20.jpg" alt="Storm light, swans — instant film" loading="lazy">
+      <img src="assets/photos/13.jpg" alt="Suspended in deep green — instant film" loading="lazy">
+      <img src="assets/photos/10.jpg" alt="Self-portrait with cat — instant film" loading="lazy">
+      <img src="assets/photos/06.jpg" alt="Ink clouds over city lights — instant film" loading="lazy">
+    </div>
+    <p class="caption">胶片与拍立得,八帧,由实入虚。Film and instant work, eight frames. A small figure walking into large structures; the chemistry testifies.</p>
+  </section>
+
+  <section id="ci">
+    <h2><span class="zh">词</span>ci poetry</h2>
+    <div class="ci">
+      <div class="poem">
+        <div class="tune">甲一《临江仙 · 与同砚灯下夜坐，侵晓方别》</div>
+        <div class="body">几度深宵同默坐，孤灯红泪垂迟。
+一秋心绪有谁知。
+启窗星欲坠，光落两人衣。
+
+不语各含无限思，而今惟道相期。
+夜阑暗忘漏声移。
+慵来还指日，明日又今时。</div>
+      </div>
+      <div class="poem">
+        <div class="tune">乙一《无题 · 临江仙》</div>
+        <div class="body">虚廊月好人初定，同携花径迟迟。
+灯前笑语两無疑。
+旧衾随手与，今日不须知。
+客散非因谁独在，他人皆自随依。
+席旁偶坐共相栖。
+漏残晨露上，风过落花时。</div>
+      </div>
+    </div>
+    <p class="caption">选自《甲乙十六首》——一人分作两声的唱和集,甲详序,乙无题,附自撰笺注。<a href="ci.html" style="color:var(--muted)">全集 →</a><br>From a sixteen-poem cycle written in two voices by one hand.</p>
+  </section>
+
+  <section id="writing">
+    <h2><span class="zh">文章</span>writing</h2>
+    <div class="item">
+      <div class="t">On Takashi Miike’s <em>First Love</em> — gender, genre and the yakuza moral code</div>
+      <div class="d">长文评论,约一万九千七百字;含帧级拉片、librosa 音轨分析与字幕话语分析。Critical essay with a computational layer: frame-level keyframe analysis, audio-track analysis, subtitle discourse analysis.</div>
+      <div class="m">Full text available on request.</div>
+    </div>
+    <div class="item">
+      <div class="t">The Political Economy of Greenwashing: A Forensic Spatial Audit of the Shepperton Studios Expansion</div>
+      <div class="d">以「脱碳话语如何为绿带征用背书」为题的法证空间审计;管线与源码公开。Independent research with a reproducible geospatial pipeline (OpenStreetMap, Sentinel-2 NDVI, Landsat 8 LST).</div>
+      <div class="m">Pipeline public — see projects. Full text available on request.</div>
+    </div>
+    <div class="item">
+      <div class="t">On Joanna Hogg · On <em>Trainspotting</em></div>
+      <div class="d">两篇课程研究论文,Queen Mary University of London。Independent research project graded 85/100 (Distinction band).</div>
+      <div class="m">Available on request.</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2><span class="zh">项目</span>projects</h2>
+    <div class="item">
+      <div class="t"><a href="https://github.com/HanpuLi/-OSM_AUDIT_2025">OSM_AUDIT_2025</a></div>
+      <div class="d">谢珀顿影棚扩建的可复现空间审计:OpenStreetMap Overpass 提取、EPSG:27700 重投影、Google Earth Engine NDVI/LST 时序。Quantified 132,123 m² of land conversion against a £6,150 ecological buyout.</div>
+    </div>
+    <div class="item">
+      <div class="t">Small tools</div>
+      <div class="d">Builds things when the plot is weak：自动化管线、加密小工具、给家里猫装的摄像头。An assortment of scripts and small machines, some public on GitHub.</div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Hanpu Li · London · <a href="https://github.com/HanpuLi">github.com/HanpuLi</a> · <a href="mailto:caitlye@gmail.com">caitlye@gmail.com</a> 🐈</p>
+  </footer>
+
+</div>
+</body>
+</html>
