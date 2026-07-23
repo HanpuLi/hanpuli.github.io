@@ -15,8 +15,19 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>词</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 <style>
+  @font-face {
+    font-family: "Huiwen Mincho";
+    src: local("Huiwen-mincho"), url("assets/fonts/huiwen-mincho-subset.woff2") format("woff2");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "IMing Gap";
+    src: url("assets/fonts/iming-gap.woff2") format("woff2");
+    font-display: swap;
+    unicode-range: U+5BD6;
+  }
   :root {
     --ink: #1a1a1a;
     --muted: #767676;
@@ -24,6 +35,8 @@
     --paper: #fcfcfa;
     --line: #e8e8e4;
     --accent: #8a2f1d;
+    --serif: "Garamond Premier Pro", "EB Garamond", Georgia, "Huiwen Mincho", "IMing Gap", "Songti SC", serif;
+    --mono: "Courier Prime", "Huiwen Mincho", "IMing Gap", "Songti SC", "Courier New", monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -40,8 +53,9 @@
   body {
     background: var(--paper);
     color: var(--ink);
-    font: 16px/1.85 Georgia, "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
-    font-variant-numeric: lining-nums;
+    font-family: var(--serif);
+    font-size: 17px; line-height: 1.85;
+    font-synthesis: none;
     -webkit-font-smoothing: antialiased;
   }
   .wrap { max-width: 660px; margin: 0 auto; padding: 0 24px; }
@@ -53,12 +67,12 @@
   .bio { margin-top: 1.4em; color: var(--muted); }
   .bio p { margin: .1em 0; }
   .bio p:first-child { color: var(--ink); }
-  nav { margin-top: 3.5em; font-size: 14px; letter-spacing: .12em; }
+  nav { margin-top: 3.5em; font-family: var(--mono); font-size: 13px; letter-spacing: .08em; }
   nav a { color: var(--muted); text-decoration: none; margin-right: 2.2em; }
   nav a:hover { color: var(--accent); }
   section { padding: 7vh 0; border-top: 1px solid var(--line); scroll-margin-top: 4vh; }
   h2 {
-    font-size: 13px; font-weight: 500; letter-spacing: .3em;
+    font-family: var(--mono); font-size: 12.5px; font-weight: 400; letter-spacing: .2em;
     text-transform: uppercase; color: var(--faint); margin-bottom: 2.5em;
   }
   h2 .zh { letter-spacing: .5em; margin-right: 1em; }
@@ -69,7 +83,7 @@
     width: 100%; height: auto; display: block;
     filter: saturate(.96);
   }
-  .caption { color: var(--muted); font-size: 13px; margin-top: 1.6em; }
+  .caption { font-family: var(--mono); color: var(--muted); font-size: 12.5px; margin-top: 1.6em; }
   .caption a { color: var(--muted); }
   .caption a:hover { color: var(--accent); }
 
@@ -83,20 +97,20 @@
   .item .t { font-weight: 600; }
   .item .t a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--faint); }
   .item .t a:hover { color: var(--accent); border-color: var(--accent); }
-  .item .d { color: var(--muted); font-size: 15px; margin-top: .3em; }
+  .item .d { color: var(--muted); font-size: 15.5px; margin-top: .3em; }
 
   /* 选录:画廊小传体 */
   .cred { display: flex; gap: 1.6em; margin-bottom: 1.7em; }
   .cred .y {
-    color: var(--faint); font-size: 13px; letter-spacing: .05em;
-    min-width: 4.6em; padding-top: .3em; font-variant-numeric: tabular-nums;
+    font-family: var(--mono); color: var(--faint); font-size: 12.5px; letter-spacing: .02em;
+    min-width: 4.6em; padding-top: .35em;
   }
   .cred .tx { flex: 1; }
   .cred .tx span[lang="en"] { display: block; color: var(--muted); font-size: 14px; margin-top: .1em; }
 
   footer {
     padding: 8vh 0 12vh; border-top: 1px solid var(--line);
-    color: var(--faint); font-size: 14px;
+    font-family: var(--mono); color: var(--faint); font-size: 13px;
   }
   footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
   footer a:hover { color: var(--accent); }
