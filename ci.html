@@ -30,7 +30,7 @@
   html { scroll-behavior: smooth; }
   body {
     background: var(--paper); color: var(--ink);
-    font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
+    font-family: Georgia, "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
     -webkit-font-smoothing: antialiased;
   }
   .wrap { max-width: 560px; margin: 0 auto; padding: 0 24px; }
@@ -50,8 +50,8 @@
   .poem .body { font-size: 17px; line-height: 2.25; white-space: pre-line; }
   .poem .date { color: var(--faint); font-size: 13px; margin-top: 1.2em; }
   .poem .en { margin-top: 1.7em; color: var(--muted); font-size: 14.5px; line-height: 1.95; white-space: pre-line; }
-  .poem .en .et { font-style: italic; display: block; margin-bottom: .5em; color: var(--faint); font-size: 13.5px; }
-  footer { padding: 7vh 0 12vh; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; font-family: -apple-system, "PingFang SC", sans-serif; }
+  .poem .en .et { display: block; margin-bottom: .5em; color: var(--faint); font-size: 13.5px; letter-spacing: .02em; }
+  footer { padding: 7vh 0 12vh; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
   footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
   footer a:hover { color: var(--accent); border-color: var(--accent); }
 </style>
@@ -97,7 +97,7 @@ tomorrow. This same hour.</div>
 客散非因谁独在，他人皆自随依。
 席旁偶坐共相栖。
 漏残晨露上，风过落花时。</div>
-    <div class="en" lang="en"><span class="et">Untitled · after <i>Linjiangxian</i></span>Good moon on the empty corridor, the house just settling.
+    <div class="en" lang="en"><span class="et">Untitled · After <i>Linjiangxian</i></span>Good moon on the empty corridor, the house just settling.
 We took the flowered path slowly, since it was there.
 Lamplight, laughter, neither of us doubting anything.
 The old quilt changed hands because it was in reach.
@@ -139,7 +139,7 @@ Night mist already stood upon the steps.</div>
 欲唤还休，前欢未省。
 分明一水无舟艇。
 残灰散尽各归时，余釭独照空庭静。</div>
-    <div class="en" lang="en"><span class="et">Untitled · after <i>Tasuoxing</i></span>One room warm with scent; two shadows printed side by side.
+    <div class="en" lang="en"><span class="et">Untitled · After <i>Tasuoxing</i></span>One room warm with scent; two shadows printed side by side.
 Laughter sinking toward the dark where the dear one sits.
 Through the curtain even the lamp goes cold first;
 someone in the shadows, the light along their clothes gone cold.
@@ -157,12 +157,12 @@ one lamp was left to light the empty courtyard, still.</div>
 不是东风先折取，恐花为我辞根。
 新痕旧钥莫轻论。
 相逢原是客，客作主家恩。</div>
-    <div class="en" lang="en"><span class="et">Untitled · after <i>Linjiangxian</i></span>Candle low, crickets cold, the curtain's shadow thinning;
+    <div class="en" lang="en"><span class="et">Untitled · After <i>Linjiangxian</i></span>Candle low, crickets cold, the curtain’s shadow thinning;
 last of the wine still warm in a corner of the room.
 The pen stops. The paper resists. The ink swallows first.
 Unsealed, folded again and again by hand —
-the heart's business handed over to the dusk.
-It isn't that the east wind broke the flower first;
+the heart’s business handed over to the dusk.
+It isn’t that the east wind broke the flower first;
 the fear is that the flower left its root for me.
 New marks, old key — neither to be spoken of lightly.
 We met as passing guests;
@@ -180,7 +180,7 @@ the guest lives on the kindness of the house.</div>
 誊复涂、深言怕误，浅字偏安。
 明朝铜色经他手，便认作、一诺穷年。
 灯灭后、丁宁只是加餐。</div>
-    <div class="en" lang="en"><span class="et">Untitled · after <i>Dujiangyun</i></span>Bright copper, teeth new-cut.
+    <div class="en" lang="en"><span class="et">Untitled · After <i>Dujiangyun</i></span>Bright copper, teeth new-cut.
 About to seal it; stopping. What heat is left
 flicked from between the fingers.
 Then, small in the lamplight, a shadow of a self;
@@ -204,9 +204,9 @@ After the lamp is out, all I dare urge is: eat well.</div>
   <div class="poem yi" id="b5">
     <h2>乙五《无题 · 十六字令》</h2>
     <div class="body">铜。钥齿新裁付掌中。天寒了，加饭且从容。</div>
-    <div class="en" lang="en"><span class="et">Untitled · after the sixteen-character tune</span>Copper.
+    <div class="en" lang="en"><span class="et">Untitled · After <i>Shiliuziling</i></span>Copper.
 A key, teeth fresh from the cutting, closed into a palm.
-The cold's come.
+The cold’s come.
 Eat well, and take your time.</div>
   </div>
 
@@ -332,7 +332,7 @@ dimly, the old scent again.</div>
 空盆花事尽，春至又生枝。
 浇水成前事，素心终不移。
 君舟自沧海，我亦各天涯。</div>
-    <div class="en" lang="en"><span class="et">On receiving what was sent</span>The old pot's orchid moved, and moved again;
+    <div class="en" lang="en"><span class="et">On receiving what was sent</span>The old pot’s orchid moved, and moved again;
 more than one spring went wrong in the marks it left.
 The next-door garden took a new division;
 passers-by broke what was left of the root.
@@ -388,7 +388,7 @@ now it is rain along the eaves.
 I am afraid of the old tune —
 note by note it hurries on the dawn.
 The last sound will not be done with it,
-winding itself into the gut's own thread.
+winding itself into the gut’s own thread.
 One lamp cold against the wall:
 lighting the wall, as if lighting you.
 
@@ -453,9 +453,9 @@ I point: her line of writing, here — at my side.</div>
 
 迟，是误了；
 归，也是误了。</div>
-    <div class="en" lang="en"><span class="et">Outside the cycle · to <i>Shanpoyang</i> · Passing the old house again</span>Wind in the face. Stopped here.
+    <div class="en" lang="en"><span class="et">Outside the cycle · After <i>Shanpoyang</i> · Passing the old house again</span>Wind in the face. Stopped here.
 The nose moves first — the soul arrives before I do.
-Can't be sure it's real; am sure anyway.
+Can’t be sure it’s real; am sure anyway.
 Round and round the corner of the street, and standing still.
 Twenty years of weather, none of it kept —
 this little bit of smell, kept.
