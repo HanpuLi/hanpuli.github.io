@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-Hant-HK">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hanpu Li</title>
 <meta name="description" content="Hanpu Li — film, words, photographs. London.">
 <meta property="og:title" content="Hanpu Li — film, words, photographs">
-<meta property="og:description" content="看电影的，也写写词。Film writing, photographs, and a poem cycle in two voices.">
+<meta property="og:description" content="看電影的，也寫寫詞。Film writing, photographs, and a poem cycle in two voices.">
 <meta property="og:image" content="https://hanpuli.github.io/assets/photos/03.jpg">
 <meta property="og:url" content="https://hanpuli.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#fcfcfa" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#161513" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>词</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>詞</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   @font-face {
-    font-family: "Huiwen Mincho";
-    src: local("Huiwen-mincho"), url("assets/fonts/huiwen-mincho-subset.woff2") format("woff2");
+    font-family: "Shippori Mincho";
+    src: local("Shippori Mincho"), local("ShipporiMincho-Regular"), url("assets/fonts/shippori-mincho-subset.woff2") format("woff2");
     font-display: swap;
   }
   @font-face {
     font-family: "IMing Gap";
     src: url("assets/fonts/iming-gap.woff2") format("woff2");
     font-display: swap;
-    unicode-range: U+5BD6;
+    unicode-range: U+60E6, U+8E29;
   }
   :root {
     --ink: #1a1a1a;
@@ -35,8 +35,8 @@
     --paper: #fcfcfa;
     --line: #e8e8e4;
     --accent: #8a2f1d;
-    --serif: "Garamond Premier Pro", "EB Garamond", Georgia, "Huiwen Mincho", "IMing Gap", "Songti SC", serif;
-    --mono: "Courier Prime", "Huiwen Mincho", "IMing Gap", "Songti SC", "Courier New", monospace;
+    --serif: "Garamond Premier Pro", "EB Garamond", Georgia, "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", serif;
+    --mono: "Courier Prime", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -77,7 +77,7 @@
   }
   h2 .zh { letter-spacing: .5em; margin-right: 1em; }
 
-  /* 摄影：单列，由实入虚，画廊节奏 */
+  /* 攝影：單列，由實入虛，畫廊節奏 */
   .col { display: flex; flex-direction: column; gap: 9vh; }
   .col img {
     width: 100%; height: auto; display: block;
@@ -87,7 +87,7 @@
   .caption a { color: var(--muted); }
   .caption a:hover { color: var(--accent); }
 
-  /* 词 */
+  /* 詞 */
   .ci .poem { margin-bottom: 3em; }
   .ci .tune { font-size: 15px; color: var(--muted); margin-bottom: 1em; letter-spacing: .1em; }
   .ci .body { font-size: 17px; line-height: 2.25; white-space: pre-line; }
@@ -99,7 +99,7 @@
   .item .t a:hover { color: var(--accent); border-color: var(--accent); }
   .item .d { color: var(--muted); font-size: 15.5px; margin-top: .3em; }
 
-  /* 选录:画廊小传体 */
+  /* 選錄:畫廊小傳體 */
   .cred { display: flex; gap: 1.6em; margin-bottom: 1.7em; }
   .cred .y {
     font-family: var(--mono); color: var(--faint); font-size: 12.5px; letter-spacing: .02em;
@@ -123,14 +123,14 @@
   <header>
     <h1>Hanpu Li <span>Cait</span></h1>
     <div class="bio">
-      <p>看电影的，也写写词。</p>
+      <p>看電影的，也寫寫詞。</p>
       <p lang="en">Worked on festival-finalist films.</p>
       <p lang="en">York linguistics → QMUL film. London.</p>
     </div>
     <nav>
       <a href="#photo">photographs</a>
-      <a href="#ci">词</a>
-      <a href="shi.html">诗</a>
+      <a href="#ci">詞</a>
+      <a href="shi.html">詩</a>
       <a href="#writing">writing</a>
       <a href="#projects">projects</a>
       <a href="#credits">credits</a>
@@ -138,7 +138,7 @@
   </header>
 
   <section id="photo">
-    <h2><span class="zh">摄影</span>photographs</h2>
+    <h2><span class="zh">攝影</span>photographs</h2>
     <div class="col">
       <img src="assets/photos/03.jpg" srcset="assets/photos/03-800.jpg 800w, assets/photos/03.jpg 1200w" sizes="(max-width: 708px) 100vw, 612px" width="1200" height="795" alt="Great Court, British Museum — film">
       <img src="assets/photos/11.jpg" srcset="assets/photos/11-800.jpg 800w, assets/photos/11.jpg 1200w" sizes="(max-width: 708px) 100vw, 612px" width="1200" height="795" alt="Red umbrella under carved wood — film" loading="lazy">
@@ -149,73 +149,73 @@
       <img src="assets/photos/10.jpg" srcset="assets/photos/10-800.jpg 800w, assets/photos/10.jpg 1200w" sizes="(max-width: 708px) 100vw, 612px" width="1164" height="1200" alt="Self-portrait with cat — instant film" loading="lazy">
       <img src="assets/photos/06.jpg" srcset="assets/photos/06-800.jpg 800w, assets/photos/06.jpg 1200w" sizes="(max-width: 708px) 100vw, 612px" width="1164" height="1200" alt="Ink clouds over city lights — instant film" loading="lazy">
     </div>
-    <p class="caption">胶片与拍立得，八帧，由实入虚。<span lang="en">Film and instant work, eight frames. A small figure walking into large structures; the chemistry testifies.</span></p>
+    <p class="caption">膠片與拍立得，八幀，由實入虛。<span lang="en">Film and instant work, eight frames. A small figure walking into large structures; the chemistry testifies.</span></p>
   </section>
 
   <section id="ci">
-    <h2><span class="zh">词</span>ci poetry</h2>
+    <h2><span class="zh">詞</span>ci poetry</h2>
     <div class="ci">
       <div class="poem">
-        <div class="tune">甲一《临江仙 · 与同砚灯下夜坐，侵晓方别》</div>
-        <div class="body">几度深宵同默坐，孤灯红泪垂迟。
-一秋心绪有谁知。
-启窗星欲坠，光落两人衣。
+        <div class="tune">甲一《臨江仙 · 與同硯燈下夜坐，侵曉方別》</div>
+        <div class="body">幾度深宵同默坐，孤燈紅淚垂遲。
+一秋心緒有誰知。
+啓窗星欲墜，光落兩人衣。
 
-不语各含无限思，而今惟道相期。
-夜阑暗忘漏声移。
-慵来还指日，明日又今时。</div>
+不語各含無限思，而今惟道相期。
+夜闌暗忘漏聲移。
+慵來還指日，明日又今時。</div>
       </div>
       <div class="poem">
-        <div class="tune">乙一《无题 · 临江仙》</div>
-        <div class="body">虚廊月好人初定，同携花径迟迟。
-灯前笑语两無疑。
-旧衾随手与，今日不须知。
-客散非因谁独在，他人皆自随依。
-席旁偶坐共相栖。
-漏残晨露上，风过落花时。</div>
+        <div class="tune">乙一《無題 · 臨江仙》</div>
+        <div class="body">虛廊月好人初定，同攜花徑遲遲。
+燈前笑語兩無疑。
+舊衾隨手與，今日不須知。
+客散非因誰獨在，他人皆自隨依。
+席旁偶坐共相棲。
+漏殘晨露上，風過落花時。</div>
       </div>
     </div>
-    <p class="caption">选自《甲乙十六首》——一人分作两声的唱和集，甲详序，乙无题，附自撰笺注。<a href="ci.html">全集 →</a><br><span lang="en">From a sixteen-poem cycle written in two voices by one hand.</span></p>
+    <p class="caption">選自《甲乙十六首》——一人分作兩聲的唱和集，甲詳序，乙無題，附自撰箋註。<a href="ci.html">全集 →</a><br><span lang="en">From a sixteen-poem cycle written in two voices by one hand.</span></p>
   </section>
 
   <section id="writing">
     <h2><span class="zh">文章</span>writing</h2>
     <div class="item">
       <div class="t" lang="en">On Takashi Miike’s <em>First Love</em> — gender, genre and the yakuza moral code</div>
-      <div class="d">长文评论，约一万九千七百字；含帧级拉片、librosa 音轨分析与字幕话语分析。<span lang="en">Critical essay with a computational layer: frame-level keyframe analysis, audio-track analysis, subtitle discourse analysis.</span></div>
+      <div class="d">長文評論，約一萬九千七百字；含幀級拉片、librosa 音軌分析與字幕話語分析。<span lang="en">Critical essay with a computational layer: frame-level keyframe analysis, audio-track analysis, subtitle discourse analysis.</span></div>
     </div>
     <div class="item">
       <div class="t" lang="en">The political economy of greenwashing — a forensic spatial audit of the Shepperton Studios expansion</div>
-      <div class="d">以「脱碳话语如何为绿带征用背书」为题的法证空间审计；管线与源码公开。<span lang="en">Independent research with a reproducible geospatial pipeline (OpenStreetMap, Sentinel-2 NDVI, Landsat 8 LST).</span></div>
+      <div class="d">以「脫碳話語如何為綠帶徵用背書」為題的法證空間審計；管線與源碼公開。<span lang="en">Independent research with a reproducible geospatial pipeline (OpenStreetMap, Sentinel-2 NDVI, Landsat 8 LST).</span></div>
     </div>
     <div class="item">
       <div class="t" lang="en">On Joanna Hogg · On <em>Trainspotting</em></div>
-      <div class="d">两篇课程研究论文，Queen Mary University of London。<span lang="en">Independent research project graded 85/100 (Distinction band).</span></div>
+      <div class="d">兩篇課程研究論文，Queen Mary University of London。<span lang="en">Independent research project graded 85/100 (Distinction band).</span></div>
     </div>
-    <p class="caption">全文备索。<span lang="en">Full texts available on request.</span></p>
+    <p class="caption">全文備索。<span lang="en">Full texts available on request.</span></p>
   </section>
 
   <section id="projects">
-    <h2><span class="zh">项目</span>projects</h2>
+    <h2><span class="zh">項目</span>projects</h2>
     <div class="item">
       <div class="t"><a href="https://github.com/HanpuLi/-OSM_AUDIT_2025" lang="en">OSM_AUDIT_2025</a></div>
-      <div class="d">谢珀顿影棚扩建的可复现空间审计：OpenStreetMap Overpass 提取、EPSG:27700 重投影、Google Earth Engine NDVI/LST 时序。<span lang="en">Quantified 132,123 m² of land conversion against a £6,150 ecological buyout.</span></div>
+      <div class="d">謝珀頓影棚擴建的可復現空間審計：OpenStreetMap Overpass 提取、EPSG:27700 重投影、Google Earth Engine NDVI/LST 時序。<span lang="en">Quantified 132,123 m² of land conversion against a £6,150 ecological buyout.</span></div>
     </div>
     <div class="item">
       <div class="t" lang="en">Small tools</div>
-      <div class="d">Builds things when the plot is weak：自动化管线、加密小工具、给家里猫装的摄像头。<span lang="en">An assortment of scripts and small machines, some public on GitHub.</span></div>
+      <div class="d">Builds things when the plot is weak：自動化管線、加密小工具、給家裏貓裝的攝像頭。<span lang="en">An assortment of scripts and small machines, some public on GitHub.</span></div>
     </div>
   </section>
 
   <section id="credits">
-    <h2><span class="zh">选录</span>selected credits</h2>
-    <div class="cred"><span class="y">2013–16</span><div class="tx">电视与广播主持——正定县电视台、河北交通广播；春晚直播观众逾五十万。<span lang="en">Live television and radio presenting; Spring Festival Gala broadcast, audience 500,000+.</span></div></div>
-    <div class="cred"><span class="y">2016</span><div class="tx">青年主持人大赛冠军。<span lang="en">First Prize (Champion), Young Presenter Competition.</span></div></div>
-    <div class="cred"><span class="y">2018–</span><div class="tx">商业、建筑与纪实摄影；China 8K RAW 认证作品集。<span lang="en">Commercial, architectural and documentary photography; recognised portfolio, China 8K RAW.</span></div></div>
-    <div class="cred"><span class="y">2018–19</span><div class="tx">URY 88.3FM 主持与制作——英国历史最久的学生电台之一。<span lang="en">Presenter and producer, University Radio York.</span></div></div>
-    <div class="cred"><span class="y">2020</span><div class="tx">济南——参与营救被强制关押于扭转治疗机构的跨性别女性，地面协调。<span lang="en">On-ground coordination, Jinan: the rescue of a transgender woman forcibly detained in a conversion-therapy facility.</span></div></div>
-    <div class="cred"><span class="y">2020–23</span><div class="tx">北京同志中心志愿写作者；武汉同志中心跨性别方向志愿者——跨性别健康写作、社群支持与紧急 PEP 协助。<span lang="en">Volunteer writer, Beijing LGBT Center; volunteer (transgender direction), Wuhan LGBT Center — trans healthcare writing, community support, emergency PEP access.</span></div></div>
-    <div class="cred"><span class="y">2024</span><div class="tx">场记、译者与研究员——约克大学剧组；两部作品入围第十四届澳门国际微电影节与金鸡影展展映单元。<span lang="en">Script supervisor, translator and researcher on two festival-finalist productions — 14th Macau International Micro-Film Festival; Golden Rooster Film Exhibition / MUST Chinese Youth Film Festival.</span></div></div>
+    <h2><span class="zh">選錄</span>selected credits</h2>
+    <div class="cred"><span class="y">2013–16</span><div class="tx">電視與廣播主持——正定縣電視台、河北交通廣播；春晚直播觀眾逾五十萬。<span lang="en">Live television and radio presenting; Spring Festival Gala broadcast, audience 500,000+.</span></div></div>
+    <div class="cred"><span class="y">2016</span><div class="tx">青年主持人大賽冠軍。<span lang="en">First Prize (Champion), Young Presenter Competition.</span></div></div>
+    <div class="cred"><span class="y">2018–</span><div class="tx">商業、建築與紀實攝影；China 8K RAW 認證作品集。<span lang="en">Commercial, architectural and documentary photography; recognised portfolio, China 8K RAW.</span></div></div>
+    <div class="cred"><span class="y">2018–19</span><div class="tx">URY 88.3FM 主持與製作——英國歷史最久的學生電台之一。<span lang="en">Presenter and producer, University Radio York.</span></div></div>
+    <div class="cred"><span class="y">2020</span><div class="tx">濟南——參與營救被強制關押於扭轉治療機構的跨性別女性，地面協調。<span lang="en">On-ground coordination, Jinan: the rescue of a transgender woman forcibly detained in a conversion-therapy facility.</span></div></div>
+    <div class="cred"><span class="y">2020–23</span><div class="tx">北京同志中心志願寫作者；武漢同志中心跨性別方向志願者——跨性別健康寫作、社羣支持與緊急 PEP 協助。<span lang="en">Volunteer writer, Beijing LGBT Center; volunteer (transgender direction), Wuhan LGBT Center — trans healthcare writing, community support, emergency PEP access.</span></div></div>
+    <div class="cred"><span class="y">2024</span><div class="tx">場記、譯者與研究員——約克大學劇組；兩部作品入圍第十四屆澳門國際微電影節與金雞影展展映單元。<span lang="en">Script supervisor, translator and researcher on two festival-finalist productions — 14th Macau International Micro-Film Festival; Golden Rooster Film Exhibition / MUST Chinese Youth Film Festival.</span></div></div>
   </section>
 
   <footer>
