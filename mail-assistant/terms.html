@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Terms of Service — Cait Mail Assistant</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fcfcfa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161513" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>詞</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: "Shippori Mincho";
+    src: local("Shippori Mincho"), local("ShipporiMincho-Regular"), url("../assets/fonts/shippori-mincho-subset.woff2") format("woff2");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "IMing Gap";
+    src: url("../assets/fonts/iming-gap.woff2") format("woff2");
+    font-display: swap;
+    unicode-range: U+60E6, U+8E29;
+  }
+  :root {
+    --ink: #1a1a1a;
+    --muted: #767676;
+    --faint: #b5b5b5;
+    --paper: #fcfcfa;
+    --line: #e8e8e4;
+    --accent: #8a2f1d;
+    --serif: "Garamond Premier Pro", "EB Garamond", Georgia, "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", serif;
+    --mono: "Courier Prime", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e6e4df;
+      --muted: #9a988f;
+      --faint: #5f5e58;
+      --paper: #161513;
+      --line: #2a2925;
+      --accent: #c96b52;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px; line-height: 1.85;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 660px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 18vh 0 10vh; }
+  h1 { font-size: 28px; font-weight: 600; letter-spacing: .04em; }
+  h1 span { color: var(--faint); font-weight: 400; margin-left: .35em; font-size: 20px; }
+  .bio { margin-top: 1.4em; color: var(--muted); }
+  .bio p { margin: .1em 0; }
+  .bio p:first-child { color: var(--ink); }
+  nav { margin-top: 3.5em; font-family: var(--mono); font-size: 13px; letter-spacing: .08em; }
+  nav a { color: var(--muted); text-decoration: none; margin-right: 2.2em; }
+  nav a:hover { color: var(--accent); }
+  nav a[aria-current] { color: var(--ink); }
+  section { padding: 7vh 0; border-top: 1px solid var(--line); scroll-margin-top: 4vh; }
+  h2 {
+    font-family: var(--mono); font-size: 12.5px; font-weight: 400; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 2.5em;
+  }
+  h3 { font-size: 17px; font-weight: 600; margin: 2.2em 0 .5em; }
+  h3:first-of-type { margin-top: 0; }
+  p { margin: 0 0 1.1em; }
+  p:last-child { margin-bottom: 0; }
+  ul { margin: 0 0 1.1em; padding-left: 1.3em; }
+  li { margin-bottom: .45em; }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--faint); }
+  a:hover { color: var(--accent); border-color: var(--accent); }
+  strong { font-weight: 600; }
+  .pull {
+    border-left: 2px solid var(--accent); padding-left: 1.4em;
+    color: var(--muted); font-style: italic; margin: 0 0 1.1em;
+  }
+  .pull em { font-style: normal; color: var(--ink); }
+  dl { margin: 0 0 1.1em; }
+  dt {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em;
+    color: var(--faint); margin-top: 1.5em;
+  }
+  dt:first-child { margin-top: 0; }
+  dd { margin: .25em 0 0; }
+  footer {
+    padding: 8vh 0 12vh; border-top: 1px solid var(--line);
+    font-family: var(--mono); color: var(--faint); font-size: 13px;
+  }
+  footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+  footer a:hover { color: var(--accent); }
+  @media (max-width: 540px) { header { padding-top: 12vh; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Terms of Service</h1>
+    <div class="bio">
+      <p>The terms on which Cait Mail Assistant is made available.</p>
+    </div>
+    <nav>
+      <a href="./">overview</a>
+      <a href="privacy.html">privacy</a>
+      <a href="terms.html" aria-current="page">terms</a>
+      <a href="https://hanpuli.github.io/">hanpuli.github.io</a>
+    </nav>
+  </header>
+
+<section>
+  <h2>1 &middot; What this is</h2>
+  <p>Cait Mail Assistant (&ldquo;the tool&rdquo;) is a personal utility written and operated by <strong>Hanpu Li</strong>, an individual in London, United Kingdom, for the management of her own email correspondence and that of a member of her household, with that person&rsquo;s permission.</p>
+  <p>These terms are published because Google requires an application registered for OAuth access to make its terms available. They are not an offer of a service to the public. The tool is made available to its author alone: it is not licensed, sold, sublicensed, distributed or offered to any other person, and no right to use it is granted by the publication of this page. Nothing here creates a contract with any reader.</p>
+</section>
+
+<section>
+  <h2>2 &middot; Acceptable use</h2>
+  <p>The tool may be used only to access mailboxes the user is entitled to access, and only in a manner consistent with the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a> and the Gmail API terms. It may not be used to access another person&rsquo;s mailbox without that person&rsquo;s authority, to send unsolicited bulk email, or for any unlawful purpose.</p>
+</section>
+
+<section>
+  <h2>3 &middot; Privacy</h2>
+  <p>Data handling is governed by the <a href="privacy.html">privacy policy</a>, which should be read with these terms. It records, in particular, that message content is transmitted to Anthropic PBC in order to provide the tool&rsquo;s core function.</p>
+</section>
+
+<section>
+  <h2>4 &middot; No warranty, no liability</h2>
+  <p>The tool is provided <strong>as is</strong> and <strong>as available</strong>. To the fullest extent permitted by law, all warranties, conditions and terms implied by statute or common law are excluded, and the author accepts no liability for any loss or damage arising from its use, including loss of or corruption to messages, missed or misdirected correspondence, or any indirect or consequential loss. Nothing in these terms excludes or limits liability for death or personal injury caused by negligence, for fraud or fraudulent misrepresentation, or for any other liability that cannot lawfully be excluded or limited.</p>
+  <p>The tool operates on live correspondence and can create, alter, label, send and move real messages. Its output should be checked before it is relied upon or sent.</p>
+  <p>It depends on services operated by Google LLC and Anthropic PBC, whose availability, terms and pricing are outside the author&rsquo;s control; withdrawal or alteration of either may render the tool inoperative without notice. It may be discontinued at any time.</p>
+</section>
+
+<section>
+  <h2>5 &middot; Governing law</h2>
+  <p>These terms and any dispute arising out of them, whether contractual or non-contractual, are governed by the law of <strong>England and Wales</strong>, and the courts of England and Wales have exclusive jurisdiction.</p>
+  <p>These terms may be amended by publication of a revised version on this page, with an updated effective date and version number.</p>
+</section>
+
+  <footer>
+    <p>Effective 5 September 2026 &middot; v1.0 &middot; Hanpu Li &middot; London &middot; <a href="mailto:caitlye+mailassistant@gmail.com">caitlye+mailassistant@gmail.com</a> &middot; <a href="https://hanpuli.github.io/">hanpuli.github.io</a></p>
+  </footer>
+</div>
+</body>
+</html>

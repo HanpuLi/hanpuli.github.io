@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Privacy Policy — Cait Mail Assistant</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fcfcfa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161513" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>詞</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: "Shippori Mincho";
+    src: local("Shippori Mincho"), local("ShipporiMincho-Regular"), url("../assets/fonts/shippori-mincho-subset.woff2") format("woff2");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "IMing Gap";
+    src: url("../assets/fonts/iming-gap.woff2") format("woff2");
+    font-display: swap;
+    unicode-range: U+60E6, U+8E29;
+  }
+  :root {
+    --ink: #1a1a1a;
+    --muted: #767676;
+    --faint: #b5b5b5;
+    --paper: #fcfcfa;
+    --line: #e8e8e4;
+    --accent: #8a2f1d;
+    --serif: "Garamond Premier Pro", "EB Garamond", Georgia, "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", serif;
+    --mono: "Courier Prime", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e6e4df;
+      --muted: #9a988f;
+      --faint: #5f5e58;
+      --paper: #161513;
+      --line: #2a2925;
+      --accent: #c96b52;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px; line-height: 1.85;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 660px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 18vh 0 10vh; }
+  h1 { font-size: 28px; font-weight: 600; letter-spacing: .04em; }
+  h1 span { color: var(--faint); font-weight: 400; margin-left: .35em; font-size: 20px; }
+  .bio { margin-top: 1.4em; color: var(--muted); }
+  .bio p { margin: .1em 0; }
+  .bio p:first-child { color: var(--ink); }
+  nav { margin-top: 3.5em; font-family: var(--mono); font-size: 13px; letter-spacing: .08em; }
+  nav a { color: var(--muted); text-decoration: none; margin-right: 2.2em; }
+  nav a:hover { color: var(--accent); }
+  nav a[aria-current] { color: var(--ink); }
+  section { padding: 7vh 0; border-top: 1px solid var(--line); scroll-margin-top: 4vh; }
+  h2 {
+    font-family: var(--mono); font-size: 12.5px; font-weight: 400; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 2.5em;
+  }
+  h3 { font-size: 17px; font-weight: 600; margin: 2.2em 0 .5em; }
+  h3:first-of-type { margin-top: 0; }
+  p { margin: 0 0 1.1em; }
+  p:last-child { margin-bottom: 0; }
+  ul { margin: 0 0 1.1em; padding-left: 1.3em; }
+  li { margin-bottom: .45em; }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--faint); }
+  a:hover { color: var(--accent); border-color: var(--accent); }
+  strong { font-weight: 600; }
+  .pull {
+    border-left: 2px solid var(--accent); padding-left: 1.4em;
+    color: var(--muted); font-style: italic; margin: 0 0 1.1em;
+  }
+  .pull em { font-style: normal; color: var(--ink); }
+  dl { margin: 0 0 1.1em; }
+  dt {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em;
+    color: var(--faint); margin-top: 1.5em;
+  }
+  dt:first-child { margin-top: 0; }
+  dd { margin: .25em 0 0; }
+  footer {
+    padding: 8vh 0 12vh; border-top: 1px solid var(--line);
+    font-family: var(--mono); color: var(--faint); font-size: 13px;
+  }
+  footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+  footer a:hover { color: var(--accent); }
+  @media (max-width: 540px) { header { padding-top: 12vh; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Privacy Policy</h1>
+    <div class="bio">
+      <p>How Cait Mail Assistant handles data obtained from Google APIs.</p>
+    </div>
+    <nav>
+      <a href="./">overview</a>
+      <a href="privacy.html" aria-current="page">privacy</a>
+      <a href="terms.html">terms</a>
+      <a href="https://hanpuli.github.io/">hanpuli.github.io</a>
+    </nav>
+  </header>
+
+<section>
+  <h2>1 &middot; Who is responsible</h2>
+  <p>Cait Mail Assistant (&ldquo;the tool&rdquo;) is built and operated by <strong>Hanpu Li</strong>, an individual in London, United Kingdom, acting in a personal capacity. There is no company behind it and it is not offered as a service: the only Google accounts it is ever authorised against are the author&rsquo;s own, and those of a member of her household with that person&rsquo;s permission.</p>
+  <p>Questions about this policy: <a href="mailto:caitlye+mailassistant@gmail.com">caitlye+mailassistant@gmail.com</a>.</p>
+</section>
+
+<section>
+  <h2>2 &middot; What it obtains, and why</h2>
+  <p>Using the Gmail API, and with the authorising account holder&rsquo;s consent, the tool can read messages, threads, labels, drafts, attachments and basic mailbox settings; and can compose, amend and send messages and drafts, apply and remove labels, move messages to and from the trash, and change basic mailbox settings such as filters and signatures. It cannot permanently delete messages bypassing the trash.</p>
+  <p>The scopes requested are <strong>gmail.modify</strong> and <strong>gmail.settings.basic</strong>, and no others; both are classified by Google as restricted scopes. No access is requested to Drive, Contacts, Calendar, Photos, location or payment information.</p>
+  <p>It is used for one purpose: to give the author a working view of the correspondence in the mailboxes she is authorised to use &mdash; her own, and the household mailbox described in section 1 &mdash; by searching, reading, summarising, drafting replies, applying labels and keeping records in order.</p>
+  <p>Email inevitably contains personal data belonging to people other than the account holder, who are not the ones granting consent. Such data is read only as far as the task at hand requires, and is not aggregated into profiles of correspondents.</p>
+</section>
+
+<section>
+  <h2>3 &middot; Where the data goes</h2>
+  <h3>To Anthropic</h3>
+  <p>The tool works by passing message content to an assistant model operated by <strong>Anthropic PBC</strong>, because reading and drafting correspondence cannot be done without the content reaching the model. That transmission is limited to what the task needs and is made at the account holder&rsquo;s instruction. Once content reaches Anthropic it is governed by Anthropic&rsquo;s own terms and privacy policy, which the author does not control and does not describe or guarantee here; read it directly at <a href="https://www.anthropic.com/legal/privacy">anthropic.com/legal/privacy</a>.</p>
+  <h3>To files on the author&rsquo;s own computers</h3>
+  <p>The tool keeps no database, search index or message archive of its own, and sends nothing to any server operated by the author. Message content does nevertheless persist in ordinary files on the author&rsquo;s own computers: the assistant client writes local session transcripts, and she saves individual messages where she needs the original for her records or for legal proceedings. Some of those files are held in folders that the operating system synchronises to her personal iCloud account, and are thereby also stored by Apple Inc. under her own consumer iCloud agreement; some are also replicated directly between the computers in her own household. The machine on which the tool runs has full-disk encryption and an immediate screen lock. Credentials are held in a file readable only by her user account, are not synced to any cloud service, and are transmitted nowhere except to Google&rsquo;s own token endpoint.</p>
+  <h3>Nowhere else</h3>
+  <p>No analytics, telemetry, advertising network or data broker receives Google user data from this tool, and it is never used for advertising, for credit or eligibility decisions, or for resale. Beyond the above, correspondence may also be disclosed where the author discloses it in the ordinary course of exercising or defending her own legal rights &mdash; for example by producing an original message to a court, an ombudsman or a regulator &mdash; which is a disclosure she makes as an individual and not a feature of the tool.</p>
+  <p>This page is static, is served by GitHub Pages and sets no cookies. It does load two typefaces from Google Fonts, so a visitor&rsquo;s IP address and browser user-agent reach Google&rsquo;s font servers when the page is opened; no data obtained by the tool is involved in that request.</p>
+</section>
+
+<section>
+  <h2>4 &middot; Limited Use</h2>
+  <p class="pull"><em>Cait Mail Assistant&rsquo;s use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</em></p>
+  <p class="pull"><em>The use of information received from Google Workspace scopes will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google User Data Policy</a>, including the Limited Use requirements.</em></p>
+  <p>The author does not use Google user data to create, train or improve any machine learning or artificial intelligence model, and operates no model of her own. The practice of the processor named in section 3 is a matter for its own policy, linked there.</p>
+</section>
+
+<section>
+  <h2>5 &middot; Retention, deletion and withdrawing access</h2>
+  <p>The tool imposes no retention schedule of its own: content persists for as long as the local files described in section 3 are kept, and those are deleted at the author&rsquo;s discretion. Content transmitted to Anthropic is retained according to Anthropic&rsquo;s own published practice, which the author does not control.</p>
+  <p>Authorisation can be revoked at any time, without reference to the author, at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. On revocation the refresh token ceases to work and the tool can obtain no further data from the mailbox. Revocation does not by itself delete material already obtained; to request deletion, write to the address in section 1. The author will delete the local copies she holds and confirm that she has done so, save to the extent that the material is necessary for the establishment, exercise or defence of a legal claim, in which case she will say so.</p>
+</section>
+
+<section>
+  <h2>6 &middot; UK data protection</h2>
+  <p>The tool is used by a private individual for her own correspondence and, with that person&rsquo;s permission, for that of a member of her household. To the extent that such processing has no connection to a professional or commercial activity, it falls within the exemption for a purely personal or household activity under Article 2(2)(a) of the UK GDPR, and the author does not by this policy concede that she acts as a controller in respect of it. Should any processing fall outside that exemption, she would rely on Article 6(1)(f) &mdash; her legitimate interest in conducting her own correspondence and in exercising and defending her own legal rights &mdash; and would apply the corresponding conditions in Article 9 where any special category data were engaged.</p>
+  <p>If you have corresponded with the author, your message and your details are in her mailbox in the ordinary way, and the tool may have processed them as part of her reading or answering that correspondence. Anyone who believes their personal data has been processed by this tool may write to <a href="mailto:caitlye+mailassistant@gmail.com">caitlye+mailassistant@gmail.com</a> and will receive a substantive answer. A complaint may also be made to the Information Commissioner&rsquo;s Office at <a href="https://ico.org.uk/">ico.org.uk</a>.</p>
+  <p>Any change to this policy will be published on this page with a revised effective date and version number.</p>
+</section>
+
+  <footer>
+    <p>Effective 5 September 2026 &middot; v1.0 &middot; Hanpu Li &middot; London &middot; <a href="mailto:caitlye+mailassistant@gmail.com">caitlye+mailassistant@gmail.com</a> &middot; <a href="https://hanpuli.github.io/">hanpuli.github.io</a></p>
+  </footer>
+</div>
+</body>
+</html>
