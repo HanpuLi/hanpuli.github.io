@@ -367,6 +367,7 @@ a:hover {
   padding-right: clamp(18px, 2vw, 34px);
   font-size: clamp(16px, 1.22vw, 20px);
   line-height: 1.52;
+  text-wrap: pretty;
 }
 
 .site-home .hero-copy .zh-lede {
@@ -464,6 +465,7 @@ a:hover {
   font-weight: 400;
   line-height: 1.02;
   letter-spacing: -.024em;
+  text-wrap: balance;
 }
 
 .site-home .project-feature .project-main {
@@ -523,6 +525,7 @@ a:hover {
   color: var(--muted);
   font-size: 15px;
   line-height: 1.66;
+  text-wrap: pretty;
 }
 
 .site-home .project-proof,
@@ -857,9 +860,11 @@ a:hover {
 }
 
 .site-home .writing-list article > p:not(.writing-no):not(.writing-meta) {
+  max-width: 64ch;
   color: var(--muted);
   font-size: 14.5px;
   line-height: 1.65;
+  text-wrap: pretty;
 }
 
 .site-home .writing-meta {
@@ -868,6 +873,28 @@ a:hover {
   font-family: var(--mono);
   font-size: 10.5px;
   line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.site-home.locale-zh .writing-list h3,
+.site-home.locale-ja .writing-list h3 {
+  line-break: strict;
+  word-break: keep-all;
+}
+
+.site-home.locale-ja .writing-list article > p:not(.writing-no):not(.writing-meta) {
+  max-width: none;
+}
+
+.site-home.locale-ja .writing-list article:nth-child(3) > p:not(.writing-no):not(.writing-meta) {
+  word-break: keep-all;
+}
+
+.site-home.locale-zh .project-main > p:last-child,
+.site-home.locale-zh .writing-list article > p:not(.writing-no),
+.site-home.locale-ja .project-main > p:last-child,
+.site-home.locale-ja .writing-list article > p:not(.writing-no) {
+  line-break: strict;
 }
 
 .site-home .writing-meta a {
@@ -972,6 +999,7 @@ a:hover {
 .site-home .credit p {
   max-width: 67ch;
   line-height: 1.58;
+  text-wrap: pretty;
 }
 
 .site-home .credit p span[lang="en"] {
@@ -1125,6 +1153,19 @@ a:hover {
 .shi-page.locale-ru h1 {
   font-size: clamp(52px, 5.5vw, 70px);
   letter-spacing: .02em;
+}
+
+.literary-page.locale-ru h1 {
+  font-size: clamp(48px, 5vw, 68px);
+  text-wrap: balance;
+}
+
+@media (min-width: 761px) {
+  .literary-page.locale-de h1 {
+    font-size: clamp(52px, 5.5vw, 70px);
+    letter-spacing: .035em;
+    text-wrap: balance;
+  }
 }
 
 .literary-page .sub {
@@ -1914,7 +1955,8 @@ a:hover {
     padding: 24px 0 34px;
   }
 
-  .site-home .writing-list article + article {
+  .site-home .writing-list article:nth-child(n + 2) {
+    padding-left: 0;
     border-top: 1px solid var(--line);
     border-left: 0;
   }
