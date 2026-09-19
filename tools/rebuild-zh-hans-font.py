@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Rebuild the Simplified-Chinese Noto Serif SC webfont subset.
+"""Rebuild the Simplified-Chinese Noto Serif SC webfont subsets.
+
+The main subset serves Simplified-Chinese pages. A separate one-glyph locale
+subset serves the “简” language-switch label on other editions without making
+them download the full Simplified-Chinese font.
 
 This is an authoring helper with network and optional Python dependencies.
 Run it with:
@@ -30,7 +34,9 @@ except ImportError as exc:  # pragma: no cover - authoring dependency
 ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "content"
 OUTPUT = ROOT / "assets" / "fonts" / "noto-serif-sc-subset.woff2"
+LOCALE_OUTPUT = ROOT / "assets" / "fonts" / "noto-serif-sc-locale.woff2"
 META = ROOT / "assets" / "fonts" / "noto-serif-sc-subset.meta.json"
+LOCALE_TEXT = "简"
 
 GOOGLE_FONTS_COMMIT = "f2bd09badbc763d8757951d52deec29da27e85fb"
 SOURCE_URL = (
@@ -71,43 +77,55 @@ def check_sha256(path: Path) -> None:
         )
 
 
-def main() -> int:
-    text = collect_text()
-    with tempfile.TemporaryDirectory(prefix="hanpuli-noto-sc-") as tmp:
-        source = Path(tmp) / "NotoSerifSC-wght.ttf"
-        urllib.request.urlretrieve(SOURCE_URL, source)
-        check_sha256(source)
+def subset_font(source: Path, text: str, output: Path, charset: Path) -> None:
+    charset.write_text(text, encoding="utf-8")
+    subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "fontTools.subset",
+            str(source),
+            f"--text-file={charset}",
+            "--flavor=woff2",
+            f"--output-file={output}",
+            "--layout-features=*",
+            "--glyph-names",
+            "--symbol-cmap",
+            "--legacy-cmap",
+            "--notdef-glyph",
+            "--notdef-outline",
+            "--recommended-glyphs",
+            "--name-IDs=*",
+            "--name-legacy",
+            "--name-languages=*",
+        ],
+        check=True,
+    )
 
-        charset = Path(tmp) / "charset.txt"
-        charset.write_text(text, encoding="utf-8")
-        subprocess.run(
-            [
-                sys.executable,
-                "-m",
-                "fontTools.subset",
-                str(source),
-                f"--text-file={charset}",
-                "--flavor=woff2",
-                f"--output-file={OUTPUT}",
-                "--layout-features=*",
-                "--glyph-names",
-                "--symbol-cmap",
-                "--legacy-cmap",
-                "--notdef-glyph",
-                "--notdef-outline",
-                "--recommended-glyphs",
-                "--name-IDs=*",
-                "--name-legacy",
-                "--name-languages=*",
-            ],
-            check=True,
-        )
 
-    font = TTFont(OUTPUT)
+def check_subset(output: Path, text: str) -> None:
+    font = TTFont(output)
     cmap = set().union(*(set(table.cmap) for table in font["cmap"].tables))
     missing = sorted(char for char in text if ord(char) not in cmap)
     if missing:
-        raise SystemExit("font subset is missing required glyphs: " + "".join(missing))
+        raise SystemExit(
+            f"{output.name} is missing required glyphs: " + "".join(missing)
+        )
+
+
+def main() -> int:
+    text = collect_text()
+    with tempfile.TemporaryDirectory(prefix="hanpuli-noto-sc-") as tmp:
+        tmp_path = Path(tmp)
+        source = tmp_path / "NotoSerifSC-wght.ttf"
+        urllib.request.urlretrieve(SOURCE_URL, source)
+        check_sha256(source)
+
+        subset_font(source, text, OUTPUT, tmp_path / "charset.txt")
+        subset_font(source, LOCALE_TEXT, LOCALE_OUTPUT, tmp_path / "locale-charset.txt")
+
+    check_subset(OUTPUT, text)
+    check_subset(LOCALE_OUTPUT, LOCALE_TEXT)
 
     meta = {
         "upstream_commit": GOOGLE_FONTS_COMMIT,
@@ -121,6 +139,10 @@ def main() -> int:
     print(
         f"rebuilt {OUTPUT.relative_to(ROOT)}: "
         f"{len(text)} characters, {OUTPUT.stat().st_size // 1024} KiB"
+    )
+    print(
+        f"rebuilt {LOCALE_OUTPUT.relative_to(ROOT)}: "
+        f"{len(LOCALE_TEXT)} character, {LOCALE_OUTPUT.stat().st_size // 1024} KiB"
     )
     return 0
 

@@ -86,6 +86,15 @@
 }
 
 @font-face {
+  font-family: "Noto Serif SC Locale";
+  src: url("fonts/noto-serif-sc-locale.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+7B80;
+}
+
+@font-face {
   font-family: "IMing Gap";
   src: url("fonts/iming-gap.woff2") format("woff2");
   font-display: swap;
@@ -136,7 +145,16 @@
 .literary-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"],
 .shi-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"],
 .notfound-page:not(.locale-zh-hans) .notfound-languages [lang="zh-Hans"] {
-  font-family: "Songti SC", "Noto Serif CJK SC", serif;
+  font-family: "Noto Serif SC Locale", "Songti SC", "Noto Serif CJK SC", serif;
+}
+
+.language-short {
+  display: inline-block;
+}
+
+[lang="zh-Hans"] > .language-short {
+  transform: scale(.96);
+  transform-origin: center;
 }
 
 .locale-zh-hans [lang="zh-Hant-HK"] {
@@ -432,7 +450,7 @@ html[data-reading-large] :is(
   .site-home .poetry-preview .tune,
   .site-home .poetry-index,
   .literary-page .sub,
-  .literary-page .poem .translation,
+  .literary-page .poem-version .body,
   .shi-page .sub
 ) {
   font-size: 1rem;
@@ -463,7 +481,6 @@ html[data-reading-large] :is(
   .literary-page .source-title,
   .literary-page .toc,
   .literary-page .poem .date,
-  .literary-page .poem .translation .et,
   .literary-page footer,
   .shi-page .draft h2,
   .shi-page .num,
@@ -498,7 +515,7 @@ html[data-reading-measure] :is(
   .site-home .writing-list article > p:not(.writing-no),
   .site-home .credit p,
   .literary-page .sub,
-  .literary-page .translation,
+  .literary-page .poem-version .body,
   .shi-page .sub,
   .notfound-copy
 ) {
@@ -511,7 +528,7 @@ html[data-reading-measure] :is(.locale-zh, .locale-zh-hans, .locale-ja) :is(
   .site-home .writing-list article > p:not(.writing-no),
   .site-home .credit p,
   .literary-page .sub,
-  .literary-page .translation,
+  .literary-page .poem-version .body,
   .shi-page .sub,
   .notfound-copy
 ) {
@@ -602,8 +619,10 @@ html[data-reading-simple] .site-home .chronology {
 
 html[data-reading-simple] .literary-page header,
 html[data-reading-simple] .literary-page .poem,
+html[data-reading-simple] .literary-page .poem-pair,
 html[data-reading-simple] .shi-page header,
 html[data-reading-simple] .shi-page main,
+html[data-reading-simple] .shi-page .draft-pair,
 html[data-reading-simple] .shi-page .draft {
   display: block;
 }
@@ -1814,60 +1833,61 @@ html[data-reading-motion] .site-home::before {
 }
 
 .literary-page .poem {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 0 var(--gap);
   padding: clamp(62px, 8vw, 104px) 0;
   border-top: 1px solid var(--line);
   scroll-margin-top: 84px;
 }
 
-.literary-page .poem h2 {
-  grid-column: 1 / 13;
+.literary-page .poem-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(34px, 5vw, 78px);
+  align-items: start;
+}
+
+.literary-page .poem-pair.source-only {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.literary-page .poem-pair.source-only .poem-version {
+  width: min(100%, 42rem);
+}
+
+.literary-page .poem-version {
+  min-width: 0;
+}
+
+.literary-page .poem-version h2 {
   margin-bottom: clamp(36px, 5vw, 64px);
   font-size: clamp(17px, 1.55vw, 20px);
   font-weight: 400;
   line-height: 1.65;
   letter-spacing: .04em;
+  text-wrap: balance;
 }
 
-.literary-page .poem.yi h2 {
+.literary-page .poem.yi .source h2,
+.literary-page .poem-version.translation h2 {
   color: var(--muted);
 }
 
-.literary-page .poem .body {
-  grid-column: 1 / 6;
+.literary-page .poem-version .body {
   white-space: pre-line;
   font-size: clamp(16px, 1.45vw, 18px);
   line-height: 2.22;
+  text-wrap: pretty;
 }
 
-.literary-page .poem .date {
-  grid-column: 1 / 6;
-  margin-top: 20px;
-  color: var(--faint);
-  font-size: .8125rem;
-}
-
-.literary-page .poem .translation {
-  grid-column: 7 / 13;
-  grid-row: 2 / span 3;
-  align-self: start;
-  margin-top: 0;
+.literary-page .poem-version.translation {
   color: var(--muted);
-  white-space: pre-line;
-  font-size: clamp(16px, 1.3vw, 17px);
-  line-height: 1.88;
 }
 
-.literary-page .poem .translation .et {
-  display: block;
-  margin-bottom: .9em;
+.literary-page .poem-version .date {
+  margin-top: 20px;
   color: var(--faint);
   font-family: var(--mono);
   font-size: .8125rem;
-  line-height: 1.65;
-  letter-spacing: .01em;
+  line-height: 1.5;
 }
 
 .literary-page footer {
@@ -1918,9 +1938,25 @@ html[data-reading-motion] .site-home::before {
 }
 
 .shi-page main {
+  scroll-margin-top: 84px;
+  border-top: 1px solid var(--line);
+}
+
+.shi-page main.source-only {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  scroll-margin-top: 84px;
+}
+
+.shi-page main.comparison {
+  display: block;
+}
+
+.shi-page .draft-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.shi-page .draft-pair + .draft-pair {
   border-top: 1px solid var(--line);
 }
 
@@ -1929,13 +1965,19 @@ html[data-reading-motion] .site-home::before {
   grid-template-columns: 46px minmax(0, 1fr);
   gap: 0 clamp(18px, 2.2vw, 34px);
   align-content: start;
+  min-width: 0;
   padding: clamp(50px, 6vw, 82px) clamp(26px, 3vw, 48px) clamp(70px, 8vw, 108px) 0;
 }
 
-.shi-page .draft + .draft {
+.shi-page main.source-only > .draft + .draft,
+.shi-page .draft-pair > .draft + .draft {
   padding-inline-end: 0;
   padding-inline-start: clamp(26px, 3vw, 48px);
   border-inline-start: 1px solid var(--line);
+}
+
+.shi-page .draft.translation {
+  color: var(--muted);
 }
 
 .shi-page .draft h2 {
@@ -1966,6 +2008,7 @@ html[data-reading-motion] .site-home::before {
   white-space: pre-line;
   font-size: clamp(16px, 1.28vw, 18px);
   line-height: 2.12;
+  text-wrap: pretty;
 }
 
 .shi-page .body:last-child {
@@ -3159,6 +3202,41 @@ html[data-reading-motion] .site-home::before {
   .shi-page .sub,
   .literary-page .toc {
     margin-block-start: var(--space-3);
+  }
+
+  .literary-page .poem-pair,
+  .shi-page .draft-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .shi-page main.source-only {
+    display: block;
+  }
+
+  .shi-page main.source-only > .draft {
+    padding-inline-end: 0;
+  }
+
+  .shi-page main.source-only > .draft + .draft {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .literary-page .poem-version.translation {
+    margin-block-start: var(--space-3);
+    padding-block-start: var(--space-3);
+    border-top: 1px solid var(--line);
+  }
+
+  .shi-page .draft-pair > .draft {
+    padding-inline-end: 0;
+  }
+
+  .shi-page .draft-pair > .draft + .draft {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+    border-top: 1px solid var(--line);
   }
 }
 

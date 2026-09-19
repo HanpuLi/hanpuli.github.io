@@ -112,12 +112,14 @@ def essay_language_switcher(locale_id: str) -> str:
         if lid == locale_id:
             bits.append(
                 f'<span class="current" lang="{lang_attr}" aria-current="page" title="{title}">'
-                f'<span aria-hidden="true">{label}</span><span class="visually-hidden">{title}</span></span>'
+                f'<span class="language-short" aria-hidden="true">{label}</span>'
+                f'<span class="visually-hidden">{title}</span></span>'
             )
         else:
             href = html.escape(essay_page_path(lid), quote=True)
             bits.append(
-                f'<a href="{href}" lang="{lang_attr}" aria-label="{title}" title="{title}">{label}</a>'
+                f'<a href="{href}" lang="{lang_attr}" aria-label="{title}" title="{title}">'
+                f'<span class="language-short" aria-hidden="true">{label}</span></a>'
             )
     return "\n      ".join(bits)
 
@@ -141,13 +143,15 @@ def language_switcher(locale_id: str, page: str) -> str:
         if lid == locale_id:
             bits.append(
                 f'<span class="current" lang="{lang_attr}" aria-current="page" title="{title}">'
-                f'<span aria-hidden="true">{label}</span><span class="visually-hidden">{title}</span></span>'
+                f'<span class="language-short" aria-hidden="true">{label}</span>'
+                f'<span class="visually-hidden">{title}</span></span>'
             )
         else:
             href = html.escape(page_path(lid, page), quote=True)
             bits.append(
                 f'<a href="{href}" hreflang="{lang_attr}" lang="{lang_attr}" '
-                f'aria-label="{title}" title="{title}">{label}</a>'
+                f'aria-label="{title}" title="{title}">'
+                f'<span class="language-short" aria-hidden="true">{label}</span></a>'
             )
     return "\n      ".join(bits)
 
@@ -264,23 +268,37 @@ def ci_poems_html(locale_id: str, locale: dict[str, Any]) -> str:
         classes = "poem" + (f" {voice}" if voice in {"jia", "yi"} else "")
         source_title = html.escape(poem["source_title"])
         source_body = html.escape(poem["source_body"])
-        date = (
-            f'\n    <div class="date" lang="{source_lang}">{html.escape(poem["date"])}</div>'
-            if poem.get("date") else ""
+        source_date = (
+            f'\n        <div class="date">{html.escape(poem["date"])}</div>'
+            if poem.get("date")
+            else ""
         )
-        translation = ""
+        versions = [
+            (
+                f'      <section class="poem-version source" lang="{source_lang}">\n'
+                f'        <h2>{source_title}</h2>\n'
+                f'        <div class="body">{source_body}</div>'
+                f'{source_date}\n'
+                f'      </section>'
+            )
+        ]
+        pair_class = "poem-pair source-only"
         if locale_id not in CHINESE_LOCALES:
             item = translations[poem["id"]]
-            translation = (
-                f'\n    <div class="translation" lang="{html.escape(target_lang, quote=True)}">'
-                f'<span class="et">{html.escape(item["title"])}</span>'
-                f'{html.escape(item["body"])}</div>'
+            versions.append(
+                f'      <section class="poem-version translation" '
+                f'lang="{html.escape(target_lang, quote=True)}">\n'
+                f'        <h2>{html.escape(item["title"])}</h2>\n'
+                f'        <div class="body">{html.escape(item["body"])}</div>\n'
+                f'      </section>'
             )
+            pair_class = "poem-pair"
+
         blocks.append(
             f'  <div class="{classes}" id="{poem["id"]}">\n'
-            f'    <h2 lang="{source_lang}">{source_title}</h2>\n'
-            f'    <div class="body" lang="{source_lang}">{source_body}</div>'
-            f'{date}{translation}\n'
+            f'    <div class="{pair_class}">\n'
+            + "\n".join(versions)
+            + "\n    </div>\n"
             f'  </div>'
         )
     return "\n\n".join(blocks)
@@ -303,22 +321,45 @@ def shi_translation(locale_id: str) -> list[dict[str, Any]]:
     return drafts
 
 
+def shi_draft_html(draft: dict[str, Any], lang: str, classes: str) -> str:
+    rows = [
+        f'    <div class="{classes}" lang="{html.escape(lang, quote=True)}">',
+        f'      <h2>{html.escape(draft["title"])}</h2>',
+    ]
+    for part in draft["parts"]:
+        rows.append(f'      <p class="num">{html.escape(part["number"])}</p>')
+        rows.append(f'      <div class="body">{html.escape(part["body"])}</div>')
+    rows.append("    </div>")
+    return "\n".join(rows)
+
+
 def shi_drafts_html(locale_id: str) -> str:
-    drafts = shi_translation(locale_id)
     target_lang = (
         "zh-Hant-HK" if locale_id == "zh"
         else "zh-Hans" if locale_id == "zh-hans"
         else LANG_BY_ID[locale_id]["html_lang"]
     )
+
+    if locale_id in CHINESE_LOCALES:
+        drafts = shi_translation(locale_id)
+        return "\n\n".join(
+            shi_draft_html(draft, target_lang, "draft")
+            for draft in drafts
+        )
+
+    translations = shi_translation(locale_id)
     blocks = []
-    for draft in drafts:
-        rows = [f'  <div class="draft" lang="{html.escape(target_lang, quote=True)}">',
-                f'    <h2>{html.escape(draft["title"])}</h2>']
-        for part in draft["parts"]:
-            rows.append(f'    <p class="num">{html.escape(part["number"])}</p>')
-            rows.append(f'    <div class="body">{html.escape(part["body"])}</div>')
-        rows.append("  </div>")
-        blocks.append("\n".join(rows))
+    for index, (source, translated) in enumerate(
+        zip(SHI_SOURCE["drafts"], translations),
+        start=1,
+    ):
+        blocks.append(
+            f'  <section class="draft-pair" data-draft="{index}">\n'
+            + shi_draft_html(source, "zh-Hant-HK", "draft source")
+            + "\n"
+            + shi_draft_html(translated, target_lang, "draft translation")
+            + "\n  </section>"
+        )
     return "\n\n".join(blocks)
 
 
@@ -468,6 +509,9 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "CI_TOC": ci_toc(locale_id, locale),
         "CI_POEMS": ci_poems_html(locale_id, locale),
         "SHI_DRAFTS": shi_drafts_html(locale_id),
+        "SHI_DRAFTS_CLASS": (
+            "source-only" if locale_id in CHINESE_LOCALES else "comparison"
+        ),
     }
 
 

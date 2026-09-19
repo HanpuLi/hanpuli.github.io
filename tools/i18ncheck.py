@@ -270,9 +270,12 @@ def main() -> int:
 
     font_meta_path = ROOT / "assets" / "fonts" / "noto-serif-sc-subset.meta.json"
     font_path = ROOT / "assets" / "fonts" / "noto-serif-sc-subset.woff2"
+    locale_font_path = ROOT / "assets" / "fonts" / "noto-serif-sc-locale.woff2"
     if not font_meta_path.exists() or not font_path.exists():
         errors.append("Simplified-Chinese font subset or metadata is missing")
-    else:
+    if not locale_font_path.exists():
+        errors.append("Simplified-Chinese locale-switch font subset is missing")
+    if font_meta_path.exists() and font_path.exists():
         font_meta = load(font_meta_path)
         chars = simplified_font_characters(zh_hans_text)
         chars_hash = hashlib.sha256(chars.encode("utf-8")).hexdigest()
@@ -333,6 +336,49 @@ def main() -> int:
                     errors.append(
                         f"{path.relative_to(ROOT)}: expected {expected_alternates} hreflang links, got {alternates}"
                     )
+            if name == "ci.html":
+                source_versions = text.count('class="poem-version source"')
+                translated_versions = text.count('class="poem-version translation"')
+                if source_versions != len(CI_IDS):
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: expected {len(CI_IDS)} source poem versions, got {source_versions}"
+                    )
+                expected_translations = 0 if locale in chinese_locales else len(CI_IDS)
+                if translated_versions != expected_translations:
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: expected {expected_translations} paired translations, got {translated_versions}"
+                    )
+                if locale in chinese_locales:
+                    if text.count('class="poem-pair source-only"') != len(CI_IDS):
+                        errors.append(
+                            f"{path.relative_to(ROOT)}: Chinese ci page must keep every poem in source-only layout"
+                        )
+                elif text.count('class="poem-pair"') != len(CI_IDS):
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: every translated ci poem must use paired source/translation layout"
+                    )
+
+            if name == "shi.html":
+                if locale in chinese_locales:
+                    if 'id="drafts" class="source-only"' not in text:
+                        errors.append(
+                            f"{path.relative_to(ROOT)}: Chinese poem page must retain source-only draft layout"
+                        )
+                    if 'class="draft-pair"' in text:
+                        errors.append(
+                            f"{path.relative_to(ROOT)}: Chinese poem page must not manufacture translation pairs"
+                        )
+                else:
+                    expected_pairs = len(shi["drafts"])
+                    pairs = text.count('class="draft-pair"')
+                    sources = text.count('class="draft source"')
+                    translations = text.count('class="draft translation"')
+                    if (pairs, sources, translations) != (expected_pairs, expected_pairs, expected_pairs):
+                        errors.append(
+                            f"{path.relative_to(ROOT)}: expected {expected_pairs} source/translation draft pairs, "
+                            f"got pairs={pairs} source={sources} translation={translations}"
+                        )
+
             if name == "index.html":
                 shi_href = "/shi.html" if locale == "en" else f"/{locale}/shi.html"
                 if not re.search(
