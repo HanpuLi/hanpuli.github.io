@@ -95,6 +95,31 @@ def main() -> int:
                 f"{locale} home.education no longer matches the approved factual trajectory: "
                 f"{data.get('home', {}).get('education')!r}"
             )
+        if locale != "en":
+            chronology_text = "\n".join(
+                item.get("text", "") for item in data.get("home", {}).get("chronology", [])
+            )
+            leaked_english = (
+                "Young Presenter Competition",
+                "Script Supervisor",
+                "Beijing LGBT Center",
+                "Wuhan LGBT Center",
+                "University of York",
+                "Macao International Microfilm Festival",
+                "Golden Rooster",
+                "Zhengding County Television",
+                "Hebei Traffic Radio",
+            )
+            for phrase in leaked_english:
+                if phrase in chronology_text:
+                    errors.append(
+                        f"{locale} chronology still contains an unlocalised English label: {phrase}"
+                    )
+            radio_brand = '<span lang="en-GB">University Radio York 88.3FM</span>'
+            if "University Radio York 88.3FM" in chronology_text and radio_brand not in chronology_text:
+                errors.append(
+                    f"{locale} chronology must mark the retained University Radio York brand as English"
+                )
 
     essay_locales = load(CONTENT / "essay-trainspotting.json")
     if set(essay_locales) != set(locales):
@@ -382,10 +407,12 @@ def main() -> int:
             if name == "index.html":
                 shi_href = "/shi.html" if locale == "en" else f"/{locale}/shi.html"
                 if not re.search(
-                    rf'<a\b[^>]*class="section-nav-page"[^>]*href="{re.escape(shi_href)}"[^>]*>',
+                    rf'<a\b[^>]*href="{re.escape(shi_href)}"[^>]*>\s*<span>06</span>',
                     text,
                 ):
-                    errors.append(f"{path.relative_to(ROOT)}: home navigation is missing the standalone poem page")
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: home navigation is missing the numbered poem-page link"
+                    )
                 shi_label = locale_data["common"]["nav"]["shi"]
                 if shi_label not in text:
                     errors.append(f"{path.relative_to(ROOT)}: home navigation is missing localized poem label {shi_label!r}")
