@@ -87,6 +87,21 @@
           </dl>
           <p>OSM · Sentinel-2 · Landsat · ECOSTRESS · Python</p>
         </div>
+
+        <div class="project-evidence" aria-label="Selected evidence from the Shepperton spatial audit">
+          <figure class="evidence-spatial">
+            <img src="assets/projects/shepperton/spatial-720.webp" srcset="assets/projects/shepperton/spatial-480.webp 480w, assets/projects/shepperton/spatial-720.webp 720w, assets/projects/shepperton/spatial-1200.webp 1200w, assets/projects/shepperton/spatial.webp 1800w" sizes="(max-width: 760px) calc(100vw - 40px), (min-width: 2000px) 1760px, 90vw" width="1800" height="1007" alt="Spatial heatmap of the Shepperton Studios expansion footprint" loading="lazy" decoding="async" fetchpriority="low">
+            <figcaption><span>spatial footprint</span><span>OSM topology + impervious-surface mapping</span></figcaption>
+          </figure>
+          <figure>
+            <img src="assets/projects/shepperton/ndvi-720.webp" srcset="assets/projects/shepperton/ndvi-480.webp 480w, assets/projects/shepperton/ndvi-720.webp 720w, assets/projects/shepperton/ndvi-1200.webp 1200w, assets/projects/shepperton/ndvi.webp 1341w" sizes="(max-width: 760px) calc(100vw - 40px), (min-width: 2000px) 860px, 44vw" width="1341" height="669" alt="NDVI chart comparing vegetation before and after the Shepperton expansion" loading="lazy" decoding="async" fetchpriority="low">
+            <figcaption><span>vegetation</span><span>ΔNDVI regime shift −0.365</span></figcaption>
+          </figure>
+          <figure>
+            <img src="assets/projects/shepperton/ecostress-720.webp" srcset="assets/projects/shepperton/ecostress-480.webp 480w, assets/projects/shepperton/ecostress-720.webp 720w, assets/projects/shepperton/ecostress-1200.webp 1200w, assets/projects/shepperton/ecostress.webp 1600w" sizes="(max-width: 760px) calc(100vw - 40px), (min-width: 2000px) 860px, 44vw" width="1600" height="895" alt="ECOSTRESS chart showing the independent daytime thermal comparison" loading="lazy" decoding="async" fetchpriority="low">
+            <figcaption><span>independent sensor</span><span>day ΔT +0.72 °C · HAC p=0.0062</span></figcaption>
+          </figure>
+        </div>
       </article>
 
       <article class="project">
@@ -96,7 +111,16 @@
           <h3><a href="https://github.com/HanpuLi/scoperail">ScopeRail</a></h3>
           <p>A scoped local execution runtime for MCP clients on macOS: workspace-bound files, sandboxed processes, browser and native UI, explicit Git grants, audit and provenance.</p>
         </div>
-        <div class="project-meta">Python · OAuth 2.1 · macOS Seatbelt · Accessibility</div>
+        <div class="project-system">
+          <ol class="system-flow" aria-label="ScopeRail execution path">
+            <li><span>01</span><span>client intent</span></li>
+            <li><span>02</span><span>OAuth + transport</span></li>
+            <li><span>03</span><span>workspace / grant policy</span></li>
+            <li><span>04</span><span>bounded execution surfaces</span></li>
+            <li><span>05</span><span>audit + state</span></li>
+          </ol>
+          <p class="project-stack">Python · OAuth 2.1 · macOS Seatbelt · Accessibility</p>
+        </div>
       </article>
 
       <article class="project">
@@ -106,7 +130,15 @@
           <h3><a href="https://github.com/HanpuLi/liuzheng">留證 · liuzheng</a></h3>
           <p>Tools and operating discipline for turning institutional correspondence into evidence that survives scrutiny.</p>
         </div>
-        <div class="project-meta">RFC3161 · OpenTimestamps · DKIM .eml · web archiving</div>
+        <div class="project-system">
+          <ol class="system-flow" aria-label="Liuzheng evidence-preservation path">
+            <li><span>01</span><span>capture original</span></li>
+            <li><span>02</span><span>DKIM / SHA-256</span></li>
+            <li><span>03</span><span>RFC3161 + OpenTimestamps</span></li>
+            <li><span>04</span><span>third-party copy / anchors</span></li>
+          </ol>
+          <p class="project-stack">gmail-eml · stamp · webarchive · OTS sweep</p>
+        </div>
       </article>
     </section>
 
