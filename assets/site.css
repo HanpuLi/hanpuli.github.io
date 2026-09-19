@@ -1123,6 +1123,7 @@ a:hover {
 
 .literary-page.locale-ru h1,
 .shi-page.locale-ru h1 {
+  font-size: clamp(52px, 5.5vw, 70px);
   letter-spacing: .02em;
 }
 
