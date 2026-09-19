@@ -82,6 +82,22 @@ def main() -> int:
         if missing or extra or wrong:
             errors.append(f"{locale} locale schema mismatch: missing={missing} extra={extra} type={wrong}")
 
+    essay_locales = load(CONTENT / "essay-trainspotting.json")
+    if set(essay_locales) != set(locales):
+        errors.append(
+            "Trainspotting essay locale mismatch: "
+            f"missing={sorted(set(locales) - set(essay_locales))} "
+            f"extra={sorted(set(essay_locales) - set(locales))}"
+        )
+    else:
+        for locale in locales:
+            item = essay_locales[locale]
+            for key in ("meta_description", "language_note"):
+                if not isinstance(item.get(key), str):
+                    errors.append(f"{locale} Trainspotting essay: {key} must be a string")
+            if locale != "en" and not item.get("language_note", "").strip():
+                errors.append(f"{locale} Trainspotting essay: missing English-body notice")
+
     ja_literary_text = (
         (CONTENT / "locales" / "ja.json").read_text(encoding="utf-8")
         + "\n"
@@ -230,6 +246,7 @@ def main() -> int:
             (CONTENT / "locales" / "zh-hans.json").read_text(encoding="utf-8"),
             (CONTENT / "ci-simplified.json").read_text(encoding="utf-8"),
             (CONTENT / "shi-simplified.json").read_text(encoding="utf-8"),
+            load(CONTENT / "essay-trainspotting.json")["zh-hans"]["language_note"],
         ]
     )
     forbidden_traditional = set("體語攝寫詞詩電郵證據閱讀顯儲裝襯線縮欄寬簡動對虛擬製遙經濟擴綠轉換檔錄劇膠發義聲幀長評論會這兩倫學麗後無題頂頁別處")
@@ -256,6 +273,30 @@ def main() -> int:
     for locale in locales:
         folder = ROOT if locale == "en" else ROOT / locale
         locale_data = load(CONTENT / "locales" / f"{locale}.json")
+        expected_lang = next(item["html_lang"] for item in languages if item["id"] == locale)
+        essay_path = folder / "writing" / "trainspotting" / "index.html"
+        if not essay_path.exists():
+            errors.append(f"missing generated {essay_path.relative_to(ROOT)}")
+        else:
+            essay_text = essay_path.read_text(encoding="utf-8")
+            if "{{" in essay_text or "}}" in essay_text:
+                errors.append(f"{essay_path.relative_to(ROOT)}: unresolved template token")
+            if not re.search(rf'<html\b[^>]*\blang="{re.escape(expected_lang)}"', essay_text):
+                errors.append(f"{essay_path.relative_to(ROOT)}: wrong html lang")
+            if '<div lang="en-GB">' not in essay_text:
+                errors.append(f"{essay_path.relative_to(ROOT)}: essay body is not explicitly marked as English")
+            if essay_text.count('class="current"') != 1:
+                errors.append(f"{essay_path.relative_to(ROOT)}: expected one current essay language")
+            for language in languages:
+                lid = language["id"]
+                if lid == locale:
+                    continue
+                href = "/writing/trainspotting/" if lid == "en" else f"/{lid}/writing/trainspotting/"
+                if f'href="{href}"' not in essay_text:
+                    errors.append(
+                        f"{essay_path.relative_to(ROOT)}: missing essay language link {href}"
+                    )
+
         for name in ("index.html", "ci.html", "shi.html", "404.html"):
             path = folder / name
             if not path.exists():
@@ -283,6 +324,11 @@ def main() -> int:
                 shi_label = locale_data["common"]["nav"]["shi"]
                 if shi_label not in text:
                     errors.append(f"{path.relative_to(ROOT)}: home navigation is missing localized poem label {shi_label!r}")
+                essay_href = "/writing/trainspotting/" if locale == "en" else f"/{locale}/writing/trainspotting/"
+                if text.count(f'href="{essay_href}"') < 2:
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: Trainspotting links do not stay in the current locale"
+                    )
             if name == "404.html":
                 if locale_data["notfound"]["line"] != b2_quotes[locale]:
                     errors.append(

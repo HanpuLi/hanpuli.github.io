@@ -36,6 +36,7 @@ CI_SOURCE = load_json(CONTENT / "ci-source.json")
 CI_SIMPLIFIED = load_json(CONTENT / "ci-simplified.json")
 SHI_SOURCE = load_json(CONTENT / "shi-source.json")
 SHI_SIMPLIFIED = load_json(CONTENT / "shi-simplified.json")
+TRAINSPOTTING_ESSAY = load_json(CONTENT / "essay-trainspotting.json")
 CHINESE_LOCALES = {"zh", "zh-hans"}
 BASE_URL = IDENTITY["site_url"].rstrip("/")
 
@@ -84,6 +85,41 @@ def page_path(locale_id: str, page: str) -> str:
 
 def absolute_url(locale_id: str, page: str) -> str:
     return BASE_URL + page_path(locale_id, page)
+
+
+def essay_page_path(locale_id: str) -> str:
+    if locale_id == ROOT_LOCALE:
+        return "/writing/trainspotting/"
+    return f"/{locale_id}/writing/trainspotting/"
+
+
+def essay_output_path(locale_id: str) -> Path:
+    folder = ROOT if locale_id == ROOT_LOCALE else ROOT / locale_id
+    return folder / "writing" / "trainspotting" / "index.html"
+
+
+def essay_asset_prefix(locale_id: str) -> str:
+    return "../../" if locale_id == ROOT_LOCALE else "../../../"
+
+
+def essay_language_switcher(locale_id: str) -> str:
+    bits = []
+    for language in LANGUAGES:
+        lid = language["id"]
+        label = html.escape(language["short"])
+        title = html.escape(language["label"], quote=True)
+        lang_attr = html.escape(language["html_lang"], quote=True)
+        if lid == locale_id:
+            bits.append(
+                f'<span class="current" lang="{lang_attr}" aria-current="page" title="{title}">'
+                f'<span aria-hidden="true">{label}</span><span class="visually-hidden">{title}</span></span>'
+            )
+        else:
+            href = html.escape(essay_page_path(lid), quote=True)
+            bits.append(
+                f'<a href="{href}" lang="{lang_attr}" aria-label="{title}" title="{title}">{label}</a>'
+            )
+    return "\n      ".join(bits)
 
 
 def output_path(locale_id: str, page: str) -> Path:
@@ -418,7 +454,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "SHI_HREF": page_path(locale_id, "shi"),
         "WRITING_HREF": page_path(locale_id, "index") + "#writing",
         "PHOTO_HREF": page_path(locale_id, "index") + "#photo",
-        "TRAINSPOTTING_HREF": "/writing/trainspotting/",
+        "TRAINSPOTTING_HREF": essay_page_path(locale_id),
         "LANG_SWITCHER": language_switcher(locale_id, page),
         "JSON_LD": json.dumps(json_ld, ensure_ascii=False, separators=(",", ":")),
         "SCOPERAIL_FLOW": flow_html(locale["home"]["projects"]["scoperail"]["flow"]),
@@ -455,6 +491,13 @@ def build(check: bool = False) -> list[Path]:
         validate_locale_schema(lid, locale, en_locale)
         locales[lid] = locale
 
+    expected_essay_locales = set(LANG_BY_ID)
+    actual_essay_locales = set(TRAINSPOTTING_ESSAY)
+    if actual_essay_locales != expected_essay_locales:
+        missing = sorted(expected_essay_locales - actual_essay_locales)
+        extra = sorted(actual_essay_locales - expected_essay_locales)
+        raise BuildError(f"Trainspotting essay locale mismatch missing={missing} extra={extra}")
+
     changed: list[Path] = []
     for lid, locale in locales.items():
         if lid != ROOT_LOCALE:
@@ -470,35 +513,57 @@ def build(check: bool = False) -> list[Path]:
                 if not check:
                     target.write_text(rendered, encoding="utf-8")
 
-    essay_target = ROOT / "writing" / "trainspotting" / "index.html"
-    essay_target.parent.mkdir(parents=True, exist_ok=True)
     essay_template = (TEMPLATES / "essay.html").read_text(encoding="utf-8")
     essay_body = (CONTENT / "essays" / "trainspotting.inc").read_text(encoding="utf-8")
-    essay_rendered = render_template(
-        essay_template,
-        en_locale,
-        {
-            "READING_TOOLS": reading_tools(en_locale),
-            "PRIMARY_NAME": html.escape(IDENTITY["primary_name"]),
-            "CHINESE_NAME": html.escape(IDENTITY["chinese_name"]),
-            "ESSAY_BODY": essay_body,
-            "ESSAY_CANONICAL": html.escape(BASE_URL + "/writing/trainspotting/", quote=True),
-        },
-    )
-    if not essay_rendered.endswith("\n"):
-        essay_rendered += "\n"
-    old_essay = essay_target.read_text(encoding="utf-8") if essay_target.exists() else None
-    if old_essay != essay_rendered:
-        changed.append(essay_target)
-        if not check:
-            essay_target.write_text(essay_rendered, encoding="utf-8")
+    for lid, locale in locales.items():
+        lang = LANG_BY_ID[lid]
+        essay_copy = TRAINSPOTTING_ESSAY[lid]
+        description = essay_copy["meta_description"]
+        note = essay_copy["language_note"].strip()
+        note_html = (
+            f'    <p class="essay-note" role="note">{html.escape(note)}</p>'
+            if note
+            else ""
+        )
+        essay_target = essay_output_path(lid)
+        essay_target.parent.mkdir(parents=True, exist_ok=True)
+        essay_rendered = render_template(
+            essay_template,
+            locale,
+            {
+                "HTML_LANG": html.escape(lang["html_lang"], quote=True),
+                "LOCALE": lid,
+                "OG_LOCALE": html.escape(lang["og_locale"], quote=True),
+                "ESSAY_ASSET_PREFIX": essay_asset_prefix(lid),
+                "READING_TOOLS": reading_tools(locale),
+                "PRIMARY_NAME": html.escape(IDENTITY["primary_name"]),
+                "CHINESE_NAME": html.escape(IDENTITY["chinese_name"]),
+                "HOME_HREF": page_path(lid, "index"),
+                "WRITING_HREF": page_path(lid, "index") + "#writing",
+                "PHOTO_HREF": page_path(lid, "index") + "#photo",
+                "CI_HREF": page_path(lid, "ci"),
+                "SHI_HREF": page_path(lid, "shi"),
+                "ESSAY_LANG_SWITCHER": essay_language_switcher(lid),
+                "ESSAY_META_DESCRIPTION_ATTR": html.escape(description, quote=True),
+                "ESSAY_LANGUAGE_NOTE": note_html,
+                "ESSAY_BODY": essay_body,
+                "ESSAY_CANONICAL": html.escape(BASE_URL + essay_page_path(lid), quote=True),
+            },
+        )
+        if not essay_rendered.endswith("\n"):
+            essay_rendered += "\n"
+        old_essay = essay_target.read_text(encoding="utf-8") if essay_target.exists() else None
+        if old_essay != essay_rendered:
+            changed.append(essay_target)
+            if not check:
+                essay_target.write_text(essay_rendered, encoding="utf-8")
 
     sitemap_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
                      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for language in LANGUAGES:
         for page in ("index", "ci", "shi"):
             sitemap_lines.append(f'  <url><loc>{html.escape(absolute_url(language["id"], page))}</loc></url>')
-    sitemap_lines.append(f'  <url><loc>{html.escape(BASE_URL + "/writing/trainspotting/")}</loc></url>')
+        sitemap_lines.append(f'  <url><loc>{html.escape(BASE_URL + essay_page_path(language["id"]))}</loc></url>')
     sitemap_lines.append("</urlset>")
     sitemap = "\n".join(sitemap_lines) + "\n"
     sitemap_path = ROOT / "sitemap.xml"

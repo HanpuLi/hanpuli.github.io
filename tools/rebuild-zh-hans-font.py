@@ -57,6 +57,8 @@ def wanted_character(char: str) -> bool:
 
 def collect_text() -> str:
     text = "".join(path.read_text(encoding="utf-8") for path in CONTENT_FILES)
+    essay = json.loads((CONTENT / "essay-trainspotting.json").read_text(encoding="utf-8"))
+    text += essay["zh-hans"]["language_note"]
     return "".join(sorted({char for char in text if wanted_character(char)}))
 
 

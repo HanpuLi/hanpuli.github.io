@@ -1,0 +1,30 @@
+{
+  "en": {
+    "meta_description": "An essay on Trainspotting, British social realism, self-management, space, collective dissolution and the limits of the argument itself.",
+    "language_note": ""
+  },
+  "zh": {
+    "meta_description": "《猜火車》長篇電影論文，討論旁白、空間、自我規訓、集體瓦解，以及論證本身的邊界。正文為英文。",
+    "language_note": "正文為英文；此頁保留繁體中文站內導覽。"
+  },
+  "zh-hans": {
+    "meta_description": "《猜火车》长篇电影论文，讨论旁白、空间、自我规训、集体瓦解，以及论证本身的边界。正文为英文。",
+    "language_note": "正文为英文；此页保留简体中文站内导航。"
+  },
+  "ja": {
+    "meta_description": "『Trainspotting』をめぐる長篇の映画論。ヴォイスオーバー、空間、自己統治、共同性の解体、そして論証そのものの限界を扱う。本文は英語。",
+    "language_note": "本文は英語です。このページでは日本語版サイトのナビゲーションを表示しています。"
+  },
+  "de": {
+    "meta_description": "Ein längerer Essay zu Trainspotting über Voice-over, Raum, Selbstregierung, den Zerfall kollektiver Bindungen und die Grenzen der eigenen Argumentation. Der Essay ist auf Englisch.",
+    "language_note": "Der Essay selbst ist auf Englisch; diese Seite verwendet die deutsche Navigation der Website."
+  },
+  "fr": {
+    "meta_description": "Un essai au long cours sur Trainspotting, la voix off, l’espace, l’autogouvernement, la dissolution du collectif et les limites de sa propre argumentation. Le texte est en anglais.",
+    "language_note": "Le texte de l’essai est en anglais ; cette page conserve la navigation française du site."
+  },
+  "ru": {
+    "meta_description": "Развёрнутое эссе о Trainspotting: закадровый голос, пространство, самоуправление субъекта, распад коллективных связей и пределы собственной аргументации. Основной текст — на английском.",
+    "language_note": "Основной текст эссе — на английском; на этой странице сохранена русская навигация сайта."
+  }
+}

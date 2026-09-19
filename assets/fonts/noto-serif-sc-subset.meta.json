@@ -1,7 +1,7 @@
 {
   "upstream_commit": "f2bd09badbc763d8757951d52deec29da27e85fb",
   "upstream_sha256": "050080d9255a86808f2945bffac582b31ef32bc36411ce29563b4961670c66f9",
-  "character_count": 935,
-  "character_set_sha256": "3195b72e1fde0b3061602d9e00ef8ba5d962a26f185b1fc88a165fe6bf6b48df",
-  "font_sha256": "e9af98b15af857fd6d06c19b6533b0a6f96b0acf91489862a3f6745f41eb1505"
+  "character_count": 938,
+  "character_set_sha256": "776b8a0b2ac4b5f6c8953583ce58a18975d69987931257e41299b87183f07eca",
+  "font_sha256": "87d616ba8da3f505afec20df0b9af0c99c566bb69d4c92b61ca41b51364378ae"
 }

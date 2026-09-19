@@ -29,14 +29,23 @@ def portfolio_paths() -> list[Path]:
     ]
 
 
+def essay_paths() -> list[Path]:
+    return [
+        ROOT / locale / "writing" / "trainspotting" / "index.html"
+        if locale
+        else ROOT / "writing" / "trainspotting" / "index.html"
+        for locale in LOCALES
+    ]
+
+
 def page_paths() -> list[Path]:
     return [
         *portfolio_paths(),
+        *essay_paths(),
         ROOT / "mail-assistant" / "index.html",
         ROOT / "mail-assistant" / "privacy.html",
         ROOT / "mail-assistant" / "terms.html",
         ROOT / "fridge" / "index.html",
-        ROOT / "writing" / "trainspotting" / "index.html",
     ]
 
 
