@@ -3,7 +3,7 @@
     "site_nav_label": "ポートフォリオ内のセクション",
     "language_nav_label": "言語",
     "skip_content": "本文へスキップ",
-    "skip_poems": "詩へスキップ",
+    "skip_poems": "詞へスキップ",
     "skip_poem": "詩へスキップ",
     "nav": {
       "work": "プロジェクト",
@@ -37,7 +37,7 @@
     "meta_description": "ロンドンを拠点とする映画研究者、作家、写真家、開発者 Hanpu Li。映画形式、空間的エビデンス、オープンソース・システム、詩を横断して制作・研究する。",
     "eyebrow": "映画 / 研究 / システム / 言葉 · ロンドン",
     "alias": "Caitlyn Lye 名義でも活動",
-    "education": "York 映画・テレビ制作 → QMUL 言語学・映画",
+    "education": "York · 英語・言語学 → 映画 · QMUL",
     "lede": "映画を観る。詞も書く。",
     "lede_note": "",
     "intro": "映画研究者、作家、写真家、開発者。現在の仕事は、映画形式、空間的エビデンス、小規模なソフトウェア・システムのあいだを行き来している。",
@@ -131,9 +131,9 @@
       "greenwashing_title": "グリーンウォッシング<wbr>の政治経済学",
       "greenwashing_description": "Shepperton Studios 拡張計画のフォレンジックな空間監査。「低炭素」という言説を物質的記録と照合したとき、何が起きるかを検証する。",
       "pipeline": "再現可能なパイプライン →",
-      "film_essays_title": "Joanna Hogg 論 · 『<em>Trainspotting</em>』論",
-      "film_essays_description": "Queen Mary University of London で執筆した<wbr>映画研究エッセイ2篇。",
-      "film_essays_meta": "全文はご希望に応じて提供"
+      "film_essays_title": "『<em>Trainspotting</em>』論",
+      "film_essays_description": "ヴォイスオーバー、空間、主体化、そして論証そのものの限界をたどる映画論。",
+      "film_essays_meta": "全文を読む →"
     },
     "poetry": {
       "recent": "近作2篇",

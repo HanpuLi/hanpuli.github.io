@@ -36,6 +36,7 @@ def page_paths() -> list[Path]:
         ROOT / "mail-assistant" / "privacy.html",
         ROOT / "mail-assistant" / "terms.html",
         ROOT / "fridge" / "index.html",
+        ROOT / "writing" / "trainspotting" / "index.html",
     ]
 
 

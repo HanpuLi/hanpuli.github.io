@@ -1,0 +1,105 @@
+<article class="essay">
+  <header class="essay-intro">
+    <p class="essay-kicker">film essay · revised September 2026</p>
+    <h1>From Gears to Gasp</h1>
+    <p class="essay-deck"><em>Trainspotting</em> and the body’s investment in its own subjection</p>
+    <p class="essay-byline">Hanpu Li</p>
+    <p class="essay-note">An earlier version of this essay was developed in film studies at Queen Mary University of London. This public version has been revised for the web.</p>
+  </header>
+
+  <div class="essay-body">
+    <p>Danny Boyle’s <em>Trainspotting</em> (1996) opens with Renton running while the voiceover sets out the terms: “Choose life. Choose a job. Choose a career.” A familiar reading hears refusal. The speech mocks the consumer world it lists, and Renton’s voice seems to keep a private self intact against it (Hallam and Marshment, 2000; Smith, 2002). I think the scene is more uncomfortable than that. Renton can refuse the list only by speaking in the list’s own language. His rebellion arrives already formatted.</p>
+
+    <p>That problem belongs to a longer history of British working-class cinema. The machinery is visible in Chaplin’s <em>Modern Times</em> (1936). In Karel Reisz’s <em>Saturday Night and Sunday Morning</em> (1960), it has partly moved into Arthur Seaton’s head. By <em>Trainspotting</em>, the machinery is difficult to place outside the body at all. British Social Realism has often trusted location, working-class interiority and vernacular speech to make social conditions legible (Hill, 1986; Street, 2009). Boyle keeps those materials and drives them until they stop doing what the tradition asked of them.</p>
+
+    <section aria-labelledby="voiceover-heading">
+      <h2 id="voiceover-heading">1. The foreman moved inside</h2>
+
+      <p>Arthur Seaton’s defiance still sounds like a first-person position. “Don’t let the bastards grind you down” imagines a self that can identify the people doing the grinding and hold something back from them. But Seaton also defines freedom as private appetite: “what I’m out for is a good time, all the rest is propaganda.” His self is secured less by a collective claim than by insisting that nobody else gets to tell him what he is.</p>
+
+      <p>Foucault’s account of governmentality helps with the shape of this, if not with every historical detail. Liberal power need not work only by giving orders from outside. It can produce subjects who manage themselves, so that self-government becomes one of the forms power takes (Foucault, 1979). Seaton’s private republic starts to look like a branch office, with the foreman moved inside.</p>
+
+      <p>Renton takes the process further. His “Choose Life” speech is formally a refusal but materially a catalogue: starter home, washing machine, television, dental insurance, luggage. The words pile up with the cuts as he runs through Edinburgh. There is no clean break where the language of the market ends and the language of opposition begins. The delivery is flat enough to sound exhausted and fluent at once. The camera does not stand back from the performance. It runs with him.</p>
+
+      <p>I am more interested in the scene as a problem of syntax. Renton is trying to say no, but the available sentence has already decided what can be named. He can reject the goods. He cannot yet produce another grammar for wanting.</p>
+
+      <p>That still does not explain heroin. Self-management can explain why a subject speaks in the language of the system that governs him. It does not explain why the body pursues its own collapse as if collapse were the last intense thing left. For that, the film has to move from voice to space.</p>
+    </section>
+
+    <section aria-labelledby="room-heading">
+      <h2 id="room-heading">2. A room that stops being a room</h2>
+
+      <p>Renton’s parents lock him in his childhood bedroom to get him clean. The plan is brutally simple: put the body in a room, close the door, wait for the drug to leave it. The film immediately makes the room incapable of carrying that plan.</p>
+
+      <p>As the door shuts, the bedroom stretches. The walls pull away, the toy-train wallpaper runs into the distance and the low ceiling seems to lift. Whether the effect was produced optically, physically, or by a combination of the two is less important than what appears on screen: a room that no longer keeps the proportions a room is supposed to keep.</p>
+
+      <p>Lefebvre’s distinction between conceived, perceived and lived space gives this distortion a useful vocabulary (Lefebvre, 1991). Renton’s parents conceive the bedroom as a recovery space, a room with a job. The image destroys the ordinary spatial practice by which a body orients itself inside that room. Renton’s hallucinations then produce a lived space answerable to neither the parental plan nor everyday geometry.</p>
+
+      <p>Social realism usually asks us to read a person through a place. Location is evidence. The street, factory, estate or room makes social forces visible because the environment is assumed to remain legible enough to explain the people living in it. Renton’s bedroom is the place where that confidence fails. The room is still full of social history, but it can no longer organise that history into a stable explanation.</p>
+
+      <p>The soundtrack follows. Baby Dawn’s cry loses its obvious source and spreads through the bedroom. On the television, Renton’s parents appear in a Dale Winton game show answering questions about HIV. A medical crisis, parental grief and social stigma are reformatted as questions with right answers. When the host asks whether their son is guilty or not guilty, Renton’s mother refuses the choice: “he’s our son.” The programme simply declares that the correct answer too. Even refusal is absorbed by the format.</p>
+
+      <p>Then there are the older surfaces of the room: toy locomotives, music images, a Hibernian rosette above the bed. The usual temptation is to call them lost innocence. I read them differently. Winnicott’s idea of transitional phenomena describes objects and cultural forms that help a child negotiate the gap between inner life and the outside world (Winnicott, 1953). I do not mean that train wallpaper somehow caused heroin addiction. The connection is structural, not diagnostic.</p>
+
+      <p>Trainspotting, the hobby, is an unusually exact image of attachment without entry: watching trains that do not stop for you, logging movements in a system that has no place for the watcher. Football allegiance can carry a similar shape, belonging intensely to an organisation without taking part in its production. The wallpaper and badge make that structure visible before the drug appears. They offer forms of investment that organise feeling without returning control.</p>
+
+      <p>Heroin later occupies a harsher version of the same position. Lacan’s <em>objet a</em> is useful here because the object of desire matters less for what it gives than for the desire it keeps in motion (Lacan, 1977). In the “worst toilet in Scotland” sequence, the lost suppositories become absurdly precious. Renton dives after what his body has expelled. Boyle shoots degradation as adventure. The sequence does not offer a clean outside position from which either Renton or the viewer can simply recognise the degradation and leave it behind.</p>
+
+      <p>The shape was there before the drug. The room keeps the proof of it. What the room cannot tell us is why this shape became so available here, to these people, at this historical moment. That requires changing scale.</p>
+    </section>
+
+    <section aria-labelledby="dissolution-heading">
+      <h2 id="dissolution-heading">3. What the sprint leaves out</h2>
+
+      <p>Return to the opening run. Edinburgh becomes speed: streets are cut into fragments too brief to settle into a coherent social geography. Harvey’s account of accumulation by dispossession is useful because it asks what happens when capital withdraws from places while continuing to reorganise the lives left there (Harvey, 2003). Deindustrialisation does not simply remove jobs. It changes what streets, institutions and collective attachments can still do.</p>
+
+      <p>But a map of withdrawn investment misses the work that kept collective life going in the first place. Federici’s account of reproductive labour shifts attention to feeding, caring, maintaining bodies and making daily life possible, work that capitalism repeatedly depends on while treating it as secondary or invisible (Federici, 2004). <em>Trainspotting</em> makes that invisibility hard to miss in the death of Dawn.</p>
+
+      <p>Alison is there. She is Dawn’s mother, but she cannot care for her. The adults are physically present and socially wrecked. The film spends extraordinary formal energy on Renton’s bodily crisis: saturated colour, violent movement, the full pressure of the soundtrack. Alison’s grief is given much less room. Dawn returns later as an image crawling across Renton’s ceiling, absorbed into his withdrawal sequence.</p>
+
+      <p>The imbalance reaches criticism too. This essay has spent far more time on Renton than on Alison. Naming that does not fix it. The film’s spectacular body is the male body in crisis; the failed labour that should have sustained the group appears mainly through its catastrophe.</p>
+
+      <p>Dawn’s death is therefore more than one terrible incident in a chain of bad decisions. It marks the point at which the small collective can no longer reproduce itself at the most literal level. The group can still share drugs, rooms, money and stories. It cannot keep a baby alive.</p>
+
+      <p>Renton’s final theft condenses the same logic into a private act, but the £16,000 is not itself an instance of primitive accumulation. The scale and mechanism are wrong. Renton secures his exit by dispossessing the small collective that sustained him. The apparent act of individual freedom repeats the social form the film has spent its running time describing: survival by withdrawal, one person’s future purchased by abandoning the shared arrangement that made the present possible.</p>
+    </section>
+
+    <section aria-labelledby="remainder-heading">
+      <h2 id="remainder-heading">4. One detail will not fit</h2>
+
+      <p>The film also does something uncomfortable to its viewer. The fast cutting, colour and soundtrack that make Renton’s collapse exhilarating are not outside the world the film criticises. They convert dissolution into intensity. Fisher’s “capitalist realism” is useful here not as a verdict on the film but as a description of an environment that becomes difficult to imagine from outside (Fisher, 2009). Renton takes heroin as the intensity still available to him. The viewer gets a different product, but the film knows how much pleasure can be made from wreckage.</p>
+
+      <p>That line of argument can become too neat. <em>Trainspotting</em> refuses it at exactly the point where a theoretical essay would most like to close.</p>
+
+      <p>Before Renton walks away with the money, he leaves Spud a share.</p>
+
+      <p>The subject built by the argument so far should not be capable of that gesture. If Renton’s inner life has been formatted by the same forces he thinks he is escaping, and if his freedom consists in repeating their logic at a smaller scale, why does he leave the money? It might be a last trace of solidarity. It might be guilt. It might be an exception too small to redeem anything. Any of those answers would tidy the scene faster than the scene deserves.</p>
+
+      <p>Spud opens a larger problem too. The Endnotes collective argues that deindustrialisation produces populations that capital no longer needs even to exploit as labour, people met increasingly with indifference rather than administration (Endnotes, 2010). If that is right, one of this essay’s starting assumptions may be wrong. Foucault’s account requires power to retain an interest in producing and managing the subject. Harvey’s dispossession still describes a relationship in which capital wants something. What if part of <em>Trainspotting</em> is about the point after that relationship has thinned out?</p>
+
+      <p>Then the withdrawal room looks different. Perhaps Renton is not being intensively formatted by a system that still needs him. Perhaps his parents, the NHS and the courts are managing the remains of a social relation whose economic centre has already gone elsewhere. Administration and abandonment can look similar from inside a bedroom, but they are not the same thing.</p>
+
+      <p>Spud unsettles the argument in one corner. Endnotes threatens the foundations. I leave both problems where the film leaves them.</p>
+
+      <p>Renton walks towards the camera at the end. Is that the work of a system that shaped him, or what a body does once the system has stopped watching? I cannot decide. Neither can the film. The difference is that the film does not have to.</p>
+    </section>
+
+    <section class="essay-references" aria-labelledby="references-heading">
+      <h2 id="references-heading">References</h2>
+      <ul>
+        <li>Endnotes (2010), “Misery and Debt”, <em>Endnotes</em> 2, pp. 20–51.</li>
+        <li>Federici, S. (2004), <em>Caliban and the Witch: Women, the Body and Primitive Accumulation</em>. New York: Autonomedia.</li>
+        <li>Fisher, M. (2009), <em>Capitalist Realism: Is There No Alternative?</em> Winchester: Zero Books.</li>
+        <li>Foucault, M. (1979), “Governmentality”, <em>Ideology and Consciousness</em> 6, pp. 5–21.</li>
+        <li>Hallam, J. and Marshment, M. (2000), <em>Realism and Popular Cinema</em>. Manchester: Manchester University Press.</li>
+        <li>Harvey, D. (2003), <em>The New Imperialism</em>. Oxford: Oxford University Press.</li>
+        <li>Hill, J. (1986), <em>Sex, Class and Realism: British Cinema 1956–1963</em>. London: BFI Publishing.</li>
+        <li>Lacan, J. (1977), <em>The Four Fundamental Concepts of Psycho-Analysis</em>, trans. A. Sheridan. London: Hogarth Press.</li>
+        <li>Lefebvre, H. (1991), <em>The Production of Space</em>, trans. D. Nicholson-Smith. Oxford: Blackwell.</li>
+        <li>Smith, M. (2002), <em>Trainspotting</em>. London: BFI Publishing.</li>
+        <li>Street, S. (2009), <em>British National Cinema</em>, 2nd ed. London: Routledge.</li>
+        <li>Winnicott, D. W. (1953), “Transitional Objects and Transitional Phenomena”, <em>International Journal of Psycho-Analysis</em> 34, pp. 89–97.</li>
+      </ul>
+    </section>
+  </div>
+</article>

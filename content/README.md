@@ -15,6 +15,7 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `shi-source.json` — canonical Chinese text of the poem and its two drafts.
 - `shi-translations/<locale>.json` — non-Chinese translations.
 - `shi-simplified.json` — script-only Simplified Chinese mirror of the canonical poem source; its source hash is checked in CI.
+- `essays/trainspotting.inc` — English source fragment for the public <em>Trainspotting</em> essay at `/writing/trainspotting/`.
 
 English is the default site at `/`. Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are emitted at
 `/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Language switching is ordinary static navigation:

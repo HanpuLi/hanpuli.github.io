@@ -418,6 +418,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "SHI_HREF": page_path(locale_id, "shi"),
         "WRITING_HREF": page_path(locale_id, "index") + "#writing",
         "PHOTO_HREF": page_path(locale_id, "index") + "#photo",
+        "TRAINSPOTTING_HREF": "/writing/trainspotting/",
         "LANG_SWITCHER": language_switcher(locale_id, page),
         "JSON_LD": json.dumps(json_ld, ensure_ascii=False, separators=(",", ":")),
         "SCOPERAIL_FLOW": flow_html(locale["home"]["projects"]["scoperail"]["flow"]),
@@ -469,11 +470,35 @@ def build(check: bool = False) -> list[Path]:
                 if not check:
                     target.write_text(rendered, encoding="utf-8")
 
+    essay_target = ROOT / "writing" / "trainspotting" / "index.html"
+    essay_target.parent.mkdir(parents=True, exist_ok=True)
+    essay_template = (TEMPLATES / "essay.html").read_text(encoding="utf-8")
+    essay_body = (CONTENT / "essays" / "trainspotting.inc").read_text(encoding="utf-8")
+    essay_rendered = render_template(
+        essay_template,
+        en_locale,
+        {
+            "READING_TOOLS": reading_tools(en_locale),
+            "PRIMARY_NAME": html.escape(IDENTITY["primary_name"]),
+            "CHINESE_NAME": html.escape(IDENTITY["chinese_name"]),
+            "ESSAY_BODY": essay_body,
+            "ESSAY_CANONICAL": html.escape(BASE_URL + "/writing/trainspotting/", quote=True),
+        },
+    )
+    if not essay_rendered.endswith("\n"):
+        essay_rendered += "\n"
+    old_essay = essay_target.read_text(encoding="utf-8") if essay_target.exists() else None
+    if old_essay != essay_rendered:
+        changed.append(essay_target)
+        if not check:
+            essay_target.write_text(essay_rendered, encoding="utf-8")
+
     sitemap_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
                      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for language in LANGUAGES:
         for page in ("index", "ci", "shi"):
             sitemap_lines.append(f'  <url><loc>{html.escape(absolute_url(language["id"], page))}</loc></url>')
+    sitemap_lines.append(f'  <url><loc>{html.escape(BASE_URL + "/writing/trainspotting/")}</loc></url>')
     sitemap_lines.append("</urlset>")
     sitemap = "\n".join(sitemap_lines) + "\n"
     sitemap_path = ROOT / "sitemap.xml"
