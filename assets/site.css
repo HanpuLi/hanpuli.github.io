@@ -50,9 +50,9 @@
   --accent: #8a2f1d;
   --serif: "Garamond Premier Pro", "EB Garamond", Georgia, "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", serif;
   --mono: "Courier Prime", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
-  --max: 1380px;
-  --gutter: clamp(22px, 4vw, 68px);
-  --gap: clamp(14px, 1.75vw, 28px);
+  --max: 1920px;
+  --gutter: clamp(18px, 1.55vw, 30px);
+  --gap: clamp(12px, 1.25vw, 24px);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -198,15 +198,19 @@ a:hover {
 }
 
 .site-home .hero {
+  min-height: calc(100svh - 61px);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: auto 1fr auto;
   gap: 0 var(--gap);
-  padding: clamp(34px, 4vw, 60px) 0 clamp(104px, 11vw, 168px);
+  padding: clamp(24px, 2.25vw, 38px) 0 clamp(24px, 2.25vw, 38px);
+  position: relative;
 }
 
 .site-home .eyebrow {
-  grid-column: 1 / 13;
-  margin-bottom: clamp(42px, 6vw, 82px);
+  grid-column: 1 / 8;
+  grid-row: 1;
+  align-self: start;
   color: var(--faint);
   font-family: var(--mono);
   font-size: 10.5px;
@@ -216,21 +220,25 @@ a:hover {
 }
 
 .site-home .hero h1 {
-  grid-column: 1 / 10;
-  font-size: clamp(106px, 15.8vw, 224px);
+  grid-column: 1 / 8;
+  grid-row: 2;
+  align-self: center;
+  font-size: clamp(108px, 13.6vw, 244px);
   font-weight: 400;
   line-height: .69;
-  letter-spacing: -.062em;
+  letter-spacing: -.064em;
+  text-wrap: balance;
 }
 
 .site-home .hero-id {
-  grid-column: 10 / 13;
+  grid-column: 6 / 8;
+  grid-row: 3;
   align-self: end;
-  padding-bottom: .35em;
+  padding-bottom: .2em;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 11.5px;
-  line-height: 1.7;
+  font-size: 11px;
+  line-height: 1.65;
 }
 
 .site-home .hero-id p:first-child {
@@ -238,19 +246,27 @@ a:hover {
 }
 
 .site-home .hero-cover {
-  grid-column: 1 / 8;
-  margin-top: clamp(76px, 9vw, 132px);
+  grid-column: 8 / 13;
+  grid-row: 1 / 4;
+  align-self: center;
+  justify-self: end;
+  width: min(100%, calc((100svh - 150px) * .825));
+  margin: 0;
+}
+
+.site-home .hero-cover picture,
+.site-home .hero-cover img {
+  width: 100%;
 }
 
 .site-home .hero-cover img {
-  width: 100%;
   height: auto;
   aspect-ratio: 990 / 1200;
   background: var(--paper-soft);
 }
 
 .site-home figure figcaption {
-  margin-top: 8px;
+  margin-top: 7px;
   color: var(--faint);
   font-family: var(--mono);
   font-size: 10.5px;
@@ -259,24 +275,27 @@ a:hover {
 }
 
 .site-home .hero-copy {
-  grid-column: 9 / 13;
+  grid-column: 1 / 6;
+  grid-row: 3;
   align-self: end;
-  padding-bottom: clamp(8px, 2vw, 28px);
-  font-size: clamp(17px, 1.45vw, 20px);
-  line-height: 1.55;
+  max-width: 45rem;
+  padding-right: clamp(18px, 2vw, 34px);
+  font-size: clamp(16px, 1.22vw, 20px);
+  line-height: 1.52;
 }
 
 .site-home .hero-copy .zh-lede {
-  margin-bottom: 1.15em;
-  font-size: clamp(23px, 2.15vw, 31px);
-  line-height: 1.45;
+  margin-bottom: .75em;
+  font-size: clamp(22px, 1.8vw, 31px);
+  line-height: 1.42;
 }
 
 .site-home .hero-copy .hero-note {
-  margin-top: 1.5em;
+  max-width: 43ch;
+  margin-top: 1.15em;
   color: var(--muted);
   font-size: .78em;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 /* Section system */
@@ -434,7 +453,7 @@ a:hover {
 }
 
 .site-home .photo-wide {
-  grid-column: 2 / 12;
+  grid-column: 1 / 13;
 }
 
 .site-home .photo-wide img {
@@ -459,7 +478,7 @@ a:hover {
 }
 
 .site-home .photo-pair {
-  grid-column: 2 / 12;
+  grid-column: 1 / 13;
   display: grid;
   gap: var(--gap);
   align-items: start;
@@ -515,6 +534,25 @@ a:hover {
 .site-home .section-note [lang="en"] {
   display: block;
   margin-top: .4em;
+}
+
+@media (min-width: 1600px) {
+  .site-home .photo-wide {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 0 var(--gap);
+    align-items: end;
+  }
+
+  .site-home .photo-wide picture {
+    grid-column: 1 / 9;
+  }
+
+  .site-home .photo-wide figcaption {
+    grid-column: 10 / 13;
+    margin: 0;
+    padding-bottom: 2px;
+  }
 }
 
 /* Writing */
@@ -768,7 +806,7 @@ a:hover {
 /* Literary pages */
 
 .literary-page .wrap {
-  width: min(calc(100% - (2 * var(--gutter))), 1140px);
+  width: min(calc(100% - (2 * var(--gutter))), 1440px);
 }
 
 .literary-page header {
@@ -1046,20 +1084,43 @@ a:hover {
     grid-column: 5 / 13;
   }
 
+  .site-home .hero {
+    min-height: auto;
+    grid-template-rows: auto;
+    padding: 34px 0 96px;
+  }
+
+  .site-home .eyebrow {
+    grid-column: 1 / 13;
+    grid-row: auto;
+    margin-bottom: 44px;
+  }
+
   .site-home .hero h1 {
     grid-column: 1 / 11;
+    grid-row: auto;
   }
 
   .site-home .hero-id {
-    grid-column: 10 / 13;
+    grid-column: 9 / 13;
+    grid-row: auto;
+    margin-top: 30px;
   }
 
   .site-home .hero-cover {
-    grid-column: 1 / 9;
+    grid-column: 1 / 8;
+    grid-row: auto;
+    justify-self: stretch;
+    width: 100%;
+    margin-top: 54px;
   }
 
   .site-home .hero-copy {
-    grid-column: 9 / 13;
+    grid-column: 8 / 13;
+    grid-row: auto;
+    align-self: end;
+    margin-top: 54px;
+    padding: 0;
   }
 
   .site-home .project-main {
@@ -1113,33 +1174,43 @@ a:hover {
   }
 
   .site-home .hero {
+    min-height: auto;
+    grid-template-rows: auto;
     padding: 30px 0 88px;
   }
 
   .site-home .eyebrow {
+    grid-column: 1 / 13;
+    grid-row: auto;
     margin-bottom: 42px;
     font-size: 9.5px;
   }
 
   .site-home .hero h1 {
     grid-column: 1 / 13;
+    grid-row: auto;
     font-size: clamp(82px, 27vw, 126px);
     line-height: .72;
   }
 
   .site-home .hero-id {
     grid-column: 8 / 13;
+    grid-row: auto;
     margin-top: 34px;
     padding: 0;
   }
 
   .site-home .hero-cover {
     grid-column: 1 / 13;
+    grid-row: auto;
+    justify-self: stretch;
+    width: 100%;
     margin-top: 58px;
   }
 
   .site-home .hero-copy {
     grid-column: 2 / 13;
+    grid-row: auto;
     margin-top: 46px;
     padding: 0;
   }
