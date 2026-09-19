@@ -759,12 +759,14 @@ html[data-reading-motion] .site-home::before {
 }
 
 .site-home .section-nav {
-  grid-column: 4 / 10;
+  grid-column: 1 / -1;
+  grid-row: 2;
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: var(--gap);
+  margin-block-start: 8px;
   font-family: var(--mono);
-  font-size: .8125rem;
+  font-size: clamp(.75rem, 1.3cqi, .8125rem);
   line-height: 1.2;
   letter-spacing: .04em;
   text-transform: lowercase;
@@ -800,9 +802,9 @@ html[data-reading-motion] .site-home::before {
   white-space: nowrap;
 }
 
-.site-home .section-nav a span {
+.site-home .section-nav .nav-no {
   display: inline-block;
-  width: 2.3em;
+  width: 2.1em;
   color: var(--faint);
 }
 
@@ -1687,10 +1689,13 @@ html[data-reading-motion] .site-home::before {
 }
 
 .page-topbar .page-nav {
-  grid-column: 5 / 9;
-  display: flex;
-  justify-content: flex-end;
-  gap: clamp(12px, 1.5vw, 22px);
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--gap);
+  margin-block-start: 8px;
+  font-size: clamp(.75rem, 1.3cqi, .8125rem);
 }
 
 .page-topbar .page-languages {
@@ -1718,7 +1723,14 @@ html[data-reading-motion] .site-home::before {
 .page-topbar .page-nav a,
 .page-topbar .page-nav [aria-current="page"] {
   min-width: 44px;
-  justify-content: center;
+  justify-content: flex-start;
+  white-space: nowrap;
+}
+
+.page-topbar .page-nav .nav-no {
+  display: inline-block;
+  width: 2.1em;
+  color: var(--faint);
 }
 
 .page-topbar .page-nav [aria-current="page"],
@@ -3260,8 +3272,7 @@ html[data-reading-motion] .site-home::before {
   .page-topbar .page-nav {
     grid-column: 1;
     grid-row: 3;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 6rem), 1fr));
     margin-block-start: var(--space-1);
   }
 }

@@ -329,6 +329,21 @@ def main() -> int:
                 errors.append(f"{essay_path.relative_to(ROOT)}: essay body is not explicitly marked as English")
             if essay_text.count('class="current"') != 1:
                 errors.append(f"{essay_path.relative_to(ROOT)}: expected one current essay language")
+            essay_nav_numbers = re.findall(
+                r'<span class="nav-no">(0[1-6])</span>',
+                essay_text,
+            )
+            if essay_nav_numbers != ["01", "02", "03", "04", "05", "06"]:
+                errors.append(
+                    f"{essay_path.relative_to(ROOT)}: portfolio nav order is {essay_nav_numbers}, expected 01–06"
+                )
+            if not re.search(
+                r'<span aria-current="page">\s*<span class="nav-no">01</span>',
+                essay_text,
+            ):
+                errors.append(
+                    f"{essay_path.relative_to(ROOT)}: Trainspotting must mark 01 writing as current"
+                )
             for language in languages:
                 lid = language["id"]
                 if lid == locale:
@@ -360,6 +375,22 @@ def main() -> int:
                 if alternates != expected_alternates:
                     errors.append(
                         f"{path.relative_to(ROOT)}: expected {expected_alternates} hreflang links, got {alternates}"
+                    )
+                nav_numbers = re.findall(
+                    r'<span class="nav-no">(0[1-6])</span>',
+                    text,
+                )
+                if nav_numbers != ["01", "02", "03", "04", "05", "06"]:
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: portfolio nav order is {nav_numbers}, expected 01–06"
+                    )
+                expected_current = {"ci.html": "04", "shi.html": "05"}.get(name)
+                if expected_current and not re.search(
+                    rf'<span aria-current="page">\s*<span class="nav-no">{expected_current}</span>',
+                    text,
+                ):
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: expected nav item {expected_current} to be current"
                     )
             if name == "ci.html":
                 source_versions = text.count('class="poem-version source"')
@@ -407,11 +438,11 @@ def main() -> int:
             if name == "index.html":
                 shi_href = "/shi.html" if locale == "en" else f"/{locale}/shi.html"
                 if not re.search(
-                    rf'<a\b[^>]*href="{re.escape(shi_href)}"[^>]*>\s*<span>06</span>',
+                    rf'<a\b[^>]*href="{re.escape(shi_href)}"[^>]*>\s*<span class="nav-no">05</span>',
                     text,
                 ):
                     errors.append(
-                        f"{path.relative_to(ROOT)}: home navigation is missing the numbered poem-page link"
+                        f"{path.relative_to(ROOT)}: home navigation is missing 05 poem-page link"
                     )
                 shi_label = locale_data["common"]["nav"]["shi"]
                 if shi_label not in text:

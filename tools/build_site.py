@@ -129,6 +129,44 @@ def output_path(locale_id: str, page: str) -> Path:
     return folder / ("index.html" if page == "index" else f"{page}.html")
 
 
+PORTFOLIO_NAV_ITEMS = (
+    ("01", "writing", "writing"),
+    ("02", "work", "work"),
+    ("03", "photo", "photo"),
+    ("04", "ci", "ci"),
+    ("05", "shi", "shi"),
+    ("06", "profile", "profile"),
+)
+
+
+def portfolio_nav_html(
+    locale_id: str,
+    locale: dict[str, Any],
+    *,
+    current: str | None = None,
+    home_page: bool = False,
+) -> str:
+    home = page_path(locale_id, "index")
+    rows = []
+    for number, key, anchor in PORTFOLIO_NAV_ITEMS:
+        label = locale["common"]["nav"][key]
+        number_html = f'<span class="nav-no">{number}</span>'
+        if key == current:
+            rows.append(
+                f'<span aria-current="page">{number_html} {label}</span>'
+            )
+            continue
+
+        if key == "ci":
+            href = "#ci" if home_page else page_path(locale_id, "ci")
+        elif key == "shi":
+            href = page_path(locale_id, "shi")
+        else:
+            href = f"#{anchor}" if home_page else f"{home}#{anchor}"
+        rows.append(f'<a href="{html.escape(href, quote=True)}">{number_html} {label}</a>')
+    return "\n      ".join(rows)
+
+
 def asset_prefix(locale_id: str) -> str:
     return "" if locale_id == ROOT_LOCALE else "../"
 
@@ -491,10 +529,14 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "HOME_HREF": page_path(locale_id, "index"),
         "CI_HREF": page_path(locale_id, "ci"),
         "SHI_HREF": page_path(locale_id, "shi"),
-        "WRITING_HREF": page_path(locale_id, "index") + "#writing",
-        "PHOTO_HREF": page_path(locale_id, "index") + "#photo",
         "TRAINSPOTTING_HREF": essay_page_path(locale_id),
         "LANG_SWITCHER": language_switcher(locale_id, page),
+        "PORTFOLIO_NAV": portfolio_nav_html(
+            locale_id,
+            locale,
+            current="ci" if page == "ci" else "shi" if page == "shi" else None,
+            home_page=page == "index",
+        ),
         "JSON_LD": json.dumps(json_ld, ensure_ascii=False, separators=(",", ":")),
         "SCOPERAIL_FLOW": flow_html(locale["home"]["projects"]["scoperail"]["flow"]),
         "CHRONOLOGY": chronology_html(locale["home"]["chronology"]),
@@ -505,7 +547,6 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "SHI_SOURCE_HEADING": html.escape(
             SHI_SIMPLIFIED["title"] if locale_id == "zh-hans" else SHI_SOURCE["title"]
         ),
-        "SHI_NAV_LABEL": locale["common"]["nav"]["shi"],
         "CI_TOC": ci_toc(locale_id, locale),
         "CI_POEMS": ci_poems_html(locale_id, locale),
         "SHI_DRAFTS": shi_drafts_html(locale_id),
@@ -581,10 +622,13 @@ def build(check: bool = False) -> list[Path]:
                 "CHINESE_NAME": html.escape(IDENTITY["chinese_name"]),
                 "HOME_HREF": page_path(lid, "index"),
                 "WRITING_HREF": page_path(lid, "index") + "#writing",
-                "PHOTO_HREF": page_path(lid, "index") + "#photo",
-                "CI_HREF": page_path(lid, "ci"),
-                "SHI_HREF": page_path(lid, "shi"),
                 "ESSAY_LANG_SWITCHER": essay_language_switcher(lid),
+                "PORTFOLIO_NAV": portfolio_nav_html(
+                    lid,
+                    locale,
+                    current="writing",
+                    home_page=False,
+                ),
                 "ESSAY_META_DESCRIPTION_ATTR": html.escape(description, quote=True),
                 "ESSAY_LANGUAGE_NOTE": note_html,
                 "ESSAY_BODY": essay_body,
