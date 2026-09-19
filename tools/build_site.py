@@ -352,6 +352,13 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         preview_body = html.escape(w2["source_body"])
     else:
         preview_body = html.escape(ci_translation(locale_id)["w2"]["body"])
+    lede_note = locale["home"]["lede_note"].strip()
+    hero_footnote_mark = '<sup class="hero-footnote-mark" aria-hidden="true">*</sup>' if lede_note else ""
+    hero_footnote = (
+        f'        <p class="hero-footnote" role="note"><span aria-hidden="true">*</span> {html.escape(lede_note)}</p>'
+        if lede_note
+        else ""
+    )
     return {
         "HTML_LANG": html.escape(lang["html_lang"], quote=True),
         "LOCALE": locale_id,
@@ -361,6 +368,8 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "OG_LOCALE": html.escape(lang["og_locale"], quote=True),
         "FONT_PRELOADS": font_preloads(locale_id, page),
         "READING_TOOLS": reading_tools(locale),
+        "HERO_FOOTNOTE_MARK": hero_footnote_mark,
+        "HERO_FOOTNOTE": hero_footnote,
         "SOCIAL_IMAGE_ALT": html.escape(locale["home"]["photos"]["alt"]["03"], quote=True),
         "PRIMARY_NAME": html.escape(primary),
         "PRIMARY_NAME_HERO": hero_name,

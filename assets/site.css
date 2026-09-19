@@ -407,6 +407,7 @@ html[data-reading-large] :is(
   .site-home .language-nav,
   .site-home .eyebrow,
   .site-home .hero-id,
+  .site-home .hero-footnote,
   .site-home .hero-cover figcaption,
   .site-home .section-no,
   .site-home .section-kicker,
@@ -857,6 +858,25 @@ html[data-reading-motion] .site-home::before {
   margin-bottom: .75em;
   font-size: clamp(22px, 1.8vw, 31px);
   line-height: 1.42;
+}
+
+.site-home .hero-footnote-mark {
+  margin-left: .08em;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: .48em;
+  line-height: 0;
+  vertical-align: super;
+}
+
+.site-home .hero-footnote {
+  max-width: 34ch;
+  margin: -.35em 0 1.15em;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: .72rem;
+  line-height: 1.4;
+  letter-spacing: .02em;
 }
 
 .site-home .hero-copy .hero-note {
@@ -1508,24 +1528,30 @@ html[data-reading-motion] .site-home::before {
   padding: 22px 0 clamp(64px, 7vw, 102px);
   border-top: 1px solid var(--ink);
   color: var(--muted);
-  font-family: var(--mono);
-  font-size: .8125rem;
-  line-height: 1.6;
+  font-size: .9375rem;
+  line-height: 1.5;
 }
 
-.site-home .site-footer > div:first-child {
-  grid-column: 1 / 4;
+.site-home .footer-identity {
+  grid-column: 1 / 5;
 }
 
 .site-home .footer-name {
   color: var(--ink);
+  font-size: 1rem;
+}
+
+.site-home .footer-identity > p + p {
+  margin-top: .16rem;
 }
 
 .site-home .footer-links {
-  grid-column: 6 / 11;
+  grid-column: 6 / 10;
   display: flex;
   flex-wrap: wrap;
   gap: .4em 1.5em;
+  font-family: var(--mono);
+  font-size: .8125rem;
 }
 
 .site-home .footer-links a {
@@ -1538,9 +1564,16 @@ html[data-reading-motion] .site-home::before {
 }
 
 .site-home .footer-mark {
-  grid-column: 12 / 13;
+  grid-column: 11 / 13;
   justify-self: end;
+  font-family: var(--mono);
+  font-size: .8125rem;
+  letter-spacing: .02em;
+}
+
+.site-home .footer-cat {
   font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  letter-spacing: normal;
 }
 
 /* Shared navigation for literary pages */
@@ -2550,13 +2583,13 @@ html[data-reading-motion] .site-home::before {
 
   .site-home .site-footer {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px 16px;
+    gap: 24px 16px;
+    align-items: start;
     padding: 20px 0 72px;
   }
 
-  .site-home .site-footer > div:first-child,
-  .site-home .footer-links,
-  .site-home .footer-mark {
+  .site-home .footer-identity,
+  .site-home .footer-links {
     grid-column: auto;
   }
 
@@ -2567,7 +2600,7 @@ html[data-reading-motion] .site-home::before {
   }
 
   .site-home .footer-mark {
-    grid-column: 2;
+    grid-column: 1 / -1;
     justify-self: start;
   }
 

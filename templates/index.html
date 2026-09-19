@@ -73,7 +73,8 @@
       </figure>
 
       <div class="hero-copy">
-        <p class="zh-lede">{{home.lede}}</p>
+        <p class="zh-lede">{{home.lede}}{{HERO_FOOTNOTE_MARK}}</p>
+{{HERO_FOOTNOTE}}
         <p>{{home.intro}}</p>
         <p class="hero-note">{{home.method}}</p>
       </div>
@@ -307,7 +308,7 @@
   </main>
 
   <footer class="site-footer">
-    <div>
+    <div class="footer-identity">
       <p class="footer-name">{{PRIMARY_NAME}} · <span lang="zh-Hant-HK">{{CHINESE_NAME}}</span></p>
       <p>{{ALT_NAME}} · {{LOCATION}}</p>
     </div>
@@ -315,7 +316,7 @@
       <a href="{{GITHUB_URL}}">{{GITHUB_LABEL}}</a>
       <a href="mailto:{{EMAIL}}">{{common.email}}</a>
     </div>
-    <p class="footer-mark">© {{SITE_YEAR}} · 🐈</p>
+    <p class="footer-mark">© {{SITE_YEAR}}<span class="footer-cat" aria-hidden="true"> · 🐈</span></p>
   </footer>
 
 </div>
