@@ -978,6 +978,9 @@ html[data-reading-motion] .site-home::before {
   color: var(--faint);
   font-family: var(--mono);
   font-size: .8125rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.04em;
+  white-space: nowrap;
 }
 
 .site-home .project-main {
@@ -2893,6 +2896,13 @@ html[data-reading-motion] .site-home::before {
 
   .shi-page .body {
     margin-bottom: 52px;
+  }
+}
+
+@media (max-width: 340px) {
+  .site-home .project-index {
+    font-size: .6875rem;
+    letter-spacing: -.06em;
   }
 }
 
