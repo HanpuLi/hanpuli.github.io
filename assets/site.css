@@ -477,6 +477,13 @@ a:hover {
   letter-spacing: -.03em;
 }
 
+@media (min-width: 761px) {
+  .site-home.locale-ru .project-feature h3 {
+    max-width: 28ch;
+    font-size: clamp(34px, 2.9vw, 50px);
+  }
+}
+
 .site-home .project-feature .project-main > p:last-child {
   max-width: 68ch;
   font-size: clamp(15px, 1.15vw, 18px);
