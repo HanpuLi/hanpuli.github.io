@@ -17,7 +17,20 @@
     "evidence": "證據",
     "evidence_summary": "3 圖 · 空間 / 植被 / 熱環境",
     "full_text_request": "全文備索",
-    "annotations_request": "箋註全文備索"
+    "annotations_request": "箋註全文備索",
+    "reading": {
+      "label": "閱讀選項",
+      "title": "閱讀偏好",
+      "description": "調整本站的閱讀顯示。設定只會儲存在此裝置。",
+      "sans": "使用無襯線字體",
+      "large": "放大文字",
+      "spacing": "增加文字間距",
+      "measure": "縮窄文字欄寬",
+      "simple": "簡化為單欄版面",
+      "motion": "減少動態效果",
+      "contrast": "提高對比度",
+      "reset": "重設"
+    }
   },
   "home": {
     "meta_title": "Hanpu Li 李函璞 · 電影、研究、攝影與系統",

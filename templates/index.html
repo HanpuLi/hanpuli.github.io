@@ -28,6 +28,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>詞</text></svg>">
 <link rel="preload" as="image" type="image/webp" href="{{ASSET_PREFIX}}assets/photos/webp/01-800.webp" imagesrcset="{{ASSET_PREFIX}}assets/photos/webp/01-480.webp 480w, {{ASSET_PREFIX}}assets/photos/webp/01-660.webp 660w, {{ASSET_PREFIX}}assets/photos/webp/01-800.webp 800w, {{ASSET_PREFIX}}assets/photos/webp/01-990.webp 990w" imagesizes="(max-width: 760px) calc(100vw - 40px), (max-width: 900px) 58vw, 42vw" fetchpriority="high">
 {{FONT_PRELOADS}}
+<script src="{{ASSET_PREFIX}}assets/accessibility.js"></script>
 <link rel="stylesheet" href="{{ASSET_PREFIX}}assets/site.css">
 <script type="application/ld+json">
 {{JSON_LD}}
@@ -35,6 +36,7 @@
 </head>
 <body class="site-home locale-{{LOCALE}}">
 <a class="skip-link" href="#main">{{common.skip_content}}</a>
+{{READING_TOOLS}}
 <div class="wrap">
 
   <header class="masthead">
@@ -45,13 +47,14 @@
       <a href="#writing"><span>03</span> {{common.nav.writing}}</a>
       <a href="#ci"><span>04</span> {{common.nav.ci}}</a>
       <a href="#profile"><span>05</span> {{common.nav.profile}}</a>
+      <a class="section-nav-page" href="{{SHI_HREF}}"><span aria-hidden="true">↗</span> {{common.nav.shi}}</a>
     </nav>
     <nav class="language-nav" aria-label="{{common.language_nav_label_attr}}">
       {{LANG_SWITCHER}}
     </nav>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
       <p class="eyebrow">{{home.eyebrow}}</p>
       <h1 id="hero-title">{{PRIMARY_NAME_HERO}}</h1>

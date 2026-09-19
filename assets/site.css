@@ -87,13 +87,14 @@
   color-scheme: light dark;
   --ink: #171614;
   --muted: #625e57;
-  --faint: #746e66;
+  --faint: #6c665f;
   --paper: #f5f2eb;
   --paper-soft: #ece8df;
   --line: #d7d2c8;
   --accent: #8a2f1d;
   --serif: "EB Garamond", Georgia, "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", serif;
   --mono: "Courier Prime", "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
+  --readable-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Arial, sans-serif;
   --max: 1920px;
   --gutter: clamp(18px, 1.55vw, 30px);
   --gap: clamp(12px, 1.25vw, 24px);
@@ -110,7 +111,7 @@
   :root {
     --ink: #e8e4dc;
     --muted: #aaa49a;
-    --faint: #8a847c;
+    --faint: #918b83;
     --paper: #151412;
     --paper-soft: #1d1b18;
     --line: #34312c;
@@ -125,6 +126,7 @@
 }
 
 html {
+  font-size: 100%;
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
 }
@@ -134,8 +136,9 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1.68;
+  overflow-wrap: anywhere;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -165,8 +168,13 @@ a:hover {
 }
 
 :focus-visible {
-  outline: 1px solid var(--accent);
-  outline-offset: 5px;
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+  scroll-margin-block: 96px;
+}
+
+main[tabindex="-1"]:focus {
+  outline: none;
 }
 
 .wrap {
@@ -176,6 +184,18 @@ a:hover {
 
 [lang="en"] {
   font-kerning: normal;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 .skip-link {
@@ -188,12 +208,467 @@ a:hover {
   background: var(--ink);
   color: var(--paper);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: .8125rem;
   text-decoration: none;
 }
 
 .skip-link:focus {
   transform: translateY(0);
+}
+
+/* Reading preferences — persistent, user-controlled accessibility layer. */
+
+.reading-tools {
+  display: none;
+  position: fixed;
+  right: max(14px, var(--gutter));
+  bottom: max(14px, var(--gutter));
+  z-index: 120;
+  color: var(--ink);
+  font-family: var(--readable-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.reading-js .reading-tools {
+  display: block;
+}
+
+.reading-tools details {
+  position: relative;
+}
+
+.reading-tools summary {
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: .55em;
+  padding: 8px 12px;
+  border: 1px solid var(--muted);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 4px 18px color-mix(in srgb, var(--ink) 10%, transparent);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.reading-tools summary::-webkit-details-marker {
+  display: none;
+}
+
+.reading-tools summary::after {
+  content: "+" / "";
+  color: var(--faint);
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.reading-tools details[open] summary::after {
+  content: "−" / "";
+}
+
+.reading-tools-mark {
+  font-weight: 700;
+  letter-spacing: -.03em;
+}
+
+.reading-tools-label {
+  font-size: .9375rem;
+  font-weight: 600;
+}
+
+.reading-panel {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 10px);
+  width: min(360px, calc(100vw - 28px));
+  max-height: min(72vh, 640px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 18px;
+  border: 1px solid var(--muted);
+  background: var(--paper);
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--ink) 14%, transparent);
+  color: var(--ink);
+}
+
+.reading-panel fieldset {
+  border: 0;
+}
+
+.reading-panel legend {
+  margin-bottom: 6px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.reading-description {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.reading-option {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 0;
+  cursor: pointer;
+}
+
+.reading-option input {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+}
+
+.reading-option span {
+  flex: 1 1 auto;
+}
+
+.reading-reset {
+  min-width: 88px;
+  min-height: 44px;
+  margin-top: 12px;
+  padding: 8px 14px;
+  border: 1px solid var(--muted);
+  background: var(--paper-soft);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reading-reset:hover,
+.reading-tools summary:hover {
+  border-color: var(--accent);
+}
+
+/* Optional reading modes. They never remove content. */
+
+html[data-reading-sans] {
+  --serif: var(--readable-sans);
+  --mono: var(--readable-sans);
+}
+
+html[data-reading-sans] body {
+  font-variant-ligatures: none;
+}
+
+html[data-reading-sans] :is(em, i) {
+  font-style: normal;
+  font-weight: 650;
+}
+
+html[data-reading-sans] :is(
+  .site-home .language-nav,
+  .site-home .eyebrow,
+  .site-home .section-kicker,
+  .site-home .project-type,
+  .site-home .project-evidence-disclosure summary,
+  .site-home .poetry-index > p:first-child,
+  .page-topbar .page-languages,
+  .notfound-languages
+) {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+html[data-reading-large] {
+  font-size: 112.5%;
+}
+
+html[data-reading-large] body {
+  font-size: 1.125rem;
+}
+
+html[data-reading-large] :is(
+  .site-home .project-main > p:last-child,
+  .site-home .section-note,
+  .site-home .writing-list article > p:not(.writing-no):not(.writing-meta),
+  .site-home .poetry-preview .tune,
+  .site-home .poetry-index,
+  .literary-page .sub,
+  .literary-page .poem .translation,
+  .shi-page .sub
+) {
+  font-size: 1rem;
+}
+
+html[data-reading-large] :is(
+  .site-home .section-nav,
+  .site-home .language-nav,
+  .site-home .eyebrow,
+  .site-home .hero-id,
+  .site-home .hero-cover figcaption,
+  .site-home .section-no,
+  .site-home .section-kicker,
+  .site-home .project-index,
+  .site-home .project-type,
+  .site-home .project-proof,
+  .site-home .project-meta,
+  .site-home .project-system,
+  .site-home .project-evidence-disclosure summary,
+  .site-home .project-evidence figcaption,
+  .site-home .photo-sequence figcaption,
+  .site-home .writing-no,
+  .site-home .writing-meta,
+  .site-home .poetry-index > p:first-child,
+  .site-home .site-footer,
+  .page-topbar,
+  .literary-page .source-title,
+  .literary-page .toc,
+  .literary-page .poem .date,
+  .literary-page .poem .translation .et,
+  .literary-page footer,
+  .shi-page .draft h2,
+  .shi-page .num,
+  .shi-page footer,
+  .notfound-languages,
+  .notfound-copy a
+) {
+  font-size: .82rem;
+}
+
+html[data-reading-spacing] body {
+  line-height: 1.82;
+}
+
+html[data-reading-spacing] :is(p, li, dd, dt, figcaption) {
+  letter-spacing: .035em;
+  word-spacing: .12em;
+}
+
+html[data-reading-spacing] :is(.locale-zh, .locale-ja) :is(p, li, dd, dt, figcaption) {
+  letter-spacing: .045em;
+  word-spacing: normal;
+}
+
+html[data-reading-spacing] p + p {
+  margin-top: .85em;
+}
+
+html[data-reading-measure] :is(
+  .site-home .hero-copy,
+  .site-home .project-main > p,
+  .site-home .writing-list article > p:not(.writing-no),
+  .site-home .credit p,
+  .literary-page .sub,
+  .literary-page .translation,
+  .shi-page .sub,
+  .notfound-copy
+) {
+  max-width: 56ch;
+}
+
+html[data-reading-measure] :is(.locale-zh, .locale-ja) :is(
+  .site-home .hero-copy,
+  .site-home .project-main > p,
+  .site-home .writing-list article > p:not(.writing-no),
+  .site-home .credit p,
+  .literary-page .sub,
+  .literary-page .translation,
+  .shi-page .sub,
+  .notfound-copy
+) {
+  max-width: 34em;
+}
+
+html[data-reading-simple] .site-home .masthead,
+html[data-reading-simple] .literary-page .page-topbar,
+html[data-reading-simple] .shi-page .page-topbar {
+  position: static;
+}
+
+html[data-reading-simple] .site-home :is(.hero, .section-head, .project, .poetry-preview) {
+  display: block;
+}
+
+html[data-reading-simple] .site-home .hero-id,
+html[data-reading-simple] .site-home .hero-cover,
+html[data-reading-simple] .site-home .hero-copy,
+html[data-reading-simple] .site-home :is(.project-main, .project-proof, .project-meta, .project-system),
+html[data-reading-simple] .site-home .section-kicker {
+  width: min(100%, 72ch);
+  margin-top: 28px;
+}
+
+html[data-reading-simple] .site-home .hero h1 {
+  max-width: 10ch;
+}
+
+html[data-reading-simple] .site-home .hero-cover {
+  width: min(100%, 760px);
+}
+
+html[data-reading-simple] .site-home .project-index,
+html[data-reading-simple] .site-home .section-no {
+  margin-bottom: 12px;
+}
+
+html[data-reading-simple] .site-home .writing-list,
+html[data-reading-simple] .site-home .photo-sequence {
+  display: block;
+}
+
+html[data-reading-simple] .site-home .writing-list article {
+  padding: 30px 0;
+  border-left: 0;
+}
+
+html[data-reading-simple] .site-home .writing-list article + article {
+  border-top: 1px solid var(--line);
+}
+
+html[data-reading-simple] .site-home .photo-sequence :is(figure, .photo-triptych, .photo-pair, .photo-pair-mixed) {
+  display: block;
+  margin-bottom: 54px;
+}
+
+html[data-reading-simple] .site-home .photo-sequence figure {
+  max-width: 880px;
+}
+
+html[data-reading-simple] .site-home .project-evidence {
+  display: block;
+}
+
+html[data-reading-simple] .site-home .project-evidence figure + figure {
+  margin-top: 38px;
+}
+
+html[data-reading-simple] .site-home .project-evidence figcaption {
+  display: block;
+}
+
+html[data-reading-simple] .site-home .project-evidence figcaption span {
+  display: block;
+}
+
+html[data-reading-simple] .site-home .project-evidence figcaption span:last-child {
+  max-width: none;
+  margin-top: 4px;
+  text-align: left;
+}
+
+html[data-reading-simple] .site-home .chronology {
+  width: 100%;
+  margin-left: 0;
+}
+
+html[data-reading-simple] .literary-page header,
+html[data-reading-simple] .literary-page .poem,
+html[data-reading-simple] .shi-page header,
+html[data-reading-simple] .shi-page main,
+html[data-reading-simple] .shi-page .draft {
+  display: block;
+}
+
+html[data-reading-simple] .literary-page :is(.sub, .toc, .translation),
+html[data-reading-simple] .shi-page .sub {
+  margin-top: 28px;
+}
+
+html[data-reading-simple] .literary-page .translation {
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+html[data-reading-simple] .shi-page .draft + .draft {
+  padding-left: 0;
+  border-left: 0;
+  border-top: 1px solid var(--line);
+}
+
+html[data-reading-motion] {
+  scroll-behavior: auto;
+}
+
+html[data-reading-motion] *,
+html[data-reading-motion] *::before,
+html[data-reading-motion] *::after {
+  animation: none !important;
+  scroll-behavior: auto !important;
+  transition: none !important;
+}
+
+html[data-reading-motion] .site-home::before {
+  display: none !important;
+}
+
+@media (prefers-color-scheme: light) {
+  html[data-reading-contrast] {
+    --ink: #000;
+    --muted: #202020;
+    --faint: #333;
+    --paper: #fff;
+    --paper-soft: #f3f3f3;
+    --line: #737373;
+    --accent: #701b0d;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-reading-contrast] {
+    --ink: #fff;
+    --muted: #e2e2e2;
+    --faint: #c8c8c8;
+    --paper: #000;
+    --paper-soft: #111;
+    --line: #8a8a8a;
+    --accent: #ff9a80;
+  }
+}
+
+@media (prefers-contrast: more) and (prefers-color-scheme: light) {
+  :root {
+    --ink: #000;
+    --muted: #202020;
+    --faint: #333;
+    --paper: #fff;
+    --paper-soft: #f3f3f3;
+    --line: #737373;
+    --accent: #701b0d;
+  }
+}
+
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root {
+    --ink: #fff;
+    --muted: #e2e2e2;
+    --faint: #c8c8c8;
+    --paper: #000;
+    --paper-soft: #111;
+    --line: #8a8a8a;
+    --accent: #ff9a80;
+  }
+}
+
+@media (forced-colors: active) {
+  :focus-visible {
+    outline: 3px solid Highlight;
+  }
+
+  .reading-tools summary,
+  .reading-panel,
+  .reading-reset {
+    border: 1px solid ButtonText;
+    box-shadow: none;
+    forced-color-adjust: auto;
+  }
+
+  .site-home .language-nav .current,
+  .page-topbar .page-languages .current,
+  .notfound-languages .current {
+    border-color: currentColor;
+  }
 }
 
 /* Home — strict editorial grid, no floating collage. */
@@ -210,7 +685,10 @@ a:hover {
 
 .site-home .wordmark {
   grid-column: 1 / 4;
-  font-size: 18px;
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  font-size: 1.125rem;
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
@@ -227,10 +705,10 @@ a:hover {
 .site-home .section-nav {
   grid-column: 4 / 10;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: var(--gap);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   line-height: 1.2;
   letter-spacing: .04em;
   text-transform: lowercase;
@@ -239,10 +717,11 @@ a:hover {
 .site-home .language-nav {
   grid-column: 10 / 13;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
-  gap: clamp(10px, 1.2vw, 20px);
+  gap: clamp(4px, .8vw, 12px);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: .8125rem;
   line-height: 1.2;
   letter-spacing: .055em;
   text-transform: uppercase;
@@ -253,11 +732,15 @@ a:hover {
 .site-home .language-nav .current {
   display: flex;
   align-items: center;
-  min-height: 24px;
+  min-height: 44px;
   margin-block: -5px;
   padding-block: 5px;
   color: var(--muted);
   text-decoration: none;
+}
+
+.site-home .section-nav a {
+  min-width: 44px;
 }
 
 .site-home .section-nav a span {
@@ -273,7 +756,7 @@ a:hover {
 
 .site-home .language-nav a,
 .site-home .language-nav .current {
-  min-width: 24px;
+  min-width: 44px;
   justify-content: center;
 }
 
@@ -298,7 +781,7 @@ a:hover {
   align-self: start;
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   line-height: 1.4;
   letter-spacing: .15em;
   text-transform: uppercase;
@@ -322,7 +805,7 @@ a:hover {
   padding-bottom: .2em;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: .8125rem;
   line-height: 1.65;
 }
 
@@ -354,7 +837,7 @@ a:hover {
   margin-top: 7px;
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   line-height: 1.35;
   letter-spacing: .04em;
 }
@@ -405,7 +888,7 @@ a:hover {
   grid-column: 1 / 2;
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
 }
 
 .site-home .section-head h2 {
@@ -420,7 +903,7 @@ a:hover {
   grid-column: 9 / 13;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   line-height: 1.5;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -441,7 +924,7 @@ a:hover {
   padding-top: .55em;
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
 }
 
 .site-home .project-main {
@@ -453,7 +936,7 @@ a:hover {
   margin-bottom: 1.1em;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   line-height: 1.4;
   letter-spacing: .055em;
   text-transform: uppercase;
@@ -488,7 +971,7 @@ a:hover {
 
 .site-home .project-feature .project-main > p:last-child {
   max-width: 68ch;
-  font-size: clamp(15px, 1.15vw, 18px);
+  font-size: clamp(16px, 1.15vw, 18px);
 }
 
 .site-home .project-feature .project-proof {
@@ -523,7 +1006,7 @@ a:hover {
 .site-home .project-main > p:last-child {
   max-width: 63ch;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 1rem;
   line-height: 1.66;
   text-wrap: pretty;
 }
@@ -534,7 +1017,7 @@ a:hover {
   align-self: end;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   line-height: 1.55;
 }
 
@@ -578,7 +1061,7 @@ a:hover {
   padding: 11px 0 10px;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   line-height: 1.4;
   letter-spacing: .045em;
   text-transform: uppercase;
@@ -598,7 +1081,7 @@ a:hover {
 .site-home .project-evidence-disclosure summary::after {
   content: "+" / "";
   color: var(--faint);
-  font-size: 14px;
+  font-size: .875rem;
   line-height: 1;
   transition: transform 180ms ease, color 180ms ease;
 }
@@ -678,7 +1161,7 @@ a:hover {
   border-bottom: 1px solid var(--line);
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   line-height: 1.35;
 }
 
@@ -690,7 +1173,7 @@ a:hover {
   margin-top: 18px;
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   line-height: 1.55;
 }
 
@@ -784,7 +1267,7 @@ a:hover {
   width: min(42ch, 100%);
   margin: clamp(48px, 6vw, 86px) 0 0 auto;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 1rem;
   line-height: 1.7;
 }
 
@@ -848,7 +1331,7 @@ a:hover {
   margin-bottom: clamp(36px, 4vw, 58px);
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
 }
 
 .site-home .writing-list h3 {
@@ -862,7 +1345,7 @@ a:hover {
 .site-home .writing-list article > p:not(.writing-no):not(.writing-meta) {
   max-width: 64ch;
   color: var(--muted);
-  font-size: 14.5px;
+  font-size: 1rem;
   line-height: 1.65;
   text-wrap: pretty;
 }
@@ -871,7 +1354,7 @@ a:hover {
   margin-top: 28px;
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   line-height: 1.5;
   text-wrap: pretty;
 }
@@ -898,6 +1381,9 @@ a:hover {
 }
 
 .site-home .writing-meta a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   color: var(--muted);
 }
 
@@ -918,7 +1404,7 @@ a:hover {
 .site-home .poetry-preview .tune {
   margin-bottom: 2em;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.7;
   letter-spacing: .035em;
 }
@@ -933,7 +1419,7 @@ a:hover {
   margin-top: 2em;
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
 }
 
 .site-home .poetry-index {
@@ -944,7 +1430,7 @@ a:hover {
   align-items: flex-start;
   gap: .55em;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.55;
 }
 
@@ -952,12 +1438,15 @@ a:hover {
   margin-bottom: .55em;
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   letter-spacing: .06em;
   text-transform: uppercase;
 }
 
 .site-home .poetry-index a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   text-decoration: none;
   border-bottom: 1px solid var(--line);
 }
@@ -970,7 +1459,7 @@ a:hover {
 .site-home .poetry-index .text-link {
   margin-top: .45em;
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
 }
 
 /* Profile */
@@ -993,7 +1482,7 @@ a:hover {
   padding-top: .26em;
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
 }
 
 .site-home .credit p {
@@ -1020,7 +1509,7 @@ a:hover {
   border-top: 1px solid var(--ink);
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   line-height: 1.6;
 }
 
@@ -1042,8 +1531,8 @@ a:hover {
 .site-home .footer-links a {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
-  padding-block: 3px;
+  min-height: 44px;
+  padding-block: 6px;
   text-decoration: none;
   border-bottom: 1px solid var(--line);
 }
@@ -1064,15 +1553,18 @@ a:hover {
   padding: 22px 0 17px;
   border-bottom: 1px solid var(--line);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   line-height: 1.3;
 }
 
 .page-topbar .page-wordmark {
   grid-column: 1 / 4;
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: 1.0625rem;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -1095,8 +1587,9 @@ a:hover {
 .page-topbar .page-languages {
   grid-column: 9 / 13;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
-  gap: clamp(10px, 1.2vw, 18px);
+  gap: clamp(4px, .8vw, 12px);
   letter-spacing: .055em;
   text-transform: uppercase;
 }
@@ -1106,11 +1599,17 @@ a:hover {
 .page-topbar .page-languages .current {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
+  min-height: 44px;
   margin-block: -5px;
   padding-block: 5px;
   color: var(--muted);
   text-decoration: none;
+}
+
+.page-topbar .page-nav a,
+.page-topbar .page-nav [aria-current="page"] {
+  min-width: 44px;
+  justify-content: center;
 }
 
 .page-topbar .page-nav [aria-current="page"],
@@ -1120,7 +1619,7 @@ a:hover {
 
 .page-topbar .page-languages a,
 .page-topbar .page-languages .current {
-  min-width: 24px;
+  min-width: 44px;
   justify-content: center;
 }
 
@@ -1172,7 +1671,7 @@ a:hover {
   grid-column: 7 / 13;
   align-self: end;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 1rem;
   line-height: 1.86;
 }
 
@@ -1181,7 +1680,7 @@ a:hover {
   margin-top: 1.2em;
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: .8125rem;
   line-height: 1.5;
   letter-spacing: .045em;
 }
@@ -1198,7 +1697,7 @@ a:hover {
   gap: .25em 1.1em;
   margin-top: 32px;
   font-family: var(--mono);
-  font-size: 11.5px;
+  font-size: .8125rem;
   line-height: 1.8;
   letter-spacing: .025em;
 }
@@ -1207,9 +1706,9 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 28px;
-  min-height: 28px;
-  padding: 3px 2px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 6px 4px;
   color: var(--muted);
   text-decoration: none;
 }
@@ -1255,7 +1754,7 @@ a:hover {
   grid-column: 1 / 6;
   margin-top: 20px;
   color: var(--faint);
-  font-size: 12px;
+  font-size: .8125rem;
 }
 
 .literary-page .poem .translation {
@@ -1265,7 +1764,7 @@ a:hover {
   margin-top: 0;
   color: var(--muted);
   white-space: pre-line;
-  font-size: clamp(14px, 1.3vw, 16px);
+  font-size: clamp(16px, 1.3vw, 17px);
   line-height: 1.88;
 }
 
@@ -1274,7 +1773,7 @@ a:hover {
   margin-bottom: .9em;
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 11.5px;
+  font-size: .8125rem;
   line-height: 1.65;
   letter-spacing: .01em;
 }
@@ -1284,10 +1783,13 @@ a:hover {
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 11.5px;
+  font-size: .8125rem;
 }
 
 .literary-page footer a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   color: var(--muted);
   text-decoration: none;
   border-bottom: 1px solid var(--line);
@@ -1319,7 +1821,7 @@ a:hover {
   align-self: end;
   max-width: 54ch;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 1rem;
   line-height: 1.88;
 }
 
@@ -1349,7 +1851,7 @@ a:hover {
   margin-bottom: clamp(36px, 4vw, 54px);
   color: var(--faint);
   font-family: var(--mono);
-  font-size: 11.5px;
+  font-size: .8125rem;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: .13em;
@@ -1362,7 +1864,7 @@ a:hover {
   padding-top: .22em;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: .8125rem;
   letter-spacing: .24em;
 }
 
@@ -1383,10 +1885,13 @@ a:hover {
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 11.5px;
+  font-size: .8125rem;
 }
 
 .shi-page footer a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   color: var(--muted);
   text-decoration: none;
   border-bottom: 1px solid var(--line);
@@ -1405,9 +1910,12 @@ a:hover {
   top: var(--gutter);
   right: var(--gutter);
   display: flex;
-  gap: clamp(10px, 1.2vw, 18px);
+  max-width: calc(100vw - (2 * var(--gutter)));
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: .8125rem;
   line-height: 1.2;
   letter-spacing: .055em;
   text-transform: uppercase;
@@ -1415,6 +1923,11 @@ a:hover {
 
 .notfound-languages a,
 .notfound-languages .current {
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
   color: var(--muted);
   text-decoration: none;
 }
@@ -1455,6 +1968,10 @@ a:hover {
   line-height: 1.4;
 }
 
+.notfound-copy h1 {
+  font: inherit;
+}
+
 .notfound-copy [lang="en"] {
   margin-top: .4em;
   color: var(--muted);
@@ -1462,11 +1979,13 @@ a:hover {
 }
 
 .notfound-copy a {
-  display: inline-block;
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   margin-top: 2.8em;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: .8125rem;
   text-decoration: none;
   border-bottom: 1px solid var(--line);
 }
@@ -1608,6 +2127,14 @@ a:hover {
     content-visibility: auto;
   }
 
+  html[data-reading-sans] .site-home :is(.work-section, .photo-section, .writing-section, .poetry-section, .profile-section),
+  html[data-reading-large] .site-home :is(.work-section, .photo-section, .writing-section, .poetry-section, .profile-section),
+  html[data-reading-spacing] .site-home :is(.work-section, .photo-section, .writing-section, .poetry-section, .profile-section),
+  html[data-reading-simple] .site-home :is(.work-section, .photo-section, .writing-section, .poetry-section, .profile-section) {
+    content-visibility: visible;
+    contain-intrinsic-size: none;
+  }
+
   .site-home .work-section { contain-intrinsic-size: auto var(--cis-work); }
   .site-home .photo-section { contain-intrinsic-size: auto var(--cis-photo); }
   .site-home .writing-section { contain-intrinsic-size: auto var(--cis-writing); }
@@ -1743,7 +2270,7 @@ a:hover {
   }
 
   body {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .site-home {
@@ -1775,18 +2302,19 @@ a:hover {
     grid-column: 2;
     grid-row: 1;
     gap: 2px;
-    font-size: 9.5px;
+    font-size: .8125rem;
   }
 
   .site-home .section-nav {
     grid-column: 1 / -1;
     grid-row: 2;
-    grid-template-columns: repeat(5, max-content);
-    justify-content: space-between;
-    gap: 12px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: stretch;
+    gap: 4px 12px;
     margin-top: 22px;
-    overflow-x: auto;
+    overflow-x: visible;
     padding-bottom: 2px;
+    line-height: 1.35;
   }
 
   .site-home .section-nav a span {
@@ -1803,7 +2331,7 @@ a:hover {
     grid-column: 1 / 13;
     grid-row: auto;
     margin-bottom: 42px;
-    font-size: 9.5px;
+    font-size: .8125rem;
   }
 
   .site-home .hero h1 {
@@ -2041,7 +2569,7 @@ a:hover {
     grid-column: 2;
     grid-row: 1;
     gap: 8px;
-    font-size: 9.5px;
+    font-size: .8125rem;
   }
 
   .page-topbar .page-nav {
@@ -2130,6 +2658,10 @@ a:hover {
 }
 
 @media (max-width: 430px) {
+  .reading-tools-label {
+    display: none;
+  }
+
   .site-home .masthead {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -2148,6 +2680,7 @@ a:hover {
 
   .site-home .section-nav {
     grid-row: 3;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: 18px;
   }
 
@@ -2181,12 +2714,28 @@ a:hover {
   }
 }
 
+@media print {
+  .reading-tools,
+  .skip-link {
+    display: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  .site-home .project h3 a::after {
-    transition: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+
+  .site-home::before {
+    display: none !important;
   }
 }

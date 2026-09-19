@@ -7,97 +7,30 @@
 <meta name="theme-color" content="#fcfcfa" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#161513" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>詞</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-<style>
-  @font-face {
-    font-family: "Shippori Mincho";
-    src: local("Shippori Mincho"), local("ShipporiMincho-Regular"), url("../assets/fonts/shippori-mincho-subset.woff2") format("woff2");
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "IMing Gap";
-    src: url("../assets/fonts/iming-gap.woff2") format("woff2");
-    font-display: swap;
-    unicode-range: U+60E6, U+8E29;
-  }
-  :root {
-    --ink: #1a1a1a;
-    --muted: #767676;
-    --faint: #b5b5b5;
-    --paper: #fcfcfa;
-    --line: #e8e8e4;
-    --accent: #8a2f1d;
-    --serif: "Garamond Premier Pro", "EB Garamond", Georgia, "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", serif;
-    --mono: "Courier Prime", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --ink: #e6e4df;
-      --muted: #9a988f;
-      --faint: #5f5e58;
-      --paper: #161513;
-      --line: #2a2925;
-      --accent: #c96b52;
-    }
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--serif);
-    font-size: 17px; line-height: 1.85;
-    font-synthesis: none;
-    -webkit-font-smoothing: antialiased;
-  }
-  .wrap { max-width: 660px; margin: 0 auto; padding: 0 24px; }
-  header { padding: 18vh 0 10vh; }
-  h1 { font-size: 28px; font-weight: 600; letter-spacing: .04em; }
-  h1 span { color: var(--faint); font-weight: 400; margin-left: .35em; font-size: 20px; }
-  .bio { margin-top: 1.4em; color: var(--muted); }
-  .bio p { margin: .1em 0; }
-  .bio p:first-child { color: var(--ink); }
-  nav { margin-top: 3.5em; font-family: var(--mono); font-size: 13px; letter-spacing: .08em; }
-  nav a { color: var(--muted); text-decoration: none; margin-right: 2.2em; }
-  nav a:hover { color: var(--accent); }
-  nav a[aria-current] { color: var(--ink); }
-  section { padding: 7vh 0; border-top: 1px solid var(--line); scroll-margin-top: 4vh; }
-  h2 {
-    font-family: var(--mono); font-size: 12.5px; font-weight: 400; letter-spacing: .2em;
-    text-transform: uppercase; color: var(--faint); margin-bottom: 2.5em;
-  }
-  h3 { font-size: 17px; font-weight: 600; margin: 2.2em 0 .5em; }
-  h3:first-of-type { margin-top: 0; }
-  p { margin: 0 0 1.1em; }
-  p:last-child { margin-bottom: 0; }
-  ul { margin: 0 0 1.1em; padding-left: 1.3em; }
-  li { margin-bottom: .45em; }
-  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--faint); }
-  a:hover { color: var(--accent); border-color: var(--accent); }
-  strong { font-weight: 600; }
-  .pull {
-    border-left: 2px solid var(--accent); padding-left: 1.4em;
-    color: var(--muted); font-style: italic; margin: 0 0 1.1em;
-  }
-  .pull em { font-style: normal; color: var(--ink); }
-  dl { margin: 0 0 1.1em; }
-  dt {
-    font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em;
-    color: var(--faint); margin-top: 1.5em;
-  }
-  dt:first-child { margin-top: 0; }
-  dd { margin: .25em 0 0; }
-  footer {
-    padding: 8vh 0 12vh; border-top: 1px solid var(--line);
-    font-family: var(--mono); color: var(--faint); font-size: 13px;
-  }
-  footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
-  footer a:hover { color: var(--accent); }
-  @media (max-width: 540px) { header { padding-top: 12vh; } }
-</style>
+<script src="../assets/accessibility.js"></script>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+<aside class="reading-tools" aria-label="Reading options">
+  <details>
+    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">Reading options</span><span class="visually-hidden">Reading options</span></summary>
+    <div class="reading-panel">
+      <fieldset>
+        <legend>Reading preferences</legend>
+        <p class="reading-description">Adjust this page for easier reading. Settings stay on this device.</p>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>Use sans-serif text</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>Larger text</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>More text spacing</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>Narrower text columns</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>Simpler layout</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>Reduce motion</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>Higher contrast</span></label>
+      </fieldset>
+      <button type="button" class="reading-reset" data-reading-reset>Reset</button>
+    </div>
+  </details>
+</aside>
 <div class="wrap">
   <header>
     <h1>Terms of Service</h1>
@@ -112,6 +45,7 @@
     </nav>
   </header>
 
+<main id="main" tabindex="-1">
 <section>
   <h2>1 &middot; What this is</h2>
   <p>Cait Mail Assistant (&ldquo;the tool&rdquo;) is a personal utility written and operated by <strong>Hanpu Li</strong>, an individual in London, United Kingdom, for the management of her own email correspondence and that of a member of her household, with that person&rsquo;s permission.</p>
@@ -140,6 +74,8 @@
   <p>These terms and any dispute arising out of them, whether contractual or non-contractual, are governed by the law of <strong>England and Wales</strong>, and the courts of England and Wales have exclusive jurisdiction.</p>
   <p>These terms may be amended by publication of a revised version on this page, with an updated effective date and version number.</p>
 </section>
+
+</main>
 
   <footer>
     <p>Effective 5 September 2026 &middot; v1.0 &middot; Hanpu Li &middot; London &middot; <a href="mailto:caitlye+mailassistant@gmail.com">caitlye+mailassistant@gmail.com</a> &middot; <a href="https://hanpuli.github.io/">hanpuli.github.io</a></p>

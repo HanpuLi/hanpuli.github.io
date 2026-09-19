@@ -10,14 +10,16 @@
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>詞</text></svg>">
 {{FONT_PRELOADS}}
+<script src="{{ASSET_PREFIX}}assets/accessibility.js"></script>
 <link rel="stylesheet" href="{{ASSET_PREFIX}}assets/site.css">
 </head>
 <body class="notfound-page locale-{{LOCALE}}">
+  {{READING_TOOLS}}
   <nav class="notfound-languages" aria-label="{{common.language_nav_label_attr}}">{{LANG_SWITCHER}}</nav>
   <main class="notfound-shell">
     <p class="notfound-code" aria-hidden="true">404</p>
     <div class="notfound-copy">
-      <p>{{notfound.line}}</p>
+      <h1>{{notfound.line}}</h1>
       <a href="{{HOME_HREF}}">{{notfound.home}}</a>
     </div>
   </main>

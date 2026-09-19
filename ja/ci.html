@@ -27,10 +27,30 @@
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-subset.woff2" crossorigin>
+<script src="../assets/accessibility.js"></script>
 <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body class="literary-page locale-ja">
 <a class="skip-link" href="#poems">詩へスキップ</a>
+<aside class="reading-tools" aria-label="読みやすさ">
+  <details>
+    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">読みやすさ</span><span class="visually-hidden">読みやすさ</span></summary>
+    <div class="reading-panel">
+      <fieldset>
+        <legend>読みやすさの設定</legend>
+        <p class="reading-description">読みやすい表示に調整できます。設定はこの端末にだけ保存されます。</p>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>ゴシック体（サンセリフ）を使う</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>文字を大きくする</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>文字間隔を広げる</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>行幅を短くする</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>1列のシンプルなレイアウト</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>動きを減らす</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>コントラストを上げる</span></label>
+      </fieldset>
+      <button type="button" class="reading-reset" data-reading-reset>リセット</button>
+    </div>
+  </details>
+</aside>
 <div class="wrap">
 
   <div class="page-topbar">
@@ -42,12 +62,12 @@
       <span aria-current="page">詞</span>
     </nav>
     <nav class="page-languages" aria-label="言語">
-      <a href="/ci.html" hreflang="en-GB" lang="en-GB" title="English">EN</a>
-      <a href="/zh/ci.html" hreflang="zh-Hant-HK" lang="zh-Hant-HK" title="中文">中</a>
-      <span class="current" lang="ja" aria-current="page" title="日本語">日</span>
-      <a href="/de/ci.html" hreflang="de" lang="de" title="Deutsch">DE</a>
-      <a href="/fr/ci.html" hreflang="fr" lang="fr" title="Français">FR</a>
-      <a href="/ru/ci.html" hreflang="ru" lang="ru" title="Русский">RU</a>
+      <a href="/ci.html" hreflang="en-GB" lang="en-GB" aria-label="English" title="English">EN</a>
+      <a href="/zh/ci.html" hreflang="zh-Hant-HK" lang="zh-Hant-HK" aria-label="中文" title="中文">中</a>
+      <span class="current" lang="ja" aria-current="page" title="日本語"><span aria-hidden="true">日</span><span class="visually-hidden">日本語</span></span>
+      <a href="/de/ci.html" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch">DE</a>
+      <a href="/fr/ci.html" hreflang="fr" lang="fr" aria-label="Français" title="Français">FR</a>
+      <a href="/ru/ci.html" hreflang="ru" lang="ru" aria-label="Русский" title="Русский">RU</a>
     </nav>
   </div>
 
@@ -60,7 +80,7 @@
     <p class="toc"><a href="#a1">A1</a><a href="#b1">B1</a><a href="#a2">A2</a><a href="#b2">B2</a><a href="#b3">B3</a><a href="#b4">B4</a><a href="#b5">B5</a><a href="#a3">A3</a><a href="#a4">A4</a><a href="#a5">A5</a><a href="#a6">A6</a><a href="#a7">A7</a><a href="#b6">B6</a><a href="#a8">A8</a><a href="#b7">B7</a><a href="#a9">A9</a><a href="#a10" class="waibian">集外 1</a><a href="#w2" class="waibian">集外 2</a><a href="#w3" class="waibian">集外 3</a></p>
   </header>
 
-  <main id="poems">
+  <main id="poems" tabindex="-1">
       <div class="poem jia" id="a1">
     <h2 lang="zh-Hant-HK">甲一《臨江仙 · 與同硯燈下夜坐，侵曉方別》</h2>
     <div class="body" lang="zh-Hant-HK">幾度深宵同默坐，孤燈紅淚垂遲。
@@ -70,7 +90,7 @@
 不語各含無限思，而今惟道相期。
 夜闌暗忘漏聲移。
 慵來還指日，明日又今時。</div>
-    <div class="translation" lang="ja"><span class="et">Linjiangxian の調べ · 学友と灯の下で夜を過ごし、明け方になって別れる</span>幾度、夜更けまで二人で黙って座ったことだろう。
+    <div class="translation" lang="ja"><span class="et">臨江仙の調べ · 学友と灯の下で夜を過ごし、明け方になって別れる</span>幾度、夜更けまで二人で黙って座ったことだろう。
 ひとつきりの灯、その赤い涙がゆっくり垂れる。
 ひと秋ぶんの胸のうちを、誰が知るだろう。
 窓を開ける。星はいまにも落ちそうで、
@@ -92,7 +112,7 @@
 客散非因誰獨在，他人皆自相依。
 席旁偶坐共相棲。
 漏殘晨露上，風過落花時。</div>
-    <div class="translation" lang="ja"><span class="et">無題 · Linjiangxian の調べ</span>ひっそりした廊下に月が明るく、人の気配がようやく静まった。
+    <div class="translation" lang="ja"><span class="et">無題 · 臨江仙の調べ</span>ひっそりした廊下に月が明るく、人の気配がようやく静まった。
 二人で花の小径を、ゆっくり歩く。
 灯の前で笑い、話し、互いに疑いもない。
 古い掛け布団を、何気なく手渡す。
@@ -114,7 +134,7 @@
 同擁寒衾還細話，當筵曾許心期。
 醒來可認醉中辭？
 朝霞渾未記，宿霧已盈墀。</div>
-    <div class="translation" lang="ja"><span class="et">Linjiangxian の調べ · 酒のあと、頬に手を添えて階上へ上がり、夜更けまで寄り添う。人に問われても避けなかった</span>深く酔い、支え合って並んで寄りかかった。
+    <div class="translation" lang="ja"><span class="et">臨江仙の調べ · 酒のあと、頬に手を添えて階上へ上がり、夜更けまで寄り添う。人に問われても避けなかった</span>深く酔い、支え合って並んで寄りかかった。
 階上へ上がり、人には知られたくなかった。
 今夜、灯影はしだいにぼやけてゆく。
 水時計は尽きかけ、夜明けを急かし、
@@ -136,7 +156,7 @@
 欲喚還休，歡猶未省。
 分明一水無舟艇。
 殘灰散盡各歸時，餘釭獨照空庭靜。</div>
-    <div class="translation" lang="ja"><span class="et">無題 · Tasuoxing の調べ</span>香りの温かな一室。並ぶ二つの影の跡。
+    <div class="translation" lang="ja"><span class="et">無題 · 踏莎行の調べ</span>香りの温かな一室。並ぶ二つの影の跡。
 笑い声は簾のあいだの闇へ沈む。
 簾の向こうでは、灯の色さえ先に冷えてゆきそうで、
 暗がりの誰か、その衣に落ちる光も冷たい。
@@ -156,7 +176,7 @@
 不是東風先折取，恐花為我辭根。
 新痕舊鑰莫輕論。
 相逢原是客，客受主家恩。</div>
-    <div class="translation" lang="ja"><span class="et">無題 · Linjiangxian の調べ</span>蝋燭は暗く、こおろぎは冷え、簾の影は細い。
+    <div class="translation" lang="ja"><span class="et">無題 · 臨江仙の調べ</span>蝋燭は暗く、こおろぎは冷え、簾の影は細い。
 酔いの名残にはまだわずかな温もり。
 筆が止まる。紙は渋る。墨が先に呑み込む。
 まだ封もせず、また折りたたむ。
@@ -181,7 +201,7 @@
 謄復塗、深言怕誤，淺字偏安。
 明朝銅色經他手，便認作、一諾窮年。
 燈滅後、丁寧只是加餐。</div>
-    <div class="translation" lang="ja"><span class="et">無題 · Dujiangyun の調べ</span>明るい銅、新しく刻まれた歯。
+    <div class="translation" lang="ja"><span class="et">無題 · 渡江雲の調べ</span>明るい銅、新しく刻まれた歯。
 封じようとして、手を止める。
 まだ熱を残し、指のあいだで弾く。
 ふいに、灯の前に小さな影。
@@ -206,7 +226,7 @@
   <div class="poem yi" id="b5">
     <h2 lang="zh-Hant-HK">乙五《無題 · 十六字令》</h2>
     <div class="body" lang="zh-Hant-HK">銅。鑰齒新裁付掌中。天寒了，加飯且從容。</div>
-    <div class="translation" lang="ja"><span class="et">無題 · Shiliuziling の調べ</span>銅。
+    <div class="translation" lang="ja"><span class="et">無題 · 十六字令の調べ</span>銅。
 歯を新しく刻んだ鍵を、あなたの掌へ。
 寒さが来た。
 よく食べて、急がずに。</div>
@@ -220,7 +240,7 @@
 星欲墜，露初勻。
 當時未敢喚真真。
 案前字暖春封淺，猶有殘香繞指温。</div>
-    <div class="translation" lang="ja"><span class="et">Zhegutian の調べ · あなたから鍵を贈られ、数語の書きつけが添えられていた。灯の下で広げて読む</span>新しく刻まれた鍵の歯。私はそれを大切にする。
+    <div class="translation" lang="ja"><span class="et">鷓鴣天の調べ · あなたから鍵を贈られ、数語の書きつけが添えられていた。灯の下で広げて読む</span>新しく刻まれた鍵の歯。私はそれを大切にする。
 筆を取り上げる。まだ一字も書かぬうちから、もうためらう。
 開いてみれば、書かれているのは三行だけ。
 しばしの親しさ、ひとときの不機嫌。
@@ -240,7 +260,7 @@
 別後音書都杳，逢人怕説西窗。
 偶因殘夢溯流光。
 思忘還入枕，避跡反成雙。</div>
-    <div class="translation" lang="ja"><span class="et">Linjiangxian の調べ · 甲一を回想して。かつて学友と幾晩か黙って座った。別れてから便りはしだいに薄れ、長い時を経てようやく心を定めた</span>かつて、ひっそりした廊下で二人は黙って座った。
+    <div class="translation" lang="ja"><span class="et">臨江仙の調べ · 甲一を回想して。かつて学友と幾晩か黙って座った。別れてから便りはしだいに薄れ、長い時を経てようやく心を定めた</span>かつて、ひっそりした廊下で二人は黙って座った。
 あのときは、ただありふれたことだと思っていた。
 ひとつの灯の赤い涙も、二人の話に加わった。
 秋がもう半ばまで来ているとは知らず、
@@ -262,7 +282,7 @@
 別處星辰未改，人間幾換流年。
 舊潮猶帶醉時顏。
 思忘成此闋，相對鬢先斑。</div>
-    <div class="translation" lang="ja"><span class="et">Linjiangxian の調べ · 甲二を回想して。酒のあと、頬に手を添えて階上へ上がった夜、人に問われて初めて何も避けなかった</span>かつて、ほろ酔いに身を預けて月の下を行き、
+    <div class="translation" lang="ja"><span class="et">臨江仙の調べ · 甲二を回想して。酒のあと、頬に手を添えて階上へ上がった夜、人に問われて初めて何も避けなかった</span>かつて、ほろ酔いに身を預けて月の下を行き、
 肩を並べ、夜更けまで寄りかかっていた。
 宴の席で人に問われても、隠さなかった。
 雪と泥の上、先に去ったのは誰だったか。
@@ -283,7 +303,7 @@
 窗月冷，鬢霜驚。
 如今畫裏喚誰名。
 相看似隔前生事，齧盡痴根草又青。</div>
-    <div class="translation" lang="ja"><span class="et">Zhegutian の調べ · 甲三を回想して。箱の中の古い鍵は緑青に覆われていた。往復した手紙を思い返し、もの寂しく書く</span>小さな鍵。年を経て、錆は暗く広がった。
+    <div class="translation" lang="ja"><span class="et">鷓鴣天の調べ · 甲三を回想して。箱の中の古い鍵は緑青に覆われていた。往復した手紙を思い返し、もの寂しく書く</span>小さな鍵。年を経て、錆は暗く広がった。
 古い手紙を読み終えても、目はまだ冴えている。
 あのころ、「鴛鴦」の二字は書かずに避けたのに、
 その鴛鴦を、幾重にも書き込んでいた。
@@ -303,7 +323,7 @@
 別後西窗青幾度，也應灌溉朝昏。
 爾來各自長年輪。
 偶然風過處，依約暗香聞。</div>
-    <div class="translation" lang="ja"><span class="et">Linjiangxian の調べ · 蘭を株分けしてある人へ送る。かつて香草を贈られた時を思い、もの寂しく書く</span>手で古い蘭を分け、新しく植える。
+    <div class="translation" lang="ja"><span class="et">臨江仙の調べ · 蘭を株分けしてある人へ送る。かつて香草を贈られた時を思い、もの寂しく書く</span>手で古い蘭を分け、新しく植える。
 あの春の温もりを、いまも覚えているだろうか。
 あのころ、玉のような指が香草を贈ってくれた。
 根がもう定着していたとは知らず、
@@ -442,7 +462,7 @@
 茶屢冷，燭頻殘。
 尊前話到漏聲闌。
 每逢座上人微哂，指點卿行在我邊。</div>
-    <div class="translation" lang="ja"><span class="et">Zhegutian の調べ · 送られてきた古い草稿を受け取り、灯の下で読み終え、箱に残していたものと合わせて甲・乙として編んだ。綴じ上げてからは客が来るたび見せ、この末尾に記す</span>古い紙束を二つ、一晩で読み通した。
+    <div class="translation" lang="ja"><span class="et">鷓鴣天の調べ · 送られてきた古い草稿を受け取り、灯の下で読み終え、箱に残していたものと合わせて甲・乙として編んだ。綴じ上げてからは客が来るたび見せ、この末尾に記す</span>古い紙束を二つ、一晩で読み通した。
 あの頃の灯影のもと、二つの稿が共に一冊を成す。
 自分の手で一本の糸を通し、あなたと私を縫い合わせ、
 鴛鴦を本の背のそばで眠らせておく。
@@ -464,7 +484,7 @@
 
 遲，是誤了；
 歸，也是誤了。</div>
-    <div class="translation" lang="ja"><span class="et">集外 · 中呂 · Shanpoyang の調べ · 旧居の前をまた通る</span>風が顔に当たる。ここで立ち止まる。
+    <div class="translation" lang="ja"><span class="et">集外 · 中呂 · 山坡羊の調べ · 旧居の前をまた通る</span>風が顔に当たる。ここで立ち止まる。
 鼻先が先に動く。魂のほうが、私より先に着く。
 本当かはわからない。それでも、本当だと思う。
 街角をぐるぐる回って、また立ち止まる。
@@ -483,7 +503,7 @@
 言漸杳，露初零。獨餘一語未分明。
 頻頻蘸得毫端黑，墨至濃時偏不成。</div>
     <div class="date" lang="zh-Hant-HK">二〇二六年九月九日</div>
-    <div class="translation" lang="ja"><span class="et">集外 · Zhegutian の調べ · 幾晩か灯の下で書こうとした、未完</span>幾晩か、簾の前で一緒に灯芯を切った。
+    <div class="translation" lang="ja"><span class="et">集外 · 鷓鴣天の調べ · 幾晩か灯の下で書こうとした、未完</span>幾晩か、簾の前で一緒に灯芯を切った。
 一生ぶんの話をして、また三更まで来た。
 はじめから終わりまで語り尽くしても、まだ半分が残る。
 夜は深まるままに、硯の墨もひとりで凝ってゆく。
@@ -504,7 +524,7 @@
 手臨燈畔數迴旋。
 明朝風或緊，窗且掩周全。</div>
     <div class="date" lang="zh-Hant-HK">二〇二六年九月九日</div>
-    <div class="translation" lang="ja"><span class="et">集外 · Linjiangxian の調べ</span>簾の影、幾晩も続いた長い話。
+    <div class="translation" lang="ja"><span class="et">集外 · 臨江仙の調べ</span>簾の影、幾晩も続いた長い話。
 降りはじめた露が欄干を濡らす。
 言葉は終わらないまま、息のほうが先に穏やかになる。
 深い夢のなか、何も気づかず、

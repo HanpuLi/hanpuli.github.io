@@ -67,6 +67,17 @@ def main() -> int:
         if missing or extra or wrong:
             errors.append(f"{locale} locale schema mismatch: missing={missing} extra={extra} type={wrong}")
 
+    ja_literary_text = (
+        (CONTENT / "locales" / "ja.json").read_text(encoding="utf-8")
+        + "\n"
+        + (CONTENT / "ci-translations" / "ja.json").read_text(encoding="utf-8")
+    )
+    for romanized in ("Linjiangxian", "Zhegutian", "Tasuoxing", "Dujiangyun", "Shiliuziling", "Shanpoyang"):
+        if romanized in ja_literary_text:
+            errors.append(f"ja literary copy uses pinyin/transliteration instead of the available kanji form: {romanized}")
+    if re.search(r"[\u3400-\u9fff] の調べ", ja_literary_text):
+        errors.append("ja literary copy has an unnatural ASCII space before the particle in a tune-name label")
+
     ci = load(CONTENT / "ci-source.json")
     poems = {item["id"]: item for item in ci["poems"]}
     if tuple(poems) != CI_IDS:
@@ -162,6 +173,17 @@ def main() -> int:
                     errors.append(
                         f"{path.relative_to(ROOT)}: expected {expected_alternates} hreflang links, got {alternates}"
                     )
+            if name == "index.html":
+                locale_data = load(CONTENT / "locales" / f"{locale}.json")
+                shi_href = "/shi.html" if locale == "en" else f"/{locale}/shi.html"
+                if not re.search(
+                    rf'<a\b[^>]*class="section-nav-page"[^>]*href="{re.escape(shi_href)}"[^>]*>',
+                    text,
+                ):
+                    errors.append(f"{path.relative_to(ROOT)}: home navigation is missing the standalone poem page")
+                shi_label = locale_data["common"]["nav"]["shi"]
+                if shi_label not in text:
+                    errors.append(f"{path.relative_to(ROOT)}: home navigation is missing localized poem label {shi_label!r}")
 
     if errors:
         print("\n".join(errors), file=sys.stderr)

@@ -17,7 +17,20 @@
     "evidence": "Belege",
     "evidence_summary": "3 Tafeln · Raum / Vegetation / Wärme",
     "full_text_request": "Volltext auf Anfrage",
-    "annotations_request": "Anmerkungen auf Anfrage"
+    "annotations_request": "Anmerkungen auf Anfrage",
+    "reading": {
+      "label": "Lesen",
+      "title": "Leseeinstellungen",
+      "description": "Darstellung für leichteres Lesen anpassen. Einstellungen werden nur auf diesem Gerät gespeichert.",
+      "sans": "Serifenlose Schrift",
+      "large": "Größere Schrift",
+      "spacing": "Mehr Textabstand",
+      "measure": "Schmalere Textspalten",
+      "simple": "Einfaches einspaltiges Layout",
+      "motion": "Bewegung reduzieren",
+      "contrast": "Höherer Kontrast",
+      "reset": "Zurücksetzen"
+    }
   },
   "home": {
     "meta_title": "Hanpu Li · Film, Forschung, Fotografie und Systeme",

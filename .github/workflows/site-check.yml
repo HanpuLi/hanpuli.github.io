@@ -28,5 +28,9 @@ jobs:
         run: python tools/build_site.py --check
       - name: Validate multilingual content
         run: python tools/i18ncheck.py
+      - name: Validate accessibility structure
+        run: python tools/a11ycheck.py
+      - name: Validate accessibility script syntax
+        run: node --check assets/accessibility.js
       - name: Validate static site
         run: python tools/sitecheck.py

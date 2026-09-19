@@ -17,7 +17,20 @@
     "evidence": "エビデンス",
     "evidence_summary": "3図版 · 空間 / 植生 / 熱",
     "full_text_request": "全文はご希望に応じて提供",
-    "annotations_request": "注釈はご希望に応じて提供"
+    "annotations_request": "注釈はご希望に応じて提供",
+    "reading": {
+      "label": "読みやすさ",
+      "title": "読みやすさの設定",
+      "description": "読みやすい表示に調整できます。設定はこの端末にだけ保存されます。",
+      "sans": "ゴシック体（サンセリフ）を使う",
+      "large": "文字を大きくする",
+      "spacing": "文字間隔を広げる",
+      "measure": "行幅を短くする",
+      "simple": "1列のシンプルなレイアウト",
+      "motion": "動きを減らす",
+      "contrast": "コントラストを上げる",
+      "reset": "リセット"
+    }
   },
   "home": {
     "meta_title": "Hanpu Li · 映画、研究、写真、システム",
@@ -123,9 +136,9 @@
     },
     "poetry": {
       "recent": "近作2篇",
-      "preview_title": "<em>Zhegutian</em> の調べ · 幾晩か灯の下で書こうとした、未完",
-      "translation_w2": "<em>Zhegutian</em> · 訳",
-      "translation_w3": "<em>Linjiangxian</em> · 訳",
+      "preview_title": "<em>鷓鴣天</em>の調べ · 幾晩か灯の下で書こうとした、未完",
+      "translation_w2": "<em>鷓鴣天</em> · 訳",
+      "translation_w3": "<em>臨江仙</em> · 訳",
       "cycle": "ほかに、<em>甲乙十六首</em>。一人の作者が二つの声で応答する連作。",
       "full_cycle": "全篇、原文 + 訳 →",
       "poem_link": "詩 →",

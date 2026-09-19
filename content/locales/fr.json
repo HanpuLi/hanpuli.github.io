@@ -17,7 +17,20 @@
     "evidence": "Éléments probants",
     "evidence_summary": "3 planches · spatial / végétation / thermique",
     "full_text_request": "texte intégral sur demande",
-    "annotations_request": "annotations disponibles sur demande"
+    "annotations_request": "annotations disponibles sur demande",
+    "reading": {
+      "label": "Lecture",
+      "title": "Préférences de lecture",
+      "description": "Ajustez l’affichage pour faciliter la lecture. Les réglages restent sur cet appareil.",
+      "sans": "Police sans empattement",
+      "large": "Texte plus grand",
+      "spacing": "Espacement du texte accru",
+      "measure": "Colonnes de texte plus étroites",
+      "simple": "Mise en page simplifiée sur une colonne",
+      "motion": "Réduire les animations",
+      "contrast": "Contraste renforcé",
+      "reset": "Réinitialiser"
+    }
   },
   "home": {
     "meta_title": "Hanpu Li · cinéma, recherche, photographie et systèmes",

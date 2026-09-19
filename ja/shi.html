@@ -27,10 +27,30 @@
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-subset.woff2" crossorigin>
+<script src="../assets/accessibility.js"></script>
 <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body class="shi-page locale-ja">
 <a class="skip-link" href="#drafts">詩へスキップ</a>
+<aside class="reading-tools" aria-label="読みやすさ">
+  <details>
+    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">読みやすさ</span><span class="visually-hidden">読みやすさ</span></summary>
+    <div class="reading-panel">
+      <fieldset>
+        <legend>読みやすさの設定</legend>
+        <p class="reading-description">読みやすい表示に調整できます。設定はこの端末にだけ保存されます。</p>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>ゴシック体（サンセリフ）を使う</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>文字を大きくする</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>文字間隔を広げる</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>行幅を短くする</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>1列のシンプルなレイアウト</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>動きを減らす</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>コントラストを上げる</span></label>
+      </fieldset>
+      <button type="button" class="reading-reset" data-reading-reset>リセット</button>
+    </div>
+  </details>
+</aside>
 <div class="wrap">
 
   <div class="page-topbar">
@@ -42,12 +62,12 @@
       <span aria-current="page">詩</span>
     </nav>
     <nav class="page-languages" aria-label="言語">
-      <a href="/shi.html" hreflang="en-GB" lang="en-GB" title="English">EN</a>
-      <a href="/zh/shi.html" hreflang="zh-Hant-HK" lang="zh-Hant-HK" title="中文">中</a>
-      <span class="current" lang="ja" aria-current="page" title="日本語">日</span>
-      <a href="/de/shi.html" hreflang="de" lang="de" title="Deutsch">DE</a>
-      <a href="/fr/shi.html" hreflang="fr" lang="fr" title="Français">FR</a>
-      <a href="/ru/shi.html" hreflang="ru" lang="ru" title="Русский">RU</a>
+      <a href="/shi.html" hreflang="en-GB" lang="en-GB" aria-label="English" title="English">EN</a>
+      <a href="/zh/shi.html" hreflang="zh-Hant-HK" lang="zh-Hant-HK" aria-label="中文" title="中文">中</a>
+      <span class="current" lang="ja" aria-current="page" title="日本語"><span aria-hidden="true">日</span><span class="visually-hidden">日本語</span></span>
+      <a href="/de/shi.html" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch">DE</a>
+      <a href="/fr/shi.html" hreflang="fr" lang="fr" aria-label="Français" title="Français">FR</a>
+      <a href="/ru/shi.html" hreflang="ru" lang="ru" aria-label="Русский" title="Русский">RU</a>
     </nav>
   </div>
 
@@ -59,7 +79,7 @@
     </div>
   </header>
 
-  <main id="drafts">
+  <main id="drafts" tabindex="-1">
       <div class="draft" lang="ja">
     <h2>稿一 · 2025年2月6日</h2>
     <p class="num">一</p>

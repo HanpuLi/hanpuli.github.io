@@ -27,10 +27,30 @@
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-subset.woff2" crossorigin>
+<script src="../assets/accessibility.js"></script>
 <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body class="shi-page locale-zh">
 <a class="skip-link" href="#drafts">跳至詩作</a>
+<aside class="reading-tools" aria-label="閱讀選項">
+  <details>
+    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">閱讀選項</span><span class="visually-hidden">閱讀選項</span></summary>
+    <div class="reading-panel">
+      <fieldset>
+        <legend>閱讀偏好</legend>
+        <p class="reading-description">調整本站的閱讀顯示。設定只會儲存在此裝置。</p>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>使用無襯線字體</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>放大文字</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>增加文字間距</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>縮窄文字欄寬</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>簡化為單欄版面</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>減少動態效果</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>提高對比度</span></label>
+      </fieldset>
+      <button type="button" class="reading-reset" data-reading-reset>重設</button>
+    </div>
+  </details>
+</aside>
 <div class="wrap">
 
   <div class="page-topbar">
@@ -42,12 +62,12 @@
       <span aria-current="page">詩</span>
     </nav>
     <nav class="page-languages" aria-label="語言">
-      <a href="/shi.html" hreflang="en-GB" lang="en-GB" title="English">EN</a>
-      <span class="current" lang="zh-Hant-HK" aria-current="page" title="中文">中</span>
-      <a href="/ja/shi.html" hreflang="ja" lang="ja" title="日本語">日</a>
-      <a href="/de/shi.html" hreflang="de" lang="de" title="Deutsch">DE</a>
-      <a href="/fr/shi.html" hreflang="fr" lang="fr" title="Français">FR</a>
-      <a href="/ru/shi.html" hreflang="ru" lang="ru" title="Русский">RU</a>
+      <a href="/shi.html" hreflang="en-GB" lang="en-GB" aria-label="English" title="English">EN</a>
+      <span class="current" lang="zh-Hant-HK" aria-current="page" title="中文"><span aria-hidden="true">中</span><span class="visually-hidden">中文</span></span>
+      <a href="/ja/shi.html" hreflang="ja" lang="ja" aria-label="日本語" title="日本語">日</a>
+      <a href="/de/shi.html" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch">DE</a>
+      <a href="/fr/shi.html" hreflang="fr" lang="fr" aria-label="Français" title="Français">FR</a>
+      <a href="/ru/shi.html" hreflang="ru" lang="ru" aria-label="Русский" title="Русский">RU</a>
     </nav>
   </div>
 
@@ -59,7 +79,7 @@
     </div>
   </header>
 
-  <main id="drafts">
+  <main id="drafts" tabindex="-1">
       <div class="draft" lang="zh-Hant-HK">
     <h2>稿一 · 二〇二五年二月六日</h2>
     <p class="num">一</p>

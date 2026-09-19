@@ -38,6 +38,7 @@
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/eb-garamond-cyrillic-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/cousine-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/cousine-cyrillic-400.woff2" crossorigin>
+<script src="../assets/accessibility.js"></script>
 <link rel="stylesheet" href="../assets/site.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["film studies","photography","remote sensing","software development"]}
@@ -45,6 +46,25 @@
 </head>
 <body class="site-home locale-ru">
 <a class="skip-link" href="#main">Перейти к содержанию</a>
+<aside class="reading-tools" aria-label="Чтение">
+  <details>
+    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">Чтение</span><span class="visually-hidden">Чтение</span></summary>
+    <div class="reading-panel">
+      <fieldset>
+        <legend>Настройки чтения</legend>
+        <p class="reading-description">Настройте отображение для более удобного чтения. Параметры сохраняются только на этом устройстве.</p>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>Шрифт без засечек</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>Увеличить текст</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>Увеличить интервалы</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>Сузить текстовые колонки</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>Упрощённая одноколоночная вёрстка</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>Сократить анимацию</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>Повысить контраст</span></label>
+      </fieldset>
+      <button type="button" class="reading-reset" data-reading-reset>Сбросить</button>
+    </div>
+  </details>
+</aside>
 <div class="wrap">
 
   <header class="masthead">
@@ -55,18 +75,19 @@
       <a href="#writing"><span>03</span> тексты</a>
       <a href="#ci"><span>04</span> цы</a>
       <a href="#profile"><span>05</span> профиль</a>
+      <a class="section-nav-page" href="/ru/shi.html"><span aria-hidden="true">↗</span> стихотворение</a>
     </nav>
     <nav class="language-nav" aria-label="Язык">
-      <a href="/" hreflang="en-GB" lang="en-GB" title="English">EN</a>
-      <a href="/zh/" hreflang="zh-Hant-HK" lang="zh-Hant-HK" title="中文">中</a>
-      <a href="/ja/" hreflang="ja" lang="ja" title="日本語">日</a>
-      <a href="/de/" hreflang="de" lang="de" title="Deutsch">DE</a>
-      <a href="/fr/" hreflang="fr" lang="fr" title="Français">FR</a>
-      <span class="current" lang="ru" aria-current="page" title="Русский">RU</span>
+      <a href="/" hreflang="en-GB" lang="en-GB" aria-label="English" title="English">EN</a>
+      <a href="/zh/" hreflang="zh-Hant-HK" lang="zh-Hant-HK" aria-label="中文" title="中文">中</a>
+      <a href="/ja/" hreflang="ja" lang="ja" aria-label="日本語" title="日本語">日</a>
+      <a href="/de/" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch">DE</a>
+      <a href="/fr/" hreflang="fr" lang="fr" aria-label="Français" title="Français">FR</a>
+      <span class="current" lang="ru" aria-current="page" title="Русский"><span aria-hidden="true">RU</span><span class="visually-hidden">Русский</span></span>
     </nav>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
       <p class="eyebrow">кино / исследования / системы / тексты · лондон</p>
       <h1 id="hero-title">Hanpu<br>Li</h1>

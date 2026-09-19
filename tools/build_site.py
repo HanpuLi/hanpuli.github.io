@@ -101,12 +101,14 @@ def language_switcher(locale_id: str, page: str) -> str:
         lang_attr = html.escape(language["html_lang"], quote=True)
         if lid == locale_id:
             bits.append(
-                f'<span class="current" lang="{lang_attr}" aria-current="page" title="{title}">{label}</span>'
+                f'<span class="current" lang="{lang_attr}" aria-current="page" title="{title}">'
+                f'<span aria-hidden="true">{label}</span><span class="visually-hidden">{title}</span></span>'
             )
         else:
             href = html.escape(page_path(lid, page), quote=True)
             bits.append(
-                f'<a href="{href}" hreflang="{lang_attr}" lang="{lang_attr}" title="{title}">{label}</a>'
+                f'<a href="{href}" hreflang="{lang_attr}" lang="{lang_attr}" '
+                f'aria-label="{title}" title="{title}">{label}</a>'
             )
     return "\n      ".join(bits)
 
@@ -291,6 +293,46 @@ def font_preloads(locale_id: str, page: str) -> str:
     )
 
 
+def reading_tools(locale: dict[str, Any]) -> str:
+    reading = locale["common"]["reading"]
+    label = html.escape(reading["label"])
+    title = html.escape(reading["title"])
+    description = html.escape(reading["description"])
+    options = (
+        ("sans", "sans"),
+        ("large", "large"),
+        ("spacing", "spacing"),
+        ("measure", "measure"),
+        ("simple", "simple"),
+        ("motion", "motion"),
+        ("contrast", "contrast"),
+    )
+    controls = "\n".join(
+        "        <label class=\"reading-option\">"
+        f"<input type=\"checkbox\" data-reading-pref=\"{name}\">"
+        f"<span>{html.escape(reading[key])}</span></label>"
+        for name, key in options
+    )
+    reset = html.escape(reading["reset"])
+    return (
+        f'<aside class="reading-tools" aria-label="{html.escape(reading["label"], quote=True)}">\n'
+        '  <details>\n'
+        f'    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span>'
+        f'<span class="reading-tools-label" aria-hidden="true">{label}</span>'
+        f'<span class="visually-hidden">{label}</span></summary>\n'
+        '    <div class="reading-panel">\n'
+        '      <fieldset>\n'
+        f'        <legend>{title}</legend>\n'
+        f'        <p class="reading-description">{description}</p>\n'
+        f'{controls}\n'
+        '      </fieldset>\n'
+        f'      <button type="button" class="reading-reset" data-reading-reset>{reset}</button>\n'
+        '    </div>\n'
+        '  </details>\n'
+        '</aside>'
+    )
+
+
 def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str, Any]:
     lang = LANG_BY_ID[locale_id]
     primary = IDENTITY["primary_name"]
@@ -318,6 +360,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "HREFLANG_LINKS": hreflang_links(page),
         "OG_LOCALE": html.escape(lang["og_locale"], quote=True),
         "FONT_PRELOADS": font_preloads(locale_id, page),
+        "READING_TOOLS": reading_tools(locale),
         "SOCIAL_IMAGE_ALT": html.escape(locale["home"]["photos"]["alt"]["03"], quote=True),
         "PRIMARY_NAME": html.escape(primary),
         "PRIMARY_NAME_HERO": hero_name,

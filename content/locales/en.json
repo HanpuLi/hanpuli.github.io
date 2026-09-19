@@ -17,7 +17,20 @@
     "evidence": "Evidence",
     "evidence_summary": "3 plates · spatial / vegetation / thermal",
     "full_text_request": "full text on request",
-    "annotations_request": "annotations available on request"
+    "annotations_request": "annotations available on request",
+    "reading": {
+      "label": "Reading options",
+      "title": "Reading preferences",
+      "description": "Adjust this site for easier reading. Settings stay on this device.",
+      "sans": "Use sans-serif text",
+      "large": "Larger text",
+      "spacing": "More text spacing",
+      "measure": "Narrower text columns",
+      "simple": "Simpler one-column layout",
+      "motion": "Reduce motion",
+      "contrast": "Higher contrast",
+      "reset": "Reset"
+    }
   },
   "home": {
     "meta_title": "Hanpu Li · film, research, photography and systems",

@@ -37,6 +37,7 @@
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-subset.woff2" crossorigin>
+<script src="../assets/accessibility.js"></script>
 <link rel="stylesheet" href="../assets/site.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["film studies","photography","remote sensing","software development"]}
@@ -44,6 +45,25 @@
 </head>
 <body class="site-home locale-zh">
 <a class="skip-link" href="#main">跳至正文</a>
+<aside class="reading-tools" aria-label="閱讀選項">
+  <details>
+    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">閱讀選項</span><span class="visually-hidden">閱讀選項</span></summary>
+    <div class="reading-panel">
+      <fieldset>
+        <legend>閱讀偏好</legend>
+        <p class="reading-description">調整本站的閱讀顯示。設定只會儲存在此裝置。</p>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>使用無襯線字體</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>放大文字</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>增加文字間距</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>縮窄文字欄寬</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>簡化為單欄版面</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>減少動態效果</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>提高對比度</span></label>
+      </fieldset>
+      <button type="button" class="reading-reset" data-reading-reset>重設</button>
+    </div>
+  </details>
+</aside>
 <div class="wrap">
 
   <header class="masthead">
@@ -54,18 +74,19 @@
       <a href="#writing"><span>03</span> 寫作</a>
       <a href="#ci"><span>04</span> 詞</a>
       <a href="#profile"><span>05</span> 履歷</a>
+      <a class="section-nav-page" href="/zh/shi.html"><span aria-hidden="true">↗</span> 詩</a>
     </nav>
     <nav class="language-nav" aria-label="語言">
-      <a href="/" hreflang="en-GB" lang="en-GB" title="English">EN</a>
-      <span class="current" lang="zh-Hant-HK" aria-current="page" title="中文">中</span>
-      <a href="/ja/" hreflang="ja" lang="ja" title="日本語">日</a>
-      <a href="/de/" hreflang="de" lang="de" title="Deutsch">DE</a>
-      <a href="/fr/" hreflang="fr" lang="fr" title="Français">FR</a>
-      <a href="/ru/" hreflang="ru" lang="ru" title="Русский">RU</a>
+      <a href="/" hreflang="en-GB" lang="en-GB" aria-label="English" title="English">EN</a>
+      <span class="current" lang="zh-Hant-HK" aria-current="page" title="中文"><span aria-hidden="true">中</span><span class="visually-hidden">中文</span></span>
+      <a href="/ja/" hreflang="ja" lang="ja" aria-label="日本語" title="日本語">日</a>
+      <a href="/de/" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch">DE</a>
+      <a href="/fr/" hreflang="fr" lang="fr" aria-label="Français" title="Français">FR</a>
+      <a href="/ru/" hreflang="ru" lang="ru" aria-label="Русский" title="Русский">RU</a>
     </nav>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
       <p class="eyebrow">電影 / 研究 / 系統 / 文字 · 倫敦</p>
       <h1 id="hero-title">Hanpu<br>Li</h1>

@@ -12,19 +12,39 @@
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/courier-prime-latin-400.woff2" crossorigin>
+<script src="../assets/accessibility.js"></script>
 <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body class="notfound-page locale-de">
-  <nav class="notfound-languages" aria-label="Sprache"><a href="/404.html" hreflang="en-GB" lang="en-GB" title="English">EN</a>
-      <a href="/zh/404.html" hreflang="zh-Hant-HK" lang="zh-Hant-HK" title="中文">中</a>
-      <a href="/ja/404.html" hreflang="ja" lang="ja" title="日本語">日</a>
-      <span class="current" lang="de" aria-current="page" title="Deutsch">DE</span>
-      <a href="/fr/404.html" hreflang="fr" lang="fr" title="Français">FR</a>
-      <a href="/ru/404.html" hreflang="ru" lang="ru" title="Русский">RU</a></nav>
+  <aside class="reading-tools" aria-label="Lesen">
+  <details>
+    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">Lesen</span><span class="visually-hidden">Lesen</span></summary>
+    <div class="reading-panel">
+      <fieldset>
+        <legend>Leseeinstellungen</legend>
+        <p class="reading-description">Darstellung für leichteres Lesen anpassen. Einstellungen werden nur auf diesem Gerät gespeichert.</p>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>Serifenlose Schrift</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>Größere Schrift</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>Mehr Textabstand</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>Schmalere Textspalten</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>Einfaches einspaltiges Layout</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>Bewegung reduzieren</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>Höherer Kontrast</span></label>
+      </fieldset>
+      <button type="button" class="reading-reset" data-reading-reset>Zurücksetzen</button>
+    </div>
+  </details>
+</aside>
+  <nav class="notfound-languages" aria-label="Sprache"><a href="/404.html" hreflang="en-GB" lang="en-GB" aria-label="English" title="English">EN</a>
+      <a href="/zh/404.html" hreflang="zh-Hant-HK" lang="zh-Hant-HK" aria-label="中文" title="中文">中</a>
+      <a href="/ja/404.html" hreflang="ja" lang="ja" aria-label="日本語" title="日本語">日</a>
+      <span class="current" lang="de" aria-current="page" title="Deutsch"><span aria-hidden="true">DE</span><span class="visually-hidden">Deutsch</span></span>
+      <a href="/fr/404.html" hreflang="fr" lang="fr" aria-label="Français" title="Français">FR</a>
+      <a href="/ru/404.html" hreflang="ru" lang="ru" aria-label="Русский" title="Русский">RU</a></nav>
   <main class="notfound-shell">
     <p class="notfound-code" aria-hidden="true">404</p>
     <div class="notfound-copy">
-      <p>Unter dieser Adresse ist nichts.</p>
+      <h1>Unter dieser Adresse ist nichts.</h1>
       <a href="/de/">← Hanpu Li</a>
     </div>
   </main>

@@ -12,19 +12,39 @@
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/courier-prime-latin-400.woff2" crossorigin>
+<script src="../assets/accessibility.js"></script>
 <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body class="notfound-page locale-ja">
-  <nav class="notfound-languages" aria-label="言語"><a href="/404.html" hreflang="en-GB" lang="en-GB" title="English">EN</a>
-      <a href="/zh/404.html" hreflang="zh-Hant-HK" lang="zh-Hant-HK" title="中文">中</a>
-      <span class="current" lang="ja" aria-current="page" title="日本語">日</span>
-      <a href="/de/404.html" hreflang="de" lang="de" title="Deutsch">DE</a>
-      <a href="/fr/404.html" hreflang="fr" lang="fr" title="Français">FR</a>
-      <a href="/ru/404.html" hreflang="ru" lang="ru" title="Русский">RU</a></nav>
+  <aside class="reading-tools" aria-label="読みやすさ">
+  <details>
+    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">読みやすさ</span><span class="visually-hidden">読みやすさ</span></summary>
+    <div class="reading-panel">
+      <fieldset>
+        <legend>読みやすさの設定</legend>
+        <p class="reading-description">読みやすい表示に調整できます。設定はこの端末にだけ保存されます。</p>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>ゴシック体（サンセリフ）を使う</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>文字を大きくする</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>文字間隔を広げる</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>行幅を短くする</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>1列のシンプルなレイアウト</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>動きを減らす</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>コントラストを上げる</span></label>
+      </fieldset>
+      <button type="button" class="reading-reset" data-reading-reset>リセット</button>
+    </div>
+  </details>
+</aside>
+  <nav class="notfound-languages" aria-label="言語"><a href="/404.html" hreflang="en-GB" lang="en-GB" aria-label="English" title="English">EN</a>
+      <a href="/zh/404.html" hreflang="zh-Hant-HK" lang="zh-Hant-HK" aria-label="中文" title="中文">中</a>
+      <span class="current" lang="ja" aria-current="page" title="日本語"><span aria-hidden="true">日</span><span class="visually-hidden">日本語</span></span>
+      <a href="/de/404.html" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch">DE</a>
+      <a href="/fr/404.html" hreflang="fr" lang="fr" aria-label="Français" title="Français">FR</a>
+      <a href="/ru/404.html" hreflang="ru" lang="ru" aria-label="Русский" title="Русский">RU</a></nav>
   <main class="notfound-shell">
     <p class="notfound-code" aria-hidden="true">404</p>
     <div class="notfound-copy">
-      <p>このアドレスには何もありません。</p>
+      <h1>このアドレスには何もありません。</h1>
       <a href="/ja/">← Hanpu Li</a>
     </div>
   </main>

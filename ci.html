@@ -26,10 +26,30 @@
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/courier-prime-latin-400.woff2" crossorigin>
+<script src="assets/accessibility.js"></script>
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body class="literary-page locale-en">
 <a class="skip-link" href="#poems">Skip to poems</a>
+<aside class="reading-tools" aria-label="Reading options">
+  <details>
+    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">Reading options</span><span class="visually-hidden">Reading options</span></summary>
+    <div class="reading-panel">
+      <fieldset>
+        <legend>Reading preferences</legend>
+        <p class="reading-description">Adjust this site for easier reading. Settings stay on this device.</p>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>Use sans-serif text</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>Larger text</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>More text spacing</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>Narrower text columns</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>Simpler one-column layout</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>Reduce motion</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>Higher contrast</span></label>
+      </fieldset>
+      <button type="button" class="reading-reset" data-reading-reset>Reset</button>
+    </div>
+  </details>
+</aside>
 <div class="wrap">
 
   <div class="page-topbar">
@@ -41,12 +61,12 @@
       <span aria-current="page">ci</span>
     </nav>
     <nav class="page-languages" aria-label="Language">
-      <span class="current" lang="en-GB" aria-current="page" title="English">EN</span>
-      <a href="/zh/ci.html" hreflang="zh-Hant-HK" lang="zh-Hant-HK" title="中文">中</a>
-      <a href="/ja/ci.html" hreflang="ja" lang="ja" title="日本語">日</a>
-      <a href="/de/ci.html" hreflang="de" lang="de" title="Deutsch">DE</a>
-      <a href="/fr/ci.html" hreflang="fr" lang="fr" title="Français">FR</a>
-      <a href="/ru/ci.html" hreflang="ru" lang="ru" title="Русский">RU</a>
+      <span class="current" lang="en-GB" aria-current="page" title="English"><span aria-hidden="true">EN</span><span class="visually-hidden">English</span></span>
+      <a href="/zh/ci.html" hreflang="zh-Hant-HK" lang="zh-Hant-HK" aria-label="中文" title="中文">中</a>
+      <a href="/ja/ci.html" hreflang="ja" lang="ja" aria-label="日本語" title="日本語">日</a>
+      <a href="/de/ci.html" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch">DE</a>
+      <a href="/fr/ci.html" hreflang="fr" lang="fr" aria-label="Français" title="Français">FR</a>
+      <a href="/ru/ci.html" hreflang="ru" lang="ru" aria-label="Русский" title="Русский">RU</a>
     </nav>
   </div>
 
@@ -59,7 +79,7 @@
     <p class="toc"><a href="#a1">A1</a><a href="#b1">B1</a><a href="#a2">A2</a><a href="#b2">B2</a><a href="#b3">B3</a><a href="#b4">B4</a><a href="#b5">B5</a><a href="#a3">A3</a><a href="#a4">A4</a><a href="#a5">A5</a><a href="#a6">A6</a><a href="#a7">A7</a><a href="#b6">B6</a><a href="#a8">A8</a><a href="#b7">B7</a><a href="#a9">A9</a><a href="#a10" class="waibian">outside 1</a><a href="#w2" class="waibian">outside 2</a><a href="#w3" class="waibian">outside 3</a></p>
   </header>
 
-  <main id="poems">
+  <main id="poems" tabindex="-1">
       <div class="poem jia" id="a1">
     <h2 lang="zh-Hant-HK">甲一《臨江仙 · 與同硯燈下夜坐，侵曉方別》</h2>
     <div class="body" lang="zh-Hant-HK">幾度深宵同默坐，孤燈紅淚垂遲。
