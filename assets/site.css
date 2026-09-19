@@ -95,6 +95,10 @@ img {
   max-width: 100%;
 }
 
+picture {
+  display: block;
+}
+
 a {
   color: inherit;
   text-underline-offset: .2em;
@@ -1017,6 +1021,24 @@ a:hover {
   border-bottom: 1px solid var(--line);
 }
 
+/* Defer below-the-fold layout without changing the visual geometry. */
+
+@supports (content-visibility: auto) {
+  .site-home .work-section,
+  .site-home .photo-section,
+  .site-home .writing-section,
+  .site-home .poetry-section,
+  .site-home .profile-section {
+    content-visibility: auto;
+  }
+
+  .site-home .work-section { contain-intrinsic-size: auto 1200px; }
+  .site-home .photo-section { contain-intrinsic-size: auto calc(278vw + 240px); }
+  .site-home .writing-section { contain-intrinsic-size: auto 460px; }
+  .site-home .poetry-section { contain-intrinsic-size: auto 560px; }
+  .site-home .profile-section { contain-intrinsic-size: auto 870px; }
+}
+
 /* Responsive */
 
 @media (max-width: 900px) {
@@ -1054,6 +1076,14 @@ a:hover {
   :root {
     --gutter: 20px;
     --gap: 14px;
+  }
+
+  @supports (content-visibility: auto) {
+    .site-home .work-section { contain-intrinsic-size: auto 1250px; }
+    .site-home .photo-section { contain-intrinsic-size: auto 4070px; }
+    .site-home .writing-section { contain-intrinsic-size: auto 920px; }
+    .site-home .poetry-section { contain-intrinsic-size: auto 730px; }
+    .site-home .profile-section { contain-intrinsic-size: auto 1030px; }
   }
 
   body {

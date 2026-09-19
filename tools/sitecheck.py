@@ -45,6 +45,14 @@ class Document(HTMLParser):
             value = values.get(key)
             if value:
                 self.refs.append((key, value, line))
+        for key in ("srcset", "imagesrcset"):
+            value = values.get(key)
+            if not value:
+                continue
+            for candidate in value.split(","):
+                ref = candidate.strip().split(maxsplit=1)[0]
+                if ref:
+                    self.refs.append((key, ref, line))
 
     def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         self.handle_starttag(tag, attrs)
