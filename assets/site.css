@@ -77,6 +77,15 @@
 }
 
 @font-face {
+  font-family: "Noto Serif SC Site";
+  src: url("fonts/noto-serif-sc-subset.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FF00-FFEF;
+}
+
+@font-face {
   font-family: "IMing Gap";
   src: url("fonts/iming-gap.woff2") format("woff2");
   font-display: swap;
@@ -105,6 +114,25 @@
 .shi-page.locale-ru,
 .notfound-page.locale-ru {
   --mono: "Cousine RU", "Courier Prime", "Courier New", monospace;
+}
+
+.site-home.locale-zh-hans,
+.literary-page.locale-zh-hans,
+.shi-page.locale-zh-hans,
+.notfound-page.locale-zh-hans {
+  --serif: "EB Garamond", Georgia, "Noto Serif SC Site", "Songti SC", "Noto Serif CJK SC", serif;
+  --mono: "Courier Prime", "Noto Serif SC Site", "Songti SC", "Courier New", monospace;
+}
+
+.site-home:not(.locale-zh-hans) .language-nav [lang="zh-Hans"],
+.literary-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"],
+.shi-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"],
+.notfound-page:not(.locale-zh-hans) .notfound-languages [lang="zh-Hans"] {
+  font-family: "Songti SC", "Noto Serif CJK SC", serif;
+}
+
+.locale-zh-hans [lang="zh-Hant-HK"] {
+  font-family: "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -447,7 +475,7 @@ html[data-reading-spacing] :is(p, li, dd, dt, figcaption) {
   word-spacing: .12em;
 }
 
-html[data-reading-spacing] :is(.locale-zh, .locale-ja) :is(p, li, dd, dt, figcaption) {
+html[data-reading-spacing] :is(.locale-zh, .locale-zh-hans, .locale-ja) :is(p, li, dd, dt, figcaption) {
   letter-spacing: .045em;
   word-spacing: normal;
 }
@@ -469,7 +497,7 @@ html[data-reading-measure] :is(
   max-width: 56ch;
 }
 
-html[data-reading-measure] :is(.locale-zh, .locale-ja) :is(
+html[data-reading-measure] :is(.locale-zh, .locale-zh-hans, .locale-ja) :is(
   .site-home .hero-copy,
   .site-home .project-main > p,
   .site-home .writing-list article > p:not(.writing-no),
@@ -720,7 +748,7 @@ html[data-reading-motion] .site-home::before {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: clamp(4px, .8vw, 12px);
+  gap: clamp(3px, .45vw, 7px);
   font-family: var(--mono);
   font-size: .8125rem;
   line-height: 1.2;
@@ -757,7 +785,7 @@ html[data-reading-motion] .site-home::before {
 
 .site-home .language-nav a,
 .site-home .language-nav .current {
-  min-width: 44px;
+  min-width: 36px;
   justify-content: center;
 }
 
@@ -1380,6 +1408,7 @@ html[data-reading-motion] .site-home::before {
 }
 
 .site-home.locale-zh .writing-list h3,
+.site-home.locale-zh-hans .writing-list h3,
 .site-home.locale-ja .writing-list h3 {
   line-break: strict;
   word-break: keep-all;
@@ -1395,6 +1424,8 @@ html[data-reading-motion] .site-home::before {
 
 .site-home.locale-zh .project-main > p:last-child,
 .site-home.locale-zh .writing-list article > p:not(.writing-no),
+.site-home.locale-zh-hans .project-main > p:last-child,
+.site-home.locale-zh-hans .writing-list article > p:not(.writing-no),
 .site-home.locale-ja .project-main > p:last-child,
 .site-home.locale-ja .writing-list article > p:not(.writing-no) {
   line-break: strict;
@@ -1622,7 +1653,7 @@ html[data-reading-motion] .site-home::before {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: clamp(4px, .8vw, 12px);
+  gap: clamp(3px, .45vw, 7px);
   letter-spacing: .055em;
   text-transform: uppercase;
 }
@@ -1652,7 +1683,7 @@ html[data-reading-motion] .site-home::before {
 
 .page-topbar .page-languages a,
 .page-topbar .page-languages .current {
-  min-width: 44px;
+  min-width: 36px;
   justify-content: center;
 }
 
@@ -1719,7 +1750,9 @@ html[data-reading-motion] .site-home::before {
 }
 
 .literary-page.locale-zh .source-title,
-.shi-page.locale-zh .source-title {
+.shi-page.locale-zh .source-title,
+.literary-page.locale-zh-hans .source-title,
+.shi-page.locale-zh-hans .source-title {
   display: none;
 }
 
@@ -1960,7 +1993,7 @@ html[data-reading-motion] .site-home::before {
 .notfound-languages a,
 .notfound-languages .current {
   display: inline-flex;
-  min-width: 44px;
+  min-width: 36px;
   min-height: 44px;
   align-items: center;
   justify-content: center;
@@ -2036,7 +2069,7 @@ html[data-reading-motion] .site-home::before {
   text-wrap: balance;
 }
 
-.notfound-page:is(.locale-zh, .locale-ja) .notfound-copy h1 {
+.notfound-page:is(.locale-zh, .locale-zh-hans, .locale-ja) .notfound-copy h1 {
   max-width: 12em;
   line-height: 1.16;
   letter-spacing: .015em;
@@ -2210,6 +2243,11 @@ html[data-reading-motion] .site-home::before {
   .site-home .writing-section { contain-intrinsic-size: auto var(--cis-writing); }
   .site-home .poetry-section { contain-intrinsic-size: auto var(--cis-poetry); }
   .site-home .profile-section { contain-intrinsic-size: auto var(--cis-profile); }
+
+  .site-home.locale-zh-hans :is(.work-section, .writing-section, .poetry-section, .profile-section) {
+    content-visibility: visible;
+    contain-intrinsic-size: none;
+  }
 }
 
 @media (min-width: 1600px) {
@@ -2330,6 +2368,53 @@ html[data-reading-motion] .site-home::before {
   .site-home .project-meta,
   .site-home .project-system {
     grid-column: 8 / 13;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1280px) {
+  .site-home .masthead {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 14px;
+  }
+
+  .site-home .wordmark {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .site-home .language-nav {
+    grid-column: 2;
+    grid-row: 1;
+    gap: 2px;
+  }
+
+  .site-home .section-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: 12px;
+  }
+
+  .page-topbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 18px;
+  }
+
+  .page-topbar .page-wordmark {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .page-topbar .page-languages {
+    grid-column: 2;
+    grid-row: 1;
+    gap: 2px;
+  }
+
+  .page-topbar .page-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+    margin-top: 10px;
   }
 }
 

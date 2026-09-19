@@ -2,7 +2,7 @@
 
 Personal portfolio and writing site for Hanpu Li, published with GitHub Pages at https://hanpuli.github.io/.
 
-The site is deliberately static: editorial HTML/CSS, local image/font assets and no client-side application framework. A small standard-library Python generator produces complete static English, Chinese, Japanese, German, French and Russian editions from structured content; there is no runtime translation layer. The repository also hosts the public privacy/terms pages for the mail-assistant project.
+The site is deliberately static: editorial HTML/CSS, local image/font assets and no client-side application framework. A small standard-library Python generator produces complete static English, Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian editions from structured content; there is no runtime translation layer. The repository also hosts the public privacy/terms pages for the mail-assistant project.
 
 ## Local checks
 
@@ -17,7 +17,15 @@ node --check assets/accessibility.js
 python3 tools/sitecheck.py
 ```
 
-The localisation checker enforces locale-schema parity, the complete literary corpus, line/stanza structure and generated `hreflang` metadata. The accessibility checker covers landmark and heading structure, accessible names, labelled controls, skip-link targets, keyboard-order hazards and the reading-preference controls across the generated portfolio, mail-assistant and fridge pages. The site checker verifies local links and fragments, image/CSS assets, duplicate IDs, image alt text, document language, titles and responsive viewport metadata without making network requests.
+The localisation checker enforces locale-schema parity, the complete literary corpus, Simplified-Chinese script data and line/stanza parity, and generated `hreflang` metadata. The accessibility checker covers landmark and heading structure, accessible names, labelled controls, skip-link targets, keyboard-order hazards and the reading-preference controls across the generated portfolio, mail-assistant and fridge pages. The site checker verifies local links and fragments, image/CSS assets, duplicate IDs, image alt text, document language, titles and responsive viewport metadata without making network requests.
+
+The Traditional Chinese literary source remains canonical. When `content/ci-source.json` or `content/shi-source.json` changes, regenerate the script-only Simplified Chinese mirrors before building:
+
+```sh
+uv run --with opencc-python-reimplemented python tools/update_simplified_literary.py
+```
+
+The mirrors record the source SHA-256 and CI fails if they become stale. Editorial Simplified-Chinese UI copy in `content/locales/zh-hans.json` is maintained separately and is not overwritten by that helper.
 
 ## Accessibility
 

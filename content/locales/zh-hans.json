@@ -1,0 +1,204 @@
+{
+  "common": {
+    "site_nav_label": "作品集分区",
+    "language_nav_label": "语言",
+    "skip_content": "跳至正文",
+    "skip_poems": "跳至词作",
+    "skip_poem": "跳至诗作",
+    "nav": {
+      "work": "作品",
+      "photo": "摄影",
+      "writing": "写作",
+      "ci": "词",
+      "shi": "诗",
+      "profile": "履历"
+    },
+    "email": "邮件",
+    "evidence": "证据",
+    "evidence_summary": "3 图 · 空间 / 植被 / 热环境",
+    "full_text_request": "全文备索",
+    "annotations_request": "笺注全文备索",
+    "reading": {
+      "label": "阅读选项",
+      "title": "阅读偏好",
+      "description": "调整本站的阅读样式。设置仅保存在此设备。",
+      "sans": "使用无衬线字体",
+      "large": "放大文字",
+      "spacing": "增加文字间距",
+      "measure": "缩短行宽",
+      "simple": "切换为单栏布局",
+      "motion": "减少动态效果",
+      "contrast": "提高对比度",
+      "reset": "重置"
+    }
+  },
+  "home": {
+    "meta_title": "Hanpu Li 李函璞 · 电影、研究、摄影与系统",
+    "meta_description": "Hanpu Li（李函璞）——现居伦敦的电影研究者、写作者、摄影师与开发者；工作涉及电影形式、空间证据、开源系统与诗词。",
+    "eyebrow": "电影 / 研究 / 系统 / 文字 · 伦敦",
+    "location": "伦敦",
+    "alias": "也以 Caitlyn Lye 名义工作",
+    "education": "约克电影与电视制作 → QMUL 语言学与电影",
+    "lede": "看电影的，也写写词。",
+    "lede_note": "",
+    "intro": "电影研究、写作、摄影与软件开发。目前的工作往返于电影形式、空间证据与小型软件系统之间。",
+    "method": "方法其实简单：先把主张说准，再让证据可供查验。",
+    "sections": {
+      "work": {
+        "title": "选作",
+        "kicker": "研究与系统"
+      },
+      "photo": {
+        "title": "摄影",
+        "kicker": "剧照 / 胶片 / 拍立得"
+      },
+      "writing": {
+        "title": "写作",
+        "kicker": "电影 / 理论 / 证据"
+      },
+      "ci": {
+        "title": "词",
+        "kicker": "近作 / 一人两声"
+      },
+      "profile": {
+        "title": "履历",
+        "kicker": "节选年表"
+      }
+    },
+    "projects": {
+      "material": {
+        "type": "研究 · 遥感 · 政治经济学",
+        "title": "虚拟制作的物质足迹",
+        "description": "以 Shepperton Studios 扩建为对象的空间审计：把低碳叙事与地表覆盖变化、热环境证据及规划记录逐一对照。",
+        "proof_green": "绿带用地转换",
+        "proof_ndvi": "NDVI 双重差分",
+        "proof_s106": "S106 生态贡献款",
+        "evidence_spatial": "空间足迹",
+        "evidence_spatial_note": "OSM 拓扑 + 不透水面制图",
+        "evidence_spatial_alt": "Shepperton Studios 扩建范围的空间热图",
+        "evidence_vegetation": "植被",
+        "evidence_vegetation_note": "ΔNDVI 结构转变 −0.365",
+        "evidence_vegetation_alt": "比较 Shepperton 扩建前后植被状况的 NDVI 图表",
+        "evidence_thermal": "独立传感器",
+        "evidence_thermal_note": "日间 ΔT +0.72 °C · HAC p=0.0062",
+        "evidence_thermal_alt": "显示独立日间热环境比较的 ECOSTRESS 图表"
+      },
+      "scoperail": {
+        "type": "开源 · 本地执行 · MCP",
+        "description": "macOS 上供 MCP 客户端使用的受限本地执行层：工作区限定文件、沙盒程序、浏览器与原生界面、明示 Git 授权，以及完整的审计与来源记录。",
+        "flow": [
+          "客户端意图",
+          "OAuth + 传输",
+          "工作区 / 授权策略",
+          "受约束的执行接口",
+          "审计 + 状态"
+        ]
+      },
+      "liuzheng": {
+        "type": "开源 · 证据保全",
+        "description": "把机构往来转化为经得起审查的证据的一组工具与操作规则。",
+        "flow": [
+          "获取原件",
+          "DKIM / SHA-256",
+          "RFC3161 + OpenTimestamps",
+          "第三方副本 / 锚点"
+        ]
+      }
+    },
+    "photos": {
+      "medium": {
+        "still": "剧照",
+        "film": "胶片",
+        "instant": "拍立得"
+      },
+      "note": "剧照、胶片与拍立得。多半是开拍前的那一小时。",
+      "alt": {
+        "01": "博物馆屋顶格架，栏边一道人影",
+        "02": "空荡座席中的一人，身旁放着花束",
+        "03": "戴面具的演员前举起场记板",
+        "04": "手伸向覆纱的面孔，灯光在一旁迸亮",
+        "05": "露台上的空椅，画面带着胶片雾感",
+        "06": "两名坐着的女子，墙上落着影子",
+        "07": "披着披肩的演员，膝上放着剧本",
+        "08": "头顶悬着吊杆麦克风，光掠过她的脸",
+        "09": "逆光窗前闭眼大笑",
+        "10": "暗处抱猫的自拍照"
+      }
+    },
+    "writing": {
+      "first_love_title": "论三池崇史《<em>初恋</em>》",
+      "first_love_description": "从马克思主义女性主义角度解读<em>义理</em>/<em>人情</em>、类型形式与黑道道德经济，并以逐帧、声音及字幕分析为证。",
+      "first_love_meta": "长篇评论 · 全文备索",
+      "greenwashing_title": "漂绿的政治经济学",
+      "greenwashing_description": "对 Shepperton Studios 扩建所作的空间取证审计：当“低碳”叙事与物质记录逐项核对，会留下什么。",
+      "pipeline": "可复现分析流程 →",
+      "film_essays_title": "论 Joanna Hogg · 论《<em>猜火车</em>》",
+      "film_essays_description": "两篇电影研究论文，伦敦玛丽女王大学。",
+      "film_essays_meta": "全文备索"
+    },
+    "poetry": {
+      "recent": "近作二首",
+      "preview_title": "《鹧鸪天 · 连夕灯下试笔，未竟》",
+      "translation_w2": "《鹧鸪天》 · 原作",
+      "translation_w3": "《临江仙》 · 原作",
+      "cycle": "另有《甲乙十六首》：一人分作两声的唱和集。",
+      "full_cycle": "全集 →",
+      "poem_link": "诗 →",
+      "preview_date": "二〇二六年九月九日"
+    },
+    "chronology": [
+      {
+        "time": "2013–16",
+        "text": "电视与广播主持——正定县电视台、河北交通广播；春晚直播观众逾五十万。"
+      },
+      {
+        "time": "2016",
+        "text": "青年主持人大赛冠军。"
+      },
+      {
+        "time": "2018–",
+        "text": "商业、建筑与纪实摄影。"
+      },
+      {
+        "time": "2018–19",
+        "text": "University Radio York 88.3FM 主持与制作。"
+      },
+      {
+        "time": "2020",
+        "text": "济南——参与营救被强制关押于扭转治疗机构的跨性别女性，负责地面协调。"
+      },
+      {
+        "time": "2020–23",
+        "text": "北京同志中心志愿写作者；武汉同志中心跨性别方向志愿者，包括协助取得紧急 PEP。"
+      },
+      {
+        "time": "2024",
+        "text": "约克大学剧组场记、译者与研究员；两部作品入围第十四届澳门国际微电影节及金鸡影展展映单元。"
+      }
+    ]
+  },
+  "ci": {
+    "meta_title": "甲乙十六首 · Hanpu Li 李函璞",
+    "meta_description": "《甲乙十六首》：一人分作两声的唱和集，附自撰笺注。",
+    "heading": "甲乙十六首",
+    "subtitle": "一人分作两声的唱和集：甲多详序，乙前五首无题。十六首并系于二〇二六年六月九日；集外三首：七月一日一首，九月九日二首。附自撰笺注，备索。此版采用简体字。",
+    "source_label": "原文",
+    "translation_label": "原文",
+    "outside": "集外",
+    "footer": "笺注全文备索"
+  },
+  "shi": {
+    "meta_title": "屋顶裂开 · Hanpu Li 李函璞",
+    "meta_description": "《屋顶裂开》两稿，相隔一年——修订在删。",
+    "heading": "屋顶裂开",
+    "subtitle": "原无题，以首句名之。同一首诗的两稿，相隔一年；修订在删。此版采用简体字。",
+    "source_link": "中文原作"
+  },
+  "notfound": {
+    "meta_title": "页面不存在 · Hanpu Li 李函璞",
+    "line": "分明一水无舟艇。",
+    "description": "此页不存在，或已移往别处。",
+    "source": "乙二 · 踏莎行",
+    "home": "← 返回首页"
+  }
+}

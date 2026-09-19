@@ -1,6 +1,7 @@
 [
   {"id": "en", "html_lang": "en-GB", "og_locale": "en_GB", "short": "EN", "label": "English"},
-  {"id": "zh", "html_lang": "zh-Hant-HK", "og_locale": "zh_HK", "short": "中", "label": "中文"},
+  {"id": "zh", "html_lang": "zh-Hant-HK", "og_locale": "zh_HK", "short": "繁", "label": "繁體中文"},
+  {"id": "zh-hans", "html_lang": "zh-Hans", "og_locale": "zh_CN", "short": "简", "label": "简体中文"},
   {"id": "ja", "html_lang": "ja", "og_locale": "ja_JP", "short": "日", "label": "日本語"},
   {"id": "de", "html_lang": "de", "og_locale": "de_DE", "short": "DE", "label": "Deutsch"},
   {"id": "fr", "html_lang": "fr", "og_locale": "fr_FR", "short": "FR", "label": "Français"},

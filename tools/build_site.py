@@ -33,7 +33,10 @@ SHARED = load_json(CONTENT / "shared.json")
 LANGUAGES = load_json(CONTENT / "languages.json")
 LANG_BY_ID = {item["id"]: item for item in LANGUAGES}
 CI_SOURCE = load_json(CONTENT / "ci-source.json")
+CI_SIMPLIFIED = load_json(CONTENT / "ci-simplified.json")
 SHI_SOURCE = load_json(CONTENT / "shi-source.json")
+SHI_SIMPLIFIED = load_json(CONTENT / "shi-simplified.json")
+CHINESE_LOCALES = {"zh", "zh-hans"}
 BASE_URL = IDENTITY["site_url"].rstrip("/")
 
 
@@ -169,10 +172,14 @@ def chronology_html(items: list[dict[str, str]]) -> str:
     )
 
 
+def ci_source(locale_id: str) -> dict[str, Any]:
+    return CI_SIMPLIFIED if locale_id == "zh-hans" else CI_SOURCE
+
+
 def ci_translation(locale_id: str) -> dict[str, dict[str, str]]:
     if locale_id == "en":
         return {poem["id"]: poem["en"] for poem in CI_SOURCE["poems"]}
-    if locale_id == "zh":
+    if locale_id in CHINESE_LOCALES:
         return {}
     path = CONTENT / "ci-translations" / f"{locale_id}.json"
     data = load_json(path)
@@ -193,15 +200,15 @@ def ci_toc(locale_id: str, locale: dict[str, Any]) -> str:
         pid = poem["id"]
         if pid in {"a10", "w2", "w3"}:
             outside_n += 1
-            label = f'{locale["ci"]["outside"]}{cn_numbers[outside_n] if locale_id == "zh" else " " + str(outside_n)}'
+            label = f'{locale["ci"]["outside"]}{cn_numbers[outside_n] if locale_id in CHINESE_LOCALES else " " + str(outside_n)}'
             klass = ' class="waibian"'
         elif pid.startswith("a"):
             n = int(pid[1:])
-            label = f'甲{cn_numbers[n]}' if locale_id == "zh" else f"A{n}"
+            label = f'甲{cn_numbers[n]}' if locale_id in CHINESE_LOCALES else f"A{n}"
             klass = ""
         elif pid.startswith("b"):
             n = int(pid[1:])
-            label = f'乙{cn_numbers[n]}' if locale_id == "zh" else f"B{n}"
+            label = f'乙{cn_numbers[n]}' if locale_id in CHINESE_LOCALES else f"B{n}"
             klass = ""
         else:
             label = pid
@@ -214,17 +221,19 @@ def ci_poems_html(locale_id: str, locale: dict[str, Any]) -> str:
     translations = ci_translation(locale_id)
     blocks = []
     target_lang = LANG_BY_ID[locale_id]["html_lang"]
-    for poem in CI_SOURCE["poems"]:
+    source_data = ci_source(locale_id)
+    source_lang = "zh-Hans" if locale_id == "zh-hans" else "zh-Hant-HK"
+    for poem in source_data["poems"]:
         voice = poem["voice"]
         classes = "poem" + (f" {voice}" if voice in {"jia", "yi"} else "")
         source_title = html.escape(poem["source_title"])
         source_body = html.escape(poem["source_body"])
         date = (
-            f'\n    <div class="date" lang="zh-Hant-HK">{html.escape(poem["date"])}</div>'
+            f'\n    <div class="date" lang="{source_lang}">{html.escape(poem["date"])}</div>'
             if poem.get("date") else ""
         )
         translation = ""
-        if locale_id != "zh":
+        if locale_id not in CHINESE_LOCALES:
             item = translations[poem["id"]]
             translation = (
                 f'\n    <div class="translation" lang="{html.escape(target_lang, quote=True)}">'
@@ -233,8 +242,8 @@ def ci_poems_html(locale_id: str, locale: dict[str, Any]) -> str:
             )
         blocks.append(
             f'  <div class="{classes}" id="{poem["id"]}">\n'
-            f'    <h2 lang="zh-Hant-HK">{source_title}</h2>\n'
-            f'    <div class="body" lang="zh-Hant-HK">{source_body}</div>'
+            f'    <h2 lang="{source_lang}">{source_title}</h2>\n'
+            f'    <div class="body" lang="{source_lang}">{source_body}</div>'
             f'{date}{translation}\n'
             f'  </div>'
         )
@@ -244,6 +253,8 @@ def ci_poems_html(locale_id: str, locale: dict[str, Any]) -> str:
 def shi_translation(locale_id: str) -> list[dict[str, Any]]:
     if locale_id == "zh":
         return SHI_SOURCE["drafts"]
+    if locale_id == "zh-hans":
+        return SHI_SIMPLIFIED["drafts"]
     path = CONTENT / "shi-translations" / f"{locale_id}.json"
     data = load_json(path)
     drafts = data.get("drafts", [])
@@ -258,7 +269,11 @@ def shi_translation(locale_id: str) -> list[dict[str, Any]]:
 
 def shi_drafts_html(locale_id: str) -> str:
     drafts = shi_translation(locale_id)
-    target_lang = LANG_BY_ID[locale_id]["html_lang"]
+    target_lang = (
+        "zh-Hant-HK" if locale_id == "zh"
+        else "zh-Hans" if locale_id == "zh-hans"
+        else LANG_BY_ID[locale_id]["html_lang"]
+    )
     blocks = []
     for draft in drafts:
         rows = [f'  <div class="draft" lang="{html.escape(target_lang, quote=True)}">',
@@ -287,6 +302,8 @@ def font_preloads(locale_id: str, page: str) -> str:
         fonts.append("courier-prime-latin-400.woff2")
         if locale_id in {"zh", "ja"}:
             fonts.append("shippori-mincho-subset.woff2")
+        elif locale_id == "zh-hans":
+            fonts.append("noto-serif-sc-subset.woff2")
     return "\n".join(
         f'<link rel="preload" as="font" type="font/woff2" href="{prefix}assets/fonts/{name}" crossorigin>'
         for name in fonts
@@ -347,8 +364,8 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "sameAs": [IDENTITY["github_url"]],
         "knowsAbout": IDENTITY["knows_about"],
     }
-    w2 = next(p for p in CI_SOURCE["poems"] if p["id"] == "w2")
-    if locale_id == "zh":
+    w2 = next(p for p in ci_source(locale_id)["poems"] if p["id"] == "w2")
+    if locale_id in CHINESE_LOCALES:
         preview_body = html.escape(w2["source_body"])
     else:
         preview_body = html.escape(ci_translation(locale_id)["w2"]["body"])
@@ -361,6 +378,9 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
     )
     return {
         "HTML_LANG": html.escape(lang["html_lang"], quote=True),
+        "SOURCE_LANG": "zh-Hans" if locale_id == "zh-hans" else "zh-Hant-HK",
+        "CI_GLYPH": "词" if locale_id == "zh-hans" else "詞",
+        "SHI_GLYPH": "诗" if locale_id == "zh-hans" else "詩",
         "LOCALE": locale_id,
         "ASSET_PREFIX": asset_prefix(locale_id),
         "CANONICAL_URL": html.escape(absolute_url(locale_id, page), quote=True),
@@ -389,7 +409,9 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "SCOPERAIL_TITLE": html.escape(SHARED["projects"]["scoperail"]["title"]),
         "SCOPERAIL_STACK": html.escape(SHARED["projects"]["scoperail"]["stack"]),
         "LIUZHENG_URL": html.escape(SHARED["projects"]["liuzheng"]["url"], quote=True),
-        "LIUZHENG_TITLE": html.escape(SHARED["projects"]["liuzheng"]["title"]),
+        "LIUZHENG_TITLE": html.escape(SHARED["projects"]["liuzheng"]["title"]).replace(
+            "留證", '<span lang="zh-Hant-HK">留證</span>'
+        ),
         "LIUZHENG_STACK": html.escape(SHARED["projects"]["liuzheng"]["stack"]),
         "HOME_HREF": page_path(locale_id, "index"),
         "CI_HREF": page_path(locale_id, "ci"),
@@ -404,8 +426,10 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "POETRY_PREVIEW_TITLE": locale["home"]["poetry"]["preview_title"],
         "POETRY_PREVIEW_BODY": preview_body,
         "POETRY_PREVIEW_DATE": locale["home"]["poetry"]["preview_date"],
-        "CI_SOURCE_HEADING": html.escape(CI_SOURCE["title"]),
-        "SHI_SOURCE_HEADING": html.escape(SHI_SOURCE["title"]),
+        "CI_SOURCE_HEADING": html.escape(ci_source(locale_id)["title"]),
+        "SHI_SOURCE_HEADING": html.escape(
+            SHI_SIMPLIFIED["title"] if locale_id == "zh-hans" else SHI_SOURCE["title"]
+        ),
         "SHI_NAV_LABEL": locale["common"]["nav"]["shi"],
         "CI_TOC": ci_toc(locale_id, locale),
         "CI_POEMS": ci_poems_html(locale_id, locale),

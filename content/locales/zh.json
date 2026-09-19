@@ -34,15 +34,15 @@
   },
   "home": {
     "meta_title": "Hanpu Li 李函璞 · 電影、研究、攝影與系統",
-    "meta_description": "Hanpu Li（李函璞）——現居倫敦的電影研究者、寫作者、攝影師與開發者；工作涉及電影形式、空間證據、開源系統與詞詩。",
+    "meta_description": "Hanpu Li（李函璞）——現居倫敦的電影研究者、寫作者、攝影師與開發者；工作涉及電影形式、空間證據、開源系統與詩詞。",
     "eyebrow": "電影 / 研究 / 系統 / 文字 · 倫敦",
     "location": "倫敦",
     "alias": "亦以 Caitlyn Lye 名義工作",
-    "education": "約克語言學 → QMUL 電影研究",
+    "education": "約克電影與電視製作 → QMUL 語言學與電影",
     "lede": "看電影的，也寫寫詞。",
     "lede_note": "",
     "intro": "電影研究、寫作、攝影與軟件開發。目前的工作往返於電影形式、空間證據與小型軟件系統之間。",
-    "method": "方法其實簡單：先把主張説準，再讓證據可供查驗。",
+    "method": "方法其實簡單：先把主張說準，再讓證據可供查驗。",
     "sections": {
       "work": {"title": "選作", "kicker": "研究與系統"},
       "photo": {"title": "攝影", "kicker": "劇照 / 膠片 / 拍立得"},
@@ -109,10 +109,10 @@
     "poetry": {
       "recent": "近作二首",
       "preview_title": "《鷓鴣天 · 連夕燈下試筆，未竟》",
-      "translation_w2": "《鷓鴣天》譯文",
-      "translation_w3": "《臨江仙》譯文",
+      "translation_w2": "《鷓鴣天》 · 原作",
+      "translation_w3": "《臨江仙》 · 原作",
       "cycle": "另有《甲乙十六首》：一人分作兩聲的唱和集。",
-      "full_cycle": "全集及譯文 →",
+      "full_cycle": "全集 →",
       "poem_link": "詩 →",
       "preview_date": "二〇二六年九月九日"
     },
@@ -128,7 +128,7 @@
   },
   "ci": {
     "meta_title": "甲乙十六首 · Hanpu Li 李函璞",
-    "meta_description": "《甲乙十六首》：一人分作兩聲的唱和集，附各語譯文。",
+    "meta_description": "《甲乙十六首》：一人分作兩聲的唱和集，附自撰箋註。",
     "heading": "甲乙十六首",
     "subtitle": "一人分作兩聲的唱和集：甲多詳序，乙前五首無題。十六首並繫於二〇二六年六月九日；集外三首：七月一日一首，九月九日二首。附自撰箋註，備索。",
     "source_label": "原文",

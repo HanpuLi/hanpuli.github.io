@@ -11,11 +11,13 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `ci-source.json` — canonical Chinese text of the ci cycle and the established English reference translation.
 - `ci-translation-guidance.md` — semantic constraints distilled from the author's current annotations; use this during every literary translation review.
 - `ci-translations/<locale>.json` — Japanese, German, French and Russian literary translations.
+- `ci-simplified.json` — script-only Simplified Chinese mirror of the canonical ci source; its source hash is checked in CI.
 - `shi-source.json` — canonical Chinese text of the poem and its two drafts.
-- `shi-translations/<locale>.json` — non-Chinese editions.
+- `shi-translations/<locale>.json` — non-Chinese translations.
+- `shi-simplified.json` — script-only Simplified Chinese mirror of the canonical poem source; its source hash is checked in CI.
 
-English is the default site at `/`. Chinese, Japanese, German, French and Russian are emitted at
-`/zh/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Language switching is ordinary static navigation:
+English is the default site at `/`. Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are emitted at
+`/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Language switching is ordinary static navigation:
 there is no runtime translation layer and no language-selection JavaScript.
 
 ## Editing
@@ -32,9 +34,21 @@ python3 tools/sitecheck.py
 check on every push.
 
 Literary translations are structurally constrained: the checker verifies the complete poem
-set and preserves the source/reference line and stanza structure. The canonical Chinese
-source is never generated from a translation.
+set and preserves the source/reference line and stanza structure. Traditional Chinese remains
+the canonical literary source. After changing it, regenerate only the script mirrors with:
 
-After adding or changing CJK copy, rebuild the open-font subsets with
-`python3 tools/rebuild-fonts.py`. Never add Garamond Premier Pro or another licensed local
-font to the repository.
+```sh
+uv run --with opencc-python-reimplemented python tools/update_simplified_literary.py
+```
+
+Editorial Simplified Chinese in `locales/zh-hans.json` is maintained independently; the helper
+never overwrites it.
+
+After changing CJK copy, rebuild the Traditional/Japanese and Simplified-Chinese subsets with:
+
+```sh
+uv run --with fonttools --with brotli python tools/rebuild-fonts.py
+uv run --with fonttools --with brotli python tools/rebuild-zh-hans-font.py
+```
+
+Never add Garamond Premier Pro or another licensed local font to the repository.

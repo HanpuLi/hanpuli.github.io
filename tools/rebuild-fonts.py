@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
-"""重建中文 webfont 子集(香港正字繁体版)。页面文字改动后运行一次:
-    python3 tools/rebuild-fonts.py
-主力 Shippori Mincho 只含全站实际用字;新增汉字若不重建会回落宋体。
+"""重建香港正字繁体 / 日文所用的 Shippori webfont 子集。
+
+页面文字改动后运行:
+    uv run --with fonttools --with brotli python tools/rebuild-fonts.py
+
+简体中文版的 Noto Serif SC 子集由 tools/rebuild-zh-hans-font.py 单独维护，
+不要把简体字形并入 Shippori 子集。
+
+Shippori Mincho 只含全站实际用字;新增汉字若不重建会回落宋体。
 Shippori 缺字由 I.MingCP 补丁兜底——若脚本报告缺字变化,
 需同步更新 assets/site.css 中 @font-face "IMing Gap" 的 unicode-range。
 依赖: pip install fonttools brotli
@@ -17,18 +23,28 @@ COMMON_OUT = os.path.join(ROOT, "assets/fonts/shippori-mincho-common.woff2")
 GAP = os.path.join(ROOT, "assets/fonts/iming-gap.woff2")
 # Present on the default English edition: identity, locale controls, 留證 and the favicon glyph.
 # Keep this set deliberately CJK-only; punctuation/symbols fall back to the Latin/system faces.
-COMMON_CHARS = set("李函璞留證詞中日")
+COMMON_CHARS = set("李函璞留證詞繁日")
 
 chars = set()
 for f in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
     rel = os.path.relpath(f, ROOT).split(os.sep)
-    if "templates" in rel or os.path.basename(f) == "card.html":
+    # The Noto Serif SC subset owns the Simplified-Chinese edition; standalone
+    # utility pages have their own typography and must not leak characters into
+    # the Traditional/Japanese Shippori subset.
+    if (
+        "templates" in rel
+        or os.path.basename(f) == "card.html"
+        or rel[0] in {"zh-hans", "fridge", "mail-assistant"}
+    ):
         continue
     t = open(f, encoding="utf-8").read()
     t = re.sub(r"<style>.*?</style>", "", t, flags=re.S)
     t = re.sub(r"<[^>]+>", "", t)
     chars.update(c for c in t if ord(c) >= 0x2E80 or c in "£²·–—’←→")
 chars.discard("🐈")
+# The Simplified-Chinese locale switch label is rendered by Noto Serif SC via
+# its lang="zh-Hans" annotation, not by Shippori/I.Ming.
+chars.discard("简")
 
 from fontTools.ttLib import TTFont
 cmap = TTFont(SP).getBestCmap()
