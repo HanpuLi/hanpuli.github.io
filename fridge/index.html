@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="唐山家用三门冰箱选购：容声、美的、海尔、松下，按预算、冷冻、尺寸和保修说人话比较。">
+  <meta name="description" content="唐山家用冰箱选购：不设预算、不限空间、不限门型，比较海尔、松下、东芝、容声和博世/西门子的500L级主流高配产品。">
   <meta name="theme-color" content="#f6f1e8">
-  <title>唐山冰箱怎么选｜说人话版</title>
+  <title>唐山冰箱怎么选｜不限预算和门型版</title>
   <style>
     :root{
       --bg:#f6f1e8;--paper:#fffdf8;--ink:#1e1e1e;--muted:#5f5a52;
@@ -18,7 +18,7 @@
     body{
       margin:0;background:var(--bg);color:var(--ink);
       font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;
-      font-size:var(--fs);line-height:1.72;letter-spacing:.01em;
+      font-size:var(--fs);line-height:1.7;letter-spacing:.01em;
     }
     body.contrast{
       --bg:#fff;--paper:#fff;--ink:#000;--muted:#222;--line:#000;
@@ -29,41 +29,36 @@
       outline:4px solid var(--focus);outline-offset:3px;border-radius:8px
     }
     button{font:inherit}
-    .skip{
-      position:absolute;left:-9999px;top:8px;background:#000;color:#fff;padding:12px 16px;z-index:99
-    }
+    .skip{position:absolute;left:-9999px;top:8px;background:#000;color:#fff;padding:12px 16px;z-index:99}
     .skip:focus{left:8px}
-    .wrap{width:min(920px,calc(100% - 28px));margin:auto}
+    .wrap{width:min(940px,calc(100% - 28px));margin:auto}
     header{padding:24px 0 10px}
-    .tools{
-      display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;margin-bottom:16px
-    }
+    .tools{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;margin-bottom:16px}
     .tool{
       min-height:48px;border:2px solid var(--line);background:var(--paper);color:var(--ink);
       border-radius:12px;padding:9px 14px;cursor:pointer;font-weight:700
     }
-    .eyebrow{font-size:.86em;color:var(--muted);font-weight:800;letter-spacing:.06em}
-    h1{font-size:clamp(2rem,7vw,3.4rem);line-height:1.08;margin:.2em 0 .35em;letter-spacing:-.035em}
+    .eyebrow{font-size:.86em;color:var(--muted);font-weight:800;letter-spacing:.04em}
+    h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.08;margin:.2em 0 .35em;letter-spacing:-.035em}
     h2{font-size:1.55em;line-height:1.25;margin:1.8em 0 .7em}
-    h3{font-size:1.2em;line-height:1.3;margin:.2em 0 .55em}
+    h3{font-size:1.22em;line-height:1.3;margin:.2em 0 .55em}
     p{margin:.55em 0}
-    .lede{font-size:1.14em;max-width:38em;color:#37332e}
+    .lede{font-size:1.14em;max-width:42em;color:#37332e}
     .updated{color:var(--muted);font-size:.9em}
     .hero-card,.card,.panel,details{
       background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)
     }
     .hero-card{padding:22px;margin:22px 0}
-    .hero-card strong{font-size:1.14em}
-    .price-row{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px
-    }
-    .mini{
+    .hero-card strong{font-size:1.08em}
+    .headline{font-size:1.24em;font-weight:900;line-height:1.45}
+    .route-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+    .route{
       border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff
     }
-    .mini b{display:block;font-size:1.15em;margin-top:3px}
+    .route b{display:block;font-size:1.1em;margin-bottom:3px}
     .chooser{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}
     .choice{
-      min-height:64px;text-align:left;border:2px solid var(--line);background:var(--paper);
+      min-height:68px;text-align:left;border:2px solid var(--line);background:var(--paper);
       border-radius:14px;padding:14px 16px;cursor:pointer;font-weight:800;color:var(--ink)
     }
     .choice[aria-pressed="true"]{border-color:var(--accent);background:var(--soft)}
@@ -78,7 +73,7 @@
       display:inline-block;border:1px solid var(--line);border-radius:999px;padding:3px 10px;
       margin:0 6px 6px 0;font-size:.84em;font-weight:800;background:#fff
     }
-    .money{font-size:1.6em;font-weight:900;color:var(--accent);letter-spacing:-.03em}
+    .money{font-size:1.26em;font-weight:900;color:var(--accent);letter-spacing:-.02em}
     .subprice{font-size:.86em;color:var(--muted)}
     .good,.bad{padding:12px 14px;border-radius:12px;margin:.7em 0}
     .good{background:#edf7f1;border-left:5px solid #26734f}
@@ -96,10 +91,7 @@
     .checklist{padding-left:1.3em}
     .checklist li{margin:.65em 0}
     details{padding:0;margin:14px 0;overflow:hidden}
-    summary{
-      cursor:pointer;font-weight:900;padding:16px 18px;min-height:54px;
-      display:flex;align-items:center
-    }
+    summary{cursor:pointer;font-weight:900;padding:16px 18px;min-height:54px;display:flex;align-items:center}
     details>div{padding:0 18px 18px}
     .compare{width:100%;border-collapse:separate;border-spacing:0;font-size:.91em}
     .compare th,.compare td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
@@ -111,14 +103,12 @@
     .note{color:var(--muted);font-size:.88em}
     .only-important{font-weight:900;background:#fff3c5;padding:0 .2em}
     @media(max-width:680px){
-      .price-row{grid-template-columns:1fr 1fr}
-      .chooser{grid-template-columns:1fr}
-      .wrap{width:min(100% - 20px,920px)}
+      .route-grid,.chooser{grid-template-columns:1fr}
+      .wrap{width:min(100% - 20px,940px)}
       .card,.hero-card,.panel{padding:18px}
       .tools{justify-content:flex-start}
       .btn{width:100%}
     }
-    @media(max-width:420px){.price-row{grid-template-columns:1fr}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
     @media print{
       .tools,.chooser,.links,.skip{display:none!important}
@@ -136,145 +126,160 @@
     <button class="tool" id="contrast" type="button" aria-pressed="false">强对比</button>
   </div>
   <div class="eyebrow">唐山 · 家用冰箱 · 2026-09-19 实查</div>
-  <h1>冰箱到底买哪个？</h1>
-  <p class="lede">不讲“德系品质”“黑科技”。只说：<strong>多少钱、能冻多少、占多大地方、坏了谁管。</strong></p>
-  <p class="updated">适合：要冷冻室，但不要十字四门 / 法式多门 / 左右对开门的人。</p>
+  <h1>不限预算，也不限门型。那就直接看真正值得买的。</h1>
+  <p class="lede">之前那版把你误判成了“小三门、预算和位置都有限”。现在改正：<strong>门型不限、地方不限、预算不限。</strong></p>
+  <p class="updated">价格还会显示，但只让你心里有数，<strong>不拿价格和占地做第一筛选条件。</strong></p>
 </header>
 
 <main id="main" class="wrap">
   <section class="hero-card" aria-labelledby="quick-title">
     <h2 id="quick-title" style="margin-top:0">10秒结论</h2>
-    <p><strong>预算不紧、地方放得下：</strong>先看 <span class="only-important">海尔 310L</span>。</p>
-    <p><strong>最省钱：</strong>看 <span class="only-important">容声 261L</span>。</p>
-    <p><strong>厨房比较浅：</strong>看 <span class="only-important">美的 283</span>。</p>
-    <p><strong>经常囤肉，又怕制冷系统以后出问题：</strong>认真看 <span class="only-important">松下 Xtra 300L</span>。</p>
+    <p class="headline">没有这些限制以后，主战场应该从 260到310L 小三门，直接抬到 <span class="only-important">460–560L 左右的双系统 / 大冷冻 / 自动制冰 / 高保鲜产品</span>。</p>
 
-    <div class="price-row" aria-label="当前价格参考">
-      <div class="mini">容声 261<b>约 ¥1111</b></div>
-      <div class="mini">美的 283<b>约 ¥1469</b></div>
-      <div class="mini">海尔 310<b>约 ¥1635</b></div>
-      <div class="mini">松下 300<b>约 ¥2678</b></div>
+    <div class="route-grid">
+      <div class="route"><b>综合最稳</b>海尔 云溪 501L</div>
+      <div class="route"><b>冷冻和长期兜底</b>松下 Xtra 500L</div>
+      <div class="route"><b>分区最细、做饭型</b>东芝 大白桃Pro 463L</div>
+      <div class="route"><b>大容量双系统</b>容声 战神 556L</div>
     </div>
-    <p class="note">价格是 2026-09-19 京东公开页面/国补后的基准。<strong>最终要把收货地址切到唐山再看结算页。</strong></p>
+    <p class="note">这四台优化的是不同使用方式，不按“谁最便宜”排序。</p>
   </section>
 
   <section aria-labelledby="choose-title">
-    <h2 id="choose-title">你最在意哪一件事？</h2>
-    <p>只选一个。页面会直接告诉你先看哪台。</p>
-    <div class="chooser" role="group" aria-label="选择最重要的购买条件">
-      <button class="choice" data-choice="cheap" aria-pressed="false">我就想少花钱</button>
-      <button class="choice" data-choice="freeze" aria-pressed="false">我家冻肉、饺子很多</button>
-      <button class="choice" data-choice="shallow" aria-pressed="false">厨房位置比较浅</button>
-      <button class="choice" data-choice="repair" aria-pressed="false">我最怕以后制冷系统坏</button>
+    <h2 id="choose-title">你最在意什么？</h2>
+    <div class="chooser" role="group" aria-label="选择最重要的冰箱特性">
+      <button class="choice" data-choice="allround" aria-pressed="false">我想要整体最好用，不想留明显短板</button>
+      <button class="choice" data-choice="freeze" aria-pressed="false">我家冷冻很多，还想要自动制冰</button>
+      <button class="choice" data-choice="organize" aria-pressed="false">我经常做饭，想把食材分得很细</button>
+      <button class="choice" data-choice="capacity" aria-pressed="false">我想要大容量、双系统，直接装很多</button>
     </div>
-    <div id="answer" role="status" aria-live="polite">还没选。下面四台都可以直接看。</div>
+    <div id="answer" role="status" aria-live="polite">还没选。下面四台都值得直接看。</div>
   </section>
 
   <section aria-labelledby="shortlist-title">
-    <h2 id="shortlist-title">真正值得看的四台</h2>
+    <h2 id="shortlist-title">现在的主候选</h2>
     <div class="cards">
 
-      <article class="card" id="ronshen" data-kind="cheap">
+      <article class="card" id="haier" data-kind="allround">
         <div>
-          <span class="tag">最省钱</span><span class="tag">三门</span><span class="tag">新国标一级</span>
+          <span class="tag">综合首选</span><span class="tag">双系统</span><span class="tag">全空间保鲜</span>
         </div>
-        <h3>容声 BCD-261D20RNLBD</h3>
-        <div class="money">约 ¥1111</div>
-        <div class="subprice">当前京东国补基准价；唐山实际结算为准</div>
-        <p><strong>261L。</strong> 纸面约 100L 冷冻，风冷无霜，变频。</p>
-        <div class="good"><strong>适合你：</strong>预算最重要，但又不想退回直冷小冰箱。</div>
-        <div class="bad"><strong>不要多算：</strong>变温室能不能像松下一样真正到 -18℃，我没有厂家级证据，所以不把它算成额外深冻空间。</div>
+        <h3>海尔 云溪 501L BCD-501WGHFD1GRBU1</h3>
+        <div class="money">当前公开价约 ¥7,450</div>
+        <div class="subprice">价格会变，不作为排序依据</div>
+        <p><strong>501L：</strong>318L 冷藏 + <strong>183L 冷冻</strong>。官方明确是冷藏、冷冻各自独立制冷的双系统。</p>
+        <p>官方数据：35dB，冷冻能力 <strong>8.5kg/12h</strong>，594mm 深，全空间保鲜、深冷锁鲜、三档变温。</p>
+        <div class="good"><strong>适合：</strong>想买一台整体能力很完整的家用主冰箱。双系统、保鲜、冷冻能力、容量都没有明显短板。</div>
+        <div class="bad"><strong>注意：</strong>标准包修仍是整机1年、主要零部件3年。高价不等于制冷系统保得更久。</div>
         <div class="links">
-          <a class="btn" href="https://search.jd.com/Search?keyword=BCD-261D20RNLBD&amp;enc=utf-8" target="_blank" rel="noopener">京东搜这款</a>
-          <a class="btn info" href="https://mall.hisense.com/helps" target="_blank" rel="noopener">看容声/海信售后信息</a>
+          <a class="btn" href="https://search.jd.com/Search?keyword=BCD-501WGHFD1GRBU1&amp;enc=utf-8" target="_blank" rel="noopener">京东搜这款</a>
+          <a class="btn info" href="https://www.haier.com/cooling/20260318_287961.shtml" target="_blank" rel="noopener">看海尔官方参数</a>
         </div>
       </article>
 
-      <article class="card" id="midea" data-kind="shallow">
+      <article class="card" id="panasonic" data-kind="freeze">
         <div>
-          <span class="tag">机身较浅</span><span class="tag">三门</span><span class="tag">新国标一级</span>
+          <span class="tag">固定冷冻大</span><span class="tag">自动制冰</span><span class="tag">制冷系统5年</span>
         </div>
-        <h3>美的 MR-283WTPE</h3>
-        <div class="money">约 ¥1469</div>
-        <div class="subprice">当前京东国补基准价；唐山实际结算为准</div>
-        <p><strong>271L。</strong> 纸面约 100L 冷冻，机身深度约 595mm，34dB 级别。</p>
-        <div class="good"><strong>适合你：</strong>冰箱位不深，又想保留风冷、三门和约100L冷冻。</div>
-        <div class="bad"><strong>注意：</strong>有商家写“双循环/独立循环”，但我没有厂家级证据证明它是“双蒸发器”。别把营销词当双系统。</div>
+        <h3>松下 Xtra 500L NR-XD50C5B-H</h3>
+        <div class="money">公开京东报价约 ¥5,200</div>
+        <div class="subprice">实际国补和唐山结算价另看下单页</div>
+        <p><strong>500L：</strong>305L 冷藏 + <strong>195L 冷冻</strong>。这是很大的固定冷冻空间，不需要把变温区临时改成冷冻。</p>
+        <p>官方数据：自动制冰 0.8kg/24h，39dB，冷冻能力 5.5kg/12h，综合耗电 0.88kWh/天。</p>
+        <div class="good"><strong>适合：</strong>经常囤肉、海鲜、饺子，又喜欢自动制冰，而且特别在意制冷系统出问题后的维修兜底。</div>
+        <div class="bad"><strong>注意：</strong>冷冻能力数字不如海尔云溪501高，但固定冷冻容积更大。松下的优势是空间结构、自动制冰和5年制冷系统保修。</div>
         <div class="links">
-          <a class="btn" href="https://search.jd.com/Search?keyword=MR-283WTPE&amp;enc=utf-8" target="_blank" rel="noopener">京东搜这款</a>
-          <a class="btn info" href="https://www.midea.cn/service" target="_blank" rel="noopener">看美的官方服务</a>
-        </div>
-      </article>
-
-      <article class="card" id="haier" data-kind="freeze">
-        <div>
-          <span class="tag">常规综合首选</span><span class="tag">固定冷冻大</span><span class="tag">左右换门</span>
-        </div>
-        <h3>海尔 BCD-310WGHD3E7WV</h3>
-        <div class="money">约 ¥1635</div>
-        <div class="subprice">当前京东国补基准价；唐山实际结算为准</div>
-        <p><strong>310L：</strong>168L 冷藏 + <strong>112L 固定冷冻</strong> + 30L 变温。官方 34dB，5kg/12h。</p>
-        <div class="good"><strong>适合你：</strong>想要一台简单好理解的“大冷冻三门”，不想为了功能多花一千。</div>
-        <div class="bad"><strong>别算错：</strong>30L 变温区不是松下那种 -18℃全温区，所以深冻空间核心就是112L。</div>
-        <div class="links">
-          <a class="btn" href="https://search.jd.com/Search?keyword=BCD-310WGHD3E7WV&amp;enc=utf-8" target="_blank" rel="noopener">京东搜这款</a>
-          <a class="btn info" href="https://www.haier.com/cooling/20250411_259583.shtml" target="_blank" rel="noopener">看海尔官方参数与保修</a>
-        </div>
-      </article>
-
-      <article class="card" id="panasonic" data-kind="repair">
-        <div>
-          <span class="tag">冷冻最灵活</span><span class="tag">自动制冰</span><span class="tag">制冷系统5年</span>
-        </div>
-        <h3>松下 Xtra 300L</h3>
-        <div class="money">约 ¥2678 起</div>
-        <div class="subprice">GEB-W 京东自营近期国补基准；GEC-W 官方旗舰当前更贵</div>
-        <p><strong>300L：</strong>145L冷藏 + 92L固定冷冻 + <strong>63L中门 -18℃～+5℃</strong>。</p>
-        <p>要囤冻货时，中门也能设到 -18℃。冷冻用途最高可以做到约 <strong>155L</strong>。</p>
-        <div class="good"><strong>适合你：</strong>冷冻需求忽多忽少；喜欢自动制冰；最担心蒸发器、管路、内漏这类制冷系统问题。</div>
-        <div class="bad"><strong>代价：</strong>600×650×1900mm，更大、更高；官方39dB；比海尔310贵约一千元。GEB-W还是旧能效标准口径。</div>
-        <div class="links">
-          <a class="btn" href="https://search.jd.com/Search?keyword=NR-XC30GEB-W&amp;enc=utf-8" target="_blank" rel="noopener">京东搜 GEB-W</a>
-          <a class="btn secondary" href="https://search.jd.com/Search?keyword=NR-XC30GEC-W&amp;enc=utf-8" target="_blank" rel="noopener">京东搜 2026 GEC-W</a>
-          <a class="btn info" href="https://consumer.panasonic.cn/product/ref/3door/nr-xc30geb-w.html" target="_blank" rel="noopener">看松下官方参数</a>
+          <a class="btn" href="https://search.jd.com/Search?keyword=NR-XD50C5B-H&amp;enc=utf-8" target="_blank" rel="noopener">京东搜这款</a>
+          <a class="btn info" href="https://consumer.panasonic.cn/product/ref/sbs/nr-xd50c5b-s-nr-xd50c5b-h-nr-xd50c5a-s.html" target="_blank" rel="noopener">看松下官方参数</a>
           <a class="btn info" href="https://panasonic.cn/support/policy/warranty/refrigerator/" target="_blank" rel="noopener">看松下官方保修</a>
+        </div>
+      </article>
+
+      <article class="card" id="toshiba" data-kind="organize">
+        <div>
+          <span class="tag">六门分区</span><span class="tag">双系统</span><span class="tag">自动制冰</span>
+        </div>
+        <h3>东芝 大白桃Pro 463L GR-RM483WI-PG1B3</h3>
+        <div class="money">活动价常见约 ¥8,000到9,000+</div>
+        <div class="subprice">日常页面价可能明显更高，价格波动大</div>
+        <p><strong>463L：</strong>242L 冷藏 + 103L 冷冻 + <strong>78L 变温</strong>。双系统，35dB，冷冻能力 7kg/12h。</p>
+        <p>六门日式分区和自动制冰是它真正的卖点。不是单纯追求“大”，而是把不同食材拆得更细。</p>
+        <div class="good"><strong>适合：</strong>家里做饭频率高，食材种类多，愿意为细分储藏、自动制冰和使用体验付钱。</div>
+        <div class="bad"><strong>注意：</strong>它不是容量最大的，也不是最便宜的。你买的是分区逻辑和日式多门结构。</div>
+        <div class="links">
+          <a class="btn" href="https://search.jd.com/Search?keyword=GR-RM483WI-PG1B3&amp;enc=utf-8" target="_blank" rel="noopener">京东搜这款</a>
+          <a class="btn info" href="https://www.midea.cn/1/1000000000400692841863.html" target="_blank" rel="noopener">看集团官方规格页</a>
+        </div>
+      </article>
+
+      <article class="card" id="ronshen" data-kind="capacity">
+        <div>
+          <span class="tag">556L</span><span class="tag">双系统</span><span class="tag">200L固定冷冻</span>
+        </div>
+        <h3>容声 战神 556L BCD-556Q30FQLBJ</h3>
+        <div class="money">当前约 ¥3,200到3,700</div>
+        <div class="subprice">官方商城和京东渠道会有差异</div>
+        <p><strong>556L：</strong>323L 冷藏 + <strong>200L 冷冻</strong> + 33L 变温。官方明确是双系统，35dB，一级能效。</p>
+        <div class="good"><strong>适合：</strong>就想要很大的固定容量和真正双系统，不想为了复杂的多抽屉结构改变使用习惯。</div>
+        <div class="bad"><strong>注意：</strong>它没有东芝那种细分六门，也不是松下那种以制冰和长期制冷保修见长。优势是简单直接的大容量双系统。</div>
+        <div class="links">
+          <a class="btn" href="https://search.jd.com/Search?keyword=BCD-556Q30FQLBJ&amp;enc=utf-8" target="_blank" rel="noopener">京东搜这款</a>
+          <a class="btn info" href="https://mall.hisense.com/items/7018" target="_blank" rel="noopener">看容声官方规格</a>
         </div>
       </article>
     </div>
   </section>
 
-  <section class="panel warning" aria-labelledby="before-title">
-    <h2 id="before-title" style="margin-top:0">下单前，只做这 3 件事</h2>
-    <ol class="checklist">
-      <li><strong>量位置：</strong>净宽、净深、净高；再看左/右边是不是贴墙。</li>
-      <li><strong>把京东地址切到唐山：</strong>只看最后结算价，不看搜索页大字。</li>
-      <li><strong>到货看铭牌：</strong>完整型号、生产日期、能效执行标准。包装先别扔，运行两三天再处理。</li>
-    </ol>
+  <section class="panel warning" aria-labelledby="bottom-title">
+    <h2 id="bottom-title" style="margin-top:0">如果你懒得研究</h2>
+    <p><strong>直接从海尔云溪501和松下Xtra500里二选一。</strong></p>
+    <p>海尔更像“综合能力强的标准答案”；松下更像“冷冻很多、喜欢制冰、又特别在意制冷系统5年保修”的答案。</p>
   </section>
 
   <details>
-    <summary>我想看四台参数放一起</summary>
+    <summary>四台参数放一起看</summary>
     <div>
       <div class="scroll" role="region" aria-label="冰箱参数对比表" tabindex="0">
         <table class="compare">
-          <thead><tr><th>型号</th><th>现在约多少钱</th><th>冷冻怎么用</th><th>尺寸约</th><th>最重要的区别</th></tr></thead>
+          <thead><tr><th>型号</th><th>总容积</th><th>固定冷冻</th><th>系统</th><th>冷冻能力</th><th>最重要的区别</th></tr></thead>
           <tbody>
-            <tr><td>容声261</td><td>¥1111</td><td>约100L固定冷冻</td><td>550×626×1809</td><td>最便宜</td></tr>
-            <tr><td>美的283</td><td>¥1469</td><td>约100L固定冷冻</td><td>562×595×1778</td><td>机身较浅</td></tr>
-            <tr><td>海尔310</td><td>¥1635</td><td><strong>112L固定冷冻</strong></td><td>545×622×1850</td><td>常规综合最好理解</td></tr>
-            <tr><td>松下Xtra 300</td><td>¥2678起</td><td>92L固定 + <strong>63L可到-18℃</strong></td><td>600×650×1900</td><td>自动制冰 + 制冷系统5年</td></tr>
+            <tr><td>海尔 云溪501</td><td>501L</td><td>183L</td><td><strong>双系统</strong></td><td><strong>8.5kg/12h</strong></td><td>综合最完整</td></tr>
+            <tr><td>松下 Xtra500</td><td>500L</td><td><strong>195L</strong></td><td>官方页未以“双系统”为主卖点</td><td>5.5kg/12h</td><td>自动制冰 + 制冷系统5年</td></tr>
+            <tr><td>东芝 大白桃Pro</td><td>463L</td><td>103L</td><td><strong>双系统</strong></td><td>7kg/12h</td><td>78L变温 + 六门细分</td></tr>
+            <tr><td>容声 战神556</td><td><strong>556L</strong></td><td><strong>200L</strong></td><td><strong>双系统</strong></td><td>官方商品页未列</td><td>大容量最直接</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="note">容声/美的部分容积和噪声来自当前销售页/参数库，证据强度低于海尔和松下完整厂家参数页。</p>
     </div>
   </details>
 
   <details>
-    <summary>铜管、铝管：一句话到底怎么看</summary>
+    <summary>那 Bosch / Siemens 呢？</summary>
     <div>
-      <p><strong>别用“是不是铝管”一票否决。</strong> 现代冰箱本来就会混用铜、铝、钢/邦迪管。真正麻烦的是接头、防腐、焊接质量和发泡层内漏。</p>
-      <p>如果你最怕这个问题，<strong>松下制冷系统5年保修</strong>比销售口中的“全铜”更有实际意义。</p>
+      <p>门型和预算都放开以后，也不该再拿以前那台 279L 两门机代表博世/西门子。</p>
+      <p>现在真正该看的 BSH 候选是 <strong>西门子 KF89CE163C 504L</strong>、<strong>博世 KFB88E420C 504L</strong> 这一类双系统多门机。它们已经有双系统、超薄多门等配置，可以正常进入比较。</p>
+      <p>但目前仍没有公开可比故障率数据证明 BSH 因为更贵就一定更耐用。它们的确定优势仍然是 E-Nr 型号管理、官方文档、零件和维修体系。</p>
+      <div class="links">
+        <a class="btn secondary" href="https://search.jd.com/Search?keyword=KF89CE163C&amp;enc=utf-8" target="_blank" rel="noopener">京东搜西门子504L</a>
+        <a class="btn secondary" href="https://search.jd.com/Search?keyword=KFB88E420C&amp;enc=utf-8" target="_blank" rel="noopener">京东搜博世504L</a>
+        <a class="btn info" href="https://siemens-home.bsh-group.cn/customer_service/support/installation/fridgefreezer.htm" target="_blank" rel="noopener">看西门子官方服务信息</a>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>为什么以前的海尔310 / 美的283 / 容声261不再主推？</summary>
+    <div>
+      <p>不是它们变差了，而是你的条件变了。</p>
+      <p>如果没有预算和空间限制，小三门最重要的两个优势“便宜、占地小”都失去意义。500L级产品可以给你更大的固定冷冻、真正双系统、自动制冰或者更强的保鲜结构，所以应该先看大一档。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>铜管、铝管到底怎么看</summary>
+    <div>
+      <p><strong>不要用“是不是铝管”一票否决。</strong> 现代冰箱会混用铜、铝、钢/邦迪管。真正麻烦的是异种金属接头、防腐、焊接质量和发泡层内漏。</p>
+      <p>如果你特别怕这件事，松下“制冷系统5年保修”比销售口中的“全铜”更有实际意义。</p>
       <div class="links">
         <a class="btn info" href="https://www.ndls.org.cn/standard/detail/7193e722435fd3e9531b3afd7b7da3f6" target="_blank" rel="noopener">看铝/铝合金毛细管标准信息</a>
       </div>
@@ -282,41 +287,32 @@
   </details>
 
   <details>
-    <summary>为什么没把 Bosch / Siemens 放前面</summary>
-    <div>
-      <p>不是说它们差。是目前这类 279L 普通两门机大约 ¥3000～3500，我没有找到足够证据证明它们因此就更耐用、更安静、冷冻更强，或者“全铜”。</p>
-      <p>它们真正能确认的优势更多是 BSH 的型号、文档、原厂零件和维修体系。如果你就是想买 BSH，优先比较价格更合理的 Siemens 279L。</p>
-    </div>
-  </details>
-
-  <details>
-    <summary>信息从哪里来？</summary>
+    <summary>信息链接</summary>
     <div>
       <ul class="source-list">
-        <li><a href="https://www.haier.com/cooling/20250411_259583.shtml" target="_blank" rel="noopener">海尔 BCD-310WGHD3E7WV 官方产品页</a>：容量、特点、包修。</li>
-        <li><a href="https://consumer.panasonic.cn/product/ref/3door/nr-xc30geb-w.html" target="_blank" rel="noopener">松下 Xtra GEB-W 官方产品页</a>：300L、63L -18～5℃、39dB、自动制冰等。</li>
-        <li><a href="https://panasonic.cn/support/policy/warranty/refrigerator/" target="_blank" rel="noopener">松下 电冰箱官方保修</a>：整机1年、主要部件3年、制冷系统5年。</li>
-        <li><a href="https://www.midea.cn/service" target="_blank" rel="noopener">美的官方服务</a>：报修、网点、收费等。</li>
-        <li><a href="https://mall.hisense.com/helps" target="_blank" rel="noopener">海信/容声官方商城帮助中心</a>：全国联保和售后入口。</li>
-        <li><a href="https://hdsswj.hd.gov.cn/zhengcefagui/?a=view&amp;p=59&amp;r=5125" target="_blank" rel="noopener">河北 2026 家电以旧换新政策官方转载</a>：一级能效冰箱补贴15%、单件最高1500元。</li>
+        <li><a href="https://www.haier.com/cooling/20260318_287961.shtml" target="_blank" rel="noopener">海尔 云溪501 官方产品页</a>：501L、双系统、183L冷冻、8.5kg/12h、35dB、包修。</li>
+        <li><a href="https://consumer.panasonic.cn/product/ref/sbs/nr-xd50c5b-s-nr-xd50c5b-h-nr-xd50c5a-s.html" target="_blank" rel="noopener">松下 Xtra500 官方产品页</a>：195L冷冻、自动制冰、39dB、5.5kg/12h。</li>
+        <li><a href="https://panasonic.cn/support/policy/warranty/refrigerator/" target="_blank" rel="noopener">松下电冰箱官方保修</a>：制冷系统5年。</li>
+        <li><a href="https://www.midea.cn/1/1000000000400692841863.html" target="_blank" rel="noopener">东芝 大白桃Pro463 集团官方规格页</a>：242L冷藏、103L冷冻、78L变温、35dB、7kg/12h。</li>
+        <li><a href="https://mall.hisense.com/items/7018" target="_blank" rel="noopener">容声 战神556 官方商城</a>：556L、200L冷冻、双系统、35dB。</li>
+        <li><a href="https://hdsswj.hd.gov.cn/zhengcefagui/?a=view&amp;p=59&amp;r=5125" target="_blank" rel="noopener">河北2026家电以旧换新政策</a>。</li>
         <li><a href="https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20625" target="_blank" rel="noopener">国家发改委：2026能源效率标识目录与规则</a>。</li>
       </ul>
-      <p class="note">价格链接会变；厂家参数和政策链接比“达人推荐”更值得长期保存。</p>
     </div>
   </details>
 
   <section class="panel">
     <h2 style="margin-top:0">最后一句</h2>
-    <p><strong>家里位置够、普通使用：</strong>海尔310最省心。</p>
-    <p><strong>预算压得低：</strong>容声261。</p>
-    <p><strong>厨房浅：</strong>美的283。</p>
-    <p><strong>特别爱囤冻货，又在意制冷系统5年兜底：</strong>松下 Xtra值得多花钱。</p>
+    <p><strong>综合考虑：</strong>海尔云溪501先看。</p>
+    <p><strong>你家冷冻真的很多，且喜欢自动制冰：</strong>松下Xtra500很强。</p>
+    <p><strong>你把冰箱当“食材分类柜”用：</strong>东芝大白桃Pro更有意思。</p>
+    <p><strong>你就想要大容量双系统，结构别太花：</strong>容声战神556。</p>
   </section>
 </main>
 
 <footer class="wrap">
-  <p>这不是广告，也没有返佣链接。价格记录时间：2026-09-19。实际购买以唐山收货地址的结算页和实机铭牌为准。</p>
-  <p>页面为纯静态单文件：不加载 Google 字体、海外 CDN、分析脚本或第三方追踪器。</p>
+  <p>这不是广告，也没有返佣链接。价格记录时间：2026-09-19。门型、面积和预算均未作为筛选限制。</p>
+  <p>页面为纯静态单文件，不加载 Google 字体、海外 CDN、分析脚本或第三方追踪器。</p>
 </footer>
 
 <script>
@@ -334,10 +330,10 @@
   });
 
   const answers={
-    cheap:['ronshen','先看容声261。现在约1111元，风冷、三门、新国标一级。预算优先时最合理。'],
-    shallow:['midea','先看美的283。约595mm深，适合厨房位置比较浅。'],
-    freeze:['haier','先看海尔310。如果你想要“不用调来调去”的大固定冷冻室，它的112L最直接。'],
-    repair:['panasonic','先看松下 Xtra。它贵，但63L中门能到-18℃，而且制冷系统标准保修5年。']
+    allround:['haier','先看海尔云溪501。双系统、183L冷冻、8.5kg/12h冷冻能力，整体最均衡。'],
+    freeze:['panasonic','先看松下Xtra500。195L固定冷冻、自动制冰，而且制冷系统标准保修5年。'],
+    organize:['toshiba','先看东芝大白桃Pro463。六门、78L变温、双系统，适合食材种类很多的家庭。'],
+    capacity:['ronshen','先看容声战神556。556L、200L固定冷冻、双系统，容量最直接。']
   };
   const cards=[...document.querySelectorAll('.card')];
   document.querySelectorAll('.choice').forEach(btn=>{
@@ -345,9 +341,9 @@
       document.querySelectorAll('.choice').forEach(x=>x.setAttribute('aria-pressed','false'));
       btn.setAttribute('aria-pressed','true');
       cards.forEach(c=>c.classList.remove('recommended'));
-      const [id,text]=answers[btn.dataset.choice];
+      const [id,msg]=answers[btn.dataset.choice];
       document.getElementById(id).classList.add('recommended');
-      document.getElementById('answer').innerHTML='<strong>先看这台：</strong>'+text+' 往下看，推荐卡片会有绿色边框。';
+      document.getElementById('answer').innerHTML='<strong>先看这台：</strong>'+msg+' 往下看，推荐卡片会有绿色边框。';
     });
   });
 })();
