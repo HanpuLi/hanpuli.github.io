@@ -499,16 +499,23 @@ a:hover {
   grid-column: 7 / 13;
 }
 
-.site-home .project-evidence img {
+.site-home .evidence-frame {
   width: 100%;
-  height: auto;
-  background: var(--paper-soft);
+  aspect-ratio: 16 / 9;
+  background: #fff;
+}
+
+.site-home .evidence-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .site-home .project-evidence figcaption {
   display: flex;
   justify-content: space-between;
   gap: 18px;
+  min-height: 2.7em;
 }
 
 .site-home .project-evidence figcaption span:first-child {
