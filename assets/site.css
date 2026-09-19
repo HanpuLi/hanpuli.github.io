@@ -505,7 +505,7 @@ a:hover {
 }
 
 .site-home .project h3 a::after {
-  content: " ↗";
+  content: " ↗" / "";
   display: inline-block;
   margin-left: .1em;
   color: var(--faint);
@@ -596,7 +596,7 @@ a:hover {
 }
 
 .site-home .project-evidence-disclosure summary::after {
-  content: "+";
+  content: "+" / "";
   color: var(--faint);
   font-size: 14px;
   line-height: 1;

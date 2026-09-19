@@ -269,6 +269,28 @@ def shi_drafts_html(locale_id: str) -> str:
     return "\n\n".join(blocks)
 
 
+def font_preloads(locale_id: str, page: str) -> str:
+    prefix = asset_prefix(locale_id)
+    fonts = [
+        "eb-garamond-latin-400.woff2",
+        "shippori-mincho-common.woff2",
+    ]
+    if locale_id == "ru":
+        fonts.extend([
+            "eb-garamond-cyrillic-400.woff2",
+            "cousine-latin-400.woff2",
+            "cousine-cyrillic-400.woff2",
+        ])
+    else:
+        fonts.append("courier-prime-latin-400.woff2")
+        if locale_id in {"zh", "ja"} and page != "404":
+            fonts.append("shippori-mincho-subset.woff2")
+    return "\n".join(
+        f'<link rel="preload" as="font" type="font/woff2" href="{prefix}assets/fonts/{name}" crossorigin>'
+        for name in fonts
+    )
+
+
 def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str, Any]:
     lang = LANG_BY_ID[locale_id]
     primary = IDENTITY["primary_name"]
@@ -295,6 +317,8 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "CANONICAL_URL": html.escape(absolute_url(locale_id, page), quote=True),
         "HREFLANG_LINKS": hreflang_links(page),
         "OG_LOCALE": html.escape(lang["og_locale"], quote=True),
+        "FONT_PRELOADS": font_preloads(locale_id, page),
+        "SOCIAL_IMAGE_ALT": html.escape(locale["home"]["photos"]["alt"]["03"], quote=True),
         "PRIMARY_NAME": html.escape(primary),
         "PRIMARY_NAME_HERO": hero_name,
         "CHINESE_NAME": html.escape(IDENTITY["chinese_name"]),
