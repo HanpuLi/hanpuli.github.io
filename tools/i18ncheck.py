@@ -11,6 +11,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
 CI_IDS = ("a1","b1","a2","b2","b3","b4","b5","a3","a4","a5","a6","a7","b6","a8","b7","a9","a10","w2","w3")
+EXPECTED_EDUCATION = {
+    "en": "York · English Language and Linguistics → film · QMUL",
+    "zh": "約克 · 英語語言與語言學 → 電影 · QMUL",
+    "zh-hans": "约克 · 英语语言与语言学 → 电影 · QMUL",
+    "ja": "York · 英語・言語学 → 映画 · QMUL",
+    "de": "York · Englische Sprache und Linguistik → Film · QMUL",
+    "fr": "York · langue anglaise et linguistique → cinéma · QMUL",
+    "ru": "York · английский язык и лингвистика → кино · QMUL",
+}
 
 
 def load(path: Path):
@@ -81,6 +90,11 @@ def main() -> int:
         wrong = sorted(k for k in set(sig) & set(current) if sig[k] != current[k])
         if missing or extra or wrong:
             errors.append(f"{locale} locale schema mismatch: missing={missing} extra={extra} type={wrong}")
+        if data.get("home", {}).get("education") != EXPECTED_EDUCATION[locale]:
+            errors.append(
+                f"{locale} home.education no longer matches the approved factual trajectory: "
+                f"{data.get('home', {}).get('education')!r}"
+            )
 
     essay_locales = load(CONTENT / "essay-trainspotting.json")
     if set(essay_locales) != set(locales):
@@ -308,6 +322,11 @@ def main() -> int:
             expected = next(item["html_lang"] for item in languages if item["id"] == locale)
             if not re.search(rf'<html\b[^>]*\blang="{re.escape(expected)}"', text):
                 errors.append(f"{path.relative_to(ROOT)}: wrong html lang")
+            has_sc_font = "noto-serif-sc-subset.woff2" in text
+            if locale == "zh-hans" and not has_sc_font:
+                errors.append(f"{path.relative_to(ROOT)}: Simplified-Chinese page is missing the SC font subset")
+            if locale != "zh-hans" and has_sc_font:
+                errors.append(f"{path.relative_to(ROOT)}: non-Simplified page must not load the SC font subset")
             if name != "404.html":
                 alternates = len(re.findall(r'<link rel="alternate" hreflang=', text))
                 if alternates != expected_alternates:
@@ -329,6 +348,8 @@ def main() -> int:
                     errors.append(
                         f"{path.relative_to(ROOT)}: Trainspotting links do not stay in the current locale"
                     )
+                if locale == "zh-hans" and '<span lang="zh-Hant-HK">留證</span>' not in text:
+                    errors.append("zh-hans/index.html: 留證 brand must remain Traditional and carry zh-Hant-HK")
             if name == "404.html":
                 if locale_data["notfound"]["line"] != b2_quotes[locale]:
                     errors.append(

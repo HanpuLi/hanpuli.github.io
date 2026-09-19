@@ -521,9 +521,9 @@ def build(check: bool = False) -> list[Path]:
         description = essay_copy["meta_description"]
         note = essay_copy["language_note"].strip()
         note_html = (
-            f'    <p class="essay-note" role="note">{html.escape(note)}</p>'
+            f'<p class="essay-note" role="note">{html.escape(note)}</p>'
             if note
-            else ""
+            else "<!-- English body; no language notice needed. -->"
         )
         essay_target = essay_output_path(lid)
         essay_target.parent.mkdir(parents=True, exist_ok=True)

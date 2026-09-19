@@ -2503,6 +2503,10 @@ html[data-reading-motion] .site-home::before {
     padding: 0;
   }
 
+  .site-home:is(.locale-en, .locale-de, .locale-fr, .locale-ru) .hero-id {
+    grid-column: 6 / 13;
+  }
+
   .site-home .hero-cover {
     grid-column: 1 / 13;
     grid-row: auto;
