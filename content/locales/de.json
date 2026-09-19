@@ -195,7 +195,9 @@
   },
   "notfound": {
     "meta_title": "Seite nicht gefunden · Hanpu Li",
-    "line": "Unter dieser Adresse ist nichts.",
-    "home": "← Hanpu Li"
+    "line": "Eine Wasserfläche, klar vor Augen. Kein Boot.",
+    "description": "Diese Seite existiert nicht oder wurde verschoben.",
+    "source": "B2 · Tasuoxing",
+    "home": "← Zur Startseite"
   }
 }

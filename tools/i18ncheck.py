@@ -115,6 +115,14 @@ def main() -> int:
             if break_pattern(body) != expected_breaks:
                 errors.append(f"{locale} ci {pid}: stanza/line-break pattern differs from English reference")
 
+    b2_quotes = {
+        "zh": nonblank_lines(poems["b2"]["source_body"])[4],
+        "en": nonblank_lines(poems["b2"]["en"]["body"])[5],
+    }
+    for locale in translation_locales:
+        translated_b2 = load(CONTENT / "ci-translations" / f"{locale}.json")["poems"]["b2"]["body"]
+        b2_quotes[locale] = nonblank_lines(translated_b2)[5]
+
     shi = load(CONTENT / "shi-source.json")
     source_patterns = [
         [
@@ -156,6 +164,7 @@ def main() -> int:
 
     for locale in locales:
         folder = ROOT if locale == "en" else ROOT / locale
+        locale_data = load(CONTENT / "locales" / f"{locale}.json")
         for name in ("index.html", "ci.html", "shi.html", "404.html"):
             path = folder / name
             if not path.exists():
@@ -174,7 +183,6 @@ def main() -> int:
                         f"{path.relative_to(ROOT)}: expected {expected_alternates} hreflang links, got {alternates}"
                     )
             if name == "index.html":
-                locale_data = load(CONTENT / "locales" / f"{locale}.json")
                 shi_href = "/shi.html" if locale == "en" else f"/{locale}/shi.html"
                 if not re.search(
                     rf'<a\b[^>]*class="section-nav-page"[^>]*href="{re.escape(shi_href)}"[^>]*>',
@@ -184,6 +192,17 @@ def main() -> int:
                 shi_label = locale_data["common"]["nav"]["shi"]
                 if shi_label not in text:
                     errors.append(f"{path.relative_to(ROOT)}: home navigation is missing localized poem label {shi_label!r}")
+            if name == "404.html":
+                if locale_data["notfound"]["line"] != b2_quotes[locale]:
+                    errors.append(
+                        f"{locale} 404 quote no longer matches the established B2 · Tasuoxing translation"
+                    )
+                ci_href = "/ci.html" if locale == "en" else f"/{locale}/ci.html"
+                if f'href="{ci_href}#b2"' not in text:
+                    errors.append(f"{path.relative_to(ROOT)}: 404 source citation does not link to B2")
+                for key in ("line", "description", "source", "home"):
+                    if locale_data["notfound"][key] not in text:
+                        errors.append(f"{path.relative_to(ROOT)}: missing localized notfound.{key}")
 
     if errors:
         print("\n".join(errors), file=sys.stderr)

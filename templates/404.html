@@ -14,13 +14,16 @@
 <link rel="stylesheet" href="{{ASSET_PREFIX}}assets/site.css">
 </head>
 <body class="notfound-page locale-{{LOCALE}}">
+  <a class="skip-link" href="#main">{{common.skip_content}}</a>
   {{READING_TOOLS}}
   <nav class="notfound-languages" aria-label="{{common.language_nav_label_attr}}">{{LANG_SWITCHER}}</nav>
-  <main class="notfound-shell">
+  <main class="notfound-shell" id="main" tabindex="-1">
     <p class="notfound-code" aria-hidden="true">404</p>
     <div class="notfound-copy">
+      <p class="notfound-source"><a href="{{CI_HREF}}#b2">{{notfound.source}}</a></p>
       <h1>{{notfound.line}}</h1>
-      <a href="{{HOME_HREF}}">{{notfound.home}}</a>
+      <p class="notfound-description">{{notfound.description}}</p>
+      <a class="notfound-home" href="{{HOME_HREF}}">{{notfound.home}}</a>
     </div>
   </main>
 </body>

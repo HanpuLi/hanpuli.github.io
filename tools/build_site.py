@@ -285,7 +285,7 @@ def font_preloads(locale_id: str, page: str) -> str:
         ])
     else:
         fonts.append("courier-prime-latin-400.woff2")
-        if locale_id in {"zh", "ja"} and page != "404":
+        if locale_id in {"zh", "ja"}:
             fonts.append("shippori-mincho-subset.woff2")
     return "\n".join(
         f'<link rel="preload" as="font" type="font/woff2" href="{prefix}assets/fonts/{name}" crossorigin>'
