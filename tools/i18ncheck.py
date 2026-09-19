@@ -9,7 +9,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
-LOCALES = ("en", "zh", "ja", "de", "fr")
 CI_IDS = ("a1","b1","a2","b2","b3","b4","b5","a3","a4","a5","a6","a7","b6","a8","b7","a9","a10","w2","w3")
 
 
@@ -46,10 +45,16 @@ def contains_markup(text: str) -> bool:
 
 def main() -> int:
     errors = []
+    languages = load(CONTENT / "languages.json")
+    locales = tuple(item["id"] for item in languages)
+    translation_locales = tuple(locale for locale in locales if locale not in {"en", "zh"})
+    shi_locales = tuple(locale for locale in locales if locale != "zh")
+    expected_alternates = len(locales) + 1
+
     en = load(CONTENT / "locales" / "en.json")
     sig = signature(en)
 
-    for locale in LOCALES:
+    for locale in locales:
         path = CONTENT / "locales" / f"{locale}.json"
         if not path.exists():
             errors.append(f"missing {path.relative_to(ROOT)}")
@@ -71,7 +76,7 @@ def main() -> int:
         pid: (len(nonblank_lines(poems[pid]["en"]["body"])), break_pattern(poems[pid]["en"]["body"]))
         for pid in CI_IDS
     }
-    for locale in ("ja", "de", "fr"):
+    for locale in translation_locales:
         path = CONTENT / "ci-translations" / f"{locale}.json"
         if not path.exists():
             errors.append(f"missing {path.relative_to(ROOT)}")
@@ -107,7 +112,7 @@ def main() -> int:
         ]
         for draft in shi["drafts"]
     ]
-    for locale in ("en", "ja", "de", "fr"):
+    for locale in shi_locales:
         path = CONTENT / "shi-translations" / f"{locale}.json"
         if not path.exists():
             errors.append(f"missing {path.relative_to(ROOT)}")
@@ -138,7 +143,7 @@ def main() -> int:
                 if break_pattern(body) != expected_breaks:
                     errors.append(f"{locale} shi draft {di+1} part {pi+1}: stanza/line-break pattern differs from source")
 
-    for locale in LOCALES:
+    for locale in locales:
         folder = ROOT if locale == "en" else ROOT / locale
         for name in ("index.html", "ci.html", "shi.html", "404.html"):
             path = folder / name
@@ -148,14 +153,15 @@ def main() -> int:
             text = path.read_text(encoding="utf-8")
             if "{{" in text or "}}" in text:
                 errors.append(f"{path.relative_to(ROOT)}: unresolved template token")
-            lang = load(CONTENT / "languages.json")
-            expected = next(item["html_lang"] for item in lang if item["id"] == locale)
-            if f'<html lang="{expected}">' not in text:
+            expected = next(item["html_lang"] for item in languages if item["id"] == locale)
+            if not re.search(rf'<html\b[^>]*\blang="{re.escape(expected)}"', text):
                 errors.append(f"{path.relative_to(ROOT)}: wrong html lang")
             if name != "404.html":
                 alternates = len(re.findall(r'<link rel="alternate" hreflang=', text))
-                if alternates != 6:
-                    errors.append(f"{path.relative_to(ROOT)}: expected 6 hreflang links, got {alternates}")
+                if alternates != expected_alternates:
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: expected {expected_alternates} hreflang links, got {alternates}"
+                    )
 
     if errors:
         print("\n".join(errors), file=sys.stderr)

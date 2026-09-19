@@ -10,12 +10,12 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `locales/<locale>.json` — navigation, metadata, project copy, captions, accessibility text and profile copy.
 - `ci-source.json` — canonical Chinese text of the ci cycle and the established English reference translation.
 - `ci-translation-guidance.md` — semantic constraints distilled from the author's current annotations; use this during every literary translation review.
-- `ci-translations/<locale>.json` — Japanese, German and French literary translations.
+- `ci-translations/<locale>.json` — Japanese, German, French and Russian literary translations.
 - `shi-source.json` — canonical Chinese text of the poem and its two drafts.
 - `shi-translations/<locale>.json` — non-Chinese editions.
 
-English is the default site at `/`. Chinese, Japanese, German and French are emitted at
-`/zh/`, `/ja/`, `/de/` and `/fr/`. Language switching is ordinary static navigation:
+English is the default site at `/`. Chinese, Japanese, German, French and Russian are emitted at
+`/zh/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Language switching is ordinary static navigation:
 there is no runtime translation layer and no language-selection JavaScript.
 
 ## Editing

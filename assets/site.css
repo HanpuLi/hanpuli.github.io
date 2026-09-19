@@ -1,10 +1,28 @@
 @font-face {
   font-family: "EB Garamond";
+  src: url("fonts/eb-garamond-cyrillic-400.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  src: url("fonts/eb-garamond-cyrillic-italic-400.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: "EB Garamond";
   src: url("fonts/eb-garamond-latin-400.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range: U+0000-00FF, U+0131, U+014D, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
@@ -13,7 +31,7 @@
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range: U+0000-00FF, U+0131, U+014D, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
@@ -24,6 +42,25 @@
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+@font-face {
+  font-family: "Cousine RU";
+  src: url("fonts/cousine-cyrillic-400.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: "Cousine RU";
+  src: url("fonts/cousine-latin-400.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 
 @font-face {
   font-family: "Shippori Common";
@@ -60,6 +97,13 @@
   --max: 1920px;
   --gutter: clamp(18px, 1.55vw, 30px);
   --gap: clamp(12px, 1.25vw, 24px);
+}
+
+.site-home.locale-ru,
+.literary-page.locale-ru,
+.shi-page.locale-ru,
+.notfound-page.locale-ru {
+  --mono: "Cousine RU", "Courier Prime", "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1070,6 +1114,11 @@ a:hover {
   letter-spacing: .08em;
 }
 
+.literary-page.locale-ru h1,
+.shi-page.locale-ru h1 {
+  letter-spacing: .02em;
+}
+
 .literary-page .sub {
   grid-column: 7 / 13;
   align-self: end;
@@ -1494,6 +1543,13 @@ a:hover {
   --cis-profile: calc(785px + 2.36vw);
 }
 
+.site-home.locale-ru {
+  --cis-work: calc(778px + 19.99vw);
+  --cis-writing: calc(521px - 3.55vw);
+  --cis-poetry: calc(1217px - 22.9vw);
+  --cis-profile: calc(785px + 2.35vw);
+}
+
 @supports (content-visibility: auto) {
   .site-home .work-section,
   .site-home .photo-section,
@@ -1553,6 +1609,13 @@ a:hover {
     --cis-work: calc(1178px - 31.51vw);
     --cis-writing: calc(581px - 15.25vw);
     --cis-poetry: calc(908px + 3.6vw);
+    --cis-profile: calc(755px + 2.16vw);
+  }
+
+  .site-home.locale-ru {
+    --cis-work: calc(989px - 9.55vw);
+    --cis-writing: calc(688px - 26.38vw);
+    --cis-poetry: calc(1392.5px - 60.19vw);
     --cis-profile: calc(755px + 2.16vw);
   }
 }
@@ -1638,39 +1701,14 @@ a:hover {
     --cis-photo: calc(493px + 900.59vw);
   }
 
-  .site-home.locale-en {
-    --cis-work: calc(1544px - 11.35vw);
-    --cis-writing: calc(919px - 11.73vw);
-    --cis-poetry: calc(1320px - 55.08vw);
-    --cis-profile: calc(1184px - 60.24vw);
-  }
-
-  .site-home.locale-zh {
-    --cis-work: calc(1602px - 27.73vw);
-    --cis-writing: calc(871px - 11.7vw);
-    --cis-poetry: calc(723px + 1.22vw);
-    --cis-profile: calc(951px - 32.95vw);
-  }
-
-  .site-home.locale-ja {
-    --cis-work: calc(1718px - 30.95vw);
-    --cis-writing: calc(1070px - 31.51vw);
-    --cis-poetry: calc(1320px - 55.08vw);
-    --cis-profile: calc(1210px - 60.27vw);
-  }
-
-  .site-home.locale-de {
-    --cis-work: calc(1812px - 43.38vw);
-    --cis-writing: calc(1019px - 24.84vw);
-    --cis-poetry: calc(1570px - 85vw);
-    --cis-profile: calc(1313px - 73.92vw);
-  }
-
-  .site-home.locale-fr {
-    --cis-work: calc(1777px - 38.76vw);
-    --cis-writing: calc(1001px - 22.46vw);
-    --cis-poetry: calc(1570px - 85vw);
-    --cis-profile: calc(1391px - 80.76vw);
+  @supports (content-visibility: auto) {
+    .site-home .work-section,
+    .site-home .writing-section,
+    .site-home .poetry-section,
+    .site-home .profile-section {
+      content-visibility: visible;
+      contain-intrinsic-size: none;
+    }
   }
 
   .site-home .masthead {
@@ -2038,6 +2076,58 @@ a:hover {
 
   .shi-page .body {
     margin-bottom: 52px;
+  }
+}
+
+@media (max-width: 430px) {
+  .site-home .masthead {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-home .wordmark {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .site-home .language-nav {
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: flex-start;
+    margin-top: 13px;
+  }
+
+  .site-home .section-nav {
+    grid-row: 3;
+    margin-top: 18px;
+  }
+
+  .page-topbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-topbar .page-wordmark {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .page-topbar .page-languages {
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: flex-start;
+    margin-top: 12px;
+  }
+
+  .page-topbar .page-nav {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 14px;
+  }
+
+  .literary-page.locale-ru h1,
+  .shi-page.locale-ru h1 {
+    font-size: clamp(38px, 10.25vw, 44px);
+    line-height: .98;
+    letter-spacing: .035em;
   }
 }
 

@@ -3,5 +3,6 @@
   {"id": "zh", "html_lang": "zh-Hant-HK", "og_locale": "zh_HK", "short": "中", "label": "中文"},
   {"id": "ja", "html_lang": "ja", "og_locale": "ja_JP", "short": "日", "label": "日本語"},
   {"id": "de", "html_lang": "de", "og_locale": "de_DE", "short": "DE", "label": "Deutsch"},
-  {"id": "fr", "html_lang": "fr", "og_locale": "fr_FR", "short": "FR", "label": "Français"}
+  {"id": "fr", "html_lang": "fr", "og_locale": "fr_FR", "short": "FR", "label": "Français"},
+  {"id": "ru", "html_lang": "ru", "og_locale": "ru_RU", "short": "RU", "label": "Русский"}
 ]

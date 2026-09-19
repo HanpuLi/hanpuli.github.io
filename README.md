@@ -2,7 +2,7 @@
 
 Personal portfolio and writing site for Hanpu Li, published with GitHub Pages at https://hanpuli.github.io/.
 
-The site is deliberately static: editorial HTML/CSS, local image/font assets and no client-side application framework. A small standard-library Python generator produces complete static English, Chinese, Japanese, German and French editions from structured content; there is no runtime translation layer. The repository also hosts the public privacy/terms pages for the mail-assistant project.
+The site is deliberately static: editorial HTML/CSS, local image/font assets and no client-side application framework. A small standard-library Python generator produces complete static English, Chinese, Japanese, German, French and Russian editions from structured content; there is no runtime translation layer. The repository also hosts the public privacy/terms pages for the mail-assistant project.
 
 ## Local checks
 
