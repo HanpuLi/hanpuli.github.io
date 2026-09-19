@@ -30,11 +30,26 @@
     "intro": "Film researcher, writer, photographer and developer. Current work moves between film form, spatial evidence and small software systems.",
     "method": "The common method is simple: make the claim precise, then make the evidence inspectable.",
     "sections": {
-      "work": {"title": "Selected work", "kicker": "Research and systems"},
-      "photo": {"title": "Photographs", "kicker": "stills / film / Polaroid"},
-      "writing": {"title": "Writing", "kicker": "film / theory / evidence"},
-      "ci": {"title": "Ci", "kicker": "recent work / one author, two voices"},
-      "profile": {"title": "Profile", "kicker": "selected chronology"}
+      "work": {
+        "title": "Selected work",
+        "kicker": "Research and systems"
+      },
+      "photo": {
+        "title": "Photographs",
+        "kicker": "stills / film / Polaroid"
+      },
+      "writing": {
+        "title": "Writing",
+        "kicker": "film / theory / evidence"
+      },
+      "ci": {
+        "title": "Ci",
+        "kicker": "recent work / one author, two voices"
+      },
+      "profile": {
+        "title": "Profile",
+        "kicker": "selected chronology"
+      }
     },
     "projects": {
       "material": {
@@ -57,16 +72,31 @@
       "scoperail": {
         "type": "open source · local execution · MCP",
         "description": "A scoped local execution runtime for MCP clients on macOS: workspace-bound files, sandboxed processes, browser and native UI, explicit Git grants, audit and provenance.",
-        "flow": ["client intent", "OAuth + transport", "workspace / grant policy", "bounded execution surfaces", "audit + state"]
+        "flow": [
+          "client intent",
+          "OAuth + transport",
+          "workspace / grant policy",
+          "bounded execution surfaces",
+          "audit + state"
+        ]
       },
       "liuzheng": {
         "type": "open source · evidence preservation",
         "description": "Tools and operating discipline for turning institutional correspondence into evidence that survives scrutiny.",
-        "flow": ["capture original", "DKIM / SHA-256", "RFC3161 + OpenTimestamps", "third-party copy / anchors"]
+        "flow": [
+          "capture original",
+          "DKIM / SHA-256",
+          "RFC3161 + OpenTimestamps",
+          "third-party copy / anchors"
+        ]
       }
     },
     "photos": {
-      "medium": {"still": "still", "film": "film", "instant": "instant"},
+      "medium": {
+        "still": "still",
+        "film": "film",
+        "instant": "instant"
+      },
       "note": "Stills, film and Polaroid — mostly the hour before a take.",
       "alt": {
         "01": "museum roof lattice, figure on the parapet",
@@ -94,7 +124,7 @@
     },
     "poetry": {
       "recent": "two recent pieces",
-      "preview_title": "After <em>Zhegutian</em> · Several evenings at the lamp, trying to write; unfinished",
+      "preview_title": "To the tune of <em>Zhegutian</em> · Several evenings at the lamp, trying to write; unfinished",
       "translation_w2": "<em>Zhegutian</em> · translation",
       "translation_w3": "<em>Linjiangxian</em> · translation",
       "cycle": "Also: <em>Sixteen Poems of A and B</em>, a response cycle written by one author in two voices.",
@@ -103,13 +133,34 @@
       "preview_date": "9 September 2026"
     },
     "chronology": [
-      {"time": "2013–16", "text": "Live television and radio presenting — Zhengding County Television and Hebei Traffic Radio; Spring Festival broadcasts reached audiences above 500,000."},
-      {"time": "2016", "text": "First Prize, Young Presenter Competition."},
-      {"time": "2018–", "text": "Commercial, architectural and documentary photography."},
-      {"time": "2018–19", "text": "Presenter and producer, University Radio York 88.3FM."},
-      {"time": "2020", "text": "On-ground coordination in the rescue of a transgender woman forcibly detained in a conversion-therapy facility in Jinan."},
-      {"time": "2020–23", "text": "Volunteer writer at Beijing LGBT Center; transgender-support volunteer at Wuhan LGBT Center, including emergency PEP access."},
-      {"time": "2024", "text": "Script supervisor, translator and researcher on University of York productions; two works selected for the 14th Macao International Microfilm Festival and a Golden Rooster screening programme."}
+      {
+        "time": "2013–16",
+        "text": "Live television and radio presenting — Zhengding County Television and Hebei Traffic Radio; Spring Festival broadcasts reached audiences above 500,000."
+      },
+      {
+        "time": "2016",
+        "text": "First Prize, Young Presenter Competition."
+      },
+      {
+        "time": "2018–",
+        "text": "Commercial, architectural and documentary photography."
+      },
+      {
+        "time": "2018–19",
+        "text": "Presenter and producer, University Radio York 88.3FM."
+      },
+      {
+        "time": "2020",
+        "text": "On-ground coordination in the rescue of a transgender woman forcibly detained in a conversion-therapy facility in Jinan."
+      },
+      {
+        "time": "2020–23",
+        "text": "Volunteer writer at Beijing LGBT Center; transgender-support volunteer at Wuhan LGBT Center, including emergency PEP access."
+      },
+      {
+        "time": "2024",
+        "text": "Script supervisor, translator and researcher on University of York productions; two works selected for the 14th Macao International Microfilm Festival and a Golden Rooster screening programme."
+      }
     ]
   },
   "ci": {

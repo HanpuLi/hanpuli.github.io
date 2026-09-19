@@ -427,10 +427,10 @@ a:hover {
 }
 
 .site-home .project-feature h3 {
-  max-width: 14ch;
-  font-size: clamp(38px, 3.8vw, 62px);
+  max-width: 21ch;
+  font-size: clamp(36px, 3.2vw, 54px);
   line-height: .98;
-  letter-spacing: -.034em;
+  letter-spacing: -.03em;
 }
 
 .site-home .project-feature .project-main > p:last-child {
@@ -1407,7 +1407,7 @@ a:hover {
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: scroll()) {
     .site-home::before {
       content: "";
@@ -1456,19 +1456,104 @@ a:hover {
   }
 }
 
-/* Defer the image-heavy photography sequence while preserving its known geometry. */
+/* Defer below-the-fold sections. Intrinsic content-box sizes are calibrated
+   per locale so static language editions do not jump as deferred sections resolve. */
+.site-home {
+  --cis-work: calc(766px + 15.01vw);
+  --cis-photo: calc(314.5vw + 189px);
+  --cis-writing: calc(521px - 3.55vw);
+  --cis-poetry: calc(944px - 8.67vw);
+  --cis-profile: calc(731px + 2.34vw);
+}
+
+.site-home.locale-zh {
+  --cis-work: calc(836px + 9.52vw);
+  --cis-writing: calc(470px - 1.42vw);
+  --cis-poetry: calc(504px + 4.83vw);
+  --cis-profile: calc(704px + 2.36vw);
+}
+
+.site-home.locale-ja {
+  --cis-work: calc(763px + 19.19vw);
+  --cis-writing: calc(471px + .31vw);
+  --cis-poetry: calc(944px - 8.67vw);
+  --cis-profile: calc(758px + 2.36vw);
+}
+
+.site-home.locale-de {
+  --cis-work: calc(780px + 15.82vw);
+  --cis-writing: calc(521px - 3.55vw);
+  --cis-poetry: calc(1291px - 26.75vw);
+  --cis-profile: calc(758px + 2.36vw);
+}
+
+.site-home.locale-fr {
+  --cis-work: calc(780px + 15.82vw);
+  --cis-writing: calc(471px + .31vw);
+  --cis-poetry: calc(1080px - 15.8vw);
+  --cis-profile: calc(785px + 2.36vw);
+}
+
 @supports (content-visibility: auto) {
-  .site-home .photo-section {
+  .site-home .work-section,
+  .site-home .photo-section,
+  .site-home .writing-section,
+  .site-home .poetry-section,
+  .site-home .profile-section {
     content-visibility: auto;
-    contain-intrinsic-size: auto calc(314.5vw + 230px);
   }
+
+  .site-home .work-section { contain-intrinsic-size: auto var(--cis-work); }
+  .site-home .photo-section { contain-intrinsic-size: auto var(--cis-photo); }
+  .site-home .writing-section { contain-intrinsic-size: auto var(--cis-writing); }
+  .site-home .poetry-section { contain-intrinsic-size: auto var(--cis-poetry); }
+  .site-home .profile-section { contain-intrinsic-size: auto var(--cis-profile); }
 }
 
 @media (min-width: 1600px) {
-  @supports (content-visibility: auto) {
-    .site-home .photo-section {
-      contain-intrinsic-size: auto calc(min(249vw, 4940px) + 1035px);
-    }
+  .site-home {
+    --cis-photo: calc(min(249vw, 4940px) + 814px);
+  }
+}
+
+@media (min-width: 761px) and (max-width: 900px) {
+  .site-home {
+    --cis-photo: calc(252px + 304.32vw);
+  }
+
+  .site-home.locale-en {
+    --cis-work: calc(980px - 9.57vw);
+    --cis-writing: calc(562px - 15.04vw);
+    --cis-poetry: calc(1797px - 113.31vw);
+    --cis-profile: calc(702px + 2.16vw);
+  }
+
+  .site-home.locale-zh {
+    --cis-work: calc(948px - 9.57vw);
+    --cis-writing: calc(515px - 15.04vw);
+    --cis-poetry: calc(426px + 3.6vw);
+    --cis-profile: calc(675px + 2.16vw);
+  }
+
+  .site-home.locale-ja {
+    --cis-work: calc(965px - 9.57vw);
+    --cis-writing: calc(566px - 15.25vw);
+    --cis-poetry: calc(1260px - 49.5vw);
+    --cis-profile: calc(728px + 2.16vw);
+  }
+
+  .site-home.locale-de {
+    --cis-work: calc(1069px - 21.22vw);
+    --cis-writing: calc(674px - 27.41vw);
+    --cis-poetry: calc(908px + 3.6vw);
+    --cis-profile: calc(728px + 2.16vw);
+  }
+
+  .site-home.locale-fr {
+    --cis-work: calc(1178px - 31.51vw);
+    --cis-writing: calc(581px - 15.25vw);
+    --cis-poetry: calc(908px + 3.6vw);
+    --cis-profile: calc(755px + 2.16vw);
   }
 }
 
@@ -1549,10 +1634,43 @@ a:hover {
     font-size: 16px;
   }
 
-  @supports (content-visibility: auto) {
-    .site-home .photo-section {
-      contain-intrinsic-size: auto calc(901vw + 548px);
-    }
+  .site-home {
+    --cis-photo: calc(493px + 900.59vw);
+  }
+
+  .site-home.locale-en {
+    --cis-work: calc(1544px - 11.35vw);
+    --cis-writing: calc(919px - 11.73vw);
+    --cis-poetry: calc(1320px - 55.08vw);
+    --cis-profile: calc(1184px - 60.24vw);
+  }
+
+  .site-home.locale-zh {
+    --cis-work: calc(1602px - 27.73vw);
+    --cis-writing: calc(871px - 11.7vw);
+    --cis-poetry: calc(723px + 1.22vw);
+    --cis-profile: calc(951px - 32.95vw);
+  }
+
+  .site-home.locale-ja {
+    --cis-work: calc(1718px - 30.95vw);
+    --cis-writing: calc(1070px - 31.51vw);
+    --cis-poetry: calc(1320px - 55.08vw);
+    --cis-profile: calc(1210px - 60.27vw);
+  }
+
+  .site-home.locale-de {
+    --cis-work: calc(1812px - 43.38vw);
+    --cis-writing: calc(1019px - 24.84vw);
+    --cis-poetry: calc(1570px - 85vw);
+    --cis-profile: calc(1313px - 73.92vw);
+  }
+
+  .site-home.locale-fr {
+    --cis-work: calc(1777px - 38.76vw);
+    --cis-writing: calc(1001px - 22.46vw);
+    --cis-poetry: calc(1570px - 85vw);
+    --cis-profile: calc(1391px - 80.76vw);
   }
 
   .site-home .masthead {

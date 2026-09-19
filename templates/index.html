@@ -21,13 +21,15 @@
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>詞</text></svg>">
 <link rel="preload" as="image" type="image/webp" href="{{ASSET_PREFIX}}assets/photos/webp/01-800.webp" imagesrcset="{{ASSET_PREFIX}}assets/photos/webp/01-480.webp 480w, {{ASSET_PREFIX}}assets/photos/webp/01-660.webp 660w, {{ASSET_PREFIX}}assets/photos/webp/01-800.webp 800w, {{ASSET_PREFIX}}assets/photos/webp/01-990.webp 990w" imagesizes="(max-width: 760px) calc(100vw - 40px), (max-width: 900px) 58vw, 42vw" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="{{ASSET_PREFIX}}assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="{{ASSET_PREFIX}}assets/fonts/courier-prime-latin-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{{ASSET_PREFIX}}assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="stylesheet" href="{{ASSET_PREFIX}}assets/site.css">
 <script type="application/ld+json">
 {{JSON_LD}}
 </script>
 </head>
-<body class="site-home">
+<body class="site-home locale-{{LOCALE}}">
 <a class="skip-link" href="#main">{{common.skip_content}}</a>
 <div class="wrap">
 
