@@ -81,16 +81,16 @@
         <div class="project-index">01.1</div>
         <div class="project-main">
           <p class="project-type">{{home.projects.material.type}}</p>
-          <h3><a href="https://github.com/HanpuLi/-OSM_AUDIT_2025">{{home.projects.material.title}}</a></h3>
+          <h3><a href="{{MATERIAL_URL}}">{{home.projects.material.title}}</a></h3>
           <p>{{home.projects.material.description}}</p>
         </div>
         <div class="project-proof">
           <dl>
-            <div><dt>{{home.projects.material.proof_green}}</dt><dd>≈39 ha</dd></div>
-            <div><dt>{{home.projects.material.proof_ndvi}}</dt><dd>−0.365</dd></div>
-            <div><dt>{{home.projects.material.proof_s106}}</dt><dd>£0</dd></div>
+            <div><dt>{{home.projects.material.proof_green}}</dt><dd>{{MATERIAL_GREEN_VALUE}}</dd></div>
+            <div><dt>{{home.projects.material.proof_ndvi}}</dt><dd>{{MATERIAL_NDVI_VALUE}}</dd></div>
+            <div><dt>{{home.projects.material.proof_s106}}</dt><dd>{{MATERIAL_S106_VALUE}}</dd></div>
           </dl>
-          <p>OSM · Sentinel-2 · Landsat · ECOSTRESS · Python</p>
+          <p>{{MATERIAL_STACK}}</p>
         </div>
 
         <details class="project-evidence-disclosure">
@@ -122,12 +122,12 @@
         <div class="project-index">01.2</div>
         <div class="project-main">
           <p class="project-type">{{home.projects.scoperail.type}}</p>
-          <h3><a href="https://github.com/HanpuLi/scoperail">ScopeRail</a></h3>
+          <h3><a href="{{SCOPERAIL_URL}}">{{SCOPERAIL_TITLE}}</a></h3>
           <p>{{home.projects.scoperail.description}}</p>
         </div>
         <div class="project-system">
           {{SCOPERAIL_FLOW}}
-          <p class="project-stack">Python · OAuth 2.1 · macOS Seatbelt · Accessibility</p>
+          <p class="project-stack">{{SCOPERAIL_STACK}}</p>
         </div>
       </article>
 
@@ -135,12 +135,12 @@
         <div class="project-index">01.3</div>
         <div class="project-main">
           <p class="project-type">{{home.projects.liuzheng.type}}</p>
-          <h3><a href="https://github.com/HanpuLi/liuzheng">留證 · liuzheng</a></h3>
+          <h3><a href="{{LIUZHENG_URL}}">{{LIUZHENG_TITLE}}</a></h3>
           <p>{{home.projects.liuzheng.description}}</p>
         </div>
         <div class="project-system">
           {{LIUZHENG_FLOW}}
-          <p class="project-stack">gmail-eml · stamp · webarchive · OTS sweep</p>
+          <p class="project-stack">{{LIUZHENG_STACK}}</p>
         </div>
       </article>
     </section>
@@ -249,7 +249,7 @@
           <p class="writing-no">03.2</p>
           <h3>{{home.writing.greenwashing_title}}</h3>
           <p>{{home.writing.greenwashing_description}}</p>
-          <p class="writing-meta"><a href="https://github.com/HanpuLi/-OSM_AUDIT_2025">{{home.writing.pipeline}}</a></p>
+          <p class="writing-meta"><a href="{{MATERIAL_URL}}">{{home.writing.pipeline}}</a></p>
         </article>
         <article>
           <p class="writing-no">03.3</p>
@@ -306,7 +306,7 @@
       <a href="{{GITHUB_URL}}">{{GITHUB_LABEL}}</a>
       <a href="mailto:{{EMAIL}}">{{common.email}}</a>
     </div>
-    <p class="footer-mark">© 2026 · 🐈</p>
+    <p class="footer-mark">© {{SITE_YEAR}} · 🐈</p>
   </footer>
 
 </div>

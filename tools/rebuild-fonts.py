@@ -15,8 +15,9 @@ IM = os.path.expanduser("~/Library/Fonts/I.MingCP-8.10.ttf")
 OUT = os.path.join(ROOT, "assets/fonts/shippori-mincho-subset.woff2")
 COMMON_OUT = os.path.join(ROOT, "assets/fonts/shippori-mincho-common.woff2")
 GAP = os.path.join(ROOT, "assets/fonts/iming-gap.woff2")
-# Present on every language's lightweight pages: identity, locale controls and 留證.
-COMMON_CHARS = set("李函璞留證中日£²·–—’←→")
+# Present on the default English edition: identity, locale controls, 留證 and the favicon glyph.
+# Keep this set deliberately CJK-only; punctuation/symbols fall back to the Latin/system faces.
+COMMON_CHARS = set("李函璞留證詞中日")
 
 chars = set()
 for f in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):

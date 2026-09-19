@@ -72,7 +72,7 @@
         "type": "Open Source · lokale Ausführung · MCP",
         "description": "Eine begrenzte lokale Ausführungsumgebung für MCP-Clients unter macOS: an Workspaces gebundene Dateien, isolierte Prozesse, Browser und native UI, explizite Git-Freigaben, Audit und Provenienz.",
         "flow": [
-          "Client-Absicht",
+          "Absicht des Clients",
           "OAuth + Transport",
           "Workspace-/Freigaberegeln",
           "begrenzte Ausführungsschnittstellen",
@@ -134,7 +134,7 @@
     "chronology": [
       {
         "time": "2013–16",
-        "text": "Live-Moderation in Fernsehen und Radio · Zhengding County Television und Hebei Traffic Radio; die Übertragungen zum Frühlingsfest erreichten ein Publikum von über 500,000."
+        "text": "Live-Moderation in Fernsehen und Radio · Zhengding County Television und Hebei Traffic Radio; die Übertragungen zum Frühlingsfest erreichten ein Publikum von über 500.000."
       },
       {
         "time": "2016",

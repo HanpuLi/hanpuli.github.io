@@ -2,17 +2,22 @@
 
 Personal portfolio and writing site for Hanpu Li, published with GitHub Pages at https://hanpuli.github.io/.
 
-The site is deliberately static: handwritten HTML/CSS, local image/font assets, no JavaScript framework and no build-time dependency chain. The repository also hosts the public privacy/terms pages for the mail-assistant project.
+The site is deliberately static: editorial HTML/CSS, local image/font assets and no client-side application framework. A small standard-library Python generator produces complete static English, Chinese, Japanese, German and French editions from structured content; there is no runtime translation layer. The repository also hosts the public privacy/terms pages for the mail-assistant project.
 
 ## Local checks
 
-Run the same integrity check used by CI:
+Regenerate pages after editing structured copy, then run the same checks used by CI:
 
 ```sh
+python3 tools/build_site.py
+python3 tools/build_site.py --check
+python3 tools/i18ncheck.py
 python3 tools/sitecheck.py
 ```
 
-The checker verifies local links and fragments, image/CSS assets, duplicate IDs, image alt text, document language, titles and responsive viewport metadata without making network requests.
+The localisation checker enforces locale-schema parity, the complete literary corpus, line/stanza structure and generated `hreflang` metadata. The site checker verifies local links and fragments, image/CSS assets, duplicate IDs, image alt text, document language, titles and responsive viewport metadata without making network requests.
+
+User-facing copy is maintained under `content/`; `templates/` contains layout only. Do not hand-edit generated language pages.
 
 For a local preview:
 

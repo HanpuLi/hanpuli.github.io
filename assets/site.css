@@ -29,12 +29,14 @@
   font-family: "Shippori Common";
   src: url("fonts/shippori-mincho-common.woff2") format("woff2");
   font-display: swap;
+  unicode-range: U+4E2D, U+51FD, U+65E5, U+674E, U+749E, U+7559, U+8A5E, U+8B49;
 }
 
 @font-face {
   font-family: "Shippori Mincho";
   src: url("fonts/shippori-mincho-subset.woff2") format("woff2");
   font-display: swap;
+  unicode-range: U+3000-303F, U+3040-30FF, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FF00-FFEF;
 }
 
 @font-face {
@@ -223,6 +225,12 @@ a:hover {
 .site-home .section-nav a:hover,
 .site-home .language-nav a:hover {
   color: var(--accent);
+}
+
+.site-home .language-nav a,
+.site-home .language-nav .current {
+  min-width: 24px;
+  justify-content: center;
 }
 
 .site-home .language-nav .current {
@@ -1031,6 +1039,12 @@ a:hover {
   color: var(--ink);
 }
 
+.page-topbar .page-languages a,
+.page-topbar .page-languages .current {
+  min-width: 24px;
+  justify-content: center;
+}
+
 .page-topbar .page-languages .current {
   border-bottom: 1px solid var(--ink);
 }
@@ -1442,6 +1456,22 @@ a:hover {
   }
 }
 
+/* Defer the image-heavy photography sequence while preserving its known geometry. */
+@supports (content-visibility: auto) {
+  .site-home .photo-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto calc(314.5vw + 230px);
+  }
+}
+
+@media (min-width: 1600px) {
+  @supports (content-visibility: auto) {
+    .site-home .photo-section {
+      contain-intrinsic-size: auto calc(min(249vw, 4940px) + 1035px);
+    }
+  }
+}
+
 /* Responsive */
 
 @media (max-width: 900px) {
@@ -1519,24 +1549,32 @@ a:hover {
     font-size: 16px;
   }
 
+  @supports (content-visibility: auto) {
+    .site-home .photo-section {
+      contain-intrinsic-size: auto calc(901vw + 548px);
+    }
+  }
+
   .site-home .masthead {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 14px;
     padding: 18px 0 16px;
   }
 
   .site-home .wordmark {
-    grid-column: 1 / 8;
+    grid-column: 1;
     grid-row: 1;
   }
 
   .site-home .language-nav {
-    grid-column: 8 / 13;
+    grid-column: 2;
     grid-row: 1;
-    gap: 8px;
+    gap: 2px;
     font-size: 9.5px;
   }
 
   .site-home .section-nav {
-    grid-column: 1 / 13;
+    grid-column: 1 / -1;
     grid-row: 2;
     grid-template-columns: repeat(5, max-content);
     justify-content: space-between;

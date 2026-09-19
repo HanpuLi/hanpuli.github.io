@@ -29,6 +29,7 @@ def load_json(path: Path) -> Any:
 
 
 IDENTITY = load_json(CONTENT / "identity.json")
+SHARED = load_json(CONTENT / "shared.json")
 LANGUAGES = load_json(CONTENT / "languages.json")
 LANG_BY_ID = {item["id"]: item for item in LANGUAGES}
 CI_SOURCE = load_json(CONTENT / "ci-source.json")
@@ -302,6 +303,18 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "EMAIL": html.escape(IDENTITY["email"], quote=True),
         "GITHUB_URL": html.escape(IDENTITY["github_url"], quote=True),
         "GITHUB_LABEL": html.escape(IDENTITY["github_label"]),
+        "SITE_YEAR": html.escape(SHARED["site_year"]),
+        "MATERIAL_URL": html.escape(SHARED["projects"]["material"]["url"], quote=True),
+        "MATERIAL_GREEN_VALUE": html.escape(SHARED["projects"]["material"]["proof_values"]["green"]),
+        "MATERIAL_NDVI_VALUE": html.escape(SHARED["projects"]["material"]["proof_values"]["ndvi"]),
+        "MATERIAL_S106_VALUE": html.escape(SHARED["projects"]["material"]["proof_values"]["s106"]),
+        "MATERIAL_STACK": html.escape(SHARED["projects"]["material"]["stack"]),
+        "SCOPERAIL_URL": html.escape(SHARED["projects"]["scoperail"]["url"], quote=True),
+        "SCOPERAIL_TITLE": html.escape(SHARED["projects"]["scoperail"]["title"]),
+        "SCOPERAIL_STACK": html.escape(SHARED["projects"]["scoperail"]["stack"]),
+        "LIUZHENG_URL": html.escape(SHARED["projects"]["liuzheng"]["url"], quote=True),
+        "LIUZHENG_TITLE": html.escape(SHARED["projects"]["liuzheng"]["title"]),
+        "LIUZHENG_STACK": html.escape(SHARED["projects"]["liuzheng"]["stack"]),
         "HOME_HREF": page_path(locale_id, "index"),
         "CI_HREF": page_path(locale_id, "ci"),
         "SHI_HREF": page_path(locale_id, "shi"),
