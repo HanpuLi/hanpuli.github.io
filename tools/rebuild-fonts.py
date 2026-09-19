@@ -3,7 +3,7 @@
     python3 tools/rebuild-fonts.py
 主力 Shippori Mincho 只含全站实际用字;新增汉字若不重建会回落宋体。
 Shippori 缺字由 I.MingCP 补丁兜底——若脚本报告缺字变化,
-需同步更新四个页面 @font-face "IMing Gap" 的 unicode-range。
+需同步更新 assets/site.css 中 @font-face "IMing Gap" 的 unicode-range。
 依赖: pip install fonttools brotli
 源字体(均在 ~/Library/Fonts/): ShipporiMincho-Regular.ttf, I.MingCP-8.10.ttf
 """
@@ -13,10 +13,16 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SP = os.path.expanduser("~/Library/Fonts/ShipporiMincho-Regular.ttf")
 IM = os.path.expanduser("~/Library/Fonts/I.MingCP-8.10.ttf")
 OUT = os.path.join(ROOT, "assets/fonts/shippori-mincho-subset.woff2")
+COMMON_OUT = os.path.join(ROOT, "assets/fonts/shippori-mincho-common.woff2")
 GAP = os.path.join(ROOT, "assets/fonts/iming-gap.woff2")
+# Present on every language's lightweight pages: identity, locale controls and 留證.
+COMMON_CHARS = set("李函璞留證中日£²·–—’←→")
 
 chars = set()
-for f in glob.glob(os.path.join(ROOT, "*.html")):
+for f in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
+    rel = os.path.relpath(f, ROOT).split(os.sep)
+    if "templates" in rel or os.path.basename(f) == "card.html":
+        continue
     t = open(f, encoding="utf-8").read()
     t = re.sub(r"<style>.*?</style>", "", t, flags=re.S)
     t = re.sub(r"<[^>]+>", "", t)
@@ -26,14 +32,24 @@ chars.discard("🐈")
 from fontTools.ttLib import TTFont
 cmap = TTFont(SP).getBestCmap()
 missing = sorted(c for c in chars if ord(c) not in cmap)
+common_chars = sorted(c for c in chars & COMMON_CHARS if ord(c) in cmap)
+main_chars = sorted(c for c in chars - COMMON_CHARS if ord(c) in cmap)
+
+common_txt = os.path.join(ROOT, "tools/.charset-common.txt")
+open(common_txt, "w", encoding="utf-8").write("".join(common_chars))
+subprocess.run([sys.executable, "-m", "fontTools.subset", SP,
+                f"--text-file={common_txt}", "--flavor=woff2", f"--output-file={COMMON_OUT}",
+                "--no-hinting", "--desubroutinize"], check=True)
+os.remove(common_txt)
+print(f"{len(common_chars)} 常用字 → {COMMON_OUT} ({os.path.getsize(COMMON_OUT)//1024} KB)")
 
 txt = os.path.join(ROOT, "tools/.charset.txt")
-open(txt, "w", encoding="utf-8").write("".join(sorted(chars)))
+open(txt, "w", encoding="utf-8").write("".join(main_chars))
 subprocess.run([sys.executable, "-m", "fontTools.subset", SP,
                 f"--text-file={txt}", "--flavor=woff2", f"--output-file={OUT}",
                 "--no-hinting", "--desubroutinize"], check=True)
 os.remove(txt)
-print(f"{len(chars)} 字 → {OUT} ({os.path.getsize(OUT)//1024} KB)")
+print(f"{len(main_chars)} 正文字 → {OUT} ({os.path.getsize(OUT)//1024} KB)")
 
 if missing:
     subprocess.run([sys.executable, "-m", "fontTools.subset", IM,

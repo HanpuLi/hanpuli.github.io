@@ -1,0 +1,137 @@
+{
+  "common": {
+    "site_nav_label": "作品集分區",
+    "language_nav_label": "語言",
+    "skip_content": "跳至正文",
+    "skip_poems": "跳至詞作",
+    "skip_poem": "跳至詩作",
+    "nav": {
+      "work": "作品",
+      "photo": "攝影",
+      "writing": "寫作",
+      "ci": "詞",
+      "shi": "詩",
+      "profile": "履歷"
+    },
+    "email": "電郵",
+    "evidence": "證據",
+    "evidence_summary": "3 圖 · 空間 / 植被 / 熱環境",
+    "full_text_request": "全文備索",
+    "annotations_request": "箋註全文備索"
+  },
+  "home": {
+    "meta_title": "Hanpu Li 李函璞 · 電影、研究、攝影與系統",
+    "meta_description": "Hanpu Li（李函璞）——現居倫敦的電影研究者、寫作者、攝影師與開發者；工作涉及電影形式、空間證據、開源系統與詞詩。",
+    "eyebrow": "電影 / 研究 / 系統 / 文字 · 倫敦",
+    "location": "倫敦",
+    "alias": "亦以 Caitlyn Lye 名義工作",
+    "education": "約克語言學 → QMUL 電影研究",
+    "lede": "看電影的，也寫寫詞。",
+    "intro": "電影研究、寫作、攝影與軟件開發。目前的工作往返於電影形式、空間證據與小型軟件系統之間。",
+    "method": "方法其實簡單：先把主張説準，再讓證據可供查驗。",
+    "sections": {
+      "work": {"title": "選作", "kicker": "研究與系統"},
+      "photo": {"title": "攝影", "kicker": "劇照 / 膠片 / 拍立得"},
+      "writing": {"title": "寫作", "kicker": "電影 / 理論 / 證據"},
+      "ci": {"title": "詞", "kicker": "近作 / 一人兩聲"},
+      "profile": {"title": "履歷", "kicker": "節選年表"}
+    },
+    "projects": {
+      "material": {
+        "type": "研究 · 遙感 · 政治經濟學",
+        "title": "虛擬製作的物質足跡",
+        "description": "以 Shepperton Studios 擴建為對象的空間審計：把低碳敘事與地表覆蓋變化、熱環境證據及規劃紀錄逐一對照。",
+        "proof_green": "綠帶用地轉換",
+        "proof_ndvi": "NDVI 雙重差分",
+        "proof_s106": "S106 生態貢獻款",
+        "evidence_spatial": "空間足跡",
+        "evidence_spatial_note": "OSM 拓撲 + 不透水面製圖",
+        "evidence_spatial_alt": "Shepperton Studios 擴建範圍的空間熱圖",
+        "evidence_vegetation": "植被",
+        "evidence_vegetation_note": "ΔNDVI 結構轉變 −0.365",
+        "evidence_vegetation_alt": "比較 Shepperton 擴建前後植被狀況的 NDVI 圖表",
+        "evidence_thermal": "獨立感測器",
+        "evidence_thermal_note": "日間 ΔT +0.72 °C · HAC p=0.0062",
+        "evidence_thermal_alt": "顯示獨立日間熱環境比較的 ECOSTRESS 圖表"
+      },
+      "scoperail": {
+        "type": "開源 · 本機執行 · MCP",
+        "description": "macOS 上供 MCP 客戶端使用的範圍受限本機執行層：工作區限定檔案、沙盒程序、瀏覽器與原生介面、明示 Git 授權，以及完整的審計與來源紀錄。",
+        "flow": ["客戶端意圖", "OAuth + 傳輸", "工作區 / 授權策略", "受界定的執行介面", "審計 + 狀態"]
+      },
+      "liuzheng": {
+        "type": "開源 · 證據保全",
+        "description": "把機構往來轉化為經得起審查之證據的一組工具與操作規律。",
+        "flow": ["擷取原件", "DKIM / SHA-256", "RFC3161 + OpenTimestamps", "第三方副本 / 錨點"]
+      }
+    },
+    "photos": {
+      "medium": {"still": "劇照", "film": "膠片", "instant": "拍立得"},
+      "note": "劇照、膠片與拍立得。多半是開拍前的那一小時。",
+      "alt": {
+        "01": "博物館屋頂格架，欄邊一道人影",
+        "02": "空蕩座席中的一人，身旁放着花束",
+        "03": "戴面具的演員前舉起場記板",
+        "04": "手伸向覆紗的面孔，燈光在一旁迸亮",
+        "05": "露台上的空椅，畫面帶着膠片霧感",
+        "06": "兩名坐着的女子，牆上落着影子",
+        "07": "披着披肩的演員，膝上放着劇本",
+        "08": "頭頂懸着吊桿麥克風，光掠過她的臉",
+        "09": "逆光窗前閉眼大笑",
+        "10": "暗處抱貓的自拍像"
+      }
+    },
+    "writing": {
+      "first_love_title": "論三池崇史《<em>初戀</em>》",
+      "first_love_description": "從馬克思主義女性主義角度解讀<em>義理</em>/<em>人情</em>、類型形式與黑道道德經濟，並以逐幀、聲音及字幕分析為證。",
+      "first_love_meta": "長篇評論 · 全文備索",
+      "greenwashing_title": "漂綠的政治經濟學",
+      "greenwashing_description": "對 Shepperton Studios 擴建所作的法證式空間審計：當「低碳」敘事與物質紀錄逐項核對，會留下甚麼。",
+      "pipeline": "可重現分析流程 →",
+      "film_essays_title": "論 Joanna Hogg · 論《<em>猜火車</em>》",
+      "film_essays_description": "兩篇電影研究論文，倫敦大學瑪麗王后學院。",
+      "film_essays_meta": "全文備索"
+    },
+    "poetry": {
+      "recent": "近作二首",
+      "preview_title": "《鷓鴣天 · 連夕燈下試筆，未竟》",
+      "translation_w2": "《鷓鴣天》譯文",
+      "translation_w3": "《臨江仙》譯文",
+      "cycle": "另有《甲乙十六首》：一人分作兩聲的唱和集。",
+      "full_cycle": "全集及譯文 →",
+      "poem_link": "詩 →",
+      "preview_date": "二〇二六年九月九日"
+    },
+    "chronology": [
+      {"time": "2013–16", "text": "電視與廣播主持——正定縣電視台、河北交通廣播；春晚直播觀眾逾五十萬。"},
+      {"time": "2016", "text": "青年主持人大賽冠軍。"},
+      {"time": "2018–", "text": "商業、建築與紀實攝影。"},
+      {"time": "2018–19", "text": "University Radio York 88.3FM 主持與製作。"},
+      {"time": "2020", "text": "濟南——參與營救被強制關押於扭轉治療機構的跨性別女性，負責地面協調。"},
+      {"time": "2020–23", "text": "北京同志中心志願寫作者；武漢同志中心跨性別方向志願者，包括協助取得緊急 PEP。"},
+      {"time": "2024", "text": "約克大學劇組場記、譯者與研究員；兩部作品入圍第十四屆澳門國際微電影節及金雞影展展映單元。"}
+    ]
+  },
+  "ci": {
+    "meta_title": "甲乙十六首 · Hanpu Li 李函璞",
+    "meta_description": "《甲乙十六首》：一人分作兩聲的唱和集，附各語譯文。",
+    "heading": "甲乙十六首",
+    "subtitle": "一人分作兩聲的唱和集：甲多詳序，乙前五首無題。十六首並繫於二〇二六年六月九日；集外三首：七月一日一首，九月九日二首。附自撰箋註，備索。",
+    "source_label": "原文",
+    "translation_label": "原文",
+    "outside": "集外",
+    "footer": "箋註全文備索"
+  },
+  "shi": {
+    "meta_title": "屋頂裂開 · Hanpu Li 李函璞",
+    "meta_description": "《屋頂裂開》兩稿，相隔一年——修訂在刪。",
+    "heading": "屋頂裂開",
+    "subtitle": "原無題，以首句名之。同一首詩的兩稿，相隔一年；修訂在刪。",
+    "source_link": "中文原作"
+  },
+  "notfound": {
+    "meta_title": "無此頁 · Hanpu Li 李函璞",
+    "line": "此頁無有。風過落花時。",
+    "home": "← Hanpu Li"
+  }
+}

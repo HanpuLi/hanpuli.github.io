@@ -14,7 +14,12 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-HTML_FILES = sorted(p for p in ROOT.rglob("*.html") if ".git" not in p.parts)
+HTML_FILES = sorted(
+    p for p in ROOT.rglob("*.html")
+    if ".git" not in p.parts
+    and "templates" not in p.parts
+    and p.name != "card.html"
+)
 SKIP_SCHEMES = {"http", "https", "mailto", "tel", "data", "javascript"}
 
 

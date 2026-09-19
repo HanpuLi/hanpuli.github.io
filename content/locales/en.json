@@ -1,0 +1,137 @@
+{
+  "common": {
+    "site_nav_label": "Portfolio sections",
+    "language_nav_label": "Language",
+    "skip_content": "Skip to content",
+    "skip_poems": "Skip to poems",
+    "skip_poem": "Skip to poem",
+    "nav": {
+      "work": "work",
+      "photo": "photographs",
+      "writing": "writing",
+      "ci": "ci",
+      "shi": "poem",
+      "profile": "profile"
+    },
+    "email": "Email",
+    "evidence": "Evidence",
+    "evidence_summary": "3 plates · spatial / vegetation / thermal",
+    "full_text_request": "full text on request",
+    "annotations_request": "annotations available on request"
+  },
+  "home": {
+    "meta_title": "Hanpu Li · film, research, photography and systems",
+    "meta_description": "Hanpu Li — film researcher, writer, photographer and developer in London. Work across film form, spatial evidence, open-source systems and poetry.",
+    "eyebrow": "film / research / systems / words · london",
+    "location": "London",
+    "alias": "also works as Caitlyn Lye",
+    "education": "York linguistics → QMUL film",
+    "lede": "I watch films. I also write ci.",
+    "intro": "Film researcher, writer, photographer and developer. Current work moves between film form, spatial evidence and small software systems.",
+    "method": "The common method is simple: make the claim precise, then make the evidence inspectable.",
+    "sections": {
+      "work": {"title": "Selected work", "kicker": "Research and systems"},
+      "photo": {"title": "Photographs", "kicker": "stills / film / Polaroid"},
+      "writing": {"title": "Writing", "kicker": "film / theory / evidence"},
+      "ci": {"title": "Ci", "kicker": "recent work / one author, two voices"},
+      "profile": {"title": "Profile", "kicker": "selected chronology"}
+    },
+    "projects": {
+      "material": {
+        "type": "research · remote sensing · political economy",
+        "title": "The Material Footprint of Virtual Production",
+        "description": "A spatial audit of the Shepperton Studios expansion, testing low-carbon discourse against land-cover change, thermal evidence and the planning record.",
+        "proof_green": "green-belt conversion",
+        "proof_ndvi": "NDVI DiD",
+        "proof_s106": "S106 ecological contribution",
+        "evidence_spatial": "spatial footprint",
+        "evidence_spatial_note": "OSM topology + impervious-surface mapping",
+        "evidence_spatial_alt": "Spatial heatmap of the Shepperton Studios expansion footprint",
+        "evidence_vegetation": "vegetation",
+        "evidence_vegetation_note": "ΔNDVI regime shift −0.365",
+        "evidence_vegetation_alt": "NDVI chart comparing vegetation before and after the Shepperton expansion",
+        "evidence_thermal": "independent sensor",
+        "evidence_thermal_note": "day ΔT +0.72 °C · HAC p=0.0062",
+        "evidence_thermal_alt": "ECOSTRESS chart showing the independent daytime thermal comparison"
+      },
+      "scoperail": {
+        "type": "open source · local execution · MCP",
+        "description": "A scoped local execution runtime for MCP clients on macOS: workspace-bound files, sandboxed processes, browser and native UI, explicit Git grants, audit and provenance.",
+        "flow": ["client intent", "OAuth + transport", "workspace / grant policy", "bounded execution surfaces", "audit + state"]
+      },
+      "liuzheng": {
+        "type": "open source · evidence preservation",
+        "description": "Tools and operating discipline for turning institutional correspondence into evidence that survives scrutiny.",
+        "flow": ["capture original", "DKIM / SHA-256", "RFC3161 + OpenTimestamps", "third-party copy / anchors"]
+      }
+    },
+    "photos": {
+      "medium": {"still": "still", "film": "film", "instant": "instant"},
+      "note": "Stills, film and Polaroid — mostly the hour before a take.",
+      "alt": {
+        "01": "museum roof lattice, figure on the parapet",
+        "02": "alone in the rows, bouquet beside her",
+        "03": "clapperboard held up before a masked performer",
+        "04": "his hand at her veiled face, lamp flaring",
+        "05": "empty chairs on the terrace, film fog",
+        "06": "two seated women, shadows on the wall",
+        "07": "actor in a shawl, script page in her lap",
+        "08": "boom mic overhead, light across her face",
+        "09": "laughing with eyes shut, backlit window",
+        "10": "self-portrait in the dark, holding a cat"
+      }
+    },
+    "writing": {
+      "first_love_title": "On Takashi Miike’s <em>First Love</em>",
+      "first_love_description": "A Marxist-feminist reading of <em>giri</em>/<em>ninjō</em>, genre form and the yakuza moral economy, backed by frame-level, audio and subtitle analysis.",
+      "first_love_meta": "long-form critical essay · full text on request",
+      "greenwashing_title": "The political economy of greenwashing",
+      "greenwashing_description": "A forensic spatial audit of the Shepperton Studios expansion: what happens when “low-carbon” discourse is checked against the material record.",
+      "pipeline": "reproducible pipeline →",
+      "film_essays_title": "On Joanna Hogg · On <em>Trainspotting</em>",
+      "film_essays_description": "Two film-studies essays, Queen Mary University of London.",
+      "film_essays_meta": "full texts on request"
+    },
+    "poetry": {
+      "recent": "two recent pieces",
+      "preview_title": "After <em>Zhegutian</em> · Several evenings at the lamp, trying to write; unfinished",
+      "translation_w2": "<em>Zhegutian</em> · translation",
+      "translation_w3": "<em>Linjiangxian</em> · translation",
+      "cycle": "Also: <em>Sixteen Poems of A and B</em>, a response cycle written by one author in two voices.",
+      "full_cycle": "full cycle, source text + translation →",
+      "poem_link": "poem →",
+      "preview_date": "9 September 2026"
+    },
+    "chronology": [
+      {"time": "2013–16", "text": "Live television and radio presenting — Zhengding County Television and Hebei Traffic Radio; Spring Festival broadcasts reached audiences above 500,000."},
+      {"time": "2016", "text": "First Prize, Young Presenter Competition."},
+      {"time": "2018–", "text": "Commercial, architectural and documentary photography."},
+      {"time": "2018–19", "text": "Presenter and producer, University Radio York 88.3FM."},
+      {"time": "2020", "text": "On-ground coordination in the rescue of a transgender woman forcibly detained in a conversion-therapy facility in Jinan."},
+      {"time": "2020–23", "text": "Volunteer writer at Beijing LGBT Center; transgender-support volunteer at Wuhan LGBT Center, including emergency PEP access."},
+      {"time": "2024", "text": "Script supervisor, translator and researcher on University of York productions; two works selected for the 14th Macao International Microfilm Festival and a Golden Rooster screening programme."}
+    ]
+  },
+  "ci": {
+    "meta_title": "Sixteen Poems of A and B · Hanpu Li",
+    "meta_description": "A sixteen-poem cycle by one author in two voices, with the Chinese source text and translation.",
+    "heading": "Sixteen Poems of A and B",
+    "subtitle": "A sixteen-poem cycle written by one author in two voices, A (甲) and B (乙). A usually gives a prefatory account; B’s first five poems are untitled. The cycle is dated 9 June 2026. Three poems outside it follow: one dated 1 July and two dated 9 September. The author’s annotations are available on request.",
+    "source_label": "Chinese source",
+    "translation_label": "English translation",
+    "outside": "outside",
+    "footer": "annotations available on request"
+  },
+  "shi": {
+    "meta_title": "The Roof Splits Open · Hanpu Li",
+    "meta_description": "Two drafts of one poem, a year apart. The revision is an erosion.",
+    "heading": "The Roof Splits Open",
+    "subtitle": "Untitled; named after its first line. Two drafts of one poem, a year apart — the revision is an erosion.",
+    "source_link": "Chinese original"
+  },
+  "notfound": {
+    "meta_title": "Page not found · Hanpu Li",
+    "line": "Nothing at this address.",
+    "home": "← Hanpu Li"
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "common": {
+    "site_nav_label": "Portfolio-Bereiche",
+    "language_nav_label": "Sprache",
+    "skip_content": "Zum Inhalt springen",
+    "skip_poems": "Zu den Gedichten springen",
+    "skip_poem": "Zum Gedicht springen",
+    "nav": {
+      "work": "Arbeiten",
+      "photo": "Fotografien",
+      "writing": "Texte",
+      "ci": "Ci",
+      "shi": "Gedicht",
+      "profile": "Profil"
+    },
+    "email": "E-Mail",
+    "evidence": "Belege",
+    "evidence_summary": "3 Tafeln · Raum / Vegetation / Wärme",
+    "full_text_request": "Volltext auf Anfrage",
+    "annotations_request": "Anmerkungen auf Anfrage"
+  },
+  "home": {
+    "meta_title": "Hanpu Li · Film, Forschung, Fotografie und Systeme",
+    "meta_description": "Hanpu Li · Filmforschung, Schreiben, Fotografie und Softwareentwicklung in London. Arbeiten zu Filmform, räumlicher Evidenz, Open-Source-Systemen und Lyrik.",
+    "eyebrow": "Film / Forschung / Systeme / Wörter · London",
+    "alias": "arbeitet auch als Caitlyn Lye",
+    "education": "York Linguistik → QMUL Film",
+    "lede": "Ich sehe Filme. Ich schreibe auch Ci.",
+    "intro": "Filmforschung, Schreiben, Fotografie und Softwareentwicklung. Aktuelle Arbeiten bewegen sich zwischen Filmform, räumlicher Evidenz und kleinen Softwaresystemen.",
+    "method": "Die gemeinsame Methode ist einfach: die Behauptung präzisieren, dann die Belege prüfbar machen.",
+    "sections": {
+      "work": {
+        "title": "Ausgewählte Arbeiten",
+        "kicker": "Forschung und Systeme"
+      },
+      "photo": {
+        "title": "Fotografien",
+        "kicker": "Stills / Film / Polaroid"
+      },
+      "writing": {
+        "title": "Texte",
+        "kicker": "Film / Theorie / Evidenz"
+      },
+      "ci": {
+        "title": "Ci",
+        "kicker": "neuere Arbeiten / eine Hand, zwei Stimmen"
+      },
+      "profile": {
+        "title": "Profil",
+        "kicker": "ausgewählte Chronologie"
+      }
+    },
+    "projects": {
+      "material": {
+        "type": "Forschung · Fernerkundung · politische Ökonomie",
+        "title": "Der materielle Fußabdruck virtueller Produktion",
+        "description": "Eine räumliche Prüfung der Erweiterung der Shepperton Studios: Low-Carbon-Diskurs im Abgleich mit Landbedeckungswandel, thermischen Befunden und Planungsakten.",
+        "proof_green": "Green-Belt-Umwandlung",
+        "proof_ndvi": "NDVI DiD",
+        "proof_s106": "ökologischer S106-Beitrag",
+        "evidence_spatial": "räumlicher Fußabdruck",
+        "evidence_spatial_note": "OSM-Topologie + Kartierung versiegelter Flächen",
+        "evidence_vegetation": "Vegetation",
+        "evidence_vegetation_note": "ΔNDVI-Regimewechsel −0.365",
+        "evidence_thermal": "unabhängiger Sensor",
+        "evidence_thermal_note": "Tag ΔT +0.72 °C · HAC p=0.0062",
+        "evidence_spatial_alt": "Räumliche Heatmap der Erweiterungsfläche der Shepperton Studios",
+        "evidence_vegetation_alt": "NDVI-Diagramm zum Vergleich der Vegetation vor und nach der Shepperton-Erweiterung",
+        "evidence_thermal_alt": "ECOSTRESS-Diagramm zum unabhängigen Vergleich der Tagestemperaturen"
+      },
+      "scoperail": {
+        "type": "Open Source · lokale Ausführung · MCP",
+        "description": "Eine begrenzte lokale Ausführungsumgebung für MCP-Clients unter macOS: an Workspaces gebundene Dateien, isolierte Prozesse, Browser und native UI, explizite Git-Freigaben, Audit und Provenienz.",
+        "flow": [
+          "Client-Absicht",
+          "OAuth + Transport",
+          "Workspace-/Freigaberegeln",
+          "begrenzte Ausführungsschnittstellen",
+          "Audit + Zustand"
+        ]
+      },
+      "liuzheng": {
+        "type": "Open Source · Beweissicherung",
+        "description": "Werkzeuge und Arbeitsdisziplin, um institutionelle Korrespondenz in Beweismaterial zu überführen, das einer Prüfung standhält.",
+        "flow": [
+          "Original erfassen",
+          "DKIM / SHA-256",
+          "RFC3161 + OpenTimestamps",
+          "Kopie bei Dritten / Anker"
+        ]
+      }
+    },
+    "photos": {
+      "medium": {
+        "still": "Still",
+        "film": "Film",
+        "instant": "Sofortbild"
+      },
+      "note": "Stills, Film und Polaroid · meist die Stunde vor einem Take.",
+      "alt": {
+        "01": "Dachgitter eines Museums, eine Figur auf der Brüstung",
+        "02": "allein zwischen den Sitzreihen, ein Blumenstrauß neben ihr",
+        "03": "Filmklappe vor einer maskierten Darstellerin",
+        "04": "seine Hand an ihrem verschleierten Gesicht, aufflammendes Lampenlicht",
+        "05": "leere Stühle auf der Terrasse, Filmschleier",
+        "06": "zwei sitzende Frauen, Schatten an der Wand",
+        "07": "Darstellerin im Schal, eine Drehbuchseite auf dem Schoß",
+        "08": "Tonangel über ihr, Licht auf ihrem Gesicht",
+        "09": "lachend mit geschlossenen Augen, Fenster im Gegenlicht",
+        "10": "Selbstporträt im Dunkeln, eine Katze im Arm"
+      }
+    },
+    "writing": {
+      "first_love_title": "Zu Takashi Miikes <em>First Love</em>",
+      "first_love_description": "Eine marxistisch-feministische Lektüre von <em>giri</em>/<em>ninjō</em>, Genreform und moralischer Ökonomie der Yakuza, gestützt auf Einzelbild-, Audio- und Untertitelanalyse.",
+      "first_love_meta": "kritischer Langessay · Volltext auf Anfrage",
+      "greenwashing_title": "Die politische Ökonomie des Greenwashings",
+      "greenwashing_description": "Eine forensische räumliche Prüfung der Erweiterung der Shepperton Studios: Was geschieht, wenn „Low-Carbon“-Diskurs am materiellen Befund geprüft wird.",
+      "pipeline": "reproduzierbare Pipeline →",
+      "film_essays_title": "Zu Joanna Hogg · Zu <em>Trainspotting</em>",
+      "film_essays_description": "Zwei filmwissenschaftliche Essays, Queen Mary University of London.",
+      "film_essays_meta": "Volltexte auf Anfrage"
+    },
+    "poetry": {
+      "recent": "zwei neuere Gedichte",
+      "preview_title": "Nach <em>Zhegutian</em> · Mehrere Abende an der Lampe, Schreibversuche; unvollendet",
+      "translation_w2": "<em>Zhegutian</em> · Übersetzung",
+      "translation_w3": "<em>Linjiangxian</em> · Übersetzung",
+      "cycle": "Außerdem: <em>Sechzehn Gedichte von A und B</em>, ein Antwortzyklus aus einer Hand in zwei Stimmen.",
+      "full_cycle": "gesamter Zyklus, Ausgangstext + Übersetzung →",
+      "poem_link": "Gedicht →",
+      "preview_date": "9. September 2026"
+    },
+    "chronology": [
+      {
+        "time": "2013–16",
+        "text": "Live-Moderation in Fernsehen und Radio · Zhengding County Television und Hebei Traffic Radio; die Übertragungen zum Frühlingsfest erreichten ein Publikum von über 500,000."
+      },
+      {
+        "time": "2016",
+        "text": "Erster Preis, Young Presenter Competition."
+      },
+      {
+        "time": "2018–",
+        "text": "Werbe-, Architektur- und Dokumentarfotografie."
+      },
+      {
+        "time": "2018–19",
+        "text": "Moderation und Produktion, University Radio York 88.3FM."
+      },
+      {
+        "time": "2020",
+        "text": "Koordination vor Ort bei der Rettung einer trans Frau, die in Jinan gegen ihren Willen in einer Einrichtung für Konversionstherapie festgehalten wurde."
+      },
+      {
+        "time": "2020–23",
+        "text": "Ehrenamtlich für das Beijing LGBT Center geschrieben; am Wuhan LGBT Center trans Menschen unterstützt, einschließlich Zugang zu PEP in Notfällen."
+      },
+      {
+        "time": "2024",
+        "text": "Script Supervisor, Übersetzung und Recherche bei Produktionen der University of York; zwei Arbeiten für das 14th Macao International Microfilm Festival und ein Golden-Rooster-Screeningprogramm ausgewählt."
+      }
+    ],
+    "location": "London"
+  },
+  "ci": {
+    "meta_title": "Sechzehn Gedichte von A und B · Hanpu Li",
+    "meta_description": "Ein sechzehnteiliger Gedichtzyklus aus einer Hand in zwei Stimmen, mit chinesischem Ausgangstext und Übersetzung.",
+    "heading": "Sechzehn Gedichte von A und B",
+    "subtitle": "Ein Zyklus aus sechzehn Gedichten, von einer Person in zwei Stimmen geschrieben, A (甲) und B (乙). A gibt meist eine Vorbemerkung; die ersten fünf Gedichte von B sind unbetitelt. Der Zyklus ist auf den 9. Juni 2026 datiert. Danach folgen drei Gedichte außerhalb des Zyklus: eines vom 1. Juli und zwei vom 9. September. Die zugehörigen Anmerkungen sind auf Anfrage erhältlich.",
+    "source_label": "Chinesischer Ausgangstext",
+    "translation_label": "Deutsche Übersetzung",
+    "outside": "außerhalb des Zyklus",
+    "footer": "Anmerkungen auf Anfrage"
+  },
+  "shi": {
+    "meta_title": "Das Dach reißt auf · Hanpu Li",
+    "meta_description": "Zwei Fassungen eines Gedichts, ein Jahr auseinander. Die Überarbeitung ist Erosion.",
+    "heading": "Das Dach reißt auf",
+    "subtitle": "Unbetitelt; nach der ersten Zeile benannt. Zwei Fassungen eines Gedichts, ein Jahr auseinander · die Überarbeitung ist Erosion.",
+    "source_link": "Chinesisches Original"
+  },
+  "notfound": {
+    "meta_title": "Seite nicht gefunden · Hanpu Li",
+    "line": "Unter dieser Adresse ist nichts.",
+    "home": "← Hanpu Li"
+  }
+}

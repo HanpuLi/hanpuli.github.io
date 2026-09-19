@@ -26,9 +26,14 @@
 }
 
 @font-face {
+  font-family: "Shippori Common";
+  src: url("fonts/shippori-mincho-common.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Shippori Mincho";
-  src: local("Shippori Mincho"), local("ShipporiMincho-Regular"),
-       url("fonts/shippori-mincho-subset.woff2") format("woff2");
+  src: url("fonts/shippori-mincho-subset.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -36,7 +41,7 @@
   font-family: "IMing Gap";
   src: url("fonts/iming-gap.woff2") format("woff2");
   font-display: swap;
-  unicode-range: U+60E6, U+8E29;
+  unicode-range: U+60E6, U+67E5, U+8E29;
 }
 
 :root {
@@ -48,8 +53,8 @@
   --paper-soft: #ece8df;
   --line: #d7d2c8;
   --accent: #8a2f1d;
-  --serif: "Garamond Premier Pro", "EB Garamond", Georgia, "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", serif;
-  --mono: "Courier Prime", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
+  --serif: "EB Garamond", Georgia, "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", serif;
+  --mono: "Courier Prime", "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
   --max: 1920px;
   --gutter: clamp(18px, 1.55vw, 30px);
   --gap: clamp(12px, 1.25vw, 24px);
@@ -149,6 +154,7 @@ a:hover {
 
 .site-home .masthead {
   display: grid;
+  min-height: 64px;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 0 var(--gap);
   align-items: baseline;
@@ -157,21 +163,23 @@ a:hover {
 }
 
 .site-home .wordmark {
-  grid-column: 1 / 5;
+  grid-column: 1 / 4;
   font-size: 18px;
   line-height: 1;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .site-home .wordmark span {
-  margin-left: .45em;
+  margin-left: .65em;
   color: var(--faint);
-  font-style: italic;
   font-size: .72em;
+  font-style: normal;
+  letter-spacing: .06em;
 }
 
-.site-home .masthead nav {
-  grid-column: 6 / 13;
+.site-home .section-nav {
+  grid-column: 4 / 10;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: var(--gap);
@@ -182,7 +190,21 @@ a:hover {
   text-transform: lowercase;
 }
 
-.site-home .masthead nav a {
+.site-home .language-nav {
+  grid-column: 10 / 13;
+  display: flex;
+  justify-content: flex-end;
+  gap: clamp(10px, 1.2vw, 20px);
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.site-home .section-nav a,
+.site-home .language-nav a,
+.site-home .language-nav .current {
   display: flex;
   align-items: center;
   min-height: 24px;
@@ -192,18 +214,24 @@ a:hover {
   text-decoration: none;
 }
 
-.site-home .masthead nav a span {
+.site-home .section-nav a span {
   display: inline-block;
   width: 2.3em;
   color: var(--faint);
 }
 
-.site-home .masthead nav a:hover {
+.site-home .section-nav a:hover,
+.site-home .language-nav a:hover {
   color: var(--accent);
 }
 
+.site-home .language-nav .current {
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
 .site-home .hero {
-  min-height: calc(100svh - 61px);
+  min-height: calc(100svh - 64px);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-template-rows: auto 1fr auto;
@@ -351,7 +379,7 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 0 var(--gap);
-  padding: clamp(26px, 2.8vw, 40px) 0 clamp(32px, 3.4vw, 52px);
+  padding: clamp(24px, 2.4vw, 34px) 0 clamp(28px, 3vw, 44px);
   border-top: 1px solid var(--line);
 }
 
@@ -392,8 +420,8 @@ a:hover {
 
 .site-home .project-feature h3 {
   max-width: 14ch;
-  font-size: clamp(42px, 4.25vw, 70px);
-  line-height: .96;
+  font-size: clamp(38px, 3.8vw, 62px);
+  line-height: .98;
   letter-spacing: -.034em;
 }
 
@@ -407,7 +435,7 @@ a:hover {
 }
 
 .site-home .project-feature .project-proof dd {
-  font-size: clamp(24px, 2.2vw, 36px);
+  font-size: clamp(22px, 2vw, 32px);
   line-height: 1;
 }
 
@@ -449,7 +477,7 @@ a:hover {
 }
 
 .site-home .project-proof dl {
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   border-top: 1px solid var(--line);
 }
 
@@ -475,7 +503,7 @@ a:hover {
 
 .site-home .project-evidence-disclosure {
   grid-column: 2 / 13;
-  margin-top: clamp(28px, 3vw, 44px);
+  margin-top: clamp(20px, 2.2vw, 32px);
   border-top: 1px solid var(--line);
 }
 
@@ -936,6 +964,7 @@ a:hover {
 .site-home .footer-mark {
   grid-column: 12 / 13;
   justify-self: end;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
 }
 
 /* Shared navigation for literary pages */
@@ -953,28 +982,41 @@ a:hover {
 }
 
 .page-topbar .page-wordmark {
-  grid-column: 1 / 5;
+  grid-column: 1 / 4;
   color: var(--ink);
   font-family: var(--serif);
   font-size: 17px;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .page-topbar .page-wordmark span {
-  margin-left: .4em;
+  margin-left: .6em;
   color: var(--faint);
   font-size: .74em;
-  font-style: italic;
+  font-style: normal;
+  letter-spacing: .05em;
 }
 
-.page-topbar > div {
-  grid-column: 7 / 13;
+.page-topbar .page-nav {
+  grid-column: 5 / 9;
   display: flex;
   justify-content: flex-end;
-  gap: clamp(14px, 2vw, 28px);
+  gap: clamp(12px, 1.5vw, 22px);
 }
 
-.page-topbar a {
+.page-topbar .page-languages {
+  grid-column: 9 / 13;
+  display: flex;
+  justify-content: flex-end;
+  gap: clamp(10px, 1.2vw, 18px);
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.page-topbar a,
+.page-topbar .page-nav [aria-current="page"],
+.page-topbar .page-languages .current {
   display: inline-flex;
   align-items: center;
   min-height: 24px;
@@ -984,8 +1026,13 @@ a:hover {
   text-decoration: none;
 }
 
-.page-topbar [aria-current="page"] {
+.page-topbar .page-nav [aria-current="page"],
+.page-topbar .page-languages .current {
   color: var(--ink);
+}
+
+.page-topbar .page-languages .current {
+  border-bottom: 1px solid var(--ink);
 }
 
 /* Literary pages */
@@ -1015,6 +1062,21 @@ a:hover {
   color: var(--muted);
   font-size: 15px;
   line-height: 1.86;
+}
+
+.literary-page .source-title,
+.shi-page .source-title {
+  margin-top: 1.2em;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: .045em;
+}
+
+.literary-page.locale-zh .source-title,
+.shi-page.locale-zh .source-title {
+  display: none;
 }
 
 .literary-page .toc {
@@ -1084,7 +1146,7 @@ a:hover {
   font-size: 12px;
 }
 
-.literary-page .poem .en {
+.literary-page .poem .translation {
   grid-column: 7 / 13;
   grid-row: 2 / span 3;
   align-self: start;
@@ -1095,7 +1157,7 @@ a:hover {
   line-height: 1.88;
 }
 
-.literary-page .poem .en .et {
+.literary-page .poem .translation .et {
   display: block;
   margin-bottom: .9em;
   color: var(--faint);
@@ -1225,6 +1287,35 @@ a:hover {
   padding: var(--gutter);
 }
 
+.notfound-languages {
+  position: fixed;
+  z-index: 20;
+  top: var(--gutter);
+  right: var(--gutter);
+  display: flex;
+  gap: clamp(10px, 1.2vw, 18px);
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.notfound-languages a,
+.notfound-languages .current {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.notfound-languages .current {
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.notfound-languages a:hover {
+  color: var(--accent);
+}
+
 .notfound-shell {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -1351,44 +1442,7 @@ a:hover {
   }
 }
 
-/* Defer below-the-fold layout without changing the visual geometry. */
-
-@supports (content-visibility: auto) {
-  .site-home .work-section,
-  .site-home .photo-section,
-  .site-home .writing-section,
-  .site-home .poetry-section,
-  .site-home .profile-section {
-    content-visibility: auto;
-  }
-
-  .site-home .work-section { contain-intrinsic-size: auto 1200px; }
-  .site-home .photo-section { contain-intrinsic-size: auto calc(314.5vw + 230px); }
-  .site-home .writing-section { contain-intrinsic-size: auto calc(8.3vw + 351px); }
-  .site-home .poetry-section { contain-intrinsic-size: auto calc(22vw + 260px); }
-  .site-home .profile-section { contain-intrinsic-size: auto calc(10vw + 747px); }
-}
-
-@media (min-width: 1600px) {
-  @supports (content-visibility: auto) {
-    .site-home .photo-section {
-      contain-intrinsic-size: auto calc(min(249vw, 4940px) + 1035px);
-    }
-    .site-home .writing-section { contain-intrinsic-size: auto 442px; }
-    .site-home .poetry-section { contain-intrinsic-size: auto 597px; }
-    .site-home .profile-section { contain-intrinsic-size: auto 892px; }
-  }
-}
-
 /* Responsive */
-
-@media (min-width: 761px) and (max-width: 900px) {
-  @supports (content-visibility: auto) {
-    .site-home .writing-section { contain-intrinsic-size: auto calc(556px - 14.4vw); }
-    .site-home .poetry-section { contain-intrinsic-size: auto 460px; }
-    .site-home .profile-section { contain-intrinsic-size: auto calc(986px - 16.6vw); }
-  }
-}
 
 @media (max-width: 900px) {
   .shi-page main {
@@ -1403,10 +1457,6 @@ a:hover {
     padding-left: 0;
     border-left: 0;
     border-top: 1px solid var(--line);
-  }
-
-  .site-home .masthead nav {
-    grid-column: 5 / 13;
   }
 
   .site-home .hero {
@@ -1465,14 +1515,6 @@ a:hover {
     --gap: 14px;
   }
 
-  @supports (content-visibility: auto) {
-    .site-home .work-section { contain-intrinsic-size: auto calc(135.4vw + 1775px); }
-    .site-home .photo-section { contain-intrinsic-size: auto calc(901vw + 548px); }
-    .site-home .writing-section { contain-intrinsic-size: auto calc(1017px - 24.9vw); }
-    .site-home .poetry-section { contain-intrinsic-size: auto 730px; }
-    .site-home .profile-section { contain-intrinsic-size: auto calc(1221px - 49.2vw); }
-  }
-
   body {
     font-size: 16px;
   }
@@ -1482,11 +1524,20 @@ a:hover {
   }
 
   .site-home .wordmark {
-    grid-column: 1 / 7;
+    grid-column: 1 / 8;
+    grid-row: 1;
   }
 
-  .site-home .masthead nav {
+  .site-home .language-nav {
+    grid-column: 8 / 13;
+    grid-row: 1;
+    gap: 8px;
+    font-size: 9.5px;
+  }
+
+  .site-home .section-nav {
     grid-column: 1 / 13;
+    grid-row: 2;
     grid-template-columns: repeat(5, max-content);
     justify-content: space-between;
     gap: 12px;
@@ -1495,7 +1546,7 @@ a:hover {
     padding-bottom: 2px;
   }
 
-  .site-home .masthead nav a span {
+  .site-home .section-nav a span {
     display: none;
   }
 
@@ -1731,17 +1782,31 @@ a:hover {
   }
 
   .page-topbar {
-    display: flex;
-    justify-content: space-between;
-    gap: 18px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0 18px;
     padding: 17px 0 14px;
   }
 
-  .page-topbar > div {
-    display: flex;
+  .page-topbar .page-wordmark {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .page-topbar .page-languages {
+    grid-column: 2;
+    grid-row: 1;
+    gap: 8px;
+    font-size: 9.5px;
+  }
+
+  .page-topbar .page-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 6px 14px;
+    gap: 6px 16px;
+    margin-top: 17px;
   }
 
   .literary-page header {
@@ -1774,7 +1839,7 @@ a:hover {
     margin-top: 20px;
   }
 
-  .literary-page .poem .en {
+  .literary-page .poem .translation {
     margin-top: 34px;
     padding-top: 28px;
     border-top: 1px solid var(--line);

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="{{HTML_LANG}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{shi.meta_title}}</title>
+<meta name="description" content="{{shi.meta_description_attr}}">
+<link rel="canonical" href="{{CANONICAL_URL}}">
+{{HREFLANG_LINKS}}
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{shi.meta_title_attr}}">
+<meta property="og:description" content="{{shi.meta_description_attr}}">
+<meta property="og:url" content="{{CANONICAL_URL}}">
+<meta property="og:locale" content="{{OG_LOCALE}}">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>詩</text></svg>">
+<link rel="stylesheet" href="{{ASSET_PREFIX}}assets/site.css">
+</head>
+<body class="shi-page locale-{{LOCALE}}">
+<a class="skip-link" href="#drafts">{{common.skip_poem}}</a>
+<div class="wrap">
+
+  <div class="page-topbar">
+    <a class="page-wordmark" href="{{HOME_HREF}}">{{PRIMARY_NAME}} <span lang="zh-Hant-HK">{{CHINESE_NAME}}</span></a>
+    <nav class="page-nav" aria-label="{{common.site_nav_label_attr}}">
+      <a href="{{WRITING_HREF}}">{{common.nav.writing}}</a>
+      <a href="{{PHOTO_HREF}}">{{common.nav.photo}}</a>
+      <a href="{{CI_HREF}}">{{common.nav.ci}}</a>
+      <span aria-current="page">{{SHI_NAV_LABEL}}</span>
+    </nav>
+    <nav class="page-languages" aria-label="{{common.language_nav_label_attr}}">
+      {{LANG_SWITCHER}}
+    </nav>
+  </div>
+
+  <header>
+    <h1>{{shi.heading}}</h1>
+    <div class="sub">
+      <p>{{shi.subtitle}}</p>
+      <p class="source-title" lang="zh-Hant-HK">{{SHI_SOURCE_HEADING}}</p>
+    </div>
+  </header>
+
+  <main id="drafts">
+    {{SHI_DRAFTS}}
+  </main>
+
+  <footer>
+    <p><a href="{{HOME_HREF}}">← {{PRIMARY_NAME}}</a> · <a href="{{CI_HREF}}">{{ci.heading}}</a></p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{HTML_LANG}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{notfound.meta_title}}</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>詞</text></svg>">
+<link rel="stylesheet" href="{{ASSET_PREFIX}}assets/site.css">
+</head>
+<body class="notfound-page locale-{{LOCALE}}">
+  <nav class="notfound-languages" aria-label="{{common.language_nav_label_attr}}">{{LANG_SWITCHER}}</nav>
+  <main class="notfound-shell">
+    <p class="notfound-code" aria-hidden="true">404</p>
+    <div class="notfound-copy">
+      <p>{{notfound.line}}</p>
+      <a href="{{HOME_HREF}}">{{notfound.home}}</a>
+    </div>
+  </main>
+</body>
+</html>
