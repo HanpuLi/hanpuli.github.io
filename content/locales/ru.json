@@ -14,8 +14,8 @@
       "profile": "профиль"
     },
     "email": "Эл. почта",
-    "evidence": "Доказательства",
-    "evidence_summary": "3 панели · пространство / растительность / температура",
+    "evidence": "Свидетельства",
+    "evidence_summary": "3 листа · пространство / растительность / температура",
     "full_text_request": "полный текст — по запросу",
     "annotations_request": "примечания автора — по запросу"
   },
@@ -147,7 +147,7 @@
       },
       {
         "time": "2018–19",
-        "text": "Ведение и продюсирование, University Radio York 88.3FM."
+        "text": "Ведение эфира и продюсирование, University Radio York 88.3FM."
       },
       {
         "time": "2020",
@@ -159,7 +159,7 @@
       },
       {
         "time": "2024",
-        "text": "Скрипт-супервайзинг, перевод и исследовательская работа в проектах University of York; две работы отобраны на 14-й Macao International Microfilm Festival и в программу показов Golden Rooster."
+        "text": "Контроль сценарной непрерывности, перевод и исследовательская работа в проектах University of York; две работы отобраны на 14-й Macao International Microfilm Festival и в программу показов Golden Rooster."
       }
     ]
   },

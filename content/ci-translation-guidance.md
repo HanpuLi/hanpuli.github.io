@@ -8,7 +8,7 @@ This file records semantic constraints distilled from the author's current annot
 - Do not turn ambiguity into biography. If the poem does not identify an actor, relationship, motive, or physical blocking, the translation should not supply one.
 - Repeated system words (燈、鑰、當時、指、虛廊、西窗、風過、綢繆、加餐／加飯、思忘、新種、鴛鴦、棲／眠) change function across the cycle. Repetition does not prove the same subject, action, or meaning.
 - Preserve the distinction between observable facts and a speaker's retrospective reading of them.
-- Tune names are tune designations, not adaptation-source labels. Use forms equivalent to “To the tune of …”, `… の調べ`, `Nach der Melodie …`, and `Sur l’air de …`.
+- Tune names are tune designations, not adaptation-source labels. Use forms equivalent to “To the tune of …”, `… の調べ`, `Nach der Melodie …`, `Sur l’air de …`, and `На мелодию …`.
 - Preserve the established line and stanza structure in translations. Do not add rhyme or metre at the cost of meaning.
 
 ## High-risk readings
