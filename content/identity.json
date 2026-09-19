@@ -1,11 +1,19 @@
 {
   "primary_name": "Hanpu Li",
   "chinese_name": "李函璞",
-  "alternate_names": ["Caitlyn Lye"],
+  "alternate_names": [
+    "Caitlyn Lye"
+  ],
   "location": "London",
   "email": "caitlye@gmail.com",
   "github_label": "GitHub",
   "github_url": "https://github.com/HanpuLi",
   "site_url": "https://hanpuli.github.io/",
-  "knows_about": ["film studies", "photography", "remote sensing", "software development"]
+  "knows_about": [
+    "writing",
+    "film criticism",
+    "photography",
+    "remote sensing",
+    "software systems"
+  ]
 }

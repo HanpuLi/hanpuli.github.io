@@ -6,7 +6,7 @@
     "skip_poems": "跳至词作",
     "skip_poem": "跳至诗作",
     "nav": {
-      "work": "作品",
+      "work": "研究",
       "photo": "摄影",
       "writing": "写作",
       "ci": "词",
@@ -33,20 +33,20 @@
     }
   },
   "home": {
-    "meta_title": "Hanpu Li 李函璞 · 电影、研究、摄影与系统",
-    "meta_description": "Hanpu Li（李函璞）——现居伦敦的电影研究者、写作者、摄影师与开发者；工作涉及电影形式、空间证据、开源系统与诗词。",
-    "eyebrow": "电影 / 研究 / 系统 / 文字 · 伦敦",
+    "meta_title": "Hanpu Li 李函璞 · 写作、电影、摄影与系统",
+    "meta_description": "Hanpu Li（李函璞）——现居伦敦的写作者与研究者；写电影评论、研究与诗词，也做摄影、空间证据与小型软件系统。",
+    "eyebrow": "写作 / 电影 / 摄影 / 代码 · 伦敦",
     "location": "伦敦",
     "alias": "也以 Caitlyn Lye 名义工作",
     "education": "约克 · 英语语言与语言学 → 电影 · QMUL",
     "lede": "看电影的，也写写词。",
     "lede_note": "",
-    "intro": "电影研究、写作、摄影与软件开发。目前的工作往返于电影形式、空间证据与小型软件系统之间。",
-    "method": "方法其实简单：先把主张说准，再让证据可供查验。",
+    "intro": "我的工作多半从写开始：评论、研究、诗词。我也拍照；方法需要工具时，就写软件。",
+    "method": "我在意的是：什么被记录，什么被漏掉，证据到底能不能撑住那个主张。",
     "sections": {
       "work": {
-        "title": "选作",
-        "kicker": "研究与系统"
+        "title": "研究与系统",
+        "kicker": "证据 / 工具"
       },
       "photo": {
         "title": "摄影",
@@ -54,7 +54,7 @@
       },
       "writing": {
         "title": "写作",
-        "kicker": "电影 / 理论 / 证据"
+        "kicker": "电影 / 评论 / 研究"
       },
       "ci": {
         "title": "词",
@@ -93,16 +93,6 @@
           "受约束的执行接口",
           "审计 + 状态"
         ]
-      },
-      "liuzheng": {
-        "type": "开源 · 证据保全",
-        "description": "把机构往来转化为经得起审查的证据的一组工具与操作规则。",
-        "flow": [
-          "获取原件",
-          "DKIM / SHA-256",
-          "RFC3161 + OpenTimestamps",
-          "第三方副本 / 锚点"
-        ]
       }
     },
     "photos": {
@@ -127,14 +117,12 @@
     },
     "writing": {
       "first_love_title": "论三池崇史《<em>初恋</em>》",
-      "first_love_description": "从马克思主义女性主义角度解读<em>义理</em>/<em>人情</em>、类型形式与黑道道德经济，并以逐帧、声音及字幕分析为证。",
-      "first_love_meta": "长篇评论 · 全文备索",
-      "greenwashing_title": "漂绿的政治经济学",
-      "greenwashing_description": "对 Shepperton Studios 扩建所作的空间取证审计：当“低碳”叙事与物质记录逐项核对，会留下什么。",
-      "pipeline": "可复现分析流程 →",
+      "first_love_description": "一篇关于三池崇史《<em>初恋</em>》中性别、义务与类型形式的长篇研究，结合形式细读与可复现核验。",
+      "first_love_meta": "研究稿 · 私下传阅",
       "film_essays_title": "论《<em>猜火车</em>》",
       "film_essays_description": "从旁白、空间与自我规训写到论证本身的边界。",
-      "film_essays_meta": "读全文 →"
+      "film_essays_meta": "读全文 →",
+      "first_love_verify": "核验材料 →"
     },
     "poetry": {
       "recent": "近作二首",

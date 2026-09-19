@@ -348,8 +348,6 @@ def main() -> int:
                     errors.append(
                         f"{path.relative_to(ROOT)}: Trainspotting links do not stay in the current locale"
                     )
-                if locale == "zh-hans" and '<span lang="zh-Hant-HK">留證</span>' not in text:
-                    errors.append("zh-hans/index.html: 留證 brand must remain Traditional and carry zh-Hant-HK")
             if name == "404.html":
                 if locale_data["notfound"]["line"] != b2_quotes[locale]:
                     errors.append(

@@ -444,11 +444,9 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "SCOPERAIL_URL": html.escape(SHARED["projects"]["scoperail"]["url"], quote=True),
         "SCOPERAIL_TITLE": html.escape(SHARED["projects"]["scoperail"]["title"]),
         "SCOPERAIL_STACK": html.escape(SHARED["projects"]["scoperail"]["stack"]),
-        "LIUZHENG_URL": html.escape(SHARED["projects"]["liuzheng"]["url"], quote=True),
-        "LIUZHENG_TITLE": html.escape(SHARED["projects"]["liuzheng"]["title"]).replace(
-            "留證", '<span lang="zh-Hant-HK">留證</span>'
+        "FIRST_LOVE_VERIFY_URL": html.escape(
+            SHARED["writing"]["first_love_verification_url"], quote=True
         ),
-        "LIUZHENG_STACK": html.escape(SHARED["projects"]["liuzheng"]["stack"]),
         "HOME_HREF": page_path(locale_id, "index"),
         "CI_HREF": page_path(locale_id, "ci"),
         "SHI_HREF": page_path(locale_id, "shi"),
@@ -458,7 +456,6 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "LANG_SWITCHER": language_switcher(locale_id, page),
         "JSON_LD": json.dumps(json_ld, ensure_ascii=False, separators=(",", ":")),
         "SCOPERAIL_FLOW": flow_html(locale["home"]["projects"]["scoperail"]["flow"]),
-        "LIUZHENG_FLOW": flow_html(locale["home"]["projects"]["liuzheng"]["flow"]),
         "CHRONOLOGY": chronology_html(locale["home"]["chronology"]),
         "POETRY_PREVIEW_TITLE": locale["home"]["poetry"]["preview_title"],
         "POETRY_PREVIEW_BODY": preview_body,

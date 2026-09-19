@@ -6,7 +6,7 @@
     "skip_poems": "Zu den Gedichten springen",
     "skip_poem": "Zum Gedicht springen",
     "nav": {
-      "work": "Arbeiten",
+      "work": "Forschung",
       "photo": "Fotografien",
       "writing": "Texte",
       "ci": "Ci",
@@ -33,19 +33,19 @@
     }
   },
   "home": {
-    "meta_title": "Hanpu Li · Film, Forschung, Fotografie und Systeme",
-    "meta_description": "Hanpu Li · Filmforschung, Schreiben, Fotografie und Softwareentwicklung in London. Arbeiten zu Filmform, räumlicher Evidenz, Open-Source-Systemen und Lyrik.",
-    "eyebrow": "Film / Forschung / Systeme / Texte · London",
+    "meta_title": "Hanpu Li · Schreiben, Film, Fotografie und Systeme",
+    "meta_description": "Hanpu Li schreibt und forscht in London zu Filmkritik, Lyrik, Fotografie, räumlicher Evidenz und kleinen Softwaresystemen.",
+    "eyebrow": "Schreiben / Film / Foto / Code · London",
     "alias": "arbeitet auch als Caitlyn Lye",
     "education": "York · Englische Sprache und Linguistik → Film · QMUL",
     "lede": "Ich sehe Filme. Ich schreibe auch Ci.",
     "lede_note": "",
-    "intro": "Filmforschung, Schreiben, Fotografie und Softwareentwicklung. Aktuelle Arbeiten bewegen sich zwischen Filmform, räumlicher Evidenz und kleinen Softwaresystemen.",
-    "method": "Die gemeinsame Methode ist einfach: die Behauptung präzisieren, dann die Belege prüfbar machen.",
+    "intro": "Vieles beginnt bei mir mit Schreiben: Kritik, Forschung, Lyrik. Ich fotografiere auch und baue Software, wenn eine Methode ein Werkzeug braucht.",
+    "method": "Mich interessiert, was aufgezeichnet wird, was herausfällt und ob die Belege die Behauptung tatsächlich tragen.",
     "sections": {
       "work": {
-        "title": "Ausgewählte Arbeiten",
-        "kicker": "Forschung und Systeme"
+        "title": "Forschung & Systeme",
+        "kicker": "Belege / Werkzeuge"
       },
       "photo": {
         "title": "Fotografien",
@@ -53,11 +53,11 @@
       },
       "writing": {
         "title": "Texte",
-        "kicker": "Film / Theorie / Evidenz"
+        "kicker": "Film / Kritik / Forschung"
       },
       "ci": {
         "title": "Ci",
-        "kicker": "neuere Arbeiten / eine Hand, zwei Stimmen"
+        "kicker": "neu / eine Hand / zwei Stimmen"
       },
       "profile": {
         "title": "Profil",
@@ -92,16 +92,6 @@
           "begrenzte Ausführungsschnittstellen",
           "Audit + Zustand"
         ]
-      },
-      "liuzheng": {
-        "type": "Open Source · Beweissicherung",
-        "description": "Werkzeuge und Arbeitsdisziplin, um institutionelle Korrespondenz in Beweismaterial zu überführen, das einer Prüfung standhält.",
-        "flow": [
-          "Original erfassen",
-          "DKIM / SHA-256",
-          "RFC3161 + OpenTimestamps",
-          "Kopie bei Dritten / Anker"
-        ]
       }
     },
     "photos": {
@@ -126,14 +116,12 @@
     },
     "writing": {
       "first_love_title": "Zu Takashi Miikes <em>First Love</em>",
-      "first_love_description": "Eine marxistisch-feministische Lektüre von <em>giri</em>/<em>ninjō</em>, Genreform und moralischer Ökonomie der Yakuza, gestützt auf Einzelbild-, Audio- und Untertitelanalyse.",
-      "first_love_meta": "kritischer Langessay · Volltext auf Anfrage",
-      "greenwashing_title": "Die politische Ökonomie des Greenwashings",
-      "greenwashing_description": "Eine forensische räumliche Prüfung der Erweiterung der Shepperton Studios: Was geschieht, wenn „Low-Carbon“-Diskurs am materiellen Befund geprüft wird.",
-      "pipeline": "reproduzierbare Pipeline →",
+      "first_love_description": "Eine Langzeitstudie zu Geschlecht, Verpflichtung und Genreform in Takashi Miikes <em>First Love</em>, die formale Nahlektüre mit reproduzierbaren Prüfungen verbindet.",
+      "first_love_meta": "Forschungsmanuskript · private Weitergabe",
       "film_essays_title": "Zu <em>Trainspotting</em>",
       "film_essays_description": "Ein Essay über Voice-over, Raum, Subjektivierung und die Grenzen der eigenen Argumentation.",
-      "film_essays_meta": "Essay lesen →"
+      "film_essays_meta": "Essay lesen →",
+      "first_love_verify": "Prüfmaterialien →"
     },
     "poetry": {
       "recent": "zwei neuere Gedichte",

@@ -2,7 +2,7 @@
   "site_year": "2026",
   "projects": {
     "material": {
-      "url": "https://github.com/HanpuLi/-OSM_AUDIT_2025",
+      "url": "https://github.com/HanpuLi/shepperton-spatial-audit",
       "proof_values": {
         "green": "≈39 ha",
         "ndvi": "−0.365",
@@ -14,11 +14,9 @@
       "title": "ScopeRail",
       "url": "https://github.com/HanpuLi/scoperail",
       "stack": "Python · OAuth 2.1 · macOS Seatbelt · Accessibility"
-    },
-    "liuzheng": {
-      "title": "留證 · liuzheng",
-      "url": "https://github.com/HanpuLi/liuzheng",
-      "stack": "gmail-eml · stamp · webarchive · OTS sweep"
     }
+  },
+  "writing": {
+    "first_love_verification_url": "https://github.com/HanpuLi/first-love-verification"
   }
 }

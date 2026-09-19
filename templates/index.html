@@ -42,9 +42,9 @@
   <header class="masthead">
     <a class="wordmark" href="{{HOME_HREF}}">{{PRIMARY_NAME}} <span lang="zh-Hant-HK">{{CHINESE_NAME}}</span></a>
     <nav class="section-nav" aria-label="{{common.site_nav_label_attr}}">
-      <a href="#work"><span>01</span> {{common.nav.work}}</a>
-      <a href="#photo"><span>02</span> {{common.nav.photo}}</a>
-      <a href="#writing"><span>03</span> {{common.nav.writing}}</a>
+      <a href="#writing"><span>01</span> {{common.nav.writing}}</a>
+      <a href="#work"><span>02</span> {{common.nav.work}}</a>
+      <a href="#photo"><span>03</span> {{common.nav.photo}}</a>
       <a href="#ci"><span>04</span> {{common.nav.ci}}</a>
       <a href="#profile"><span>05</span> {{common.nav.profile}}</a>
       <a class="section-nav-page" href="{{SHI_HREF}}"><span aria-hidden="true">↗</span> {{common.nav.shi}}</a>
@@ -74,21 +74,49 @@
 
       <div class="hero-copy">
         <p class="zh-lede">{{home.lede}}{{HERO_FOOTNOTE_MARK}}</p>
-{{HERO_FOOTNOTE}}
         <p>{{home.intro}}</p>
         <p class="hero-note">{{home.method}}</p>
+      </div>
+{{HERO_FOOTNOTE}}
+    </section>
+
+    <section id="writing" class="writing-section" aria-labelledby="writing-heading">
+      <div class="section-head">
+        <p class="section-no">01</p>
+        <h2 id="writing-heading">{{home.sections.writing.title}}</h2>
+        <p class="section-kicker">{{home.sections.writing.kicker}}</p>
+      </div>
+
+      <div class="writing-list">
+        <article>
+          <p class="writing-no">01.1</p>
+          <h3>{{home.writing.first_love_title}}</h3>
+          <p>{{home.writing.first_love_description}}</p>
+          <div class="writing-footer">
+            <p class="writing-meta">{{home.writing.first_love_meta}}</p>
+            <p class="writing-meta"><a href="{{FIRST_LOVE_VERIFY_URL}}">{{home.writing.first_love_verify}}</a></p>
+          </div>
+        </article>
+        <article>
+          <p class="writing-no">01.2</p>
+          <h3><a href="{{TRAINSPOTTING_HREF}}">{{home.writing.film_essays_title}}</a></h3>
+          <p>{{home.writing.film_essays_description}}</p>
+          <div class="writing-footer">
+            <p class="writing-meta"><a href="{{TRAINSPOTTING_HREF}}">{{home.writing.film_essays_meta}}</a></p>
+          </div>
+        </article>
       </div>
     </section>
 
     <section id="work" class="work-section" aria-labelledby="work-heading">
       <div class="section-head">
-        <p class="section-no">01</p>
+        <p class="section-no">02</p>
         <h2 id="work-heading">{{home.sections.work.title}}</h2>
         <p class="section-kicker">{{home.sections.work.kicker}}</p>
       </div>
 
       <article class="project project-feature">
-        <div class="project-index">01.1</div>
+        <div class="project-index">02.1</div>
         <div class="project-main">
           <p class="project-type">{{home.projects.material.type}}</p>
           <h3><a href="{{MATERIAL_URL}}">{{home.projects.material.title}}</a></h3>
@@ -129,7 +157,7 @@
       </article>
 
       <article class="project">
-        <div class="project-index">01.2</div>
+        <div class="project-index">02.2</div>
         <div class="project-main">
           <p class="project-type">{{home.projects.scoperail.type}}</p>
           <h3><a href="{{SCOPERAIL_URL}}">{{SCOPERAIL_TITLE}}</a></h3>
@@ -140,24 +168,11 @@
           <p class="project-stack">{{SCOPERAIL_STACK}}</p>
         </div>
       </article>
-
-      <article class="project">
-        <div class="project-index">01.3</div>
-        <div class="project-main">
-          <p class="project-type">{{home.projects.liuzheng.type}}</p>
-          <h3><a href="{{LIUZHENG_URL}}">{{LIUZHENG_TITLE}}</a></h3>
-          <p>{{home.projects.liuzheng.description}}</p>
-        </div>
-        <div class="project-system">
-          {{LIUZHENG_FLOW}}
-          <p class="project-stack">{{LIUZHENG_STACK}}</p>
-        </div>
-      </article>
     </section>
 
     <section id="photo" class="photo-section" aria-labelledby="photo-heading">
       <div class="section-head">
-        <p class="section-no">02</p>
+        <p class="section-no">03</p>
         <h2 id="photo-heading">{{home.sections.photo.title}}</h2>
         <p class="section-kicker">{{home.sections.photo.kicker}}</p>
       </div>
@@ -239,35 +254,6 @@
       </div>
 
       <p class="section-note">{{home.photos.note}}</p>
-    </section>
-
-    <section id="writing" class="writing-section" aria-labelledby="writing-heading">
-      <div class="section-head">
-        <p class="section-no">03</p>
-        <h2 id="writing-heading">{{home.sections.writing.title}}</h2>
-        <p class="section-kicker">{{home.sections.writing.kicker}}</p>
-      </div>
-
-      <div class="writing-list">
-        <article>
-          <p class="writing-no">03.1</p>
-          <h3>{{home.writing.first_love_title}}</h3>
-          <p>{{home.writing.first_love_description}}</p>
-          <p class="writing-meta">{{home.writing.first_love_meta}}</p>
-        </article>
-        <article>
-          <p class="writing-no">03.2</p>
-          <h3>{{home.writing.greenwashing_title}}</h3>
-          <p>{{home.writing.greenwashing_description}}</p>
-          <p class="writing-meta"><a href="{{MATERIAL_URL}}">{{home.writing.pipeline}}</a></p>
-        </article>
-        <article>
-          <p class="writing-no">03.3</p>
-          <h3><a href="{{TRAINSPOTTING_HREF}}">{{home.writing.film_essays_title}}</a></h3>
-          <p>{{home.writing.film_essays_description}}</p>
-          <p class="writing-meta"><a href="{{TRAINSPOTTING_HREF}}">{{home.writing.film_essays_meta}}</a></p>
-        </article>
-      </div>
     </section>
 
     <section id="ci" class="poetry-section" aria-labelledby="ci-heading">

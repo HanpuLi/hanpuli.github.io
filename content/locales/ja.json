@@ -6,7 +6,7 @@
     "skip_poems": "詞へスキップ",
     "skip_poem": "詩へスキップ",
     "nav": {
-      "work": "プロジェクト",
+      "work": "研究",
       "photo": "写真",
       "writing": "文章",
       "ci": "詞",
@@ -33,19 +33,19 @@
     }
   },
   "home": {
-    "meta_title": "Hanpu Li · 映画、研究、写真、システム",
-    "meta_description": "ロンドンを拠点とする映画研究者、作家、写真家、開発者 Hanpu Li。映画形式、空間的エビデンス、オープンソース・システム、詩を横断して制作・研究する。",
-    "eyebrow": "映画 / 研究 / システム / 言葉 · ロンドン",
+    "meta_title": "Hanpu Li · 文章、映画、写真、システム",
+    "meta_description": "ロンドンを拠点に、映画批評、研究、詩、写真、空間的エビデンス、小規模なソフトウェア・システムを手がける Hanpu Li。",
+    "eyebrow": "文章 / 映画 / 写真 / コード · ロンドン",
     "alias": "Caitlyn Lye 名義でも活動",
     "education": "York · 英語・言語学 → 映画 · QMUL",
     "lede": "映画を観る。詞も書く。",
     "lede_note": "",
-    "intro": "映画研究者、作家、写真家、開発者。現在の仕事は、映画形式、空間的エビデンス、小規模なソフトウェア・システムのあいだを行き来している。",
-    "method": "共通する方法は単純だ。主張を精緻にし、次に証拠を検証可能な形にする。",
+    "intro": "私の仕事の多くは書くことから始まる。批評、研究、詩。写真も撮るし、方法に道具が必要ならソフトウェアも作る。",
+    "method": "気になるのは、何が記録され、何が抜け落ち、その証拠が本当に主張を支えられるかということだ。",
     "sections": {
       "work": {
-        "title": "主なプロジェクト",
-        "kicker": "研究とシステム"
+        "title": "研究とシステム",
+        "kicker": "証拠 / 道具"
       },
       "photo": {
         "title": "写真",
@@ -53,11 +53,11 @@
       },
       "writing": {
         "title": "文章",
-        "kicker": "映画 / 理論 / エビデンス"
+        "kicker": "映画 / 批評 / 研究"
       },
       "ci": {
         "title": "詞",
-        "kicker": "近作 / 一人の作者、二つの声"
+        "kicker": "近作 / 一人の作者 / 二つの声"
       },
       "profile": {
         "title": "プロフィール",
@@ -92,16 +92,6 @@
           "境界を設けた実行サーフェス",
           "監査 + 状態"
         ]
-      },
-      "liuzheng": {
-        "type": "オープンソース · 証拠保全",
-        "description": "組織との往復書簡を、検証に耐える証拠へ変えるためのツールと運用規律。",
-        "flow": [
-          "原本を取得",
-          "DKIM / SHA-256",
-          "RFC3161 + OpenTimestamps",
-          "第三者コピー / アンカー"
-        ]
       }
     },
     "photos": {
@@ -126,14 +116,12 @@
     },
     "writing": {
       "first_love_title": "三池崇史『<em>First Love</em>』論",
-      "first_love_description": "マルクス主義フェミニズムから、<em>義理</em>/<em>人情</em>、ジャンル形式、ヤクザの道徳経済を読む。フレーム単位の映像・音声・字幕分析で裏づける。",
-      "first_love_meta": "長編批評 · 全文はご希望に応じて提供",
-      "greenwashing_title": "グリーンウォッシング<wbr>の政治経済学",
-      "greenwashing_description": "Shepperton Studios 拡張計画のフォレンジックな空間監査。「低炭素」という言説を物質的記録と照合したとき、何が起きるかを検証する。",
-      "pipeline": "再現可能なパイプライン →",
+      "first_love_description": "三池崇史『<em>First Love</em>』のジェンダー、義務、ジャンル形式を扱う長篇研究。形式分析と再現可能な検証を組み合わせる。",
+      "first_love_meta": "研究原稿 · 個別に共有",
       "film_essays_title": "『<em>Trainspotting</em>』論",
       "film_essays_description": "ヴォイスオーバー、空間、主体化、そして論証そのものの限界をたどる映画論。",
-      "film_essays_meta": "全文を読む →"
+      "film_essays_meta": "全文を読む →",
+      "first_love_verify": "検証資料 →"
     },
     "poetry": {
       "recent": "近作2首",

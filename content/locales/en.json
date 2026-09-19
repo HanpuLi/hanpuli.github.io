@@ -6,7 +6,7 @@
     "skip_poems": "Skip to poems",
     "skip_poem": "Skip to poem",
     "nav": {
-      "work": "work",
+      "work": "research",
       "photo": "photographs",
       "writing": "writing",
       "ci": "ci",
@@ -33,20 +33,20 @@
     }
   },
   "home": {
-    "meta_title": "Hanpu Li · film, research, photography and systems",
-    "meta_description": "Hanpu Li — film researcher, writer, photographer and developer in London. Work across film form, spatial evidence, open-source systems and poetry.",
-    "eyebrow": "film / research / systems / words · london",
+    "meta_title": "Hanpu Li · writing, film, photography and systems",
+    "meta_description": "Hanpu Li is a writer and researcher in London working across film criticism, poetry, photography, spatial evidence and small software systems.",
+    "eyebrow": "writing / film / photos / code · london",
     "location": "London",
     "alias": "also works as Caitlyn Lye",
     "education": "York · English Language and Linguistics → film · QMUL",
     "lede": "I watch films. I also write ci.",
     "lede_note": "ci, not cis. Neither am I.",
-    "intro": "Film researcher, writer, photographer and developer. Current work moves between film form, spatial evidence and small software systems.",
-    "method": "The common method is simple: make the claim precise, then make the evidence inspectable.",
+    "intro": "Most of my work starts with writing: criticism, research, poetry. I also make photographs, and build software when a method needs a tool.",
+    "method": "I care about what gets recorded, what gets left out, and whether the evidence actually supports the claim.",
     "sections": {
       "work": {
-        "title": "Selected work",
-        "kicker": "Research and systems"
+        "title": "Research & systems",
+        "kicker": "evidence / tools"
       },
       "photo": {
         "title": "Photographs",
@@ -54,11 +54,11 @@
       },
       "writing": {
         "title": "Writing",
-        "kicker": "film / theory / evidence"
+        "kicker": "film / criticism / research"
       },
       "ci": {
         "title": "Ci",
-        "kicker": "recent work / one author, two voices"
+        "kicker": "recent / one author / two voices"
       },
       "profile": {
         "title": "Profile",
@@ -93,16 +93,6 @@
           "bounded execution surfaces",
           "audit + state"
         ]
-      },
-      "liuzheng": {
-        "type": "open source · evidence preservation",
-        "description": "Tools and operating discipline for turning institutional correspondence into evidence that survives scrutiny.",
-        "flow": [
-          "capture original",
-          "DKIM / SHA-256",
-          "RFC3161 + OpenTimestamps",
-          "third-party copy / anchors"
-        ]
       }
     },
     "photos": {
@@ -127,14 +117,12 @@
     },
     "writing": {
       "first_love_title": "On Takashi Miike’s <em>First Love</em>",
-      "first_love_description": "A Marxist-feminist reading of <em>giri</em>/<em>ninjō</em>, genre form and the yakuza moral economy, backed by frame-level, audio and subtitle analysis.",
-      "first_love_meta": "long-form critical essay · full text on request",
-      "greenwashing_title": "The political economy of greenwashing",
-      "greenwashing_description": "A forensic spatial audit of the Shepperton Studios expansion: what happens when “low-carbon” discourse is checked against the material record.",
-      "pipeline": "reproducible pipeline →",
+      "first_love_description": "A long-form study of gender, obligation and genre form in Takashi Miike’s <em>First Love</em>, combining close formal analysis with reproducible checks.",
+      "first_love_meta": "research manuscript · private circulation",
       "film_essays_title": "On <em>Trainspotting</em>",
       "film_essays_description": "An essay on voiceover, space, subjection and the limits of its own argument.",
-      "film_essays_meta": "read full essay →"
+      "film_essays_meta": "read full essay →",
+      "first_love_verify": "verification materials →"
     },
     "poetry": {
       "recent": "two recent pieces",
