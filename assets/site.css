@@ -685,6 +685,51 @@ a:hover {
   justify-self: end;
 }
 
+/* Shared navigation for literary pages */
+
+.page-topbar {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 var(--gap);
+  align-items: baseline;
+  padding: 22px 0 17px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  line-height: 1.3;
+}
+
+.page-topbar .page-wordmark {
+  grid-column: 1 / 5;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.page-topbar .page-wordmark span {
+  margin-left: .4em;
+  color: var(--faint);
+  font-size: .74em;
+  font-style: italic;
+}
+
+.page-topbar > div {
+  grid-column: 7 / 13;
+  display: flex;
+  justify-content: flex-end;
+  gap: clamp(14px, 2vw, 28px);
+}
+
+.page-topbar a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.page-topbar [aria-current="page"] {
+  color: var(--ink);
+}
+
 /* Literary pages */
 
 .literary-page .wrap {
@@ -695,7 +740,7 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 0 var(--gap);
-  padding: clamp(84px, 13vh, 148px) 0 clamp(72px, 10vh, 118px);
+  padding: clamp(70px, 10vh, 118px) 0 clamp(72px, 9vh, 108px);
 }
 
 .literary-page h1 {
@@ -817,7 +862,7 @@ a:hover {
 }
 
 .shi-page header {
-  padding: clamp(84px, 13vh, 148px) 0 clamp(62px, 9vh, 104px);
+  padding: clamp(70px, 10vh, 118px) 0 clamp(62px, 9vh, 96px);
 }
 
 .shi-page h1 {
@@ -894,21 +939,51 @@ a:hover {
 /* 404 */
 
 .notfound-page {
-  display: grid;
   min-height: 100vh;
-  place-items: center;
-  padding: 24px;
-  text-align: center;
+  padding: var(--gutter);
 }
 
-.notfound-page .m {
-  margin-top: .9em;
-  color: var(--muted);
-  font-size: 15px;
+.notfound-shell {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 var(--gap);
+  align-content: space-between;
+  min-height: calc(100vh - (2 * var(--gutter)));
+  padding-top: 14px;
+  border-top: 1px solid var(--ink);
 }
 
-.notfound-page a {
+.notfound-code {
+  grid-column: 1 / 10;
+  align-self: start;
+  font-size: clamp(128px, 28vw, 430px);
+  font-weight: 400;
+  line-height: .72;
+  letter-spacing: -.07em;
+}
+
+.notfound-copy {
+  grid-column: 9 / 13;
+  align-self: end;
+  padding-bottom: 8px;
+  font-size: clamp(19px, 2vw, 27px);
+  line-height: 1.4;
+}
+
+.notfound-copy [lang="en"] {
+  margin-top: .4em;
   color: var(--muted);
+  font-size: .64em;
+}
+
+.notfound-copy a {
+  display: inline-block;
+  margin-top: 2.8em;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
 }
 
 /* Responsive */
@@ -1142,9 +1217,42 @@ a:hover {
     justify-self: start;
   }
 
+  .notfound-page {
+    padding: 20px;
+  }
+
+  .notfound-shell {
+    display: block;
+    min-height: calc(100vh - 40px);
+  }
+
+  .notfound-code {
+    font-size: clamp(126px, 42vw, 180px);
+  }
+
+  .notfound-copy {
+    width: 78%;
+    margin: 42vh 0 0 auto;
+    font-size: 21px;
+  }
+
+  .page-topbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 17px 0 14px;
+  }
+
+  .page-topbar > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px 14px;
+  }
+
   .literary-page header {
     display: block;
-    padding: 82px 0 72px;
+    padding: 64px 0 68px;
   }
 
   .literary-page h1 {
@@ -1179,7 +1287,7 @@ a:hover {
   }
 
   .shi-page header {
-    padding: 82px 0 70px;
+    padding: 64px 0 68px;
   }
 
   .shi-page h1 {
