@@ -35,6 +35,22 @@ The default presentation retains the editorial design but is built to reflow wit
 
 User-facing copy is maintained under `content/`; `templates/` contains layout only. Do not hand-edit generated language pages.
 
+## Responsive layout
+
+The default layout uses progressive enhancement rather than device-specific templates. Keep the existing viewport media queries as conservative fallbacks, but prefer content-responsive CSS for new work:
+
+- section and project alignment uses `subgrid` where available;
+- project-number rails and chronology dates use intrinsic sizing (`max-content` / `minmax()`) instead of fixed character assumptions;
+- Writing, Research, Photography, Profile and the long-form essay use named size containers and `@container` rules for reflow;
+- component type and spacing can use `cqi` so they respond to the component's own width rather than the browser viewport;
+- titles use balanced wrapping, prose uses pretty wrapping, and German/French/Russian prose may hyphenate automatically while headings and metadata do not;
+- directional spacing uses logical properties (`inline-start` / `inline-end`);
+- `:has()` is used only as progressive enhancement for content-aware spacing;
+- below-the-fold sections use `content-visibility: auto` with generic remembered intrinsic sizes, not locale-specific height equations;
+- cross-document View Transitions are optional progressive enhancement and must remain disabled by `prefers-reduced-motion` and the site's reduced-motion reading preference.
+
+When a component breaks at a particular width, first fix its intrinsic/container rules. Do not add a new viewport breakpoint unless the fallback layout genuinely needs one. Preserve the photography sequence order; responsive reflow may change column count, but must not use masonry or reorder the images.
+
 For a local preview:
 
 ```sh

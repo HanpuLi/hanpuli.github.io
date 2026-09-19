@@ -107,6 +107,14 @@
   --max: 1920px;
   --gutter: clamp(18px, 1.55vw, 30px);
   --gap: clamp(12px, 1.25vw, 24px);
+  --space-1: clamp(.5rem, .42rem + .25vw, .75rem);
+  --space-2: clamp(.875rem, .7rem + .5vw, 1.35rem);
+  --space-3: clamp(1.35rem, 1rem + .9vw, 2.15rem);
+  --space-4: clamp(2.25rem, 1.5rem + 1.8vw, 3.8rem);
+  --space-section: clamp(6rem, 4rem + 5vw, 10.5rem);
+  --measure-copy: 68ch;
+  --measure-meta: 34ch;
+  --section-rail: clamp(2rem, 7.5vw, 7.5rem);
 }
 
 .site-home.locale-ru,
@@ -549,7 +557,7 @@ html[data-reading-simple] .site-home .photo-sequence {
 
 html[data-reading-simple] .site-home .writing-list article {
   padding: 30px 0;
-  border-left: 0;
+  border-inline-start: 0;
 }
 
 html[data-reading-simple] .site-home .writing-list article + article {
@@ -584,12 +592,12 @@ html[data-reading-simple] .site-home .project-evidence figcaption span {
 html[data-reading-simple] .site-home .project-evidence figcaption span:last-child {
   max-width: none;
   margin-top: 4px;
-  text-align: left;
+  text-align: start;
 }
 
 html[data-reading-simple] .site-home .chronology {
   width: 100%;
-  margin-left: 0;
+  margin-inline-start: 0;
 }
 
 html[data-reading-simple] .literary-page header,
@@ -611,8 +619,8 @@ html[data-reading-simple] .literary-page .translation {
 }
 
 html[data-reading-simple] .shi-page .draft + .draft {
-  padding-left: 0;
-  border-left: 0;
+  padding-inline-start: 0;
+  border-inline-start: 0;
   border-top: 1px solid var(--line);
 }
 
@@ -724,7 +732,7 @@ html[data-reading-motion] .site-home::before {
 }
 
 .site-home .wordmark span {
-  margin-left: .65em;
+  margin-inline-start: .65em;
   color: var(--faint);
   font-size: .72em;
   font-style: normal;
@@ -877,7 +885,7 @@ html[data-reading-motion] .site-home::before {
   grid-row: 3;
   align-self: end;
   max-width: 45rem;
-  padding-right: clamp(18px, 2vw, 34px);
+  padding-inline-end: clamp(18px, 2vw, 34px);
   font-size: clamp(16px, 1.22vw, 20px);
   line-height: 1.52;
   text-wrap: pretty;
@@ -890,7 +898,7 @@ html[data-reading-motion] .site-home::before {
 }
 
 .site-home .hero-footnote-mark {
-  margin-left: .08em;
+  margin-inline-start: .08em;
   color: var(--accent);
   font-family: var(--mono);
   font-size: .48em;
@@ -979,7 +987,7 @@ html[data-reading-motion] .site-home::before {
   font-family: var(--mono);
   font-size: .8125rem;
   font-variant-numeric: tabular-nums;
-  letter-spacing: -.04em;
+  letter-spacing: -.05em;
   white-space: nowrap;
 }
 
@@ -1050,7 +1058,7 @@ html[data-reading-motion] .site-home::before {
 .site-home .project h3 a::after {
   content: " ↗" / "";
   display: inline-block;
-  margin-left: .1em;
+  margin-inline-start: .1em;
   color: var(--faint);
   font-family: var(--mono);
   font-size: .34em;
@@ -1199,7 +1207,7 @@ html[data-reading-motion] .site-home::before {
 
 .site-home .project-evidence figcaption span:last-child {
   max-width: 32ch;
-  text-align: right;
+  text-align: end;
 }
 
 .site-home .project-system {
@@ -1361,7 +1369,7 @@ html[data-reading-motion] .site-home::before {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   width: calc(100% - ((100% + var(--gap)) / 12));
-  margin-left: calc((100% + var(--gap)) / 12);
+  margin-inline-start: calc((100% + var(--gap)) / 12);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -1374,8 +1382,8 @@ html[data-reading-motion] .site-home::before {
 }
 
 .site-home .writing-list article + article {
-  padding-left: clamp(18px, 2vw, 30px);
-  border-left: 1px solid var(--line);
+  padding-inline-start: clamp(18px, 2vw, 30px);
+  border-inline-start: 1px solid var(--line);
 }
 
 .site-home .writing-no {
@@ -1533,7 +1541,7 @@ html[data-reading-motion] .site-home::before {
 
 .site-home .chronology {
   width: min(calc(100% - ((100% + var(--gap)) / 12)), 980px);
-  margin-left: calc((100% + var(--gap)) / 12);
+  margin-inline-start: calc((100% + var(--gap)) / 12);
   border-top: 1px solid var(--line);
 }
 
@@ -1652,7 +1660,7 @@ html[data-reading-motion] .site-home::before {
 }
 
 .page-topbar .page-wordmark span {
-  margin-left: .6em;
+  margin-inline-start: .6em;
   color: var(--faint);
   font-size: .74em;
   font-style: normal;
@@ -1925,9 +1933,9 @@ html[data-reading-motion] .site-home::before {
 }
 
 .shi-page .draft + .draft {
-  padding-right: 0;
-  padding-left: clamp(26px, 3vw, 48px);
-  border-left: 1px solid var(--line);
+  padding-inline-end: 0;
+  padding-inline-start: clamp(26px, 3vw, 48px);
+  border-inline-start: 1px solid var(--line);
 }
 
 .shi-page .draft h2 {
@@ -2194,51 +2202,9 @@ html[data-reading-motion] .site-home::before {
   }
 }
 
-/* Defer below-the-fold sections. Intrinsic content-box sizes are calibrated
-   per locale so static language editions do not jump as deferred sections resolve. */
-.site-home {
-  --cis-work: calc(766px + 15.01vw);
-  --cis-photo: calc(314.5vw + 189px);
-  --cis-writing: calc(521px - 3.55vw);
-  --cis-poetry: calc(944px - 8.67vw);
-  --cis-profile: calc(731px + 2.34vw);
-}
-
-.site-home.locale-zh {
-  --cis-work: calc(836px + 9.52vw);
-  --cis-writing: calc(470px - 1.42vw);
-  --cis-poetry: calc(504px + 4.83vw);
-  --cis-profile: calc(704px + 2.36vw);
-}
-
-.site-home.locale-ja {
-  --cis-work: calc(763px + 19.19vw);
-  --cis-writing: calc(471px + .31vw);
-  --cis-poetry: calc(944px - 8.67vw);
-  --cis-profile: calc(758px + 2.36vw);
-}
-
-.site-home.locale-de {
-  --cis-work: calc(780px + 15.82vw);
-  --cis-writing: calc(521px - 3.55vw);
-  --cis-poetry: calc(1291px - 26.75vw);
-  --cis-profile: calc(758px + 2.36vw);
-}
-
-.site-home.locale-fr {
-  --cis-work: calc(780px + 15.82vw);
-  --cis-writing: calc(471px + .31vw);
-  --cis-poetry: calc(1080px - 15.8vw);
-  --cis-profile: calc(785px + 2.36vw);
-}
-
-.site-home.locale-ru {
-  --cis-work: calc(778px + 19.99vw);
-  --cis-writing: calc(521px - 3.55vw);
-  --cis-poetry: calc(1217px - 22.9vw);
-  --cis-profile: calc(785px + 2.35vw);
-}
-
+/* Defer below-the-fold sections without locale-specific height formulas.
+   The browser remembers the real block size after first layout; the fallback
+   estimates only stabilise the initial scrollbar. */
 @supports (content-visibility: auto) {
   .site-home .work-section,
   .site-home .photo-section,
@@ -2248,77 +2214,18 @@ html[data-reading-motion] .site-home::before {
     content-visibility: auto;
   }
 
+  .site-home .writing-section { contain-intrinsic-size: auto 46rem; }
+  .site-home .work-section { contain-intrinsic-size: auto 72rem; }
+  .site-home .photo-section { contain-intrinsic-size: auto 300rem; }
+  .site-home .poetry-section { contain-intrinsic-size: auto 68rem; }
+  .site-home .profile-section { contain-intrinsic-size: auto 52rem; }
+
   html[data-reading-sans] .site-home :is(.work-section, .photo-section, .writing-section, .poetry-section, .profile-section),
   html[data-reading-large] .site-home :is(.work-section, .photo-section, .writing-section, .poetry-section, .profile-section),
   html[data-reading-spacing] .site-home :is(.work-section, .photo-section, .writing-section, .poetry-section, .profile-section),
   html[data-reading-simple] .site-home :is(.work-section, .photo-section, .writing-section, .poetry-section, .profile-section) {
     content-visibility: visible;
     contain-intrinsic-size: none;
-  }
-
-  .site-home .work-section { contain-intrinsic-size: auto var(--cis-work); }
-  .site-home .photo-section { contain-intrinsic-size: auto var(--cis-photo); }
-  .site-home .writing-section { contain-intrinsic-size: auto var(--cis-writing); }
-  .site-home .poetry-section { contain-intrinsic-size: auto var(--cis-poetry); }
-  .site-home .profile-section { contain-intrinsic-size: auto var(--cis-profile); }
-
-  .site-home.locale-zh-hans :is(.work-section, .writing-section, .poetry-section, .profile-section) {
-    content-visibility: visible;
-    contain-intrinsic-size: none;
-  }
-}
-
-@media (min-width: 1600px) {
-  .site-home {
-    --cis-photo: calc(min(249vw, 4940px) + 814px);
-  }
-}
-
-@media (min-width: 761px) and (max-width: 900px) {
-  .site-home {
-    --cis-photo: calc(252px + 304.32vw);
-  }
-
-  .site-home.locale-en {
-    --cis-work: calc(980px - 9.57vw);
-    --cis-writing: calc(562px - 15.04vw);
-    --cis-poetry: calc(1797px - 113.31vw);
-    --cis-profile: calc(702px + 2.16vw);
-  }
-
-  .site-home.locale-zh {
-    --cis-work: calc(948px - 9.57vw);
-    --cis-writing: calc(515px - 15.04vw);
-    --cis-poetry: calc(426px + 3.6vw);
-    --cis-profile: calc(675px + 2.16vw);
-  }
-
-  .site-home.locale-ja {
-    --cis-work: calc(965px - 9.57vw);
-    --cis-writing: calc(566px - 15.25vw);
-    --cis-poetry: calc(1260px - 49.5vw);
-    --cis-profile: calc(728px + 2.16vw);
-  }
-
-  .site-home.locale-de {
-    --cis-work: calc(1069px - 21.22vw);
-    --cis-writing: calc(674px - 27.41vw);
-    --cis-poetry: calc(908px + 3.6vw);
-    --cis-profile: calc(728px + 2.16vw);
-  }
-
-  .site-home.locale-fr {
-    --cis-work: calc(1178px - 31.51vw);
-    --cis-writing: calc(581px - 15.25vw);
-    --cis-poetry: calc(908px + 3.6vw);
-    --cis-profile: calc(755px + 2.16vw);
-  }
-
-  .site-home.locale-ru {
-    --cis-work: calc(989px - 9.55vw);
-    --cis-writing: calc(688px - 26.38vw);
-    --cis-poetry: calc(1392.5px - 60.19vw);
-    --cis-profile: calc(755px + 2.16vw);
   }
 }
 
@@ -2350,12 +2257,12 @@ html[data-reading-motion] .site-home::before {
   }
 
   .shi-page .draft {
-    padding-right: 0;
+    padding-inline-end: 0;
   }
 
   .shi-page .draft + .draft {
-    padding-left: 0;
-    border-left: 0;
+    padding-inline-start: 0;
+    border-inline-start: 0;
     border-top: 1px solid var(--line);
   }
 
@@ -2413,9 +2320,9 @@ html[data-reading-motion] .site-home::before {
   }
 
   .site-home .writing-list article + article {
-    padding-left: 0;
+    padding-inline-start: 0;
     border-top: 1px solid var(--line);
-    border-left: 0;
+    border-inline-start: 0;
   }
 
   .site-home .project-main {
@@ -2484,10 +2391,6 @@ html[data-reading-motion] .site-home::before {
 
   body {
     font-size: 1rem;
-  }
-
-  .site-home {
-    --cis-photo: calc(493px + 900.59vw);
   }
 
   @supports (content-visibility: auto) {
@@ -2667,7 +2570,7 @@ html[data-reading-motion] .site-home::before {
   .site-home .project-evidence figcaption span:last-child {
     margin-top: 2px;
     max-width: none;
-    text-align: left;
+    text-align: start;
   }
 
   .site-home .photo-sequence {
@@ -2711,9 +2614,9 @@ html[data-reading-motion] .site-home::before {
   }
 
   .site-home .writing-list article:nth-child(n + 2) {
-    padding-left: 0;
+    padding-inline-start: 0;
     border-top: 1px solid var(--line);
-    border-left: 0;
+    border-inline-start: 0;
   }
 
   .site-home .writing-no {
@@ -2731,7 +2634,7 @@ html[data-reading-motion] .site-home::before {
 
   .site-home .chronology {
     width: 100%;
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 
   .site-home .credit {
@@ -2884,8 +2787,8 @@ html[data-reading-motion] .site-home::before {
   }
 
   .shi-page .draft + .draft {
-    padding-left: 0;
-    border-left: 0;
+    padding-inline-start: 0;
+    border-inline-start: 0;
     border-top: 1px solid var(--line);
   }
 
@@ -2896,13 +2799,6 @@ html[data-reading-motion] .site-home::before {
 
   .shi-page .body {
     margin-bottom: 52px;
-  }
-}
-
-@media (max-width: 340px) {
-  .site-home .project-index {
-    font-size: .6875rem;
-    letter-spacing: -.06em;
   }
 }
 
@@ -2963,6 +2859,376 @@ html[data-reading-motion] .site-home::before {
   }
 }
 
+
+
+/* Content-responsive reflow.
+   Existing viewport breakpoints remain as a fallback; modern browsers let each
+   module decide from its own available width instead. */
+@supports (container-type: inline-size) {
+  .site-home .masthead {
+    container: masthead / inline-size;
+  }
+
+  .site-home .writing-section {
+    container: writing / inline-size;
+  }
+
+  .site-home .work-section {
+    container: work / inline-size;
+  }
+
+  .site-home .profile-section {
+    container: profile / inline-size;
+  }
+
+  .site-home .photo-section {
+    container: photo / inline-size;
+  }
+
+  .site-home .writing-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
+  }
+
+  .site-home .writing-list article + article {
+    padding-inline-start: 0;
+    border-top: 1px solid var(--line);
+    border-inline-start: 0;
+  }
+
+  @container writing (min-width: 61rem) {
+    .site-home .writing-list article + article {
+      padding-inline-start: clamp(18px, 2vw, 30px);
+      border-top: 0;
+      border-inline-start: 1px solid var(--line);
+    }
+  }
+
+  @container masthead (max-width: 45rem) {
+    .site-home .section-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 12px;
+    }
+
+    .site-home .section-nav a {
+      flex: 1 1 6rem;
+    }
+  }
+
+  @container work (max-width: 52rem) {
+    .site-home .project-main,
+    .site-home .project-feature .project-main {
+      grid-column: 2 / 13;
+    }
+
+    .site-home .project-proof,
+    .site-home .project-meta,
+    .site-home .project-system,
+    .site-home .project-feature .project-proof {
+      grid-column: 2 / 13;
+      margin-top: 30px;
+    }
+
+    .site-home .project-feature h3 {
+      max-width: none;
+    }
+  }
+
+  @container work (max-width: 45rem) {
+    .site-home .project-index {
+      font-size: clamp(.6875rem, 3.8cqi, .8125rem);
+    }
+  }
+
+  @container photo (max-width: 50rem) {
+    .site-home .photo-sequence {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-4) 0;
+    }
+
+    .site-home .photo-sequence > figure,
+    .site-home .photo-triptych,
+    .site-home .photo-pair {
+      margin-block-end: 0;
+    }
+
+    .site-home .photo-triptych {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+      gap: var(--gap);
+    }
+
+    .site-home .photo-pair-portrait,
+    .site-home .photo-pair-mixed {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+      gap: var(--gap);
+      align-items: end;
+    }
+
+    .site-home .photo-pair-mixed figure:first-child,
+    .site-home .photo-pair-mixed figure:last-child {
+      grid-column: auto;
+    }
+  }
+}
+
+
+@supports (grid-template-columns: subgrid) {
+  .site-home main {
+    container-type: inline-size;
+  }
+
+  .site-home main > section:not(.hero) {
+    --section-rail: clamp(2rem, 7.5cqi, 7.5rem);
+    --module-gap: clamp(.75rem, 1.25cqi, 1.5rem);
+    display: grid;
+    grid-template-columns: minmax(max-content, var(--section-rail)) repeat(11, minmax(0, 1fr));
+    column-gap: var(--module-gap);
+  }
+
+  .site-home .section-head,
+  .site-home .project {
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    column-gap: inherit;
+  }
+
+  .site-home .writing-list {
+    grid-column: 2 / -1;
+    width: auto;
+    margin-inline-start: 0;
+  }
+
+  .site-home .photo-sequence,
+  .site-home .poetry-preview {
+    grid-column: 1 / -1;
+  }
+
+  .site-home .section-note {
+    grid-column: 8 / -1;
+    width: auto;
+  }
+
+  .site-home .chronology {
+    grid-column: 2 / 10;
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: var(--module-gap);
+    width: auto;
+    margin-inline-start: 0;
+  }
+
+  .site-home .credit {
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    column-gap: inherit;
+  }
+
+  .site-home .project-index {
+    min-width: max-content;
+    block-size: max-content;
+    align-self: start;
+    justify-self: start;
+    letter-spacing: -.02em;
+  }
+
+  @container profile (max-width: 60rem) {
+    .site-home .chronology {
+      grid-column: 2 / -1;
+    }
+  }
+}
+
+
+/* Editorial type and spacing contracts. */
+.site-home :is(.section-head h2, .project h3, .writing-list h3),
+.essay-page :is(.essay-intro h1, .essay-deck, .essay-body h2) {
+  text-wrap: balance;
+}
+
+.site-home :is(
+  .hero-copy,
+  .project-main > p:last-child,
+  .writing-list article > p:not(.writing-no):not(.writing-meta),
+  .section-note,
+  .credit p
+),
+.essay-page .essay-body :is(p, li) {
+  text-wrap: pretty;
+}
+
+.site-home:is(.locale-de, .locale-fr, .locale-ru) :is(
+  .hero-copy p,
+  .project-main > p:last-child,
+  .writing-list article > p:not(.writing-no):not(.writing-meta),
+  .credit p
+) {
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+}
+
+.site-home :is(h1, h2, h3, nav, .project-type, .writing-meta, .section-kicker) {
+  hyphens: none;
+}
+
+.site-home main > section:not(.hero) {
+  padding-block-end: var(--space-section);
+}
+
+.site-home .section-head {
+  margin-block-end: var(--space-4);
+}
+
+.site-home .project {
+  padding-block: var(--space-3);
+}
+
+.site-home .writing-list article {
+  padding-block: var(--space-3);
+}
+
+.site-home .writing-list article:has(.writing-meta + .writing-meta) .writing-footer {
+  display: grid;
+  row-gap: .25rem;
+}
+
+.site-home .project:has(.project-evidence-disclosure[open]) {
+  padding-block-end: var(--space-4);
+}
+
+@supports (container-type: inline-size) {
+  .site-home .hero {
+    container: hero / inline-size;
+  }
+
+  .site-home .section-head h2 {
+    font-size: clamp(2rem, 4.4cqi, 4rem);
+  }
+
+  .site-home .project h3 {
+    font-size: clamp(1.9rem, 5cqi, 3.5rem);
+  }
+
+  .site-home .project-feature h3 {
+    font-size: clamp(1.9rem, 4.7cqi, 3.375rem);
+  }
+
+  .site-home .project-proof dd {
+    font-size: clamp(1.35rem, 2.6cqi, 2rem);
+  }
+
+  .site-home .writing-list h3 {
+    font-size: clamp(1.4rem, 3cqi, 1.875rem);
+  }
+
+  .site-home .writing-list article {
+    padding-block: clamp(1.5rem, 2.6cqi, 2.25rem);
+  }
+
+  @container hero (max-width: 55rem) {
+    .site-home .hero h1 {
+      font-size: clamp(5.125rem, 19cqi, 8.5rem);
+    }
+  }
+}
+
+.essay-page .essay {
+  container: essay / inline-size;
+}
+
+
+/* Page-shell containers keep literary and essay chrome responsive to the
+   actual reading column rather than to a device breakpoint. */
+.literary-page .wrap,
+.shi-page .wrap,
+.essay-page .wrap {
+  container: page-shell / inline-size;
+}
+
+@container page-shell (max-width: 55rem) {
+  .literary-page header,
+  .shi-page header {
+    display: block;
+    padding-block: var(--space-4);
+  }
+
+  .literary-page .sub,
+  .shi-page .sub,
+  .literary-page .toc {
+    margin-block-start: var(--space-3);
+  }
+}
+
+@container page-shell (max-width: 45rem) {
+  .page-topbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-topbar .page-wordmark {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .page-topbar .page-languages {
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: flex-start;
+    margin-block-start: var(--space-1);
+  }
+
+  .page-topbar .page-nav {
+    grid-column: 1;
+    grid-row: 3;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-block-start: var(--space-1);
+  }
+}
+
+/* Keep accessibility simplification stronger than the modern layout layer. */
+html[data-reading-simple] .site-home main > section:not(.hero) {
+  display: block;
+}
+
+html[data-reading-simple] .site-home :is(
+  .writing-list,
+  .photo-sequence,
+  .poetry-preview,
+  .chronology
+) {
+  grid-column: auto;
+  width: 100%;
+  margin-inline: 0;
+}
+
+html[data-reading-simple] .site-home .chronology,
+html[data-reading-simple] .site-home .credit {
+  display: block;
+}
+
+html[data-reading-simple] .site-home .credit time {
+  display: block;
+  margin-block-end: .35rem;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+html[data-reading-motion]::view-transition-old(root),
+html[data-reading-motion]::view-transition-new(root) {
+  animation: none;
+}
 
 /* Long-form essay */
 
@@ -3060,7 +3326,7 @@ html[data-reading-motion] .site-home::before {
 .essay-page .essay-body h2 {
   max-width: 18ch;
   margin-bottom: 1.05em;
-  margin-left: clamp(-90px, -7vw, -56px);
+  margin-inline-start: clamp(-90px, -7vw, -56px);
   font-size: clamp(31px, 3.2vw, 47px);
   font-weight: 400;
   line-height: 1.02;
@@ -3122,7 +3388,7 @@ html[data-reading-simple] .essay-page .essay-body {
 }
 
 html[data-reading-simple] .essay-page .essay-body h2 {
-  margin-left: 0;
+  margin-inline-start: 0;
 }
 
 html[data-reading-large] .essay-page .essay-body {
@@ -3159,7 +3425,39 @@ html[data-reading-large] .essay-page :is(
   }
 
   .essay-page .essay-body h2 {
-    margin-left: 0;
+    margin-inline-start: 0;
+  }
+}
+
+
+@supports (grid-template-columns: subgrid) {
+  .essay-page .essay-intro {
+    grid-template-columns: subgrid;
+  }
+}
+
+@container essay (max-width: 48rem) {
+  .essay-page .essay-intro {
+    display: block;
+  }
+
+  .essay-page .essay-intro :is(h1, .essay-deck, .essay-byline, .essay-note) {
+    margin-block-start: var(--space-2);
+  }
+
+  .essay-page .essay-intro h1 {
+    font-size: clamp(3.25rem, 12cqi, 5.25rem);
+  }
+
+  .essay-page .essay-body {
+    grid-column: 1 / -1;
+    inline-size: min(100%, var(--measure-copy));
+    margin-inline: auto;
+    padding-block-start: var(--space-4);
+  }
+
+  .essay-page .essay-body h2 {
+    margin-inline-start: 0;
   }
 }
 
