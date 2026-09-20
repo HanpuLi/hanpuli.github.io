@@ -8,31 +8,15 @@
 <meta name="description" content="{{home.meta_description_attr}}">
 <link rel="canonical" href="{{CANONICAL_URL}}">
 {{HREFLANG_LINKS}}
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="{{PRIMARY_NAME}}">
-<meta property="og:title" content="{{home.meta_title_attr}}">
-<meta property="og:description" content="{{home.meta_description_attr}}">
-<meta property="og:image" content="https://hanpuli.github.io/assets/photos/03.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="800">
-<meta property="og:image:alt" content="{{SOCIAL_IMAGE_ALT}}">
-<meta property="og:url" content="{{CANONICAL_URL}}">
-<meta property="og:locale" content="{{OG_LOCALE}}">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{home.meta_title_attr}}">
-<meta name="twitter:description" content="{{home.meta_description_attr}}">
-<meta name="twitter:image" content="https://hanpuli.github.io/assets/photos/03.jpg">
-<meta name="twitter:image:alt" content="{{SOCIAL_IMAGE_ALT}}">
+{{SOCIAL_META}}
 <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>{{CI_GLYPH}}</text></svg>">
+{{ICON_LINKS}}
 <link rel="preload" as="image" type="image/webp" href="{{ASSET_PREFIX}}assets/photos/webp/01-800.webp" imagesrcset="{{ASSET_PREFIX}}assets/photos/webp/01-480.webp 480w, {{ASSET_PREFIX}}assets/photos/webp/01-660.webp 660w, {{ASSET_PREFIX}}assets/photos/webp/01-800.webp 800w, {{ASSET_PREFIX}}assets/photos/webp/01-990.webp 990w" imagesizes="(max-width: 760px) calc(100vw - 40px), (max-width: 900px) 58vw, 42vw" fetchpriority="high">
 {{FONT_PRELOADS}}
 <script src="{{ASSET_PREFIX}}assets/accessibility.js"></script>
 <link rel="stylesheet" href="{{ASSET_PREFIX}}assets/site.css">
-<script type="application/ld+json">
-{{JSON_LD}}
-</script>
+{{STRUCTURED_DATA}}
 </head>
 <body class="site-home locale-{{LOCALE}}">
 <a class="skip-link" href="#main">{{common.skip_content}}</a>

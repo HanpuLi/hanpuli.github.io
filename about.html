@@ -16,19 +16,39 @@
 <link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/about.html">
 <link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/about.html">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Hanpu Li">
 <meta property="og:title" content="About this site · Hanpu Li">
 <meta property="og:description" content="Implementation notes for Hanpu Li’s website: static architecture, multilingual publishing, typography, accessibility, responsive media, testing and GitHub Pages deployment.">
+<meta property="og:image" content="https://hanpuli.github.io/assets/social/about.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="About this site · Hanpu Li">
 <meta property="og:url" content="https://hanpuli.github.io/about.html">
 <meta property="og:locale" content="en_GB">
-<meta name="twitter:card" content="summary">
+<meta property="og:locale:alternate" content="zh_HK">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About this site · Hanpu Li">
+<meta name="twitter:description" content="Implementation notes for Hanpu Li’s website: static architecture, multilingual publishing, typography, accessibility, responsive media, testing and GitHub Pages deployment.">
+<meta name="twitter:image" content="https://hanpuli.github.io/assets/social/about.png">
+<meta name="twitter:image:alt" content="About this site · Hanpu Li">
 <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>H</text></svg>">
+<link rel="icon" href="assets/site-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <script src="assets/accessibility.js"></script>
 <link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"AboutPage","@id":"https://hanpuli.github.io/about.html#page","url":"https://hanpuli.github.io/about.html","name":"About this site · Hanpu Li","description":"Implementation notes for Hanpu Li’s website: static architecture, multilingual publishing, typography, accessibility, responsive media, testing and GitHub Pages deployment.","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"en-GB","about":{"@id":"https://hanpuli.github.io/#person"}}]}
+</script>
 </head>
 <body class="about-page locale-en">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -83,6 +103,19 @@
         <p class="about-principle">The rule is simple: content must remain readable without a framework, a client-side translation layer or JavaScript-driven rendering.</p>
       </div>
     </header>
+
+<nav class="about-toc" aria-label="On this page">
+  <p>On this page</p>
+  <ol>
+    <li><a href="#architecture"><span>01</span> Architecture</a></li>
+    <li><a href="#languages"><span>02</span> Content &amp; languages</a></li>
+    <li><a href="#layout"><span>03</span> Layout &amp; typography</a></li>
+    <li><a href="#accessibility"><span>04</span> Accessibility</a></li>
+    <li><a href="#media"><span>05</span> Images &amp; performance</a></li>
+    <li><a href="#quality"><span>06</span> Build, QA &amp; deployment</a></li>
+    <li><a href="#principles"><span>07</span> Principles</a></li>
+  </ol>
+</nav>
 
     <section class="about-section" id="architecture">
       <div class="about-section-head">
@@ -177,7 +210,7 @@
       </div>
       <div class="about-section-copy">
         <p>The repository checks that generated pages are current, locale schemas match, literary structures have not drifted, accessibility landmarks and controls remain intact, local links and fragments resolve, images have alt text and JavaScript parses.</p>
-        <p>Browser QA adds geometry checks across languages and narrow/wide viewports, axe-core accessibility scans and HTML validation. GitHub Actions repeats the dependency-light checks on pushes and pull requests; GitHub Pages independently publishes the static files from main.</p>
+        <p>Browser QA adds geometry checks across languages and narrow/wide viewports, axe-core accessibility scans and HTML validation. In GitHub Actions, the dependency-light checks run first and the browser suite follows on pushes and pull requests; GitHub Pages independently publishes the static files from main.</p>
         <dl class="about-facts">
           <div><dt>repository checks</dt><dd>build freshness · i18n · accessibility · links/assets · JS syntax</dd></div>
           <div><dt>browser QA</dt><dd>Playwright · axe-core · html-validate</dd></div>
@@ -186,14 +219,14 @@
       </div>
     </section>
 
-    <section class="about-coda" aria-labelledby="about-scope-heading">
+    <section class="about-coda" id="principles" aria-labelledby="about-scope-heading">
       <div>
         <p class="about-section-no">07</p>
-        <h2 id="about-scope-heading">One domain, two kinds of pages</h2>
+        <h2 id="about-scope-heading">Principles</h2>
       </div>
       <div class="about-coda-copy">
-        <p>The portfolio, literary pages, essay shells, About page and 404 pages share the generated multilingual system above.</p>
-        <p>The three Cait Mail Assistant documents under /mail-assistant/ are hand-authored static HTML with a small page-local stylesheet; they reuse the portfolio’s local accessibility script and self-hosted EB Garamond/Courier Prime fonts.</p>
+        <p>The portfolio treats source content, generated output and browser behaviour as separate layers: edit structured content and templates, rebuild, then verify the emitted documents.</p>
+        <p>Progressive enhancement is optional by design. Unsupported CSS features, disabled JavaScript or unavailable local storage must not hide the work or block navigation.</p>
         <h3>Runtime privacy</h3>
         <p>The portfolio loads no analytics, advertising network, third-party web font or tracking script. It sets no cookies. The only persistent browser state used by the portfolio is the local reading-preference record.</p>
       </div>

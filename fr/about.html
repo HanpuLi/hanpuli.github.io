@@ -16,19 +16,39 @@
 <link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/about.html">
 <link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/about.html">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Hanpu Li">
 <meta property="og:title" content="À propos du site · Hanpu Li">
 <meta property="og:description" content="Notes d’implémentation du site de Hanpu Li : architecture statique, publication multilingue, typographie, accessibilité, médias responsives, tests et GitHub Pages.">
+<meta property="og:image" content="https://hanpuli.github.io/assets/social/about.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="À propos du site · Hanpu Li">
 <meta property="og:url" content="https://hanpuli.github.io/fr/about.html">
 <meta property="og:locale" content="fr_FR">
-<meta name="twitter:card" content="summary">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="zh_HK">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="À propos du site · Hanpu Li">
+<meta name="twitter:description" content="Notes d’implémentation du site de Hanpu Li : architecture statique, publication multilingue, typographie, accessibilité, médias responsives, tests et GitHub Pages.">
+<meta name="twitter:image" content="https://hanpuli.github.io/assets/social/about.png">
+<meta name="twitter:image:alt" content="À propos du site · Hanpu Li">
 <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>H</text></svg>">
+<link rel="icon" href="../assets/site-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <script src="../assets/accessibility.js"></script>
 <link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"AboutPage","@id":"https://hanpuli.github.io/fr/about.html#page","url":"https://hanpuli.github.io/fr/about.html","name":"À propos du site · Hanpu Li","description":"Notes d’implémentation du site de Hanpu Li : architecture statique, publication multilingue, typographie, accessibilité, médias responsives, tests et GitHub Pages.","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"fr","about":{"@id":"https://hanpuli.github.io/#person"}}]}
+</script>
 </head>
 <body class="about-page locale-fr">
 <a class="skip-link" href="#main">Aller au contenu</a>
@@ -84,6 +104,19 @@
       </div>
     </header>
 
+<nav class="about-toc" aria-label="Sur cette page">
+  <p>Sur cette page</p>
+  <ol>
+    <li><a href="#architecture"><span>01</span> Architecture</a></li>
+    <li><a href="#languages"><span>02</span> Contenu &amp; langues</a></li>
+    <li><a href="#layout"><span>03</span> Mise en page &amp; typographie</a></li>
+    <li><a href="#accessibility"><span>04</span> Accessibilité</a></li>
+    <li><a href="#media"><span>05</span> Images &amp; performance</a></li>
+    <li><a href="#quality"><span>06</span> Build, QA &amp; déploiement</a></li>
+    <li><a href="#principles"><span>07</span> Principes</a></li>
+  </ol>
+</nav>
+
     <section class="about-section" id="architecture">
       <div class="about-section-head">
         <p class="about-section-no">01</p>
@@ -91,11 +124,11 @@
         <p class="about-section-dek">Statique par choix.</p>
       </div>
       <div class="about-section-copy">
-        <p>Le portfolio est généré sous forme de documents HTML5 complets à partir de petits templates et de JSON structuré. Un générateur fondé sur la bibliothèque standard de Python 3 produit chaque version linguistique à l’avance ; le navigateur n’assemble pas le site à l’exécution.</p>
+        <p>Le portfolio est généré sous forme de documents HTML5 complets à partir de petits gabarits et de JSON structuré. Un générateur fondé sur la bibliothèque standard de Python 3 produit chaque version linguistique à l’avance ; le navigateur n’assemble pas le site à l’exécution.</p>
         <p>Le site est servi par GitHub Pages depuis la branche main. Le portfolio n’a derrière lui ni CMS, ni framework applicatif, ni base de données, ni application côté serveur.</p>
         <dl class="about-facts">
-          <div><dt>runtime</dt><dd>HTML5 · CSS · JavaScript natif</dd></div>
-          <div><dt>build</dt><dd>Python 3 · JSON · HTML templates</dd></div>
+          <div><dt>exécution</dt><dd>HTML5 · CSS · JavaScript natif</dd></div>
+          <div><dt>construction</dt><dd>Python 3 · JSON · gabarits HTML</dd></div>
           <div><dt>hébergement</dt><dd>GitHub Pages</dd></div>
         </dl>
       </div>
@@ -108,11 +141,11 @@
         <p class="about-section-dek">Sept éditions, aucune traduction à l’exécution.</p>
       </div>
       <div class="about-section-copy">
-        <p>L’anglais, le chinois traditionnel de Hong Kong, le chinois simplifié, le japonais, l’allemand, le français et le russe sont générés comme éditions statiques distinctes, avec URL canonical, alternates hreflang et métadonnées propres à chaque langue.</p>
+        <p>L’anglais, le chinois traditionnel de Hong Kong, le chinois simplifié, le japonais, l’allemand, le français et le russe sont générés comme éditions statiques distinctes, avec URL canoniques et liens alternatifs hreflang et métadonnées propres à chaque langue.</p>
         <p>Les textes littéraires suivent des règles plus strictes que les libellés d’interface. Quand cela est défini, le chinois traditionnel fait foi ; les miroirs littéraires simplifiés ne changent que l’écriture et sont contrôlés par hash de source, tandis que des tests dédiés conservent lignes et strophes des traductions.</p>
         <dl class="about-facts">
           <div><dt>locales</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
-          <div><dt>textes littéraires</dt><dd>OpenCC helper · source hashes · line-parity checks</dd></div>
+          <div><dt>textes littéraires</dt><dd>OpenCC · hachages source · contrôle de la structure des lignes</dd></div>
           <div><dt>métadonnées</dt><dd>canonical · hreflang · Open Graph</dd></div>
         </dl>
       </div>
@@ -128,9 +161,9 @@
         <p>La mise en page utilise CSS Grid, subgrid, container queries, logical properties, custom properties et des dimensions fluides via clamp(). Les media queries restent des solutions de repli prudentes ; quand les container queries sont disponibles, chaque module se réorganise selon sa propre largeur.</p>
         <p>Les polices sont auto-hébergées en WOFF2. EB Garamond sert principalement au texte latin, Courier Prime et Cousine aux métadonnées, Shippori Mincho au chinois traditionnel et au japonais, Noto Serif SC au chinois simplifié ; un minuscule sous-ensemble I.Ming complète les rares glyphes hongkongais manquants. Les sous-ensembles CJK sont reconstruits avec fontTools et Brotli ; la source Noto est épinglée par commit et SHA-256.</p>
         <dl class="about-facts">
-          <div><dt>mise en page</dt><dd>Grid · subgrid · container queries · logical properties</dd></div>
+          <div><dt>mise en page</dt><dd>Grid · subgrid · requêtes de conteneur · propriétés logiques</dd></div>
           <div><dt>polices</dt><dd>EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming</dd></div>
-          <div><dt>couleurs</dt><dd>light/dark via prefers-color-scheme</dd></div>
+          <div><dt>couleurs</dt><dd>clair/sombre · prefers-color-scheme</dd></div>
         </dl>
       </div>
     </section>
@@ -142,10 +175,10 @@
         <p class="about-section-dek">Adapter la lecture sans retirer de contenu.</p>
       </div>
       <div class="about-section-copy">
-        <p>La structure repose sur des landmarks sémantiques, un titre principal, des skip links, un focus clavier visible, des noms de langue complets et des cibles tactiles fiables. Les préférences système reduced motion, contraste renforcé et forced colours sont respectées.</p>
-        <p>Un panneau de lecture persistant peut activer une police sans sérif, agrandir le texte, augmenter les espacements, raccourcir les lignes, simplifier la mise en page, réduire le mouvement et augmenter le contraste. Tout cela reste du progressive enhancement et les réglages sont stockés uniquement dans le navigateur.</p>
+        <p>La structure repose sur des régions sémantiques, un titre principal, des liens d’évitement et un focus clavier clairement visible, des noms de langue complets et des cibles tactiles fiables. Les préférences système reduced motion, contraste renforcé et forced colours sont respectées.</p>
+        <p>Un panneau de lecture persistant peut activer une police sans sérif, agrandir le texte, augmenter les espacements, raccourcir les lignes, simplifier la mise en page, réduire le mouvement et augmenter le contraste. Tout cela relève de l’amélioration progressive et les réglages sont stockés uniquement dans le navigateur.</p>
         <dl class="about-facts">
-          <div><dt>préférences</dt><dd>sans · larger type · spacing · measure · simple layout · motion · contrast</dd></div>
+          <div><dt>préférences</dt><dd>sans sérif · texte agrandi · espacements · largeur de ligne · mise en page simple · mouvement · contraste</dd></div>
           <div><dt>stockage</dt><dd>localStorage uniquement</dd></div>
           <div><dt>contrôles</dt><dd>audit structurel maison · audit navigateur axe-core</dd></div>
         </dl>
@@ -159,12 +192,12 @@
         <p class="about-section-dek">Médias responsives, sans runtime de galerie.</p>
       </div>
       <div class="about-section-copy">
-        <p>Les photographies et planches de recherche utilisent picture/srcset avec variantes WebP et JPEG, dimensions explicites et responsive sizes. L’image d’ouverture est prioritaire ; les médias plus bas dans la page sont chargés en lazy-loading et décodés de façon asynchrone.</p>
-        <p>Les sections sous la ligne de flottaison peuvent utiliser content-visibility. View Transitions et scroll-linked motion restent des progressive enhancements facultatifs ; reduced motion désactive les animations.</p>
+        <p>Les photographies et planches de recherche utilisent picture/srcset avec variantes WebP et JPEG, dimensions explicites et tailles responsives. L’image d’ouverture est prioritaire ; les médias plus bas dans la page sont chargés en différé et décodés de façon asynchrone.</p>
+        <p>Les sections sous la ligne de flottaison peuvent utiliser content-visibility. View Transitions et scroll-linked motion restent des améliorations progressives facultatives ; reduced motion désactive les animations.</p>
         <dl class="about-facts">
           <div><dt>images</dt><dd>picture · srcset · WebP · JPEG</dd></div>
-          <div><dt>chargement</dt><dd>explicit dimensions · lazy loading · async decoding</dd></div>
-          <div><dt>CSS progressif</dt><dd>content-visibility · View Transitions · scroll timelines</dd></div>
+          <div><dt>chargement</dt><dd>dimensions explicites · chargement différé · décodage asynchrone</dd></div>
+          <div><dt>CSS progressif</dt><dd>content-visibility · View Transitions · chronologies de défilement</dd></div>
         </dl>
       </div>
     </section>
@@ -176,24 +209,24 @@
         <p class="about-section-dek">Le résultat généré est lui-même testé.</p>
       </div>
       <div class="about-section-copy">
-        <p>Le dépôt vérifie que les pages générées sont à jour, que les schémas de locale concordent, que la structure des textes littéraires n’a pas dérivé, que landmarks et contrôles d’accessibilité restent intacts, que liens et fragments locaux se résolvent, que les images ont un alt text et que le JavaScript se parse.</p>
-        <p>La QA navigateur ajoute des contrôles géométriques entre langues et viewports étroits/larges, des audits axe-core et une validation HTML. GitHub Actions répète les contrôles légers lors des push et pull requests ; GitHub Pages publie indépendamment les mêmes fichiers statiques depuis main.</p>
+        <p>Le dépôt vérifie que les pages générées sont à jour, que les schémas de locale concordent, que la structure des textes littéraires n’a pas dérivé, que régions et contrôles d’accessibilité restent intacts, que les liens locaux et leurs ancres se résolvent, que les images ont un texte alternatif et que le JavaScript se parse.</p>
+        <p>La QA navigateur ajoute des contrôles géométriques dans plusieurs langues et à des largeurs étroites comme larges, des audits axe-core et une validation HTML. Dans GitHub Actions, les contrôles légers passent d’abord, puis la suite navigateur s’exécute à chaque push et pull request ; GitHub Pages publie indépendamment les mêmes fichiers statiques depuis main.</p>
         <dl class="about-facts">
-          <div><dt>repository checks</dt><dd>build freshness · i18n · accessibility · links/assets · JS syntax</dd></div>
-          <div><dt>browser QA</dt><dd>Playwright · axe-core · html-validate</dd></div>
+          <div><dt>contrôles du dépôt</dt><dd>génération · langues · accessibilité · liens/ressources · syntaxe JS</dd></div>
+          <div><dt>QA navigateur</dt><dd>Playwright · axe-core · html-validate</dd></div>
           <div><dt>livraison</dt><dd>GitHub Actions · GitHub Pages</dd></div>
         </dl>
       </div>
     </section>
 
-    <section class="about-coda" aria-labelledby="about-scope-heading">
+    <section class="about-coda" id="principles" aria-labelledby="about-scope-heading">
       <div>
         <p class="about-section-no">07</p>
-        <h2 id="about-scope-heading">Un domaine, deux types de pages</h2>
+        <h2 id="about-scope-heading">Principes</h2>
       </div>
       <div class="about-coda-copy">
-        <p>Le portfolio, les pages littéraires, les enveloppes d’essai, la page About et les pages 404 partagent le système multilingue généré ci-dessus.</p>
-        <p>Les trois documents Cait Mail Assistant sous /mail-assistant/ sont du HTML statique écrit à la main avec une petite feuille CSS locale ; ils réutilisent le script d’accessibilité local du portfolio ainsi que les polices EB Garamond et Courier Prime auto-hébergées.</p>
+        <p>Le contenu source, les fichiers générés et le comportement du navigateur restent des couches distinctes : on modifie les données structurées et les gabarits, on reconstruit, puis on vérifie les documents produits.</p>
+        <p>L’amélioration progressive est volontairement facultative. Une fonction CSS non prise en charge, JavaScript désactivé ou un stockage local indisponible ne doivent ni masquer le travail ni empêcher la navigation.</p>
         <h3>Vie privée à l’exécution</h3>
         <p>Le portfolio ne charge ni analytics, ni réseau publicitaire, ni web font tierce, ni script de suivi, et ne dépose aucun cookie. Le seul état persistant du navigateur est l’enregistrement local des préférences de lecture.</p>
       </div>

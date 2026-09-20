@@ -40,6 +40,14 @@ TRAINSPOTTING_ESSAY = load_json(CONTENT / "essay-trainspotting.json")
 ABOUT_SITE = load_json(CONTENT / "about-site.json")
 CHINESE_LOCALES = {"zh", "zh-hans"}
 BASE_URL = IDENTITY["site_url"].rstrip("/")
+PERSON_ID = f"{BASE_URL}/#person"
+WEBSITE_ID = f"{BASE_URL}/#website"
+SOCIAL_IMAGES = {
+    "ci": ("assets/social/ci.png", 1200, 630, "image/png"),
+    "shi": ("assets/social/shi.png", 1200, 630, "image/png"),
+    "about": ("assets/social/about.png", 1200, 630, "image/png"),
+    "essay": ("assets/social/trainspotting.png", 1200, 630, "image/png"),
+}
 
 
 class BuildError(RuntimeError):
@@ -94,6 +102,10 @@ def essay_page_path(locale_id: str) -> str:
     return f"/{locale_id}/writing/trainspotting/"
 
 
+def essay_absolute_url(locale_id: str) -> str:
+    return BASE_URL + essay_page_path(locale_id)
+
+
 def essay_output_path(locale_id: str) -> Path:
     folder = ROOT if locale_id == ROOT_LOCALE else ROOT / locale_id
     return folder / "writing" / "trainspotting" / "index.html"
@@ -119,7 +131,8 @@ def essay_language_switcher(locale_id: str) -> str:
         else:
             href = html.escape(essay_page_path(lid), quote=True)
             bits.append(
-                f'<a href="{href}" lang="{lang_attr}" aria-label="{title}" title="{title}">'
+                f'<a href="{href}" hreflang="{lang_attr}" lang="{lang_attr}" '
+                f'aria-label="{title}" title="{title}">'
                 f'<span class="language-short" aria-hidden="true">{label}</span></a>'
             )
     return "\n      ".join(bits)
@@ -203,6 +216,153 @@ def hreflang_links(page: str) -> str:
         bits.append(f'<link rel="alternate" hreflang="{hreflang}" href="{href}">')
     bits.append(f'<link rel="alternate" hreflang="x-default" href="{html.escape(absolute_url(ROOT_LOCALE, page), quote=True)}">')
     return "\n".join(bits)
+
+
+def essay_hreflang_links() -> str:
+    bits = []
+    for language in LANGUAGES:
+        href = html.escape(essay_absolute_url(language["id"]), quote=True)
+        hreflang = html.escape(language["html_lang"], quote=True)
+        bits.append(f'<link rel="alternate" hreflang="{hreflang}" href="{href}">')
+    bits.append(
+        f'<link rel="alternate" hreflang="x-default" '
+        f'href="{html.escape(essay_absolute_url(ROOT_LOCALE), quote=True)}">'
+    )
+    return "\n".join(bits)
+
+
+def icon_links(prefix: str) -> str:
+    return (
+        f'<link rel="icon" href="{prefix}assets/site-mark.svg" type="image/svg+xml">\n'
+        f'<link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png">'
+    )
+
+
+def social_meta_html(
+    *,
+    locale_id: str,
+    title: str,
+    description: str,
+    url: str,
+    image_url: str,
+    image_alt: str,
+    width: int,
+    height: int,
+    image_type: str,
+    og_type: str,
+) -> str:
+    lang = LANG_BY_ID[locale_id]
+    title_attr = html.escape(title, quote=True)
+    description_attr = html.escape(description, quote=True)
+    url_attr = html.escape(url, quote=True)
+    image_attr = html.escape(image_url, quote=True)
+    alt_attr = html.escape(image_alt, quote=True)
+    lines = [
+        f'<meta property="og:type" content="{html.escape(og_type, quote=True)}">',
+        f'<meta property="og:site_name" content="{html.escape(IDENTITY["primary_name"], quote=True)}">',
+        f'<meta property="og:title" content="{title_attr}">',
+        f'<meta property="og:description" content="{description_attr}">',
+        f'<meta property="og:image" content="{image_attr}">',
+        f'<meta property="og:image:type" content="{html.escape(image_type, quote=True)}">',
+        f'<meta property="og:image:width" content="{width}">',
+        f'<meta property="og:image:height" content="{height}">',
+        f'<meta property="og:image:alt" content="{alt_attr}">',
+        f'<meta property="og:url" content="{url_attr}">',
+        f'<meta property="og:locale" content="{html.escape(lang["og_locale"], quote=True)}">',
+    ]
+    lines.extend(
+        f'<meta property="og:locale:alternate" content="{html.escape(other["og_locale"], quote=True)}">'
+        for other in LANGUAGES
+        if other["id"] != locale_id
+    )
+    lines.extend([
+        '<meta name="twitter:card" content="summary_large_image">',
+        f'<meta name="twitter:title" content="{title_attr}">',
+        f'<meta name="twitter:description" content="{description_attr}">',
+        f'<meta name="twitter:image" content="{image_attr}">',
+        f'<meta name="twitter:image:alt" content="{alt_attr}">',
+    ])
+    return "\n".join(lines)
+
+
+def structured_data_html(
+    *,
+    locale_id: str,
+    page_kind: str,
+    title: str,
+    description: str,
+    url: str,
+) -> str:
+    language = LANG_BY_ID[locale_id]["html_lang"]
+    person = {
+        "@type": "Person",
+        "@id": PERSON_ID,
+        "name": IDENTITY["primary_name"],
+        "alternateName": [IDENTITY["chinese_name"], *IDENTITY["alternate_names"]],
+        "url": IDENTITY["site_url"],
+        "sameAs": [IDENTITY["github_url"]],
+        "knowsAbout": IDENTITY["knows_about"],
+    }
+    website = {
+        "@type": "WebSite",
+        "@id": WEBSITE_ID,
+        "url": IDENTITY["site_url"],
+        "name": IDENTITY["primary_name"],
+        "publisher": {"@id": PERSON_ID},
+        "inLanguage": [item["html_lang"] for item in LANGUAGES],
+    }
+    graph = [person, website]
+    if page_kind != "index":
+        type_map = {
+            "about": "AboutPage",
+            "ci": "CollectionPage",
+            "shi": "CollectionPage",
+            "essay": "Article",
+        }
+        page_type = type_map[page_kind]
+        node = {
+            "@type": page_type,
+            "@id": f"{url}#page",
+            "url": url,
+            "name": title,
+            "description": description,
+            "isPartOf": {"@id": WEBSITE_ID},
+            "inLanguage": "en-GB" if page_kind == "essay" else language,
+        }
+        if page_kind == "about":
+            node["about"] = {"@id": PERSON_ID}
+        elif page_kind == "essay":
+            node["author"] = {"@id": PERSON_ID}
+        else:
+            node["creator"] = {"@id": PERSON_ID}
+        graph.append(node)
+    payload = {"@context": "https://schema.org", "@graph": graph}
+    return (
+        '<script type="application/ld+json">\n'
+        + json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+        + "\n</script>"
+    )
+
+
+def about_toc_html(locale_id: str) -> str:
+    about = ABOUT_SITE[locale_id]
+    items = [
+        f'<li><a href="#{html.escape(section["id"], quote=True)}">'
+        f'<span>{html.escape(section["number"])}</span> {html.escape(section["title"])}</a></li>'
+        for section in about["sections"]
+    ]
+    items.append(
+        '<li><a href="#principles"><span>07</span> '
+        + html.escape(about["scope_title"])
+        + "</a></li>"
+    )
+    return (
+        f'<nav class="about-toc" aria-label="{html.escape(about["toc_label"], quote=True)}">\n'
+        f'  <p>{html.escape(about["toc_label"])}</p>\n'
+        '  <ol>\n    '
+        + "\n    ".join(items)
+        + "\n  </ol>\n</nav>"
+    )
 
 
 def lookup(data: dict[str, Any], key: str) -> Any:
@@ -589,15 +749,67 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
     primary = IDENTITY["primary_name"]
     hero_name = html.escape(primary).replace(" ", "<br>", 1)
     alt_name = IDENTITY["alternate_names"][0]
-    json_ld = {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": primary,
-        "alternateName": [IDENTITY["chinese_name"], *IDENTITY["alternate_names"]],
-        "url": IDENTITY["site_url"],
-        "sameAs": [IDENTITY["github_url"]],
-        "knowsAbout": IDENTITY["knows_about"],
-    }
+    if page == "index":
+        meta_title = locale["home"]["meta_title"]
+        meta_description = locale["home"]["meta_description"]
+        social_image = f"{BASE_URL}/assets/photos/03.jpg"
+        social_alt = locale["home"]["photos"]["alt"]["03"]
+        social_width, social_height, social_type = 1200, 800, "image/jpeg"
+        og_type = "website"
+        page_kind = "index"
+    elif page in {"ci", "shi"}:
+        meta_title = locale[page]["meta_title"]
+        meta_description = locale[page]["meta_description"]
+        social_path, social_width, social_height, social_type = SOCIAL_IMAGES[page]
+        social_image = f"{BASE_URL}/{social_path}"
+        social_alt = meta_title
+        og_type = "article"
+        page_kind = page
+    elif page == "about":
+        meta_title = about["meta_title"]
+        meta_description = about["meta_description"]
+        social_path, social_width, social_height, social_type = SOCIAL_IMAGES["about"]
+        social_image = f"{BASE_URL}/{social_path}"
+        social_alt = meta_title
+        og_type = "website"
+        page_kind = "about"
+    else:
+        meta_title = locale["notfound"]["meta_title"]
+        meta_description = ""
+        social_image = ""
+        social_alt = ""
+        social_width, social_height, social_type = 0, 0, ""
+        og_type = "website"
+        page_kind = "index"
+
+    canonical = absolute_url(locale_id, page)
+    social_meta = (
+        social_meta_html(
+            locale_id=locale_id,
+            title=meta_title,
+            description=meta_description,
+            url=canonical,
+            image_url=social_image,
+            image_alt=social_alt,
+            width=social_width,
+            height=social_height,
+            image_type=social_type,
+            og_type=og_type,
+        )
+        if page != "404"
+        else ""
+    )
+    structured_data = (
+        structured_data_html(
+            locale_id=locale_id,
+            page_kind=page_kind,
+            title=meta_title,
+            description=meta_description,
+            url=canonical,
+        )
+        if page != "404"
+        else ""
+    )
     w2 = next(p for p in ci_source(locale_id)["poems"] if p["id"] == "w2")
     if locale_id in CHINESE_LOCALES:
         preview_body = html.escape(w2["source_body"])
@@ -617,9 +829,12 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "SHI_GLYPH": "诗" if locale_id == "zh-hans" else "詩",
         "LOCALE": locale_id,
         "ASSET_PREFIX": asset_prefix(locale_id),
-        "CANONICAL_URL": html.escape(absolute_url(locale_id, page), quote=True),
+        "CANONICAL_URL": html.escape(canonical, quote=True),
         "HREFLANG_LINKS": hreflang_links(page),
         "OG_LOCALE": html.escape(lang["og_locale"], quote=True),
+        "SOCIAL_META": social_meta,
+        "STRUCTURED_DATA": structured_data,
+        "ICON_LINKS": icon_links(asset_prefix(locale_id)),
         "FONT_PRELOADS": font_preloads(locale_id, page),
         "READING_TOOLS": reading_tools(locale),
         "HERO_FOOTNOTE_MARK": hero_footnote_mark,
@@ -644,6 +859,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "ABOUT_TITLE": html.escape(about["title"]),
         "ABOUT_LEDE": html.escape(about["lede"]),
         "ABOUT_PRINCIPLE": html.escape(about["principle"]),
+        "ABOUT_TOC": about_toc_html(locale_id),
         "ABOUT_SECTIONS": about_sections_html(locale_id),
         "ABOUT_SCOPE_TITLE": html.escape(about["scope_title"]),
         "ABOUT_SCOPE_BODY": about_scope_body_html(locale_id),
@@ -672,7 +888,6 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
             current="ci" if page == "ci" else "shi" if page == "shi" else None,
             home_page=page == "index",
         ),
-        "JSON_LD": json.dumps(json_ld, ensure_ascii=False, separators=(",", ":")),
         "SCOPERAIL_FLOW": flow_html(locale["home"]["projects"]["scoperail"]["flow"]),
         "CHRONOLOGY": chronology_html(locale["home"]["chronology"]),
         "POETRY_PREVIEW_TITLE": locale["home"]["poetry"]["preview_title"],
@@ -755,6 +970,28 @@ def build(check: bool = False) -> list[Path]:
         lang = LANG_BY_ID[lid]
         essay_copy = TRAINSPOTTING_ESSAY[lid]
         description = essay_copy["meta_description"]
+        essay_title = "From Gears to Gasp · Hanpu Li"
+        essay_url = essay_absolute_url(lid)
+        social_path, social_width, social_height, social_type = SOCIAL_IMAGES["essay"]
+        essay_social = social_meta_html(
+            locale_id=lid,
+            title=essay_title,
+            description=description,
+            url=essay_url,
+            image_url=f"{BASE_URL}/{social_path}",
+            image_alt=essay_title,
+            width=social_width,
+            height=social_height,
+            image_type=social_type,
+            og_type="article",
+        )
+        essay_structured_data = structured_data_html(
+            locale_id=lid,
+            page_kind="essay",
+            title=essay_title,
+            description=description,
+            url=essay_url,
+        )
         note = essay_copy["language_note"].strip()
         note_html = (
             f'<p class="essay-note" role="note">{html.escape(note)}</p>'
@@ -771,6 +1008,10 @@ def build(check: bool = False) -> list[Path]:
                 "LOCALE": lid,
                 "OG_LOCALE": html.escape(lang["og_locale"], quote=True),
                 "ESSAY_ASSET_PREFIX": essay_asset_prefix(lid),
+                "ESSAY_HREFLANG_LINKS": essay_hreflang_links(),
+                "SOCIAL_META": essay_social,
+                "STRUCTURED_DATA": essay_structured_data,
+                "ICON_LINKS": icon_links(essay_asset_prefix(lid)),
                 "READING_TOOLS": reading_tools(locale),
                 "PRIMARY_NAME": html.escape(IDENTITY["primary_name"]),
                 "CHINESE_NAME": html.escape(IDENTITY["chinese_name"]),
@@ -788,7 +1029,7 @@ def build(check: bool = False) -> list[Path]:
                 "ESSAY_META_DESCRIPTION_ATTR": html.escape(description, quote=True),
                 "ESSAY_LANGUAGE_NOTE": note_html,
                 "ESSAY_BODY": essay_body,
-                "ESSAY_CANONICAL": html.escape(BASE_URL + essay_page_path(lid), quote=True),
+                "ESSAY_CANONICAL": html.escape(essay_url, quote=True),
             },
         )
         if not essay_rendered.endswith("\n"):

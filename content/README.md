@@ -35,7 +35,13 @@ python3 tools/sitecheck.py
 ```
 
 `tools/build_site.py --check` fails if generated HTML or the sitemap is stale. CI runs this
-check on every push.
+check on every push. The generated head contract also includes locale alternates, Open Graph/Twitter metadata, shared icons and JSON-LD; the localisation and site checks guard those outputs.
+
+For browser-level geometry, HTML and accessibility QA, install the pinned development dependencies with `npm ci` and run `npm run qa`. Social preview cards and the Apple touch icon are rebuilt separately with:
+
+```sh
+uv run --with fonttools --with brotli --with pillow python tools/build_social_cards.py
+```
 
 Literary translations are structurally constrained: the checker verifies the complete poem
 set and preserves the source/reference line and stanza structure. Traditional Chinese remains

@@ -1,0 +1,14 @@
+{
+  "name": "hanpuli-github-io-qa",
+  "private": true,
+  "scripts": {
+    "qa:html": "git ls-files -z '*.html' ':!:templates/**' | xargs -0 html-validate",
+    "qa:browser": "node tools/browsercheck.mjs",
+    "qa": "npm run qa:html && npm run qa:browser"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "html-validate": "11.16.0"
+  }
+}

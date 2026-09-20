@@ -16,20 +16,40 @@
 <link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/about.html">
 <link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/about.html">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Hanpu Li">
 <meta property="og:title" content="このサイトについて · Hanpu Li">
 <meta property="og:description" content="Hanpu Li のウェブサイトの実装ノート。静的構成、多言語配信、書体、アクセシビリティ、レスポンシブ画像、テスト、GitHub Pages での公開について。">
+<meta property="og:image" content="https://hanpuli.github.io/assets/social/about.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="このサイトについて · Hanpu Li">
 <meta property="og:url" content="https://hanpuli.github.io/ja/about.html">
 <meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="zh_HK">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="このサイトについて · Hanpu Li">
+<meta name="twitter:description" content="Hanpu Li のウェブサイトの実装ノート。静的構成、多言語配信、書体、アクセシビリティ、レスポンシブ画像、テスト、GitHub Pages での公開について。">
+<meta name="twitter:image" content="https://hanpuli.github.io/assets/social/about.png">
+<meta name="twitter:image:alt" content="このサイトについて · Hanpu Li">
 <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>H</text></svg>">
+<link rel="icon" href="../assets/site-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-subset.woff2" crossorigin>
 <script src="../assets/accessibility.js"></script>
 <link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"AboutPage","@id":"https://hanpuli.github.io/ja/about.html#page","url":"https://hanpuli.github.io/ja/about.html","name":"このサイトについて · Hanpu Li","description":"Hanpu Li のウェブサイトの実装ノート。静的構成、多言語配信、書体、アクセシビリティ、レスポンシブ画像、テスト、GitHub Pages での公開について。","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"ja","about":{"@id":"https://hanpuli.github.io/#person"}}]}
+</script>
 </head>
 <body class="about-page locale-ja">
 <a class="skip-link" href="#main">本文へスキップ</a>
@@ -85,6 +105,19 @@
       </div>
     </header>
 
+<nav class="about-toc" aria-label="このページ">
+  <p>このページ</p>
+  <ol>
+    <li><a href="#architecture"><span>01</span> アーキテクチャ</a></li>
+    <li><a href="#languages"><span>02</span> コンテンツと言語</a></li>
+    <li><a href="#layout"><span>03</span> レイアウトと書体</a></li>
+    <li><a href="#accessibility"><span>04</span> アクセシビリティ</a></li>
+    <li><a href="#media"><span>05</span> 画像とパフォーマンス</a></li>
+    <li><a href="#quality"><span>06</span> ビルド、QA、公開</a></li>
+    <li><a href="#principles"><span>07</span> 原則</a></li>
+  </ol>
+</nav>
+
     <section class="about-section" id="architecture">
       <div class="about-section-head">
         <p class="about-section-no">01</p>
@@ -95,8 +128,8 @@
         <p>ポートフォリオは、小さなテンプレートと構造化 JSON から完全な HTML5 文書として生成される。Python 3 標準ライブラリだけのビルダーが各言語版を事前生成し、ブラウザ側でページを組み立てない。</p>
         <p>main ブランチから GitHub Pages で配信する。ポートフォリオの背後に CMS、アプリケーションフレームワーク、データベース、サーバー側アプリはない。</p>
         <dl class="about-facts">
-          <div><dt>ランタイム</dt><dd>HTML5 · CSS · vanilla JavaScript</dd></div>
-          <div><dt>ビルド</dt><dd>Python 3 · JSON · HTML templates</dd></div>
+          <div><dt>実行時</dt><dd>HTML5 · CSS · 素の JavaScript</dd></div>
+          <div><dt>ビルド</dt><dd>Python 3 · JSON · HTML テンプレート</dd></div>
           <div><dt>ホスティング</dt><dd>GitHub Pages</dd></div>
         </dl>
       </div>
@@ -109,12 +142,12 @@
         <p class="about-section-dek">7言語版、実行時翻訳なし。</p>
       </div>
       <div class="about-section-copy">
-        <p>英語、香港繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、ロシア語を別々の静的版として生成し、それぞれに canonical URL、hreflang alternate、言語別 metadata を持たせる。</p>
+        <p>英語、香港繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、ロシア語を別々の静的版として生成し、それぞれに canonical URL、hreflang の代替リンク、言語別メタデータ を持たせる。</p>
         <p>文学テキストは通常の UI 文言より厳格に扱う。指定された作品では繁体字中国語を正本とし、簡体字版は文字体系だけを変換してハッシュを照合する。翻訳は専用チェックで行数と連構造を保つ。</p>
         <dl class="about-facts">
           <div><dt>ロケール</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
-          <div><dt>文学テキスト</dt><dd>OpenCC helper · source hashes · line-parity checks</dd></div>
-          <div><dt>metadata</dt><dd>canonical · hreflang · Open Graph</dd></div>
+          <div><dt>文学テキスト</dt><dd>OpenCC 補助 · ソースハッシュ · 行構造の検査</dd></div>
+          <div><dt>メタデータ</dt><dd>canonical · hreflang · Open Graph</dd></div>
         </dl>
       </div>
     </section>
@@ -126,12 +159,12 @@
         <p class="about-section-dek">コンポーネントフレームワークではなく編集的な CSS。</p>
       </div>
       <div class="about-section-copy">
-        <p>CSS Grid、subgrid、container queries、logical properties、custom properties、clamp() による流動的な寸法を使う。Media queries は保守的なフォールバックにとどめ、対応ブラウザでは各要素が自身の利用可能幅に応じて組み替わる。</p>
-        <p>書体は WOFF2 を自前配信する。欧文本文は主に EB Garamond、metadata は Courier Prime／Cousine、繁体字中国語と日本語は Shippori Mincho、簡体字中国語は Noto Serif SC、香港字形のごく小さな欠落は I.Ming の小さなサブセットで補う。CJK サブセットは fontTools と Brotli で再構築し、Noto のソースは commit と SHA-256 で固定している。</p>
+        <p>CSS Grid、subgrid、container queries、logical properties、custom properties、clamp() による流動的な寸法を使う。メディアクエリは保守的なフォールバックにとどめ、対応ブラウザでは各要素が自身の利用可能幅に応じて組み替わる。</p>
+        <p>書体は WOFF2 を自前配信する。欧文本文は主に EB Garamond、メタデータは Courier Prime／Cousine、繁体字中国語と日本語は Shippori Mincho、簡体字中国語は Noto Serif SC、香港字形のごく小さな欠落は I.Ming の小さなサブセットで補う。CJK サブセットは fontTools と Brotli で再構築し、Noto のソースは コミットと SHA-256 で固定している。</p>
         <dl class="about-facts">
-          <div><dt>レイアウト</dt><dd>Grid · subgrid · container queries · logical properties</dd></div>
+          <div><dt>レイアウト</dt><dd>Grid · subgrid · コンテナクエリ · 論理プロパティ</dd></div>
           <div><dt>書体</dt><dd>EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming</dd></div>
-          <div><dt>配色</dt><dd>light/dark via prefers-color-scheme</dd></div>
+          <div><dt>配色</dt><dd>明色／暗色 · prefers-color-scheme</dd></div>
         </dl>
       </div>
     </section>
@@ -143,10 +176,10 @@
         <p class="about-section-dek">内容を削らず、読み方を変えられる。</p>
       </div>
       <div class="about-section-copy">
-        <p>意味的な landmark、単一の主要見出し、skip links、見えるキーボード focus、完全な言語名、十分な大きさのタッチターゲットを用意する。reduced-motion、higher-contrast、forced-colour といった OS／ブラウザ設定も尊重する。</p>
-        <p>読書設定ではサンセリフ、文字拡大、文字間隔、行長、簡略レイアウト、モーション低減、高コントラストを切り替えられる。すべて progressive enhancement で、設定はブラウザ内にだけ保存する。</p>
+        <p>意味的なランドマーク、単一の主要見出し、スキップリンク、見えるキーボードフォーカス、完全な言語名、十分な大きさのタッチターゲットを用意する。reduced-motion、higher-contrast、forced-colour といった OS／ブラウザ設定も尊重する。</p>
+        <p>読書設定ではサンセリフ、文字拡大、文字間隔、行長、簡略レイアウト、モーション低減、高コントラストを切り替えられる。すべてプログレッシブエンハンスメント で、設定はブラウザ内にだけ保存する。</p>
         <dl class="about-facts">
-          <div><dt>読書設定</dt><dd>sans · larger type · spacing · measure · simple layout · motion · contrast</dd></div>
+          <div><dt>読書設定</dt><dd>サンセリフ · 大きな文字 · 間隔 · 行幅 · 簡素化 · 動き · コントラスト</dd></div>
           <div><dt>保存</dt><dd>localStorage のみ</dd></div>
           <div><dt>検査</dt><dd>独自の構造監査 · axe-core ブラウザ監査</dd></div>
         </dl>
@@ -160,12 +193,12 @@
         <p class="about-section-dek">レスポンシブ画像、ギャラリー用ランタイムなし。</p>
       </div>
       <div class="about-section-copy">
-        <p>写真と研究図版は picture/srcset で WebP と JPEG の候補を用意し、寸法と responsive sizes を明示する。先頭画像を優先し、それ以外の下方画像は lazy-load と非同期 decode を使う。</p>
-        <p>下方セクションでは content-visibility を利用でき、View Transitions と scroll-linked motion は任意の progressive enhancement に限る。reduced motion が指定されればアニメーションを止める。</p>
+        <p>写真と研究図版は picture/srcset で WebP と JPEG の候補を用意し、寸法と sizes 属性を明示する。先頭画像を優先し、それ以外の下方画像は遅延読み込みと非同期デコードを使う。</p>
+        <p>下方セクションでは content-visibility を利用でき、View Transitions と scroll-linked motion は任意のプログレッシブエンハンスメントに限る。動きを減らす設定が指定されればアニメーションを止める。</p>
         <dl class="about-facts">
           <div><dt>画像</dt><dd>picture · srcset · WebP · JPEG</dd></div>
-          <div><dt>読み込み</dt><dd>explicit dimensions · lazy loading · async decoding</dd></div>
-          <div><dt>progressive CSS</dt><dd>content-visibility · View Transitions · scroll timelines</dd></div>
+          <div><dt>読み込み</dt><dd>寸法指定 · 遅延読み込み · 非同期デコード</dd></div>
+          <div><dt>段階的 CSS</dt><dd>content-visibility · View Transitions · スクロールタイムライン</dd></div>
         </dl>
       </div>
     </section>
@@ -177,24 +210,24 @@
         <p class="about-section-dek">生成物そのものをテスト対象にする。</p>
       </div>
       <div class="about-section-copy">
-        <p>生成ページの鮮度、ロケール schema、文学テキストの構造、アクセシビリティの landmark と操作要素、ローカルリンクと fragment、画像の alt text、JavaScript の構文を repository 内で検査する。</p>
-        <p>ブラウザ QA では多言語・狭幅／広幅の幾何検査、axe-core のアクセシビリティ監査、HTML validation も行う。GitHub Actions は push と pull request で軽量な検査を再実行し、GitHub Pages は main から同じ静的ファイルを独立して配信する。</p>
+        <p>生成ページが最新か、ロケールのスキーマが一致するか、文学テキストの構造が保たれているか、アクセシビリティのランドマークと操作要素が揃っているか、ローカルリンクとページ内アンカーが解決するか、画像に代替テキストがあるか、JavaScript の構文が正しいかをリポジトリ内で検査する。</p>
+        <p>ブラウザ QA では、多言語と狭幅／広幅での幾何検査、axe-core によるアクセシビリティ監査、HTML 検証も行う。GitHub Actions では push と pull request のたびに軽量な検査を先に実行し、通過後にブラウザ検査を行う。GitHub Pages は main から同じ静的ファイルを独立して配信する。</p>
         <dl class="about-facts">
-          <div><dt>repository checks</dt><dd>build freshness · i18n · accessibility · links/assets · JS syntax</dd></div>
-          <div><dt>browser QA</dt><dd>Playwright · axe-core · html-validate</dd></div>
+          <div><dt>リポジトリ検査</dt><dd>生成状態 · 多言語整合性 · アクセシビリティ · リンク／資源 · JS 構文</dd></div>
+          <div><dt>ブラウザ QA</dt><dd>Playwright · axe-core · html-validate</dd></div>
           <div><dt>公開</dt><dd>GitHub Actions · GitHub Pages</dd></div>
         </dl>
       </div>
     </section>
 
-    <section class="about-coda" aria-labelledby="about-scope-heading">
+    <section class="about-coda" id="principles" aria-labelledby="about-scope-heading">
       <div>
         <p class="about-section-no">07</p>
-        <h2 id="about-scope-heading">一つのドメイン、二種類のページ</h2>
+        <h2 id="about-scope-heading">原則</h2>
       </div>
       <div class="about-coda-copy">
-        <p>ポートフォリオ、詞、詩、論文シェル、About ページ、404 は上記の多言語生成システムを共有する。</p>
-        <p>/mail-assistant/ の Cait Mail Assistant 3文書は手書きの静的 HTML と小さなページ専用 CSS で構成し、ポートフォリオのローカルなアクセシビリティ script と自前配信の EB Garamond／Courier Prime を再利用する。</p>
+        <p>元のコンテンツ、生成物、ブラウザ上の振る舞いを別の層として扱う。構造化データとテンプレートを編集し、再生成したうえで、出力された文書を検証する。</p>
+        <p>プログレッシブエンハンスメントは最初から任意の層として設計している。CSS の一部が未対応でも、JavaScript やローカルストレージが使えなくても、作品を読めず、または移動できない状態にはしない。</p>
         <h3>実行時のプライバシー</h3>
         <p>ポートフォリオは analytics、広告ネットワーク、第三者 web font、追跡 script を読み込まず、cookie も設定しない。永続化するブラウザ状態はローカルの読書設定だけである。</p>
       </div>

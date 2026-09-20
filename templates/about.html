@@ -8,18 +8,14 @@
 <meta name="description" content="{{ABOUT_META_DESCRIPTION_ATTR}}">
 <link rel="canonical" href="{{CANONICAL_URL}}">
 {{HREFLANG_LINKS}}
-<meta property="og:type" content="website">
-<meta property="og:title" content="{{ABOUT_META_TITLE_ATTR}}">
-<meta property="og:description" content="{{ABOUT_META_DESCRIPTION_ATTR}}">
-<meta property="og:url" content="{{CANONICAL_URL}}">
-<meta property="og:locale" content="{{OG_LOCALE}}">
-<meta name="twitter:card" content="summary">
+{{SOCIAL_META}}
 <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>H</text></svg>">
+{{ICON_LINKS}}
 {{FONT_PRELOADS}}
 <script src="{{ASSET_PREFIX}}assets/accessibility.js"></script>
 <link rel="stylesheet" href="{{ASSET_PREFIX}}assets/site.css">
+{{STRUCTURED_DATA}}
 </head>
 <body class="about-page locale-{{LOCALE}}">
 <a class="skip-link" href="#main">{{common.skip_content}}</a>
@@ -46,9 +42,11 @@
       </div>
     </header>
 
+{{ABOUT_TOC}}
+
 {{ABOUT_SECTIONS}}
 
-    <section class="about-coda" aria-labelledby="about-scope-heading">
+    <section class="about-coda" id="principles" aria-labelledby="about-scope-heading">
       <div>
         <p class="about-section-no">07</p>
         <h2 id="about-scope-heading">{{ABOUT_SCOPE_TITLE}}</h2>

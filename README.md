@@ -6,7 +6,7 @@ The site is deliberately static: editorial HTML/CSS, local image/font assets and
 
 ## Local checks
 
-Regenerate pages after editing structured copy, then run the same checks used by CI:
+Regenerate pages after editing structured copy, then run the dependency-free checks used by the first CI job:
 
 ```sh
 python3 tools/build_site.py
@@ -17,7 +17,15 @@ node --check assets/accessibility.js
 python3 tools/sitecheck.py
 ```
 
-The localisation checker enforces locale-schema parity, the complete literary corpus, Simplified-Chinese script data and line/stanza parity, and generated `hreflang` metadata. The accessibility checker covers landmark and heading structure, accessible names, labelled controls, skip-link targets, keyboard-order hazards and the reading-preference controls across the generated portfolio, mail-assistant and fridge pages. The site checker verifies local links and fragments, image/CSS assets, duplicate IDs, image alt text, document language, titles and responsive viewport metadata without making network requests.
+The localisation checker enforces locale-schema parity, the complete literary corpus, Simplified-Chinese script data and line/stanza parity, generated `hreflang` metadata and the shared social/structured-data contract. The accessibility checker covers landmark and heading structure, accessible names, labelled controls, skip-link targets, keyboard-order hazards and reading-preference controls. The site checker verifies local links and fragments, image/CSS assets, duplicate IDs, image alt text, document language, titles, viewport metadata and valid JSON-LD without making network requests.
+
+Browser QA is pinned in `package-lock.json`. After `npm ci`, run:
+
+```sh
+npm run qa
+```
+
+This validates tracked public HTML, then uses Chromium to exercise the seven portfolio locales at 320, 390, 768 and 1440 px across the home, ci, poem, About, essay and 404 page types. It checks horizontal overflow and overlapping interactive targets and runs axe-core at narrow and wide widths. The same suite runs in the `browser-qa` CI job after the dependency-free checks pass.
 
 The Traditional Chinese literary source remains canonical. When `content/ci-source.json` or `content/shi-source.json` changes, regenerate the script-only Simplified Chinese mirrors before building:
 
@@ -58,6 +66,16 @@ python3 -m http.server 8000
 ```
 
 Then open http://127.0.0.1:8000/.
+
+## Social previews and link health
+
+The non-home portfolio pages use repository-local 1200×630 Open Graph cards, and all generated portfolio pages share a real SVG favicon plus an Apple touch icon. Rebuild those assets from the self-hosted fonts with:
+
+```sh
+uv run --with fonttools --with brotli --with pillow python tools/build_social_cards.py
+```
+
+A separate scheduled workflow runs `tools/linkcheck_external.py` weekly against external links in the generated personal-site pages. It is intentionally independent of deployment: genuine 404/410 responses fail that audit, while rate limits, bot blocks, timeouts and 5xx responses are reported as indeterminate instead of breaking ordinary site publication.
 
 ## Content and rights
 

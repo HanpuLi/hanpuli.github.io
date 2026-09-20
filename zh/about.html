@@ -16,20 +16,40 @@
 <link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/about.html">
 <link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/about.html">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Hanpu Li">
 <meta property="og:title" content="關於本站 · Hanpu Li">
 <meta property="og:description" content="Hanpu Li 個人網站的實作說明：靜態架構、多語發佈、字體、無障礙、響應式媒體、測試與 GitHub Pages 部署。">
+<meta property="og:image" content="https://hanpuli.github.io/assets/social/about.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="關於本站 · Hanpu Li">
 <meta property="og:url" content="https://hanpuli.github.io/zh/about.html">
 <meta property="og:locale" content="zh_HK">
-<meta name="twitter:card" content="summary">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="關於本站 · Hanpu Li">
+<meta name="twitter:description" content="Hanpu Li 個人網站的實作說明：靜態架構、多語發佈、字體、無障礙、響應式媒體、測試與 GitHub Pages 部署。">
+<meta name="twitter:image" content="https://hanpuli.github.io/assets/social/about.png">
+<meta name="twitter:image:alt" content="關於本站 · Hanpu Li">
 <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>H</text></svg>">
+<link rel="icon" href="../assets/site-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-subset.woff2" crossorigin>
 <script src="../assets/accessibility.js"></script>
 <link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"AboutPage","@id":"https://hanpuli.github.io/zh/about.html#page","url":"https://hanpuli.github.io/zh/about.html","name":"關於本站 · Hanpu Li","description":"Hanpu Li 個人網站的實作說明：靜態架構、多語發佈、字體、無障礙、響應式媒體、測試與 GitHub Pages 部署。","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"zh-Hant-HK","about":{"@id":"https://hanpuli.github.io/#person"}}]}
+</script>
 </head>
 <body class="about-page locale-zh">
 <a class="skip-link" href="#main">跳至正文</a>
@@ -85,6 +105,19 @@
       </div>
     </header>
 
+<nav class="about-toc" aria-label="本頁內容">
+  <p>本頁內容</p>
+  <ol>
+    <li><a href="#architecture"><span>01</span> 架構</a></li>
+    <li><a href="#languages"><span>02</span> 內容與語言</a></li>
+    <li><a href="#layout"><span>03</span> 版式與字體</a></li>
+    <li><a href="#accessibility"><span>04</span> 無障礙</a></li>
+    <li><a href="#media"><span>05</span> 圖片與效能</a></li>
+    <li><a href="#quality"><span>06</span> 建置、QA 與部署</a></li>
+    <li><a href="#principles"><span>07</span> 原則</a></li>
+  </ol>
+</nav>
+
     <section class="about-section" id="architecture">
       <div class="about-section-head">
         <p class="about-section-no">01</p>
@@ -96,7 +129,7 @@
         <p>網站從 main 分支經 GitHub Pages 發佈。作品站背後沒有 CMS、應用框架、資料庫或伺服器端應用。</p>
         <dl class="about-facts">
           <div><dt>執行時</dt><dd>HTML5 · CSS · 原生 JavaScript</dd></div>
-          <div><dt>建置</dt><dd>Python 3 · JSON · HTML templates</dd></div>
+          <div><dt>建置</dt><dd>Python 3 · JSON · HTML 模板</dd></div>
           <div><dt>託管</dt><dd>GitHub Pages</dd></div>
         </dl>
       </div>
@@ -109,12 +142,12 @@
         <p class="about-section-dek">七個版本，沒有執行時翻譯。</p>
       </div>
       <div class="about-section-copy">
-        <p>英文、香港繁體中文、簡體中文、日文、德文、法文與俄文均生成為獨立靜態版本，各有 canonical URL、hreflang alternate 與語系 metadata。</p>
+        <p>英文、香港繁體中文、簡體中文、日文、德文、法文與俄文均生成為獨立靜態版本，各有 canonical 網址、hreflang 替代連結與語系中繼資料。</p>
         <p>文學文本比一般介面文字有更嚴格的規則。指定情況下以繁體中文原文為正；簡體文學版本只做字形轉換並核對來源雜湊，譯文則由專門檢查維持分行與分闋結構。</p>
         <dl class="about-facts">
           <div><dt>語系</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
-          <div><dt>文學轉換</dt><dd>OpenCC helper · source hashes · line-parity checks</dd></div>
-          <div><dt>metadata</dt><dd>canonical · hreflang · Open Graph</dd></div>
+          <div><dt>文學轉換</dt><dd>OpenCC 輔助 · 來源雜湊 · 行數一致性</dd></div>
+          <div><dt>中繼資料</dt><dd>canonical · hreflang · Open Graph</dd></div>
         </dl>
       </div>
     </section>
@@ -126,12 +159,12 @@
         <p class="about-section-dek">編輯式 CSS，不用元件框架。</p>
       </div>
       <div class="about-section-copy">
-        <p>版式使用 CSS Grid、subgrid、container queries、logical properties、custom properties 與流動的 clamp() 尺寸。Media queries 只作保守後備；支援 container queries 的瀏覽器會讓元件依自己的可用寬度重排。</p>
-        <p>字體全部以 WOFF2 自行託管。拉丁正文主要用 EB Garamond，metadata 用 Courier Prime／Cousine，繁體中文與日文用 Shippori Mincho，簡體中文用 Noto Serif SC，少量香港字形缺口由極小的 I.Ming 子集補齊。CJK 子集以 fontTools 與 Brotli 重建；Noto 來源以 commit 與 SHA-256 固定。</p>
+        <p>版式使用 CSS Grid、subgrid、容器查詢、邏輯屬性、自訂屬性 與流動的 clamp() 尺寸。媒體查詢只作保守後備；支援容器查詢 的瀏覽器會讓元件依自己的可用寬度重排。</p>
+        <p>字體全部以 WOFF2 自行託管。拉丁正文主要用 EB Garamond，中繼資料用 Courier Prime／Cousine，繁體中文與日文用 Shippori Mincho，簡體中文用 Noto Serif SC，少量香港字形缺口由極小的 I.Ming 子集補齊。CJK 子集以 fontTools 與 Brotli 重建；Noto 來源以提交版本與 SHA-256 固定。</p>
         <dl class="about-facts">
-          <div><dt>版式</dt><dd>Grid · subgrid · container queries · logical properties</dd></div>
+          <div><dt>版式</dt><dd>Grid · subgrid · 容器查詢 · 邏輯屬性</dd></div>
           <div><dt>字體</dt><dd>EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming</dd></div>
-          <div><dt>色彩</dt><dd>light/dark via prefers-color-scheme</dd></div>
+          <div><dt>色彩</dt><dd>明／暗色 · prefers-color-scheme</dd></div>
         </dl>
       </div>
     </section>
@@ -143,10 +176,10 @@
         <p class="about-section-dek">可以調整，但不刪內容。</p>
       </div>
       <div class="about-section-copy">
-        <p>作品站使用語義 landmark、單一主標題、skip links、清晰的鍵盤 focus、完整語言名稱與足夠大的觸控目標；亦尊重 reduced-motion、higher-contrast 與 forced-colour 等系統偏好。</p>
-        <p>閱讀面板可切換無襯線字體、放大文字、增加字距行距、縮窄欄寬、簡化版式、減少動態與提高對比。這些都是 progressive enhancement，只在瀏覽器本地保存偏好。</p>
+        <p>作品站使用語義地標、單一主標題、跳至內容連結、清晰的鍵盤焦點、完整語言名稱與足夠大的觸控目標；亦尊重 減少動態、提高對比與強制色彩等系統偏好。</p>
+        <p>閱讀面板可切換無襯線字體、放大文字、增加字距行距、縮窄欄寬、簡化版式、減少動態與提高對比。這些都是漸進增強，只在瀏覽器本地保存偏好。</p>
         <dl class="about-facts">
-          <div><dt>閱讀偏好</dt><dd>sans · larger type · spacing · measure · simple layout · motion · contrast</dd></div>
+          <div><dt>閱讀偏好</dt><dd>無襯線 · 大字 · 字距／行距 · 窄行 · 簡化版式 · 動態 · 對比</dd></div>
           <div><dt>儲存</dt><dd>只用 localStorage</dd></div>
           <div><dt>檢查</dt><dd>自製結構審計 · axe-core 瀏覽器審計</dd></div>
         </dl>
@@ -160,12 +193,12 @@
         <p class="about-section-dek">響應式媒體，不靠圖庫程式。</p>
       </div>
       <div class="about-section-copy">
-        <p>攝影與研究圖版使用 picture/srcset，提供 WebP 與 JPEG 尺寸候選，並明確標示寬高與 responsive sizes。首張圖優先載入，頁面較下方的媒體則 lazy-load 並非同步解碼。</p>
-        <p>頁面下方區段可使用 content-visibility；View Transitions 與 scroll-linked motion 都只是可選的 progressive enhancement。使用者要求 reduced motion 時會停用動態。</p>
+        <p>攝影與研究圖版使用 picture/srcset，提供 WebP 與 JPEG 尺寸候選，並明確標示寬高與響應式 sizes。首張圖優先載入，頁面較下方的媒體則延遲載入並非同步解碼。</p>
+        <p>頁面下方區段可使用 content-visibility；View Transitions 與 scroll-linked motion 都只是可選的漸進增強。使用者要求減少動態時會停用動態。</p>
         <dl class="about-facts">
           <div><dt>圖片</dt><dd>picture · srcset · WebP · JPEG</dd></div>
-          <div><dt>載入</dt><dd>explicit dimensions · lazy loading · async decoding</dd></div>
-          <div><dt>漸進 CSS</dt><dd>content-visibility · View Transitions · scroll timelines</dd></div>
+          <div><dt>載入</dt><dd>明確尺寸 · 延遲載入 · 非同步解碼</dd></div>
+          <div><dt>漸進 CSS</dt><dd>content-visibility · View Transitions · 捲動時間軸</dd></div>
         </dl>
       </div>
     </section>
@@ -177,24 +210,24 @@
         <p class="about-section-dek">生成結果本身就是可測試的 artefact。</p>
       </div>
       <div class="about-section-copy">
-        <p>Repository 會檢查生成頁是否最新、各語系 schema 是否一致、文學結構有沒有漂移、無障礙 landmark 與控制項是否完整、本地連結和 fragment 是否有效、圖片是否有 alt text，以及 JavaScript 能否解析。</p>
-        <p>瀏覽器 QA 另做跨語言與窄／寬 viewport 幾何檢查、axe-core 無障礙掃描與 HTML validation。GitHub Actions 在 push 與 pull request 上重跑輕依賴檢查；GitHub Pages 則獨立從 main 發佈同一批靜態檔案。</p>
+        <p>儲存庫會檢查生成頁是否最新、各語系結構是否一致、文學結構有沒有漂移、無障礙地標與控制項是否完整、本地連結和頁內錨點是否有效、圖片是否有替代文字，以及 JavaScript 能否解析。</p>
+        <p>瀏覽器 QA 另做跨語言與窄／寬視窗幾何檢查、axe-core 無障礙掃描與 HTML 驗證。GitHub Actions 在推送與 pull request 時先跑輕依賴檢查，通過後再跑瀏覽器套件；GitHub Pages 則獨立從 main 發佈同一批靜態檔案。</p>
         <dl class="about-facts">
-          <div><dt>repository checks</dt><dd>build freshness · i18n · accessibility · links/assets · JS syntax</dd></div>
-          <div><dt>browser QA</dt><dd>Playwright · axe-core · html-validate</dd></div>
+          <div><dt>儲存庫檢查</dt><dd>生成狀態 · 多語一致性 · 無障礙 · 連結／資源 · JS 語法</dd></div>
+          <div><dt>瀏覽器 QA</dt><dd>Playwright · axe-core · html-validate</dd></div>
           <div><dt>交付</dt><dd>GitHub Actions · GitHub Pages</dd></div>
         </dl>
       </div>
     </section>
 
-    <section class="about-coda" aria-labelledby="about-scope-heading">
+    <section class="about-coda" id="principles" aria-labelledby="about-scope-heading">
       <div>
         <p class="about-section-no">07</p>
-        <h2 id="about-scope-heading">一個網域，兩類頁面</h2>
+        <h2 id="about-scope-heading">原則</h2>
       </div>
       <div class="about-coda-copy">
-        <p>作品站、詞頁、詩頁、論文外殼、About 頁與 404 頁共享上述多語生成系統。</p>
-        <p>/mail-assistant/ 下的三份 Cait Mail Assistant 文件是手寫靜態 HTML，配一份小型頁面 CSS；它們沿用作品站的本地無障礙 script，以及自行託管的 EB Garamond／Courier Prime 字體。</p>
+        <p>本站把內容來源、生成結果與瀏覽器行為分成不同層次：修改結構化內容與模板，重新生成，再核對輸出的文件。</p>
+        <p>漸進增強從一開始就是可有可無的一層。即使瀏覽器不支援某些 CSS、JavaScript 被停用，或本地儲存不可用，作品仍須完整可讀，導覽亦不能失效。</p>
         <h3>瀏覽器執行時的私隱</h3>
         <p>作品站不載入 analytics、廣告網絡、第三方 web font 或追蹤 script，也不設 cookie。作品站唯一持久的瀏覽器狀態，是本地閱讀偏好記錄。</p>
       </div>

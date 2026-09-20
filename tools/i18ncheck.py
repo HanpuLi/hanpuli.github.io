@@ -389,7 +389,7 @@ def main() -> int:
             errors.append(f"missing generated {essay_path.relative_to(ROOT)}")
         else:
             essay_text = essay_path.read_text(encoding="utf-8")
-            if "{{" in essay_text or "}}" in essay_text:
+            if re.search(r"{{[A-Za-z0-9_.]+}}", essay_text):
                 errors.append(f"{essay_path.relative_to(ROOT)}: unresolved template token")
             if not re.search(rf'<html\b[^>]*\blang="{re.escape(expected_lang)}"', essay_text):
                 errors.append(f"{essay_path.relative_to(ROOT)}: wrong html lang")
@@ -397,6 +397,22 @@ def main() -> int:
                 errors.append(f"{essay_path.relative_to(ROOT)}: essay body is not explicitly marked as English")
             if essay_text.count('class="current"') != 1:
                 errors.append(f"{essay_path.relative_to(ROOT)}: expected one current essay language")
+            essay_alternates = len(re.findall(r'<link rel="alternate" hreflang=', essay_text))
+            if essay_alternates != expected_alternates:
+                errors.append(
+                    f"{essay_path.relative_to(ROOT)}: expected {expected_alternates} essay hreflang links, got {essay_alternates}"
+                )
+            for contract in (
+                '<meta property="og:image"',
+                '<meta name="twitter:card" content="summary_large_image">',
+                '<script type="application/ld+json">',
+                'assets/site-mark.svg',
+                'assets/apple-touch-icon.png',
+            ):
+                if contract not in essay_text:
+                    errors.append(
+                        f"{essay_path.relative_to(ROOT)}: missing head contract {contract}"
+                    )
             essay_home_href = "/" if locale == "en" else f"/{locale}/"
             if '<footer class="page-footer essay-footer">' not in essay_text:
                 errors.append(f"{essay_path.relative_to(ROOT)}: missing shared page footer")
@@ -448,7 +464,7 @@ def main() -> int:
                 errors.append(f"missing generated {path.relative_to(ROOT)}")
                 continue
             text = path.read_text(encoding="utf-8")
-            if "{{" in text or "}}" in text:
+            if re.search(r"{{[A-Za-z0-9_.]+}}", text):
                 errors.append(f"{path.relative_to(ROOT)}: unresolved template token")
             expected = next(item["html_lang"] for item in languages if item["id"] == locale)
             if not re.search(rf'<html\b[^>]*\blang="{re.escape(expected)}"', text):
@@ -464,6 +480,18 @@ def main() -> int:
                     errors.append(
                         f"{path.relative_to(ROOT)}: expected {expected_alternates} hreflang links, got {alternates}"
                     )
+                for contract in (
+                    '<meta property="og:image"',
+                    '<meta name="twitter:card" content="summary_large_image">',
+                    '<script type="application/ld+json">',
+                ):
+                    if contract not in text:
+                        errors.append(
+                            f"{path.relative_to(ROOT)}: missing head contract {contract}"
+                        )
+            for icon in ("assets/site-mark.svg", "assets/apple-touch-icon.png"):
+                if icon not in text:
+                    errors.append(f"{path.relative_to(ROOT)}: missing shared icon {icon}")
             nav_numbers = re.findall(
                 r'<span class="nav-no">(0[1-6])</span>',
                 text,
@@ -486,6 +514,12 @@ def main() -> int:
                     errors.append(f"{path.relative_to(ROOT)}: missing localized about title")
                 if text.count('class="about-section"') != 6:
                     errors.append(f"{path.relative_to(ROOT)}: expected six technology sections")
+                if 'class="about-toc"' not in text:
+                    errors.append(f"{path.relative_to(ROOT)}: missing about table of contents")
+                if 'id="principles"' not in text or 'href="#principles"' not in text:
+                    errors.append(f"{path.relative_to(ROOT)}: missing About principles anchor")
+                if "/mail-assistant/" in text or "/fridge/" in text:
+                    errors.append(f"{path.relative_to(ROOT)}: About must describe the personal site only")
                 for section_id in expected_about_ids:
                     if f'id="{section_id}"' not in text:
                         errors.append(

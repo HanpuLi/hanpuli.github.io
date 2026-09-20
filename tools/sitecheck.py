@@ -7,6 +7,7 @@ links are not fetched.
 """
 from __future__ import annotations
 
+import json
 import re
 import sys
 from html.parser import HTMLParser
@@ -17,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HTML_FILES = sorted(
     p for p in ROOT.rglob("*.html")
     if ".git" not in p.parts
+    and "node_modules" not in p.parts
     and "templates" not in p.parts
     and p.name != "card.html"
 )
@@ -124,9 +126,26 @@ def check_raw_ampersands(path: Path, text: str, errors: list[str]) -> None:
         errors.append(f"{path.relative_to(ROOT)}:{line}: raw ampersand must be encoded as &amp;")
 
 
+def check_json_ld(path: Path, text: str, errors: list[str]) -> None:
+    for match in re.finditer(
+        r'<script\s+type="application/ld\+json"[^>]*>\s*(.*?)\s*</script>',
+        text,
+        flags=re.I | re.S,
+    ):
+        try:
+            json.loads(match.group(1))
+        except json.JSONDecodeError as exc:
+            line = text.count("\n", 0, match.start(1)) + exc.lineno
+            errors.append(
+                f"{path.relative_to(ROOT)}:{line}: invalid JSON-LD: {exc.msg}"
+            )
+
+
 def check_css(errors: list[str]) -> None:
     url_re = re.compile(r"url\((['\"]?)([^)'\"]+)\1\)")
     for css in ROOT.rglob("*.css"):
+        if "node_modules" in css.parts:
+            continue
         text = css.read_text(encoding="utf-8")
         for match in url_re.finditer(text):
             ref = match.group(2).strip()
@@ -146,6 +165,7 @@ def main() -> int:
         doc = Document(path)
         text = path.read_text(encoding="utf-8")
         check_raw_ampersands(path, text, errors)
+        check_json_ld(path, text, errors)
         try:
             doc.feed(text)
         except Exception as exc:
