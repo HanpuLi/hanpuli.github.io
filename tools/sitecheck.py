@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -158,6 +159,55 @@ def check_css(errors: list[str]) -> None:
                 errors.append(f"{css.relative_to(ROOT)}:{line}: missing CSS asset {ref!r}")
 
 
+def check_discovery(errors: list[str]) -> None:
+    """Keep the generated portfolio routes aligned with robots.txt and sitemap.xml."""
+    languages = json.loads((ROOT / "content" / "languages.json").read_text(encoding="utf-8"))
+    identity = json.loads((ROOT / "content" / "identity.json").read_text(encoding="utf-8"))
+    base_url = identity["site_url"].rstrip("/")
+    expected: set[str] = set()
+    for language in languages:
+        locale_id = language["id"]
+        prefix = "" if locale_id == "en" else f"/{locale_id}"
+        expected.add(base_url + ("/" if not prefix else f"{prefix}/"))
+        for page in ("ci.html", "shi.html", "about.html"):
+            expected.add(f"{base_url}{prefix}/{page}")
+        expected.add(f"{base_url}{prefix}/writing/trainspotting/")
+
+    sitemap = ROOT / "sitemap.xml"
+    try:
+        tree = ET.parse(sitemap)
+    except (ET.ParseError, OSError) as exc:
+        errors.append(f"sitemap.xml: cannot parse sitemap: {exc}")
+        return
+
+    namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+    locations = [
+        (node.text or "").strip()
+        for node in tree.findall("sm:url/sm:loc", namespace)
+    ]
+    duplicates = sorted({url for url in locations if locations.count(url) > 1})
+    for url in duplicates:
+        errors.append(f"sitemap.xml: duplicate URL {url!r}")
+
+    actual = set(locations)
+    for url in sorted(expected - actual):
+        errors.append(f"sitemap.xml: missing generated portfolio URL {url!r}")
+    for url in sorted(actual - expected):
+        errors.append(f"sitemap.xml: unexpected URL {url!r}")
+
+    robots = ROOT / "robots.txt"
+    try:
+        robots_text = robots.read_text(encoding="utf-8")
+    except OSError as exc:
+        errors.append(f"robots.txt: cannot read file: {exc}")
+        return
+    expected_sitemap_line = f"Sitemap: {base_url}/sitemap.xml"
+    if expected_sitemap_line not in robots_text.splitlines():
+        errors.append(
+            f"robots.txt: expected exact discovery line {expected_sitemap_line!r}"
+        )
+
+
 def main() -> int:
     errors: list[str] = []
     docs: dict[Path, Document] = {}
@@ -205,10 +255,11 @@ def main() -> int:
                     errors.append(f"{source.relative_to(ROOT)}:{line}: missing fragment {ref!r}")
 
     check_css(errors)
+    check_discovery(errors)
     if errors:
         print("\n".join(errors), file=sys.stderr)
         return 1
-    print(f"sitecheck: {len(HTML_FILES)} HTML documents, local refs, fragments, images and CSS assets OK")
+    print(f"sitecheck: {len(HTML_FILES)} HTML documents, local refs, fragments, images, CSS assets and discovery files OK")
     return 0
 
 
