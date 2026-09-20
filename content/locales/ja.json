@@ -16,8 +16,6 @@
     "email": "メール",
     "evidence": "エビデンス",
     "evidence_summary": "3図版 · 空間 / 植生 / 熱",
-    "full_text_request": "全文はご希望に応じて提供",
-    "annotations_request": "注釈はご希望に応じて提供",
     "reading": {
       "label": "読みやすさ",
       "title": "読みやすさの設定",
@@ -170,8 +168,6 @@
     "meta_description": "Hanpu Li の詞作品。『甲乙十六首』とその集外一首、そして2026年9月9日付の別組二首を原文と翻訳で収録。",
     "heading": "甲乙十六首",
     "subtitle": "一人の作者が甲と乙、二つの声で書いた十六首の連作。甲には通常、詞に先立つ短い叙述が添えられ、乙の最初の5首は無題。連作の日付は2026年6月9日。7月1日付の集外一首を付す。作者注はご希望に応じて提供。",
-    "source_label": "中国語原文",
-    "translation_label": "日本語訳",
     "outside": "集外",
     "footer": "『甲乙十六首』の注釈はご希望に応じて提供",
     "page_heading": "詞",
@@ -184,8 +180,7 @@
     "meta_title": "屋根が裂ける · Hanpu Li",
     "meta_description": "1年を隔てた同一詩の二稿。改稿は侵食である。",
     "heading": "屋根が裂ける",
-    "subtitle": "無題。第一行から仮題を取った。1年を隔てた同一詩の二稿。改稿は侵食である。",
-    "source_link": "中国語原文"
+    "subtitle": "無題。第一行から仮題を取った。1年を隔てた同一詩の二稿。改稿は侵食である。"
   },
   "notfound": {
     "meta_title": "ページが見つかりません · Hanpu Li",

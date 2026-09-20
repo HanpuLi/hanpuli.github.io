@@ -16,8 +16,6 @@
     "email": "Email",
     "evidence": "Evidence",
     "evidence_summary": "3 plates · spatial / vegetation / thermal",
-    "full_text_request": "full text on request",
-    "annotations_request": "annotations available on request",
     "reading": {
       "label": "Reading options",
       "title": "Reading preferences",
@@ -170,8 +168,6 @@
     "meta_description": "Ci by Hanpu Li: Sixteen Poems of A and B, its out-of-cycle appendix, and a separate pair dated 9 September 2026, with Chinese source text and translations.",
     "heading": "Sixteen Poems of A and B",
     "subtitle": "A sixteen-poem cycle written by one author in two voices, A (甲) and B (乙). A usually gives a prefatory account; B’s first five poems are untitled. The cycle is dated 9 June 2026. One out-of-cycle poem dated 1 July follows as an appendix. The author’s annotations are available on request.",
-    "source_label": "Chinese source",
-    "translation_label": "English translation",
     "outside": "outside",
     "footer": "annotations to Sixteen Poems of A and B available on request",
     "page_heading": "Ci",
@@ -184,8 +180,7 @@
     "meta_title": "The Roof Splits Open · Hanpu Li",
     "meta_description": "Two drafts of one poem, a year apart. The revision is an erosion.",
     "heading": "The Roof Splits Open",
-    "subtitle": "Untitled; named after its first line. Two drafts of one poem, a year apart — the revision is an erosion.",
-    "source_link": "Chinese original"
+    "subtitle": "Untitled; named after its first line. Two drafts of one poem, a year apart — the revision is an erosion."
   },
   "notfound": {
     "meta_title": "Page not found · Hanpu Li",

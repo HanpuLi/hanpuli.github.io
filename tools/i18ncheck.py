@@ -419,22 +419,26 @@ def main() -> int:
                     errors.append(
                         f"{path.relative_to(ROOT)}: expected {expected_alternates} hreflang links, got {alternates}"
                     )
-                nav_numbers = re.findall(
-                    r'<span class="nav-no">(0[1-6])</span>',
-                    text,
+            nav_numbers = re.findall(
+                r'<span class="nav-no">(0[1-6])</span>',
+                text,
+            )
+            if nav_numbers != ["01", "02", "03", "04", "05", "06"]:
+                errors.append(
+                    f"{path.relative_to(ROOT)}: portfolio nav order is {nav_numbers}, expected 01–06"
                 )
-                if nav_numbers != ["01", "02", "03", "04", "05", "06"]:
-                    errors.append(
-                        f"{path.relative_to(ROOT)}: portfolio nav order is {nav_numbers}, expected 01–06"
-                    )
-                expected_current = {"ci.html": "04", "shi.html": "05"}.get(name)
-                if expected_current and not re.search(
-                    rf'<span aria-current="page">\s*<span class="nav-no">{expected_current}</span>',
-                    text,
-                ):
-                    errors.append(
-                        f"{path.relative_to(ROOT)}: expected nav item {expected_current} to be current"
-                    )
+            expected_current = {"ci.html": "04", "shi.html": "05"}.get(name)
+            if expected_current and not re.search(
+                rf'<span aria-current="page">\s*<span class="nav-no">{expected_current}</span>',
+                text,
+            ):
+                errors.append(
+                    f"{path.relative_to(ROOT)}: expected nav item {expected_current} to be current"
+                )
+            if name == "404.html" and 'aria-current="page"' in re.sub(
+                r'<nav class="page-languages".*?</nav>', "", text, flags=re.S
+            ):
+                errors.append(f"{path.relative_to(ROOT)}: 404 portfolio nav must not mark a current section")
             if name == "ci.html":
                 if text.count('class="ci-group ci-cycle"') != 1:
                     errors.append(f"{path.relative_to(ROOT)}: expected one A/B cycle group")

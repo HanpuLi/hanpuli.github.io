@@ -16,8 +16,6 @@
     "email": "E-Mail",
     "evidence": "Belege",
     "evidence_summary": "3 Tafeln · Raum / Vegetation / Wärme",
-    "full_text_request": "Volltext auf Anfrage",
-    "annotations_request": "Anmerkungen auf Anfrage",
     "reading": {
       "label": "Lesen",
       "title": "Leseeinstellungen",
@@ -170,8 +168,6 @@
     "meta_description": "Ci von Hanpu Li: Sechzehn Gedichte von A und B mit einem Anhang außerhalb des Zyklus sowie ein separates Paar vom 9. September 2026.",
     "heading": "Sechzehn Gedichte von A und B",
     "subtitle": "Ein Zyklus aus sechzehn Gedichten, von einer Person in zwei Stimmen geschrieben, A (甲) und B (乙). A gibt meist eine Vorbemerkung; die ersten fünf Gedichte von B sind unbetitelt. Der Zyklus ist auf den 9. Juni 2026 datiert. Ein Gedicht außerhalb des Zyklus vom 1. Juli folgt als Anhang. Die zugehörigen Anmerkungen sind auf Anfrage erhältlich.",
-    "source_label": "Chinesischer Ausgangstext",
-    "translation_label": "Deutsche Übersetzung",
     "outside": "außerhalb des Zyklus",
     "footer": "Anmerkungen zu „Sechzehn Gedichten von A und B“ auf Anfrage",
     "page_heading": "Ci",
@@ -184,8 +180,7 @@
     "meta_title": "Das Dach reißt auf · Hanpu Li",
     "meta_description": "Zwei Fassungen eines Gedichts, ein Jahr auseinander. Die Überarbeitung ist Erosion.",
     "heading": "Das Dach reißt auf",
-    "subtitle": "Unbetitelt; nach der ersten Zeile benannt. Zwei Fassungen eines Gedichts, ein Jahr auseinander · die Überarbeitung ist Erosion.",
-    "source_link": "Chinesisches Original"
+    "subtitle": "Unbetitelt; nach der ersten Zeile benannt. Zwei Fassungen eines Gedichts, ein Jahr auseinander · die Überarbeitung ist Erosion."
   },
   "notfound": {
     "meta_title": "Seite nicht gefunden · Hanpu Li",

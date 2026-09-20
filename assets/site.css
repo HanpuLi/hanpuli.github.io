@@ -144,7 +144,7 @@
 .site-home:not(.locale-zh-hans) .language-nav [lang="zh-Hans"],
 .literary-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"],
 .shi-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"],
-.notfound-page:not(.locale-zh-hans) .notfound-languages [lang="zh-Hans"] {
+.notfound-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"] {
   font-family: "Noto Serif SC Locale", "Songti SC", "Noto Serif CJK SC", serif;
 }
 
@@ -428,8 +428,7 @@ html[data-reading-sans] :is(
   .site-home .project-type,
   .site-home .project-evidence-disclosure summary,
   .site-home .poetry-index > p:first-child,
-  .page-topbar .page-languages,
-  .notfound-languages
+  .page-topbar .page-languages
 ) {
   text-transform: none;
   letter-spacing: normal;
@@ -485,7 +484,6 @@ html[data-reading-large] :is(
   .shi-page .draft h2,
   .shi-page .num,
   .shi-page footer,
-  .notfound-languages,
   .notfound-copy a
 ) {
   font-size: .82rem;
@@ -537,7 +535,9 @@ html[data-reading-measure] :is(.locale-zh, .locale-zh-hans, .locale-ja) :is(
 
 html[data-reading-simple] .site-home .masthead,
 html[data-reading-simple] .literary-page .page-topbar,
-html[data-reading-simple] .shi-page .page-topbar {
+html[data-reading-simple] .shi-page .page-topbar,
+html[data-reading-simple] .essay-page .page-topbar,
+html[data-reading-simple] .notfound-page .page-topbar {
   position: static;
 }
 
@@ -721,8 +721,7 @@ html[data-reading-motion] .site-home::before {
   }
 
   .site-home .language-nav .current,
-  .page-topbar .page-languages .current,
-  .notfound-languages .current {
+  .page-topbar .page-languages .current {
     border-color: currentColor;
   }
 }
@@ -1459,14 +1458,6 @@ html[data-reading-motion] .site-home::before {
   word-break: keep-all;
 }
 
-.site-home.locale-ja .writing-list article > p:not(.writing-no):not(.writing-meta) {
-  max-width: none;
-}
-
-.site-home.locale-ja .writing-list article:nth-child(3) > p:not(.writing-no):not(.writing-meta) {
-  word-break: keep-all;
-}
-
 .site-home.locale-zh .project-main > p:last-child,
 .site-home.locale-zh .writing-list article > p:not(.writing-no),
 .site-home.locale-zh-hans .project-main > p:last-child,
@@ -1769,23 +1760,10 @@ html[data-reading-motion] .site-home::before {
   letter-spacing: .08em;
 }
 
-.literary-page.locale-ru h1,
 .shi-page.locale-ru h1 {
-  font-size: clamp(52px, 5.5vw, 70px);
+  font-size: clamp(38px, 6vw, 66px);
   letter-spacing: .02em;
-}
-
-.literary-page.locale-ru h1 {
-  font-size: clamp(48px, 5vw, 68px);
   text-wrap: balance;
-}
-
-@media (min-width: 761px) {
-  .literary-page.locale-de h1 {
-    font-size: clamp(52px, 5.5vw, 70px);
-    letter-spacing: .035em;
-    text-wrap: balance;
-  }
 }
 
 .literary-page .sub {
@@ -1994,15 +1972,15 @@ html[data-reading-motion] .site-home::before {
 }
 
 .shi-page h1 {
-  grid-column: 1 / 7;
-  font-size: clamp(58px, 7.6vw, 108px);
+  grid-column: 1 / 9;
+  font-size: clamp(48px, 6.5vw, 94px);
   line-height: .92;
   font-weight: 400;
   letter-spacing: .075em;
 }
 
 .shi-page .sub {
-  grid-column: 7 / 13;
+  grid-column: 9 / 13;
   align-self: end;
   max-width: 54ch;
   color: var(--muted);
@@ -2115,47 +2093,9 @@ html[data-reading-motion] .site-home::before {
   padding: var(--gutter);
 }
 
-.notfound-languages {
-  position: fixed;
-  z-index: 20;
-  top: var(--gutter);
-  right: var(--gutter);
-  display: flex;
-  max-width: calc(100vw - (2 * var(--gutter)));
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 4px;
-  font-family: var(--mono);
-  font-size: .8125rem;
-  line-height: 1.2;
-  letter-spacing: .055em;
-  text-transform: uppercase;
-}
-
-.notfound-languages a,
-.notfound-languages .current {
-  display: inline-flex;
-  min-width: 36px;
-  min-height: 44px;
-  align-items: center;
-  justify-content: center;
-  color: var(--muted);
-  text-decoration: none;
-}
-
-.notfound-languages .current {
-  color: var(--ink);
-  border-bottom: 1px solid var(--ink);
-}
-
-.notfound-languages a:hover {
-  color: var(--accent);
-}
-
 .notfound-shell {
   display: grid;
-  min-height: calc(100vh - (2 * var(--gutter)));
-  min-height: calc(100svh - (2 * var(--gutter)));
+  min-height: 0;
   flex: 1;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 0 var(--gap);
@@ -2240,7 +2180,8 @@ html[data-reading-motion] .site-home::before {
 @media (min-width: 761px) {
   .site-home .masthead,
   .literary-page .page-topbar,
-  .shi-page .page-topbar {
+  .shi-page .page-topbar,
+  .notfound-page .page-topbar {
     position: sticky;
     top: 0;
     z-index: 40;
@@ -2354,9 +2295,12 @@ html[data-reading-motion] .site-home::before {
     padding: 64px 0 68px;
   }
 
-  .literary-page h1,
+  .literary-page h1 {
+    font-size: clamp(48px, 7.2vw, 65px);
+  }
+
   .shi-page h1 {
-    font-size: clamp(48px, 7vw, 60px);
+    font-size: clamp(48px, 6.5vw, 59px);
   }
 
   .literary-page .sub,
@@ -2574,14 +2518,10 @@ html[data-reading-motion] .site-home::before {
   }
 
   .site-home .hero-id {
-    grid-column: 8 / 13;
+    grid-column: 5 / 13;
     grid-row: auto;
     margin-top: 34px;
     padding: 0;
-  }
-
-  .site-home:is(.locale-en, .locale-de, .locale-fr, .locale-ru) .hero-id {
-    grid-column: 5 / 13;
   }
 
   .site-home .hero-cover {
@@ -2784,14 +2724,6 @@ html[data-reading-motion] .site-home::before {
     padding: 20px;
   }
 
-  .notfound-languages {
-    position: static;
-    max-width: none;
-    margin: 0 0 24px;
-    justify-content: flex-start;
-    gap: 0;
-  }
-
   .notfound-shell {
     display: grid;
     min-height: 0;
@@ -2842,23 +2774,6 @@ html[data-reading-motion] .site-home::before {
     margin-top: 17px;
   }
 
-  .literary-page header {
-    display: block;
-    padding: 64px 0 68px;
-  }
-
-  .literary-page h1 {
-    font-size: clamp(46px, 15vw, 68px);
-  }
-
-  .literary-page .sub {
-    margin-top: 32px;
-  }
-
-  .literary-page .toc {
-    margin-top: 28px;
-  }
-
   .literary-page .poem {
     display: block;
     padding: 62px 0 72px;
@@ -2876,19 +2791,6 @@ html[data-reading-motion] .site-home::before {
     margin-top: 34px;
     padding-top: 28px;
     border-top: 1px solid var(--line);
-  }
-
-  .shi-page header {
-    display: block;
-    padding: 64px 0 68px;
-  }
-
-  .shi-page h1 {
-    font-size: clamp(46px, 14vw, 68px);
-  }
-
-  .shi-page .sub {
-    margin-top: 30px;
   }
 
   .shi-page main {
@@ -2967,12 +2869,6 @@ html[data-reading-motion] .site-home::before {
     margin-top: 14px;
   }
 
-  .literary-page.locale-ru h1,
-  .shi-page.locale-ru h1 {
-    font-size: clamp(38px, 10.25vw, 44px);
-    line-height: .98;
-    letter-spacing: .035em;
-  }
 }
 
 
@@ -3260,19 +3156,43 @@ html[data-reading-motion] .site-home::before {
    actual reading column rather than to a device breakpoint. */
 .literary-page .wrap,
 .shi-page .wrap,
-.essay-page .wrap {
+.essay-page .wrap,
+.notfound-page {
   container: page-shell / inline-size;
 }
 
-@container page-shell (max-width: 55rem) {
-  .literary-page header,
+@supports (container-type: inline-size) {
+  .literary-page h1 {
+    font-size: clamp(48px, 7.5cqi, 92px);
+  }
+
+  .shi-page h1 {
+    font-size: clamp(48px, 6.5cqi, 94px);
+  }
+
+  .shi-page.locale-ru h1 {
+    font-size: clamp(38px, 6cqi, 66px);
+  }
+}
+
+@container page-shell (max-width: 66rem) {
   .shi-page header {
     display: block;
     padding-block: var(--space-4);
   }
 
+  .shi-page .sub {
+    margin-block-start: var(--space-3);
+  }
+}
+
+@container page-shell (max-width: 55rem) {
+  .literary-page header {
+    display: block;
+    padding-block: var(--space-4);
+  }
+
   .literary-page .sub,
-  .shi-page .sub,
   .literary-page .toc {
     margin-block-start: var(--space-3);
   }
@@ -3353,6 +3273,12 @@ html[data-reading-motion] .site-home::before {
 }
 
 /* Keep accessibility simplification stronger than the modern layout layer. */
+html[data-reading-simple] .site-home .section-nav,
+html[data-reading-simple] .page-topbar .page-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 html[data-reading-simple] .site-home main > section:not(.hero) {
   display: block;
 }

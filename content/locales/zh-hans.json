@@ -16,8 +16,6 @@
     "email": "邮件",
     "evidence": "证据",
     "evidence_summary": "3 图 · 空间 / 植被 / 热环境",
-    "full_text_request": "全文备索",
-    "annotations_request": "笺注全文备索",
     "reading": {
       "label": "阅读选项",
       "title": "阅读偏好",
@@ -170,8 +168,6 @@
     "meta_description": "李函璞词作：《甲乙十六首》及其集外附录，另有二〇二六年九月九日另组二首。",
     "heading": "甲乙十六首",
     "subtitle": "一人分作两声的唱和集：甲多详序，乙前五首无题。十六首并系于二〇二六年六月九日；另附七月一日集外一首。附自撰笺注，备索。此版采用简体字。",
-    "source_label": "原文",
-    "translation_label": "原文",
     "outside": "集外",
     "footer": "《甲乙十六首》笺注全文备索",
     "page_heading": "词",
@@ -184,8 +180,7 @@
     "meta_title": "屋顶裂开 · Hanpu Li 李函璞",
     "meta_description": "《屋顶裂开》两稿，相隔一年——修订在删。",
     "heading": "屋顶裂开",
-    "subtitle": "原无题，以首句名之。同一首诗的两稿，相隔一年；修订在删。此版采用简体字。",
-    "source_link": "中文原作"
+    "subtitle": "原无题，以首句名之。同一首诗的两稿，相隔一年；修订在删。此版采用简体字。"
   },
   "notfound": {
     "meta_title": "页面不存在 · Hanpu Li 李函璞",
