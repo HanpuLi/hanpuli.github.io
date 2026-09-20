@@ -155,8 +155,7 @@
     "scope_title": "One domain, two kinds of pages",
     "scope_body": [
       "The portfolio, literary pages, essay shells, About page and 404 pages share the generated multilingual system above.",
-      "The three Cait Mail Assistant documents under /mail-assistant/ are hand-authored static HTML with a small page-local stylesheet; they reuse the portfolio’s local accessibility script and self-hosted EB Garamond/Courier Prime fonts.",
-      "The refrigerator guide under /fridge/ is intentionally a single self-contained Chinese HTML file: inline CSS, system CJK fonts and a short dependency-free script for text size, contrast and recommendation highlighting. It makes no API calls and loads no external CDN or analytics code."
+      "The three Cait Mail Assistant documents under /mail-assistant/ are hand-authored static HTML with a small page-local stylesheet; they reuse the portfolio’s local accessibility script and self-hosted EB Garamond/Courier Prime fonts."
     ],
     "privacy_title": "Runtime privacy",
     "privacy_body": "The portfolio loads no analytics, advertising network, third-party web font or tracking script. It sets no cookies. The only persistent browser state used by the portfolio is the local reading-preference record.",
@@ -319,8 +318,7 @@
     "scope_title": "一個網域，兩類頁面",
     "scope_body": [
       "作品站、詞頁、詩頁、論文外殼、About 頁與 404 頁共享上述多語生成系統。",
-      "/mail-assistant/ 下的三份 Cait Mail Assistant 文件是手寫靜態 HTML，配一份小型頁面 CSS；它們沿用作品站的本地無障礙 script，以及自行託管的 EB Garamond／Courier Prime 字體。",
-      "/fridge/ 下的冰箱指南刻意做成單一、自包含的中文 HTML：inline CSS、系統 CJK 字體，以及一小段無依賴 JavaScript，用於字級、對比與推薦卡高亮。它不呼叫 API，也不載入外部 CDN 或 analytics。"
+      "/mail-assistant/ 下的三份 Cait Mail Assistant 文件是手寫靜態 HTML，配一份小型頁面 CSS；它們沿用作品站的本地無障礙 script，以及自行託管的 EB Garamond／Courier Prime 字體。"
     ],
     "privacy_title": "瀏覽器執行時的私隱",
     "privacy_body": "作品站不載入 analytics、廣告網絡、第三方 web font 或追蹤 script，也不設 cookie。作品站唯一持久的瀏覽器狀態，是本地閱讀偏好記錄。",
@@ -483,8 +481,7 @@
     "scope_title": "一个域名，两类页面",
     "scope_body": [
       "作品站、词页、诗页、论文外壳、About 页与 404 页共享上述多语言生成系统。",
-      "/mail-assistant/ 下的三份 Cait Mail Assistant 文档是手写静态 HTML，配一份小型页面 CSS；它们沿用作品站的本地无障碍 script，以及自行托管的 EB Garamond／Courier Prime 字体。",
-      "/fridge/ 下的冰箱指南刻意做成单一、自包含的中文 HTML：inline CSS、系统 CJK 字体，以及一小段无依赖 JavaScript，用于字号、对比与推荐卡高亮。它不调用 API，也不加载外部 CDN 或 analytics。"
+      "/mail-assistant/ 下的三份 Cait Mail Assistant 文档是手写静态 HTML，配一份小型页面 CSS；它们沿用作品站的本地无障碍 script，以及自行托管的 EB Garamond／Courier Prime 字体。"
     ],
     "privacy_title": "浏览器运行时的隐私",
     "privacy_body": "作品站不加载 analytics、广告网络、第三方 web font 或追踪 script，也不设置 cookie。作品站唯一持久的浏览器状态，是本地阅读偏好记录。",
@@ -647,8 +644,7 @@
     "scope_title": "一つのドメイン、二種類のページ",
     "scope_body": [
       "ポートフォリオ、詞、詩、論文シェル、About ページ、404 は上記の多言語生成システムを共有する。",
-      "/mail-assistant/ の Cait Mail Assistant 3文書は手書きの静的 HTML と小さなページ専用 CSS で構成し、ポートフォリオのローカルなアクセシビリティ script と自前配信の EB Garamond／Courier Prime を再利用する。",
-      "/fridge/ の冷蔵庫ガイドは意図的に単一の自己完結型中国語 HTML として作っている。inline CSS、システム CJK 書体、文字サイズ・コントラスト・推薦カード強調のための依存なし JavaScript だけを使い、API、外部 CDN、analytics は読み込まない。"
+      "/mail-assistant/ の Cait Mail Assistant 3文書は手書きの静的 HTML と小さなページ専用 CSS で構成し、ポートフォリオのローカルなアクセシビリティ script と自前配信の EB Garamond／Courier Prime を再利用する。"
     ],
     "privacy_title": "実行時のプライバシー",
     "privacy_body": "ポートフォリオは analytics、広告ネットワーク、第三者 web font、追跡 script を読み込まず、cookie も設定しない。永続化するブラウザ状態はローカルの読書設定だけである。",
@@ -811,8 +807,7 @@
     "scope_title": "Eine Domain, zwei Arten von Seiten",
     "scope_body": [
       "Portfolio, Literaturseiten, Essay-Hüllen, About-Seite und 404-Seiten teilen das oben beschriebene mehrsprachige Generierungssystem.",
-      "Die drei Cait-Mail-Assistant-Dokumente unter /mail-assistant/ sind handgeschriebenes statisches HTML mit einer kleinen lokalen CSS-Datei; sie verwenden das lokale Accessibility-Skript des Portfolios sowie selbst gehostete EB-Garamond- und Courier-Prime-Schriften.",
-      "Der Kühlschrank-Ratgeber unter /fridge/ ist absichtlich eine einzige eigenständige chinesische HTML-Datei: Inline-CSS, System-CJK-Schriften und ein kurzes abhängigkeitfreies JavaScript für Schriftgröße, Kontrast und das Hervorheben von Empfehlungen. Er ruft keine APIs auf und lädt weder externe CDNs noch Analytics."
+      "Die drei Cait-Mail-Assistant-Dokumente unter /mail-assistant/ sind handgeschriebenes statisches HTML mit einer kleinen lokalen CSS-Datei; sie verwenden das lokale Accessibility-Skript des Portfolios sowie selbst gehostete EB-Garamond- und Courier-Prime-Schriften."
     ],
     "privacy_title": "Datenschutz zur Laufzeit",
     "privacy_body": "Das Portfolio lädt weder Analytics noch Werbenetzwerke, Drittanbieter-Webfonts oder Tracking-Skripte und setzt keine Cookies. Der einzige dauerhaft gespeicherte Browserzustand des Portfolios sind die lokalen Leseeinstellungen.",
@@ -975,8 +970,7 @@
     "scope_title": "Un domaine, deux types de pages",
     "scope_body": [
       "Le portfolio, les pages littéraires, les enveloppes d’essai, la page About et les pages 404 partagent le système multilingue généré ci-dessus.",
-      "Les trois documents Cait Mail Assistant sous /mail-assistant/ sont du HTML statique écrit à la main avec une petite feuille CSS locale ; ils réutilisent le script d’accessibilité local du portfolio ainsi que les polices EB Garamond et Courier Prime auto-hébergées.",
-      "Le guide des réfrigérateurs sous /fridge/ est volontairement un seul fichier HTML chinois autonome : CSS inline, polices CJK système et un court JavaScript sans dépendance pour la taille du texte, le contraste et la mise en évidence des recommandations. Il n’appelle aucune API et ne charge ni CDN externe ni analytics."
+      "Les trois documents Cait Mail Assistant sous /mail-assistant/ sont du HTML statique écrit à la main avec une petite feuille CSS locale ; ils réutilisent le script d’accessibilité local du portfolio ainsi que les polices EB Garamond et Courier Prime auto-hébergées."
     ],
     "privacy_title": "Vie privée à l’exécution",
     "privacy_body": "Le portfolio ne charge ni analytics, ni réseau publicitaire, ni web font tierce, ni script de suivi, et ne dépose aucun cookie. Le seul état persistant du navigateur est l’enregistrement local des préférences de lecture.",
@@ -1139,8 +1133,7 @@
     "scope_title": "Один домен, два типа страниц",
     "scope_body": [
       "Портфолио, литературные страницы, оболочки эссе, страница About и 404 используют описанную выше многоязычную систему генерации.",
-      "Три документа Cait Mail Assistant в /mail-assistant/ — это вручную написанный статический HTML с небольшой локальной таблицей стилей; они повторно используют локальный accessibility script портфолио и самостоятельно размещённые шрифты EB Garamond и Courier Prime.",
-      "Гид по холодильникам в /fridge/ намеренно сделан одним самодостаточным китайским HTML-файлом: inline CSS, системные CJK-шрифты и короткий JavaScript без зависимостей для размера текста, контраста и подсветки рекомендаций. Он не вызывает API и не загружает внешние CDN или analytics."
+      "Три документа Cait Mail Assistant в /mail-assistant/ — это вручную написанный статический HTML с небольшой локальной таблицей стилей; они повторно используют локальный accessibility script портфолио и самостоятельно размещённые шрифты EB Garamond и Courier Prime."
     ],
     "privacy_title": "Приватность во время выполнения",
     "privacy_body": "Портфолио не загружает analytics, рекламные сети, сторонние web fonts или tracking scripts и не устанавливает cookies. Единственное постоянное состояние браузера — локальная запись настроек чтения.",
