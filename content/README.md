@@ -20,8 +20,7 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `about-site.json` — localised implementation notes for the public About-this-site page, including architecture, typography, accessibility, performance and QA.
 
 English is the default site at `/`. Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are emitted at
-`/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Language switching is ordinary static navigation:
-there is no runtime translation layer and no language-selection JavaScript.
+`/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Ordinary language switching is static navigation and the published pages do not translate at runtime. The one exception is the root custom 404: GitHub Pages uses that same file for real missing URLs under every locale, so it contains a small path-aware router that selects the already-authored locale copy in place while preserving the 404 response.
 
 ## Editing
 

@@ -71,8 +71,14 @@ class AuditParser(HTMLParser):
         self.skip_hrefs: list[tuple[str, int]] = []
         self._capture: list[dict[str, object]] = []
         self._label_depth = 0
+        self._template_depth = 0
 
     def handle_starttag(self, tag: str, attrs_raw: list[tuple[str, str | None]]) -> None:
+        if tag == "template":
+            self._template_depth += 1
+            return
+        if self._template_depth:
+            return
         attrs = {k.lower(): v for k, v in attrs_raw}
         line, _ = self.getpos()
         ident = attrs.get("id")
@@ -139,6 +145,12 @@ class AuditParser(HTMLParser):
         self.handle_starttag(tag, attrs)
 
     def handle_endtag(self, tag: str) -> None:
+        if tag == "template":
+            if self._template_depth:
+                self._template_depth -= 1
+            return
+        if self._template_depth:
+            return
         if tag == "label" and self._label_depth:
             self._label_depth -= 1
         if tag in {"a", "button"}:
@@ -148,7 +160,7 @@ class AuditParser(HTMLParser):
                     break
 
     def handle_data(self, data: str) -> None:
-        if not data:
+        if self._template_depth or not data:
             return
         for item in self._capture:
             item["text"] = str(item["text"]) + data

@@ -680,7 +680,9 @@ def about_scope_body_html(locale_id: str) -> str:
 
 
 def font_preloads(locale_id: str, page: str) -> str:
-    prefix = asset_prefix(locale_id)
+    # GitHub Pages serves the root 404 document at the originally requested URL.
+    # Root-relative assets therefore keep working for arbitrarily deep missing paths.
+    prefix = "/" if page == "404" else asset_prefix(locale_id)
     fonts = [
         "eb-garamond-latin-400.woff2",
         "shippori-mincho-common.woff2",
@@ -703,7 +705,7 @@ def font_preloads(locale_id: str, page: str) -> str:
     )
 
 
-def reading_tools(locale: dict[str, Any]) -> str:
+def reading_tools(locale: dict[str, Any], *, inert: bool = False) -> str:
     reading = locale["common"]["reading"]
     label = html.escape(reading["label"])
     title = html.escape(reading["title"])
@@ -724,8 +726,10 @@ def reading_tools(locale: dict[str, Any]) -> str:
         for name, key in options
     )
     reset = html.escape(reading["reset"])
+    container = "div" if inert else "aside"
+    label_attr = "data-label" if inert else "aria-label"
     return (
-        f'<aside class="reading-tools" aria-label="{html.escape(reading["label"], quote=True)}">\n'
+        f'<{container} class="reading-tools" {label_attr}="{html.escape(reading["label"], quote=True)}">\n'
         '  <details>\n'
         f'    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span>'
         f'<span class="reading-tools-label" aria-hidden="true">{label}</span>'
@@ -739,7 +743,113 @@ def reading_tools(locale: dict[str, Any]) -> str:
         f'      <button type="button" class="reading-reset" data-reading-reset>{reset}</button>\n'
         '    </div>\n'
         '  </details>\n'
-        '</aside>'
+        f'</{container}>'
+    )
+
+
+def notfound_locale_template(locale_id: str) -> str:
+    """Return inert, fully escaped 404 markup for one authored locale."""
+    locale = load_json(CONTENT / "locales" / f"{locale_id}.json")
+    language = LANG_BY_ID[locale_id]
+    home_href = html.escape(page_path(locale_id, "index"), quote=True)
+    ci_href = html.escape(page_path(locale_id, "ci") + "#b2", quote=True)
+    template_id = html.escape(f"notfound-locale-{locale_id}", quote=True)
+    html_lang = html.escape(language["html_lang"], quote=True)
+    title = html.escape(locale["notfound"]["meta_title"], quote=True)
+    primary = html.escape(IDENTITY["primary_name"])
+    chinese_name = html.escape(IDENTITY["chinese_name"])
+    skip = html.escape(locale["common"]["skip_content"])
+    site_nav_label = html.escape(locale["common"]["site_nav_label"], quote=True)
+    language_nav_label = html.escape(locale["common"]["language_nav_label"], quote=True)
+    source = html.escape(locale["notfound"]["source"])
+    line = html.escape(locale["notfound"]["line"])
+    description = html.escape(locale["notfound"]["description"])
+    home = html.escape(locale["notfound"]["home"])
+
+    return (
+        f'<template id="{template_id}" data-html-lang="{html_lang}" data-title="{title}">\n'
+        f'  <a class="skip-link" href="#main">{skip}</a>\n'
+        f'  {reading_tools(locale, inert=True)}\n'
+        '  <div class="page-topbar" data-notfound-header>\n'
+        f'    <a class="page-wordmark" href="{home_href}">{primary} '
+        f'<span lang="zh-Hant-HK">{chinese_name}</span></a>\n'
+        f'    <div class="page-nav" data-label="{site_nav_label}" data-notfound-nav>\n'
+        f'      {portfolio_nav_html(locale_id, locale)}\n'
+        '    </div>\n'
+        f'    <div class="page-languages" data-label="{language_nav_label}" data-notfound-languages>\n'
+        f'      {language_switcher(locale_id, "404")}\n'
+        '    </div>\n'
+        '  </div>\n'
+        '  <div class="notfound-shell" data-notfound-main tabindex="-1">\n'
+        '    <p class="notfound-code" aria-hidden="true">404</p>\n'
+        '    <div class="notfound-copy">\n'
+        f'      <p class="notfound-source"><a href="{ci_href}">{source}</a></p>\n'
+        f'      <h1>{line}</h1>\n'
+        f'      <p class="notfound-description">{description}</p>\n'
+        f'      <a class="notfound-home" href="{home_href}">{home}</a>\n'
+        '    </div>\n'
+        '  </div>\n'
+        '</template>'
+    )
+
+
+def notfound_runtime() -> str:
+    """Localise GitHub Pages' root custom 404 without parsing strings as HTML."""
+    templates = "\n".join(notfound_locale_template(item["id"]) for item in LANGUAGES)
+    locale_prefixes = {
+        item["html_lang"]: ("" if item["id"] == ROOT_LOCALE else f"/{item['id']}")
+        for item in LANGUAGES
+    }
+    prefixes_json = json.dumps(locale_prefixes, ensure_ascii=False, separators=(",", ":"))
+    return (
+        templates
+        + '\n<script data-real-404-router>\n'
+        '(() => {\n'
+        '  const match = location.pathname.match(/^\\/(zh-hans|zh|ja|de|fr|ru)(?=\\/|$)/);\n'
+        '  const localeId = match ? match[1] : "en";\n'
+        '  const template = document.getElementById("notfound-locale-" + localeId);\n'
+        '  if (!(template instanceof HTMLTemplateElement)) return;\n'
+        '  const fragment = template.content.cloneNode(true);\n'
+        '  const upgrade = (selector, tag, labelled = false) => {\n'
+        '    const source = fragment.querySelector(selector);\n'
+        '    if (!source) return null;\n'
+        '    const element = document.createElement(tag);\n'
+        '    element.className = source.className;\n'
+        '    if (labelled && source.dataset.label) element.ariaLabel = source.dataset.label;\n'
+        '    while (source.firstChild) element.append(source.firstChild);\n'
+        '    source.replaceWith(element);\n'
+        '    return element;\n'
+        '  };\n'
+        '  const readingTools = upgrade(".reading-tools", "aside", true);\n'
+        '  upgrade(".page-nav", "nav", true);\n'
+        '  const languageNav = upgrade(".page-languages", "nav", true);\n'
+        '  const topbar = upgrade(".page-topbar", "header");\n'
+        '  const main = upgrade(".notfound-shell", "main");\n'
+        '  if (main) { main.id = "main"; main.tabIndex = -1; }\n'
+        '  for (const [selector, replacement] of [\n'
+        '    [".skip-link", fragment.querySelector(".skip-link")],\n'
+        '    [".reading-tools", readingTools],\n'
+        '    [".page-topbar", topbar],\n'
+        '    [".notfound-shell", main],\n'
+        '  ]) {\n'
+        '    const current = document.querySelector(selector);\n'
+        '    if (current && replacement) current.replaceWith(replacement);\n'
+        '  }\n'
+        '  document.documentElement.lang = template.dataset.htmlLang || "en-GB";\n'
+        '  document.title = template.dataset.title || document.title;\n'
+        '  document.body.className = "notfound-page locale-" + localeId;\n'
+        '  let tail = location.pathname;\n'
+        '  if (localeId !== "en") tail = tail.slice(localeId.length + 1) || "/";\n'
+        '  tail = "/" + tail.replace(/^\\/+/, "");\n'
+        f'  const prefixes = {prefixes_json};\n'
+        '  if (!languageNav) return;\n'
+        '  for (const link of languageNav.querySelectorAll("a[hreflang]")) {\n'
+        '    const prefix = prefixes[link.getAttribute("hreflang")];\n'
+        '    if (prefix === undefined) continue;\n'
+        '    link.href = prefix + tail;\n'
+        '  }\n'
+        '})();\n'
+        '</script>'
     )
 
 
@@ -828,14 +938,15 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "CI_GLYPH": "词" if locale_id == "zh-hans" else "詞",
         "SHI_GLYPH": "诗" if locale_id == "zh-hans" else "詩",
         "LOCALE": locale_id,
-        "ASSET_PREFIX": asset_prefix(locale_id),
+        "ASSET_PREFIX": "/" if page == "404" else asset_prefix(locale_id),
         "CANONICAL_URL": html.escape(canonical, quote=True),
         "HREFLANG_LINKS": hreflang_links(page),
         "OG_LOCALE": html.escape(lang["og_locale"], quote=True),
         "SOCIAL_META": social_meta,
         "STRUCTURED_DATA": structured_data,
-        "ICON_LINKS": icon_links(asset_prefix(locale_id)),
+        "ICON_LINKS": icon_links("/" if page == "404" else asset_prefix(locale_id)),
         "FONT_PRELOADS": font_preloads(locale_id, page),
+        "NOTFOUND_RUNTIME": notfound_runtime() if page == "404" and locale_id == ROOT_LOCALE else "",
         "READING_TOOLS": reading_tools(locale),
         "HERO_FOOTNOTE_MARK": hero_footnote_mark,
         "HERO_FOOTNOTE": hero_footnote,

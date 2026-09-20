@@ -2,7 +2,7 @@
 
 Personal portfolio and writing site for Hanpu Li, published with GitHub Pages at https://hanpuli.github.io/.
 
-The site is deliberately static: editorial HTML/CSS, local image/font assets and no client-side application framework. A small standard-library Python generator produces complete static English, Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian editions from structured content; there is no runtime translation layer. The repository also hosts the public privacy/terms pages for the mail-assistant project.
+The site is deliberately static: editorial HTML/CSS, local image/font assets and no client-side application framework. A small standard-library Python generator produces complete static English, Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian editions from structured content. Ordinary pages have no runtime translation layer; the root custom 404 carries a small path-aware locale router because GitHub Pages serves the same root 404 document for real missing URLs in every language tree. The repository also hosts the public privacy/terms pages for the mail-assistant project.
 
 ## Local checks
 
@@ -25,7 +25,7 @@ Browser QA is pinned in `package-lock.json`. After `npm ci`, run:
 npm run qa
 ```
 
-This validates tracked public HTML, then uses Chromium to exercise the seven portfolio locales at 320, 390, 768 and 1440 px across the home, ci, poem, About, essay and 404 page types. It checks horizontal overflow and overlapping interactive targets and runs axe-core at narrow and wide widths. The same suite runs in the `browser-qa` CI job after the dependency-free checks pass.
+This validates tracked public HTML, then uses Chromium to exercise the seven portfolio locales at 320, 390, 768 and 1440 px across the home, ci, poem, About, essay and 404 page types. It checks horizontal overflow and overlapping interactive targets and runs axe-core at narrow and wide widths. A second browser pass serves real missing URLs with GitHub Pages-style custom-404 semantics and verifies the 404 status, path-based locale selection, root-relative stylesheet loading, language switching and axe results at phone and desktop widths. The same suite runs in the `browser-qa` CI job after the dependency-free checks pass.
 
 The Traditional Chinese literary source remains canonical. When `content/ci-source.json` or `content/shi-source.json` changes, regenerate the script-only Simplified Chinese mirrors before building:
 

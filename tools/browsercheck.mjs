@@ -4,7 +4,7 @@ import { setTimeout as sleep } from "node:timers/promises";
 import AxeBuilder from "@axe-core/playwright";
 import { chromium } from "@playwright/test";
 
-const PORT = 8765;
+const PORT = Number(process.env.PORT || (18000 + (process.pid % 10000)));
 const BASE = `http://127.0.0.1:${PORT}`;
 const locales = ["", "zh", "zh-hans", "ja", "de", "fr", "ru"];
 const pageSuffixes = [
