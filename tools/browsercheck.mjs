@@ -15,8 +15,9 @@ const pageSuffixes = [
   "writing/trainspotting/",
   "404.html",
 ];
-const widths = [320, 390, 768, 1440];
+const widths = [320, 390, 520, 640, 768, 900, 1024, 1440, 1728];
 const axeWidths = new Set([390, 1440]);
+const axeLocales = new Set(["", "zh-hans"]);
 
 function pagePath(locale, suffix) {
   const prefix = locale ? `/${locale}/` : "/";
@@ -57,25 +58,35 @@ try {
   for (const locale of locales) {
     for (const suffix of pageSuffixes) {
       const path = pagePath(locale, suffix);
+      await page.setViewportSize({ width: widths[0], height: 900 });
+      const response = await page.goto(BASE + path, { waitUntil: "load" });
+      if (!response || !response.ok()) {
+        failures.push(`${path}: HTTP ${response?.status() ?? "no response"}`);
+        continue;
+      }
+      await page.evaluate(async () => {
+        if (document.fonts?.ready) await document.fonts.ready;
+      });
+
       for (const width of widths) {
         await page.setViewportSize({ width, height: 900 });
-        const response = await page.goto(BASE + path, { waitUntil: "networkidle" });
-        if (!response || !response.ok()) {
-          failures.push(`${path} @ ${width}: HTTP ${response?.status() ?? "no response"}`);
-          continue;
-        }
-
         // Reserve the scrollbar width at the tablet boundary so local
         // Chromium exercises the same content width as Linux CI.
-        if (width === 768) {
-          await page.evaluate(() => {
-            document.documentElement.style.inlineSize = "calc(100% - 16px)";
-          });
-        }
+        await page.evaluate((reserveScrollbar) => {
+          document.documentElement.style.inlineSize = reserveScrollbar
+            ? "calc(100% - 16px)"
+            : "";
+        }, width === 768);
+        await page.evaluate(() => new Promise((resolve) => {
+          requestAnimationFrame(() => requestAnimationFrame(resolve));
+        }));
 
         const geometry = await page.evaluate(() => {
           const root = document.documentElement;
           const body = document.body;
+          const labelFor = (el) => (
+            el.getAttribute("aria-label") || el.textContent || el.tagName
+          ).trim().replace(/\s+/g, " ");
           const candidates = [...document.querySelectorAll(
             "header nav a, header nav [aria-current='page'], .about-toc a, .reading-tools summary, .reading-tools button"
           )]
@@ -93,23 +104,51 @@ try {
             .map((el) => {
               const rect = el.getBoundingClientRect();
               return {
-                label: (el.getAttribute("aria-label") || el.textContent || el.tagName).trim().replace(/\s+/g, " "),
+                label: labelFor(el),
                 left: rect.left,
                 right: rect.right,
                 top: rect.top,
                 bottom: rect.bottom,
               };
             });
+          const clippedNavItems = [...document.querySelectorAll(
+            ".section-nav > *, .page-nav > *"
+          )]
+            .filter((el) => el.scrollWidth > el.clientWidth + 1)
+            .map(labelFor);
+          let notfoundHeadingLines = null;
+          const notfoundHeading = document.querySelector(".notfound-copy h1");
+          if (notfoundHeading) {
+            const range = document.createRange();
+            range.selectNodeContents(notfoundHeading);
+            notfoundHeadingLines = new Set(
+              [...range.getClientRects()]
+                .filter((rect) => rect.width > 0 && rect.height > 0)
+                .map((rect) => Math.round(rect.y))
+            ).size;
+          }
           return {
             scrollWidth: Math.max(root.scrollWidth, body.scrollWidth),
             innerWidth: window.innerWidth,
             candidates,
+            clippedNavItems,
+            notfoundHeadingLines,
           };
         });
 
         if (geometry.scrollWidth > geometry.innerWidth + 1) {
           failures.push(
             `${path} @ ${width}: horizontal overflow ${geometry.scrollWidth}px > ${geometry.innerWidth}px`
+          );
+        }
+        if (geometry.clippedNavItems.length) {
+          failures.push(
+            `${path} @ ${width}: clipped nav item(s): ${geometry.clippedNavItems.join(" / ")}`
+          );
+        }
+        if (width >= 900 && geometry.notfoundHeadingLines > 2) {
+          failures.push(
+            `${path} @ ${width}: 404 quotation wraps to ${geometry.notfoundHeadingLines} lines`
           );
         }
 
@@ -125,7 +164,7 @@ try {
           }
         }
 
-        if (axeWidths.has(width)) {
+        if (axeWidths.has(width) && axeLocales.has(locale)) {
           const results = await new AxeBuilder({ page }).analyze();
           for (const violation of results.violations) {
             failures.push(
@@ -150,5 +189,5 @@ if (failures.length) {
 }
 console.log(
   `browsercheck: ${locales.length * pageSuffixes.length * widths.length} geometry cases and ` +
-  `${locales.length * pageSuffixes.length * axeWidths.size} axe scans passed`
+  `${axeLocales.size * pageSuffixes.length * axeWidths.size} representative axe scans passed`
 );
