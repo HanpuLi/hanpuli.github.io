@@ -492,9 +492,15 @@ def main() -> int:
             for icon in ("assets/site-mark.svg", "assets/apple-touch-icon.png"):
                 if icon not in text:
                     errors.append(f"{path.relative_to(ROOT)}: missing shared icon {icon}")
+            visible_text = re.sub(
+                r"<template\b[^>]*>.*?</template>",
+                "",
+                text,
+                flags=re.S,
+            )
             nav_numbers = re.findall(
                 r'<span class="nav-no">(0[1-6])</span>',
-                text,
+                visible_text,
             )
             if nav_numbers != ["01", "02", "03", "04", "05", "06"]:
                 errors.append(
@@ -545,7 +551,7 @@ def main() -> int:
                         f"{path.relative_to(ROOT)}: page footer must return to the current-locale home"
                     )
             if name == "404.html" and 'aria-current="page"' in re.sub(
-                r'<nav class="page-languages".*?</nav>', "", text, flags=re.S
+                r'<nav class="page-languages".*?</nav>', "", visible_text, flags=re.S
             ):
                 errors.append(f"{path.relative_to(ROOT)}: 404 portfolio nav must not mark a current section")
             if name == "index.html":
@@ -666,11 +672,15 @@ def main() -> int:
                         f"{path.relative_to(ROOT)}: 404 assets must be root-relative so real nested misses stay styled"
                     )
                 if locale == "en":
-                    if 'id="notfound-locales"' not in text or 'data-real-404-router' not in text:
+                    if 'data-real-404-router' not in text:
                         errors.append("root 404 must include the real-miss locale router")
                     for routed_locale in locales:
-                        if f'\\"{routed_locale}\\":' not in text and f'"{routed_locale}":' not in text:
-                            errors.append(f"root 404 locale router is missing {routed_locale}")
+                        if f'id="notfound-locale-{routed_locale}"' not in text:
+                            errors.append(
+                                f"root 404 locale router is missing inert template {routed_locale}"
+                            )
+                    if ".innerHTML" in text or ".outerHTML" in text:
+                        errors.append("root 404 locale router must not parse locale strings as HTML")
 
     if errors:
         print("\n".join(errors), file=sys.stderr)

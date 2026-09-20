@@ -705,7 +705,7 @@ def font_preloads(locale_id: str, page: str) -> str:
     )
 
 
-def reading_tools(locale: dict[str, Any]) -> str:
+def reading_tools(locale: dict[str, Any], *, inert: bool = False) -> str:
     reading = locale["common"]["reading"]
     label = html.escape(reading["label"])
     title = html.escape(reading["title"])
@@ -726,8 +726,10 @@ def reading_tools(locale: dict[str, Any]) -> str:
         for name, key in options
     )
     reset = html.escape(reading["reset"])
+    container = "div" if inert else "aside"
+    label_attr = "data-label" if inert else "aria-label"
     return (
-        f'<aside class="reading-tools" aria-label="{html.escape(reading["label"], quote=True)}">\n'
+        f'<{container} class="reading-tools" {label_attr}="{html.escape(reading["label"], quote=True)}">\n'
         '  <details>\n'
         f'    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span>'
         f'<span class="reading-tools-label" aria-hidden="true">{label}</span>'
@@ -741,83 +743,110 @@ def reading_tools(locale: dict[str, Any]) -> str:
         f'      <button type="button" class="reading-reset" data-reading-reset>{reset}</button>\n'
         '    </div>\n'
         '  </details>\n'
-        '</aside>'
+        f'</{container}>'
+    )
+
+
+def notfound_locale_template(locale_id: str) -> str:
+    """Return inert, fully escaped 404 markup for one authored locale."""
+    locale = load_json(CONTENT / "locales" / f"{locale_id}.json")
+    language = LANG_BY_ID[locale_id]
+    home_href = html.escape(page_path(locale_id, "index"), quote=True)
+    ci_href = html.escape(page_path(locale_id, "ci") + "#b2", quote=True)
+    template_id = html.escape(f"notfound-locale-{locale_id}", quote=True)
+    html_lang = html.escape(language["html_lang"], quote=True)
+    title = html.escape(locale["notfound"]["meta_title"], quote=True)
+    primary = html.escape(IDENTITY["primary_name"])
+    chinese_name = html.escape(IDENTITY["chinese_name"])
+    skip = html.escape(locale["common"]["skip_content"])
+    site_nav_label = html.escape(locale["common"]["site_nav_label"], quote=True)
+    language_nav_label = html.escape(locale["common"]["language_nav_label"], quote=True)
+    source = html.escape(locale["notfound"]["source"])
+    line = html.escape(locale["notfound"]["line"])
+    description = html.escape(locale["notfound"]["description"])
+    home = html.escape(locale["notfound"]["home"])
+
+    return (
+        f'<template id="{template_id}" data-html-lang="{html_lang}" data-title="{title}">\n'
+        f'  <a class="skip-link" href="#main">{skip}</a>\n'
+        f'  {reading_tools(locale, inert=True)}\n'
+        '  <div class="page-topbar" data-notfound-header>\n'
+        f'    <a class="page-wordmark" href="{home_href}">{primary} '
+        f'<span lang="zh-Hant-HK">{chinese_name}</span></a>\n'
+        f'    <div class="page-nav" data-label="{site_nav_label}" data-notfound-nav>\n'
+        f'      {portfolio_nav_html(locale_id, locale)}\n'
+        '    </div>\n'
+        f'    <div class="page-languages" data-label="{language_nav_label}" data-notfound-languages>\n'
+        f'      {language_switcher(locale_id, "404")}\n'
+        '    </div>\n'
+        '  </div>\n'
+        '  <div class="notfound-shell" data-notfound-main tabindex="-1">\n'
+        '    <p class="notfound-code" aria-hidden="true">404</p>\n'
+        '    <div class="notfound-copy">\n'
+        f'      <p class="notfound-source"><a href="{ci_href}">{source}</a></p>\n'
+        f'      <h1>{line}</h1>\n'
+        f'      <p class="notfound-description">{description}</p>\n'
+        f'      <a class="notfound-home" href="{home_href}">{home}</a>\n'
+        '    </div>\n'
+        '  </div>\n'
+        '</template>'
     )
 
 
 def notfound_runtime() -> str:
-    """Localise the root custom-404 in place for a missing locale-prefixed URL.
-
-    GitHub Pages always serves /404.html for a real miss, even when the requested
-    path lives under /zh/, /ja/, etc. The response must remain a 404, so this
-    enhances the root document instead of redirecting to a 200 /<locale>/404.html.
-    """
-    payload: dict[str, dict[str, str]] = {}
-    for language in LANGUAGES:
-        lid = language["id"]
-        locale = load_json(CONTENT / "locales" / f"{lid}.json")
-        payload[lid] = {
-            "id": lid,
-            "htmlLang": language["html_lang"],
-            "title": locale["notfound"]["meta_title"],
-            "skip": locale["common"]["skip_content"],
-            "readingHtml": reading_tools(locale),
-            "homeHref": page_path(lid, "index"),
-            "siteNavLabel": locale["common"]["site_nav_label"],
-            "navHtml": portfolio_nav_html(lid, locale),
-            "languageNavLabel": locale["common"]["language_nav_label"],
-            "languageHtml": language_switcher(lid, "404"),
-            "sourceHref": page_path(lid, "ci") + "#b2",
-            "source": locale["notfound"]["source"],
-            "line": locale["notfound"]["line"],
-            "description": locale["notfound"]["description"],
-            "home": locale["notfound"]["home"],
-        }
-
-    # Escaping '<' prevents user-facing content from ever terminating the JSON
-    # script element if future copy happens to contain a literal </script>.
-    payload_json = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+    """Localise GitHub Pages' root custom 404 without parsing strings as HTML."""
+    templates = "\n".join(notfound_locale_template(item["id"]) for item in LANGUAGES)
+    locale_prefixes = {
+        item["html_lang"]: ("" if item["id"] == ROOT_LOCALE else f"/{item['id']}")
+        for item in LANGUAGES
+    }
+    prefixes_json = json.dumps(locale_prefixes, ensure_ascii=False, separators=(",", ":"))
     return (
-        '<script type="application/json" id="notfound-locales">' + payload_json + '</script>\n'
-        '<script data-real-404-router>\n'
+        templates
+        + '\n<script data-real-404-router>\n'
         '(() => {\n'
-        '  const node = document.getElementById("notfound-locales");\n'
-        '  if (!node) return;\n'
-        '  const locales = JSON.parse(node.textContent);\n'
         '  const match = location.pathname.match(/^\\/(zh-hans|zh|ja|de|fr|ru)(?=\\/|$)/);\n'
         '  const localeId = match ? match[1] : "en";\n'
-        '  const data = locales[localeId];\n'
-        '  if (!data) return;\n'
-        '  document.documentElement.lang = data.htmlLang;\n'
-        '  document.title = data.title;\n'
-        '  document.body.className = "notfound-page locale-" + data.id;\n'
-        '  document.querySelector(".skip-link").textContent = data.skip;\n'
-        '  document.querySelector(".reading-tools").outerHTML = data.readingHtml;\n'
-        '  const wordmark = document.querySelector(".page-wordmark");\n'
-        '  wordmark.setAttribute("href", data.homeHref);\n'
-        '  const siteNav = document.querySelector(".page-nav");\n'
-        '  siteNav.setAttribute("aria-label", data.siteNavLabel);\n'
-        '  siteNav.innerHTML = data.navHtml;\n'
-        '  const languageNav = document.querySelector(".page-languages");\n'
-        '  languageNav.setAttribute("aria-label", data.languageNavLabel);\n'
-        '  languageNav.innerHTML = data.languageHtml;\n'
-        '  const source = document.querySelector(".notfound-source a");\n'
-        '  source.setAttribute("href", data.sourceHref);\n'
-        '  source.textContent = data.source;\n'
-        '  document.querySelector(".notfound-copy h1").textContent = data.line;\n'
-        '  document.querySelector(".notfound-description").textContent = data.description;\n'
-        '  const home = document.querySelector(".notfound-home");\n'
-        '  home.setAttribute("href", data.homeHref);\n'
-        '  home.textContent = data.home;\n'
+        '  const template = document.getElementById("notfound-locale-" + localeId);\n'
+        '  if (!(template instanceof HTMLTemplateElement)) return;\n'
+        '  const fragment = template.content.cloneNode(true);\n'
+        '  const upgrade = (selector, tag, labelled = false) => {\n'
+        '    const source = fragment.querySelector(selector);\n'
+        '    if (!source) return null;\n'
+        '    const element = document.createElement(tag);\n'
+        '    element.className = source.className;\n'
+        '    if (labelled && source.dataset.label) element.ariaLabel = source.dataset.label;\n'
+        '    while (source.firstChild) element.append(source.firstChild);\n'
+        '    source.replaceWith(element);\n'
+        '    return element;\n'
+        '  };\n'
+        '  const readingTools = upgrade(".reading-tools", "aside", true);\n'
+        '  upgrade(".page-nav", "nav", true);\n'
+        '  const languageNav = upgrade(".page-languages", "nav", true);\n'
+        '  const topbar = upgrade(".page-topbar", "header");\n'
+        '  const main = upgrade(".notfound-shell", "main");\n'
+        '  if (main) { main.id = "main"; main.tabIndex = -1; }\n'
+        '  for (const [selector, replacement] of [\n'
+        '    [".skip-link", fragment.querySelector(".skip-link")],\n'
+        '    [".reading-tools", readingTools],\n'
+        '    [".page-topbar", topbar],\n'
+        '    [".notfound-shell", main],\n'
+        '  ]) {\n'
+        '    const current = document.querySelector(selector);\n'
+        '    if (current && replacement) current.replaceWith(replacement);\n'
+        '  }\n'
+        '  document.documentElement.lang = template.dataset.htmlLang || "en-GB";\n'
+        '  document.title = template.dataset.title || document.title;\n'
+        '  document.body.className = "notfound-page locale-" + localeId;\n'
         '  let tail = location.pathname;\n'
         '  if (localeId !== "en") tail = tail.slice(localeId.length + 1) || "/";\n'
-        '  if (!tail.startsWith("/")) tail = "/" + tail;\n'
-        '  const langToId = Object.fromEntries(Object.entries(locales).map(([id, item]) => [item.htmlLang, id]));\n'
+        '  tail = "/" + tail.replace(/^\\/+/, "");\n'
+        f'  const prefixes = {prefixes_json};\n'
+        '  if (!languageNav) return;\n'
         '  for (const link of languageNav.querySelectorAll("a[hreflang]")) {\n'
-        '    const target = langToId[link.getAttribute("hreflang")];\n'
-        '    if (!target) continue;\n'
-        '    const path = target === "en" ? tail : "/" + target + tail;\n'
-        '    link.setAttribute("href", path + location.search + location.hash);\n'
+        '    const prefix = prefixes[link.getAttribute("hreflang")];\n'
+        '    if (prefix === undefined) continue;\n'
+        '    link.href = prefix + tail;\n'
         '  }\n'
         '})();\n'
         '</script>'

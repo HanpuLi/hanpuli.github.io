@@ -96,7 +96,7 @@ try {
         failures.push(path + " @ " + width + ": horizontal overflow " + state.scrollWidth + "px > " + state.innerWidth + "px");
       }
 
-      const tail = "/__missing__/deep/page?source=qa&width=" + width + "#probe";
+      const tail = "/__missing__/deep/page";
       for (const item of state.alternateHrefs) {
         const target = cases.find((entry) => entry[1] === item.hreflang)?.[0];
         if (target === undefined) continue;
