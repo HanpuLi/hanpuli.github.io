@@ -14,6 +14,7 @@ Shippori 缺字由 I.MingCP 补丁兜底——若脚本报告缺字变化,
 源字体(均在 ~/Library/Fonts/): ShipporiMincho-Regular.ttf, I.MingCP-8.10.ttf
 """
 import glob, os, re, subprocess, sys
+from html.parser import HTMLParser
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SP = os.path.expanduser("~/Library/Fonts/ShipporiMincho-Regular.ttf")
@@ -24,6 +25,44 @@ GAP = os.path.join(ROOT, "assets/fonts/iming-gap.woff2")
 # Present on the default English edition: identity, locale controls, 留證 and the favicon glyph.
 # Keep this set deliberately CJK-only; punctuation/symbols fall back to the Latin/system faces.
 COMMON_CHARS = set("李函璞留證詞繁日")
+
+class BodyTextParser(HTMLParser):
+    """Collect rendered body text while ignoring non-rendered font sources."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.in_body = False
+        self.suppressed_element = 0
+        self.simplified_404_template = 0
+        self.parts = []
+
+    def handle_starttag(self, tag, attrs):
+        tag = tag.lower()
+        if tag == "body":
+            self.in_body = True
+            return
+        if not self.in_body:
+            return
+        if tag in {"script", "style"}:
+            self.suppressed_element += 1
+            return
+        if tag == "template" and dict(attrs).get("id") == "notfound-locale-zh-hans":
+            self.simplified_404_template += 1
+
+    def handle_endtag(self, tag):
+        tag = tag.lower()
+        if tag in {"script", "style"} and self.suppressed_element:
+            self.suppressed_element -= 1
+            return
+        if tag == "template" and self.simplified_404_template:
+            self.simplified_404_template -= 1
+            return
+        if tag == "body":
+            self.in_body = False
+
+    def handle_data(self, data):
+        if self.in_body and not self.suppressed_element and not self.simplified_404_template:
+            self.parts.append(data)
 
 chars = set()
 for f in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
@@ -37,18 +76,9 @@ for f in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
         or rel[0] in {"zh-hans", "fridge", "mail-assistant"}
     ):
         continue
-    t = open(f, encoding="utf-8").read()
-    # The root GitHub Pages 404 contains an inert Simplified-Chinese template so
-    # real /zh-hans/... misses can be localised without redirecting. Those glyphs
-    # belong to the Noto Serif SC subset, not Shippori/I.Ming.
-    t = re.sub(
-        r'<template\b(?=[^>]*\bid="notfound-locale-zh-hans")[^>]*>.*?</template>',
-        "",
-        t,
-        flags=re.S,
-    )
-    t = re.sub(r"<(?:style|script)\b.*?</(?:style|script)>", "", t, flags=re.S | re.I)
-    t = re.sub(r"<[^>]+>", "", t)
+    parser = BodyTextParser()
+    parser.feed(open(f, encoding="utf-8").read())
+    t = "".join(parser.parts)
     chars.update(c for c in t if ord(c) >= 0x2E80 or c in "£²·–—’←→")
 chars.discard("🐈")
 # The Simplified-Chinese locale switch label is rendered by the one-glyph
