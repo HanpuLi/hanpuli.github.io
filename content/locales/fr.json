@@ -47,7 +47,7 @@
       },
       "photo": {
         "title": "Photographies",
-        "kicker": "images fixes / film / Polaroid"
+        "kicker": "images fixes / pellicule / Polaroid"
       },
       "writing": {
         "title": "Écrits",
@@ -87,7 +87,7 @@
           "intention du client",
           "OAuth + transport",
           "politique d’espace de travail / d’autorisation",
-          "surfaces d’exécution bornées",
+          "interfaces d’exécution à périmètre limité",
           "audit + état"
         ]
       }
@@ -114,12 +114,12 @@
     },
     "writing": {
       "first_love_title": "Sur <em>First Love</em> de Takashi Miike",
-      "first_love_description": "Une étude au long cours de <em>First Love</em> de Takashi Miike, consacrée aux rapports de genre, à l’obligation et à la forme générique, avec analyse formelle et vérifications reproductibles.",
+      "first_love_description": "Une étude approfondie de <em>First Love</em> de Takashi Miike, consacrée aux rapports de genre, à l’obligation et à la forme générique, avec analyse formelle et vérifications reproductibles.",
       "first_love_meta": "manuscrit de recherche · circulation privée",
       "film_essays_title": "Sur <em>Trainspotting</em>",
       "film_essays_description": "Un essai sur la voix off, l’espace, l’assujettissement et les limites de sa propre démonstration.",
       "film_essays_meta": "lire l’essai →",
-      "first_love_verify": "matériaux de vérification →"
+      "first_love_verify": "documents de vérification →"
     },
     "poetry": {
       "recent": "deux textes récents",
