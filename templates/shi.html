@@ -26,7 +26,7 @@
 {{READING_TOOLS}}
 <div class="wrap">
 
-  <div class="page-topbar">
+  <header class="page-topbar">
     <a class="page-wordmark" href="{{HOME_HREF}}">{{PRIMARY_NAME}} <span lang="zh-Hant-HK">{{CHINESE_NAME}}</span></a>
     <nav class="page-nav" aria-label="{{common.site_nav_label_attr}}">
       {{PORTFOLIO_NAV}}
@@ -34,18 +34,20 @@
     <nav class="page-languages" aria-label="{{common.language_nav_label_attr}}">
       {{LANG_SWITCHER}}
     </nav>
-  </div>
-
-  <header>
-    <h1>{{shi.heading}}</h1>
-    <div class="sub">
-      <p>{{shi.subtitle}}</p>
-      <p class="source-title" lang="{{SOURCE_LANG}}">{{SHI_SOURCE_HEADING}}</p>
-    </div>
   </header>
 
-  <main id="drafts" class="{{SHI_DRAFTS_CLASS}}" tabindex="-1">
-    {{SHI_DRAFTS}}
+  <main id="drafts" tabindex="-1">
+    <div class="page-intro">
+      <h1>{{shi.heading}}</h1>
+      <div class="sub">
+        <p>{{shi.subtitle}}</p>
+        <p class="source-title" lang="{{SOURCE_LANG}}">{{SHI_SOURCE_HEADING}}</p>
+      </div>
+    </div>
+
+    <div class="shi-content {{SHI_DRAFTS_CLASS}}">
+      {{SHI_DRAFTS}}
+    </div>
   </main>
 
   <footer class="page-footer">

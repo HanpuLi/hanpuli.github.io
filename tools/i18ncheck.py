@@ -511,7 +511,7 @@ def main() -> int:
 
             if name == "shi.html":
                 if locale in chinese_locales:
-                    if 'id="drafts" class="source-only"' not in text:
+                    if 'class="shi-content source-only"' not in text:
                         errors.append(
                             f"{path.relative_to(ROOT)}: Chinese poem page must retain source-only draft layout"
                         )
@@ -520,6 +520,10 @@ def main() -> int:
                             f"{path.relative_to(ROOT)}: Chinese poem page must not manufacture translation pairs"
                         )
                 else:
+                    if 'class="shi-content comparison"' not in text:
+                        errors.append(
+                            f"{path.relative_to(ROOT)}: translated poem page must retain comparison layout"
+                        )
                     expected_pairs = len(shi["drafts"])
                     pairs = text.count('class="draft-pair"')
                     sources = text.count('class="draft source"')

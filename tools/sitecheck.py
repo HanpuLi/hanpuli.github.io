@@ -111,6 +111,19 @@ def local_target(source: Path, ref: str) -> tuple[Path, str] | None:
     return target.resolve(), unquote(parsed.fragment)
 
 
+def check_raw_ampersands(path: Path, text: str, errors: list[str]) -> None:
+    """Reject unescaped ampersands in HTML markup/text, excluding script/style data."""
+    inspectable = re.sub(
+        r"<(?:script|style)\b.*?</(?:script|style)>",
+        "",
+        text,
+        flags=re.I | re.S,
+    )
+    for match in re.finditer(r"&(?!#\d+;|#x[0-9a-f]+;|[a-z][a-z0-9]+;)", inspectable, re.I):
+        line = inspectable.count("\n", 0, match.start()) + 1
+        errors.append(f"{path.relative_to(ROOT)}:{line}: raw ampersand must be encoded as &amp;")
+
+
 def check_css(errors: list[str]) -> None:
     url_re = re.compile(r"url\((['\"]?)([^)'\"]+)\1\)")
     for css in ROOT.rglob("*.css"):
@@ -131,8 +144,10 @@ def main() -> int:
     docs: dict[Path, Document] = {}
     for path in HTML_FILES:
         doc = Document(path)
+        text = path.read_text(encoding="utf-8")
+        check_raw_ampersands(path, text, errors)
         try:
-            doc.feed(path.read_text(encoding="utf-8"))
+            doc.feed(text)
         except Exception as exc:
             errors.append(f"{path.relative_to(ROOT)}: parse error: {exc}")
             continue

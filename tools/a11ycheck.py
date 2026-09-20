@@ -167,6 +167,20 @@ def audit(path: Path) -> list[str]:
     if parser.h1_count != 1:
         errors.append(f"{rel}: expected exactly one h1, got {parser.h1_count}")
 
+    if 'class="page-topbar"' in text and not re.search(
+        r'<header\b[^>]*\bclass=["\'][^"\']*\bpage-topbar\b[^"\']*["\']',
+        text,
+        re.I,
+    ):
+        errors.append(f"{rel}: page topbar must be the page banner landmark")
+
+    if 'class="page-intro"' in text:
+        intro_pos = text.find('class="page-intro"')
+        main_start = text.rfind("<main", 0, intro_pos)
+        main_end = text.find("</main>", intro_pos)
+        if main_start < 0 or main_end < 0:
+            errors.append(f"{rel}: page intro must sit inside the main landmark")
+
     previous = 0
     for level, line in parser.headings:
         if previous and level > previous + 1:

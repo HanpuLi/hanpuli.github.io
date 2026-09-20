@@ -616,11 +616,11 @@ html[data-reading-simple] .site-home .chronology {
   margin-inline-start: 0;
 }
 
-html[data-reading-simple] .literary-page header,
+html[data-reading-simple] .literary-page .page-intro,
 html[data-reading-simple] .literary-page .poem,
 html[data-reading-simple] .literary-page .poem-pair,
-html[data-reading-simple] .shi-page header,
-html[data-reading-simple] .shi-page main,
+html[data-reading-simple] .shi-page .page-intro,
+html[data-reading-simple] .shi-page .shi-content,
 html[data-reading-simple] .shi-page .draft-pair,
 html[data-reading-simple] .shi-page .draft {
   display: block;
@@ -1744,7 +1744,7 @@ html[data-reading-motion] .site-home::before {
   width: min(calc(100% - (2 * var(--gutter))), 1440px);
 }
 
-.literary-page header {
+.literary-page .page-intro {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 0 var(--gap);
@@ -1945,7 +1945,7 @@ html[data-reading-motion] .site-home::before {
   width: min(calc(100% - (2 * var(--gutter))), 1440px);
 }
 
-.shi-page header {
+.shi-page .page-intro {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 0 var(--gap);
@@ -1971,15 +1971,18 @@ html[data-reading-motion] .site-home::before {
 
 .shi-page main {
   scroll-margin-top: 84px;
+}
+
+.shi-page .shi-content {
   border-top: 1px solid var(--line);
 }
 
-.shi-page main.source-only {
+.shi-page .shi-content.source-only {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.shi-page main.comparison {
+.shi-page .shi-content.comparison {
   display: block;
 }
 
@@ -2001,7 +2004,7 @@ html[data-reading-motion] .site-home::before {
   padding: clamp(50px, 6vw, 82px) clamp(26px, 3vw, 48px) clamp(70px, 8vw, 108px) 0;
 }
 
-.shi-page main.source-only > .draft + .draft,
+.shi-page .shi-content.source-only > .draft + .draft,
 .shi-page .draft-pair > .draft + .draft {
   padding-inline-end: 0;
   padding-inline-start: clamp(26px, 3vw, 48px);
@@ -2290,8 +2293,8 @@ html[data-reading-motion] .site-home::before {
 /* Responsive */
 
 @media (max-width: 900px) {
-  .literary-page header,
-  .shi-page header {
+  .literary-page .page-intro,
+  .shi-page .page-intro {
     display: block;
     padding: 64px 0 68px;
   }
@@ -2313,7 +2316,7 @@ html[data-reading-motion] .site-home::before {
     margin-top: 28px;
   }
 
-  .shi-page main {
+  .shi-page .shi-content {
     display: block;
   }
 
@@ -2805,7 +2808,7 @@ html[data-reading-motion] .site-home::before {
     border-top: 1px solid var(--line);
   }
 
-  .shi-page main {
+  .shi-page .shi-content {
     display: block;
   }
 
@@ -3188,7 +3191,7 @@ html[data-reading-motion] .site-home::before {
 }
 
 @container page-shell (max-width: 66rem) {
-  .shi-page header {
+  .shi-page .page-intro {
     display: block;
     padding-block: var(--space-4);
   }
@@ -3199,7 +3202,7 @@ html[data-reading-motion] .site-home::before {
 }
 
 @container page-shell (max-width: 55rem) {
-  .literary-page header {
+  .literary-page .page-intro {
     display: block;
     padding-block: var(--space-4);
   }
@@ -3228,15 +3231,15 @@ html[data-reading-motion] .site-home::before {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .shi-page main.source-only {
+  .shi-page .shi-content.source-only {
     display: block;
   }
 
-  .shi-page main.source-only > .draft {
+  .shi-page .shi-content.source-only > .draft {
     padding-inline-end: 0;
   }
 
-  .shi-page main.source-only > .draft + .draft {
+  .shi-page .shi-content.source-only > .draft + .draft {
     padding-inline-start: 0;
     border-inline-start: 0;
     border-top: 1px solid var(--line);
