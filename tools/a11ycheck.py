@@ -45,7 +45,6 @@ def page_paths() -> list[Path]:
         ROOT / "mail-assistant" / "index.html",
         ROOT / "mail-assistant" / "privacy.html",
         ROOT / "mail-assistant" / "terms.html",
-        ROOT / "fridge" / "index.html",
     ]
 
 
@@ -168,7 +167,7 @@ class AuditParser(HTMLParser):
 
 def audit(path: Path) -> list[str]:
     rel = path.relative_to(ROOT)
-    require_reading_tools = rel.parts[0] != "fridge"
+    require_reading_tools = True
     text = path.read_text(encoding="utf-8")
     parser = AuditParser()
     parser.feed(text)

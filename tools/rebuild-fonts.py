@@ -73,7 +73,7 @@ for f in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
     if (
         "templates" in rel
         or os.path.basename(f) == "card.html"
-        or rel[0] in {"zh-hans", "fridge", "mail-assistant"}
+        or rel[0] in {"zh-hans", "mail-assistant"}
     ):
         continue
     parser = BodyTextParser()
