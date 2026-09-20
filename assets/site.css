@@ -762,7 +762,7 @@ html[data-reading-motion] .site-home::before {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: var(--gap);
-  margin-block-start: 8px;
+  margin-block-start: 12px;
   font-family: var(--mono);
   font-size: clamp(.75rem, 1.3cqi, .8125rem);
   line-height: 1.2;
@@ -1684,7 +1684,7 @@ html[data-reading-motion] .site-home::before {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: var(--gap);
-  margin-block-start: 8px;
+  margin-block-start: 12px;
   font-size: clamp(.75rem, 1.3cqi, .8125rem);
 }
 
@@ -2454,6 +2454,17 @@ html[data-reading-motion] .site-home::before {
     font-size: 1rem;
   }
 
+  /* Wrapped mobile navigation must keep 44px targets without letting their
+     expanded hit areas overlap adjacent rows. */
+  .site-home .section-nav a,
+  .site-home .language-nav a,
+  .site-home .language-nav .current,
+  .page-topbar a,
+  .page-topbar .page-nav [aria-current="page"],
+  .page-topbar .page-languages .current {
+    margin-block: 0;
+  }
+
   @supports (content-visibility: auto) {
     .site-home .work-section,
     .site-home .writing-section,
@@ -2762,7 +2773,7 @@ html[data-reading-motion] .site-home::before {
   .page-topbar .page-languages {
     grid-column: 2;
     grid-row: 1;
-    gap: 8px;
+    gap: 4px;
     font-size: .8125rem;
   }
 
