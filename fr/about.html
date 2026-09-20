@@ -111,8 +111,8 @@
     <li><a href="#languages"><span>02</span> Contenu &amp; langues</a></li>
     <li><a href="#layout"><span>03</span> Mise en page &amp; typographie</a></li>
     <li><a href="#accessibility"><span>04</span> Accessibilité</a></li>
-    <li><a href="#media"><span>05</span> Images &amp; performance</a></li>
-    <li><a href="#quality"><span>06</span> Build, QA &amp; déploiement</a></li>
+    <li><a href="#media"><span>05</span> Images et performances</a></li>
+    <li><a href="#quality"><span>06</span> Génération, QA et déploiement</a></li>
     <li><a href="#principles"><span>07</span> Principes</a></li>
   </ol>
 </nav>
@@ -142,7 +142,7 @@
       </div>
       <div class="about-section-copy">
         <p>L’anglais, le chinois traditionnel de Hong Kong, le chinois simplifié, le japonais, l’allemand, le français et le russe sont générés comme éditions statiques distinctes, avec URL canoniques et liens alternatifs hreflang et métadonnées propres à chaque langue.</p>
-        <p>Les textes littéraires suivent des règles plus strictes que les libellés d’interface. Quand cela est défini, le chinois traditionnel fait foi ; les miroirs littéraires simplifiés ne changent que l’écriture et sont contrôlés par hash de source, tandis que des tests dédiés conservent lignes et strophes des traductions.</p>
+        <p>Les textes littéraires suivent des règles plus strictes que les libellés d’interface. Quand cela est défini, le chinois traditionnel fait foi ; les miroirs littéraires simplifiés ne changent que l’écriture et sont contrôlés par hachage de la source, tandis que des tests dédiés vérifient la structure des lignes et des strophes des traductions.</p>
         <dl class="about-facts">
           <div><dt>locales</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
           <div><dt>textes littéraires</dt><dd>OpenCC · hachages source · contrôle de la structure des lignes</dd></div>
@@ -175,7 +175,7 @@
         <p class="about-section-dek">Adapter la lecture sans retirer de contenu.</p>
       </div>
       <div class="about-section-copy">
-        <p>La structure repose sur des régions sémantiques, un titre principal, des liens d’évitement et un focus clavier clairement visible, des noms de langue complets et des cibles tactiles fiables. Les préférences système reduced motion, contraste renforcé et forced colours sont respectées.</p>
+        <p>La structure repose sur des zones sémantiques, un titre principal, des liens d’évitement, un focus clavier clairement visible, des noms de langue complets et des cibles tactiles fiables. Les préférences système reduced motion, contraste renforcé et forced colours sont respectées.</p>
         <p>Un panneau de lecture persistant peut activer une police sans sérif, agrandir le texte, augmenter les espacements, raccourcir les lignes, simplifier la mise en page, réduire le mouvement et augmenter le contraste. Tout cela relève de l’amélioration progressive et les réglages sont stockés uniquement dans le navigateur.</p>
         <dl class="about-facts">
           <div><dt>préférences</dt><dd>sans sérif · texte agrandi · espacements · largeur de ligne · mise en page simple · mouvement · contraste</dd></div>
@@ -188,8 +188,8 @@
     <section class="about-section" id="media">
       <div class="about-section-head">
         <p class="about-section-no">05</p>
-        <h2>Images &amp; performance</h2>
-        <p class="about-section-dek">Médias responsives, sans runtime de galerie.</p>
+        <h2>Images et performances</h2>
+        <p class="about-section-dek">Médias responsives, sans moteur de galerie à l’exécution.</p>
       </div>
       <div class="about-section-copy">
         <p>Les photographies et planches de recherche utilisent picture/srcset avec variantes WebP et JPEG, dimensions explicites et tailles responsives. L’image d’ouverture est prioritaire ; les médias plus bas dans la page sont chargés en différé et décodés de façon asynchrone.</p>
@@ -205,12 +205,12 @@
     <section class="about-section" id="quality">
       <div class="about-section-head">
         <p class="about-section-no">06</p>
-        <h2>Build, QA &amp; déploiement</h2>
+        <h2>Génération, QA et déploiement</h2>
         <p class="about-section-dek">Le résultat généré est lui-même testé.</p>
       </div>
       <div class="about-section-copy">
-        <p>Le dépôt vérifie que les pages générées sont à jour, que les schémas de locale concordent, que la structure des textes littéraires n’a pas dérivé, que régions et contrôles d’accessibilité restent intacts, que les liens locaux et leurs ancres se résolvent, que les images ont un texte alternatif et que le JavaScript se parse.</p>
-        <p>La QA navigateur ajoute des contrôles géométriques dans plusieurs langues et à des largeurs étroites comme larges, des audits axe-core et une validation HTML. Dans GitHub Actions, les contrôles légers passent d’abord, puis la suite navigateur s’exécute à chaque push et pull request ; GitHub Pages publie indépendamment les mêmes fichiers statiques depuis main.</p>
+        <p>Le dépôt vérifie que les pages générées sont à jour, que les schémas de locale concordent, que la structure des textes littéraires n’a pas dérivé, que les zones sémantiques et contrôles d’accessibilité restent intacts, que les liens locaux et leurs ancres se résolvent, que les images ont un texte alternatif et que la syntaxe JavaScript est valide.</p>
+        <p>La QA navigateur ajoute des contrôles géométriques dans plusieurs langues et à différentes largeurs de fenêtre, des audits axe-core et une validation HTML. Dans GitHub Actions, les contrôles légers passent d’abord, puis la suite navigateur s’exécute à chaque push et pull request ; GitHub Pages publie indépendamment les mêmes fichiers statiques depuis main.</p>
         <dl class="about-facts">
           <div><dt>contrôles du dépôt</dt><dd>génération · langues · accessibilité · liens/ressources · syntaxe JS</dd></div>
           <div><dt>QA navigateur</dt><dd>Playwright · axe-core · html-validate</dd></div>
