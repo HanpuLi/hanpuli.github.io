@@ -142,7 +142,7 @@
       </div>
       <div class="about-section-copy">
         <p>Englisch, traditionelles Chinesisch (Hongkong), vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch und Russisch werden als getrennte statische Fassungen mit kanonischen URLs und hreflang-Verweisen und sprachspezifischen Metadaten gebaut.</p>
-        <p>Literarische Quelltexte unterliegen strengeren Regeln als gewöhnliche UI-Texte. Wo festgelegt, ist traditionelles Chinesisch kanonisch; vereinfachte literarische Fassungen werden nur schriftkonvertiert und per Quellhash geprüft, während eigene Tests Zeilen- und Strophenstruktur der Übersetzungen bewahren.</p>
+        <p>Literarische Quelltexte unterliegen strengeren Regeln als gewöhnliche UI-Texte. Wo festgelegt, ist traditionelles Chinesisch kanonisch; vereinfachte literarische Fassungen werden nur schriftkonvertiert und per Quellhash geprüft, während eigene Tests die Zeilen- und Strophenstruktur der Übersetzungen prüfen.</p>
         <dl class="about-facts">
           <div><dt>Locales</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
           <div><dt>Literatur</dt><dd>OpenCC-Helfer · Quell-Hashes · Zeilenstruktur</dd></div>
@@ -189,10 +189,10 @@
       <div class="about-section-head">
         <p class="about-section-no">05</p>
         <h2>Bilder &amp; Performance</h2>
-        <p class="about-section-dek">Responsive Medien ohne Galerie-Runtime.</p>
+        <p class="about-section-dek">Responsive Medien ohne Galerie-Code zur Laufzeit.</p>
       </div>
       <div class="about-section-copy">
-        <p>Fotografien und Forschungsabbildungen verwenden picture/srcset mit WebP- und JPEG-Kandidaten, expliziten Abmessungen und responsiven Größenangaben. Das Leitbild wird priorisiert; weiter unten liegende Medien werden verzögert geladen und asynchron dekodiert.</p>
+        <p>Fotografien und Forschungsabbildungen verwenden picture/srcset mit WebP- und JPEG-Varianten, expliziten Abmessungen und responsiven Größenangaben. Das erste Bild wird priorisiert; weiter unten liegende Medien werden verzögert geladen und asynchron dekodiert.</p>
         <p>Abschnitte unterhalb des ersten Viewports können content-visibility nutzen. View Transitions und scroll-linked motion bleiben optionale progressive Erweiterungen; bei reduzierter Bewegung werden Animationen abgeschaltet.</p>
         <dl class="about-facts">
           <div><dt>Bilder</dt><dd>picture · srcset · WebP · JPEG</dd></div>
@@ -209,8 +209,8 @@
         <p class="about-section-dek">Auch das generierte Ergebnis ist ein Prüfobjekt.</p>
       </div>
       <div class="about-section-copy">
-        <p>Im Repository wird geprüft, ob generierte Seiten aktuell sind, Locale-Schemata übereinstimmen, literarische Strukturen stabil bleiben, semantische Bereiche und Bedienelemente vollständig sind, lokale Links und Fragmente auflösen, Bilder Alternativtext besitzen und JavaScript syntaktisch gültig ist.</p>
-        <p>Die Browser-QA ergänzt Geometrieprüfungen in mehreren Sprachen sowie bei schmalen und breiten Ansichtsbreiten, axe-core-Audits und HTML-Validierung. In GitHub Actions laufen bei Pushes und Pull Requests zuerst die leichten Prüfungen und danach die Browser-Suite; GitHub Pages veröffentlicht die statischen Dateien unabhängig davon aus main.</p>
+        <p>Im Repository wird geprüft, ob generierte Seiten aktuell sind, Locale-Schemata übereinstimmen, literarische Strukturen stabil bleiben, semantische Bereiche und Bedienelemente vollständig sind, lokale Links und Fragmente aufgelöst werden können, Bilder Alternativtext besitzen und JavaScript syntaktisch gültig ist.</p>
+        <p>Die Browser-QA ergänzt Geometrieprüfungen in mehreren Sprachen und bei verschiedenen Viewport-Breiten, axe-core-Audits und HTML-Validierung. In GitHub Actions laufen bei Pushes und Pull Requests zuerst die leichten Prüfungen und danach die Browser-Suite; GitHub Pages veröffentlicht die statischen Dateien unabhängig davon aus main.</p>
         <dl class="about-facts">
           <div><dt>Repository-Prüfungen</dt><dd>Build-Stand · Mehrsprachigkeit · Barrierefreiheit · Links/Assets · JS-Syntax</dd></div>
           <div><dt>Browser-QA</dt><dd>Playwright · axe-core · html-validate</dd></div>
