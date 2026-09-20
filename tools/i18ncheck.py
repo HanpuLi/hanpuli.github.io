@@ -214,6 +214,16 @@ def main() -> int:
         translated_b2 = load(CONTENT / "ci-translations" / f"{locale}.json")["poems"]["b2"]["body"]
         b2_quotes[locale] = nonblank_lines(translated_b2)[5]
 
+    expected_404_sources = {
+        "en": "Hanpu Li · Sixteen Poems of A and B · B2 · Tasuoxing",
+        "zh": "李函璞《甲乙十六首》·乙二〈踏莎行〉",
+        "zh-hans": "李函璞《甲乙十六首》·乙二〈踏莎行〉",
+        "ja": "Hanpu Li『甲乙十六首』・乙二「踏莎行」",
+        "de": "Hanpu Li · Sechzehn Gedichte von A und B · B2 · Tasuoxing",
+        "fr": "Hanpu Li · Seize poèmes de A et B · B2 · Tasuoxing",
+        "ru": "Hanpu Li · Шестнадцать стихотворений A и B · B2 · Tasuoxing",
+    }
+
     shi = load(CONTENT / "shi-source.json")
     source_patterns = [
         [
@@ -456,6 +466,10 @@ def main() -> int:
                 if locale_data["notfound"]["line"] != b2_quotes[locale]:
                     errors.append(
                         f"{locale} 404 quote no longer matches the established B2 · Tasuoxing translation"
+                    )
+                if locale_data["notfound"]["source"] != expected_404_sources[locale]:
+                    errors.append(
+                        f"{locale} 404 source must attribute the line to Hanpu Li’s own B2 in the cycle"
                     )
                 ci_href = "/ci.html" if locale == "en" else f"/{locale}/ci.html"
                 if f'href="{ci_href}#b2"' not in text:
