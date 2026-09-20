@@ -47,7 +47,7 @@ for f in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
         t,
         flags=re.S,
     )
-    t = re.sub(r"<style>.*?</style>", "", t, flags=re.S)
+    t = re.sub(r"<(?:style|script)\b.*?</(?:style|script)>", "", t, flags=re.S | re.I)
     t = re.sub(r"<[^>]+>", "", t)
     chars.update(c for c in t if ord(c) >= 0x2E80 or c in "£²·–—’←→")
 chars.discard("🐈")
@@ -83,6 +83,21 @@ if missing:
                     f"--output-file={GAP}", "--no-hinting"], check=True)
     rng = ", ".join(f"U+{ord(c):04X}" for c in missing)
     print(f"Shippori 缺字 {''.join(missing)} → I.MingCP 补丁已重建")
-    print(f"核对页面 unicode-range 是否为: {rng}")
+
+    css_path = os.path.join(ROOT, "assets/site.css")
+    css = open(css_path, encoding="utf-8").read()
+    face = re.search(
+        r'@font-face\s*\{(?=[^}]*font-family:\s*["\']IMing Gap["\'])[^}]*unicode-range:\s*([^;]+);',
+        css,
+        flags=re.S,
+    )
+    actual_range = face.group(1).strip() if face else None
+    if actual_range != rng:
+        print(
+            f"IMing Gap unicode-range 不一致: CSS={actual_range!r}, 应为={rng!r}",
+            file=sys.stderr,
+        )
+        raise SystemExit(1)
+    print(f"IMing Gap unicode-range 已核对: {rng}")
 else:
     print("Shippori 无缺字;iming-gap.woff2 可按需移除。")
