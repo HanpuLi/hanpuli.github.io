@@ -480,10 +480,9 @@ html[data-reading-large] :is(
   .literary-page .source-title,
   .literary-page .toc,
   .literary-page .poem .date,
-  .literary-page footer,
+  .page-footer,
   .shi-page .draft h2,
   .shi-page .num,
-  .shi-page footer,
   .notfound-copy a
 ) {
   font-size: .82rem;
@@ -1761,9 +1760,8 @@ html[data-reading-motion] .site-home::before {
 }
 
 .shi-page.locale-ru h1 {
-  font-size: clamp(38px, 6vw, 66px);
+  font-size: clamp(38px, 5.5vw, 58px);
   letter-spacing: .02em;
-  text-wrap: balance;
 }
 
 .literary-page .sub {
@@ -1863,7 +1861,7 @@ html[data-reading-motion] .site-home::before {
   font-size: clamp(26px, 3.1vw, 44px);
   font-weight: 400;
   line-height: 1.05;
-  text-wrap: balance;
+  text-wrap: wrap;
 }
 
 .literary-page .ci-group-copy > p {
@@ -1939,23 +1937,6 @@ html[data-reading-motion] .site-home::before {
   font-family: var(--mono);
   font-size: .8125rem;
   line-height: 1.5;
-}
-
-.literary-page footer {
-  padding: clamp(56px, 8vw, 90px) 0 clamp(72px, 10vw, 128px);
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: .8125rem;
-}
-
-.literary-page footer a {
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  color: var(--muted);
-  text-decoration: none;
-  border-bottom: 1px solid var(--line);
 }
 
 /* Two-draft poem */
@@ -2066,21 +2047,41 @@ html[data-reading-motion] .site-home::before {
   margin-bottom: 0;
 }
 
-.shi-page footer {
-  padding: clamp(58px, 8vw, 90px) 0 clamp(72px, 10vw, 128px);
+
+/* Shared inner-page footer. */
+.page-footer {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 var(--gap);
+  padding: clamp(56px, 8vw, 90px) 0 clamp(72px, 10vw, 128px);
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-family: var(--mono);
   font-size: .8125rem;
+  line-height: 1.55;
 }
 
-.shi-page footer a {
+.page-footer > p:first-child {
+  grid-column: 1 / 7;
+}
+
+.page-footer-context {
+  grid-column: 8 / 13;
+  text-align: end;
+}
+
+.page-footer a {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
-  color: var(--muted);
+  color: inherit;
   text-decoration: none;
   border-bottom: 1px solid var(--line);
+}
+
+.page-footer a:hover {
+  color: var(--accent);
+  border-color: currentColor;
 }
 
 /* 404 */
@@ -2787,7 +2788,7 @@ html[data-reading-motion] .site-home::before {
     margin-top: 20px;
   }
 
-  .literary-page .poem .translation {
+  .literary-page .poem-version.translation {
     margin-top: 34px;
     padding-top: 28px;
     border-top: 1px solid var(--line);
@@ -3056,7 +3057,7 @@ html[data-reading-motion] .site-home::before {
 
 
 /* Editorial type and spacing contracts. */
-.site-home :is(.section-head h2, .project h3, .writing-list h3),
+.site-home :is(.section-head h2, .writing-list h3),
 .essay-page :is(.essay-intro h1, .essay-deck, .essay-body h2) {
   text-wrap: balance;
 }
@@ -3171,7 +3172,7 @@ html[data-reading-motion] .site-home::before {
   }
 
   .shi-page.locale-ru h1 {
-    font-size: clamp(38px, 6cqi, 66px);
+    font-size: clamp(38px, 5.5cqi, 58px);
   }
 }
 
@@ -3270,6 +3271,15 @@ html[data-reading-motion] .site-home::before {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 6rem), 1fr));
     margin-block-start: var(--space-1);
   }
+
+  .page-footer {
+    display: block;
+  }
+
+  .page-footer-context {
+    margin-block-start: var(--space-1);
+    text-align: start;
+  }
 }
 
 /* Keep accessibility simplification stronger than the modern layout layer. */
@@ -3347,8 +3357,7 @@ html[data-reading-motion]::view-transition-new(root) {
 
 .essay-page .essay-kicker,
 .essay-page .essay-byline,
-.essay-page .essay-note,
-.essay-page .essay-footer {
+.essay-page .essay-note {
   font-family: var(--mono);
   font-size: .8125rem;
   line-height: 1.55;
@@ -3439,19 +3448,12 @@ html[data-reading-motion]::view-transition-new(root) {
   margin-top: .72em;
 }
 
-.essay-page .essay-footer {
-  padding: 20px 0 46px;
-  border-top: 1px solid var(--line);
-}
-
-.essay-page .essay-footer a,
 .site-home .writing-list h3 a {
   color: inherit;
   text-decoration: none;
 }
 
-.site-home .writing-list h3 a:hover,
-.essay-page .essay-footer a:hover {
+.site-home .writing-list h3 a:hover {
   color: var(--accent);
 }
 
@@ -3488,8 +3490,7 @@ html[data-reading-large] .essay-page .essay-body {
 html[data-reading-large] .essay-page :is(
   .essay-kicker,
   .essay-byline,
-  .essay-note,
-  .essay-footer
+  .essay-note
 ) {
   font-size: .82rem;
 }

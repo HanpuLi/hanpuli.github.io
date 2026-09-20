@@ -372,6 +372,17 @@ def main() -> int:
                 errors.append(f"{essay_path.relative_to(ROOT)}: essay body is not explicitly marked as English")
             if essay_text.count('class="current"') != 1:
                 errors.append(f"{essay_path.relative_to(ROOT)}: expected one current essay language")
+            essay_home_href = "/" if locale == "en" else f"/{locale}/"
+            if '<footer class="page-footer essay-footer">' not in essay_text:
+                errors.append(f"{essay_path.relative_to(ROOT)}: missing shared page footer")
+            elif not re.search(
+                rf'<footer class="page-footer essay-footer">.*?<a href="{re.escape(essay_home_href)}">← ',
+                essay_text,
+                flags=re.S,
+            ):
+                errors.append(
+                    f"{essay_path.relative_to(ROOT)}: essay footer must return to the current-locale home"
+                )
             essay_nav_numbers = re.findall(
                 r'<span class="nav-no">(0[1-6])</span>',
                 essay_text,
@@ -435,10 +446,39 @@ def main() -> int:
                 errors.append(
                     f"{path.relative_to(ROOT)}: expected nav item {expected_current} to be current"
                 )
+            if name in {"ci.html", "shi.html"}:
+                home_href = "/" if locale == "en" else f"/{locale}/"
+                if '<footer class="page-footer">' not in text:
+                    errors.append(f"{path.relative_to(ROOT)}: missing shared page footer")
+                elif not re.search(
+                    rf'<footer class="page-footer">.*?<a href="{re.escape(home_href)}">← ',
+                    text,
+                    flags=re.S,
+                ):
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: page footer must return to the current-locale home"
+                    )
             if name == "404.html" and 'aria-current="page"' in re.sub(
                 r'<nav class="page-languages".*?</nav>', "", text, flags=re.S
             ):
                 errors.append(f"{path.relative_to(ROOT)}: 404 portfolio nav must not mark a current section")
+            if name == "index.html":
+                expected_sections = [
+                    ("writing", "01"),
+                    ("work", "02"),
+                    ("photo", "03"),
+                    ("ci", "04"),
+                    ("profile", "06"),
+                ]
+                for section_id, section_no in expected_sections:
+                    if not re.search(
+                        rf'<section id="{section_id}"[^>]*>.*?<p class="section-no">{section_no}</p>',
+                        text,
+                        flags=re.S,
+                    ):
+                        errors.append(
+                            f"{path.relative_to(ROOT)}: section #{section_id} must use number {section_no}"
+                        )
             if name == "ci.html":
                 if text.count('class="ci-group ci-cycle"') != 1:
                     errors.append(f"{path.relative_to(ROOT)}: expected one A/B cycle group")
