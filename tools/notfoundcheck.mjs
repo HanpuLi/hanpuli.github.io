@@ -106,6 +106,21 @@ try {
         }
       }
 
+      if (width === widths[0]) {
+        await page.locator(".reading-tools summary").click();
+        await page.locator('[data-reading-pref="large"]').check();
+        const enabled = await page.evaluate(() => document.documentElement.hasAttribute("data-reading-large"));
+        if (!enabled) {
+          failures.push(path + ": dynamically localised reading controls are not wired up");
+        }
+        await page.locator("[data-reading-reset]").click();
+        const reset = await page.evaluate(() => !document.documentElement.hasAttribute("data-reading-large"));
+        if (!reset) {
+          failures.push(path + ": reading preference reset did not clear the dynamic 404 state");
+        }
+        await page.locator(".reading-tools summary").click();
+      }
+
       const results = await new AxeBuilder({ page }).analyze();
       for (const violation of results.violations) {
         failures.push(
