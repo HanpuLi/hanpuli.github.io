@@ -130,7 +130,7 @@
       "translation_w2": "<em>Zhegutian</em> · translation",
       "translation_w3": "<em>Linjiangxian</em> · translation",
       "cycle": "Also: <em>Sixteen Poems of A and B</em>, a response cycle written by one author in two voices.",
-      "full_cycle": "full cycle, source text + translation →",
+      "full_cycle": "all ci, source text + translation →",
       "poem_link": "poem →",
       "preview_date": "9 September 2026"
     },
@@ -166,14 +166,19 @@
     ]
   },
   "ci": {
-    "meta_title": "Sixteen Poems of A and B · Hanpu Li",
-    "meta_description": "A sixteen-poem cycle by one author in two voices, with the Chinese source text and translation.",
+    "meta_title": "Ci · Hanpu Li",
+    "meta_description": "Ci by Hanpu Li: Sixteen Poems of A and B, its out-of-cycle appendix, and a separate pair dated 9 September 2026, with Chinese source text and translations.",
     "heading": "Sixteen Poems of A and B",
-    "subtitle": "A sixteen-poem cycle written by one author in two voices, A (甲) and B (乙). A usually gives a prefatory account; B’s first five poems are untitled. The cycle is dated 9 June 2026. Three poems outside it follow: one dated 1 July and two dated 9 September. The author’s annotations are available on request.",
+    "subtitle": "A sixteen-poem cycle written by one author in two voices, A (甲) and B (乙). A usually gives a prefatory account; B’s first five poems are untitled. The cycle is dated 9 June 2026. One out-of-cycle poem dated 1 July follows as an appendix. The author’s annotations are available on request.",
     "source_label": "Chinese source",
     "translation_label": "English translation",
     "outside": "outside",
-    "footer": "annotations available on request"
+    "footer": "annotations to Sixteen Poems of A and B available on request",
+    "page_heading": "Ci",
+    "page_subtitle": "Two distinct groups of ci, with the Chinese source text and translation shown together where applicable.",
+    "separate_heading": "9 September 2026 · two poems",
+    "separate_note": "A separate pair, not part of Sixteen Poems of A and B.",
+    "separate_toc": "9 Sep"
   },
   "shi": {
     "meta_title": "The Roof Splits Open · Hanpu Li",

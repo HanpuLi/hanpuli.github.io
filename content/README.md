@@ -8,7 +8,7 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `shared.json` — language-independent project URLs, evidence values, technical stacks and site metadata.
 - `languages.json` — supported locales and standards metadata.
 - `locales/<locale>.json` — navigation, metadata, project copy, captions, accessibility text and profile copy.
-- `ci-source.json` — canonical Chinese text of the ci cycle and the established English reference translation.
+- `ci-source.json` — canonical Chinese ci collection and established English reference translations: the sixteen-poem A/B cycle, its 1 July out-of-cycle A10 appendix, and the separate two-poem group dated 9 September 2026.
 - `ci-translation-guidance.md` — semantic constraints distilled from the author's current annotations; use this during every literary translation review.
 - `ci-translations/<locale>.json` — Japanese, German, French and Russian literary translations.
 - `ci-simplified.json` — script-only Simplified Chinese mirror of the canonical ci source; its source hash is checked in CI.

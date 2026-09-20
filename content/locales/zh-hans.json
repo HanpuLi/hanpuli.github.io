@@ -130,7 +130,7 @@
       "translation_w2": "《鹧鸪天》 · 原作",
       "translation_w3": "《临江仙》 · 原作",
       "cycle": "另有《甲乙十六首》：一人分作两声的唱和集。",
-      "full_cycle": "全集 →",
+      "full_cycle": "全部词作 →",
       "poem_link": "诗 →",
       "preview_date": "二〇二六年九月九日"
     },
@@ -166,14 +166,19 @@
     ]
   },
   "ci": {
-    "meta_title": "甲乙十六首 · Hanpu Li 李函璞",
-    "meta_description": "《甲乙十六首》：一人分作两声的唱和集，附自撰笺注。",
+    "meta_title": "词 · Hanpu Li 李函璞",
+    "meta_description": "李函璞词作：《甲乙十六首》及其集外附录，另有二〇二六年九月九日另组二首。",
     "heading": "甲乙十六首",
-    "subtitle": "一人分作两声的唱和集：甲多详序，乙前五首无题。十六首并系于二〇二六年六月九日；集外三首：七月一日一首，九月九日二首。附自撰笺注，备索。此版采用简体字。",
+    "subtitle": "一人分作两声的唱和集：甲多详序，乙前五首无题。十六首并系于二〇二六年六月九日；另附七月一日集外一首。附自撰笺注，备索。此版采用简体字。",
     "source_label": "原文",
     "translation_label": "原文",
     "outside": "集外",
-    "footer": "笺注全文备索"
+    "footer": "《甲乙十六首》笺注全文备索",
+    "page_heading": "词",
+    "page_subtitle": "两组词作；非中文版本并列原文与译文。",
+    "separate_heading": "二〇二六年九月九日 · 二首",
+    "separate_note": "另成一组，不属《甲乙十六首》。",
+    "separate_toc": "九月九日"
   },
   "shi": {
     "meta_title": "屋顶裂开 · Hanpu Li 李函璞",

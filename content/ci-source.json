@@ -2,9 +2,7 @@
   "title": "甲乙十六首",
   "cycle_date": "2026-06-09",
   "outside_dates": {
-    "a10": "2026-07-01",
-    "w2": "2026-09-09",
-    "w3": "2026-09-09"
+    "a10": "2026-07-01"
   },
   "poems": [
     {
@@ -196,25 +194,35 @@
     },
     {
       "id": "w2",
-      "voice": "outside",
-      "source_title": "集外 ·《鷓鴣天 · 連夕燈下試筆，未竟》",
+      "voice": "separate",
+      "source_title": "《鷓鴣天 · 連夕燈下試筆，未竟》",
       "source_body": "幾夕簾前共剪燈，平生話到又三更。\n從頭説盡還存半，且任宵深硯自凝。\n\n言漸杳，露初零。獨餘一語未分明。\n頻頻蘸得毫端黑，墨至濃時偏不成。",
       "date": "二〇二六年九月九日",
       "en": {
-        "title": "Outside the cycle · To the tune of Zhegutian · Several evenings at the lamp, trying to write; unfinished",
+        "title": "To the tune of Zhegutian · Several evenings at the lamp, trying to write; unfinished",
         "body": "Some nights, before the curtain, we trimmed the lamp together;\na whole life talked through, and again it was the third watch.\nTold from the beginning, told to the end — half of it still there.\nLet the night go deep; let the ink congeal in the inkstone by itself.\n\nThe words thin out. The dew begins to fall.\nOne phrase alone is left, and it will not come clear.\nAgain and again the brush-tip comes up black;\nwhen the ink is thickest, it will not make the words."
       }
     },
     {
       "id": "w3",
-      "voice": "outside",
-      "source_title": "集外 ·《臨江仙》",
+      "voice": "separate",
+      "source_title": "《臨江仙》",
       "source_body": "簾影幾宵長共話，露痕初濕闌干。\n言猶未了息先安。\n夢深渾不覺，月上夜將殘。\n\n他日重簾垂到地，垂來一似從前。\n手臨燈畔數迴旋。\n明朝風或緊，窗且掩周全。",
       "date": "二〇二六年九月九日",
       "en": {
-        "title": "Outside the cycle · To the tune of Linjiangxian",
+        "title": "To the tune of Linjiangxian",
         "body": "Shadow of the curtain, several nights of long talk;\nthe first dew wetting the rail.\nThe words not finished — the breathing settled first.\nDeep in dream, knowing nothing;\nthe moon up, the night nearly gone.\n\nSome other day the heavy curtain will fall to the floor,\nfall exactly as it did before.\nA hand beside the lamp, turning a few times.\nTomorrow the wind may blow hard;\nfor now, shut the window well."
       }
+    }
+  ],
+  "separate_groups": [
+    {
+      "id": "sep-2026-09-09",
+      "date": "2026-09-09",
+      "poem_ids": [
+        "w2",
+        "w3"
+      ]
     }
   ]
 }

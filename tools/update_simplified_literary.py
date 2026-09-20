@@ -43,6 +43,8 @@ def convert_ci() -> None:
     source = load(source_path)
     output = {
         "title": CC.convert(source["title"]),
+        "outside_dates": source.get("outside_dates", {}),
+        "separate_groups": source.get("separate_groups", []),
         "poems": [],
         "source_sha256": sha256(source_path),
     }

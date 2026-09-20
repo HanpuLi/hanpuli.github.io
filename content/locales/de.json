@@ -129,7 +129,7 @@
       "translation_w2": "<em>Zhegutian</em> · Übersetzung",
       "translation_w3": "<em>Linjiangxian</em> · Übersetzung",
       "cycle": "Außerdem: <em>Sechzehn Gedichte von A und B</em>, ein Antwortzyklus aus einer Hand in zwei Stimmen.",
-      "full_cycle": "gesamter Zyklus, Ausgangstext + Übersetzung →",
+      "full_cycle": "alle Ci, Ausgangstext + Übersetzung →",
       "poem_link": "Gedicht →",
       "preview_date": "9. September 2026"
     },
@@ -166,14 +166,19 @@
     "location": "London"
   },
   "ci": {
-    "meta_title": "Sechzehn Gedichte von A und B · Hanpu Li",
-    "meta_description": "Ein sechzehnteiliger Gedichtzyklus aus einer Hand in zwei Stimmen, mit chinesischem Ausgangstext und Übersetzung.",
+    "meta_title": "Ci · Hanpu Li",
+    "meta_description": "Ci von Hanpu Li: Sechzehn Gedichte von A und B mit einem Anhang außerhalb des Zyklus sowie ein separates Paar vom 9. September 2026.",
     "heading": "Sechzehn Gedichte von A und B",
-    "subtitle": "Ein Zyklus aus sechzehn Gedichten, von einer Person in zwei Stimmen geschrieben, A (甲) und B (乙). A gibt meist eine Vorbemerkung; die ersten fünf Gedichte von B sind unbetitelt. Der Zyklus ist auf den 9. Juni 2026 datiert. Danach folgen drei Gedichte außerhalb des Zyklus: eines vom 1. Juli und zwei vom 9. September. Die zugehörigen Anmerkungen sind auf Anfrage erhältlich.",
+    "subtitle": "Ein Zyklus aus sechzehn Gedichten, von einer Person in zwei Stimmen geschrieben, A (甲) und B (乙). A gibt meist eine Vorbemerkung; die ersten fünf Gedichte von B sind unbetitelt. Der Zyklus ist auf den 9. Juni 2026 datiert. Ein Gedicht außerhalb des Zyklus vom 1. Juli folgt als Anhang. Die zugehörigen Anmerkungen sind auf Anfrage erhältlich.",
     "source_label": "Chinesischer Ausgangstext",
     "translation_label": "Deutsche Übersetzung",
     "outside": "außerhalb des Zyklus",
-    "footer": "Anmerkungen auf Anfrage"
+    "footer": "Anmerkungen zu „Sechzehn Gedichten von A und B“ auf Anfrage",
+    "page_heading": "Ci",
+    "page_subtitle": "Zwei eigenständige Gruppen von Ci; chinesischer Ausgangstext und Übersetzung stehen einander gegenüber.",
+    "separate_heading": "9. September 2026 · zwei Gedichte",
+    "separate_note": "Ein separates Paar; nicht Teil von Sechzehn Gedichte von A und B.",
+    "separate_toc": "9. Sep."
   },
   "shi": {
     "meta_title": "Das Dach reißt auf · Hanpu Li",

@@ -270,16 +270,34 @@ def ci_translation(locale_id: str) -> dict[str, dict[str, str]]:
     return poems
 
 
+def ci_separate_group() -> dict[str, Any]:
+    groups = CI_SOURCE.get("separate_groups", [])
+    if len(groups) != 1:
+        raise BuildError(f"ci-source.json: expected exactly one separate group, got {len(groups)}")
+    group = groups[0]
+    poem_ids = group.get("poem_ids", [])
+    if poem_ids != ["w2", "w3"]:
+        raise BuildError(f"ci-source.json: unexpected separate-group ids {poem_ids!r}")
+    return group
+
+
 def ci_toc(locale_id: str, locale: dict[str, Any]) -> str:
     cn_numbers = {1: "一", 2: "二", 3: "三", 4: "四", 5: "五", 6: "六", 7: "七", 8: "八", 9: "九", 10: "十"}
+    separate_ids = ci_separate_group()["poem_ids"]
     out = []
-    outside_n = 0
     for poem in CI_SOURCE["poems"]:
         pid = poem["id"]
-        if pid in {"a10", "w2", "w3"}:
-            outside_n += 1
-            label = f'{locale["ci"]["outside"]}{cn_numbers[outside_n] if locale_id in CHINESE_LOCALES else " " + str(outside_n)}'
+        if pid == "a10":
+            label = locale["ci"]["outside"]
             klass = ' class="waibian"'
+        elif pid in separate_ids:
+            index = separate_ids.index(pid) + 1
+            if index == 1:
+                out.append(
+                    f'<span class="toc-group">{html.escape(locale["ci"]["separate_toc"])}</span>'
+                )
+            label = cn_numbers[index] if locale_id in CHINESE_LOCALES else str(index)
+            klass = ' class="separate"'
         elif pid.startswith("a"):
             n = int(pid[1:])
             label = f'甲{cn_numbers[n]}' if locale_id in CHINESE_LOCALES else f"A{n}"
@@ -295,51 +313,110 @@ def ci_toc(locale_id: str, locale: dict[str, Any]) -> str:
     return "".join(out)
 
 
+def ci_poem_html(
+    poem: dict[str, Any],
+    *,
+    locale_id: str,
+    target_lang: str,
+    source_lang: str,
+    translations: dict[str, dict[str, str]],
+) -> str:
+    voice = poem["voice"]
+    classes = "poem" + (f" {voice}" if voice in {"jia", "yi"} else "")
+    source_title = html.escape(poem["source_title"])
+    source_body = html.escape(poem["source_body"])
+    source_date = (
+        f'\n        <div class="date">{html.escape(poem["date"])}</div>'
+        if poem.get("date")
+        else ""
+    )
+    versions = [
+        (
+            f'      <section class="poem-version source" lang="{source_lang}">\n'
+            f'        <h3>{source_title}</h3>\n'
+            f'        <div class="body">{source_body}</div>'
+            f'{source_date}\n'
+            f'      </section>'
+        )
+    ]
+    pair_class = "poem-pair source-only"
+    if locale_id not in CHINESE_LOCALES:
+        item = translations[poem["id"]]
+        versions.append(
+            f'      <section class="poem-version translation" '
+            f'lang="{html.escape(target_lang, quote=True)}">\n'
+            f'        <h3>{html.escape(item["title"])}</h3>\n'
+            f'        <div class="body">{html.escape(item["body"])}</div>\n'
+            f'      </section>'
+        )
+        pair_class = "poem-pair"
+
+    return (
+        f'  <div class="{classes}" id="{poem["id"]}">\n'
+        f'    <div class="{pair_class}">\n'
+        + "\n".join(versions)
+        + "\n    </div>\n"
+        f'  </div>'
+    )
+
+
 def ci_poems_html(locale_id: str, locale: dict[str, Any]) -> str:
     translations = ci_translation(locale_id)
-    blocks = []
     target_lang = LANG_BY_ID[locale_id]["html_lang"]
     source_data = ci_source(locale_id)
     source_lang = "zh-Hans" if locale_id == "zh-hans" else "zh-Hant-HK"
-    for poem in source_data["poems"]:
-        voice = poem["voice"]
-        classes = "poem" + (f" {voice}" if voice in {"jia", "yi"} else "")
-        source_title = html.escape(poem["source_title"])
-        source_body = html.escape(poem["source_body"])
-        source_date = (
-            f'\n        <div class="date">{html.escape(poem["date"])}</div>'
-            if poem.get("date")
-            else ""
-        )
-        versions = [
-            (
-                f'      <section class="poem-version source" lang="{source_lang}">\n'
-                f'        <h2>{source_title}</h2>\n'
-                f'        <div class="body">{source_body}</div>'
-                f'{source_date}\n'
-                f'      </section>'
-            )
-        ]
-        pair_class = "poem-pair source-only"
-        if locale_id not in CHINESE_LOCALES:
-            item = translations[poem["id"]]
-            versions.append(
-                f'      <section class="poem-version translation" '
-                f'lang="{html.escape(target_lang, quote=True)}">\n'
-                f'        <h2>{html.escape(item["title"])}</h2>\n'
-                f'        <div class="body">{html.escape(item["body"])}</div>\n'
-                f'      </section>'
-            )
-            pair_class = "poem-pair"
+    separate_ids = set(ci_separate_group()["poem_ids"])
 
-        blocks.append(
-            f'  <div class="{classes}" id="{poem["id"]}">\n'
-            f'    <div class="{pair_class}">\n'
-            + "\n".join(versions)
-            + "\n    </div>\n"
-            f'  </div>'
+    cycle_poems = [p for p in source_data["poems"] if p["id"] not in separate_ids]
+    separate_poems = [p for p in source_data["poems"] if p["id"] in separate_ids]
+
+    cycle_source_title = html.escape(source_data["title"])
+    cycle = [
+        '<section class="ci-group ci-cycle" aria-labelledby="ci-cycle-heading">',
+        '  <header class="ci-group-head">',
+        '    <p class="ci-group-no">01</p>',
+        '    <div class="ci-group-copy">',
+        f'      <h2 id="ci-cycle-heading">{locale["ci"]["heading"]}</h2>',
+        f'      <p>{locale["ci"]["subtitle"]}</p>',
+        f'      <p class="source-title" lang="{source_lang}">{cycle_source_title}</p>',
+        '    </div>',
+        '  </header>',
+    ]
+    cycle.extend(
+        ci_poem_html(
+            poem,
+            locale_id=locale_id,
+            target_lang=target_lang,
+            source_lang=source_lang,
+            translations=translations,
         )
-    return "\n\n".join(blocks)
+        for poem in cycle_poems
+    )
+    cycle.append("</section>")
+
+    separate = [
+        '<section class="ci-group ci-separate" aria-labelledby="ci-separate-heading">',
+        '  <header class="ci-group-head">',
+        '    <p class="ci-group-no">02</p>',
+        '    <div class="ci-group-copy">',
+        f'      <h2 id="ci-separate-heading">{locale["ci"]["separate_heading"]}</h2>',
+        f'      <p>{locale["ci"]["separate_note"]}</p>',
+        '    </div>',
+        '  </header>',
+    ]
+    separate.extend(
+        ci_poem_html(
+            poem,
+            locale_id=locale_id,
+            target_lang=target_lang,
+            source_lang=source_lang,
+            translations=translations,
+        )
+        for poem in separate_poems
+    )
+    separate.append("</section>")
+
+    return "\n\n".join(cycle + separate)
 
 
 def shi_translation(locale_id: str) -> list[dict[str, Any]]:
@@ -543,7 +620,6 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "POETRY_PREVIEW_TITLE": locale["home"]["poetry"]["preview_title"],
         "POETRY_PREVIEW_BODY": preview_body,
         "POETRY_PREVIEW_DATE": locale["home"]["poetry"]["preview_date"],
-        "CI_SOURCE_HEADING": html.escape(ci_source(locale_id)["title"]),
         "SHI_SOURCE_HEADING": html.escape(
             SHI_SIMPLIFIED["title"] if locale_id == "zh-hans" else SHI_SOURCE["title"]
         ),

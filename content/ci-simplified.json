@@ -1,5 +1,18 @@
 {
   "title": "甲乙十六首",
+  "outside_dates": {
+    "a10": "2026-07-01"
+  },
+  "separate_groups": [
+    {
+      "id": "sep-2026-09-09",
+      "date": "2026-09-09",
+      "poem_ids": [
+        "w2",
+        "w3"
+      ]
+    }
+  ],
   "poems": [
     {
       "id": "a1",
@@ -122,18 +135,18 @@
     },
     {
       "id": "w2",
-      "voice": "outside",
-      "source_title": "集外 ·《鹧鸪天 · 连夕灯下试笔，未竟》",
+      "voice": "separate",
+      "source_title": "《鹧鸪天 · 连夕灯下试笔，未竟》",
       "source_body": "几夕帘前共剪灯，平生话到又三更。\n从头说尽还存半，且任宵深砚自凝。\n\n言渐杳，露初零。独余一语未分明。\n频频蘸得毫端黑，墨至浓时偏不成。",
       "date": "二〇二六年九月九日"
     },
     {
       "id": "w3",
-      "voice": "outside",
-      "source_title": "集外 ·《临江仙》",
+      "voice": "separate",
+      "source_title": "《临江仙》",
       "source_body": "帘影几宵长共话，露痕初湿阑干。\n言犹未了息先安。\n梦深浑不觉，月上夜将残。\n\n他日重帘垂到地，垂来一似从前。\n手临灯畔数回旋。\n明朝风或紧，窗且掩周全。",
       "date": "二〇二六年九月九日"
     }
   ],
-  "source_sha256": "1a497edc0350191095060021c736319d0a511124bed758f29d809e96d7fd7508"
+  "source_sha256": "34e380cc6195d459d3d098e9d98a3ec820ad1693967480b16b8955fa8a5998cf"
 }

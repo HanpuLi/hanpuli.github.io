@@ -10,7 +10,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
-CI_IDS = ("a1","b1","a2","b2","b3","b4","b5","a3","a4","a5","a6","a7","b6","a8","b7","a9","a10","w2","w3")
+CI_CYCLE_IDS = ("a1","b1","a2","b2","b3","b4","b5","a3","a4","a5","a6","a7","b6","a8","b7","a9")
+CI_OUTSIDE_IDS = ("a10",)
+CI_SEPARATE_IDS = ("w2","w3")
+CI_IDS = CI_CYCLE_IDS + CI_OUTSIDE_IDS + CI_SEPARATE_IDS
 EXPECTED_EDUCATION = {
     "en": "York · English Language and Linguistics → film · QMUL",
     "zh": "約克 · 英語語言與語言學 → 電影 · QMUL",
@@ -153,10 +156,29 @@ def main() -> int:
     if tuple(poems) != CI_IDS:
         errors.append(f"ci-source ids/order changed: {tuple(poems)}")
 
+    if ci.get("outside_dates") != {"a10": "2026-07-01"}:
+        errors.append("ci-source outside_dates must contain only the 1 July A10 appendix")
+    expected_separate_groups = [
+        {"id": "sep-2026-09-09", "date": "2026-09-09", "poem_ids": ["w2", "w3"]}
+    ]
+    if ci.get("separate_groups") != expected_separate_groups:
+        errors.append("ci-source separate_groups must keep w2/w3 as the distinct 9 September group")
+    if len(CI_CYCLE_IDS) != 16:
+        errors.append("internal error: the A/B cycle must contain exactly sixteen poems")
+    for pid in CI_SEPARATE_IDS:
+        if poems[pid]["source_title"].startswith("集外"):
+            errors.append(f"ci-source {pid}: separate September poem must not be labelled 集外")
+        if poems[pid]["en"]["title"].startswith("Outside the cycle"):
+            errors.append(f"ci-source {pid}: separate September translation must not be labelled outside the cycle")
+
     ci_simplified = load(CONTENT / "ci-simplified.json")
     ci_source_hash = hashlib.sha256((CONTENT / "ci-source.json").read_bytes()).hexdigest()
     if ci_simplified.get("source_sha256") != ci_source_hash:
         errors.append("ci-simplified.json is stale relative to ci-source.json")
+    if ci_simplified.get("outside_dates") != ci.get("outside_dates"):
+        errors.append("ci-simplified outside_dates drifted from canonical grouping")
+    if ci_simplified.get("separate_groups") != ci.get("separate_groups"):
+        errors.append("ci-simplified separate_groups drifted from canonical grouping")
     simplified_poems = {item["id"]: item for item in ci_simplified.get("poems", [])}
     if tuple(simplified_poems) != CI_IDS:
         errors.append(f"ci-simplified ids/order changed: {tuple(simplified_poems)}")
@@ -189,6 +211,17 @@ def main() -> int:
             continue
         for pid in CI_IDS:
             item = items[pid]
+            if pid in CI_SEPARATE_IDS:
+                false_prefixes = {
+                    "ja": "集外",
+                    "de": "Außerhalb des Zyklus",
+                    "fr": "Hors cycle",
+                    "ru": "Вне цикла",
+                }
+                if item.get("title", "").startswith(false_prefixes[locale]):
+                    errors.append(
+                        f"{locale} ci {pid}: September group must not be labelled outside the cycle"
+                    )
             if not isinstance(item.get("title"), str) or not item["title"].strip():
                 errors.append(f"{locale} ci {pid}: missing title")
             elif contains_markup(item["title"]):
@@ -403,6 +436,14 @@ def main() -> int:
                         f"{path.relative_to(ROOT)}: expected nav item {expected_current} to be current"
                     )
             if name == "ci.html":
+                if text.count('class="ci-group ci-cycle"') != 1:
+                    errors.append(f"{path.relative_to(ROOT)}: expected one A/B cycle group")
+                if text.count('class="ci-group ci-separate"') != 1:
+                    errors.append(f"{path.relative_to(ROOT)}: expected one separate September ci group")
+                if locale_data["ci"]["separate_note"] not in text:
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: missing explicit note that September pair is separate"
+                    )
                 source_versions = text.count('class="poem-version source"')
                 translated_versions = text.count('class="poem-version translation"')
                 if source_versions != len(CI_IDS):
