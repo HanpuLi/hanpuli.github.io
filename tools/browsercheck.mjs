@@ -65,6 +65,14 @@ try {
           continue;
         }
 
+        // Reserve the scrollbar width at the tablet boundary so local
+        // Chromium exercises the same content width as Linux CI.
+        if (width === 768) {
+          await page.evaluate(() => {
+            document.documentElement.style.inlineSize = "calc(100% - 16px)";
+          });
+        }
+
         const geometry = await page.evaluate(() => {
           const root = document.documentElement;
           const body = document.body;
