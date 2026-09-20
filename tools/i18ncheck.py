@@ -56,6 +56,25 @@ def contains_markup(text: str) -> bool:
     return bool(re.search(r"<[^>]+>", text))
 
 
+def string_leaves(value, path=""):
+    if isinstance(value, dict):
+        for key, child in value.items():
+            child_path = f"{path}.{key}" if path else key
+            yield from string_leaves(child, child_path)
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            yield from string_leaves(child, f"{path}[{index}]")
+    elif isinstance(value, str):
+        yield path, value
+
+
+def accidental_cjk_spaces(value):
+    pattern = re.compile(r"[\u3400-\u9fff] [\u3400-\u9fff]")
+    for path, text in string_leaves(value):
+        if pattern.search(text):
+            yield path, text
+
+
 def simplified_font_characters(text: str) -> str:
     def wanted(char: str) -> bool:
         code = ord(char)
@@ -104,6 +123,12 @@ def main() -> int:
             errors.append(f"{locale} about-site section numbers changed")
         if any(contains_markup(value) for item in sections for value in item.get("body", [])):
             errors.append(f"{locale} about-site body must not contain HTML markup")
+        if locale in chinese_locales:
+            for path, text in accidental_cjk_spaces(about_site[locale]):
+                errors.append(
+                    f"{locale} about-site has an accidental ASCII space between CJK characters "
+                    f"at {path}: {text!r}"
+                )
 
     for locale in locales:
         path = CONTENT / "locales" / f"{locale}.json"
@@ -122,6 +147,12 @@ def main() -> int:
                 f"{locale} home.education no longer matches the approved factual trajectory: "
                 f"{data.get('home', {}).get('education')!r}"
             )
+        if locale in chinese_locales:
+            for leaf_path, text in accidental_cjk_spaces(data):
+                errors.append(
+                    f"{locale} locale copy has an accidental ASCII space between CJK characters "
+                    f"at {leaf_path}: {text!r}"
+                )
         if locale != "en":
             chronology_text = "\n".join(
                 item.get("text", "") for item in data.get("home", {}).get("chronology", [])
