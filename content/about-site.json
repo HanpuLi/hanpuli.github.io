@@ -694,7 +694,7 @@
         "dek": "Sieben Fassungen, keine Laufzeitübersetzung.",
         "body": [
           "Englisch, traditionelles Chinesisch (Hongkong), vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch und Russisch werden als getrennte statische Fassungen mit kanonischen URLs und hreflang-Verweisen und sprachspezifischen Metadaten gebaut.",
-          "Literarische Quelltexte unterliegen strengeren Regeln als gewöhnliche UI-Texte. Wo festgelegt, ist traditionelles Chinesisch kanonisch; vereinfachte literarische Fassungen werden nur schriftkonvertiert und per Quellhash geprüft, während eigene Tests Zeilen- und Strophenstruktur der Übersetzungen bewahren."
+          "Literarische Quelltexte unterliegen strengeren Regeln als gewöhnliche UI-Texte. Wo festgelegt, ist traditionelles Chinesisch kanonisch; vereinfachte literarische Fassungen werden nur schriftkonvertiert und per Quellhash geprüft, während eigene Tests die Zeilen- und Strophenstruktur der Übersetzungen prüfen."
         ],
         "facts": [
           {
@@ -763,9 +763,9 @@
         "id": "media",
         "number": "05",
         "title": "Bilder & Performance",
-        "dek": "Responsive Medien ohne Galerie-Runtime.",
+        "dek": "Responsive Medien ohne Galerie-Code zur Laufzeit.",
         "body": [
-          "Fotografien und Forschungsabbildungen verwenden picture/srcset mit WebP- und JPEG-Kandidaten, expliziten Abmessungen und responsiven Größenangaben. Das Leitbild wird priorisiert; weiter unten liegende Medien werden verzögert geladen und asynchron dekodiert.",
+          "Fotografien und Forschungsabbildungen verwenden picture/srcset mit WebP- und JPEG-Varianten, expliziten Abmessungen und responsiven Größenangaben. Das erste Bild wird priorisiert; weiter unten liegende Medien werden verzögert geladen und asynchron dekodiert.",
           "Abschnitte unterhalb des ersten Viewports können content-visibility nutzen. View Transitions und scroll-linked motion bleiben optionale progressive Erweiterungen; bei reduzierter Bewegung werden Animationen abgeschaltet."
         ],
         "facts": [
@@ -789,8 +789,8 @@
         "title": "Build, QA & Deployment",
         "dek": "Auch das generierte Ergebnis ist ein Prüfobjekt.",
         "body": [
-          "Im Repository wird geprüft, ob generierte Seiten aktuell sind, Locale-Schemata übereinstimmen, literarische Strukturen stabil bleiben, semantische Bereiche und Bedienelemente vollständig sind, lokale Links und Fragmente auflösen, Bilder Alternativtext besitzen und JavaScript syntaktisch gültig ist.",
-          "Die Browser-QA ergänzt Geometrieprüfungen in mehreren Sprachen sowie bei schmalen und breiten Ansichtsbreiten, axe-core-Audits und HTML-Validierung. In GitHub Actions laufen bei Pushes und Pull Requests zuerst die leichten Prüfungen und danach die Browser-Suite; GitHub Pages veröffentlicht die statischen Dateien unabhängig davon aus main."
+          "Im Repository wird geprüft, ob generierte Seiten aktuell sind, Locale-Schemata übereinstimmen, literarische Strukturen stabil bleiben, semantische Bereiche und Bedienelemente vollständig sind, lokale Links und Fragmente aufgelöst werden können, Bilder Alternativtext besitzen und JavaScript syntaktisch gültig ist.",
+          "Die Browser-QA ergänzt Geometrieprüfungen in mehreren Sprachen und bei verschiedenen Viewport-Breiten, axe-core-Audits und HTML-Validierung. In GitHub Actions laufen bei Pushes und Pull Requests zuerst die leichten Prüfungen und danach die Browser-Suite; GitHub Pages veröffentlicht die statischen Dateien unabhängig davon aus main."
         ],
         "facts": [
           {
