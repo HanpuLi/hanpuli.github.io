@@ -37,7 +37,7 @@ The mirrors record the source SHA-256 and CI fails if they become stale. Editori
 
 ## Accessibility
 
-The portfolio, literary pages and mail-assistant policy pages provide persistent, local-only reading preferences for sans-serif text, larger type, increased text spacing, shorter line length, a simplified one-column layout, reduced motion and higher contrast. The fridge guide has its own large-text and high-contrast controls. These controls are progressive enhancement: the content remains complete when JavaScript or storage is unavailable. System `prefers-reduced-motion`, `prefers-contrast` and forced-colours settings are respected independently of the manual controls.
+The portfolio, literary pages and mail-assistant policy pages provide persistent, local-only reading preferences for sans-serif text, larger type, increased text spacing, shorter line length, a simplified one-column layout, reduced motion and higher contrast. These controls are progressive enhancement: the content remains complete when JavaScript or storage is unavailable. System `prefers-reduced-motion`, `prefers-contrast` and forced-colours settings are respected independently of the manual controls.
 
 The default presentation retains the editorial design but is built to reflow without horizontal scrolling at narrow/zoomed viewports, preserve visible keyboard focus and real skip-link focus, avoid forced new windows, expose full language names to assistive technology, and keep standalone interactive targets comfortably sized. Do not remove these behaviours when changing the visual design.
 

@@ -555,7 +555,7 @@ def main() -> int:
                     errors.append(f"{path.relative_to(ROOT)}: missing about table of contents")
                 if 'id="principles"' not in text or 'href="#principles"' not in text:
                     errors.append(f"{path.relative_to(ROOT)}: missing About principles anchor")
-                if "/mail-assistant/" in text or "/fridge/" in text:
+                if "/mail-assistant/" in text:
                     errors.append(f"{path.relative_to(ROOT)}: About must describe the personal site only")
                 for section_id in expected_about_ids:
                     if f'id="{section_id}"' not in text:
