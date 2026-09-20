@@ -142,7 +142,7 @@
         <p class="about-section-dek">7言語版、実行時翻訳なし。</p>
       </div>
       <div class="about-section-copy">
-        <p>英語、香港繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、ロシア語を別々の静的版として生成し、それぞれに canonical URL、hreflang の代替リンク、言語別メタデータ を持たせる。</p>
+        <p>英語、香港繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、ロシア語を別々の静的版として生成し、それぞれに canonical URL、hreflang の代替リンク、言語別メタデータを持たせる。</p>
         <p>文学テキストは通常の UI 文言より厳格に扱う。指定された作品では繁体字中国語を正本とし、簡体字版は文字体系だけを変換してハッシュを照合する。翻訳は専用チェックで行数と連構造を保つ。</p>
         <dl class="about-facts">
           <div><dt>ロケール</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
@@ -160,7 +160,7 @@
       </div>
       <div class="about-section-copy">
         <p>CSS Grid、subgrid、container queries、logical properties、custom properties、clamp() による流動的な寸法を使う。メディアクエリは保守的なフォールバックにとどめ、対応ブラウザでは各要素が自身の利用可能幅に応じて組み替わる。</p>
-        <p>書体は WOFF2 を自前配信する。欧文本文は主に EB Garamond、メタデータは Courier Prime／Cousine、繁体字中国語と日本語は Shippori Mincho、簡体字中国語は Noto Serif SC、香港字形のごく小さな欠落は I.Ming の小さなサブセットで補う。CJK サブセットは fontTools と Brotli で再構築し、Noto のソースは コミットと SHA-256 で固定している。</p>
+        <p>書体は WOFF2 を自前配信する。欧文本文は主に EB Garamond、メタデータは Courier Prime／Cousine、繁体字中国語と日本語は Shippori Mincho、簡体字中国語は Noto Serif SC、香港字形のごく小さな欠落は I.Ming の小さなサブセットで補う。CJK サブセットは fontTools と Brotli で再構築し、Noto のソースはコミットと SHA-256 で固定している。</p>
         <dl class="about-facts">
           <div><dt>レイアウト</dt><dd>Grid · subgrid · コンテナクエリ · 論理プロパティ</dd></div>
           <div><dt>書体</dt><dd>EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming</dd></div>
@@ -177,7 +177,7 @@
       </div>
       <div class="about-section-copy">
         <p>意味的なランドマーク、単一の主要見出し、スキップリンク、見えるキーボードフォーカス、完全な言語名、十分な大きさのタッチターゲットを用意する。reduced-motion、higher-contrast、forced-colour といった OS／ブラウザ設定も尊重する。</p>
-        <p>読書設定ではサンセリフ、文字拡大、文字間隔、行長、簡略レイアウト、モーション低減、高コントラストを切り替えられる。すべてプログレッシブエンハンスメント で、設定はブラウザ内にだけ保存する。</p>
+        <p>読書設定ではサンセリフ、文字拡大、文字間隔、行長、簡略レイアウト、モーション低減、高コントラストを切り替えられる。すべてプログレッシブエンハンスメントで、設定はブラウザ内にだけ保存する。</p>
         <dl class="about-facts">
           <div><dt>読書設定</dt><dd>サンセリフ · 大きな文字 · 間隔 · 行幅 · 簡素化 · 動き · コントラスト</dd></div>
           <div><dt>保存</dt><dd>localStorage のみ</dd></div>
@@ -193,8 +193,8 @@
         <p class="about-section-dek">レスポンシブ画像、ギャラリー用ランタイムなし。</p>
       </div>
       <div class="about-section-copy">
-        <p>写真と研究図版は picture/srcset で WebP と JPEG の候補を用意し、寸法と sizes 属性を明示する。先頭画像を優先し、それ以外の下方画像は遅延読み込みと非同期デコードを使う。</p>
-        <p>下方セクションでは content-visibility を利用でき、View Transitions と scroll-linked motion は任意のプログレッシブエンハンスメントに限る。動きを減らす設定が指定されればアニメーションを止める。</p>
+        <p>写真と研究図版は picture/srcset で WebP と JPEG の候補を用意し、寸法と sizes 属性を明示する。先頭画像を優先し、それ以外のページ下部の画像は遅延読み込みと非同期デコードを使う。</p>
+        <p>ページ下部のセクションでは content-visibility を利用でき、View Transitions と scroll-linked motion は任意のプログレッシブエンハンスメントに限る。動きを減らす設定が指定されればアニメーションを止める。</p>
         <dl class="about-facts">
           <div><dt>画像</dt><dd>picture · srcset · WebP · JPEG</dd></div>
           <div><dt>読み込み</dt><dd>寸法指定 · 遅延読み込み · 非同期デコード</dd></div>

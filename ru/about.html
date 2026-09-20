@@ -127,7 +127,7 @@
       </div>
       <div class="about-section-copy">
         <p>Портфолио генерируется как полноценные документы HTML5 из небольших шаблонов и структурированного JSON. Генератор на стандартной библиотеке Python 3 заранее выпускает каждую языковую версию; браузеру не приходится собирать сайт во время выполнения.</p>
-        <p>Сайт публикуется из ветки main через GitHub Pages. За портфолио нет CMS, прикладного фреймворка, базы данных или серверного приложения.</p>
+        <p>Сайт публикуется из ветки main через GitHub Pages. За портфолио не стоят CMS, прикладной фреймворк, база данных или серверное приложение.</p>
         <dl class="about-facts">
           <div><dt>в браузере</dt><dd>HTML5 · CSS · обычный JavaScript</dd></div>
           <div><dt>сборка</dt><dd>Python 3 · JSON · HTML-шаблоны</dd></div>
@@ -161,7 +161,7 @@
       </div>
       <div class="about-section-copy">
         <p>Вёрстка использует CSS Grid, subgrid, container queries, logical properties, custom properties и плавные размеры через clamp(). Media queries остаются консервативным запасным вариантом; при поддержке container queries модуль перестраивается по собственной доступной ширине.</p>
-        <p>Шрифты размещены локально в WOFF2. Основной латинский текст набран преимущественно EB Garamond, метаданные — Courier Prime и Cousine, традиционный китайский и японский — Shippori Mincho, упрощённый китайский — Noto Serif SC; редкие пробелы в гонконгских глифах закрывает крошечный subset I.Ming. CJK-подмножества пересобираются с fontTools и Brotli; источник Noto закреплён по commit и SHA-256.</p>
+        <p>Шрифты размещены локально в WOFF2. Основной латинский текст набран преимущественно EB Garamond, метаданные — Courier Prime и Cousine, традиционный китайский и японский — Shippori Mincho, упрощённый китайский — Noto Serif SC; редкие отсутствующие гонконгские глифы дополняет крошечный subset I.Ming. CJK-подмножества пересобираются с fontTools и Brotli; источник Noto закреплён по commit и SHA-256.</p>
         <dl class="about-facts">
           <div><dt>вёрстка</dt><dd>Grid · subgrid · контейнерные запросы · логические свойства</dd></div>
           <div><dt>шрифты</dt><dd>EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming</dd></div>
@@ -194,7 +194,7 @@
         <p class="about-section-dek">Адаптивные медиа без runtime-галереи.</p>
       </div>
       <div class="about-section-copy">
-        <p>Фотографии и исследовательские иллюстрации используют picture/srcset с вариантами WebP и JPEG, явными размерами и адаптивными размерами. Главное изображение получает приоритет; медиа ниже по странице загружаются отложенно и декодируются асинхронно.</p>
+        <p>Фотографии и исследовательские иллюстрации используют picture/srcset с вариантами WebP и JPEG, явно заданными размерами и атрибутом sizes. Главное изображение получает приоритет; медиа ниже по странице загружаются отложенно и декодируются асинхронно.</p>
         <p>Нижние разделы могут использовать content-visibility. View Transitions и scroll-linked motion остаются необязательными прогрессивными улучшениями; при reduced motion анимация отключается.</p>
         <dl class="about-facts">
           <div><dt>изображения</dt><dd>picture · srcset · WebP · JPEG</dd></div>
