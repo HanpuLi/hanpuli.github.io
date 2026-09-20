@@ -4,7 +4,8 @@
   "scripts": {
     "qa:html": "git ls-files -z '*.html' ':!:templates/**' | xargs -0 html-validate",
     "qa:browser": "node tools/browsercheck.mjs",
-    "qa": "npm run qa:html && npm run qa:browser"
+    "qa:404": "node tools/notfoundcheck.mjs",
+    "qa": "npm run qa:html && npm run qa:browser && npm run qa:404"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

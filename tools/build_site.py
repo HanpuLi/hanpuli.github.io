@@ -680,7 +680,9 @@ def about_scope_body_html(locale_id: str) -> str:
 
 
 def font_preloads(locale_id: str, page: str) -> str:
-    prefix = asset_prefix(locale_id)
+    # GitHub Pages serves the root 404 document at the originally requested URL.
+    # Root-relative assets therefore keep working for arbitrarily deep missing paths.
+    prefix = "/" if page == "404" else asset_prefix(locale_id)
     fonts = [
         "eb-garamond-latin-400.woff2",
         "shippori-mincho-common.woff2",
@@ -740,6 +742,85 @@ def reading_tools(locale: dict[str, Any]) -> str:
         '    </div>\n'
         '  </details>\n'
         '</aside>'
+    )
+
+
+def notfound_runtime() -> str:
+    """Localise the root custom-404 in place for a missing locale-prefixed URL.
+
+    GitHub Pages always serves /404.html for a real miss, even when the requested
+    path lives under /zh/, /ja/, etc. The response must remain a 404, so this
+    enhances the root document instead of redirecting to a 200 /<locale>/404.html.
+    """
+    payload: dict[str, dict[str, str]] = {}
+    for language in LANGUAGES:
+        lid = language["id"]
+        locale = load_json(CONTENT / "locales" / f"{lid}.json")
+        payload[lid] = {
+            "id": lid,
+            "htmlLang": language["html_lang"],
+            "title": locale["notfound"]["meta_title"],
+            "skip": locale["common"]["skip_content"],
+            "readingHtml": reading_tools(locale),
+            "homeHref": page_path(lid, "index"),
+            "siteNavLabel": locale["common"]["site_nav_label"],
+            "navHtml": portfolio_nav_html(lid, locale),
+            "languageNavLabel": locale["common"]["language_nav_label"],
+            "languageHtml": language_switcher(lid, "404"),
+            "sourceHref": page_path(lid, "ci") + "#b2",
+            "source": locale["notfound"]["source"],
+            "line": locale["notfound"]["line"],
+            "description": locale["notfound"]["description"],
+            "home": locale["notfound"]["home"],
+        }
+
+    # Escaping '<' prevents user-facing content from ever terminating the JSON
+    # script element if future copy happens to contain a literal </script>.
+    payload_json = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+    return (
+        '<script type="application/json" id="notfound-locales">' + payload_json + '</script>\n'
+        '<script data-real-404-router>\n'
+        '(() => {\n'
+        '  const node = document.getElementById("notfound-locales");\n'
+        '  if (!node) return;\n'
+        '  const locales = JSON.parse(node.textContent);\n'
+        '  const match = location.pathname.match(/^\\/(zh-hans|zh|ja|de|fr|ru)(?=\\/|$)/);\n'
+        '  const localeId = match ? match[1] : "en";\n'
+        '  const data = locales[localeId];\n'
+        '  if (!data) return;\n'
+        '  document.documentElement.lang = data.htmlLang;\n'
+        '  document.title = data.title;\n'
+        '  document.body.className = "notfound-page locale-" + data.id;\n'
+        '  document.querySelector(".skip-link").textContent = data.skip;\n'
+        '  document.querySelector(".reading-tools").outerHTML = data.readingHtml;\n'
+        '  const wordmark = document.querySelector(".page-wordmark");\n'
+        '  wordmark.setAttribute("href", data.homeHref);\n'
+        '  const siteNav = document.querySelector(".page-nav");\n'
+        '  siteNav.setAttribute("aria-label", data.siteNavLabel);\n'
+        '  siteNav.innerHTML = data.navHtml;\n'
+        '  const languageNav = document.querySelector(".page-languages");\n'
+        '  languageNav.setAttribute("aria-label", data.languageNavLabel);\n'
+        '  languageNav.innerHTML = data.languageHtml;\n'
+        '  const source = document.querySelector(".notfound-source a");\n'
+        '  source.setAttribute("href", data.sourceHref);\n'
+        '  source.textContent = data.source;\n'
+        '  document.querySelector(".notfound-copy h1").textContent = data.line;\n'
+        '  document.querySelector(".notfound-description").textContent = data.description;\n'
+        '  const home = document.querySelector(".notfound-home");\n'
+        '  home.setAttribute("href", data.homeHref);\n'
+        '  home.textContent = data.home;\n'
+        '  let tail = location.pathname;\n'
+        '  if (localeId !== "en") tail = tail.slice(localeId.length + 1) || "/";\n'
+        '  if (!tail.startsWith("/")) tail = "/" + tail;\n'
+        '  const langToId = Object.fromEntries(Object.entries(locales).map(([id, item]) => [item.htmlLang, id]));\n'
+        '  for (const link of languageNav.querySelectorAll("a[hreflang]")) {\n'
+        '    const target = langToId[link.getAttribute("hreflang")];\n'
+        '    if (!target) continue;\n'
+        '    const path = target === "en" ? tail : "/" + target + tail;\n'
+        '    link.setAttribute("href", path + location.search + location.hash);\n'
+        '  }\n'
+        '})();\n'
+        '</script>'
     )
 
 
@@ -828,14 +909,15 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "CI_GLYPH": "词" if locale_id == "zh-hans" else "詞",
         "SHI_GLYPH": "诗" if locale_id == "zh-hans" else "詩",
         "LOCALE": locale_id,
-        "ASSET_PREFIX": asset_prefix(locale_id),
+        "ASSET_PREFIX": "/" if page == "404" else asset_prefix(locale_id),
         "CANONICAL_URL": html.escape(canonical, quote=True),
         "HREFLANG_LINKS": hreflang_links(page),
         "OG_LOCALE": html.escape(lang["og_locale"], quote=True),
         "SOCIAL_META": social_meta,
         "STRUCTURED_DATA": structured_data,
-        "ICON_LINKS": icon_links(asset_prefix(locale_id)),
+        "ICON_LINKS": icon_links("/" if page == "404" else asset_prefix(locale_id)),
         "FONT_PRELOADS": font_preloads(locale_id, page),
+        "NOTFOUND_RUNTIME": notfound_runtime() if page == "404" and locale_id == ROOT_LOCALE else "",
         "READING_TOOLS": reading_tools(locale),
         "HERO_FOOTNOTE_MARK": hero_footnote_mark,
         "HERO_FOOTNOTE": hero_footnote,

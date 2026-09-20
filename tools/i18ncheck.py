@@ -661,6 +661,16 @@ def main() -> int:
                 for key in ("line", "description", "source", "home"):
                     if locale_data["notfound"][key] not in text:
                         errors.append(f"{path.relative_to(ROOT)}: missing localized notfound.{key}")
+                if 'href="/assets/site.css"' not in text or 'src="/assets/accessibility.js"' not in text:
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: 404 assets must be root-relative so real nested misses stay styled"
+                    )
+                if locale == "en":
+                    if 'id="notfound-locales"' not in text or 'data-real-404-router' not in text:
+                        errors.append("root 404 must include the real-miss locale router")
+                    for routed_locale in locales:
+                        if f'\\"{routed_locale}\\":' not in text and f'"{routed_locale}":' not in text:
+                            errors.append(f"root 404 locale router is missing {routed_locale}")
 
     if errors:
         print("\n".join(errors), file=sys.stderr)
