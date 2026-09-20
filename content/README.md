@@ -17,6 +17,7 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `shi-simplified.json` — script-only Simplified Chinese mirror of the canonical poem source; its source hash is checked in CI.
 - `essays/trainspotting.inc` — English source fragment for the public <em>Trainspotting</em> essay.
 - `essay-trainspotting.json` — per-locale metadata and the notice used by each language shell; the essay body itself remains English.
+- `about-site.json` — localised implementation notes for the public About-this-site page, including architecture, typography, accessibility, performance and QA.
 
 English is the default site at `/`. Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are emitted at
 `/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Language switching is ordinary static navigation:
@@ -29,6 +30,7 @@ Do not hand-edit generated locale pages. Change the structured source, then run:
 ```sh
 python3 tools/build_site.py
 python3 tools/i18ncheck.py
+python3 tools/a11ycheck.py
 python3 tools/sitecheck.py
 ```
 

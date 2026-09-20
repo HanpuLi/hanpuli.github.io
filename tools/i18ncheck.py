@@ -80,6 +80,30 @@ def main() -> int:
 
     en = load(CONTENT / "locales" / "en.json")
     sig = signature(en)
+    about_site = load(CONTENT / "about-site.json")
+    if set(about_site) != set(locales):
+        errors.append(
+            "about-site locale mismatch: "
+            f"missing={sorted(set(locales) - set(about_site))} "
+            f"extra={sorted(set(about_site) - set(locales))}"
+        )
+    about_sig = signature(about_site["en"]) if "en" in about_site else {}
+    expected_about_ids = ["architecture", "languages", "layout", "accessibility", "media", "quality"]
+    expected_about_numbers = ["01", "02", "03", "04", "05", "06"]
+    for locale in locales:
+        if locale not in about_site:
+            continue
+        current_about_sig = signature(about_site[locale])
+        if current_about_sig != about_sig:
+            errors.append(f"{locale} about-site schema mismatch")
+            continue
+        sections = about_site[locale].get("sections", [])
+        if [item.get("id") for item in sections] != expected_about_ids:
+            errors.append(f"{locale} about-site section ids/order changed")
+        if [item.get("number") for item in sections] != expected_about_numbers:
+            errors.append(f"{locale} about-site section numbers changed")
+        if any(contains_markup(value) for item in sections for value in item.get("body", [])):
+            errors.append(f"{locale} about-site body must not contain HTML markup")
 
     for locale in locales:
         path = CONTENT / "locales" / f"{locale}.json"
@@ -329,6 +353,7 @@ def main() -> int:
             (CONTENT / "ci-simplified.json").read_text(encoding="utf-8"),
             (CONTENT / "shi-simplified.json").read_text(encoding="utf-8"),
             load(CONTENT / "essay-trainspotting.json")["zh-hans"]["language_note"],
+            json.dumps(about_site["zh-hans"], ensure_ascii=False),
         ]
     )
     forbidden_traditional = set("體語攝寫詞詩電郵證據閱讀顯儲裝襯線縮欄寬簡動對虛擬製遙經濟擴綠轉換檔錄劇膠發義聲幀長評論會這兩倫學麗後無題頂頁別處")
@@ -383,6 +408,15 @@ def main() -> int:
                 errors.append(
                     f"{essay_path.relative_to(ROOT)}: essay footer must return to the current-locale home"
                 )
+            essay_about_href = "/about.html" if locale == "en" else f"/{locale}/about.html"
+            if not re.search(
+                rf'<footer class="page-footer essay-footer">.*?<a href="{re.escape(essay_about_href)}">',
+                essay_text,
+                flags=re.S,
+            ):
+                errors.append(
+                    f"{essay_path.relative_to(ROOT)}: essay footer is missing localized about link"
+                )
             essay_nav_numbers = re.findall(
                 r'<span class="nav-no">(0[1-6])</span>',
                 essay_text,
@@ -408,7 +442,7 @@ def main() -> int:
                         f"{essay_path.relative_to(ROOT)}: missing essay language link {href}"
                     )
 
-        for name in ("index.html", "ci.html", "shi.html", "404.html"):
+        for name in ("index.html", "ci.html", "shi.html", "about.html", "404.html"):
             path = folder / name
             if not path.exists():
                 errors.append(f"missing generated {path.relative_to(ROOT)}")
@@ -446,6 +480,24 @@ def main() -> int:
                 errors.append(
                     f"{path.relative_to(ROOT)}: expected nav item {expected_current} to be current"
                 )
+            if name == "about.html":
+                about = about_site[locale]
+                if about["title"] not in text:
+                    errors.append(f"{path.relative_to(ROOT)}: missing localized about title")
+                if text.count('class="about-section"') != 6:
+                    errors.append(f"{path.relative_to(ROOT)}: expected six technology sections")
+                for section_id in expected_about_ids:
+                    if f'id="{section_id}"' not in text:
+                        errors.append(
+                            f"{path.relative_to(ROOT)}: missing about section #{section_id}"
+                        )
+                outside_languages = re.sub(
+                    r'<nav class="page-languages".*?</nav>', "", text, flags=re.S
+                )
+                if 'aria-current="page"' in outside_languages:
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: about page must not mark a numbered portfolio section current"
+                    )
             if name in {"ci.html", "shi.html"}:
                 home_href = "/" if locale == "en" else f"/{locale}/"
                 if '<footer class="page-footer">' not in text:
@@ -463,6 +515,15 @@ def main() -> int:
             ):
                 errors.append(f"{path.relative_to(ROOT)}: 404 portfolio nav must not mark a current section")
             if name == "index.html":
+                about_href = "/about.html" if locale == "en" else f"/{locale}/about.html"
+                if not re.search(
+                    rf'<footer class="site-footer">.*?<a href="{re.escape(about_href)}">',
+                    text,
+                    flags=re.S,
+                ):
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: site footer is missing localized about link"
+                    )
                 expected_sections = [
                     ("writing", "01"),
                     ("work", "02"),

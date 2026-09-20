@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
+<title>このサイトについて · Hanpu Li</title>
+<meta name="description" content="Hanpu Li のウェブサイトの実装ノート。静的構成、多言語配信、書体、アクセシビリティ、レスポンシブ画像、テスト、GitHub Pages での公開について。">
+<link rel="canonical" href="https://hanpuli.github.io/ja/about.html">
+<link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/about.html">
+<link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/about.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://hanpuli.github.io/zh-hans/about.html">
+<link rel="alternate" hreflang="ja" href="https://hanpuli.github.io/ja/about.html">
+<link rel="alternate" hreflang="de" href="https://hanpuli.github.io/de/about.html">
+<link rel="alternate" hreflang="fr" href="https://hanpuli.github.io/fr/about.html">
+<link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/about.html">
+<link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/about.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="このサイトについて · Hanpu Li">
+<meta property="og:description" content="Hanpu Li のウェブサイトの実装ノート。静的構成、多言語配信、書体、アクセシビリティ、レスポンシブ画像、テスト、GitHub Pages での公開について。">
+<meta property="og:url" content="https://hanpuli.github.io/ja/about.html">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>H</text></svg>">
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/courier-prime-latin-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-subset.woff2" crossorigin>
+<script src="../assets/accessibility.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="about-page locale-ja">
+<a class="skip-link" href="#main">本文へスキップ</a>
+<aside class="reading-tools" aria-label="読みやすさ">
+  <details>
+    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">読みやすさ</span><span class="visually-hidden">読みやすさ</span></summary>
+    <div class="reading-panel">
+      <fieldset>
+        <legend>読みやすさの設定</legend>
+        <p class="reading-description">読みやすい表示に調整できます。設定はこの端末にだけ保存されます。</p>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>ゴシック体（サンセリフ）を使う</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>文字を大きくする</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>文字間隔を広げる</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>行幅を短くする</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>1列のシンプルなレイアウト</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>動きを減らす</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>コントラストを上げる</span></label>
+      </fieldset>
+      <button type="button" class="reading-reset" data-reading-reset>リセット</button>
+    </div>
+  </details>
+</aside>
+<div class="wrap">
+
+  <header class="page-topbar">
+    <a class="page-wordmark" href="/ja/">Hanpu Li <span lang="zh-Hant-HK">李函璞</span></a>
+    <nav class="page-nav" aria-label="ポートフォリオ内のセクション">
+      <a href="/ja/#writing"><span class="nav-no">01</span> 文章</a>
+      <a href="/ja/#work"><span class="nav-no">02</span> 研究</a>
+      <a href="/ja/#photo"><span class="nav-no">03</span> 写真</a>
+      <a href="/ja/ci.html"><span class="nav-no">04</span> 詞</a>
+      <a href="/ja/shi.html"><span class="nav-no">05</span> 詩</a>
+      <a href="/ja/#profile"><span class="nav-no">06</span> プロフィール</a>
+    </nav>
+    <nav class="page-languages" aria-label="言語">
+      <a href="/about.html" hreflang="en-GB" lang="en-GB" aria-label="English" title="English"><span class="language-short" aria-hidden="true">EN</span></a>
+      <a href="/zh/about.html" hreflang="zh-Hant-HK" lang="zh-Hant-HK" aria-label="繁體中文" title="繁體中文"><span class="language-short" aria-hidden="true">繁</span></a>
+      <a href="/zh-hans/about.html" hreflang="zh-Hans" lang="zh-Hans" aria-label="简体中文" title="简体中文"><span class="language-short" aria-hidden="true">简</span></a>
+      <span class="current" lang="ja" aria-current="page" title="日本語"><span class="language-short" aria-hidden="true">日</span><span class="visually-hidden">日本語</span></span>
+      <a href="/de/about.html" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch"><span class="language-short" aria-hidden="true">DE</span></a>
+      <a href="/fr/about.html" hreflang="fr" lang="fr" aria-label="Français" title="Français"><span class="language-short" aria-hidden="true">FR</span></a>
+      <a href="/ru/about.html" hreflang="ru" lang="ru" aria-label="Русский" title="Русский"><span class="language-short" aria-hidden="true">RU</span></a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <header class="about-hero">
+      <p class="about-eyebrow">実装ノート · 2026</p>
+      <h1>このサイトについて</h1>
+      <div class="about-intro">
+        <p class="about-lede">このサイトは意図的に静的に作っている。公開ページはまず完成した文書であり、HTML、CSS、ローカル資産だけで内容が成立する。JavaScript は、実際に操作性を高める箇所にだけ少量使う。</p>
+        <p class="about-principle">原則は単純だ。フレームワーク、クライアント側翻訳、JavaScript レンダリングがなくても、内容そのものは読めなければならない。</p>
+      </div>
+    </header>
+
+    <section class="about-section" id="architecture">
+      <div class="about-section-head">
+        <p class="about-section-no">01</p>
+        <h2>アーキテクチャ</h2>
+        <p class="about-section-dek">静的であることを選ぶ。</p>
+      </div>
+      <div class="about-section-copy">
+        <p>ポートフォリオは、小さなテンプレートと構造化 JSON から完全な HTML5 文書として生成される。Python 3 標準ライブラリだけのビルダーが各言語版を事前生成し、ブラウザ側でページを組み立てない。</p>
+        <p>main ブランチから GitHub Pages で配信する。ポートフォリオの背後に CMS、アプリケーションフレームワーク、データベース、サーバー側アプリはない。</p>
+        <dl class="about-facts">
+          <div><dt>ランタイム</dt><dd>HTML5 · CSS · vanilla JavaScript</dd></div>
+          <div><dt>ビルド</dt><dd>Python 3 · JSON · HTML templates</dd></div>
+          <div><dt>ホスティング</dt><dd>GitHub Pages</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="languages">
+      <div class="about-section-head">
+        <p class="about-section-no">02</p>
+        <h2>コンテンツと言語</h2>
+        <p class="about-section-dek">7言語版、実行時翻訳なし。</p>
+      </div>
+      <div class="about-section-copy">
+        <p>英語、香港繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、ロシア語を別々の静的版として生成し、それぞれに canonical URL、hreflang alternate、言語別 metadata を持たせる。</p>
+        <p>文学テキストは通常の UI 文言より厳格に扱う。指定された作品では繁体字中国語を正本とし、簡体字版は文字体系だけを変換してハッシュを照合する。翻訳は専用チェックで行数と連構造を保つ。</p>
+        <dl class="about-facts">
+          <div><dt>ロケール</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
+          <div><dt>文学テキスト</dt><dd>OpenCC helper · source hashes · line-parity checks</dd></div>
+          <div><dt>metadata</dt><dd>canonical · hreflang · Open Graph</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="layout">
+      <div class="about-section-head">
+        <p class="about-section-no">03</p>
+        <h2>レイアウトと書体</h2>
+        <p class="about-section-dek">コンポーネントフレームワークではなく編集的な CSS。</p>
+      </div>
+      <div class="about-section-copy">
+        <p>CSS Grid、subgrid、container queries、logical properties、custom properties、clamp() による流動的な寸法を使う。Media queries は保守的なフォールバックにとどめ、対応ブラウザでは各要素が自身の利用可能幅に応じて組み替わる。</p>
+        <p>書体は WOFF2 を自前配信する。欧文本文は主に EB Garamond、metadata は Courier Prime／Cousine、繁体字中国語と日本語は Shippori Mincho、簡体字中国語は Noto Serif SC、香港字形のごく小さな欠落は I.Ming の小さなサブセットで補う。CJK サブセットは fontTools と Brotli で再構築し、Noto のソースは commit と SHA-256 で固定している。</p>
+        <dl class="about-facts">
+          <div><dt>レイアウト</dt><dd>Grid · subgrid · container queries · logical properties</dd></div>
+          <div><dt>書体</dt><dd>EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming</dd></div>
+          <div><dt>配色</dt><dd>light/dark via prefers-color-scheme</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="accessibility">
+      <div class="about-section-head">
+        <p class="about-section-no">04</p>
+        <h2>アクセシビリティ</h2>
+        <p class="about-section-dek">内容を削らず、読み方を変えられる。</p>
+      </div>
+      <div class="about-section-copy">
+        <p>意味的な landmark、単一の主要見出し、skip links、見えるキーボード focus、完全な言語名、十分な大きさのタッチターゲットを用意する。reduced-motion、higher-contrast、forced-colour といった OS／ブラウザ設定も尊重する。</p>
+        <p>読書設定ではサンセリフ、文字拡大、文字間隔、行長、簡略レイアウト、モーション低減、高コントラストを切り替えられる。すべて progressive enhancement で、設定はブラウザ内にだけ保存する。</p>
+        <dl class="about-facts">
+          <div><dt>読書設定</dt><dd>sans · larger type · spacing · measure · simple layout · motion · contrast</dd></div>
+          <div><dt>保存</dt><dd>localStorage のみ</dd></div>
+          <div><dt>検査</dt><dd>独自の構造監査 · axe-core ブラウザ監査</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="media">
+      <div class="about-section-head">
+        <p class="about-section-no">05</p>
+        <h2>画像とパフォーマンス</h2>
+        <p class="about-section-dek">レスポンシブ画像、ギャラリー用ランタイムなし。</p>
+      </div>
+      <div class="about-section-copy">
+        <p>写真と研究図版は picture/srcset で WebP と JPEG の候補を用意し、寸法と responsive sizes を明示する。先頭画像を優先し、それ以外の下方画像は lazy-load と非同期 decode を使う。</p>
+        <p>下方セクションでは content-visibility を利用でき、View Transitions と scroll-linked motion は任意の progressive enhancement に限る。reduced motion が指定されればアニメーションを止める。</p>
+        <dl class="about-facts">
+          <div><dt>画像</dt><dd>picture · srcset · WebP · JPEG</dd></div>
+          <div><dt>読み込み</dt><dd>explicit dimensions · lazy loading · async decoding</dd></div>
+          <div><dt>progressive CSS</dt><dd>content-visibility · View Transitions · scroll timelines</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="quality">
+      <div class="about-section-head">
+        <p class="about-section-no">06</p>
+        <h2>ビルド、QA、公開</h2>
+        <p class="about-section-dek">生成物そのものをテスト対象にする。</p>
+      </div>
+      <div class="about-section-copy">
+        <p>生成ページの鮮度、ロケール schema、文学テキストの構造、アクセシビリティの landmark と操作要素、ローカルリンクと fragment、画像の alt text、JavaScript の構文を repository 内で検査する。</p>
+        <p>ブラウザ QA では多言語・狭幅／広幅の幾何検査、axe-core のアクセシビリティ監査、HTML validation も行う。GitHub Actions は push と pull request で軽量な検査を再実行し、GitHub Pages は main から同じ静的ファイルを独立して配信する。</p>
+        <dl class="about-facts">
+          <div><dt>repository checks</dt><dd>build freshness · i18n · accessibility · links/assets · JS syntax</dd></div>
+          <div><dt>browser QA</dt><dd>Playwright · axe-core · html-validate</dd></div>
+          <div><dt>公開</dt><dd>GitHub Actions · GitHub Pages</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-coda" aria-labelledby="about-scope-heading">
+      <div>
+        <p class="about-section-no">07</p>
+        <h2 id="about-scope-heading">一つのドメイン、二種類のページ</h2>
+      </div>
+      <div class="about-coda-copy">
+        <p>ポートフォリオ、詞、詩、論文シェル、About ページ、404 は上記の多言語生成システムを共有する。</p>
+        <p>/mail-assistant/ の Cait Mail Assistant 3文書は手書きの静的 HTML と小さなページ専用 CSS で構成し、ポートフォリオのローカルなアクセシビリティ script と自前配信の EB Garamond／Courier Prime を再利用する。</p>
+        <p>/fridge/ の冷蔵庫ガイドは意図的に単一の自己完結型中国語 HTML として作っている。inline CSS、システム CJK 書体、文字サイズ・コントラスト・推薦カード強調のための依存なし JavaScript だけを使い、API、外部 CDN、analytics は読み込まない。</p>
+        <h3>実行時のプライバシー</h3>
+        <p>ポートフォリオは analytics、広告ネットワーク、第三者 web font、追跡 script を読み込まず、cookie も設定しない。永続化するブラウザ状態はローカルの読書設定だけである。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer about-footer">
+    <p><a href="/ja/">← Hanpu Li</a></p>
+    <p class="page-footer-context"><a href="https://github.com/HanpuLi/hanpuli.github.io">サイトのソース</a></p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -20,7 +20,7 @@ CONTENT = ROOT / "content"
 TEMPLATES = ROOT / "templates"
 TOKEN_RE = re.compile(r"{{([A-Za-z0-9_.]+)}}")
 ROOT_LOCALE = "en"
-PAGES = ("index", "ci", "shi", "404")
+PAGES = ("index", "ci", "shi", "about", "404")
 
 
 def load_json(path: Path) -> Any:
@@ -37,6 +37,7 @@ CI_SIMPLIFIED = load_json(CONTENT / "ci-simplified.json")
 SHI_SOURCE = load_json(CONTENT / "shi-source.json")
 SHI_SIMPLIFIED = load_json(CONTENT / "shi-simplified.json")
 TRAINSPOTTING_ESSAY = load_json(CONTENT / "essay-trainspotting.json")
+ABOUT_SITE = load_json(CONTENT / "about-site.json")
 CHINESE_LOCALES = {"zh", "zh-hans"}
 BASE_URL = IDENTITY["site_url"].rstrip("/")
 
@@ -478,6 +479,46 @@ def shi_drafts_html(locale_id: str) -> str:
     return "\n\n".join(blocks)
 
 
+def about_sections_html(locale_id: str) -> str:
+    sections = ABOUT_SITE[locale_id]["sections"]
+    blocks = []
+    for section in sections:
+        body = "\n".join(
+            f'        <p>{html.escape(paragraph)}</p>'
+            for paragraph in section["body"]
+        )
+        facts = "\n".join(
+            '          <div>'
+            f'<dt>{html.escape(fact["label"])}</dt>'
+            f'<dd>{html.escape(fact["value"])}</dd>'
+            '</div>'
+            for fact in section["facts"]
+        )
+        blocks.append(
+            f'    <section class="about-section" id="{html.escape(section["id"], quote=True)}">\n'
+            '      <div class="about-section-head">\n'
+            f'        <p class="about-section-no">{html.escape(section["number"])}</p>\n'
+            f'        <h2>{html.escape(section["title"])}</h2>\n'
+            f'        <p class="about-section-dek">{html.escape(section["dek"])}</p>\n'
+            '      </div>\n'
+            '      <div class="about-section-copy">\n'
+            f'{body}\n'
+            '        <dl class="about-facts">\n'
+            f'{facts}\n'
+            '        </dl>\n'
+            '      </div>\n'
+            '    </section>'
+        )
+    return "\n\n".join(blocks)
+
+
+def about_scope_body_html(locale_id: str) -> str:
+    return "\n".join(
+        f'        <p>{html.escape(paragraph)}</p>'
+        for paragraph in ABOUT_SITE[locale_id]["scope_body"]
+    )
+
+
 def font_preloads(locale_id: str, page: str) -> str:
     prefix = asset_prefix(locale_id)
     fonts = [
@@ -544,6 +585,7 @@ def reading_tools(locale: dict[str, Any]) -> str:
 
 def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str, Any]:
     lang = LANG_BY_ID[locale_id]
+    about = ABOUT_SITE[locale_id]
     primary = IDENTITY["primary_name"]
     hero_name = html.escape(primary).replace(" ", "<br>", 1)
     alt_name = IDENTITY["alternate_names"][0]
@@ -591,7 +633,23 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "EMAIL": html.escape(IDENTITY["email"], quote=True),
         "GITHUB_URL": html.escape(IDENTITY["github_url"], quote=True),
         "GITHUB_LABEL": html.escape(IDENTITY["github_label"]),
+        "SITE_REPO_URL": html.escape(SHARED["site_repo_url"], quote=True),
         "SITE_YEAR": html.escape(SHARED["site_year"]),
+        "ABOUT_HREF": page_path(locale_id, "about"),
+        "ABOUT_LINK_LABEL": html.escape(about["footer_link"]),
+        "ABOUT_META_TITLE": html.escape(about["meta_title"]),
+        "ABOUT_META_TITLE_ATTR": html.escape(about["meta_title"], quote=True),
+        "ABOUT_META_DESCRIPTION_ATTR": html.escape(about["meta_description"], quote=True),
+        "ABOUT_EYEBROW": html.escape(about["eyebrow"]),
+        "ABOUT_TITLE": html.escape(about["title"]),
+        "ABOUT_LEDE": html.escape(about["lede"]),
+        "ABOUT_PRINCIPLE": html.escape(about["principle"]),
+        "ABOUT_SECTIONS": about_sections_html(locale_id),
+        "ABOUT_SCOPE_TITLE": html.escape(about["scope_title"]),
+        "ABOUT_SCOPE_BODY": about_scope_body_html(locale_id),
+        "ABOUT_PRIVACY_TITLE": html.escape(about["privacy_title"]),
+        "ABOUT_PRIVACY_BODY": html.escape(about["privacy_body"]),
+        "ABOUT_SOURCE_LINK": html.escape(about["source_link"]),
         "MATERIAL_URL": html.escape(SHARED["projects"]["material"]["url"], quote=True),
         "MATERIAL_GREEN_VALUE": html.escape(SHARED["projects"]["material"]["proof_values"]["green"]),
         "MATERIAL_NDVI_VALUE": html.escape(SHARED["projects"]["material"]["proof_values"]["ndvi"]),
@@ -656,6 +714,26 @@ def build(check: bool = False) -> list[Path]:
         extra = sorted(actual_essay_locales - expected_essay_locales)
         raise BuildError(f"Trainspotting essay locale mismatch missing={missing} extra={extra}")
 
+    actual_about_locales = set(ABOUT_SITE)
+    if actual_about_locales != expected_essay_locales:
+        missing = sorted(expected_essay_locales - actual_about_locales)
+        extra = sorted(actual_about_locales - expected_essay_locales)
+        raise BuildError(f"about-site locale mismatch missing={missing} extra={extra}")
+    about_schema = schema_signature(ABOUT_SITE[ROOT_LOCALE])
+    for lid in LANG_BY_ID:
+        current = schema_signature(ABOUT_SITE[lid])
+        if current != about_schema:
+            missing = sorted(set(about_schema) - set(current))
+            extra = sorted(set(current) - set(about_schema))
+            mismatched = sorted(
+                key for key in set(about_schema) & set(current)
+                if about_schema[key] != current[key]
+            )
+            raise BuildError(
+                f"about-site schema mismatch for {lid}: "
+                f"missing={missing[:10]} extra={extra[:10]} type={mismatched[:10]}"
+            )
+
     changed: list[Path] = []
     for lid, locale in locales.items():
         if lid != ROOT_LOCALE:
@@ -698,6 +776,8 @@ def build(check: bool = False) -> list[Path]:
                 "CHINESE_NAME": html.escape(IDENTITY["chinese_name"]),
                 "HOME_HREF": page_path(lid, "index"),
                 "WRITING_HREF": page_path(lid, "index") + "#writing",
+                "ABOUT_HREF": page_path(lid, "about"),
+                "ABOUT_LINK_LABEL": html.escape(ABOUT_SITE[lid]["footer_link"]),
                 "ESSAY_LANG_SWITCHER": essay_language_switcher(lid),
                 "PORTFOLIO_NAV": portfolio_nav_html(
                     lid,
@@ -722,7 +802,7 @@ def build(check: bool = False) -> list[Path]:
     sitemap_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
                      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for language in LANGUAGES:
-        for page in ("index", "ci", "shi"):
+        for page in ("index", "ci", "shi", "about"):
             sitemap_lines.append(f'  <url><loc>{html.escape(absolute_url(language["id"], page))}</loc></url>')
         sitemap_lines.append(f'  <url><loc>{html.escape(BASE_URL + essay_page_path(language["id"]))}</loc></url>')
     sitemap_lines.append("</urlset>")

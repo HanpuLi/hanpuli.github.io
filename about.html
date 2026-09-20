@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-GB" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
+<title>About this site · Hanpu Li</title>
+<meta name="description" content="Implementation notes for Hanpu Li’s website: static architecture, multilingual publishing, typography, accessibility, responsive media, testing and GitHub Pages deployment.">
+<link rel="canonical" href="https://hanpuli.github.io/about.html">
+<link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/about.html">
+<link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/about.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://hanpuli.github.io/zh-hans/about.html">
+<link rel="alternate" hreflang="ja" href="https://hanpuli.github.io/ja/about.html">
+<link rel="alternate" hreflang="de" href="https://hanpuli.github.io/de/about.html">
+<link rel="alternate" hreflang="fr" href="https://hanpuli.github.io/fr/about.html">
+<link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/about.html">
+<link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/about.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About this site · Hanpu Li">
+<meta property="og:description" content="Implementation notes for Hanpu Li’s website: static architecture, multilingual publishing, typography, accessibility, responsive media, testing and GitHub Pages deployment.">
+<meta property="og:url" content="https://hanpuli.github.io/about.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>H</text></svg>">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/courier-prime-latin-400.woff2" crossorigin>
+<script src="assets/accessibility.js"></script>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="about-page locale-en">
+<a class="skip-link" href="#main">Skip to content</a>
+<aside class="reading-tools" aria-label="Reading options">
+  <details>
+    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">Reading options</span><span class="visually-hidden">Reading options</span></summary>
+    <div class="reading-panel">
+      <fieldset>
+        <legend>Reading preferences</legend>
+        <p class="reading-description">Adjust this site for easier reading. Settings stay on this device.</p>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>Use sans-serif text</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>Larger text</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>More text spacing</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>Narrower text columns</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>Simpler one-column layout</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>Reduce motion</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>Higher contrast</span></label>
+      </fieldset>
+      <button type="button" class="reading-reset" data-reading-reset>Reset</button>
+    </div>
+  </details>
+</aside>
+<div class="wrap">
+
+  <header class="page-topbar">
+    <a class="page-wordmark" href="/">Hanpu Li <span lang="zh-Hant-HK">李函璞</span></a>
+    <nav class="page-nav" aria-label="Portfolio sections">
+      <a href="/#writing"><span class="nav-no">01</span> writing</a>
+      <a href="/#work"><span class="nav-no">02</span> research</a>
+      <a href="/#photo"><span class="nav-no">03</span> photographs</a>
+      <a href="/ci.html"><span class="nav-no">04</span> ci</a>
+      <a href="/shi.html"><span class="nav-no">05</span> poem</a>
+      <a href="/#profile"><span class="nav-no">06</span> profile</a>
+    </nav>
+    <nav class="page-languages" aria-label="Language">
+      <span class="current" lang="en-GB" aria-current="page" title="English"><span class="language-short" aria-hidden="true">EN</span><span class="visually-hidden">English</span></span>
+      <a href="/zh/about.html" hreflang="zh-Hant-HK" lang="zh-Hant-HK" aria-label="繁體中文" title="繁體中文"><span class="language-short" aria-hidden="true">繁</span></a>
+      <a href="/zh-hans/about.html" hreflang="zh-Hans" lang="zh-Hans" aria-label="简体中文" title="简体中文"><span class="language-short" aria-hidden="true">简</span></a>
+      <a href="/ja/about.html" hreflang="ja" lang="ja" aria-label="日本語" title="日本語"><span class="language-short" aria-hidden="true">日</span></a>
+      <a href="/de/about.html" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch"><span class="language-short" aria-hidden="true">DE</span></a>
+      <a href="/fr/about.html" hreflang="fr" lang="fr" aria-label="Français" title="Français"><span class="language-short" aria-hidden="true">FR</span></a>
+      <a href="/ru/about.html" hreflang="ru" lang="ru" aria-label="Русский" title="Русский"><span class="language-short" aria-hidden="true">RU</span></a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <header class="about-hero">
+      <p class="about-eyebrow">implementation notes · 2026</p>
+      <h1>About this site</h1>
+      <div class="about-intro">
+        <p class="about-lede">This is a deliberately static website. The public pages are documents first: complete HTML, CSS and local assets, with a small amount of vanilla JavaScript only where interaction genuinely helps.</p>
+        <p class="about-principle">The rule is simple: content must remain readable without a framework, a client-side translation layer or JavaScript-driven rendering.</p>
+      </div>
+    </header>
+
+    <section class="about-section" id="architecture">
+      <div class="about-section-head">
+        <p class="about-section-no">01</p>
+        <h2>Architecture</h2>
+        <p class="about-section-dek">Static by design.</p>
+      </div>
+      <div class="about-section-copy">
+        <p>The portfolio is generated as complete HTML5 documents from small templates and structured JSON. A Python 3 standard-library builder emits each language edition ahead of time; the browser does not assemble the site at runtime.</p>
+        <p>The site is served by GitHub Pages from the main branch. There is no CMS, application framework, database or server-side application behind the portfolio.</p>
+        <dl class="about-facts">
+          <div><dt>runtime</dt><dd>HTML5 · CSS · vanilla JavaScript</dd></div>
+          <div><dt>build</dt><dd>Python 3 · JSON · HTML templates</dd></div>
+          <div><dt>hosting</dt><dd>GitHub Pages</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="languages">
+      <div class="about-section-head">
+        <p class="about-section-no">02</p>
+        <h2>Content &amp; languages</h2>
+        <p class="about-section-dek">Seven editions, no runtime translation.</p>
+      </div>
+      <div class="about-section-copy">
+        <p>English, Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are built as separate static editions with canonical URLs, hreflang alternates and locale-specific metadata.</p>
+        <p>Literary source texts have stricter rules than ordinary interface copy. Traditional Chinese is canonical where specified; Simplified Chinese literary mirrors are script-converted and hash-checked, while translations preserve stanza and line structure through dedicated validation.</p>
+        <dl class="about-facts">
+          <div><dt>locales</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
+          <div><dt>literary conversion</dt><dd>OpenCC helper · source hashes · line-parity checks</dd></div>
+          <div><dt>metadata</dt><dd>canonical · hreflang · Open Graph</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="layout">
+      <div class="about-section-head">
+        <p class="about-section-no">03</p>
+        <h2>Layout &amp; typography</h2>
+        <p class="about-section-dek">Editorial CSS rather than a component framework.</p>
+      </div>
+      <div class="about-section-copy">
+        <p>The layout uses CSS Grid, subgrid, container queries, logical properties, custom properties and fluid clamp() sizing. Media queries remain conservative fallbacks; components reflow from their own available width where the browser supports container queries.</p>
+        <p>Typography is self-hosted as WOFF2. EB Garamond handles most Latin prose, Courier Prime and Cousine handle metadata, Shippori Mincho serves Traditional Chinese and Japanese, Noto Serif SC serves Simplified Chinese, and a tiny I.Ming subset fills the remaining Hong Kong glyph gaps. The CJK subsets are rebuilt with fontTools and Brotli; the Noto source is pinned by commit and SHA-256.</p>
+        <dl class="about-facts">
+          <div><dt>layout</dt><dd>Grid · subgrid · container queries · logical properties</dd></div>
+          <div><dt>type</dt><dd>EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming</dd></div>
+          <div><dt>colour</dt><dd>light/dark via prefers-color-scheme</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="accessibility">
+      <div class="about-section-head">
+        <p class="about-section-no">04</p>
+        <h2>Accessibility</h2>
+        <p class="about-section-dek">Adaptation without removing content.</p>
+      </div>
+      <div class="about-section-copy">
+        <p>The portfolio uses semantic landmarks, one primary heading, skip links, visible keyboard focus, descriptive language controls and touch targets sized for reliable use. Reduced-motion, higher-contrast and forced-colour system preferences are respected.</p>
+        <p>A persistent reading panel can switch to sans-serif text, increase type and spacing, narrow text columns, simplify the layout, reduce motion and increase contrast. These preferences are progressive enhancement and are stored locally in the browser.</p>
+        <dl class="about-facts">
+          <div><dt>preferences</dt><dd>sans · larger type · spacing · measure · simple layout · motion · contrast</dd></div>
+          <div><dt>storage</dt><dd>localStorage only</dd></div>
+          <div><dt>checks</dt><dd>custom structural audit · axe-core browser audit</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="media">
+      <div class="about-section-head">
+        <p class="about-section-no">05</p>
+        <h2>Images &amp; performance</h2>
+        <p class="about-section-dek">Responsive media, no gallery runtime.</p>
+      </div>
+      <div class="about-section-copy">
+        <p>Photographs and research plates use picture/srcset with WebP and JPEG candidates, explicit dimensions and responsive sizes. The lead image is prioritised; lower-page media is lazy-loaded and decoded asynchronously.</p>
+        <p>Below-the-fold portfolio sections can use content-visibility, while View Transitions and scroll-linked motion are optional progressive enhancements. Reduced-motion preferences disable animation.</p>
+        <dl class="about-facts">
+          <div><dt>images</dt><dd>picture · srcset · WebP · JPEG</dd></div>
+          <div><dt>loading</dt><dd>explicit dimensions · lazy loading · async decoding</dd></div>
+          <div><dt>progressive CSS</dt><dd>content-visibility · View Transitions · scroll timelines</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="quality">
+      <div class="about-section-head">
+        <p class="about-section-no">06</p>
+        <h2>Build, QA &amp; deployment</h2>
+        <p class="about-section-dek">Generated output is treated as a testable artifact.</p>
+      </div>
+      <div class="about-section-copy">
+        <p>The repository checks that generated pages are current, locale schemas match, literary structures have not drifted, accessibility landmarks and controls remain intact, local links and fragments resolve, images have alt text and JavaScript parses.</p>
+        <p>Browser QA adds geometry checks across languages and narrow/wide viewports, axe-core accessibility scans and HTML validation. GitHub Actions repeats the dependency-light checks on pushes and pull requests; GitHub Pages independently publishes the static files from main.</p>
+        <dl class="about-facts">
+          <div><dt>repository checks</dt><dd>build freshness · i18n · accessibility · links/assets · JS syntax</dd></div>
+          <div><dt>browser QA</dt><dd>Playwright · axe-core · html-validate</dd></div>
+          <div><dt>delivery</dt><dd>GitHub Actions · GitHub Pages</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-coda" aria-labelledby="about-scope-heading">
+      <div>
+        <p class="about-section-no">07</p>
+        <h2 id="about-scope-heading">One domain, two kinds of pages</h2>
+      </div>
+      <div class="about-coda-copy">
+        <p>The portfolio, literary pages, essay shells, About page and 404 pages share the generated multilingual system above.</p>
+        <p>The three Cait Mail Assistant documents under /mail-assistant/ are hand-authored static HTML with a small page-local stylesheet; they reuse the portfolio’s local accessibility script and self-hosted EB Garamond/Courier Prime fonts.</p>
+        <p>The refrigerator guide under /fridge/ is intentionally a single self-contained Chinese HTML file: inline CSS, system CJK fonts and a short dependency-free script for text size, contrast and recommendation highlighting. It makes no API calls and loads no external CDN or analytics code.</p>
+        <h3>Runtime privacy</h3>
+        <p>The portfolio loads no analytics, advertising network, third-party web font or tracking script. It sets no cookies. The only persistent browser state used by the portfolio is the local reading-preference record.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer about-footer">
+    <p><a href="/">← Hanpu Li</a></p>
+    <p class="page-footer-context"><a href="https://github.com/HanpuLi/hanpuli.github.io">site source</a></p>
+  </footer>
+
+</div>
+</body>
+</html>

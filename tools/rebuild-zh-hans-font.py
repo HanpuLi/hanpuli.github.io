@@ -65,6 +65,8 @@ def collect_text() -> str:
     text = "".join(path.read_text(encoding="utf-8") for path in CONTENT_FILES)
     essay = json.loads((CONTENT / "essay-trainspotting.json").read_text(encoding="utf-8"))
     text += essay["zh-hans"]["language_note"]
+    about = json.loads((CONTENT / "about-site.json").read_text(encoding="utf-8"))
+    text += json.dumps(about["zh-hans"], ensure_ascii=False)
     return "".join(sorted({char for char in text if wanted_character(char)}))
 
 

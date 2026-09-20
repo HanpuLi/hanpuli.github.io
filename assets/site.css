@@ -98,7 +98,7 @@
   font-family: "IMing Gap";
   src: url("fonts/iming-gap.woff2") format("woff2");
   font-display: swap;
-  unicode-range: U+60E6, U+8E29;
+  unicode-range: U+60E6, U+67E5, U+8E29;
 }
 
 :root {
@@ -129,6 +129,8 @@
 .site-home.locale-ru,
 .literary-page.locale-ru,
 .shi-page.locale-ru,
+.essay-page.locale-ru,
+.about-page.locale-ru,
 .notfound-page.locale-ru {
   --mono: "Cousine RU", "Courier Prime", "Courier New", monospace;
 }
@@ -136,6 +138,8 @@
 .site-home.locale-zh-hans,
 .literary-page.locale-zh-hans,
 .shi-page.locale-zh-hans,
+.essay-page.locale-zh-hans,
+.about-page.locale-zh-hans,
 .notfound-page.locale-zh-hans {
   --serif: "EB Garamond", Georgia, "Noto Serif SC Site", "Songti SC", "Noto Serif CJK SC", serif;
   --mono: "Courier Prime", "Noto Serif SC Site", "Songti SC", "Courier New", monospace;
@@ -144,6 +148,8 @@
 .site-home:not(.locale-zh-hans) .language-nav [lang="zh-Hans"],
 .literary-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"],
 .shi-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"],
+.essay-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"],
+.about-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"],
 .notfound-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"] {
   font-family: "Noto Serif SC Locale", "Songti SC", "Noto Serif CJK SC", serif;
 }
@@ -3172,6 +3178,7 @@ html[data-reading-motion] .site-home::before {
 .literary-page .wrap,
 .shi-page .wrap,
 .essay-page .wrap,
+.about-page .wrap,
 .notfound-page {
   container: page-shell / inline-size;
 }
@@ -3343,6 +3350,274 @@ html[data-reading-motion]::view-transition-old(root),
 html[data-reading-motion]::view-transition-new(root) {
   animation: none;
 }
+
+/* About this site */
+
+.about-page .wrap {
+  width: min(calc(100% - (2 * var(--gutter))), 1440px);
+}
+
+.about-page main {
+  padding-bottom: clamp(72px, 9vw, 120px);
+}
+
+.about-page .about-hero {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 var(--gap);
+  padding: clamp(64px, 9vh, 110px) 0 clamp(68px, 8vw, 104px);
+}
+
+.about-page .about-eyebrow {
+  grid-column: 1 / 4;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: .8125rem;
+  line-height: 1.5;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.about-page .about-hero h1 {
+  grid-column: 1 / 8;
+  margin-top: clamp(28px, 4vw, 54px);
+  font-size: clamp(58px, 8vw, 108px);
+  font-weight: 400;
+  line-height: .9;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+
+.about-page .about-intro {
+  grid-column: 8 / 13;
+  grid-row: 1 / 3;
+  align-self: end;
+  max-width: 54ch;
+}
+
+.about-page .about-lede {
+  font-size: clamp(20px, 1.8vw, 28px);
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+.about-page .about-principle {
+  margin-top: 1.35em;
+  padding-top: 1em;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .94rem;
+  line-height: 1.65;
+}
+
+.about-page .about-section,
+.about-page .about-coda {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 var(--gap);
+  padding: clamp(42px, 5vw, 72px) 0 clamp(58px, 7vw, 94px);
+  border-top: 1px solid var(--ink);
+}
+
+.about-page .about-section-head {
+  grid-column: 1 / 5;
+  padding-inline-end: clamp(16px, 2vw, 30px);
+}
+
+.about-page .about-section-no {
+  margin-bottom: 18px;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: .8125rem;
+  letter-spacing: .08em;
+}
+
+.about-page .about-section h2,
+.about-page .about-coda h2 {
+  max-width: 12ch;
+  font-size: clamp(32px, 3.5vw, 50px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -.025em;
+  text-wrap: balance;
+}
+
+.about-page .about-section-dek {
+  max-width: 30ch;
+  margin-top: 18px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .8125rem;
+  line-height: 1.55;
+}
+
+.about-page .about-section-copy,
+.about-page .about-coda-copy {
+  grid-column: 5 / 12;
+  max-width: 72ch;
+}
+
+.about-page .about-section-copy > p,
+.about-page .about-coda-copy > p {
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.about-page .about-section-copy > p + p,
+.about-page .about-coda-copy > p + p {
+  margin-top: 1em;
+}
+
+.about-page .about-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(30px, 3vw, 42px);
+  border-top: 1px solid var(--line);
+}
+
+.about-page .about-facts > div {
+  min-width: 0;
+  padding: 14px 14px 0 0;
+}
+
+.about-page .about-facts > div + div {
+  padding-inline-start: 14px;
+  border-inline-start: 1px solid var(--line);
+}
+
+.about-page .about-facts dt {
+  margin-bottom: 7px;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: .72rem;
+  line-height: 1.45;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.about-page .about-facts dd {
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .79rem;
+  line-height: 1.6;
+}
+
+.about-page .about-coda > div:first-child {
+  grid-column: 1 / 5;
+}
+
+.about-page .about-coda .about-section-no {
+  margin-bottom: 18px;
+}
+
+.about-page .about-coda-copy h3 {
+  margin-top: clamp(34px, 4vw, 50px);
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.about-page .about-coda-copy h3 + p {
+  margin-top: 12px;
+}
+
+html[data-reading-measure] .about-page :is(
+  .about-intro,
+  .about-section-copy,
+  .about-coda-copy
+) {
+  max-width: 56ch;
+}
+
+html[data-reading-simple] .about-page .page-topbar {
+  position: static;
+}
+
+html[data-reading-simple] .about-page :is(
+  .about-hero,
+  .about-section,
+  .about-coda
+) {
+  display: block;
+}
+
+html[data-reading-simple] .about-page :is(
+  .about-intro,
+  .about-section-copy,
+  .about-coda-copy
+) {
+  width: min(100%, 68ch);
+  max-width: 68ch;
+  margin-top: 28px;
+}
+
+html[data-reading-simple] .about-page .about-section-head {
+  padding-inline-end: 0;
+}
+
+html[data-reading-simple] .about-page .about-facts {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+html[data-reading-simple] .about-page .about-facts > div + div {
+  padding-inline-start: 0;
+  border-inline-start: 0;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 760px) {
+  .about-page .about-hero,
+  .about-page .about-section,
+  .about-page .about-coda {
+    display: block;
+  }
+
+  .about-page .about-hero {
+    padding: 52px 0 68px;
+  }
+
+  .about-page .about-hero h1 {
+    margin-top: 30px;
+    font-size: clamp(52px, 17vw, 78px);
+  }
+
+  .about-page .about-intro,
+  .about-page .about-section-copy,
+  .about-page .about-coda-copy {
+    max-width: none;
+    margin-top: 34px;
+  }
+
+  .about-page .about-section-head {
+    padding-inline-end: 0;
+  }
+
+  .about-page .about-section h2,
+  .about-page .about-coda h2 {
+    max-width: 15ch;
+  }
+
+  .about-page .about-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-page .about-facts > div {
+    padding: 13px 0;
+  }
+
+  .about-page .about-facts > div + div {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+    border-top: 1px solid var(--line);
+  }
+}
+
 
 /* Long-form essay */
 

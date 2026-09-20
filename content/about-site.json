@@ -1,0 +1,1150 @@
+{
+  "en": {
+    "meta_title": "About this site · Hanpu Li",
+    "meta_description": "Implementation notes for Hanpu Li’s website: static architecture, multilingual publishing, typography, accessibility, responsive media, testing and GitHub Pages deployment.",
+    "eyebrow": "implementation notes · 2026",
+    "title": "About this site",
+    "lede": "This is a deliberately static website. The public pages are documents first: complete HTML, CSS and local assets, with a small amount of vanilla JavaScript only where interaction genuinely helps.",
+    "principle": "The rule is simple: content must remain readable without a framework, a client-side translation layer or JavaScript-driven rendering.",
+    "sections": [
+      {
+        "id": "architecture",
+        "number": "01",
+        "title": "Architecture",
+        "dek": "Static by design.",
+        "body": [
+          "The portfolio is generated as complete HTML5 documents from small templates and structured JSON. A Python 3 standard-library builder emits each language edition ahead of time; the browser does not assemble the site at runtime.",
+          "The site is served by GitHub Pages from the main branch. There is no CMS, application framework, database or server-side application behind the portfolio."
+        ],
+        "facts": [
+          {
+            "label": "runtime",
+            "value": "HTML5 · CSS · vanilla JavaScript"
+          },
+          {
+            "label": "build",
+            "value": "Python 3 · JSON · HTML templates"
+          },
+          {
+            "label": "hosting",
+            "value": "GitHub Pages"
+          }
+        ]
+      },
+      {
+        "id": "languages",
+        "number": "02",
+        "title": "Content & languages",
+        "dek": "Seven editions, no runtime translation.",
+        "body": [
+          "English, Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are built as separate static editions with canonical URLs, hreflang alternates and locale-specific metadata.",
+          "Literary source texts have stricter rules than ordinary interface copy. Traditional Chinese is canonical where specified; Simplified Chinese literary mirrors are script-converted and hash-checked, while translations preserve stanza and line structure through dedicated validation."
+        ],
+        "facts": [
+          {
+            "label": "locales",
+            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
+          },
+          {
+            "label": "literary conversion",
+            "value": "OpenCC helper · source hashes · line-parity checks"
+          },
+          {
+            "label": "metadata",
+            "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "layout",
+        "number": "03",
+        "title": "Layout & typography",
+        "dek": "Editorial CSS rather than a component framework.",
+        "body": [
+          "The layout uses CSS Grid, subgrid, container queries, logical properties, custom properties and fluid clamp() sizing. Media queries remain conservative fallbacks; components reflow from their own available width where the browser supports container queries.",
+          "Typography is self-hosted as WOFF2. EB Garamond handles most Latin prose, Courier Prime and Cousine handle metadata, Shippori Mincho serves Traditional Chinese and Japanese, Noto Serif SC serves Simplified Chinese, and a tiny I.Ming subset fills the remaining Hong Kong glyph gaps. The CJK subsets are rebuilt with fontTools and Brotli; the Noto source is pinned by commit and SHA-256."
+        ],
+        "facts": [
+          {
+            "label": "layout",
+            "value": "Grid · subgrid · container queries · logical properties"
+          },
+          {
+            "label": "type",
+            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
+          },
+          {
+            "label": "colour",
+            "value": "light/dark via prefers-color-scheme"
+          }
+        ]
+      },
+      {
+        "id": "accessibility",
+        "number": "04",
+        "title": "Accessibility",
+        "dek": "Adaptation without removing content.",
+        "body": [
+          "The portfolio uses semantic landmarks, one primary heading, skip links, visible keyboard focus, descriptive language controls and touch targets sized for reliable use. Reduced-motion, higher-contrast and forced-colour system preferences are respected.",
+          "A persistent reading panel can switch to sans-serif text, increase type and spacing, narrow text columns, simplify the layout, reduce motion and increase contrast. These preferences are progressive enhancement and are stored locally in the browser."
+        ],
+        "facts": [
+          {
+            "label": "preferences",
+            "value": "sans · larger type · spacing · measure · simple layout · motion · contrast"
+          },
+          {
+            "label": "storage",
+            "value": "localStorage only"
+          },
+          {
+            "label": "checks",
+            "value": "custom structural audit · axe-core browser audit"
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "number": "05",
+        "title": "Images & performance",
+        "dek": "Responsive media, no gallery runtime.",
+        "body": [
+          "Photographs and research plates use picture/srcset with WebP and JPEG candidates, explicit dimensions and responsive sizes. The lead image is prioritised; lower-page media is lazy-loaded and decoded asynchronously.",
+          "Below-the-fold portfolio sections can use content-visibility, while View Transitions and scroll-linked motion are optional progressive enhancements. Reduced-motion preferences disable animation."
+        ],
+        "facts": [
+          {
+            "label": "images",
+            "value": "picture · srcset · WebP · JPEG"
+          },
+          {
+            "label": "loading",
+            "value": "explicit dimensions · lazy loading · async decoding"
+          },
+          {
+            "label": "progressive CSS",
+            "value": "content-visibility · View Transitions · scroll timelines"
+          }
+        ]
+      },
+      {
+        "id": "quality",
+        "number": "06",
+        "title": "Build, QA & deployment",
+        "dek": "Generated output is treated as a testable artifact.",
+        "body": [
+          "The repository checks that generated pages are current, locale schemas match, literary structures have not drifted, accessibility landmarks and controls remain intact, local links and fragments resolve, images have alt text and JavaScript parses.",
+          "Browser QA adds geometry checks across languages and narrow/wide viewports, axe-core accessibility scans and HTML validation. GitHub Actions repeats the dependency-light checks on pushes and pull requests; GitHub Pages independently publishes the static files from main."
+        ],
+        "facts": [
+          {
+            "label": "repository checks",
+            "value": "build freshness · i18n · accessibility · links/assets · JS syntax"
+          },
+          {
+            "label": "browser QA",
+            "value": "Playwright · axe-core · html-validate"
+          },
+          {
+            "label": "delivery",
+            "value": "GitHub Actions · GitHub Pages"
+          }
+        ]
+      }
+    ],
+    "scope_title": "One domain, two kinds of pages",
+    "scope_body": [
+      "The portfolio, literary pages, essay shells, About page and 404 pages share the generated multilingual system above.",
+      "The three Cait Mail Assistant documents under /mail-assistant/ are hand-authored static HTML with a small page-local stylesheet; they reuse the portfolio’s local accessibility script and self-hosted EB Garamond/Courier Prime fonts.",
+      "The refrigerator guide under /fridge/ is intentionally a single self-contained Chinese HTML file: inline CSS, system CJK fonts and a short dependency-free script for text size, contrast and recommendation highlighting. It makes no API calls and loads no external CDN or analytics code."
+    ],
+    "privacy_title": "Runtime privacy",
+    "privacy_body": "The portfolio loads no analytics, advertising network, third-party web font or tracking script. It sets no cookies. The only persistent browser state used by the portfolio is the local reading-preference record.",
+    "footer_link": "about this site",
+    "source_link": "site source"
+  },
+  "zh": {
+    "meta_title": "關於本站 · Hanpu Li",
+    "meta_description": "Hanpu Li 個人網站的實作說明：靜態架構、多語發佈、字體、無障礙、響應式媒體、測試與 GitHub Pages 部署。",
+    "eyebrow": "實作札記 · 2026",
+    "title": "關於本站",
+    "lede": "本站刻意保持靜態。公開頁面首先是完整文件：HTML、CSS 與本地資源已經寫好，只有在互動確有作用時才加入少量原生 JavaScript。",
+    "principle": "原則很簡單：內容不能依賴前端框架、瀏覽器端翻譯層或 JavaScript 渲染才能閱讀。",
+    "sections": [
+      {
+        "id": "architecture",
+        "number": "01",
+        "title": "架構",
+        "dek": "刻意保持靜態。",
+        "body": [
+          "作品站由小型模板與結構化 JSON 生成完整 HTML5 文件。Python 3 標準函式庫生成器會預先輸出每個語言版本，瀏覽器毋須在執行時拼裝頁面。",
+          "網站從 main 分支經 GitHub Pages 發佈。作品站背後沒有 CMS、應用框架、資料庫或伺服器端應用。"
+        ],
+        "facts": [
+          {
+            "label": "執行時",
+            "value": "HTML5 · CSS · 原生 JavaScript"
+          },
+          {
+            "label": "建置",
+            "value": "Python 3 · JSON · HTML templates"
+          },
+          {
+            "label": "託管",
+            "value": "GitHub Pages"
+          }
+        ]
+      },
+      {
+        "id": "languages",
+        "number": "02",
+        "title": "內容與語言",
+        "dek": "七個版本，沒有執行時翻譯。",
+        "body": [
+          "英文、香港繁體中文、簡體中文、日文、德文、法文與俄文均生成為獨立靜態版本，各有 canonical URL、hreflang alternate 與語系 metadata。",
+          "文學文本比一般介面文字有更嚴格的規則。指定情況下以繁體中文原文為正；簡體文學版本只做字形轉換並核對來源雜湊，譯文則由專門檢查維持分行與分闋結構。"
+        ],
+        "facts": [
+          {
+            "label": "語系",
+            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
+          },
+          {
+            "label": "文學轉換",
+            "value": "OpenCC helper · source hashes · line-parity checks"
+          },
+          {
+            "label": "metadata",
+            "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "layout",
+        "number": "03",
+        "title": "版式與字體",
+        "dek": "編輯式 CSS，不用元件框架。",
+        "body": [
+          "版式使用 CSS Grid、subgrid、container queries、logical properties、custom properties 與流動的 clamp() 尺寸。Media queries 只作保守後備；支援 container queries 的瀏覽器會讓元件依自己的可用寬度重排。",
+          "字體全部以 WOFF2 自行託管。拉丁正文主要用 EB Garamond，metadata 用 Courier Prime／Cousine，繁體中文與日文用 Shippori Mincho，簡體中文用 Noto Serif SC，少量香港字形缺口由極小的 I.Ming 子集補齊。CJK 子集以 fontTools 與 Brotli 重建；Noto 來源以 commit 與 SHA-256 固定。"
+        ],
+        "facts": [
+          {
+            "label": "版式",
+            "value": "Grid · subgrid · container queries · logical properties"
+          },
+          {
+            "label": "字體",
+            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
+          },
+          {
+            "label": "色彩",
+            "value": "light/dark via prefers-color-scheme"
+          }
+        ]
+      },
+      {
+        "id": "accessibility",
+        "number": "04",
+        "title": "無障礙",
+        "dek": "可以調整，但不刪內容。",
+        "body": [
+          "作品站使用語義 landmark、單一主標題、skip links、清晰的鍵盤 focus、完整語言名稱與足夠大的觸控目標；亦尊重 reduced-motion、higher-contrast 與 forced-colour 等系統偏好。",
+          "閱讀面板可切換無襯線字體、放大文字、增加字距行距、縮窄欄寬、簡化版式、減少動態與提高對比。這些都是 progressive enhancement，只在瀏覽器本地保存偏好。"
+        ],
+        "facts": [
+          {
+            "label": "閱讀偏好",
+            "value": "sans · larger type · spacing · measure · simple layout · motion · contrast"
+          },
+          {
+            "label": "儲存",
+            "value": "只用 localStorage"
+          },
+          {
+            "label": "檢查",
+            "value": "自製結構審計 · axe-core 瀏覽器審計"
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "number": "05",
+        "title": "圖片與效能",
+        "dek": "響應式媒體，不靠圖庫程式。",
+        "body": [
+          "攝影與研究圖版使用 picture/srcset，提供 WebP 與 JPEG 尺寸候選，並明確標示寬高與 responsive sizes。首張圖優先載入，頁面較下方的媒體則 lazy-load 並非同步解碼。",
+          "頁面下方區段可使用 content-visibility；View Transitions 與 scroll-linked motion 都只是可選的 progressive enhancement。使用者要求 reduced motion 時會停用動態。"
+        ],
+        "facts": [
+          {
+            "label": "圖片",
+            "value": "picture · srcset · WebP · JPEG"
+          },
+          {
+            "label": "載入",
+            "value": "explicit dimensions · lazy loading · async decoding"
+          },
+          {
+            "label": "漸進 CSS",
+            "value": "content-visibility · View Transitions · scroll timelines"
+          }
+        ]
+      },
+      {
+        "id": "quality",
+        "number": "06",
+        "title": "建置、QA 與部署",
+        "dek": "生成結果本身就是可測試的 artefact。",
+        "body": [
+          "Repository 會檢查生成頁是否最新、各語系 schema 是否一致、文學結構有沒有漂移、無障礙 landmark 與控制項是否完整、本地連結和 fragment 是否有效、圖片是否有 alt text，以及 JavaScript 能否解析。",
+          "瀏覽器 QA 另做跨語言與窄／寬 viewport 幾何檢查、axe-core 無障礙掃描與 HTML validation。GitHub Actions 在 push 與 pull request 上重跑輕依賴檢查；GitHub Pages 則獨立從 main 發佈同一批靜態檔案。"
+        ],
+        "facts": [
+          {
+            "label": "repository checks",
+            "value": "build freshness · i18n · accessibility · links/assets · JS syntax"
+          },
+          {
+            "label": "browser QA",
+            "value": "Playwright · axe-core · html-validate"
+          },
+          {
+            "label": "交付",
+            "value": "GitHub Actions · GitHub Pages"
+          }
+        ]
+      }
+    ],
+    "scope_title": "一個網域，兩類頁面",
+    "scope_body": [
+      "作品站、詞頁、詩頁、論文外殼、About 頁與 404 頁共享上述多語生成系統。",
+      "/mail-assistant/ 下的三份 Cait Mail Assistant 文件是手寫靜態 HTML，配一份小型頁面 CSS；它們沿用作品站的本地無障礙 script，以及自行託管的 EB Garamond／Courier Prime 字體。",
+      "/fridge/ 下的冰箱指南刻意做成單一、自包含的中文 HTML：inline CSS、系統 CJK 字體，以及一小段無依賴 JavaScript，用於字級、對比與推薦卡高亮。它不呼叫 API，也不載入外部 CDN 或 analytics。"
+    ],
+    "privacy_title": "瀏覽器執行時的私隱",
+    "privacy_body": "作品站不載入 analytics、廣告網絡、第三方 web font 或追蹤 script，也不設 cookie。作品站唯一持久的瀏覽器狀態，是本地閱讀偏好記錄。",
+    "footer_link": "關於本站",
+    "source_link": "網站原始碼"
+  },
+  "zh-hans": {
+    "meta_title": "关于本站 · Hanpu Li",
+    "meta_description": "Hanpu Li 个人网站的实现说明：静态架构、多语言发布、字体、无障碍、响应式媒体、测试与 GitHub Pages 部署。",
+    "eyebrow": "实现札记 · 2026",
+    "title": "关于本站",
+    "lede": "本站刻意保持静态。公开页面首先是完整文档：HTML、CSS 与本地资源已经写好，只有在交互确有作用时才加入少量原生 JavaScript。",
+    "principle": "原则很简单：内容不能依赖前端框架、浏览器端翻译层或 JavaScript 渲染才能阅读。",
+    "sections": [
+      {
+        "id": "architecture",
+        "number": "01",
+        "title": "架构",
+        "dek": "刻意保持静态。",
+        "body": [
+          "作品站由小型模板与结构化 JSON 生成完整 HTML5 文档。Python 3 标准库生成器会预先输出每个语言版本，浏览器无需在运行时拼装页面。",
+          "网站从 main 分支经 GitHub Pages 发布。作品站背后没有 CMS、应用框架、数据库或服务端应用。"
+        ],
+        "facts": [
+          {
+            "label": "运行时",
+            "value": "HTML5 · CSS · 原生 JavaScript"
+          },
+          {
+            "label": "构建",
+            "value": "Python 3 · JSON · HTML templates"
+          },
+          {
+            "label": "托管",
+            "value": "GitHub Pages"
+          }
+        ]
+      },
+      {
+        "id": "languages",
+        "number": "02",
+        "title": "内容与语言",
+        "dek": "七个版本，没有运行时翻译。",
+        "body": [
+          "英文、香港繁体中文、简体中文、日文、德文、法文与俄文均生成独立静态版本，各有 canonical URL、hreflang alternate 与语系 metadata。",
+          "文学文本比一般界面文字有更严格的规则。指定情况下以繁体中文原文为准；简体文学版本只做字形转换并核对来源哈希，译文则由专门检查维持分行与分阕结构。"
+        ],
+        "facts": [
+          {
+            "label": "语系",
+            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
+          },
+          {
+            "label": "文学转换",
+            "value": "OpenCC helper · source hashes · line-parity checks"
+          },
+          {
+            "label": "metadata",
+            "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "layout",
+        "number": "03",
+        "title": "版式与字体",
+        "dek": "编辑式 CSS，不用组件框架。",
+        "body": [
+          "版式使用 CSS Grid、subgrid、container queries、logical properties、custom properties 与流动的 clamp() 尺寸。Media queries 只作保守后备；支持 container queries 的浏览器会让组件按自己的可用宽度重排。",
+          "字体全部以 WOFF2 自行托管。拉丁正文主要用 EB Garamond，metadata 用 Courier Prime／Cousine，繁体中文与日文用 Shippori Mincho，简体中文用 Noto Serif SC，少量香港字形缺口由极小的 I.Ming 子集补齐。CJK 子集以 fontTools 与 Brotli 重建；Noto 来源以 commit 与 SHA-256 固定。"
+        ],
+        "facts": [
+          {
+            "label": "版式",
+            "value": "Grid · subgrid · container queries · logical properties"
+          },
+          {
+            "label": "字体",
+            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
+          },
+          {
+            "label": "色彩",
+            "value": "light/dark via prefers-color-scheme"
+          }
+        ]
+      },
+      {
+        "id": "accessibility",
+        "number": "04",
+        "title": "无障碍",
+        "dek": "可以调整，但不删内容。",
+        "body": [
+          "作品站使用语义 landmark、单一主标题、skip links、清晰的键盘 focus、完整语言名称与足够大的触控目标；同时尊重 reduced-motion、higher-contrast 与 forced-colour 等系统偏好。",
+          "阅读面板可切换无衬线字体、放大文字、增加字距行距、缩窄栏宽、简化版式、减少动态与提高对比。这些都是 progressive enhancement，只在浏览器本地保存偏好。"
+        ],
+        "facts": [
+          {
+            "label": "阅读偏好",
+            "value": "sans · larger type · spacing · measure · simple layout · motion · contrast"
+          },
+          {
+            "label": "存储",
+            "value": "只用 localStorage"
+          },
+          {
+            "label": "检查",
+            "value": "自制结构审计 · axe-core 浏览器审计"
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "number": "05",
+        "title": "图片与性能",
+        "dek": "响应式媒体，不靠图库程序。",
+        "body": [
+          "摄影与研究图版使用 picture/srcset，提供 WebP 与 JPEG 尺寸候选，并明确标注宽高与 responsive sizes。首张图优先加载，页面较下方的媒体则 lazy-load 并异步解码。",
+          "页面下方区段可使用 content-visibility；View Transitions 与 scroll-linked motion 都只是可选的 progressive enhancement。用户要求 reduced motion 时会停用动态。"
+        ],
+        "facts": [
+          {
+            "label": "图片",
+            "value": "picture · srcset · WebP · JPEG"
+          },
+          {
+            "label": "加载",
+            "value": "explicit dimensions · lazy loading · async decoding"
+          },
+          {
+            "label": "渐进 CSS",
+            "value": "content-visibility · View Transitions · scroll timelines"
+          }
+        ]
+      },
+      {
+        "id": "quality",
+        "number": "06",
+        "title": "构建、QA 与部署",
+        "dek": "生成结果本身就是可测试的 artefact。",
+        "body": [
+          "Repository 会检查生成页是否最新、各语系 schema 是否一致、文学结构有没有漂移、无障碍 landmark 与控件是否完整、本地链接和 fragment 是否有效、图片是否有 alt text，以及 JavaScript 能否解析。",
+          "浏览器 QA 另做跨语言与窄／宽 viewport 几何检查、axe-core 无障碍扫描与 HTML validation。GitHub Actions 在 push 与 pull request 上重跑轻依赖检查；GitHub Pages 则独立从 main 发布同一批静态文件。"
+        ],
+        "facts": [
+          {
+            "label": "repository checks",
+            "value": "build freshness · i18n · accessibility · links/assets · JS syntax"
+          },
+          {
+            "label": "browser QA",
+            "value": "Playwright · axe-core · html-validate"
+          },
+          {
+            "label": "交付",
+            "value": "GitHub Actions · GitHub Pages"
+          }
+        ]
+      }
+    ],
+    "scope_title": "一个域名，两类页面",
+    "scope_body": [
+      "作品站、词页、诗页、论文外壳、About 页与 404 页共享上述多语言生成系统。",
+      "/mail-assistant/ 下的三份 Cait Mail Assistant 文档是手写静态 HTML，配一份小型页面 CSS；它们沿用作品站的本地无障碍 script，以及自行托管的 EB Garamond／Courier Prime 字体。",
+      "/fridge/ 下的冰箱指南刻意做成单一、自包含的中文 HTML：inline CSS、系统 CJK 字体，以及一小段无依赖 JavaScript，用于字号、对比与推荐卡高亮。它不调用 API，也不加载外部 CDN 或 analytics。"
+    ],
+    "privacy_title": "浏览器运行时的隐私",
+    "privacy_body": "作品站不加载 analytics、广告网络、第三方 web font 或追踪 script，也不设置 cookie。作品站唯一持久的浏览器状态，是本地阅读偏好记录。",
+    "footer_link": "关于本站",
+    "source_link": "网站源代码"
+  },
+  "ja": {
+    "meta_title": "このサイトについて · Hanpu Li",
+    "meta_description": "Hanpu Li のウェブサイトの実装ノート。静的構成、多言語配信、書体、アクセシビリティ、レスポンシブ画像、テスト、GitHub Pages での公開について。",
+    "eyebrow": "実装ノート · 2026",
+    "title": "このサイトについて",
+    "lede": "このサイトは意図的に静的に作っている。公開ページはまず完成した文書であり、HTML、CSS、ローカル資産だけで内容が成立する。JavaScript は、実際に操作性を高める箇所にだけ少量使う。",
+    "principle": "原則は単純だ。フレームワーク、クライアント側翻訳、JavaScript レンダリングがなくても、内容そのものは読めなければならない。",
+    "sections": [
+      {
+        "id": "architecture",
+        "number": "01",
+        "title": "アーキテクチャ",
+        "dek": "静的であることを選ぶ。",
+        "body": [
+          "ポートフォリオは、小さなテンプレートと構造化 JSON から完全な HTML5 文書として生成される。Python 3 標準ライブラリだけのビルダーが各言語版を事前生成し、ブラウザ側でページを組み立てない。",
+          "main ブランチから GitHub Pages で配信する。ポートフォリオの背後に CMS、アプリケーションフレームワーク、データベース、サーバー側アプリはない。"
+        ],
+        "facts": [
+          {
+            "label": "ランタイム",
+            "value": "HTML5 · CSS · vanilla JavaScript"
+          },
+          {
+            "label": "ビルド",
+            "value": "Python 3 · JSON · HTML templates"
+          },
+          {
+            "label": "ホスティング",
+            "value": "GitHub Pages"
+          }
+        ]
+      },
+      {
+        "id": "languages",
+        "number": "02",
+        "title": "コンテンツと言語",
+        "dek": "7言語版、実行時翻訳なし。",
+        "body": [
+          "英語、香港繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、ロシア語を別々の静的版として生成し、それぞれに canonical URL、hreflang alternate、言語別 metadata を持たせる。",
+          "文学テキストは通常の UI 文言より厳格に扱う。指定された作品では繁体字中国語を正本とし、簡体字版は文字体系だけを変換してハッシュを照合する。翻訳は専用チェックで行数と連構造を保つ。"
+        ],
+        "facts": [
+          {
+            "label": "ロケール",
+            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
+          },
+          {
+            "label": "文学テキスト",
+            "value": "OpenCC helper · source hashes · line-parity checks"
+          },
+          {
+            "label": "metadata",
+            "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "layout",
+        "number": "03",
+        "title": "レイアウトと書体",
+        "dek": "コンポーネントフレームワークではなく編集的な CSS。",
+        "body": [
+          "CSS Grid、subgrid、container queries、logical properties、custom properties、clamp() による流動的な寸法を使う。Media queries は保守的なフォールバックにとどめ、対応ブラウザでは各要素が自身の利用可能幅に応じて組み替わる。",
+          "書体は WOFF2 を自前配信する。欧文本文は主に EB Garamond、metadata は Courier Prime／Cousine、繁体字中国語と日本語は Shippori Mincho、簡体字中国語は Noto Serif SC、香港字形のごく小さな欠落は I.Ming の小さなサブセットで補う。CJK サブセットは fontTools と Brotli で再構築し、Noto のソースは commit と SHA-256 で固定している。"
+        ],
+        "facts": [
+          {
+            "label": "レイアウト",
+            "value": "Grid · subgrid · container queries · logical properties"
+          },
+          {
+            "label": "書体",
+            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
+          },
+          {
+            "label": "配色",
+            "value": "light/dark via prefers-color-scheme"
+          }
+        ]
+      },
+      {
+        "id": "accessibility",
+        "number": "04",
+        "title": "アクセシビリティ",
+        "dek": "内容を削らず、読み方を変えられる。",
+        "body": [
+          "意味的な landmark、単一の主要見出し、skip links、見えるキーボード focus、完全な言語名、十分な大きさのタッチターゲットを用意する。reduced-motion、higher-contrast、forced-colour といった OS／ブラウザ設定も尊重する。",
+          "読書設定ではサンセリフ、文字拡大、文字間隔、行長、簡略レイアウト、モーション低減、高コントラストを切り替えられる。すべて progressive enhancement で、設定はブラウザ内にだけ保存する。"
+        ],
+        "facts": [
+          {
+            "label": "読書設定",
+            "value": "sans · larger type · spacing · measure · simple layout · motion · contrast"
+          },
+          {
+            "label": "保存",
+            "value": "localStorage のみ"
+          },
+          {
+            "label": "検査",
+            "value": "独自の構造監査 · axe-core ブラウザ監査"
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "number": "05",
+        "title": "画像とパフォーマンス",
+        "dek": "レスポンシブ画像、ギャラリー用ランタイムなし。",
+        "body": [
+          "写真と研究図版は picture/srcset で WebP と JPEG の候補を用意し、寸法と responsive sizes を明示する。先頭画像を優先し、それ以外の下方画像は lazy-load と非同期 decode を使う。",
+          "下方セクションでは content-visibility を利用でき、View Transitions と scroll-linked motion は任意の progressive enhancement に限る。reduced motion が指定されればアニメーションを止める。"
+        ],
+        "facts": [
+          {
+            "label": "画像",
+            "value": "picture · srcset · WebP · JPEG"
+          },
+          {
+            "label": "読み込み",
+            "value": "explicit dimensions · lazy loading · async decoding"
+          },
+          {
+            "label": "progressive CSS",
+            "value": "content-visibility · View Transitions · scroll timelines"
+          }
+        ]
+      },
+      {
+        "id": "quality",
+        "number": "06",
+        "title": "ビルド、QA、公開",
+        "dek": "生成物そのものをテスト対象にする。",
+        "body": [
+          "生成ページの鮮度、ロケール schema、文学テキストの構造、アクセシビリティの landmark と操作要素、ローカルリンクと fragment、画像の alt text、JavaScript の構文を repository 内で検査する。",
+          "ブラウザ QA では多言語・狭幅／広幅の幾何検査、axe-core のアクセシビリティ監査、HTML validation も行う。GitHub Actions は push と pull request で軽量な検査を再実行し、GitHub Pages は main から同じ静的ファイルを独立して配信する。"
+        ],
+        "facts": [
+          {
+            "label": "repository checks",
+            "value": "build freshness · i18n · accessibility · links/assets · JS syntax"
+          },
+          {
+            "label": "browser QA",
+            "value": "Playwright · axe-core · html-validate"
+          },
+          {
+            "label": "公開",
+            "value": "GitHub Actions · GitHub Pages"
+          }
+        ]
+      }
+    ],
+    "scope_title": "一つのドメイン、二種類のページ",
+    "scope_body": [
+      "ポートフォリオ、詞、詩、論文シェル、About ページ、404 は上記の多言語生成システムを共有する。",
+      "/mail-assistant/ の Cait Mail Assistant 3文書は手書きの静的 HTML と小さなページ専用 CSS で構成し、ポートフォリオのローカルなアクセシビリティ script と自前配信の EB Garamond／Courier Prime を再利用する。",
+      "/fridge/ の冷蔵庫ガイドは意図的に単一の自己完結型中国語 HTML として作っている。inline CSS、システム CJK 書体、文字サイズ・コントラスト・推薦カード強調のための依存なし JavaScript だけを使い、API、外部 CDN、analytics は読み込まない。"
+    ],
+    "privacy_title": "実行時のプライバシー",
+    "privacy_body": "ポートフォリオは analytics、広告ネットワーク、第三者 web font、追跡 script を読み込まず、cookie も設定しない。永続化するブラウザ状態はローカルの読書設定だけである。",
+    "footer_link": "このサイトについて",
+    "source_link": "サイトのソース"
+  },
+  "de": {
+    "meta_title": "Über diese Website · Hanpu Li",
+    "meta_description": "Technische Notizen zu Hanpu Lis Website: statische Architektur, mehrsprachige Veröffentlichung, Typografie, Barrierefreiheit, responsive Medien, Tests und GitHub Pages.",
+    "eyebrow": "Implementierungsnotizen · 2026",
+    "title": "Über diese Website",
+    "lede": "Diese Website ist bewusst statisch. Die öffentlichen Seiten sind zuerst vollständige Dokumente: HTML, CSS und lokale Assets tragen den Inhalt; etwas Vanilla-JavaScript kommt nur dort hinzu, wo Interaktion tatsächlich hilft.",
+    "principle": "Die Regel ist einfach: Der Inhalt muss ohne Framework, clientseitige Übersetzungsschicht und JavaScript-Rendering lesbar bleiben.",
+    "sections": [
+      {
+        "id": "architecture",
+        "number": "01",
+        "title": "Architektur",
+        "dek": "Absichtlich statisch.",
+        "body": [
+          "Das Portfolio wird aus kleinen Templates und strukturiertem JSON als vollständige HTML5-Dokumente erzeugt. Ein Builder mit der Python-3-Standardbibliothek schreibt jede Sprachfassung im Voraus; der Browser setzt die Website nicht erst zur Laufzeit zusammen.",
+          "Ausgeliefert wird der main-Branch über GitHub Pages. Hinter dem Portfolio stehen weder CMS noch Anwendungsframework, Datenbank oder serverseitige Anwendung."
+        ],
+        "facts": [
+          {
+            "label": "Laufzeit",
+            "value": "HTML5 · CSS · Vanilla JavaScript"
+          },
+          {
+            "label": "Build",
+            "value": "Python 3 · JSON · HTML templates"
+          },
+          {
+            "label": "Hosting",
+            "value": "GitHub Pages"
+          }
+        ]
+      },
+      {
+        "id": "languages",
+        "number": "02",
+        "title": "Inhalt & Sprachen",
+        "dek": "Sieben Fassungen, keine Laufzeitübersetzung.",
+        "body": [
+          "Englisch, traditionelles Chinesisch (Hongkong), vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch und Russisch werden als getrennte statische Fassungen mit canonical URLs, hreflang alternates und sprachspezifischen Metadaten gebaut.",
+          "Literarische Quelltexte unterliegen strengeren Regeln als gewöhnliche UI-Texte. Wo festgelegt, ist traditionelles Chinesisch kanonisch; vereinfachte literarische Fassungen werden nur schriftkonvertiert und per Quellhash geprüft, während eigene Tests Zeilen- und Strophenstruktur der Übersetzungen bewahren."
+        ],
+        "facts": [
+          {
+            "label": "Locales",
+            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
+          },
+          {
+            "label": "Literatur",
+            "value": "OpenCC helper · source hashes · line-parity checks"
+          },
+          {
+            "label": "Metadaten",
+            "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "layout",
+        "number": "03",
+        "title": "Layout & Typografie",
+        "dek": "Editoriales CSS statt Komponentenframework.",
+        "body": [
+          "Das Layout nutzt CSS Grid, subgrid, container queries, logical properties, custom properties und flüssige clamp()-Größen. Media queries bleiben konservative Fallbacks; wo container queries unterstützt werden, reagiert ein Modul auf seine eigene verfügbare Breite.",
+          "Die Schriften werden als WOFF2 selbst gehostet. EB Garamond trägt überwiegend den lateinischen Fließtext, Courier Prime und Cousine die Metadaten, Shippori Mincho traditionelles Chinesisch und Japanisch, Noto Serif SC vereinfachtes Chinesisch; eine winzige I.Ming-Teilmenge schließt verbliebene Hongkonger Glyphenlücken. Die CJK-Subsets werden mit fontTools und Brotli neu gebaut; die Noto-Quelle ist per Commit und SHA-256 fixiert."
+        ],
+        "facts": [
+          {
+            "label": "Layout",
+            "value": "Grid · subgrid · container queries · logical properties"
+          },
+          {
+            "label": "Schriften",
+            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
+          },
+          {
+            "label": "Farbschema",
+            "value": "light/dark via prefers-color-scheme"
+          }
+        ]
+      },
+      {
+        "id": "accessibility",
+        "number": "04",
+        "title": "Barrierefreiheit",
+        "dek": "Anpassbar, ohne Inhalt zu entfernen.",
+        "body": [
+          "Semantische Landmarks, eine Hauptüberschrift, skip links, sichtbarer Tastaturfokus, ausgeschriebene Sprachnamen und verlässliche Touch-Ziele gehören zur Grundstruktur. Systemeinstellungen für reduced motion, höheren Kontrast und forced colours werden berücksichtigt.",
+          "Ein dauerhaftes Lesemenü kann serifenlose Schrift, größere Schrift, mehr Abstände, kürzere Zeilen, ein vereinfachtes Layout, weniger Bewegung und höheren Kontrast aktivieren. Diese Optionen sind progressive enhancement und bleiben lokal im Browser."
+        ],
+        "facts": [
+          {
+            "label": "Leseoptionen",
+            "value": "sans · larger type · spacing · measure · simple layout · motion · contrast"
+          },
+          {
+            "label": "Speicher",
+            "value": "nur localStorage"
+          },
+          {
+            "label": "Prüfung",
+            "value": "eigener Strukturaudit · axe-core Browseraudit"
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "number": "05",
+        "title": "Bilder & Performance",
+        "dek": "Responsive Medien ohne Galerie-Runtime.",
+        "body": [
+          "Fotografien und Forschungsabbildungen verwenden picture/srcset mit WebP- und JPEG-Kandidaten, expliziten Abmessungen und responsive sizes. Das Leitbild wird priorisiert; weiter unten liegende Medien werden lazy geladen und asynchron dekodiert.",
+          "Abschnitte unterhalb des ersten Viewports können content-visibility nutzen. View Transitions und scroll-linked motion bleiben optionale progressive enhancements; bei reduced motion werden Animationen abgeschaltet."
+        ],
+        "facts": [
+          {
+            "label": "Bilder",
+            "value": "picture · srcset · WebP · JPEG"
+          },
+          {
+            "label": "Laden",
+            "value": "explicit dimensions · lazy loading · async decoding"
+          },
+          {
+            "label": "progressive CSS",
+            "value": "content-visibility · View Transitions · scroll timelines"
+          }
+        ]
+      },
+      {
+        "id": "quality",
+        "number": "06",
+        "title": "Build, QA & Deployment",
+        "dek": "Auch das generierte Ergebnis ist ein Prüfobjekt.",
+        "body": [
+          "Im Repository wird geprüft, ob generierte Seiten aktuell sind, Locale-Schemata übereinstimmen, literarische Strukturen stabil bleiben, Accessibility-Landmarks und Bedienelemente vollständig sind, lokale Links und Fragmente auflösen, Bilder alt text besitzen und JavaScript syntaktisch gültig ist.",
+          "Die Browser-QA ergänzt Geometrieprüfungen über Sprachen und schmale/breite Viewports, axe-core-Audits und HTML validation. GitHub Actions wiederholt die leichten Prüfungen bei Pushes und Pull Requests; GitHub Pages veröffentlicht die statischen Dateien unabhängig davon aus main."
+        ],
+        "facts": [
+          {
+            "label": "repository checks",
+            "value": "build freshness · i18n · accessibility · links/assets · JS syntax"
+          },
+          {
+            "label": "browser QA",
+            "value": "Playwright · axe-core · html-validate"
+          },
+          {
+            "label": "Auslieferung",
+            "value": "GitHub Actions · GitHub Pages"
+          }
+        ]
+      }
+    ],
+    "scope_title": "Eine Domain, zwei Arten von Seiten",
+    "scope_body": [
+      "Portfolio, Literaturseiten, Essay-Hüllen, About-Seite und 404-Seiten teilen das oben beschriebene mehrsprachige Generierungssystem.",
+      "Die drei Cait-Mail-Assistant-Dokumente unter /mail-assistant/ sind handgeschriebenes statisches HTML mit einer kleinen lokalen CSS-Datei; sie verwenden das lokale Accessibility-Skript des Portfolios sowie selbst gehostete EB-Garamond- und Courier-Prime-Schriften.",
+      "Der Kühlschrank-Ratgeber unter /fridge/ ist absichtlich eine einzige eigenständige chinesische HTML-Datei: Inline-CSS, System-CJK-Schriften und ein kurzes abhängigkeitfreies JavaScript für Schriftgröße, Kontrast und das Hervorheben von Empfehlungen. Er ruft keine APIs auf und lädt weder externe CDNs noch Analytics."
+    ],
+    "privacy_title": "Datenschutz zur Laufzeit",
+    "privacy_body": "Das Portfolio lädt weder Analytics noch Werbenetzwerke, Drittanbieter-Webfonts oder Tracking-Skripte und setzt keine Cookies. Der einzige dauerhaft gespeicherte Browserzustand des Portfolios sind die lokalen Leseeinstellungen.",
+    "footer_link": "über diese Website",
+    "source_link": "Quellcode der Website"
+  },
+  "fr": {
+    "meta_title": "À propos du site · Hanpu Li",
+    "meta_description": "Notes d’implémentation du site de Hanpu Li : architecture statique, publication multilingue, typographie, accessibilité, médias responsives, tests et GitHub Pages.",
+    "eyebrow": "notes d’implémentation · 2026",
+    "title": "À propos du site",
+    "lede": "Ce site est volontairement statique. Les pages publiques sont d’abord des documents complets : HTML, CSS et ressources locales portent le contenu ; un peu de JavaScript natif n’intervient que lorsque l’interaction apporte réellement quelque chose.",
+    "principle": "La règle est simple : le contenu doit rester lisible sans framework, sans couche de traduction côté client et sans rendu piloté par JavaScript.",
+    "sections": [
+      {
+        "id": "architecture",
+        "number": "01",
+        "title": "Architecture",
+        "dek": "Statique par choix.",
+        "body": [
+          "Le portfolio est généré sous forme de documents HTML5 complets à partir de petits templates et de JSON structuré. Un générateur fondé sur la bibliothèque standard de Python 3 produit chaque version linguistique à l’avance ; le navigateur n’assemble pas le site à l’exécution.",
+          "Le site est servi par GitHub Pages depuis la branche main. Le portfolio n’a derrière lui ni CMS, ni framework applicatif, ni base de données, ni application côté serveur."
+        ],
+        "facts": [
+          {
+            "label": "runtime",
+            "value": "HTML5 · CSS · JavaScript natif"
+          },
+          {
+            "label": "build",
+            "value": "Python 3 · JSON · HTML templates"
+          },
+          {
+            "label": "hébergement",
+            "value": "GitHub Pages"
+          }
+        ]
+      },
+      {
+        "id": "languages",
+        "number": "02",
+        "title": "Contenu & langues",
+        "dek": "Sept éditions, aucune traduction à l’exécution.",
+        "body": [
+          "L’anglais, le chinois traditionnel de Hong Kong, le chinois simplifié, le japonais, l’allemand, le français et le russe sont générés comme éditions statiques distinctes, avec URL canonical, alternates hreflang et métadonnées propres à chaque langue.",
+          "Les textes littéraires suivent des règles plus strictes que les libellés d’interface. Quand cela est défini, le chinois traditionnel fait foi ; les miroirs littéraires simplifiés ne changent que l’écriture et sont contrôlés par hash de source, tandis que des tests dédiés conservent lignes et strophes des traductions."
+        ],
+        "facts": [
+          {
+            "label": "locales",
+            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
+          },
+          {
+            "label": "textes littéraires",
+            "value": "OpenCC helper · source hashes · line-parity checks"
+          },
+          {
+            "label": "métadonnées",
+            "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "layout",
+        "number": "03",
+        "title": "Mise en page & typographie",
+        "dek": "Du CSS éditorial plutôt qu’un framework de composants.",
+        "body": [
+          "La mise en page utilise CSS Grid, subgrid, container queries, logical properties, custom properties et des dimensions fluides via clamp(). Les media queries restent des solutions de repli prudentes ; quand les container queries sont disponibles, chaque module se réorganise selon sa propre largeur.",
+          "Les polices sont auto-hébergées en WOFF2. EB Garamond sert principalement au texte latin, Courier Prime et Cousine aux métadonnées, Shippori Mincho au chinois traditionnel et au japonais, Noto Serif SC au chinois simplifié ; un minuscule sous-ensemble I.Ming complète les rares glyphes hongkongais manquants. Les sous-ensembles CJK sont reconstruits avec fontTools et Brotli ; la source Noto est épinglée par commit et SHA-256."
+        ],
+        "facts": [
+          {
+            "label": "mise en page",
+            "value": "Grid · subgrid · container queries · logical properties"
+          },
+          {
+            "label": "polices",
+            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
+          },
+          {
+            "label": "couleurs",
+            "value": "light/dark via prefers-color-scheme"
+          }
+        ]
+      },
+      {
+        "id": "accessibility",
+        "number": "04",
+        "title": "Accessibilité",
+        "dek": "Adapter la lecture sans retirer de contenu.",
+        "body": [
+          "La structure repose sur des landmarks sémantiques, un titre principal, des skip links, un focus clavier visible, des noms de langue complets et des cibles tactiles fiables. Les préférences système reduced motion, contraste renforcé et forced colours sont respectées.",
+          "Un panneau de lecture persistant peut activer une police sans sérif, agrandir le texte, augmenter les espacements, raccourcir les lignes, simplifier la mise en page, réduire le mouvement et augmenter le contraste. Tout cela reste du progressive enhancement et les réglages sont stockés uniquement dans le navigateur."
+        ],
+        "facts": [
+          {
+            "label": "préférences",
+            "value": "sans · larger type · spacing · measure · simple layout · motion · contrast"
+          },
+          {
+            "label": "stockage",
+            "value": "localStorage uniquement"
+          },
+          {
+            "label": "contrôles",
+            "value": "audit structurel maison · audit navigateur axe-core"
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "number": "05",
+        "title": "Images & performance",
+        "dek": "Médias responsives, sans runtime de galerie.",
+        "body": [
+          "Les photographies et planches de recherche utilisent picture/srcset avec variantes WebP et JPEG, dimensions explicites et responsive sizes. L’image d’ouverture est prioritaire ; les médias plus bas dans la page sont chargés en lazy-loading et décodés de façon asynchrone.",
+          "Les sections sous la ligne de flottaison peuvent utiliser content-visibility. View Transitions et scroll-linked motion restent des progressive enhancements facultatifs ; reduced motion désactive les animations."
+        ],
+        "facts": [
+          {
+            "label": "images",
+            "value": "picture · srcset · WebP · JPEG"
+          },
+          {
+            "label": "chargement",
+            "value": "explicit dimensions · lazy loading · async decoding"
+          },
+          {
+            "label": "CSS progressif",
+            "value": "content-visibility · View Transitions · scroll timelines"
+          }
+        ]
+      },
+      {
+        "id": "quality",
+        "number": "06",
+        "title": "Build, QA & déploiement",
+        "dek": "Le résultat généré est lui-même testé.",
+        "body": [
+          "Le dépôt vérifie que les pages générées sont à jour, que les schémas de locale concordent, que la structure des textes littéraires n’a pas dérivé, que landmarks et contrôles d’accessibilité restent intacts, que liens et fragments locaux se résolvent, que les images ont un alt text et que le JavaScript se parse.",
+          "La QA navigateur ajoute des contrôles géométriques entre langues et viewports étroits/larges, des audits axe-core et une validation HTML. GitHub Actions répète les contrôles légers lors des push et pull requests ; GitHub Pages publie indépendamment les mêmes fichiers statiques depuis main."
+        ],
+        "facts": [
+          {
+            "label": "repository checks",
+            "value": "build freshness · i18n · accessibility · links/assets · JS syntax"
+          },
+          {
+            "label": "browser QA",
+            "value": "Playwright · axe-core · html-validate"
+          },
+          {
+            "label": "livraison",
+            "value": "GitHub Actions · GitHub Pages"
+          }
+        ]
+      }
+    ],
+    "scope_title": "Un domaine, deux types de pages",
+    "scope_body": [
+      "Le portfolio, les pages littéraires, les enveloppes d’essai, la page About et les pages 404 partagent le système multilingue généré ci-dessus.",
+      "Les trois documents Cait Mail Assistant sous /mail-assistant/ sont du HTML statique écrit à la main avec une petite feuille CSS locale ; ils réutilisent le script d’accessibilité local du portfolio ainsi que les polices EB Garamond et Courier Prime auto-hébergées.",
+      "Le guide des réfrigérateurs sous /fridge/ est volontairement un seul fichier HTML chinois autonome : CSS inline, polices CJK système et un court JavaScript sans dépendance pour la taille du texte, le contraste et la mise en évidence des recommandations. Il n’appelle aucune API et ne charge ni CDN externe ni analytics."
+    ],
+    "privacy_title": "Vie privée à l’exécution",
+    "privacy_body": "Le portfolio ne charge ni analytics, ni réseau publicitaire, ni web font tierce, ni script de suivi, et ne dépose aucun cookie. Le seul état persistant du navigateur est l’enregistrement local des préférences de lecture.",
+    "footer_link": "à propos du site",
+    "source_link": "source du site"
+  },
+  "ru": {
+    "meta_title": "О сайте · Hanpu Li",
+    "meta_description": "Технические заметки о сайте Hanpu Li: статическая архитектура, многоязычная публикация, типографика, доступность, адаптивные медиа, тестирование и GitHub Pages.",
+    "eyebrow": "заметки о реализации · 2026",
+    "title": "О сайте",
+    "lede": "Этот сайт намеренно сделан статическим. Публичные страницы прежде всего являются готовыми документами: содержание держится на HTML, CSS и локальных ресурсах, а небольшой объём обычного JavaScript используется только там, где взаимодействие действительно полезно.",
+    "principle": "Правило простое: содержание должно оставаться читаемым без фреймворка, клиентского слоя перевода и рендеринга через JavaScript.",
+    "sections": [
+      {
+        "id": "architecture",
+        "number": "01",
+        "title": "Архитектура",
+        "dek": "Статика как осознанный выбор.",
+        "body": [
+          "Портфолио генерируется как полноценные документы HTML5 из небольших шаблонов и структурированного JSON. Генератор на стандартной библиотеке Python 3 заранее выпускает каждую языковую версию; браузеру не приходится собирать сайт во время выполнения.",
+          "Сайт публикуется из ветки main через GitHub Pages. За портфолио нет CMS, прикладного фреймворка, базы данных или серверного приложения."
+        ],
+        "facts": [
+          {
+            "label": "runtime",
+            "value": "HTML5 · CSS · обычный JavaScript"
+          },
+          {
+            "label": "build",
+            "value": "Python 3 · JSON · HTML templates"
+          },
+          {
+            "label": "хостинг",
+            "value": "GitHub Pages"
+          }
+        ]
+      },
+      {
+        "id": "languages",
+        "number": "02",
+        "title": "Контент и языки",
+        "dek": "Семь версий, без перевода во время выполнения.",
+        "body": [
+          "Английская, традиционная китайская (Гонконг), упрощённая китайская, японская, немецкая, французская и русская версии генерируются как отдельные статические издания с canonical URL, hreflang alternates и локализованными метаданными.",
+          "Для литературных текстов действуют более строгие правила, чем для обычного интерфейсного текста. Там, где это задано, каноничен традиционный китайский; упрощённые литературные зеркала меняют только письменность и проверяются по хешу источника, а отдельные тесты сохраняют строки и строфы переводов."
+        ],
+        "facts": [
+          {
+            "label": "локали",
+            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
+          },
+          {
+            "label": "литературные тексты",
+            "value": "OpenCC helper · source hashes · line-parity checks"
+          },
+          {
+            "label": "метаданные",
+            "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "layout",
+        "number": "03",
+        "title": "Вёрстка и типографика",
+        "dek": "Редакционный CSS вместо компонентного фреймворка.",
+        "body": [
+          "Вёрстка использует CSS Grid, subgrid, container queries, logical properties, custom properties и плавные размеры через clamp(). Media queries остаются консервативным запасным вариантом; при поддержке container queries модуль перестраивается по собственной доступной ширине.",
+          "Шрифты размещены локально в WOFF2. Основной латинский текст набран преимущественно EB Garamond, метаданные — Courier Prime и Cousine, традиционный китайский и японский — Shippori Mincho, упрощённый китайский — Noto Serif SC; редкие пробелы в гонконгских глифах закрывает крошечный subset I.Ming. CJK-подмножества пересобираются с fontTools и Brotli; источник Noto закреплён по commit и SHA-256."
+        ],
+        "facts": [
+          {
+            "label": "вёрстка",
+            "value": "Grid · subgrid · container queries · logical properties"
+          },
+          {
+            "label": "шрифты",
+            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
+          },
+          {
+            "label": "цветовая схема",
+            "value": "light/dark via prefers-color-scheme"
+          }
+        ]
+      },
+      {
+        "id": "accessibility",
+        "number": "04",
+        "title": "Доступность",
+        "dek": "Настройка чтения без удаления содержания.",
+        "body": [
+          "Используются семантические landmarks, один главный заголовок, skip links, заметный клавиатурный focus, полные названия языков и надёжные размеры сенсорных целей. Учитываются системные настройки reduced motion, повышенного контраста и forced colours.",
+          "Постоянная панель чтения позволяет включить шрифт без засечек, увеличить текст и интервалы, сузить строки, упростить раскладку, уменьшить движение и повысить контраст. Это progressive enhancement; настройки сохраняются только локально в браузере."
+        ],
+        "facts": [
+          {
+            "label": "настройки",
+            "value": "sans · larger type · spacing · measure · simple layout · motion · contrast"
+          },
+          {
+            "label": "хранение",
+            "value": "только localStorage"
+          },
+          {
+            "label": "проверки",
+            "value": "собственный структурный аудит · браузерный аудит axe-core"
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "number": "05",
+        "title": "Изображения и производительность",
+        "dek": "Адаптивные медиа без runtime-галереи.",
+        "body": [
+          "Фотографии и исследовательские иллюстрации используют picture/srcset с вариантами WebP и JPEG, явными размерами и responsive sizes. Главное изображение получает приоритет; медиа ниже по странице загружаются лениво и декодируются асинхронно.",
+          "Нижние разделы могут использовать content-visibility. View Transitions и scroll-linked motion остаются необязательными progressive enhancements; при reduced motion анимация отключается."
+        ],
+        "facts": [
+          {
+            "label": "изображения",
+            "value": "picture · srcset · WebP · JPEG"
+          },
+          {
+            "label": "загрузка",
+            "value": "explicit dimensions · lazy loading · async decoding"
+          },
+          {
+            "label": "progressive CSS",
+            "value": "content-visibility · View Transitions · scroll timelines"
+          }
+        ]
+      },
+      {
+        "id": "quality",
+        "number": "06",
+        "title": "Сборка, QA и публикация",
+        "dek": "Сгенерированный результат тоже является объектом тестирования.",
+        "body": [
+          "Репозиторий проверяет актуальность сгенерированных страниц, совпадение схем локалей, сохранность структуры литературных текстов, landmarks и элементы управления доступностью, локальные ссылки и fragments, alt text у изображений и синтаксис JavaScript.",
+          "Браузерный QA добавляет геометрические проверки для языков и узких/широких viewport, аудиты axe-core и HTML validation. GitHub Actions повторяет лёгкие проверки при push и pull request; GitHub Pages независимо публикует те же статические файлы из main."
+        ],
+        "facts": [
+          {
+            "label": "repository checks",
+            "value": "build freshness · i18n · accessibility · links/assets · JS syntax"
+          },
+          {
+            "label": "browser QA",
+            "value": "Playwright · axe-core · html-validate"
+          },
+          {
+            "label": "доставка",
+            "value": "GitHub Actions · GitHub Pages"
+          }
+        ]
+      }
+    ],
+    "scope_title": "Один домен, два типа страниц",
+    "scope_body": [
+      "Портфолио, литературные страницы, оболочки эссе, страница About и 404 используют описанную выше многоязычную систему генерации.",
+      "Три документа Cait Mail Assistant в /mail-assistant/ — это вручную написанный статический HTML с небольшой локальной таблицей стилей; они повторно используют локальный accessibility script портфолио и самостоятельно размещённые шрифты EB Garamond и Courier Prime.",
+      "Гид по холодильникам в /fridge/ намеренно сделан одним самодостаточным китайским HTML-файлом: inline CSS, системные CJK-шрифты и короткий JavaScript без зависимостей для размера текста, контраста и подсветки рекомендаций. Он не вызывает API и не загружает внешние CDN или analytics."
+    ],
+    "privacy_title": "Приватность во время выполнения",
+    "privacy_body": "Портфолио не загружает analytics, рекламные сети, сторонние web fonts или tracking scripts и не устанавливает cookies. Единственное постоянное состояние браузера — локальная запись настроек чтения.",
+    "footer_link": "о сайте",
+    "source_link": "исходный код сайта"
+  }
+}
