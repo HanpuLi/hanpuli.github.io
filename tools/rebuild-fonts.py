@@ -38,6 +38,15 @@ for f in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
     ):
         continue
     t = open(f, encoding="utf-8").read()
+    # The root GitHub Pages 404 contains an inert Simplified-Chinese template so
+    # real /zh-hans/... misses can be localised without redirecting. Those glyphs
+    # belong to the Noto Serif SC subset, not Shippori/I.Ming.
+    t = re.sub(
+        r'<template\b(?=[^>]*\bid="notfound-locale-zh-hans")[^>]*>.*?</template>',
+        "",
+        t,
+        flags=re.S,
+    )
     t = re.sub(r"<style>.*?</style>", "", t, flags=re.S)
     t = re.sub(r"<[^>]+>", "", t)
     chars.update(c for c in t if ord(c) >= 0x2E80 or c in "£²·–—’←→")
