@@ -77,11 +77,11 @@
     <a class="page-wordmark" href="/fr/">Hanpu Li <span lang="zh-Hant-HK">李函璞</span></a>
     <nav class="page-nav" aria-label="Sections du portfolio">
       <a href="/fr/#writing"><span class="nav-no">01</span> écrits</a>
-      <a href="/fr/#work"><span class="nav-no">02</span> recherche</a>
-      <a href="/fr/#photo"><span class="nav-no">03</span> photos</a>
-      <a href="/fr/ci.html"><span class="nav-no">04</span> ci</a>
+      <a href="/fr/ci.html"><span class="nav-no">02</span> ci</a>
+      <a href="/fr/#work"><span class="nav-no">03</span> recherche</a>
+      <a href="/fr/#photo"><span class="nav-no">04</span> photos</a>
       <a href="/fr/shi.html"><span class="nav-no">05</span> poème</a>
-      <a href="/fr/#profile"><span class="nav-no">06</span> profil</a>
+      <a href="/fr/#profile"><span class="nav-no">06</span> contextes</a>
     </nav>
     <nav class="page-languages" aria-label="Langue">
       <a href="/about.html" hreflang="en-GB" lang="en-GB" aria-label="English" title="English"><span class="language-short" aria-hidden="true">EN</span></a>
@@ -96,19 +96,19 @@
 
   <main id="main" tabindex="-1">
     <header class="about-hero">
-      <p class="about-eyebrow">notes d’implémentation · 2026</p>
+      <p class="about-eyebrow">notes de publication · 2026</p>
       <h1>À propos du site</h1>
       <div class="about-intro">
-        <p class="about-lede">Ce site est volontairement statique. Les pages publiques sont d’abord des documents complets : HTML, CSS et ressources locales portent le contenu ; un peu de JavaScript natif n’intervient que lorsque l’interaction apporte réellement quelque chose.</p>
-        <p class="about-principle">La règle est simple : le contenu doit rester lisible sans framework, sans couche de traduction côté client et sans rendu piloté par JavaScript.</p>
+        <p class="about-lede">Ce site est d’abord une publication, non une application. Chacune des sept éditions linguistiques est un document statique complet, avec des polices locales, sans suivi ni traduction à l’exécution ; l’architecture technique sert à stabiliser ces choix éditoriaux.</p>
+        <p class="about-principle">L’autorité du texte source, la relation entre source et traduction, la lisibilité et la vie privée passent d’abord ; les détails de construction et de contrôle en découlent.</p>
       </div>
     </header>
 
 <nav class="about-toc" aria-label="Sur cette page">
   <p>Sur cette page</p>
   <ol>
-    <li><a href="#architecture"><span>01</span> Architecture</a></li>
-    <li><a href="#languages"><span>02</span> Contenu &amp; langues</a></li>
+    <li><a href="#languages"><span>01</span> Contenu &amp; langues</a></li>
+    <li><a href="#architecture"><span>02</span> Architecture</a></li>
     <li><a href="#layout"><span>03</span> Mise en page &amp; typographie</a></li>
     <li><a href="#accessibility"><span>04</span> Accessibilité</a></li>
     <li><a href="#media"><span>05</span> Images et performances</a></li>
@@ -117,26 +117,9 @@
   </ol>
 </nav>
 
-    <section class="about-section" id="architecture">
-      <div class="about-section-head">
-        <p class="about-section-no">01</p>
-        <h2>Architecture</h2>
-        <p class="about-section-dek">Statique par choix.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>Le portfolio est généré sous forme de documents HTML5 complets à partir de petits gabarits et de JSON structuré. Un générateur fondé sur la bibliothèque standard de Python 3 produit chaque version linguistique à l’avance ; le navigateur n’assemble pas le site à l’exécution.</p>
-        <p>Le site est servi par GitHub Pages depuis la branche main. Le portfolio n’a derrière lui ni CMS, ni framework applicatif, ni base de données, ni application côté serveur.</p>
-        <dl class="about-facts">
-          <div><dt>exécution</dt><dd>HTML5 · CSS · JavaScript natif</dd></div>
-          <div><dt>construction</dt><dd>Python 3 · JSON · gabarits HTML</dd></div>
-          <div><dt>hébergement</dt><dd>GitHub Pages</dd></div>
-        </dl>
-      </div>
-    </section>
-
     <section class="about-section" id="languages">
       <div class="about-section-head">
-        <p class="about-section-no">02</p>
+        <p class="about-section-no">01</p>
         <h2>Contenu &amp; langues</h2>
         <p class="about-section-dek">Sept éditions, aucune traduction à l’exécution.</p>
       </div>
@@ -147,6 +130,23 @@
           <div><dt>locales</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
           <div><dt>textes littéraires</dt><dd>OpenCC · hachages source · contrôle de la structure des lignes</dd></div>
           <div><dt>métadonnées</dt><dd>canonical · hreflang · Open Graph</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="architecture">
+      <div class="about-section-head">
+        <p class="about-section-no">02</p>
+        <h2>Architecture</h2>
+        <p class="about-section-dek">Statique par choix.</p>
+      </div>
+      <div class="about-section-copy">
+        <p>Le portfolio est généré sous forme de documents HTML5 complets à partir de petits gabarits et de JSON structuré. Un générateur fondé sur la bibliothèque standard de Python 3 produit chaque version linguistique à l’avance ; le navigateur n’assemble pas le site à l’exécution.</p>
+        <p>Le site est servi par GitHub Pages depuis la branche main. Le portfolio n’a derrière lui ni CMS, ni framework applicatif, ni base de données, ni application côté serveur.</p>
+        <dl class="about-facts">
+          <div><dt>exécution</dt><dd>HTML5 · CSS · JavaScript natif</dd></div>
+          <div><dt>construction</dt><dd>Python 3 · JSON · gabarits HTML</dd></div>
+          <div><dt>hébergement</dt><dd>GitHub Pages</dd></div>
         </dl>
       </div>
     </section>
@@ -235,7 +235,7 @@
 
   <footer class="page-footer about-footer">
     <p><a href="/fr/">Hanpu Li</a></p>
-    <p class="page-footer-context"><a href="https://github.com/HanpuLi/hanpuli.github.io">source du site</a></p>
+    <p class="page-footer-context"><a href="/fr/contexts.html">crédits &amp; contextes</a> <span aria-hidden="true">·</span> <a href="https://github.com/HanpuLi/hanpuli.github.io">source du site</a></p>
   </footer>
 
 </div>

@@ -13,6 +13,7 @@ const pageSuffixes = [
   "ci.html",
   "shi.html",
   "about.html",
+  "contexts.html",
   "writing/trainspotting/",
   "poetry-voucher/",
   "404.html",

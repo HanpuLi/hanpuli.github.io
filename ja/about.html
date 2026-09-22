@@ -78,11 +78,11 @@
     <a class="page-wordmark" href="/ja/">Hanpu Li <span lang="zh-Hant-HK">李函璞</span></a>
     <nav class="page-nav" aria-label="ポートフォリオ内のセクション">
       <a href="/ja/#writing"><span class="nav-no">01</span> 文章</a>
-      <a href="/ja/#work"><span class="nav-no">02</span> 研究</a>
-      <a href="/ja/#photo"><span class="nav-no">03</span> 写真</a>
-      <a href="/ja/ci.html"><span class="nav-no">04</span> 詞</a>
+      <a href="/ja/ci.html"><span class="nav-no">02</span> 詞</a>
+      <a href="/ja/#work"><span class="nav-no">03</span> 研究</a>
+      <a href="/ja/#photo"><span class="nav-no">04</span> 写真</a>
       <a href="/ja/shi.html"><span class="nav-no">05</span> 詩</a>
-      <a href="/ja/#profile"><span class="nav-no">06</span> プロフィール</a>
+      <a href="/ja/#profile"><span class="nav-no">06</span> 活動歴</a>
     </nav>
     <nav class="page-languages" aria-label="言語">
       <a href="/about.html" hreflang="en-GB" lang="en-GB" aria-label="English" title="English"><span class="language-short" aria-hidden="true">EN</span></a>
@@ -97,19 +97,19 @@
 
   <main id="main" tabindex="-1">
     <header class="about-hero">
-      <p class="about-eyebrow">実装ノート · 2026</p>
+      <p class="about-eyebrow">出版ノート · 2026</p>
       <h1>このサイトについて</h1>
       <div class="about-intro">
-        <p class="about-lede">このサイトは意図的に静的に作っている。公開ページはまず完成した文書であり、HTML、CSS、ローカル資産だけで内容が成立する。JavaScript は、実際に操作性を高める箇所にだけ少量使う。</p>
-        <p class="about-principle">原則は単純だ。フレームワーク、クライアント側翻訳、JavaScript レンダリングがなくても、内容そのものは読めなければならない。</p>
+        <p class="about-lede">このサイトはまず出版物として作られており、アプリケーションではありません。七つの言語版はそれぞれ完全な静的文書で、ローカルの書体を用い、追跡を行わず、実行時翻訳にも依存しません。技術構成は、こうした出版上の選択を安定して保つためにあります。</p>
+        <p class="about-principle">原文の権威、翻訳の関係、可読性、プライバシーを先に置き、ビルドとQAの詳細はその編集上の制約から決まります。</p>
       </div>
     </header>
 
 <nav class="about-toc" aria-label="このページ">
   <p>このページ</p>
   <ol>
-    <li><a href="#architecture"><span>01</span> アーキテクチャ</a></li>
-    <li><a href="#languages"><span>02</span> コンテンツと言語</a></li>
+    <li><a href="#languages"><span>01</span> コンテンツと言語</a></li>
+    <li><a href="#architecture"><span>02</span> アーキテクチャ</a></li>
     <li><a href="#layout"><span>03</span> レイアウトと書体</a></li>
     <li><a href="#accessibility"><span>04</span> アクセシビリティ</a></li>
     <li><a href="#media"><span>05</span> 画像とパフォーマンス</a></li>
@@ -118,26 +118,9 @@
   </ol>
 </nav>
 
-    <section class="about-section" id="architecture">
-      <div class="about-section-head">
-        <p class="about-section-no">01</p>
-        <h2>アーキテクチャ</h2>
-        <p class="about-section-dek">静的であることを選ぶ。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>ポートフォリオは、小さなテンプレートと構造化 JSON から完全な HTML5 文書として生成される。Python 3 標準ライブラリだけのビルダーが各言語版を事前生成し、ブラウザ側でページを組み立てない。</p>
-        <p>main ブランチから GitHub Pages で配信する。ポートフォリオの背後に CMS、アプリケーションフレームワーク、データベース、サーバー側アプリはない。</p>
-        <dl class="about-facts">
-          <div><dt>実行時</dt><dd>HTML5 · CSS · 素の JavaScript</dd></div>
-          <div><dt>ビルド</dt><dd>Python 3 · JSON · HTML テンプレート</dd></div>
-          <div><dt>ホスティング</dt><dd>GitHub Pages</dd></div>
-        </dl>
-      </div>
-    </section>
-
     <section class="about-section" id="languages">
       <div class="about-section-head">
-        <p class="about-section-no">02</p>
+        <p class="about-section-no">01</p>
         <h2>コンテンツと言語</h2>
         <p class="about-section-dek">7言語版、実行時翻訳なし。</p>
       </div>
@@ -148,6 +131,23 @@
           <div><dt>ロケール</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
           <div><dt>文学テキスト</dt><dd>OpenCC 補助 · ソースハッシュ · 行構造の検査</dd></div>
           <div><dt>メタデータ</dt><dd>canonical · hreflang · Open Graph</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="architecture">
+      <div class="about-section-head">
+        <p class="about-section-no">02</p>
+        <h2>アーキテクチャ</h2>
+        <p class="about-section-dek">静的であることを選ぶ。</p>
+      </div>
+      <div class="about-section-copy">
+        <p>ポートフォリオは、小さなテンプレートと構造化 JSON から完全な HTML5 文書として生成される。Python 3 標準ライブラリだけのビルダーが各言語版を事前生成し、ブラウザ側でページを組み立てない。</p>
+        <p>main ブランチから GitHub Pages で配信する。ポートフォリオの背後に CMS、アプリケーションフレームワーク、データベース、サーバー側アプリはない。</p>
+        <dl class="about-facts">
+          <div><dt>実行時</dt><dd>HTML5 · CSS · 素の JavaScript</dd></div>
+          <div><dt>ビルド</dt><dd>Python 3 · JSON · HTML テンプレート</dd></div>
+          <div><dt>ホスティング</dt><dd>GitHub Pages</dd></div>
         </dl>
       </div>
     </section>
@@ -236,7 +236,7 @@
 
   <footer class="page-footer about-footer">
     <p><a href="/ja/">Hanpu Li</a></p>
-    <p class="page-footer-context"><a href="https://github.com/HanpuLi/hanpuli.github.io">サイトのソース</a></p>
+    <p class="page-footer-context"><a href="/ja/contexts.html">クレジットと活動歴</a> <span aria-hidden="true">·</span> <a href="https://github.com/HanpuLi/hanpuli.github.io">サイトのソース</a></p>
   </footer>
 
 </div>

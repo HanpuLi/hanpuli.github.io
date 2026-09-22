@@ -78,11 +78,11 @@
     <a class="page-wordmark" href="/zh-hans/">Hanpu Li <span lang="zh-Hant-HK">李函璞</span></a>
     <nav class="page-nav" aria-label="作品集分区">
       <a href="/zh-hans/#writing"><span class="nav-no">01</span> 写作</a>
-      <a href="/zh-hans/#work"><span class="nav-no">02</span> 研究</a>
-      <a href="/zh-hans/#photo"><span class="nav-no">03</span> 摄影</a>
-      <a href="/zh-hans/ci.html"><span class="nav-no">04</span> 词</a>
+      <a href="/zh-hans/ci.html"><span class="nav-no">02</span> 词</a>
+      <a href="/zh-hans/#work"><span class="nav-no">03</span> 研究</a>
+      <a href="/zh-hans/#photo"><span class="nav-no">04</span> 摄影</a>
       <a href="/zh-hans/shi.html"><span class="nav-no">05</span> 诗</a>
-      <a href="/zh-hans/#profile"><span class="nav-no">06</span> 履历</a>
+      <a href="/zh-hans/#profile"><span class="nav-no">06</span> 脉络</a>
     </nav>
     <nav class="page-languages" aria-label="语言">
       <a href="/about.html" hreflang="en-GB" lang="en-GB" aria-label="English" title="English"><span class="language-short" aria-hidden="true">EN</span></a>
@@ -97,19 +97,19 @@
 
   <main id="main" tabindex="-1">
     <header class="about-hero">
-      <p class="about-eyebrow">实现札记 · 2026</p>
+      <p class="about-eyebrow">出版札记 · 2026</p>
       <h1>关于本站</h1>
       <div class="about-intro">
-        <p class="about-lede">本站刻意保持静态。公开页面首先是完整文档：HTML、CSS 与本地资源已经写好，只有在交互确有作用时才加入少量原生 JavaScript。</p>
-        <p class="about-principle">原则很简单：内容不能依赖前端框架、浏览器端翻译层或 JavaScript 渲染才能阅读。</p>
+        <p class="about-lede">本站首先是一份出版物，而不是一个应用程序。七个语言版本各自都是完整的静态文件，使用本地字体，不设追踪，也不在运行时翻译；技术架构只用来让这些出版选择保持稳定。</p>
+        <p class="about-principle">原文权威、翻译关系、可读性与隐私优先；构建与测试细节由这些编辑约束派生。</p>
       </div>
     </header>
 
 <nav class="about-toc" aria-label="本页内容">
   <p>本页内容</p>
   <ol>
-    <li><a href="#architecture"><span>01</span> 架构</a></li>
-    <li><a href="#languages"><span>02</span> 内容与语言</a></li>
+    <li><a href="#languages"><span>01</span> 内容与语言</a></li>
+    <li><a href="#architecture"><span>02</span> 架构</a></li>
     <li><a href="#layout"><span>03</span> 版式与字体</a></li>
     <li><a href="#accessibility"><span>04</span> 无障碍</a></li>
     <li><a href="#media"><span>05</span> 图片与性能</a></li>
@@ -118,26 +118,9 @@
   </ol>
 </nav>
 
-    <section class="about-section" id="architecture">
-      <div class="about-section-head">
-        <p class="about-section-no">01</p>
-        <h2>架构</h2>
-        <p class="about-section-dek">刻意保持静态。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>作品站由小型模板与结构化 JSON 生成完整 HTML5 文档。Python 3 标准库生成器会预先输出每个语言版本，浏览器无需在运行时拼装页面。</p>
-        <p>网站从 main 分支经 GitHub Pages 发布。作品站背后没有 CMS、应用框架、数据库或服务端应用。</p>
-        <dl class="about-facts">
-          <div><dt>运行时</dt><dd>HTML5 · CSS · 原生 JavaScript</dd></div>
-          <div><dt>构建</dt><dd>Python 3 · JSON · HTML 模板</dd></div>
-          <div><dt>托管</dt><dd>GitHub Pages</dd></div>
-        </dl>
-      </div>
-    </section>
-
     <section class="about-section" id="languages">
       <div class="about-section-head">
-        <p class="about-section-no">02</p>
+        <p class="about-section-no">01</p>
         <h2>内容与语言</h2>
         <p class="about-section-dek">七个版本，没有运行时翻译。</p>
       </div>
@@ -148,6 +131,23 @@
           <div><dt>语系</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
           <div><dt>文学转换</dt><dd>OpenCC 辅助 · 来源哈希 · 行数一致性</dd></div>
           <div><dt>元数据</dt><dd>canonical · hreflang · Open Graph</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="architecture">
+      <div class="about-section-head">
+        <p class="about-section-no">02</p>
+        <h2>架构</h2>
+        <p class="about-section-dek">刻意保持静态。</p>
+      </div>
+      <div class="about-section-copy">
+        <p>作品站由小型模板与结构化 JSON 生成完整 HTML5 文档。Python 3 标准库生成器会预先输出每个语言版本，浏览器无需在运行时拼装页面。</p>
+        <p>网站从 main 分支经 GitHub Pages 发布。作品站背后没有 CMS、应用框架、数据库或服务端应用。</p>
+        <dl class="about-facts">
+          <div><dt>运行时</dt><dd>HTML5 · CSS · 原生 JavaScript</dd></div>
+          <div><dt>构建</dt><dd>Python 3 · JSON · HTML 模板</dd></div>
+          <div><dt>托管</dt><dd>GitHub Pages</dd></div>
         </dl>
       </div>
     </section>
@@ -236,7 +236,7 @@
 
   <footer class="page-footer about-footer">
     <p><a href="/zh-hans/">Hanpu Li</a></p>
-    <p class="page-footer-context"><a href="https://github.com/HanpuLi/hanpuli.github.io">网站源代码</a></p>
+    <p class="page-footer-context"><a href="/zh-hans/contexts.html">署名与脉络</a> <span aria-hidden="true">·</span> <a href="https://github.com/HanpuLi/hanpuli.github.io">网站源代码</a></p>
   </footer>
 
 </div>

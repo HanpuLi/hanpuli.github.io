@@ -101,6 +101,18 @@ def main() -> int:
     en = load(CONTENT / "locales" / "en.json")
     sig = signature(en)
     about_site = load(CONTENT / "about-site.json")
+    contexts = load(CONTENT / "contexts.json")
+    if set(contexts) != set(locales):
+        errors.append(
+            "contexts locale mismatch: "
+            f"missing={sorted(set(locales) - set(contexts))} "
+            f"extra={sorted(set(contexts) - set(locales))}"
+        )
+    elif "en" in contexts:
+        contexts_sig = signature(contexts["en"])
+        for locale in locales:
+            if locale in contexts and signature(contexts[locale]) != contexts_sig:
+                errors.append(f"{locale} contexts schema mismatch")
     if set(about_site) != set(locales):
         errors.append(
             "about-site locale mismatch: "
@@ -108,7 +120,7 @@ def main() -> int:
             f"extra={sorted(set(about_site) - set(locales))}"
         )
     about_sig = signature(about_site["en"]) if "en" in about_site else {}
-    expected_about_ids = ["architecture", "languages", "layout", "accessibility", "media", "quality"]
+    expected_about_ids = ["languages", "architecture", "layout", "accessibility", "media", "quality"]
     expected_about_numbers = ["01", "02", "03", "04", "05", "06"]
     for locale in locales:
         if locale not in about_site:
@@ -498,7 +510,7 @@ def main() -> int:
                         f"{essay_path.relative_to(ROOT)}: missing essay language link {href}"
                     )
 
-        for name in ("index.html", "ci.html", "shi.html", "about.html", "404.html"):
+        for name in ("index.html", "ci.html", "shi.html", "about.html", "contexts.html", "404.html"):
             path = folder / name
             if not path.exists():
                 errors.append(f"missing generated {path.relative_to(ROOT)}")
@@ -546,7 +558,7 @@ def main() -> int:
                 errors.append(
                     f"{path.relative_to(ROOT)}: portfolio nav order is {nav_numbers}, expected 01–06"
                 )
-            expected_current = {"ci.html": "04", "shi.html": "05"}.get(name)
+            expected_current = {"ci.html": "02", "shi.html": "05"}.get(name)
             if expected_current and not re.search(
                 rf'<span aria-current="page">\s*<span class="nav-no">{expected_current}</span>',
                 text,
@@ -578,6 +590,24 @@ def main() -> int:
                     errors.append(
                         f"{path.relative_to(ROOT)}: about page must not mark a numbered portfolio section current"
                     )
+            if name == "contexts.html":
+                context_copy = contexts[locale]
+                if context_copy["title"] not in text:
+                    errors.append(f"{path.relative_to(ROOT)}: missing localized contexts title")
+                if text.count('class="about-section contexts-section"') != 3:
+                    errors.append(f"{path.relative_to(ROOT)}: expected three contexts sections")
+                for section in context_copy["sections"]:
+                    if f'id="{section["id"]}"' not in text:
+                        errors.append(
+                            f"{path.relative_to(ROOT)}: missing contexts section #{section['id']}"
+                        )
+                outside_languages = re.sub(
+                    r'<nav class="page-languages".*?</nav>', "", text, flags=re.S
+                )
+                if 'aria-current="page"' in outside_languages:
+                    errors.append(
+                        f"{path.relative_to(ROOT)}: contexts page must not mark a numbered portfolio section current"
+                    )
             if name in {"ci.html", "shi.html"}:
                 home_href = "/" if locale == "en" else f"/{locale}/"
                 if '<footer class="page-footer">' not in text:
@@ -606,9 +636,9 @@ def main() -> int:
                     )
                 expected_sections = [
                     ("writing", "01"),
-                    ("work", "02"),
-                    ("photo", "03"),
-                    ("ci", "04"),
+                    ("ci", "02"),
+                    ("work", "03"),
+                    ("photo", "04"),
                     ("profile", "06"),
                 ]
                 for section_id, section_no in expected_sections:

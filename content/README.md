@@ -18,6 +18,7 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `essays/trainspotting.inc` — English source fragment for the public <em>Trainspotting</em> essay.
 - `essay-trainspotting.json` — per-locale metadata and the notice used by each language shell; the essay body itself remains English.
 - `about-site.json` — localised implementation notes for the public About-this-site page, including architecture, typography, accessibility, performance and QA.
+- `contexts.json` — localised catalogue back matter for credit-name mapping, selected professional contexts and clearly identified first-party public records.
 
 English is the default site at `/`. Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are emitted at
 `/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Ordinary language switching is static navigation. Two interactive exceptions select already-authored copy at runtime: the root custom 404 router (preserving the 404 response), and the Poetry Voucher studio (preserving the visitor's unsaved text while changing interface language).

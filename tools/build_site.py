@@ -20,7 +20,7 @@ CONTENT = ROOT / "content"
 TEMPLATES = ROOT / "templates"
 TOKEN_RE = re.compile(r"{{([A-Za-z0-9_.]+)}}")
 ROOT_LOCALE = "en"
-PAGES = ("index", "ci", "shi", "about", "404", "poetry-voucher")
+PAGES = ("index", "ci", "shi", "about", "contexts", "404", "poetry-voucher")
 
 
 def load_json(path: Path) -> Any:
@@ -38,6 +38,7 @@ SHI_SOURCE = load_json(CONTENT / "shi-source.json")
 SHI_SIMPLIFIED = load_json(CONTENT / "shi-simplified.json")
 TRAINSPOTTING_ESSAY = load_json(CONTENT / "essay-trainspotting.json")
 ABOUT_SITE = load_json(CONTENT / "about-site.json")
+CONTEXTS = load_json(CONTENT / "contexts.json")
 POETRY_VOUCHER = load_json(CONTENT / "poetry-voucher.json")
 CHINESE_LOCALES = {"zh", "zh-hans"}
 BASE_URL = IDENTITY["site_url"].rstrip("/")
@@ -150,9 +151,9 @@ def output_path(locale_id: str, page: str) -> Path:
 
 PORTFOLIO_NAV_ITEMS = (
     ("01", "writing", "writing"),
-    ("02", "work", "work"),
-    ("03", "photo", "photo"),
-    ("04", "ci", "ci"),
+    ("02", "ci", "ci"),
+    ("03", "work", "work"),
+    ("04", "photo", "photo"),
     ("05", "shi", "shi"),
     ("06", "profile", "profile"),
 )
@@ -320,6 +321,7 @@ def structured_data_html(
     if page_kind != "index":
         type_map = {
             "about": "AboutPage",
+            "contexts": "CollectionPage",
             "ci": "CollectionPage",
             "shi": "CollectionPage",
             "essay": "Article",
@@ -685,6 +687,47 @@ def about_scope_body_html(locale_id: str) -> str:
     )
 
 
+def contexts_sections_html(locale_id: str) -> str:
+    copy = CONTEXTS[locale_id]
+    blocks = []
+    for section in copy["sections"]:
+        records = []
+        for record in section["records"]:
+            link = ""
+            if record["href"]:
+                link = (
+                    f'            <p class="contexts-record-link"><a href="{html.escape(record["href"], quote=True)}">'
+                    f'{html.escape(record["link_label"])}</a></p>\n'
+                )
+            records.append(
+                '        <article class="contexts-record">\n'
+                f'          <p class="contexts-date">{html.escape(record["date"])}</p>\n'
+                '          <div class="contexts-record-main">\n'
+                f'            <h3>{html.escape(record["title"])}</h3>\n'
+                f'            <p class="contexts-detail">{html.escape(record["detail"])}</p>\n'
+                f'            <p class="contexts-credit"><span>{html.escape(copy["credit_label"])}</span> '
+                f'{html.escape(record["credit"])}</p>\n'
+                f'{link}'
+                '          </div>\n'
+                '        </article>'
+            )
+        blocks.append(
+            f'    <section class="about-section contexts-section" id="{html.escape(section["id"], quote=True)}">\n'
+            '      <div class="about-section-head">\n'
+            f'        <p class="about-section-no">{html.escape(section["number"])}</p>\n'
+            f'        <h2>{html.escape(section["title"])}</h2>\n'
+            f'        <p class="about-section-dek">{html.escape(section["dek"])}</p>\n'
+            '      </div>\n'
+            '      <div class="about-section-copy contexts-section-copy">\n'
+            '        <div class="contexts-records">\n'
+            + "\n".join(records)
+            + '\n        </div>\n'
+            '      </div>\n'
+            '    </section>'
+        )
+    return "\n\n".join(blocks)
+
+
 def font_preloads(locale_id: str, page: str) -> str:
     # GitHub Pages serves the root 404 document at the originally requested URL.
     # Root-relative assets therefore keep working for arbitrarily deep missing paths.
@@ -862,6 +905,7 @@ def notfound_runtime() -> str:
 def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str, Any]:
     lang = LANG_BY_ID[locale_id]
     about = ABOUT_SITE[locale_id]
+    contexts = CONTEXTS[locale_id]
     primary = IDENTITY["primary_name"]
     hero_name = html.escape(primary).replace(" ", "<br>", 1)
     alt_name = IDENTITY["alternate_names"][0]
@@ -896,6 +940,14 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         social_alt = meta_title
         og_type = "website"
         page_kind = "about"
+    elif page == "contexts":
+        meta_title = CONTEXTS[locale_id]["meta_title"]
+        meta_description = CONTEXTS[locale_id]["meta_description"]
+        social_image = f"{BASE_URL}/assets/photos/03.jpg"
+        social_alt = locale["home"]["photos"]["alt"]["03"]
+        social_width, social_height, social_type = 1200, 800, "image/jpeg"
+        og_type = "website"
+        page_kind = "contexts"
     else:
         meta_title = locale["notfound"]["meta_title"]
         meta_description = ""
@@ -993,6 +1045,16 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "ABOUT_PRIVACY_TITLE": html.escape(about["privacy_title"]),
         "ABOUT_PRIVACY_BODY": html.escape(about["privacy_body"]),
         "ABOUT_SOURCE_LINK": html.escape(about["source_link"]),
+        "CONTEXTS_HREF": page_path(locale_id, "contexts"),
+        "CONTEXTS_LINK_LABEL": html.escape(contexts["link_label"]),
+        "CONTEXTS_META_TITLE": html.escape(contexts["meta_title"]),
+        "CONTEXTS_META_DESCRIPTION_ATTR": html.escape(contexts["meta_description"], quote=True),
+        "CONTEXTS_EYEBROW": html.escape(contexts["eyebrow"]),
+        "CONTEXTS_TITLE": html.escape(contexts["title"]),
+        "CONTEXTS_LEDE": html.escape(contexts["lede"]),
+        "CONTEXTS_PRINCIPLE": html.escape(contexts["principle"]),
+        "CONTEXTS_SECTIONS": contexts_sections_html(locale_id),
+        "CONTEXTS_FOOTER_NOTE": html.escape(contexts["footer_note"]),
         "MATERIAL_URL": html.escape(SHARED["projects"]["material"]["url"], quote=True),
         "MATERIAL_GREEN_VALUE": html.escape(SHARED["projects"]["material"]["proof_values"]["green"]),
         "MATERIAL_NDVI_VALUE": html.escape(SHARED["projects"]["material"]["proof_values"]["ndvi"]),
@@ -1077,6 +1139,25 @@ def build(check: bool = False) -> list[Path]:
             )
             raise BuildError(
                 f"about-site schema mismatch for {lid}: "
+                f"missing={missing[:10]} extra={extra[:10]} type={mismatched[:10]}"
+            )
+
+    if set(CONTEXTS) != expected_essay_locales:
+        missing = sorted(expected_essay_locales - set(CONTEXTS))
+        extra = sorted(set(CONTEXTS) - expected_essay_locales)
+        raise BuildError(f"contexts locale mismatch missing={missing} extra={extra}")
+    contexts_schema = schema_signature(CONTEXTS[ROOT_LOCALE])
+    for lid in LANG_BY_ID:
+        current = schema_signature(CONTEXTS[lid])
+        if current != contexts_schema:
+            missing = sorted(set(contexts_schema) - set(current))
+            extra = sorted(set(current) - set(contexts_schema))
+            mismatched = sorted(
+                key for key in set(contexts_schema) & set(current)
+                if contexts_schema[key] != current[key]
+            )
+            raise BuildError(
+                f"contexts schema mismatch for {lid}: "
                 f"missing={missing[:10]} extra={extra[:10]} type={mismatched[:10]}"
             )
 
@@ -1176,7 +1257,7 @@ def build(check: bool = False) -> list[Path]:
     sitemap_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
                      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for language in LANGUAGES:
-        for page in ("index", "ci", "shi", "about", "poetry-voucher"):
+        for page in ("index", "ci", "shi", "about", "contexts", "poetry-voucher"):
             sitemap_lines.append(f'  <url><loc>{html.escape(absolute_url(language["id"], page))}</loc></url>')
         sitemap_lines.append(f'  <url><loc>{html.escape(BASE_URL + essay_page_path(language["id"]))}</loc></url>')
     sitemap_lines.append("</urlset>")

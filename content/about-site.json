@@ -2,38 +2,14 @@
   "en": {
     "meta_title": "About this site · Hanpu Li",
     "meta_description": "Implementation notes for Hanpu Li’s website: static architecture, multilingual publishing, typography, accessibility, responsive media, testing and GitHub Pages deployment.",
-    "eyebrow": "implementation notes · 2026",
+    "eyebrow": "publishing notes · 2026",
     "title": "About this site",
-    "lede": "This is a deliberately static website. The public pages are documents first: complete HTML, CSS and local assets, with a small amount of vanilla JavaScript only where interaction genuinely helps.",
-    "principle": "The rule is simple: content must remain readable without a framework, a client-side translation layer or JavaScript-driven rendering.",
+    "lede": "This site is published as a set of documents rather than an application. Each of the seven language editions is a complete static document with local type, no tracking and no runtime translation; the technical stack exists to keep those publication choices stable.",
+    "principle": "Source authority, translation relationships, legibility and privacy come first; build and QA details follow from those editorial constraints.",
     "sections": [
       {
-        "id": "architecture",
-        "number": "01",
-        "title": "Architecture",
-        "dek": "Static by design.",
-        "body": [
-          "The portfolio is generated as complete HTML5 documents from small templates and structured JSON. A Python 3 standard-library builder emits each language edition ahead of time; the browser does not assemble the site at runtime.",
-          "The site is served by GitHub Pages from the main branch. There is no CMS, application framework, database or server-side application behind the portfolio."
-        ],
-        "facts": [
-          {
-            "label": "runtime",
-            "value": "HTML5 · CSS · vanilla JavaScript"
-          },
-          {
-            "label": "build",
-            "value": "Python 3 · JSON · HTML templates"
-          },
-          {
-            "label": "hosting",
-            "value": "GitHub Pages"
-          }
-        ]
-      },
-      {
         "id": "languages",
-        "number": "02",
+        "number": "01",
         "title": "Content & languages",
         "dek": "Seven editions, no runtime translation.",
         "body": [
@@ -52,6 +28,30 @@
           {
             "label": "metadata",
             "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "architecture",
+        "number": "02",
+        "title": "Architecture",
+        "dek": "Static by design.",
+        "body": [
+          "The portfolio is generated as complete HTML5 documents from small templates and structured JSON. A Python 3 standard-library builder emits each language edition ahead of time; the browser does not assemble the site at runtime.",
+          "The site is served by GitHub Pages from the main branch. There is no CMS, application framework, database or server-side application behind the portfolio."
+        ],
+        "facts": [
+          {
+            "label": "runtime",
+            "value": "HTML5 · CSS · vanilla JavaScript"
+          },
+          {
+            "label": "build",
+            "value": "Python 3 · JSON · HTML templates"
+          },
+          {
+            "label": "hosting",
+            "value": "GitHub Pages"
           }
         ]
       },
@@ -166,38 +166,14 @@
   "zh": {
     "meta_title": "關於本站 · Hanpu Li",
     "meta_description": "Hanpu Li 個人網站的實作說明：靜態架構、多語發佈、字體、無障礙、響應式媒體、測試與 GitHub Pages 部署。",
-    "eyebrow": "實作札記 · 2026",
+    "eyebrow": "出版札記 · 2026",
     "title": "關於本站",
-    "lede": "本站刻意保持靜態。公開頁面首先是完整文件：HTML、CSS 與本地資源已經寫好，只有在互動確有作用時才加入少量原生 JavaScript。",
-    "principle": "原則很簡單：內容不能依賴前端框架、瀏覽器端翻譯層或 JavaScript 渲染才能閱讀。",
+    "lede": "本站首先是一份出版物，而不是一個應用程式。七個語言版本各自都是完整的靜態文件，使用本地字體，不設追蹤，也不在執行時翻譯；技術架構只用來讓這些出版選擇保持穩定。",
+    "principle": "原文權威、翻譯關係、可讀性與私隱優先；建置與測試細節由這些編輯約束派生。",
     "sections": [
       {
-        "id": "architecture",
-        "number": "01",
-        "title": "架構",
-        "dek": "刻意保持靜態。",
-        "body": [
-          "作品站由小型模板與結構化 JSON 生成完整 HTML5 文件。Python 3 標準函式庫生成器會預先輸出每個語言版本，瀏覽器毋須在執行時拼裝頁面。",
-          "網站從 main 分支經 GitHub Pages 發佈。作品站背後沒有 CMS、應用框架、資料庫或伺服器端應用。"
-        ],
-        "facts": [
-          {
-            "label": "執行時",
-            "value": "HTML5 · CSS · 原生 JavaScript"
-          },
-          {
-            "label": "建置",
-            "value": "Python 3 · JSON · HTML 模板"
-          },
-          {
-            "label": "託管",
-            "value": "GitHub Pages"
-          }
-        ]
-      },
-      {
         "id": "languages",
-        "number": "02",
+        "number": "01",
         "title": "內容與語言",
         "dek": "七個版本，沒有執行時翻譯。",
         "body": [
@@ -216,6 +192,30 @@
           {
             "label": "中繼資料",
             "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "architecture",
+        "number": "02",
+        "title": "架構",
+        "dek": "刻意保持靜態。",
+        "body": [
+          "作品站由小型模板與結構化 JSON 生成完整 HTML5 文件。Python 3 標準函式庫生成器會預先輸出每個語言版本，瀏覽器毋須在執行時拼裝頁面。",
+          "網站從 main 分支經 GitHub Pages 發佈。作品站背後沒有 CMS、應用框架、資料庫或伺服器端應用。"
+        ],
+        "facts": [
+          {
+            "label": "執行時",
+            "value": "HTML5 · CSS · 原生 JavaScript"
+          },
+          {
+            "label": "建置",
+            "value": "Python 3 · JSON · HTML 模板"
+          },
+          {
+            "label": "託管",
+            "value": "GitHub Pages"
           }
         ]
       },
@@ -330,38 +330,14 @@
   "zh-hans": {
     "meta_title": "关于本站 · Hanpu Li",
     "meta_description": "Hanpu Li 个人网站的实现说明：静态架构、多语言发布、字体、无障碍、响应式媒体、测试与 GitHub Pages 部署。",
-    "eyebrow": "实现札记 · 2026",
+    "eyebrow": "出版札记 · 2026",
     "title": "关于本站",
-    "lede": "本站刻意保持静态。公开页面首先是完整文档：HTML、CSS 与本地资源已经写好，只有在交互确有作用时才加入少量原生 JavaScript。",
-    "principle": "原则很简单：内容不能依赖前端框架、浏览器端翻译层或 JavaScript 渲染才能阅读。",
+    "lede": "本站首先是一份出版物，而不是一个应用程序。七个语言版本各自都是完整的静态文件，使用本地字体，不设追踪，也不在运行时翻译；技术架构只用来让这些出版选择保持稳定。",
+    "principle": "原文权威、翻译关系、可读性与隐私优先；构建与测试细节由这些编辑约束派生。",
     "sections": [
       {
-        "id": "architecture",
-        "number": "01",
-        "title": "架构",
-        "dek": "刻意保持静态。",
-        "body": [
-          "作品站由小型模板与结构化 JSON 生成完整 HTML5 文档。Python 3 标准库生成器会预先输出每个语言版本，浏览器无需在运行时拼装页面。",
-          "网站从 main 分支经 GitHub Pages 发布。作品站背后没有 CMS、应用框架、数据库或服务端应用。"
-        ],
-        "facts": [
-          {
-            "label": "运行时",
-            "value": "HTML5 · CSS · 原生 JavaScript"
-          },
-          {
-            "label": "构建",
-            "value": "Python 3 · JSON · HTML 模板"
-          },
-          {
-            "label": "托管",
-            "value": "GitHub Pages"
-          }
-        ]
-      },
-      {
         "id": "languages",
-        "number": "02",
+        "number": "01",
         "title": "内容与语言",
         "dek": "七个版本，没有运行时翻译。",
         "body": [
@@ -380,6 +356,30 @@
           {
             "label": "元数据",
             "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "architecture",
+        "number": "02",
+        "title": "架构",
+        "dek": "刻意保持静态。",
+        "body": [
+          "作品站由小型模板与结构化 JSON 生成完整 HTML5 文档。Python 3 标准库生成器会预先输出每个语言版本，浏览器无需在运行时拼装页面。",
+          "网站从 main 分支经 GitHub Pages 发布。作品站背后没有 CMS、应用框架、数据库或服务端应用。"
+        ],
+        "facts": [
+          {
+            "label": "运行时",
+            "value": "HTML5 · CSS · 原生 JavaScript"
+          },
+          {
+            "label": "构建",
+            "value": "Python 3 · JSON · HTML 模板"
+          },
+          {
+            "label": "托管",
+            "value": "GitHub Pages"
           }
         ]
       },
@@ -494,38 +494,14 @@
   "ja": {
     "meta_title": "このサイトについて · Hanpu Li",
     "meta_description": "Hanpu Li のウェブサイトの実装ノート。静的構成、多言語配信、書体、アクセシビリティ、レスポンシブ画像、テスト、GitHub Pages での公開について。",
-    "eyebrow": "実装ノート · 2026",
+    "eyebrow": "出版ノート · 2026",
     "title": "このサイトについて",
-    "lede": "このサイトは意図的に静的に作っている。公開ページはまず完成した文書であり、HTML、CSS、ローカル資産だけで内容が成立する。JavaScript は、実際に操作性を高める箇所にだけ少量使う。",
-    "principle": "原則は単純だ。フレームワーク、クライアント側翻訳、JavaScript レンダリングがなくても、内容そのものは読めなければならない。",
+    "lede": "このサイトはまず出版物として作られており、アプリケーションではありません。七つの言語版はそれぞれ完全な静的文書で、ローカルの書体を用い、追跡を行わず、実行時翻訳にも依存しません。技術構成は、こうした出版上の選択を安定して保つためにあります。",
+    "principle": "原文の権威、翻訳の関係、可読性、プライバシーを先に置き、ビルドとQAの詳細はその編集上の制約から決まります。",
     "sections": [
       {
-        "id": "architecture",
-        "number": "01",
-        "title": "アーキテクチャ",
-        "dek": "静的であることを選ぶ。",
-        "body": [
-          "ポートフォリオは、小さなテンプレートと構造化 JSON から完全な HTML5 文書として生成される。Python 3 標準ライブラリだけのビルダーが各言語版を事前生成し、ブラウザ側でページを組み立てない。",
-          "main ブランチから GitHub Pages で配信する。ポートフォリオの背後に CMS、アプリケーションフレームワーク、データベース、サーバー側アプリはない。"
-        ],
-        "facts": [
-          {
-            "label": "実行時",
-            "value": "HTML5 · CSS · 素の JavaScript"
-          },
-          {
-            "label": "ビルド",
-            "value": "Python 3 · JSON · HTML テンプレート"
-          },
-          {
-            "label": "ホスティング",
-            "value": "GitHub Pages"
-          }
-        ]
-      },
-      {
         "id": "languages",
-        "number": "02",
+        "number": "01",
         "title": "コンテンツと言語",
         "dek": "7言語版、実行時翻訳なし。",
         "body": [
@@ -544,6 +520,30 @@
           {
             "label": "メタデータ",
             "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "architecture",
+        "number": "02",
+        "title": "アーキテクチャ",
+        "dek": "静的であることを選ぶ。",
+        "body": [
+          "ポートフォリオは、小さなテンプレートと構造化 JSON から完全な HTML5 文書として生成される。Python 3 標準ライブラリだけのビルダーが各言語版を事前生成し、ブラウザ側でページを組み立てない。",
+          "main ブランチから GitHub Pages で配信する。ポートフォリオの背後に CMS、アプリケーションフレームワーク、データベース、サーバー側アプリはない。"
+        ],
+        "facts": [
+          {
+            "label": "実行時",
+            "value": "HTML5 · CSS · 素の JavaScript"
+          },
+          {
+            "label": "ビルド",
+            "value": "Python 3 · JSON · HTML テンプレート"
+          },
+          {
+            "label": "ホスティング",
+            "value": "GitHub Pages"
           }
         ]
       },
@@ -658,38 +658,14 @@
   "de": {
     "meta_title": "Über diese Website · Hanpu Li",
     "meta_description": "Technische Notizen zu Hanpu Lis Website: statische Architektur, mehrsprachige Veröffentlichung, Typografie, Barrierefreiheit, responsive Medien, Tests und GitHub Pages.",
-    "eyebrow": "Implementierungsnotizen · 2026",
+    "eyebrow": "Publikationsnotizen · 2026",
     "title": "Über diese Website",
-    "lede": "Diese Website ist bewusst statisch. Die öffentlichen Seiten sind zuerst vollständige Dokumente: HTML, CSS und lokale Assets tragen den Inhalt; etwas Vanilla-JavaScript kommt nur dort hinzu, wo Interaktion tatsächlich hilft.",
-    "principle": "Die Regel ist einfach: Der Inhalt muss ohne Framework, clientseitige Übersetzungsschicht und JavaScript-Rendering lesbar bleiben.",
+    "lede": "Diese Website ist zuerst eine Publikation, keine Anwendung. Jede der sieben Sprachfassungen ist ein vollständiges statisches Dokument mit lokal eingebundenen Schriften, ohne Tracking und ohne Übersetzung zur Laufzeit; die Technik dient dazu, diese editorischen Entscheidungen stabil zu halten.",
+    "principle": "Quellenautorität, Übersetzungsverhältnisse, Lesbarkeit und Privatsphäre stehen zuerst; Build- und QA-Details folgen aus diesen editorischen Vorgaben.",
     "sections": [
       {
-        "id": "architecture",
-        "number": "01",
-        "title": "Architektur",
-        "dek": "Absichtlich statisch.",
-        "body": [
-          "Das Portfolio wird aus kleinen Templates und strukturiertem JSON als vollständige HTML5-Dokumente erzeugt. Ein Builder mit der Python-3-Standardbibliothek schreibt jede Sprachfassung im Voraus; der Browser setzt die Website nicht erst zur Laufzeit zusammen.",
-          "Ausgeliefert wird der main-Branch über GitHub Pages. Hinter dem Portfolio stehen weder CMS noch Anwendungsframework, Datenbank oder serverseitige Anwendung."
-        ],
-        "facts": [
-          {
-            "label": "Laufzeit",
-            "value": "HTML5 · CSS · Vanilla JavaScript"
-          },
-          {
-            "label": "Build",
-            "value": "Python 3 · JSON · HTML-Vorlagen"
-          },
-          {
-            "label": "Hosting",
-            "value": "GitHub Pages"
-          }
-        ]
-      },
-      {
         "id": "languages",
-        "number": "02",
+        "number": "01",
         "title": "Inhalt & Sprachen",
         "dek": "Sieben Fassungen, keine Laufzeitübersetzung.",
         "body": [
@@ -708,6 +684,30 @@
           {
             "label": "Metadaten",
             "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "architecture",
+        "number": "02",
+        "title": "Architektur",
+        "dek": "Absichtlich statisch.",
+        "body": [
+          "Das Portfolio wird aus kleinen Templates und strukturiertem JSON als vollständige HTML5-Dokumente erzeugt. Ein Builder mit der Python-3-Standardbibliothek schreibt jede Sprachfassung im Voraus; der Browser setzt die Website nicht erst zur Laufzeit zusammen.",
+          "Ausgeliefert wird der main-Branch über GitHub Pages. Hinter dem Portfolio stehen weder CMS noch Anwendungsframework, Datenbank oder serverseitige Anwendung."
+        ],
+        "facts": [
+          {
+            "label": "Laufzeit",
+            "value": "HTML5 · CSS · Vanilla JavaScript"
+          },
+          {
+            "label": "Build",
+            "value": "Python 3 · JSON · HTML-Vorlagen"
+          },
+          {
+            "label": "Hosting",
+            "value": "GitHub Pages"
           }
         ]
       },
@@ -822,38 +822,14 @@
   "fr": {
     "meta_title": "À propos du site · Hanpu Li",
     "meta_description": "Notes d’implémentation du site de Hanpu Li : architecture statique, publication multilingue, typographie, accessibilité, médias responsives, tests et GitHub Pages.",
-    "eyebrow": "notes d’implémentation · 2026",
+    "eyebrow": "notes de publication · 2026",
     "title": "À propos du site",
-    "lede": "Ce site est volontairement statique. Les pages publiques sont d’abord des documents complets : HTML, CSS et ressources locales portent le contenu ; un peu de JavaScript natif n’intervient que lorsque l’interaction apporte réellement quelque chose.",
-    "principle": "La règle est simple : le contenu doit rester lisible sans framework, sans couche de traduction côté client et sans rendu piloté par JavaScript.",
+    "lede": "Ce site est d’abord une publication, non une application. Chacune des sept éditions linguistiques est un document statique complet, avec des polices locales, sans suivi ni traduction à l’exécution ; l’architecture technique sert à stabiliser ces choix éditoriaux.",
+    "principle": "L’autorité du texte source, la relation entre source et traduction, la lisibilité et la vie privée passent d’abord ; les détails de construction et de contrôle en découlent.",
     "sections": [
       {
-        "id": "architecture",
-        "number": "01",
-        "title": "Architecture",
-        "dek": "Statique par choix.",
-        "body": [
-          "Le portfolio est généré sous forme de documents HTML5 complets à partir de petits gabarits et de JSON structuré. Un générateur fondé sur la bibliothèque standard de Python 3 produit chaque version linguistique à l’avance ; le navigateur n’assemble pas le site à l’exécution.",
-          "Le site est servi par GitHub Pages depuis la branche main. Le portfolio n’a derrière lui ni CMS, ni framework applicatif, ni base de données, ni application côté serveur."
-        ],
-        "facts": [
-          {
-            "label": "exécution",
-            "value": "HTML5 · CSS · JavaScript natif"
-          },
-          {
-            "label": "construction",
-            "value": "Python 3 · JSON · gabarits HTML"
-          },
-          {
-            "label": "hébergement",
-            "value": "GitHub Pages"
-          }
-        ]
-      },
-      {
         "id": "languages",
-        "number": "02",
+        "number": "01",
         "title": "Contenu & langues",
         "dek": "Sept éditions, aucune traduction à l’exécution.",
         "body": [
@@ -872,6 +848,30 @@
           {
             "label": "métadonnées",
             "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "architecture",
+        "number": "02",
+        "title": "Architecture",
+        "dek": "Statique par choix.",
+        "body": [
+          "Le portfolio est généré sous forme de documents HTML5 complets à partir de petits gabarits et de JSON structuré. Un générateur fondé sur la bibliothèque standard de Python 3 produit chaque version linguistique à l’avance ; le navigateur n’assemble pas le site à l’exécution.",
+          "Le site est servi par GitHub Pages depuis la branche main. Le portfolio n’a derrière lui ni CMS, ni framework applicatif, ni base de données, ni application côté serveur."
+        ],
+        "facts": [
+          {
+            "label": "exécution",
+            "value": "HTML5 · CSS · JavaScript natif"
+          },
+          {
+            "label": "construction",
+            "value": "Python 3 · JSON · gabarits HTML"
+          },
+          {
+            "label": "hébergement",
+            "value": "GitHub Pages"
           }
         ]
       },
@@ -986,38 +986,14 @@
   "ru": {
     "meta_title": "О сайте · Hanpu Li",
     "meta_description": "Технические заметки о сайте Hanpu Li: статическая архитектура, многоязычная публикация, типографика, доступность, адаптивные медиа, тестирование и GitHub Pages.",
-    "eyebrow": "заметки о реализации · 2026",
+    "eyebrow": "заметки о публикации · 2026",
     "title": "О сайте",
-    "lede": "Этот сайт намеренно сделан статическим. Публичные страницы прежде всего являются готовыми документами: содержание держится на HTML, CSS и локальных ресурсах, а небольшой объём обычного JavaScript используется только там, где взаимодействие действительно полезно.",
-    "principle": "Правило простое: содержание должно оставаться читаемым без фреймворка, клиентского слоя перевода и рендеринга через JavaScript.",
+    "lede": "Этот сайт прежде всего публикация, а не приложение. Каждая из семи языковых версий представляет собой самостоятельный статический документ с локальными шрифтами, без отслеживания и перевода во время выполнения; техническая архитектура нужна, чтобы сохранять эти редакционные решения устойчивыми.",
+    "principle": "Сначала идут авторитет исходного текста, отношения между оригиналом и переводом, читаемость и приватность; детали сборки и проверки следуют из этих редакционных ограничений.",
     "sections": [
       {
-        "id": "architecture",
-        "number": "01",
-        "title": "Архитектура",
-        "dek": "Статика как осознанный выбор.",
-        "body": [
-          "Портфолио генерируется как полноценные документы HTML5 из небольших шаблонов и структурированного JSON. Генератор на стандартной библиотеке Python 3 заранее выпускает каждую языковую версию; браузеру не приходится собирать сайт во время выполнения.",
-          "Сайт публикуется из ветки main через GitHub Pages. За портфолио не стоят CMS, прикладной фреймворк, база данных или серверное приложение."
-        ],
-        "facts": [
-          {
-            "label": "в браузере",
-            "value": "HTML5 · CSS · обычный JavaScript"
-          },
-          {
-            "label": "сборка",
-            "value": "Python 3 · JSON · HTML-шаблоны"
-          },
-          {
-            "label": "хостинг",
-            "value": "GitHub Pages"
-          }
-        ]
-      },
-      {
         "id": "languages",
-        "number": "02",
+        "number": "01",
         "title": "Контент и языки",
         "dek": "Семь версий, без перевода во время выполнения.",
         "body": [
@@ -1036,6 +1012,30 @@
           {
             "label": "метаданные",
             "value": "canonical · hreflang · Open Graph"
+          }
+        ]
+      },
+      {
+        "id": "architecture",
+        "number": "02",
+        "title": "Архитектура",
+        "dek": "Статика как осознанный выбор.",
+        "body": [
+          "Портфолио генерируется как полноценные документы HTML5 из небольших шаблонов и структурированного JSON. Генератор на стандартной библиотеке Python 3 заранее выпускает каждую языковую версию; браузеру не приходится собирать сайт во время выполнения.",
+          "Сайт публикуется из ветки main через GitHub Pages. За портфолио не стоят CMS, прикладной фреймворк, база данных или серверное приложение."
+        ],
+        "facts": [
+          {
+            "label": "в браузере",
+            "value": "HTML5 · CSS · обычный JavaScript"
+          },
+          {
+            "label": "сборка",
+            "value": "Python 3 · JSON · HTML-шаблоны"
+          },
+          {
+            "label": "хостинг",
+            "value": "GitHub Pages"
           }
         ]
       },

@@ -79,11 +79,11 @@
     <a class="page-wordmark" href="/ru/">Hanpu Li <span lang="zh-Hant-HK">李函璞</span></a>
     <nav class="page-nav" aria-label="Разделы портфолио">
       <a href="/ru/#writing"><span class="nav-no">01</span> тексты</a>
-      <a href="/ru/#work"><span class="nav-no">02</span> исследования</a>
-      <a href="/ru/#photo"><span class="nav-no">03</span> фотографии</a>
-      <a href="/ru/ci.html"><span class="nav-no">04</span> цы</a>
+      <a href="/ru/ci.html"><span class="nav-no">02</span> цы</a>
+      <a href="/ru/#work"><span class="nav-no">03</span> исследования</a>
+      <a href="/ru/#photo"><span class="nav-no">04</span> фотографии</a>
       <a href="/ru/shi.html"><span class="nav-no">05</span> стих</a>
-      <a href="/ru/#profile"><span class="nav-no">06</span> профиль</a>
+      <a href="/ru/#profile"><span class="nav-no">06</span> контексты</a>
     </nav>
     <nav class="page-languages" aria-label="Язык">
       <a href="/about.html" hreflang="en-GB" lang="en-GB" aria-label="English" title="English"><span class="language-short" aria-hidden="true">EN</span></a>
@@ -98,19 +98,19 @@
 
   <main id="main" tabindex="-1">
     <header class="about-hero">
-      <p class="about-eyebrow">заметки о реализации · 2026</p>
+      <p class="about-eyebrow">заметки о публикации · 2026</p>
       <h1>О сайте</h1>
       <div class="about-intro">
-        <p class="about-lede">Этот сайт намеренно сделан статическим. Публичные страницы прежде всего являются готовыми документами: содержание держится на HTML, CSS и локальных ресурсах, а небольшой объём обычного JavaScript используется только там, где взаимодействие действительно полезно.</p>
-        <p class="about-principle">Правило простое: содержание должно оставаться читаемым без фреймворка, клиентского слоя перевода и рендеринга через JavaScript.</p>
+        <p class="about-lede">Этот сайт прежде всего публикация, а не приложение. Каждая из семи языковых версий представляет собой самостоятельный статический документ с локальными шрифтами, без отслеживания и перевода во время выполнения; техническая архитектура нужна, чтобы сохранять эти редакционные решения устойчивыми.</p>
+        <p class="about-principle">Сначала идут авторитет исходного текста, отношения между оригиналом и переводом, читаемость и приватность; детали сборки и проверки следуют из этих редакционных ограничений.</p>
       </div>
     </header>
 
 <nav class="about-toc" aria-label="На этой странице">
   <p>На этой странице</p>
   <ol>
-    <li><a href="#architecture"><span>01</span> Архитектура</a></li>
-    <li><a href="#languages"><span>02</span> Контент и языки</a></li>
+    <li><a href="#languages"><span>01</span> Контент и языки</a></li>
+    <li><a href="#architecture"><span>02</span> Архитектура</a></li>
     <li><a href="#layout"><span>03</span> Вёрстка и типографика</a></li>
     <li><a href="#accessibility"><span>04</span> Доступность</a></li>
     <li><a href="#media"><span>05</span> Изображения и производительность</a></li>
@@ -119,26 +119,9 @@
   </ol>
 </nav>
 
-    <section class="about-section" id="architecture">
-      <div class="about-section-head">
-        <p class="about-section-no">01</p>
-        <h2>Архитектура</h2>
-        <p class="about-section-dek">Статика как осознанный выбор.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>Портфолио генерируется как полноценные документы HTML5 из небольших шаблонов и структурированного JSON. Генератор на стандартной библиотеке Python 3 заранее выпускает каждую языковую версию; браузеру не приходится собирать сайт во время выполнения.</p>
-        <p>Сайт публикуется из ветки main через GitHub Pages. За портфолио не стоят CMS, прикладной фреймворк, база данных или серверное приложение.</p>
-        <dl class="about-facts">
-          <div><dt>в браузере</dt><dd>HTML5 · CSS · обычный JavaScript</dd></div>
-          <div><dt>сборка</dt><dd>Python 3 · JSON · HTML-шаблоны</dd></div>
-          <div><dt>хостинг</dt><dd>GitHub Pages</dd></div>
-        </dl>
-      </div>
-    </section>
-
     <section class="about-section" id="languages">
       <div class="about-section-head">
-        <p class="about-section-no">02</p>
+        <p class="about-section-no">01</p>
         <h2>Контент и языки</h2>
         <p class="about-section-dek">Семь версий, без перевода во время выполнения.</p>
       </div>
@@ -149,6 +132,23 @@
           <div><dt>локали</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
           <div><dt>литературные тексты</dt><dd>OpenCC · хеши исходников · проверка структуры строк</dd></div>
           <div><dt>метаданные</dt><dd>canonical · hreflang · Open Graph</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="about-section" id="architecture">
+      <div class="about-section-head">
+        <p class="about-section-no">02</p>
+        <h2>Архитектура</h2>
+        <p class="about-section-dek">Статика как осознанный выбор.</p>
+      </div>
+      <div class="about-section-copy">
+        <p>Портфолио генерируется как полноценные документы HTML5 из небольших шаблонов и структурированного JSON. Генератор на стандартной библиотеке Python 3 заранее выпускает каждую языковую версию; браузеру не приходится собирать сайт во время выполнения.</p>
+        <p>Сайт публикуется из ветки main через GitHub Pages. За портфолио не стоят CMS, прикладной фреймворк, база данных или серверное приложение.</p>
+        <dl class="about-facts">
+          <div><dt>в браузере</dt><dd>HTML5 · CSS · обычный JavaScript</dd></div>
+          <div><dt>сборка</dt><dd>Python 3 · JSON · HTML-шаблоны</dd></div>
+          <div><dt>хостинг</dt><dd>GitHub Pages</dd></div>
         </dl>
       </div>
     </section>
@@ -237,7 +237,7 @@
 
   <footer class="page-footer about-footer">
     <p><a href="/ru/">Hanpu Li</a></p>
-    <p class="page-footer-context"><a href="https://github.com/HanpuLi/hanpuli.github.io">исходный код сайта</a></p>
+    <p class="page-footer-context"><a href="/ru/contexts.html">титры и контексты</a> <span aria-hidden="true">·</span> <a href="https://github.com/HanpuLi/hanpuli.github.io">исходный код сайта</a></p>
   </footer>
 
 </div>

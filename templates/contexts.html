@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google" content="notranslate">
-<title>{{ABOUT_META_TITLE}}</title>
-<meta name="description" content="{{ABOUT_META_DESCRIPTION_ATTR}}">
+<title>{{CONTEXTS_META_TITLE}}</title>
+<meta name="description" content="{{CONTEXTS_META_DESCRIPTION_ATTR}}">
 <link rel="canonical" href="{{CANONICAL_URL}}">
 {{HREFLANG_LINKS}}
 {{SOCIAL_META}}
@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="{{ASSET_PREFIX}}assets/site.css">
 {{STRUCTURED_DATA}}
 </head>
-<body class="about-page locale-{{LOCALE}}">
+<body class="about-page contexts-page locale-{{LOCALE}}">
 <a class="skip-link" href="#main">{{common.skip_content}}</a>
 {{READING_TOOLS}}
 <div class="wrap">
@@ -33,35 +33,21 @@
   </header>
 
   <main id="main" tabindex="-1">
-    <header class="about-hero">
-      <p class="about-eyebrow">{{ABOUT_EYEBROW}}</p>
-      <h1>{{ABOUT_TITLE}}</h1>
+    <header class="about-hero contexts-hero">
+      <p class="about-eyebrow">{{CONTEXTS_EYEBROW}}</p>
+      <h1>{{CONTEXTS_TITLE}}</h1>
       <div class="about-intro">
-        <p class="about-lede">{{ABOUT_LEDE}}</p>
-        <p class="about-principle">{{ABOUT_PRINCIPLE}}</p>
+        <p class="about-lede">{{CONTEXTS_LEDE}}</p>
+        <p class="about-principle">{{CONTEXTS_PRINCIPLE}}</p>
       </div>
     </header>
 
-{{ABOUT_TOC}}
-
-{{ABOUT_SECTIONS}}
-
-    <section class="about-coda" id="principles" aria-labelledby="about-scope-heading">
-      <div>
-        <p class="about-section-no">07</p>
-        <h2 id="about-scope-heading">{{ABOUT_SCOPE_TITLE}}</h2>
-      </div>
-      <div class="about-coda-copy">
-{{ABOUT_SCOPE_BODY}}
-        <h3>{{ABOUT_PRIVACY_TITLE}}</h3>
-        <p>{{ABOUT_PRIVACY_BODY}}</p>
-      </div>
-    </section>
+{{CONTEXTS_SECTIONS}}
   </main>
 
   <footer class="page-footer about-footer">
     <p><a href="{{HOME_HREF}}">{{PRIMARY_NAME}}</a></p>
-    <p class="page-footer-context"><a href="{{CONTEXTS_HREF}}">{{CONTEXTS_LINK_LABEL}}</a> <span aria-hidden="true">·</span> <a href="{{SITE_REPO_URL}}">{{ABOUT_SOURCE_LINK}}</a></p>
+    <p class="page-footer-context">{{CONTEXTS_FOOTER_NOTE}} <span aria-hidden="true">·</span> <a href="{{ABOUT_HREF}}">{{ABOUT_LINK_LABEL}}</a></p>
   </footer>
 
 </div>

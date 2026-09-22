@@ -11,10 +11,10 @@
       "writing": "écrits",
       "ci": "ci",
       "shi": "poème",
-      "profile": "profil"
+      "profile": "contextes"
     },
     "email": "E-mail",
-    "evidence": "Éléments probants",
+    "evidence": "Planches de recherche",
     "evidence_summary": "3 planches · spatial / végétation / thermique",
     "reading": {
       "label": "Lecture",
@@ -31,10 +31,10 @@
     }
   },
   "home": {
-    "meta_title": "Hanpu Li · écriture, cinéma, photographie et systèmes",
+    "meta_title": "Hanpu Li · écriture, critique de cinéma, photographie et systèmes",
     "meta_description": "Hanpu Li écrit et mène des recherches à Londres, entre critique de cinéma, poésie, photographie, preuve spatiale et petits systèmes logiciels.",
-    "eyebrow": "écriture / cinéma / photo / code · londres",
-    "alias": "travaille également sous le nom de Caitlyn Lye",
+    "eyebrow": "écriture / critique de cinéma / photos / code · Londres",
+    "alias": "crédits également sous le nom Caitlyn Lye",
     "education": "York · langue anglaise et linguistique · cinéma · QMUL",
     "lede": "Je regarde des films. J’écris aussi des ci.",
     "lede_note": "",
@@ -42,8 +42,8 @@
     "method": "Ce qui m’intéresse : ce qui est consigné, ce qui disparaît, et si les preuves soutiennent réellement l’affirmation.",
     "sections": {
       "work": {
-        "title": "Recherche &amp; systèmes",
-        "kicker": "preuves / outils"
+        "title": "Recherche / éditions / systèmes",
+        "kicker": "éditions / recherche / outils"
       },
       "photo": {
         "title": "Photographies",
@@ -58,15 +58,15 @@
         "kicker": "récent / une personne / deux voix"
       },
       "profile": {
-        "title": "Profil",
-        "kicker": "chronologie choisie"
+        "title": "Contextes choisis",
+        "kicker": "travaux antérieurs / contexte biographique"
       }
     },
     "projects": {
       "material": {
         "type": "recherche · télédétection · économie politique",
         "title": "L’empreinte matérielle de la production virtuelle",
-        "description": "Un audit spatial de l’agrandissement des Shepperton Studios, confrontant le discours bas carbone aux changements d’occupation des sols, aux données thermiques et au dossier d’urbanisme.",
+        "description": "La phase spatiale achevée d’une étude en cours sur l’agrandissement des Shepperton Studios, confrontant le discours bas carbone aux changements d’occupation des sols, aux données thermiques et au dossier d’urbanisme.",
         "proof_green": "conversion de la ceinture verte",
         "proof_ndvi": "NDVI DiD",
         "proof_s106": "contribution écologique S106",
@@ -110,6 +110,18 @@
         "08": "perche au-dessus, lumière sur son visage",
         "09": "riant les yeux fermés, fenêtre à contre-jour",
         "10": "autoportrait dans l’obscurité, un chat dans les bras"
+      },
+      "caption": {
+        "01": "01 / film instantané · travail personnel",
+        "02": "02 / numérique · contexte de tournage",
+        "03": "03 / numérique · contexte de tournage",
+        "04": "04 / numérique · contexte de tournage",
+        "05": "05 / pellicule 35 mm · travail personnel",
+        "06": "06 / numérique · contexte de tournage",
+        "07": "07 / numérique · contexte de tournage",
+        "08": "08 / numérique · contexte de tournage",
+        "09": "09 / pellicule 35 mm · travail personnel",
+        "10": "10 / film instantané · autoportrait"
       }
     },
     "writing": {
@@ -119,7 +131,7 @@
       "film_essays_title": "Sur <em>Trainspotting</em>",
       "film_essays_description": "Un essai sur la voix off, l’espace, l’assujettissement et les limites de sa propre démonstration.",
       "film_essays_meta": "lire l’essai",
-      "first_love_verify": "documents de vérification"
+      "first_love_verify": "méthodes / dossier de vérification"
     },
     "poetry": {
       "recent": "deux textes récents",
@@ -133,24 +145,8 @@
     },
     "chronology": [
       {
-        "time": "2013–16",
-        "text": "Présentation en direct à la télévision et à la radio — télévision du district de Zhengding et Radio Trafic Hebei ; les émissions du Nouvel An chinois ont touché plus de 500 000 personnes."
-      },
-      {
-        "time": "2016",
-        "text": "Premier prix au concours de jeunes présentateurs."
-      },
-      {
         "time": "2018–",
         "text": "Photographie commerciale, architecturale et documentaire."
-      },
-      {
-        "time": "2018–19",
-        "text": "Présentation et production à <span lang=\"en-GB\">University Radio York 88.3FM</span>."
-      },
-      {
-        "time": "2020",
-        "text": "Coordination sur le terrain lors du sauvetage d’une femme transgenre retenue de force dans un établissement de thérapie de conversion à Jinan."
       },
       {
         "time": "2020–23",
@@ -158,7 +154,7 @@
       },
       {
         "time": "2024",
-        "text": "Continuité, traduction et recherche sur des productions de l’Université de York ; deux œuvres sélectionnées au 14e Festival international du microfilm de Macao et dans un programme de projection du Coq d’or."
+        "text": "Continuité, traduction et recherche sur des productions de l’Université de York."
       }
     ],
     "location": "Londres"

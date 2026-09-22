@@ -1040,6 +1040,14 @@ html[data-reading-motion] .site-home::before {
   text-wrap: balance;
 }
 
+.site-home .project-auxiliary h3 {
+  font-size: clamp(26px, 2.75vw, 44px);
+}
+
+.site-home .project-auxiliary .project-main > p:last-child {
+  max-width: 58ch;
+}
+
 .site-home .project-feature .project-main {
   grid-column: 2 / 10;
 }
@@ -2624,6 +2632,10 @@ html[data-reading-motion] .site-home::before {
     font-size: clamp(27px, 8.6vw, 38px);
   }
 
+  .site-home .project.project-auxiliary h3 {
+    font-size: clamp(25px, 7.2vw, 32px);
+  }
+
   .site-home .project-proof,
   .site-home .project-meta,
   .site-home .project-system {
@@ -3190,6 +3202,10 @@ html[data-reading-motion] .site-home::before {
 
   .site-home .project h3 {
     font-size: clamp(1.9rem, 5cqi, 3.5rem);
+  }
+
+  .site-home .project.project-auxiliary h3 {
+    font-size: clamp(1.65rem, 3.6cqi, 2.65rem);
   }
 
   .site-home .project-feature h3 {
@@ -4055,4 +4071,101 @@ body.locale-fr a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not
 body.locale-ru a[href^="http://"]:not([href^="http://hanpuli.github.io/"]):not([href="http://hanpuli.github.io"])::after,
 body.locale-ru a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not([href="https://hanpuli.github.io"])::after {
   content: "внеш.";
+}
+
+/* Credits & contexts */
+
+.site-home .profile-more {
+  width: min(calc(100% - ((100% + var(--gap)) / 12)), 980px);
+  margin: 24px 0 0 calc((100% + var(--gap)) / 12);
+  font-family: var(--mono);
+  font-size: .8125rem;
+  letter-spacing: .04em;
+}
+
+.contexts-page .contexts-section-copy {
+  grid-column: 5 / 13;
+  max-width: none;
+}
+
+.contexts-page .contexts-records {
+  border-top: 1px solid var(--line);
+}
+
+.contexts-page .contexts-record {
+  display: grid;
+  grid-template-columns: minmax(92px, 118px) minmax(0, 1fr);
+  gap: var(--gap);
+  padding: 18px 0 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.contexts-page .contexts-date {
+  padding-top: .35em;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: .75rem;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+}
+
+.contexts-page .contexts-record-main h3 {
+  max-width: 32ch;
+  font-size: clamp(20px, 1.7vw, 28px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -.015em;
+  text-wrap: balance;
+}
+
+.contexts-page .contexts-detail {
+  max-width: 62ch;
+  margin-top: .5em;
+  color: var(--muted);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.contexts-page .contexts-credit,
+.contexts-page .contexts-record-link {
+  margin-top: .65em;
+  font-family: var(--mono);
+  font-size: .75rem;
+  line-height: 1.5;
+}
+
+.contexts-page .contexts-credit {
+  color: var(--muted);
+}
+
+.contexts-page .contexts-credit span {
+  margin-inline-end: .55em;
+  color: var(--faint);
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .site-home .profile-more {
+    width: 100%;
+    margin-inline-start: 0;
+  }
+
+  .contexts-page .contexts-section-copy {
+    grid-column: 1 / -1;
+  }
+
+  .contexts-page .contexts-record {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .contexts-page .contexts-record {
+    display: block;
+  }
+
+  .contexts-page .contexts-date {
+    margin-bottom: .55em;
+  }
 }

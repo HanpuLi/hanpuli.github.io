@@ -1,0 +1,933 @@
+{
+  "en": {
+    "meta_title": "Credits & contexts · Hanpu Li",
+    "meta_description": "Selected credit names, professional contexts and public first-party records for Hanpu Li.",
+    "eyebrow": "catalogue back matter · selected records",
+    "title": "Credits & contexts",
+    "lede": "A factual index of selected professional contexts, credit names and public records. It sits behind the work rather than replacing it.",
+    "principle": "A link appears only where a stable public record is available. First-party records are named as such; an unlinked entry stays unlinked rather than being made to look verified.",
+    "link_label": "credits & contexts",
+    "footer_note": "Selected records only. External institutional links are added only when a stable public record is available.",
+    "credit_label": "credited as",
+    "sections": [
+      {
+        "id": "credit-map",
+        "number": "01",
+        "title": "Credit map",
+        "dek": "Names used in public credits.",
+        "records": [
+          {
+            "date": "current",
+            "title": "Hanpu Li / 李函璞",
+            "detail": "primary public name",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "selected credits",
+            "title": "Caitlyn Lye",
+            "detail": "alternate credited name",
+            "credit": "Caitlyn Lye",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "professional-contexts",
+        "number": "02",
+        "title": "Professional contexts",
+        "dek": "Selected earlier work and roles.",
+        "records": [
+          {
+            "date": "2013–16",
+            "title": "Zhengding County Television / Hebei Traffic Radio",
+            "detail": "live television and radio presenting",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–",
+            "title": "Commercial, architectural and documentary photography",
+            "detail": "photography",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–19",
+            "title": "University Radio York 88.3FM",
+            "detail": "presenter and producer",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2024",
+            "title": "University of York productions",
+            "detail": "script supervision, translation and research",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "public-records",
+        "number": "03",
+        "title": "Public work & first-party records",
+        "dek": "Authored work and method pages published by Hanpu Li.",
+        "records": [
+          {
+            "date": "2026",
+            "title": "Sixteen Poems of A and B",
+            "detail": "ci cycle · source text and translation",
+            "credit": "Hanpu Li",
+            "link_label": "read ci",
+            "href": "/ci.html"
+          },
+          {
+            "date": "2026",
+            "title": "Poetry Voucher",
+            "detail": "browser-based edition system · digital proofs",
+            "credit": "Hanpu Li",
+            "link_label": "project page",
+            "href": "/poetry-voucher/"
+          },
+          {
+            "date": "2026",
+            "title": "From Gears to Gasp / Trainspotting",
+            "detail": "public essay",
+            "credit": "Hanpu Li",
+            "link_label": "read essay",
+            "href": "/writing/trainspotting/"
+          },
+          {
+            "date": "current",
+            "title": "On Takashi Miike’s First Love",
+            "detail": "research manuscript · private circulation",
+            "credit": "Hanpu Li",
+            "link_label": "methods / verification companion",
+            "href": "https://github.com/HanpuLi/first-love-verification"
+          },
+          {
+            "date": "2026",
+            "title": "The Material Footprint of Virtual Production",
+            "detail": "completed spatial phase of an ongoing study",
+            "credit": "Hanpu Li",
+            "link_label": "first-party repository",
+            "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
+          },
+          {
+            "date": "2026",
+            "title": "ScopeRail",
+            "detail": "open-source local execution runtime",
+            "credit": "Hanpu Li",
+            "link_label": "first-party repository",
+            "href": "https://github.com/HanpuLi/scoperail"
+          }
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "meta_title": "署名與脈絡 · Hanpu Li",
+    "meta_description": "Hanpu Li 的節選署名、專業脈絡與公開第一方紀錄。",
+    "eyebrow": "目錄後記 · 節選紀錄",
+    "title": "署名與脈絡",
+    "lede": "一份只列事實的索引：節選專業脈絡、署名及公開紀錄。它放在作品之後，不代替作品本身。",
+    "principle": "只有穩定的公開紀錄才加連結。第一方紀錄會明示為第一方；沒有連結的條目不靠措辭冒充已核實。",
+    "link_label": "署名與脈絡",
+    "footer_note": "只列節選紀錄。只有在有穩定公開紀錄時，才加入外部機構連結。",
+    "credit_label": "署名",
+    "sections": [
+      {
+        "id": "credit-map",
+        "number": "01",
+        "title": "署名對照",
+        "dek": "公開署名所用名稱。",
+        "records": [
+          {
+            "date": "目前",
+            "title": "Hanpu Li / 李函璞",
+            "detail": "主要公開姓名",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "部分署名",
+            "title": "Caitlyn Lye",
+            "detail": "另一署名名稱",
+            "credit": "Caitlyn Lye",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "professional-contexts",
+        "number": "02",
+        "title": "專業脈絡",
+        "dek": "節選早期工作與職務。",
+        "records": [
+          {
+            "date": "2013–16",
+            "title": "正定縣電視台／河北交通廣播",
+            "detail": "電視及電台直播主持",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–",
+            "title": "商業、建築及紀實攝影",
+            "detail": "攝影",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–19",
+            "title": "University Radio York 88.3FM",
+            "detail": "主持及製作",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2024",
+            "title": "約克大學製作",
+            "detail": "場記、翻譯及研究",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "public-records",
+        "number": "03",
+        "title": "公開作品與第一方紀錄",
+        "dek": "由 Hanpu Li 發佈的作品與方法頁。",
+        "records": [
+          {
+            "date": "2026",
+            "title": "《甲乙十六首》",
+            "detail": "詞作唱和集 · 原文與譯文",
+            "credit": "Hanpu Li",
+            "link_label": "讀詞",
+            "href": "/zh/ci.html"
+          },
+          {
+            "date": "2026",
+            "title": "詩券",
+            "detail": "瀏覽器版本系統 · 數位校樣",
+            "credit": "Hanpu Li",
+            "link_label": "作品頁",
+            "href": "/zh/poetry-voucher/"
+          },
+          {
+            "date": "2026",
+            "title": "From Gears to Gasp / Trainspotting",
+            "detail": "公開文章",
+            "credit": "Hanpu Li",
+            "link_label": "讀全文",
+            "href": "/zh/writing/trainspotting/"
+          },
+          {
+            "date": "目前",
+            "title": "論三池崇史《初戀》",
+            "detail": "研究稿 · 私下傳閱",
+            "credit": "Hanpu Li",
+            "link_label": "方法／核驗附錄",
+            "href": "https://github.com/HanpuLi/first-love-verification"
+          },
+          {
+            "date": "2026",
+            "title": "虛擬製作的物質足跡",
+            "detail": "持續研究中已完成的空間階段",
+            "credit": "Hanpu Li",
+            "link_label": "第一方 repository",
+            "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
+          },
+          {
+            "date": "2026",
+            "title": "ScopeRail",
+            "detail": "開源本機執行系統",
+            "credit": "Hanpu Li",
+            "link_label": "第一方 repository",
+            "href": "https://github.com/HanpuLi/scoperail"
+          }
+        ]
+      }
+    ]
+  },
+  "zh-hans": {
+    "meta_title": "署名与脉络 · Hanpu Li",
+    "meta_description": "Hanpu Li 的节选署名、专业脉络与公开第一方记录。",
+    "eyebrow": "目录后记 · 节选记录",
+    "title": "署名与脉络",
+    "lede": "一份只列事实的索引：节选专业脉络、署名及公开记录。它放在作品之后，不代替作品本身。",
+    "principle": "只有稳定的公开记录才加链接。第一方记录会明示为第一方；没有链接的条目不靠措辞冒充已核实。",
+    "link_label": "署名与脉络",
+    "footer_note": "只列节选记录。只有在有稳定公开记录时，才加入外部机构链接。",
+    "credit_label": "署名",
+    "sections": [
+      {
+        "id": "credit-map",
+        "number": "01",
+        "title": "署名对照",
+        "dek": "公开署名所用名称。",
+        "records": [
+          {
+            "date": "目前",
+            "title": "Hanpu Li / 李函璞",
+            "detail": "主要公开姓名",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "部分署名",
+            "title": "Caitlyn Lye",
+            "detail": "另一署名名称",
+            "credit": "Caitlyn Lye",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "professional-contexts",
+        "number": "02",
+        "title": "专业脉络",
+        "dek": "节选早期工作与职务。",
+        "records": [
+          {
+            "date": "2013–16",
+            "title": "正定县电视台／河北交通广播",
+            "detail": "电视及电台直播主持",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–",
+            "title": "商业、建筑及纪实摄影",
+            "detail": "摄影",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–19",
+            "title": "University Radio York 88.3FM",
+            "detail": "主持及制作",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2024",
+            "title": "约克大学制作",
+            "detail": "场记、翻译及研究",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "public-records",
+        "number": "03",
+        "title": "公开作品与第一方记录",
+        "dek": "由 Hanpu Li 发布的作品与方法页。",
+        "records": [
+          {
+            "date": "2026",
+            "title": "《甲乙十六首》",
+            "detail": "词作唱和集 · 原文与译文",
+            "credit": "Hanpu Li",
+            "link_label": "读词",
+            "href": "/zh-hans/ci.html"
+          },
+          {
+            "date": "2026",
+            "title": "诗券",
+            "detail": "浏览器版本系统 · 数字校样",
+            "credit": "Hanpu Li",
+            "link_label": "作品页",
+            "href": "/zh-hans/poetry-voucher/"
+          },
+          {
+            "date": "2026",
+            "title": "From Gears to Gasp / Trainspotting",
+            "detail": "公开文章",
+            "credit": "Hanpu Li",
+            "link_label": "读全文",
+            "href": "/zh-hans/writing/trainspotting/"
+          },
+          {
+            "date": "目前",
+            "title": "论三池崇史《初恋》",
+            "detail": "研究稿 · 私下传阅",
+            "credit": "Hanpu Li",
+            "link_label": "方法／核验附录",
+            "href": "https://github.com/HanpuLi/first-love-verification"
+          },
+          {
+            "date": "2026",
+            "title": "虚拟制作的物质足迹",
+            "detail": "持续研究中已完成的空间阶段",
+            "credit": "Hanpu Li",
+            "link_label": "第一方 repository",
+            "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
+          },
+          {
+            "date": "2026",
+            "title": "ScopeRail",
+            "detail": "开源本机执行系统",
+            "credit": "Hanpu Li",
+            "link_label": "第一方 repository",
+            "href": "https://github.com/HanpuLi/scoperail"
+          }
+        ]
+      }
+    ]
+  },
+  "ja": {
+    "meta_title": "クレジットと活動歴 · Hanpu Li",
+    "meta_description": "Hanpu Li の主なクレジット名、職歴上の文脈、公開された第一者記録。",
+    "eyebrow": "カタログ後記 · 選択記録",
+    "title": "クレジットと活動歴",
+    "lede": "主な職歴上の文脈、クレジット名、公開記録を事実として並べた索引です。作品そのものの代わりではなく、その後ろに置く情報です。",
+    "principle": "安定した公開記録がある場合だけリンクします。第一者記録はそのように明記し、リンクのない項目を文言だけで検証済みに見せません。",
+    "link_label": "クレジットと活動歴",
+    "footer_note": "選択記録のみ。安定した公開記録がある場合に限り、外部機関のリンクを追加します。",
+    "credit_label": "クレジット",
+    "sections": [
+      {
+        "id": "credit-map",
+        "number": "01",
+        "title": "クレジット名",
+        "dek": "公開クレジットで使う名前。",
+        "records": [
+          {
+            "date": "現在",
+            "title": "Hanpu Li / 李函璞",
+            "detail": "主な公開名",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "一部クレジット",
+            "title": "Caitlyn Lye",
+            "detail": "別クレジット名",
+            "credit": "Caitlyn Lye",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "professional-contexts",
+        "number": "02",
+        "title": "職歴上の文脈",
+        "dek": "主な初期の仕事と役割。",
+        "records": [
+          {
+            "date": "2013–16",
+            "title": "正定県テレビ／河北交通ラジオ",
+            "detail": "テレビ・ラジオの生放送出演",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–",
+            "title": "商業・建築・ドキュメンタリー写真",
+            "detail": "写真",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–19",
+            "title": "University Radio York 88.3FM",
+            "detail": "プレゼンター／プロデューサー",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2024",
+            "title": "ヨーク大学の制作",
+            "detail": "スクリプト・スーパービジョン、翻訳、リサーチ",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "public-records",
+        "number": "03",
+        "title": "公開作品と第一者記録",
+        "dek": "Hanpu Li が公開した作品・方法ページ。",
+        "records": [
+          {
+            "date": "2026",
+            "title": "Sixteen Poems of A and B",
+            "detail": "詞の応答連作 · 原文と翻訳",
+            "credit": "Hanpu Li",
+            "link_label": "詞を読む",
+            "href": "/ja/ci.html"
+          },
+          {
+            "date": "2026",
+            "title": "詩の券",
+            "detail": "ブラウザー上のエディション・システム · デジタル校正",
+            "credit": "Hanpu Li",
+            "link_label": "作品ページ",
+            "href": "/ja/poetry-voucher/"
+          },
+          {
+            "date": "2026",
+            "title": "From Gears to Gasp / Trainspotting",
+            "detail": "公開エッセイ",
+            "credit": "Hanpu Li",
+            "link_label": "読む",
+            "href": "/ja/writing/trainspotting/"
+          },
+          {
+            "date": "現在",
+            "title": "Takashi Miike’s First Love",
+            "detail": "研究原稿 · 私的配布",
+            "credit": "Hanpu Li",
+            "link_label": "方法・検証資料",
+            "href": "https://github.com/HanpuLi/first-love-verification"
+          },
+          {
+            "date": "2026",
+            "title": "The Material Footprint of Virtual Production",
+            "detail": "継続研究のうち完了した空間分析フェーズ",
+            "credit": "Hanpu Li",
+            "link_label": "第一者 repository",
+            "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
+          },
+          {
+            "date": "2026",
+            "title": "ScopeRail",
+            "detail": "オープンソースのローカル実行環境",
+            "credit": "Hanpu Li",
+            "link_label": "第一者 repository",
+            "href": "https://github.com/HanpuLi/scoperail"
+          }
+        ]
+      }
+    ]
+  },
+  "de": {
+    "meta_title": "Credits & Kontexte · Hanpu Li",
+    "meta_description": "Ausgewählte Credit-Namen, berufliche Kontexte und öffentliche Eigenbelege von Hanpu Li.",
+    "eyebrow": "Kataloganhang · ausgewählte Nachweise",
+    "title": "Credits & Kontexte",
+    "lede": "Ein sachlicher Index ausgewählter beruflicher Kontexte, Credit-Namen und öffentlicher Nachweise. Er steht hinter den Arbeiten und ersetzt sie nicht.",
+    "principle": "Verlinkt wird nur, wenn ein stabiler öffentlicher Nachweis vorhanden ist. Eigenbelege werden als solche bezeichnet; unverlinkte Einträge werden sprachlich nicht zu verifizierten Nachweisen aufgewertet.",
+    "link_label": "Credits & Kontexte",
+    "footer_note": "Nur ausgewählte Einträge. Externe institutionelle Links werden erst ergänzt, wenn ein stabiler öffentlicher Nachweis vorliegt.",
+    "credit_label": "Credit",
+    "sections": [
+      {
+        "id": "credit-map",
+        "number": "01",
+        "title": "Credit-Namen",
+        "dek": "Namen in öffentlichen Credits.",
+        "records": [
+          {
+            "date": "aktuell",
+            "title": "Hanpu Li / 李函璞",
+            "detail": "primärer öffentlicher Name",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "ausgewählte Credits",
+            "title": "Caitlyn Lye",
+            "detail": "alternativer Credit-Name",
+            "credit": "Caitlyn Lye",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "professional-contexts",
+        "number": "02",
+        "title": "Berufliche Kontexte",
+        "dek": "Ausgewählte frühere Arbeiten und Rollen.",
+        "records": [
+          {
+            "date": "2013–16",
+            "title": "Kreisfernsehen Zhengding / Verkehrsfunk Hebei",
+            "detail": "Live-Moderation für Fernsehen und Radio",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–",
+            "title": "Werbe-, Architektur- und Dokumentarfotografie",
+            "detail": "Fotografie",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–19",
+            "title": "University Radio York 88.3FM",
+            "detail": "Moderation und Produktion",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2024",
+            "title": "Produktionen der Universität York",
+            "detail": "Script Supervision, Übersetzung und Recherche",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "public-records",
+        "number": "03",
+        "title": "Öffentliche Arbeiten & Eigenbelege",
+        "dek": "Von Hanpu Li veröffentlichte Arbeiten und Methodenseiten.",
+        "records": [
+          {
+            "date": "2026",
+            "title": "Sixteen Poems of A and B",
+            "detail": "Ci-Zyklus · Ausgangstext und Übersetzung",
+            "credit": "Hanpu Li",
+            "link_label": "Ci lesen",
+            "href": "/de/ci.html"
+          },
+          {
+            "date": "2026",
+            "title": "Poetry Voucher",
+            "detail": "browserbasiertes Editionssystem · digitale Proben",
+            "credit": "Hanpu Li",
+            "link_label": "Projektseite",
+            "href": "/de/poetry-voucher/"
+          },
+          {
+            "date": "2026",
+            "title": "From Gears to Gasp / Trainspotting",
+            "detail": "öffentlicher Essay",
+            "credit": "Hanpu Li",
+            "link_label": "Essay lesen",
+            "href": "/de/writing/trainspotting/"
+          },
+          {
+            "date": "aktuell",
+            "title": "On Takashi Miike’s First Love",
+            "detail": "Forschungsmanuskript · private Weitergabe",
+            "credit": "Hanpu Li",
+            "link_label": "Methoden- und Prüfmaterial",
+            "href": "https://github.com/HanpuLi/first-love-verification"
+          },
+          {
+            "date": "2026",
+            "title": "The Material Footprint of Virtual Production",
+            "detail": "abgeschlossene räumliche Phase einer laufenden Studie",
+            "credit": "Hanpu Li",
+            "link_label": "Eigenbeleg im Repository",
+            "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
+          },
+          {
+            "date": "2026",
+            "title": "ScopeRail",
+            "detail": "Open-Source-Laufzeit für lokale Ausführung",
+            "credit": "Hanpu Li",
+            "link_label": "Eigenbeleg im Repository",
+            "href": "https://github.com/HanpuLi/scoperail"
+          }
+        ]
+      }
+    ]
+  },
+  "fr": {
+    "meta_title": "Crédits & contextes · Hanpu Li",
+    "meta_description": "Noms de crédit, contextes professionnels et traces publiques de première main sélectionnés pour Hanpu Li.",
+    "eyebrow": "annexe de catalogue · relevé choisi",
+    "title": "Crédits & contextes",
+    "lede": "Un index factuel de contextes professionnels, de noms de crédit et de traces publiques sélectionnés. Il vient après les œuvres et ne les remplace pas.",
+    "principle": "Un lien n’apparaît que lorsqu’une trace publique stable existe. Les sources de première main sont nommées comme telles ; une entrée non liée ne devient pas « vérifiée » par la formulation.",
+    "link_label": "crédits & contextes",
+    "footer_note": "Sélection seulement. Les liens institutionnels externes ne sont ajoutés que lorsqu’une trace publique stable est disponible.",
+    "credit_label": "crédit",
+    "sections": [
+      {
+        "id": "credit-map",
+        "number": "01",
+        "title": "Noms de crédit",
+        "dek": "Noms employés dans les crédits publics.",
+        "records": [
+          {
+            "date": "actuel",
+            "title": "Hanpu Li / 李函璞",
+            "detail": "nom public principal",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "certains crédits",
+            "title": "Caitlyn Lye",
+            "detail": "autre nom crédité",
+            "credit": "Caitlyn Lye",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "professional-contexts",
+        "number": "02",
+        "title": "Contextes professionnels",
+        "dek": "Travaux et rôles antérieurs sélectionnés.",
+        "records": [
+          {
+            "date": "2013–16",
+            "title": "Télévision du district de Zhengding / Radio Trafic Hebei",
+            "detail": "présentation en direct à la télévision et à la radio",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–",
+            "title": "Photographie commerciale, architecturale et documentaire",
+            "detail": "photographie",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–19",
+            "title": "University Radio York 88.3FM",
+            "detail": "présentation et production",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2024",
+            "title": "Productions de l’Université de York",
+            "detail": "continuité, traduction et recherche",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "public-records",
+        "number": "03",
+        "title": "Œuvres publiques & traces de première main",
+        "dek": "Œuvres et pages de méthode publiées par Hanpu Li.",
+        "records": [
+          {
+            "date": "2026",
+            "title": "Sixteen Poems of A and B",
+            "detail": "cycle de ci · texte source et traduction",
+            "credit": "Hanpu Li",
+            "link_label": "lire les ci",
+            "href": "/fr/ci.html"
+          },
+          {
+            "date": "2026",
+            "title": "Poetry Voucher",
+            "detail": "système d’édition dans le navigateur · épreuves numériques",
+            "credit": "Hanpu Li",
+            "link_label": "page du projet",
+            "href": "/fr/poetry-voucher/"
+          },
+          {
+            "date": "2026",
+            "title": "From Gears to Gasp / Trainspotting",
+            "detail": "essai public",
+            "credit": "Hanpu Li",
+            "link_label": "lire l’essai",
+            "href": "/fr/writing/trainspotting/"
+          },
+          {
+            "date": "actuel",
+            "title": "On Takashi Miike’s First Love",
+            "detail": "manuscrit de recherche · circulation privée",
+            "credit": "Hanpu Li",
+            "link_label": "méthodes / dossier de vérification",
+            "href": "https://github.com/HanpuLi/first-love-verification"
+          },
+          {
+            "date": "2026",
+            "title": "The Material Footprint of Virtual Production",
+            "detail": "phase spatiale achevée d’une étude en cours",
+            "credit": "Hanpu Li",
+            "link_label": "dépôt de première main",
+            "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
+          },
+          {
+            "date": "2026",
+            "title": "ScopeRail",
+            "detail": "environnement local d’exécution open source",
+            "credit": "Hanpu Li",
+            "link_label": "dépôt de première main",
+            "href": "https://github.com/HanpuLi/scoperail"
+          }
+        ]
+      }
+    ]
+  },
+  "ru": {
+    "meta_title": "Титры и контексты · Hanpu Li",
+    "meta_description": "Избранные имена в титрах, профессиональные контексты и публичные записи от первого лица Hanpu Li.",
+    "eyebrow": "приложение к каталогу · избранные записи",
+    "title": "Титры и контексты",
+    "lede": "Фактический указатель избранных профессиональных контекстов, имён в титрах и публичных записей. Он расположен после работ и не заменяет их.",
+    "principle": "Ссылка появляется только там, где есть устойчивый публичный источник. Записи от первого лица так и обозначаются; отсутствие ссылки не маскируется более сильной формулировкой.",
+    "link_label": "титры и контексты",
+    "footer_note": "Только избранные записи. Внешние институциональные ссылки добавляются лишь при наличии устойчивого публичного источника.",
+    "credit_label": "титры",
+    "sections": [
+      {
+        "id": "credit-map",
+        "number": "01",
+        "title": "Имена в титрах",
+        "dek": "Имена, используемые в публичных титрах.",
+        "records": [
+          {
+            "date": "сейчас",
+            "title": "Hanpu Li / 李函璞",
+            "detail": "основное публичное имя",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "часть титров",
+            "title": "Caitlyn Lye",
+            "detail": "альтернативное имя в титрах",
+            "credit": "Caitlyn Lye",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "professional-contexts",
+        "number": "02",
+        "title": "Профессиональные контексты",
+        "dek": "Избранные ранние работы и роли.",
+        "records": [
+          {
+            "date": "2013–16",
+            "title": "Телевидение уезда Чжэндин / транспортное радио Хэбэя",
+            "detail": "прямой эфир на телевидении и радио",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–",
+            "title": "Коммерческая, архитектурная и документальная фотография",
+            "detail": "фотография",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2018–19",
+            "title": "University Radio York 88.3FM",
+            "detail": "ведущая и продюсер",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          },
+          {
+            "date": "2024",
+            "title": "Проекты Йоркского университета",
+            "detail": "контроль сценарной непрерывности, перевод и исследование",
+            "credit": "Hanpu Li",
+            "link_label": "",
+            "href": ""
+          }
+        ]
+      },
+      {
+        "id": "public-records",
+        "number": "03",
+        "title": "Публичные работы и записи от первого лица",
+        "dek": "Работы и методические страницы, опубликованные Hanpu Li.",
+        "records": [
+          {
+            "date": "2026",
+            "title": "Sixteen Poems of A and B",
+            "detail": "цикл цы · исходный текст и перевод",
+            "credit": "Hanpu Li",
+            "link_label": "читать цы",
+            "href": "/ru/ci.html"
+          },
+          {
+            "date": "2026",
+            "title": "Poetry Voucher",
+            "detail": "браузерная издательская система · цифровые пробы",
+            "credit": "Hanpu Li",
+            "link_label": "страница проекта",
+            "href": "/ru/poetry-voucher/"
+          },
+          {
+            "date": "2026",
+            "title": "From Gears to Gasp / Trainspotting",
+            "detail": "публичное эссе",
+            "credit": "Hanpu Li",
+            "link_label": "читать эссе",
+            "href": "/ru/writing/trainspotting/"
+          },
+          {
+            "date": "сейчас",
+            "title": "On Takashi Miike’s First Love",
+            "detail": "исследовательская рукопись · частное распространение",
+            "credit": "Hanpu Li",
+            "link_label": "методы / материалы проверки",
+            "href": "https://github.com/HanpuLi/first-love-verification"
+          },
+          {
+            "date": "2026",
+            "title": "The Material Footprint of Virtual Production",
+            "detail": "завершённый пространственный этап продолжающегося исследования",
+            "credit": "Hanpu Li",
+            "link_label": "репозиторий от первого лица",
+            "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
+          },
+          {
+            "date": "2026",
+            "title": "ScopeRail",
+            "detail": "локальная среда выполнения с открытым кодом",
+            "credit": "Hanpu Li",
+            "link_label": "репозиторий от первого лица",
+            "href": "https://github.com/HanpuLi/scoperail"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -11,10 +11,10 @@
       "writing": "Texte",
       "ci": "Ci",
       "shi": "Gedicht",
-      "profile": "Profil"
+      "profile": "Kontexte"
     },
     "email": "E-Mail",
-    "evidence": "Belege",
+    "evidence": "Forschungsblätter",
     "evidence_summary": "3 Tafeln · Raum / Vegetation / Wärme",
     "reading": {
       "label": "Lesen",
@@ -31,10 +31,10 @@
     }
   },
   "home": {
-    "meta_title": "Hanpu Li · Schreiben, Film, Fotografie und Systeme",
+    "meta_title": "Hanpu Li · Schreiben, Filmkritik, Fotografie und Systeme",
     "meta_description": "Hanpu Li schreibt und forscht in London zu Filmkritik, Lyrik, Fotografie, räumlicher Evidenz und kleinen Softwaresystemen.",
-    "eyebrow": "Schreiben / Film / Foto / Code · London",
-    "alias": "arbeitet auch als Caitlyn Lye",
+    "eyebrow": "Schreiben / Filmkritik / Fotos / Code · London",
+    "alias": "in Credits auch als Caitlyn Lye geführt",
     "education": "York · Englische Sprache und Linguistik · Film · QMUL",
     "lede": "Ich schaue Filme. Ich schreibe auch Ci.",
     "lede_note": "",
@@ -42,8 +42,8 @@
     "method": "Mich interessiert, was aufgezeichnet wird, was herausfällt und ob die Belege die Behauptung tatsächlich tragen.",
     "sections": {
       "work": {
-        "title": "Forschung &amp; Systeme",
-        "kicker": "Belege / Werkzeuge"
+        "title": "Forschung / Editionen / Systeme",
+        "kicker": "Editionen / Forschung / Werkzeuge"
       },
       "photo": {
         "title": "Fotografien",
@@ -58,15 +58,15 @@
         "kicker": "neu / eine Hand / zwei Stimmen"
       },
       "profile": {
-        "title": "Profil",
-        "kicker": "ausgewählte Chronologie"
+        "title": "Ausgewählte Kontexte",
+        "kicker": "frühere Arbeit / biografischer Kontext"
       }
     },
     "projects": {
       "material": {
         "type": "Forschung · Fernerkundung · politische Ökonomie",
         "title": "Der materielle Fußabdruck virtueller Produktion",
-        "description": "Eine räumliche Prüfung der Erweiterung der Shepperton Studios: Low-Carbon-Diskurs im Abgleich mit Landbedeckungswandel, thermischen Befunden und Planungsakten.",
+        "description": "Die abgeschlossene räumliche Phase einer laufenden Studie zur Erweiterung der Shepperton Studios; sie prüft den Low-Carbon-Diskurs an Landbedeckungsänderungen, thermischen Daten und Planungsakten.",
         "proof_green": "Green-Belt-Umwandlung",
         "proof_ndvi": "NDVI DiD",
         "proof_s106": "ökologischer S106-Beitrag",
@@ -110,6 +110,18 @@
         "08": "Tonangel über ihr, Licht auf ihrem Gesicht",
         "09": "lachend mit geschlossenen Augen, Fenster im Gegenlicht",
         "10": "Selbstporträt im Dunkeln, eine Katze im Arm"
+      },
+      "caption": {
+        "01": "01 / Sofortbild · freie Arbeit",
+        "02": "02 / digital · Produktionskontext",
+        "03": "03 / digital · Produktionskontext",
+        "04": "04 / digital · Produktionskontext",
+        "05": "05 / 35-mm-Film · freie Arbeit",
+        "06": "06 / digital · Produktionskontext",
+        "07": "07 / digital · Produktionskontext",
+        "08": "08 / digital · Produktionskontext",
+        "09": "09 / 35-mm-Film · freie Arbeit",
+        "10": "10 / Sofortbild · Selbstporträt"
       }
     },
     "writing": {
@@ -119,7 +131,7 @@
       "film_essays_title": "Zu <em>Trainspotting</em>",
       "film_essays_description": "Ein Essay über Voice-over, Raum, Subjektivierung und die Grenzen der eigenen Argumentation.",
       "film_essays_meta": "Essay lesen",
-      "first_love_verify": "Prüfmaterialien"
+      "first_love_verify": "Methoden- und Prüfmaterial"
     },
     "poetry": {
       "recent": "zwei neuere Gedichte",
@@ -133,24 +145,8 @@
     },
     "chronology": [
       {
-        "time": "2013–16",
-        "text": "Live-Moderation in Fernsehen und Radio beim Fernsehsender des Kreises Zhengding und bei Verkehrsradio Hebei; die Übertragungen zum Frühlingsfest erreichten ein Publikum von über 500.000."
-      },
-      {
-        "time": "2016",
-        "text": "Erster Preis bei einem Wettbewerb für junge Moderatorinnen und Moderatoren."
-      },
-      {
         "time": "2018–",
         "text": "Werbe-, Architektur- und Dokumentarfotografie."
-      },
-      {
-        "time": "2018–19",
-        "text": "Moderation und Produktion bei <span lang=\"en-GB\">University Radio York 88.3FM</span>."
-      },
-      {
-        "time": "2020",
-        "text": "Koordination vor Ort bei der Rettung einer trans Frau, die in Jinan gegen ihren Willen in einer Einrichtung für Konversionstherapie festgehalten wurde."
       },
       {
         "time": "2020–23",
@@ -158,7 +154,7 @@
       },
       {
         "time": "2024",
-        "text": "Skript- und Anschlusskontrolle, Übersetzung und Recherche bei Produktionen der Universität York; zwei Arbeiten für das 14. Internationale Mikrofilmfestival Macau und ein Vorführprogramm des Goldenen Hahns ausgewählt."
+        "text": "Script Supervision, Übersetzung und Recherche bei Produktionen der Universität York."
       }
     ],
     "location": "London"

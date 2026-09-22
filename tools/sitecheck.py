@@ -170,7 +170,7 @@ def check_discovery(errors: list[str]) -> None:
         locale_id = language["id"]
         prefix = "" if locale_id == "en" else f"/{locale_id}"
         expected.add(base_url + ("/" if not prefix else f"{prefix}/"))
-        for page in ("ci.html", "shi.html", "about.html"):
+        for page in ("ci.html", "shi.html", "about.html", "contexts.html"):
             expected.add(f"{base_url}{prefix}/{page}")
         expected.add(f"{base_url}{prefix}/writing/trainspotting/")
         expected.add(f"{base_url}{prefix}/poetry-voucher/")
