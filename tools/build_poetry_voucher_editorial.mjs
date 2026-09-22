@@ -35,7 +35,6 @@ try{
     const editorial=document.createElement('canvas');
     editorial.width=1200;editorial.height=1800;
     const x=editorial.getContext('2d');
-    x.fillStyle='#000';x.fillRect(0,0,1200,1800);
     x.fillStyle='#171614';x.beginPath();x.roundRect(375,37,455,1740,42);x.fill();
     x.drawImage(full,408,65);
 

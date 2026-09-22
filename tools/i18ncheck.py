@@ -399,6 +399,7 @@ def main() -> int:
             load(CONTENT / "essay-trainspotting.json")["zh-hans"]["language_note"],
             json.dumps(about_site["zh-hans"], ensure_ascii=False),
             json.dumps(load(CONTENT / "poetry-voucher.json")["zh-hans"], ensure_ascii=False),
+            json.dumps(load(CONTENT / "contexts.json")["zh-hans"], ensure_ascii=False),
             subprocess.check_output([
                 "node", "-e",
                 "const fs=require('node:fs'),vm=require('node:vm');"

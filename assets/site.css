@@ -985,6 +985,11 @@ html[data-reading-motion] .site-home::before {
   letter-spacing: -.025em;
 }
 
+/* Optical correction for the short Latin “Ci” heading. */
+.site-home.locale-en #ci-heading {
+  margin-inline-start: -.045em;
+}
+
 .site-home .section-kicker {
   grid-column: 8 / 13;
   color: var(--muted);
@@ -1386,11 +1391,12 @@ html[data-reading-motion] .site-home::before {
 }
 
 .site-home .section-note {
-  width: min(42ch, 100%);
-  margin: clamp(48px, 6vw, 86px) 0 0 auto;
+  width: min(72ch, calc(100% - ((100% + var(--gap)) / 12)));
+  margin: clamp(48px, 6vw, 86px) 0 0 calc((100% + var(--gap)) / 12);
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.7;
+  text-wrap: pretty;
 }
 
 .site-home .section-note [lang="en"] {
@@ -1586,7 +1592,7 @@ html[data-reading-motion] .site-home::before {
 /* Profile */
 
 .site-home .chronology {
-  width: min(calc(100% - ((100% + var(--gap)) / 12)), 980px);
+  width: calc(100% - ((100% + var(--gap)) / 12));
   margin-inline-start: calc((100% + var(--gap)) / 12);
   border-top: 1px solid var(--line);
 }
@@ -1607,7 +1613,7 @@ html[data-reading-motion] .site-home::before {
 }
 
 .site-home .credit p {
-  max-width: 67ch;
+  max-width: none;
   line-height: 1.58;
   text-wrap: pretty;
 }
@@ -2711,7 +2717,8 @@ html[data-reading-motion] .site-home::before {
   }
 
   .site-home .section-note {
-    margin-top: 0;
+    width: 100%;
+    margin: 0;
   }
 
   .site-home .writing-list {
@@ -3106,12 +3113,13 @@ html[data-reading-motion] .site-home::before {
   }
 
   .site-home .section-note {
-    grid-column: 8 / -1;
+    grid-column: 2 / 8;
     width: auto;
+    margin-inline-start: 0;
   }
 
   .site-home .chronology {
-    grid-column: 2 / 10;
+    grid-column: 2 / -1;
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr);
     column-gap: var(--module-gap);
@@ -3133,9 +3141,15 @@ html[data-reading-motion] .site-home::before {
     letter-spacing: -.02em;
   }
 
+  @container photo (max-width: 50rem) {
+    .site-home .section-note {
+      grid-column: 1 / -1;
+    }
+  }
+
   @container profile (max-width: 60rem) {
     .site-home .chronology {
-      grid-column: 2 / -1;
+      grid-column: 1 / -1;
     }
   }
 }
@@ -4082,8 +4096,9 @@ body.locale-ru a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not
 /* Credits & contexts */
 
 .site-home .profile-more {
-  width: min(calc(100% - ((100% + var(--gap)) / 12)), 980px);
-  margin: 24px 0 0 calc((100% + var(--gap)) / 12);
+  grid-column: 2 / -1;
+  width: auto;
+  margin: 24px 0 0;
   font-family: var(--mono);
   font-size: .8125rem;
   letter-spacing: .04em;
@@ -4153,6 +4168,7 @@ body.locale-ru a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not
 
 @media (max-width: 760px) {
   .site-home .profile-more {
+    grid-column: 1 / -1;
     width: 100%;
     margin-inline-start: 0;
   }

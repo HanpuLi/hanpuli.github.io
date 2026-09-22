@@ -69,6 +69,8 @@ def collect_text() -> str:
     text += json.dumps(about["zh-hans"], ensure_ascii=False)
     voucher = json.loads((CONTENT / "poetry-voucher.json").read_text(encoding="utf-8"))
     text += json.dumps(voucher["zh-hans"], ensure_ascii=False)
+    contexts = json.loads((CONTENT / "contexts.json").read_text(encoding="utf-8"))
+    text += json.dumps(contexts["zh-hans"], ensure_ascii=False)
     # Include the local interactive studio's Simplified-Chinese interface.
     text += subprocess.check_output([
         "node", "-e",
