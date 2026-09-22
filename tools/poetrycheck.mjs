@@ -2,6 +2,7 @@
 // Browser-free invariants for the public studio. Rendering is tested in-browser.
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 const file = path => readFileSync(new URL('../' + path, import.meta.url));
@@ -28,6 +29,12 @@ assert.equal(base.lines, 2);
 assert.equal(base.stanzas, 2);
 assert.equal(quotePoem('é').price, quotePoem('e\u0301').price);
 const extra = quotePoem('春風吹\n\n雨聲來', 'English', 'site', true);
+for(const [locale,receipt] of Object.entries({en:'ENGLISH TRANSLATION',ja:'JAPANESE TRANSLATION',de:'GERMAN TRANSLATION',fr:'FRENCH TRANSLATION',ru:'RUSSIAN TRANSLATION'})){
+  const translated=quotePoem('春風吹','translated','bitmap',false,locale);
+  assert.equal(translated.items.find(item=>item.id==='translation').receipt,receipt);
+  assert.equal(translated.price,quotePoem('春風吹').price+TARIFF.addOn);
+  assert.equal(vatSummary(translated.items)[0].gross,translated.price);
+}
 assert.equal(TARIFF.version,'PV3');
 assert.equal(extra.price, base.price + 3 * TARIFF.addOn);
 assert.equal(extra.characters, base.characters);
@@ -162,6 +169,8 @@ const unusedLocaleRows=localeRows.filter(row=>!studioConsumers.includes(row[0]))
 assert.equal(unusedLocaleRows.length,0,'dead studio i18n rows: '+unusedLocaleRows.join(' | '));
 assert(!/\bPV1\b|\bPV3\b|\bPRN\b|SPECIMEN|自選面額|£1\.99|£10/.test(i18nSource),'stale or duplicated numeric studio copy survived cleanup');
 const data = JSON.parse(read('content/poetry-voucher-app/editions.json'));
+const catalogueCheck=spawnSync('python3',['tools/sync_voucher_translations.py','--check'],{cwd:new URL('..',import.meta.url),encoding:'utf8'});
+assert.equal(catalogueCheck.status,0,catalogueCheck.stderr||'voucher translations are stale');
 assert.equal(data.patterns['%'],'11001 11010 00100 01000 10110 10011 00000');
 assert(data.patterns['(']&&data.patterns[')']&&data.patterns['£']);
 assert.equal(new Set(data.works.map(work => work.id)).size, data.works.length);
@@ -172,6 +181,7 @@ for (const work of data.works) {
   assert(['/ci.html', '/shi.html'].includes(url.pathname));
   assert(url.hash);
   assert(work.title && work.poem);
+  assert.deepEqual(Object.keys(work.translations),['en','ja','de','fr','ru']);
 }
 const ciSource=JSON.parse(read('content/ci-source.json'));
 const shiSource=JSON.parse(read('content/shi-source.json'));

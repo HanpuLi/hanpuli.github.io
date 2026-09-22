@@ -72,6 +72,13 @@ Edit overview copy in `poetry-voucher.json`, the studio template in
 `poetry-voucher-app/`. Run `python3 tools/build_site.py` to publish those sources
 to the generated routes. Do not edit the generated copies independently.
 
+The studio offers the five published literary translations (English, Japanese,
+German, French and Russian) independently of its interface language. Their
+authoritative text is in `ci-source.json`, `ci-translations/`,
+`shi-translations/` and the translated `shi.heading` values in `locales/`.
+Run `python3 tools/sync_voucher_translations.py` after editing those sources;
+`node tools/poetrycheck.mjs` verifies the offline catalogue is in sync.
+
 Renderer policy and artwork constants have one source in `gallery.js`: `TARIFF`,
 `PAYMENT_SCENE`, `RECEIPT_CONFIG`, `PAPER_CONFIG`, `TYPE_CONFIG` and
 `SKU_DEFINITIONS`. Do not duplicate their numeric values in the studio template

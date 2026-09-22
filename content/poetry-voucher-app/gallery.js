@@ -84,9 +84,10 @@ const TAX_CODES=Object.freeze({
 const SKU_DEFINITIONS=Object.freeze({
   poem:Object.freeze({id:'poem',label:'詩券',receipt:'POETRY VOUCHER',taxCode:TAX_CODES.A.code,taxRate:TAX_CODES.A.rate}),
   font:Object.freeze({id:'font',label:'網站字體版本',receipt:'WEBSITE TYPEFACES',taxCode:TAX_CODES.A.code,taxRate:TAX_CODES.A.rate}),
-  translation:Object.freeze({id:'translation',label:'附加英譯',receipt:'ENGLISH TRANSLATION',taxCode:TAX_CODES.A.code,taxRate:TAX_CODES.A.rate}),
+  translation:Object.freeze({id:'translation',label:'附加翻譯',receipt:'TRANSLATION',taxCode:TAX_CODES.A.code,taxRate:TAX_CODES.A.rate}),
   custom:Object.freeze({id:'custom',label:'自選內容',receipt:'CUSTOM TEXT',taxCode:TAX_CODES.A.code,taxRate:TAX_CODES.A.rate})
 });
+const TRANSLATION_RECEIPTS=Object.freeze({en:'ENGLISH TRANSLATION',ja:'JAPANESE TRANSLATION',de:'GERMAN TRANSLATION',fr:'FRENCH TRANSLATION',ru:'RUSSIAN TRANSLATION'});
 const noteValues=UK_CASH.notes,changeValues=Object.freeze([...UK_CASH.notes,...UK_CASH.coins]);
 function denominations(amount,values){
   const parts=[];
@@ -123,7 +124,7 @@ function sku(id,amount){
   if(!definition)throw Error('Unknown receipt SKU.');
   return {...definition,amount};
 }
-function quotePoem(poem,translation='',font='bitmap',custom=false){
+function quotePoem(poem,translation='',font='bitmap',custom=false,translationLocale='en'){
   let characters=0,lines=0,stanzas=0;
   for(const text of [poem]){
     let inStanza=false;
@@ -139,7 +140,10 @@ function quotePoem(poem,translation='',font='bitmap',custom=false){
   const edition=lines?Math.ceil((weighted-TARIFF.roundEnding)/TARIFF.roundUnit)*TARIFF.roundUnit+TARIFF.roundEnding:0;
   const items=lines?[sku('poem',edition)]:[];
   if(lines&&font==='site')items.push(sku('font',TARIFF.addOn));
-  if(lines&&translation.trim())items.push(sku('translation',TARIFF.addOn));
+  if(lines&&translation.trim()){
+    if(!Object.hasOwn(TRANSLATION_RECEIPTS,translationLocale))throw Error('Unsupported translation language.');
+    items.push({...sku('translation',TARIFF.addOn),receipt:TRANSLATION_RECEIPTS[translationLocale]});
+  }
   if(lines&&custom)items.push(sku('custom',TARIFF.addOn));
   const price=items.reduce((sum,item)=>sum+item.amount,0);
   return {characters,lines,stanzas,base,weighted,edition,items,price,...cashPayment(price)};
@@ -283,8 +287,8 @@ function updateLocale(){
   if(works.length){
     $('work').replaceChildren();const custom=document.createElement('option');custom.value='custom';custom.textContent=tr('＋ 寫自己的詩');$('work').append(custom);
     for(const w of works){const option=document.createElement('option');option.value=w.id;
-      // Work titles are authored content. Use only an existing published English title.
-      const title=uiLocale==='en'&&w.translation_title?w.translation_title:w.title;
+      // Work titles are authored content. Use an existing published title where available.
+      const title=w.translations?.[uiLocale]?.title||w.title;
       option.textContent=`${w.source_id} / ${title}`;$('work').append(option);
     }$('work').value=selected;updateSource();
   }
@@ -302,8 +306,8 @@ function syncTypeSize(){
   $('size').value=String(sizes.includes(current)?current:TYPE_CONFIG.defaultSize);
 }
 function updatePrice(reroll=false){
-  const w=currentWork(),translation=unchanged(w)&&$('language').value==='bilingual'?w.translation:'';
-  const quote=quotePoem($('poem').value,translation,$('font').value,!unchanged(w));
+  const w=currentWork(),selected=selectedTranslation(w);
+  const quote=quotePoem($('poem').value,selected?.body||'',$('font').value,!unchanged(w),selected?.locale||'en');
   if(reroll){const bytes=new Uint32Array(2);crypto.getRandomValues(bytes);paymentRoll=bytes[0]/4294967296;cashRoll=bytes[1]/4294967296;}
   Object.assign(quote,automaticPayment(quote.price,paymentRoll??0,cashRoll));
   const modes={card:'刷卡 · 模擬交易',notes:'現金 · 自動紙幣',coins:'現金 · 硬幣支付',mixed:'現金 · 紙幣硬幣混合支付'};
@@ -323,6 +327,10 @@ function updatePrice(reroll=false){
 }
 function currentWork(){return works.find(w=>w.id===$('work').value);}
 function unchanged(w){return w&&['title','author','poem'].every(k=>$(k).value===w[k]);}
+function selectedTranslation(work){
+  const locale=$('language').value;
+  return unchanged(work)&&work.translations?.[locale]?{locale,...work.translations[locale]}:null;
+}
 function dirty(event){
   if(event?.target?.id==='font')syncTypeSize();
   revision++;
@@ -331,8 +339,8 @@ function dirty(event){
   if(selected&&['title','poem'].includes(event?.target?.id)&&$('author').value===selected.author&&!unchanged(selected)){
     $('author').value='';
   }
-  const w=currentWork(),paired=unchanged(w)&&Boolean(w.translation);
-  $('language').options[1].disabled=!paired;
+  const w=currentWork(),paired=unchanged(w);
+  for(const option of $('language').options)if(option.value!=='receipt')option.disabled=!paired||!w.translations?.[option.value];
   if(!paired)$('language').value='receipt';
   try{updatePrice();}catch(error){message(error.message);return;}
   message('內容已改動；點「製作我的詩券」更新校樣。');
@@ -385,7 +393,7 @@ function barcodeBits(ref){
 }
 function render(spec){
   const p=new Paper(),ref=spec.ref,code=spec.original?spec.work.source_id:RECEIPT_CONFIG.customWorkCode,voucher=code+'-'+ref,contentLocale=spec.locale||(spec.original?'zh-Hant':'en');
-  const bodyFont=spec.font==='site'?serif:bitmapFamily(contentLocale),translationFont=spec.font==='site'?serif:bitmapFamily('en');
+  const bodyFont=spec.font==='site'?serif:bitmapFamily(contentLocale),translationFont=spec.font==='site'?serif:bitmapFamily(spec.translationLocale||'en');
   p.threshold=TYPE_CONFIG.threshold[spec.font];
   const items=spec.items||[sku('poem',spec.price)],meta=receiptMeta(ref),tax=vatSummary(items);
   const date=new Intl.DateTimeFormat(RECEIPT_CONFIG.locale,{timeZone:RECEIPT_CONFIG.timeZone,day:'2-digit',month:'2-digit',year:'numeric'}).format(spec.created);
@@ -426,7 +434,7 @@ function render(spec){
   if(!spec.original&&spec.author)p.text(spec.author,14,bodyFont,false,20);
   if(!spec.original){p.space(4);p.text('READER EDITION',12,mono,false,18);}p.space(16);
   for(const line of spec.poem.split('\n')){if(line)p.text(line,spec.size,bodyFont);else p.space(18);}
-  if(spec.translation){p.space(14);p.text(spec.work.translation_title,TYPE_CONFIG.translation,translationFont,false,24,true);p.space(6);for(const line of spec.translation.split('\n')){if(line)p.text(line,TYPE_CONFIG.translation,translationFont,false,24);else p.space(10);}}
+  if(spec.translation){p.space(14);p.text(spec.translationTitle||spec.work.translation_title,TYPE_CONFIG.translation,translationFont,false,24,true);p.space(6);for(const line of spec.translation.split('\n')){if(line)p.text(line,TYPE_CONFIG.translation,translationFont,false,24);else p.space(10);}}
   p.space(14);
   if(spec.original){if(spec.work.edition)p.text(spec.work.edition,12,bitmapFamily('zh-Hant'),true,20);p.text(spec.work.source_url.replace('https://',''),12,mono,true,18);}
   p.space(12);p.text('ART EDITION / NO CASH VALUE',12,mono,true,18);
@@ -458,10 +466,10 @@ async function generate(event){
   const currentRevision=revision;
   try{
     message('在此裝置排版中…');
-    const work=currentWork(),original=unchanged(work),size=Number($('size').value);
+    const work=currentWork(),original=unchanged(work),size=Number($('size').value),selected=selectedTranslation(work);
     const quote=updatePrice(true);
     const spec={title:$('title').value.trim(),author:$('author').value,poem:$('poem').value.replace(/\r\n?/g,'\n'),size,work,original,locale:original?'zh-Hant':uiLocale,
-      price:quote.price,tender:quote.tender,method:quote.method,items:quote.items,font:$('font').value,created:new Date(),translation:original&&$('language').value==='bilingual'?work.translation:''};
+      price:quote.price,tender:quote.tender,method:quote.method,items:quote.items,font:$('font').value,created:new Date(),translation:selected?.body||'',translationTitle:selected?.title||'',translationLocale:selected?.locale||''};
     if(!spec.title||!spec.poem.trim())throw Error('請填寫題名和正文。');
     if(spec.title.length>INPUT_LIMITS.title||spec.author.length>INPUT_LIMITS.author||spec.poem.length>INPUT_LIMITS.poem)throw Error('文字超出長度上限。');
     if(/[\u0000-\u0008\u000b-\u001f\u007f]/.test(spec.title+spec.author+spec.poem))throw Error('文字包含不支援的控制字元。');
@@ -469,10 +477,10 @@ async function generate(event){
     if(spec.tender<spec.price)throw Error('現金不能低於標價。');
     if(!['bitmap','site'].includes(spec.font)||!typeSizes(spec.font).includes(size))throw Error('不支援的字號。');
     const random=new Uint8Array(4);crypto.getRandomValues(random);spec.ref=receiptReference(spec.created,random);
-    const fontSample=spec.poem+spec.title+spec.author+(work?.edition||'')+'李函璞';
+    const fontSample=spec.poem+spec.title+spec.author+(work?.edition||'')+spec.translationTitle+spec.translation+'李函璞';
     const pixelLoads=new Set();
     if(spec.font==='bitmap')pixelLoads.add(bitmapFace(spec.locale));
-    if(spec.font==='bitmap'&&spec.translation)pixelLoads.add(bitmapFace('en'));
+    if(spec.font==='bitmap'&&spec.translation)pixelLoads.add(bitmapFace(spec.translationLocale));
     if(spec.original)pixelLoads.add(bitmapFace('zh-Hant'));
     await Promise.all([
       ...['EB','Courier','ShipCommon','Ship','IMing','Noto'].map(f=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px ${f}`,fontSample)),
@@ -485,7 +493,7 @@ async function generate(event){
     for(const kind of ['receipt','voucher','full']){$(kind+'-image').src=result[kind].toDataURL('image/png');$(kind+'-image').hidden=false;$(kind+'-pdf').href=blobURL(pdf(result[kind]));$(kind+'-pdf').hidden=false;}
     $('full-png').href=blobURL(png);$('full-png').hidden=false;
     $('reading-title').textContent=spec.title;$('reading-author').textContent=spec.author;$('reading-poem').textContent=spec.poem;
-    $('translation-section').hidden=!spec.translation;$('translation-title').textContent=spec.translation?work.translation_title:'';$('translation').textContent=spec.translation;
+    $('translation-section').hidden=!spec.translation;$('translation-section').lang=spec.translationLocale||'en';$('translation-title').textContent=spec.translationTitle;$('translation').textContent=spec.translation;
     proofState={ref:spec.ref,original,mm:(result.full.height+PAPER_CONFIG.pdfVerticalMarginDots*2)/PAPER_CONFIG.dotsPerMm};updateLocale();
     message('詩券已生成，可下載。沒有上傳文字，也沒有發出打印任務。');
     if(event?.type==='click'&&matchMedia('(max-width:680px)').matches){

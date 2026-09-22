@@ -32,6 +32,22 @@ try{
   assert.equal(BASIC_SPECIMEN.workId,runtime.receipt.defaultWork);
   assert.equal(await page.locator('#font').inputValue(),BASIC_SPECIMEN.font);
   assert.equal(await page.locator('#price').inputValue(),await page.evaluate(()=>priceText(quotePoem(currentWork().poem,'','bitmap').price)));
+  for(const locale of ['en','ja','de','fr','ru']){
+    await page.locator('#language').selectOption(locale);
+    const expected=await page.evaluate(locale=>{
+      const translated=currentWork().translations[locale];
+      return {title:translated.title,body:translated.body,price:priceText(quotePoem(currentWork().poem,translated.body,'bitmap',false,locale).price)};
+    },locale);
+    assert.equal(await page.locator('#price').inputValue(),expected.price);
+    await page.locator('#generate').click();
+    await page.locator('#full-pdf').waitFor({state:'visible'});
+    assert.equal(await page.locator('#translation-section').getAttribute('lang'),locale);
+    assert.equal(await page.locator('#translation-title').textContent(),expected.title);
+    assert.equal(await page.locator('#translation').textContent(),expected.body);
+    assert.equal(await page.locator('#translation-section').getAttribute('hidden'),null);
+    assert.match(await page.locator('#receipt-image').getAttribute('src'),/^data:image\/png;base64,/);
+  }
+  await page.locator('#language').selectOption('receipt');
   assert.deepEqual(await page.locator('#ui-locale .language-short').allTextContents(),['EN','繁','简','日','DE','FR','RU']);
   assert.match(await page.locator('#proof-note').textContent(),/^\d{12} \/ /);
   const workIds=await page.evaluate(()=>works.map(w=>w.id)),rows=[];
