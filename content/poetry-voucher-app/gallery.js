@@ -396,7 +396,7 @@ function render(spec){
   p.till(date,time);p.till('RECEIPT',ref);p.till('VOUCHER',voucher);p.space(6);
   p.till(separator);p.till(receiptItemLine('QTY','DESCRIPTION','RSP(£)','AMT(£)'));p.till(separator);
   for(const item of items)for(const line of receiptItemRows(item,code))p.till(line);
-  p.till(separator);
+  p.till(separator);p.till('RSP/AMT INCLUDE VAT',null,true);
   p.till('SUBTOTAL',currency+' '+priceText(spec.price));
   p.till('TOTAL TO PAY',currency+' '+priceText(spec.price),false,true);
   if(spec.method==='card')p.till('RECEIVED','CARD');
