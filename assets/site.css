@@ -987,7 +987,7 @@ html[data-reading-motion] .site-home::before {
 
 /* Optical correction for the short Latin “Ci” heading. */
 .site-home.locale-en #ci-heading {
-  margin-inline-start: .045em;
+  margin-inline-start: -.045em;
 }
 
 .site-home .section-kicker {
