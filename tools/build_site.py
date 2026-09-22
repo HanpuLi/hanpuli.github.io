@@ -56,6 +56,13 @@ class BuildError(RuntimeError):
     pass
 
 
+def png_dimensions(path: Path) -> tuple[int, int]:
+    header = path.read_bytes()[:24]
+    if len(header) < 24 or header[:8] != b"\x89PNG\r\n\x1a\n" or header[12:16] != b"IHDR":
+        raise BuildError(f"not a PNG with an IHDR header: {path}")
+    return int.from_bytes(header[16:20], "big"), int.from_bytes(header[20:24], "big")
+
+
 def schema_signature(value: Any, path: str = "") -> dict[str, str]:
     out: dict[str, str] = {}
     if isinstance(value, dict):
@@ -930,7 +937,8 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         meta_description = POETRY_VOUCHER[locale_id]["description"]
         social_image = f"{BASE_URL}/poetry-voucher/sample-voucher.png"
         social_alt = POETRY_VOUCHER[locale_id]["preview_alt"]
-        social_width, social_height, social_type = 384, 575, "image/png"
+        social_width, social_height = png_dimensions(ROOT / "poetry-voucher" / "sample-voucher.png")
+        social_type = "image/png"
         og_type, page_kind = "article", "poetry-voucher"
     elif page == "about":
         meta_title = about["meta_title"]
@@ -997,10 +1005,19 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         if lede_note
         else ""
     )
+    pv_receipt_width, pv_receipt_height = png_dimensions(ROOT / "poetry-voucher" / "sample-receipt.png")
+    pv_voucher_width, pv_voucher_height = png_dimensions(ROOT / "poetry-voucher" / "sample-voucher.png")
+    pv_editorial_width, pv_editorial_height = png_dimensions(ROOT / "assets" / "projects" / "poetry-voucher" / "poetry-voucher-paper-960.png")
     return {
         **{"PV_" + key.upper(): html.escape(value, quote=True) for key, value in POETRY_VOUCHER[locale_id].items()},
         "PV_HREF": page_path(locale_id, "poetry-voucher"),
         "PV_MAKE_URL": "/poetry-voucher/make.html?lang=" + {"zh":"zh-Hant", "zh-hans":"zh-Hans"}.get(locale_id, locale_id),
+        "PV_RECEIPT_WIDTH": str(pv_receipt_width),
+        "PV_RECEIPT_HEIGHT": str(pv_receipt_height),
+        "PV_VOUCHER_WIDTH": str(pv_voucher_width),
+        "PV_VOUCHER_HEIGHT": str(pv_voucher_height),
+        "PV_EDITORIAL_WIDTH": str(pv_editorial_width),
+        "PV_EDITORIAL_HEIGHT": str(pv_editorial_height),
         "HTML_LANG": html.escape(lang["html_lang"], quote=True),
         "SOURCE_LANG": "zh-Hans" if locale_id == "zh-hans" else "zh-Hant-HK",
         "CI_GLYPH": "词" if locale_id == "zh-hans" else "詞",

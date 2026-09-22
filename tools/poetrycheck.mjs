@@ -8,10 +8,14 @@ const file = path => readFileSync(new URL('../' + path, import.meta.url));
 const read = path => file(path).toString('utf8');
 const sha256 = path => createHash('sha256').update(file(path)).digest('hex');
 const source = read('content/poetry-voucher-app/gallery.js');
-const { quotePoem, automaticPayment, wrapText, typeSizes, bitmapFace, receiptReference } = vm.runInNewContext(
-  source.split('const $=')[0] + ';({quotePoem,automaticPayment,wrapText,typeSizes,bitmapFace,receiptReference})'
+const { quotePoem, automaticPayment, wrapText, typeSizes, bitmapFace, receiptReference, receiptTaxCode, vatSummary, receiptMeta, receiptItemLine, receiptItemRows, TARIFF, UK_CASH, PAYMENT_SCENE, RECEIPT_CONFIG, PAPER_CONFIG, TYPE_CONFIG, SKU_DEFINITIONS } = vm.runInNewContext(
+  source.split('const $=')[0] + ';({quotePoem,automaticPayment,wrapText,typeSizes,bitmapFace,receiptReference,receiptTaxCode,vatSummary,receiptMeta,receiptItemLine,receiptItemRows,TARIFF,UK_CASH,PAYMENT_SCENE,RECEIPT_CONFIG,PAPER_CONFIG,TYPE_CONFIG,SKU_DEFINITIONS})'
 );
 const count = parts => parts.reduce((sum, part) => sum + part.value * part.count, 0);
+assert.equal(Object.values(PAYMENT_SCENE.weights).reduce((sum,value)=>sum+value,0),1);
+assert(Object.values(RECEIPT_CONFIG.columns).reduce((sum,value)=>sum+value,0)+3<=RECEIPT_CONFIG.lineChars);
+assert.equal(RECEIPT_CONFIG.lineChars*PAPER_CONFIG.receiptCellDots+PAPER_CONFIG.receiptInsetDots*2,PAPER_CONFIG.printableDots);
+assert.equal(PAPER_CONFIG.paperMm*PAPER_CONFIG.dotsPerMm,PAPER_CONFIG.printableDots+PAPER_CONFIG.pdfSideMarginDots*2);
 const sampleRef=receiptReference(new Date('2026-09-22T12:00:00Z'),Uint8Array.from([0x12,0x34,0x56,0x78]));
 assert.equal(sampleRef,'260922419896');
 assert.match(sampleRef,/^\d{12}$/);
@@ -22,20 +26,73 @@ assert.equal(base.lines, 2);
 assert.equal(base.stanzas, 2);
 assert.equal(quotePoem('é').price, quotePoem('e\u0301').price);
 const extra = quotePoem('春風吹\n\n雨聲來', 'English', 'site', true);
-assert.equal(extra.price, base.price + 3 * 199);
+assert.equal(TARIFF.version,'PV3');
+assert.equal(extra.price, base.price + 3 * TARIFF.addOn);
 assert.equal(extra.characters, base.characters);
+const baseTax=Array.from(vatSummary(base.items),row=>({...row}));
+assert.equal(baseTax.length,1);
+assert.equal(baseTax[0].code,'Z');
+assert.equal(baseTax[0].rate,0);
+assert.equal(baseTax[0].gross,base.price);
+assert.equal(baseTax[0].net,base.price);
+assert.equal(baseTax[0].vat,0);
+const extraTax=Array.from(vatSummary(extra.items),row=>({...row}));
+assert.deepEqual(extraTax.map(row=>row.rate),[0,20]);
+assert.equal(extraTax.reduce((sum,row)=>sum+row.gross,0),extra.price);
+assert(extraTax.every(row=>row.net+row.vat===row.gross));
+assert.equal(receiptTaxCode(extra.items.find(item=>item.id==='font')),'A');
+assert.deepEqual(Object.fromEntries(Object.entries(SKU_DEFINITIONS).map(([id,item])=>[id,[item.taxCode,item.taxRate]])),{
+  poem:['Z',0],font:['A',20],translation:['A',20],custom:['A',20]
+});
+const meta={...receiptMeta(sampleRef)},metaAgain={...receiptMeta(sampleRef)},otherMeta={...receiptMeta('260922123456')};
+assert.deepEqual(meta,metaAgain);
+assert.equal(meta.store,RECEIPT_CONFIG.merchant.store);
+assert.equal(meta.till,RECEIPT_CONFIG.merchant.till);
+assert.equal(meta.terminal,RECEIPT_CONFIG.merchant.terminal);
+assert.equal(meta.transaction,sampleRef.slice(-RECEIPT_CONFIG.referenceDigits));
+assert.equal(meta.paymentRef,RECEIPT_CONFIG.paymentRefPrefix+sampleRef.slice(-RECEIPT_CONFIG.paymentRefDigits));
+assert.equal(meta.operator.length,RECEIPT_CONFIG.operatorDigits);
+assert(/^\d+$/.test(meta.operator));
+assert(Number(meta.operator)>=1&&Number(meta.operator)<=RECEIPT_CONFIG.operatorCount);
+assert.equal(meta.cardEnding.length,RECEIPT_CONFIG.cardEndingDigits);
+assert(/^\d+$/.test(meta.cardEnding));
+assert.notEqual(meta.cardEnding,'0'.repeat(RECEIPT_CONFIG.cardEndingDigits));
+assert.equal(meta.auth.length,RECEIPT_CONFIG.authLength);
+assert(/^[A-Z0-9]+$/.test(meta.auth));
+assert(RECEIPT_CONFIG.cardEntries.includes(meta.entry));
+assert.notDeepEqual({operator:meta.operator,cardEnding:meta.cardEnding,auth:meta.auth,entry:meta.entry},{operator:otherMeta.operator,cardEnding:otherMeta.cardEnding,auth:otherMeta.auth,entry:otherMeta.entry});
+const metaPopulation=Array.from({length:100},(_,i)=>receiptMeta('260922'+String(i).padStart(RECEIPT_CONFIG.referenceDigits,'0')));
+assert.equal(new Set(metaPopulation.map(x=>x.entry)).size,RECEIPT_CONFIG.cardEntries.length);
+assert(new Set(metaPopulation.map(x=>x.operator)).size>1);
+assert(new Set(metaPopulation.map(x=>x.cardEnding)).size>90);
+assert(new Set(metaPopulation.map(x=>x.auth)).size>90);
+assert(metaPopulation.every(x=>x.cardEnding!=='0'.repeat(RECEIPT_CONFIG.cardEndingDigits)&&!x.auth.startsWith('TEST')));
+const itemHeader=receiptItemLine('QTY','DESCRIPTION','RSP(£)','AMT(£)');
+assert.equal(itemHeader.length,RECEIPT_CONFIG.lineChars);
+assert.equal(itemHeader.indexOf('QTY'),0);
+assert.equal(itemHeader.indexOf('DESCRIPTION'),4);
+assert.equal(itemHeader.indexOf('RSP(£)'),16);
+assert.equal(itemHeader.indexOf('AMT(£)'),23);
+const sampleItemRows=Array.from(receiptItemRows({...SKU_DEFINITIONS.poem,amount:299},'B3'));
+assert.deepEqual(sampleItemRows,[
+  '1   POETRY        2.99  2.99Z ',
+  '    VOUCHER B3                '
+]);
+assert(sampleItemRows.every(line=>line.length===RECEIPT_CONFIG.lineChars));
+assert.equal(sampleItemRows[0].slice(16,22).trim(),'2.99');
+assert.equal(sampleItemRows[0].slice(23,29).trim(),'2.99Z');
 assert(!base.items.some(item=>item.id==='font'));
 assert.equal(quotePoem('春風吹\n\n雨聲來','','bitmap').price,base.price);
-assert.equal(quotePoem('春風吹\n\n雨聲來','','site').price,base.price+199);
+assert.equal(quotePoem('春風吹\n\n雨聲來','','site').price,base.price+TARIFF.addOn);
 assert.equal(extra.items.find(item=>item.id==='font').receipt,'WEBSITE TYPEFACES');
 for(const poem of ['A poem','詩詞','诗词','詩とひらがな','Größe für Wörter','Été à Noël','Стихотворение Ёжик']){
   const pixel=quotePoem(poem,'','bitmap'),site=quotePoem(poem,'','site');
   assert(!pixel.items.some(item=>item.id==='font'));
-  assert.equal(site.price,pixel.price+199);
+  assert.equal(site.price,pixel.price+TARIFF.addOn);
   assert.equal(site.items.find(item=>item.id==='font').label,'網站字體版本');
 }
-assert.deepEqual(Array.from(typeSizes('bitmap')),[24,36]);
-assert.deepEqual(Array.from(typeSizes('site')),[22,24,26]);
+assert.deepEqual(Array.from(typeSizes('bitmap')),Array.from(TYPE_CONFIG.bitmapSizes));
+assert.deepEqual(Array.from(typeSizes('site')),Array.from(TYPE_CONFIG.siteSizes));
 assert.equal(bitmapFace('zh-Hant'),'FusionPixelZhHK');
 assert.equal(bitmapFace('zh-Hans'),'FusionPixelZhHans');
 assert.equal(bitmapFace('ja'),'FusionPixelJa');
@@ -56,7 +113,7 @@ const wrapped=wrapText(line,text=>[...text].length*24);
 assert.equal(wrapped.join(''),line);
 assert.equal(wrapped[0],'燭暗蛩寒簾影瘦，');
 assert.equal(wrapped[1],'殘酲猶帶微温。');
-assert(wrapped.every(text=>text.length*24<=352));
+assert(wrapped.every(text=>text.length*24<=PAPER_CONFIG.bodyWidthDots));
 let scenes = 0;
 for (let price = 1; price <= 10000; price += 7) {
   for (const roll of [0, 0.499, 0.5, 0.749, 0.75, 0.899, 0.9, 0.999]) {
@@ -64,12 +121,11 @@ for (let price = 1; price <= 10000; price += 7) {
       const payment = automaticPayment(price, roll, cashRoll);
       assert(payment.tender >= price);
       assert.equal(payment.tender - price, payment.change);
-      assert.equal(payment.shortfall, 0);
       assert.equal(count(payment.changeParts), payment.change);
       if (payment.method === 'cash') assert.equal(count(payment.notes), payment.tender);
       if (payment.mode === 'coins') {
-        assert(price <= 1000);
-        assert(payment.notes.every(part => part.value <= 200));
+        assert(price <= UK_CASH.coinOnlyMax);
+        assert(payment.notes.every(part => UK_CASH.coins.includes(part.value)));
       }
       scenes++;
     }
@@ -77,13 +133,34 @@ for (let price = 1; price <= 10000; price += 7) {
 }
 assert.equal(automaticPayment(499, 0.95, 0.5).change, 1);
 assert.equal(automaticPayment(499, 0.95, 0.05).change, 0);
+const i18nSource=read('content/poetry-voucher-app/i18n.js');
 const { localeRows, localeNames } = vm.runInNewContext(
-  read('content/poetry-voucher-app/i18n.js').split('const traditionalOverrides')[0] + ';({localeRows,localeNames})'
+  i18nSource.split('const traditionalOverrides')[0] + ';({localeRows,localeNames})'
 );
 assert.equal(localeNames.length, 7);
 assert.equal(new Set(localeRows.map(row => row[0])).size, localeRows.length);
 assert(localeRows.every(row => row.length === 7 && row.every(value => typeof value === 'string' && value.trim())));
+const rowsByKey=new Map(Array.from(localeRows,row=>[row[0],Array.from(row)]));
+const {traditionalOverrides}=vm.runInNewContext(
+  i18nSource.slice(i18nSource.indexOf('const traditionalOverrides'),i18nSource.indexOf('const localeMap'))+';({traditionalOverrides})'
+);
+for(const [key,tokens] of [
+  ['TYPEFACE_NOTE_TEMPLATE',['{bitmapSizes}','{siteSizes}','{addOn}']],
+  ['TARIFF_NOTE_TEMPLATE',['{version}','{ending}','{addOn}']],
+  ['PAYMENT_NOTE_TEMPLATE',['{coinLimit}']]
+]){
+  const translations=[traditionalOverrides[key],...rowsByKey.get(key).slice(1)];
+  for(const text of translations)for(const token of tokens)assert(text.includes(token),key+' missing '+token);
+}
+assert(rowsByKey.get('網站字體').every(text=>!/[£€$]\s*\d|\d+[.,]\d{2}/.test(text)),'website typeface label must not duplicate the configured fee');
+const i18nRuntime=i18nSource.slice(i18nSource.indexOf('// Original English headings')).replace(/const traditionalOverrides=.*?;/s,'');
+const studioConsumers=source+read('templates/poetry-voucher-studio.html')+i18nRuntime;
+const unusedLocaleRows=localeRows.filter(row=>!studioConsumers.includes(row[0])).map(row=>row[0]);
+assert.equal(unusedLocaleRows.length,0,'dead studio i18n rows: '+unusedLocaleRows.join(' | '));
+assert(!/\bPV1\b|\bPV3\b|\bPRN\b|SPECIMEN|自選面額|£1\.99|£10/.test(i18nSource),'stale or duplicated numeric studio copy survived cleanup');
 const data = JSON.parse(read('content/poetry-voucher-app/editions.json'));
+assert.equal(data.patterns['%'],'11001 11010 00100 01000 10110 10011 00000');
+assert(data.patterns['(']&&data.patterns[')']&&data.patterns['£']);
 assert.equal(new Set(data.works.map(work => work.id)).size, data.works.length);
 assert(data.works.some(work => work.id === 'ci-b3'));
 for (const work of data.works) {
@@ -99,4 +176,12 @@ for (const file of ['gallery.js', 'i18n.js', 'editions.json', 'studio.css']) {
 }
 assert.deepEqual([...source.matchAll(/fetch\(([^)]+)\)/g)].map(match => match[1]), ["'editions.json'"]);
 assert(!/localStorage|sessionStorage|indexedDB|innerHTML/.test(source));
+assert(!/cardEnding:'0000'|auth:'TEST|operator:'01'|p\.till\('ENTRY','CONTACTLESS'\)/.test(source),'transaction-specific receipt metadata must be derived from the receipt reference');
+const studioTemplate=read('templates/poetry-voucher-studio.html');
+assert.match(studioTemplate,/<html lang="zh-Hant-HK"[^>]+data-default-locale="zh-Hant"/);
+assert(!/maxlength="(?:160|100|1800)"|£1\.99|\bPV3\b|58 mm \/ 384 dots \/ 1 bit/.test(studioTemplate),'studio duplicated a renderer-owned numeric parameter');
+const overviewTemplate=read('templates/poetry-voucher.html'),homeTemplate=read('templates/index.html');
+assert(overviewTemplate.includes('height="{{PV_RECEIPT_HEIGHT}}"')&&overviewTemplate.includes('height="{{PV_VOUCHER_HEIGHT}}"'));
+assert(homeTemplate.includes('height="{{PV_EDITORIAL_HEIGHT}}"'));
+assert(!/height="566"/.test(overviewTemplate));
 console.log(`poetrycheck: ${scenes} payment cases, pricing, ${localeRows.length} translation rows, ${data.works.length} public works and privacy invariants OK`);

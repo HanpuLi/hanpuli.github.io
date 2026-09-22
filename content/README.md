@@ -72,6 +72,14 @@ Edit overview copy in `poetry-voucher.json`, the studio template in
 `poetry-voucher-app/`. Run `python3 tools/build_site.py` to publish those sources
 to the generated routes. Do not edit the generated copies independently.
 
+Renderer policy and artwork constants have one source in `gallery.js`: `TARIFF`,
+`PAYMENT_SCENE`, `RECEIPT_CONFIG`, `PAPER_CONFIG`, `TYPE_CONFIG` and
+`SKU_DEFINITIONS`. Do not duplicate their numeric values in the studio template
+or translated copy; dynamic pricing/type/payment notes are formatted from those
+objects. The stable documentation fixtures are named separately as
+`BASIC_SPECIMEN` in `tools/vouchertypecheck.mjs` and `EDITORIAL_SPECIMEN` in
+`tools/build_poetry_voucher_editorial.mjs`.
+
 The studio reuses `/assets/fonts/`; run both font-subsetting helpers after CJK
 copy changes. `node tools/poetrycheck.mjs` checks pricing, payment denominations,
 line breaking, translation completeness and the public-data boundary. The
@@ -100,10 +108,17 @@ works do not depend on system fonts.
 
 There is no payment service, text upload, persistent text storage or physical
 printer API in this public app. Do not copy private device configuration,
-identifiers, credentials or print-service code into it. Public `TILL` and `PRN`
-values are display aliases, not hardware serial numbers. Each generated specimen
-gets a local 12-digit receipt reference made from the London calendar date
-(`YYMMDD`) plus six digits of browser-generated entropy; the voucher and barcode
-reuse that reference, but it is not a server-backed or sequential transaction ID.
+identifiers, credentials or print-service code into it. The receipt deliberately
+uses a plausible UK POS information hierarchy (store/till/transaction fields,
+item tax codes, subtotal/total, VAT analysis and cash/card detail), but every
+transaction and tax classification is fictional display data: the receipt says
+that no payment was processed, is not proof of purchase and is not a VAT invoice.
+Public store, till and terminal values are stable display aliases, not hardware
+or merchant identifiers. Operator number, fictional card ending, entry mode and
+authorization code are derived deterministically from the local receipt reference;
+they never come from a user, card or payment service. Each generated specimen gets
+a local 12-digit receipt reference made from the London calendar date (`YYMMDD`)
+plus six digits of browser-generated entropy; the voucher and barcode reuse that
+reference, but it is not a server-backed or sequential transaction ID.
 Custom glyphs missing from the bundled fonts fall back to device fonts. Physical
 print calibration is separate from digital proofing.
