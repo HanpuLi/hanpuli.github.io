@@ -82,7 +82,7 @@ const TAX_CODES=Object.freeze({
   A:Object.freeze({code:'A',rate:20})
 });
 const SKU_DEFINITIONS=Object.freeze({
-  poem:Object.freeze({id:'poem',label:'詩券',receipt:'POETRY VOUCHER',taxCode:TAX_CODES.Z.code,taxRate:TAX_CODES.Z.rate}),
+  poem:Object.freeze({id:'poem',label:'詩券',receipt:'POETRY VOUCHER',taxCode:TAX_CODES.A.code,taxRate:TAX_CODES.A.rate}),
   font:Object.freeze({id:'font',label:'網站字體版本',receipt:'WEBSITE TYPEFACES',taxCode:TAX_CODES.A.code,taxRate:TAX_CODES.A.rate}),
   translation:Object.freeze({id:'translation',label:'附加英譯',receipt:'ENGLISH TRANSLATION',taxCode:TAX_CODES.A.code,taxRate:TAX_CODES.A.rate}),
   custom:Object.freeze({id:'custom',label:'自選內容',receipt:'CUSTOM TEXT',taxCode:TAX_CODES.A.code,taxRate:TAX_CODES.A.rate})

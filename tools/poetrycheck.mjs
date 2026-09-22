@@ -31,18 +31,19 @@ assert.equal(extra.price, base.price + 3 * TARIFF.addOn);
 assert.equal(extra.characters, base.characters);
 const baseTax=Array.from(vatSummary(base.items),row=>({...row}));
 assert.equal(baseTax.length,1);
-assert.equal(baseTax[0].code,'Z');
-assert.equal(baseTax[0].rate,0);
+assert.equal(baseTax[0].code,'A');
+assert.equal(baseTax[0].rate,20);
 assert.equal(baseTax[0].gross,base.price);
-assert.equal(baseTax[0].net,base.price);
-assert.equal(baseTax[0].vat,0);
+assert.equal(baseTax[0].net+baseTax[0].vat,base.price);
+const sampleTax=Array.from(vatSummary([{...SKU_DEFINITIONS.poem,amount:299}]),row=>({...row}));
+assert.deepEqual(sampleTax,[{rate:20,code:'A',gross:299,net:249,vat:50}]);
 const extraTax=Array.from(vatSummary(extra.items),row=>({...row}));
-assert.deepEqual(extraTax.map(row=>row.rate),[0,20]);
+assert.deepEqual(extraTax.map(row=>row.rate),[20]);
 assert.equal(extraTax.reduce((sum,row)=>sum+row.gross,0),extra.price);
 assert(extraTax.every(row=>row.net+row.vat===row.gross));
 assert.equal(receiptTaxCode(extra.items.find(item=>item.id==='font')),'A');
 assert.deepEqual(Object.fromEntries(Object.entries(SKU_DEFINITIONS).map(([id,item])=>[id,[item.taxCode,item.taxRate]])),{
-  poem:['Z',0],font:['A',20],translation:['A',20],custom:['A',20]
+  poem:['A',20],font:['A',20],translation:['A',20],custom:['A',20]
 });
 const meta={...receiptMeta(sampleRef)},metaAgain={...receiptMeta(sampleRef)},otherMeta={...receiptMeta('260922123456')};
 assert.deepEqual(meta,metaAgain);
@@ -75,12 +76,12 @@ assert.equal(itemHeader.indexOf('RSP(£)'),16);
 assert.equal(itemHeader.indexOf('AMT(£)'),23);
 const sampleItemRows=Array.from(receiptItemRows({...SKU_DEFINITIONS.poem,amount:299},'B3'));
 assert.deepEqual(sampleItemRows,[
-  '1   POETRY        2.99  2.99Z ',
+  '1   POETRY        2.99  2.99A ',
   '    VOUCHER B3                '
 ]);
 assert(sampleItemRows.every(line=>line.length===RECEIPT_CONFIG.lineChars));
 assert.equal(sampleItemRows[0].slice(16,22).trim(),'2.99');
-assert.equal(sampleItemRows[0].slice(23,29).trim(),'2.99Z');
+assert.equal(sampleItemRows[0].slice(23,29).trim(),'2.99A');
 assert(!base.items.some(item=>item.id==='font'));
 assert.equal(quotePoem('春風吹\n\n雨聲來','','bitmap').price,base.price);
 assert.equal(quotePoem('春風吹\n\n雨聲來','','site').price,base.price+TARIFF.addOn);

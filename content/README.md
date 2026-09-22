@@ -113,6 +113,8 @@ uses a plausible UK POS information hierarchy (store/till/transaction fields,
 item tax codes, subtotal/total, VAT analysis and cash/card detail), but every
 transaction and tax classification is fictional display data: the receipt says
 that no payment was processed, is not proof of purchase and is not a VAT invoice.
+The specimen models every displayed SKU at an illustrative 20% VAT-inclusive
+rate; this is not a determination of the VAT treatment of an actual supply.
 Public store, till and terminal values are stable display aliases, not hardware
 or merchant identifiers. Operator number, fictional card ending, entry mode and
 authorization code are derived deterministically from the local receipt reference;
