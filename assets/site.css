@@ -2873,6 +2873,12 @@ html[data-reading-motion] .site-home::before {
   }
 }
 
+@media (min-width: 801px) {
+  .about-page .reading-tools-label {
+    display: none;
+  }
+}
+
 @media (max-width: 800px) {
   .about-page .reading-tools {
     position: relative;
