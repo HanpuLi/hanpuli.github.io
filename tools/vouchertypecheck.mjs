@@ -32,7 +32,7 @@ try{
   assert.equal(BASIC_SPECIMEN.workId,runtime.receipt.defaultWork);
   assert.equal(await page.locator('#font').inputValue(),BASIC_SPECIMEN.font);
   assert.equal(await page.locator('#price').inputValue(),await page.evaluate(()=>priceText(quotePoem(currentWork().poem,'','bitmap').price)));
-  for(const locale of ['en','ja','de','fr','ru']){
+  for(const locale of ['en','zh-Hans','ja','de','fr','ru']){
     await page.locator('#language').selectOption(locale);
     const expected=await page.evaluate(locale=>{
       const translated=currentWork().translations[locale];
@@ -54,23 +54,23 @@ try{
   for(let start=0;start<workIds.length;start+=6){
     const ids=workIds.slice(start,start+6);
     const batch=await page.evaluate(async({specimen,ids})=>{
-      const selected=ids.map(id=>works.find(w=>w.id===id)),sample=selected.map(w=>w.poem+w.translation).join('');
+      const selected=ids.map(id=>works.find(w=>w.id===id)),sample=selected.map(w=>w.poem+Object.values(w.translations).map(text=>text.title+text.body).join('')).join('');
       const sampleDate=new Date(specimen.created),sampleRef=receiptReference(sampleDate,Uint8Array.from(specimen.entropy));
       await Promise.all([...new Set(Object.values(bitmapFaces))].map(f=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px ${f}`,sample)));
       const summaries=[];
-      for(const work of selected)for(const font of ['bitmap','site'])for(const size of [Math.max(...typeSizes(font))])for(const bilingual of [false,true]){
-        const translation=bilingual?work.translation||'':'',q=quotePoem(work.poem,translation,font);
-        const spec={work,original:true,font,size,locale:specimen.locale,title:work.title,author:work.author,poem:work.poem,translation,
+      for(const work of selected)for(const font of ['bitmap','site'])for(const size of [Math.max(...typeSizes(font))])for(const pairedLocale of [null,...Object.keys(work.translations)]){
+        const paired=pairedLocale?work.translations[pairedLocale]:null,translation=paired?.body||'',q=quotePoem(work.poem,translation,font,false,pairedLocale||'en');
+        const spec={work,original:true,font,size,locale:specimen.locale,title:work.title,author:work.author,poem:work.poem,translation,translationTitle:paired?.title||'',translationLocale:pairedLocale||'en',
           created:sampleDate,ref:sampleRef,...q,method:specimen.method};
         const rendered=render(spec),data=rendered.full.getContext('2d').getImageData(0,0,PAPER_CONFIG.printableDots,rendered.full.height).data;
         let binary=true;for(let i=0;i<data.length;i++){if(i%4===3?data[i]!==255:data[i]!==0&&data[i]!==255){binary=false;break;}}
-        summaries.push({id:work.id,font,size,bilingual,height:rendered.full.height,binary,price:q.price,fee:q.items.filter(i=>i.id==='font').reduce((n,i)=>n+i.amount,0)});
+        summaries.push({id:work.id,font,size,pairedLocale,height:rendered.full.height,binary,price:q.price,fee:q.items.filter(i=>i.id==='font').reduce((n,i)=>n+i.amount,0)});
       }
       return summaries;
     },{specimen:BASIC_SPECIMEN,ids});
     rows.push(...batch);
   }
-  const expectedRenderCount=await page.evaluate(()=>works.length*2*2);
+  const expectedRenderCount=await page.evaluate(()=>works.length*2*(1+Object.keys(works[0].translations).length));
   assert.equal(rows.length,expectedRenderCount);
   assert(rows.every(r=>r.binary&&r.height+140<=runtime.paper.canvasMaxDots),JSON.stringify(rows.filter(r=>!r.binary||r.height+140>runtime.paper.canvasMaxDots)));
   assert(rows.every(r=>r.fee===(r.font==='site'?runtime.tariff.addOn:0)));
@@ -136,9 +136,9 @@ try{
   // Sample assets are refreshed only by explicit authoring command, never by QA.
   if(process.argv.includes('--write-samples')){
     const samples=await page.evaluate(specimen=>{
-      const work=works.find(w=>w.id===specimen.workId),translation=specimen.bilingual?work.translation:'',q=quotePoem(work.poem,translation,specimen.font);
+      const work=works.find(w=>w.id===specimen.workId),translation=specimen.bilingual?work.translations.en.body:'',q=quotePoem(work.poem,translation,specimen.font);
       const sampleDate=new Date(specimen.created),sampleRef=receiptReference(sampleDate,Uint8Array.from(specimen.entropy));
-      const r=render({work,original:true,font:specimen.font,size:specimen.size,locale:specimen.locale,title:work.title,author:work.author,poem:work.poem,translation,ref:sampleRef,created:sampleDate,...q,method:specimen.method});
+      const r=render({work,original:true,font:specimen.font,size:specimen.size,locale:specimen.locale,title:work.title,author:work.author,poem:work.poem,translation,translationTitle:work.translations.en.title,translationLocale:'en',ref:sampleRef,created:sampleDate,...q,method:specimen.method});
       return {receipt:r.receipt.toDataURL(),voucher:r.voucher.toDataURL()};
     },BASIC_SPECIMEN);
     for(const [kind,data] of Object.entries(samples))await writeFile(`poetry-voucher/sample-${kind}.png`,Buffer.from(data.split(',')[1],'base64'));

@@ -29,6 +29,12 @@ assert.equal(base.lines, 2);
 assert.equal(base.stanzas, 2);
 assert.equal(quotePoem('é').price, quotePoem('e\u0301').price);
 const extra = quotePoem('春風吹\n\n雨聲來', 'English', 'site', true);
+const pairedReceipts={en:'ENGLISH TRANSLATION','zh-Hans':'SIMPLIFIED CHINESE',ja:'JAPANESE TRANSLATION',de:'GERMAN TRANSLATION',fr:'FRENCH TRANSLATION',ru:'RUSSIAN TRANSLATION'};
+for(const [locale,receipt] of Object.entries(pairedReceipts)){
+  const item=Array.from(quotePoem('春風吹','paired text','bitmap',false,locale).items).find(item=>item.id==='translation');
+  assert.equal(item.receipt,receipt,locale);
+  assert.equal(item.label,locale==='zh-Hans'?'附加簡體版':'附加翻譯',locale);
+}
 for(const [locale,receipt] of Object.entries({en:'ENGLISH TRANSLATION',ja:'JAPANESE TRANSLATION',de:'GERMAN TRANSLATION',fr:'FRENCH TRANSLATION',ru:'RUSSIAN TRANSLATION'})){
   const translated=quotePoem('春風吹','translated','bitmap',false,locale);
   assert.equal(translated.items.find(item=>item.id==='translation').receipt,receipt);
@@ -181,12 +187,15 @@ for (const work of data.works) {
   assert(['/ci.html', '/shi.html'].includes(url.pathname));
   assert(url.hash);
   assert(work.title && work.poem);
-  assert.deepEqual(Object.keys(work.translations),['en','ja','de','fr','ru']);
+  assert.deepEqual(Object.keys(work.translations),['en','zh-Hans','ja','de','fr','ru']);
 }
 const ciSource=JSON.parse(read('content/ci-source.json'));
+const ciSimplified=JSON.parse(read('content/ci-simplified.json'));
 const shiSource=JSON.parse(read('content/shi-source.json'));
+const shiSimplified=JSON.parse(read('content/shi-simplified.json'));
 const shiEnglish=JSON.parse(read('content/shi-translations/en.json'));
 const ciById=new Map(ciSource.poems.map(poem=>[poem.id,poem]));
+const ciSimplifiedById=new Map(ciSimplified.poems.map(poem=>[poem.id,poem]));
 assert.equal(data.works.filter(work=>work.kind==='CI').length,ciSource.poems.length);
 assert.equal(data.works.filter(work=>work.kind==='POEM').length,shiSource.drafts.reduce((count,draft)=>count+draft.parts.length,0));
 for(const work of data.works){
@@ -198,8 +207,10 @@ for(const work of data.works){
     assert.equal(work.source_url,`https://hanpuli.github.io/ci.html#${id}`,work.id);
     assert.equal(work.title,sourcePoem.source_title,work.id);
     assert.equal(work.poem,sourcePoem.source_body,work.id);
-    assert.equal(work.translation_title,sourcePoem.en.title,work.id);
-    assert.equal(work.translation,sourcePoem.en.body,work.id);
+    assert.equal(work.translations.en.title,sourcePoem.en.title,work.id);
+    assert.equal(work.translations.en.body,sourcePoem.en.body,work.id);
+    assert.equal(work.translations['zh-Hans'].title,ciSimplifiedById.get(id)?.source_title,work.id);
+    assert.equal(work.translations['zh-Hans'].body,ciSimplifiedById.get(id)?.source_body,work.id);
     assert.equal(work.collection,sourcePoem.voice==='separate'?'詞':ciSource.title,work.id);
     const edition=sourcePoem.date||(
       ciSource.outside_dates[id]?`外編 · ${ciSource.outside_dates[id]}`:`集作日期 ${ciSource.cycle_date}`
@@ -220,7 +231,8 @@ for(const work of data.works){
   assert.equal(work.title,`${shiSource.title} · ${part.number}`,work.id);
   assert.equal(work.edition,draft.title,work.id);
   assert.equal(work.poem,part.body,work.id);
-  assert.equal(work.translation,translatedPart.body,work.id);
+  assert.equal(work.translations.en.body,translatedPart.body,work.id);
+  assert.equal(work.translations['zh-Hans'].body,shiSimplified.drafts[draftNumber-1]?.parts[partNumber-1]?.body,work.id);
 }
 for (const file of ['gallery.js', 'i18n.js', 'editions.json', 'studio.css']) {
   const text = read('content/poetry-voucher-app/' + file);

@@ -1,61 +1,84 @@
 #!/usr/bin/env python3
-"""Copy published literary translations into the offline voucher catalogue."""
+"""Refresh the studio's paired texts from the published literary sources."""
 
+import argparse
 import json
-import sys
 from pathlib import Path
 
+
 ROOT = Path(__file__).resolve().parent.parent
-LOCALES = ("en", "ja", "de", "fr", "ru")
-CATALOGUE = ROOT / "content/poetry-voucher-app/editions.json"
+CONTENT = ROOT / "content"
+CATALOGUE = CONTENT / "poetry-voucher-app" / "editions.json"
+PAIRED_LOCALES = ("en", "zh-Hans", "ja", "de", "fr", "ru")
 
 
 def read(path):
-    return json.loads((ROOT / path).read_text(encoding="utf-8"))
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
-def translations():
-    ci_source = {poem["id"]: poem for poem in read("content/ci-source.json")["poems"]}
-    ci_locales = {
-        locale: read(f"content/ci-translations/{locale}.json")["poems"]
-        for locale in LOCALES if locale != "en"
+def paired_texts(work, ci, ci_simple, ci_translations, shi_simple, shi_translations, headings):
+    if work["kind"] == "CI":
+        key = work["id"].removeprefix("ci-")
+        source = ci[key]
+        simple = ci_simple[key]
+        result = {
+            "en": source["en"],
+            "zh-Hans": {"title": simple["source_title"], "body": simple["source_body"]},
+        }
+        result.update({locale: ci_translations[locale][key] for locale in ("ja", "de", "fr", "ru")})
+        return result
+
+    if work["kind"] != "POEM":
+        raise ValueError(f"Unknown catalogue kind: {work['kind']}")
+    draft, part = (int(value) - 1 for value in work["id"].removeprefix("shi-d").split("-"))
+    result = {}
+    for locale in PAIRED_LOCALES:
+        translated = shi_simple if locale == "zh-Hans" else shi_translations[locale]
+        result[locale] = {
+            "title": headings[locale],
+            "body": translated["drafts"][draft]["parts"][part]["body"],
+        }
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check", action="store_true", help="fail if the catalogue is stale")
+    args = parser.parse_args()
+
+    catalogue = read(CATALOGUE)
+    ci_source = read(CONTENT / "ci-source.json")
+    ci = {poem["id"]: poem for poem in ci_source["poems"]}
+    ci_simple = {poem["id"]: poem for poem in read(CONTENT / "ci-simplified.json")["poems"]}
+    ci_translations = {
+        locale: read(CONTENT / "ci-translations" / f"{locale}.json")["poems"]
+        for locale in ("ja", "de", "fr", "ru")
     }
-    shi_source = read("content/shi-source.json")["drafts"]
-    shi_locales = {
-        locale: read(f"content/shi-translations/{locale}.json")["drafts"]
-        for locale in LOCALES
+    shi_simple = read(CONTENT / "shi-simplified.json")
+    shi_translations = {
+        locale: read(CONTENT / "shi-translations" / f"{locale}.json")
+        for locale in ("en", "ja", "de", "fr", "ru")
     }
-    shi_titles = {
-        locale: read(f"content/locales/{locale}.json")["shi"]["heading"]
-        for locale in LOCALES
+    headings = {
+        locale: read(CONTENT / "locales" / f"{locale.lower()}.json")["shi"]["heading"]
+        for locale in PAIRED_LOCALES
     }
-    catalogue = read("content/poetry-voucher-app/editions.json")
     for work in catalogue["works"]:
-        if work["id"].startswith("ci-"):
-            source = ci_source[work["id"][3:]]
-            assert work["title"] == source["source_title"] and work["poem"] == source["source_body"]
-            translated = {"en": source["en"], **{
-                locale: ci_locales[locale][source["id"]] for locale in ci_locales
-            }}
-        else:
-            draft = int(work["id"][5]) - 1
-            part = int(work["id"][7]) - 1
-            assert work["poem"] == shi_source[draft]["parts"][part]["body"]
-            translated = {
-                locale: {"title": shi_titles[locale], "body": shi_locales[locale][draft]["parts"][part]["body"]}
-                for locale in LOCALES
-            }
-        assert translated["en"]["title"] == work["translation_title"]
-        assert translated["en"]["body"] == work["translation"]
-        assert all(value["title"] and value["body"] for value in translated.values())
-        work["translations"] = translated
-    return json.dumps(catalogue, ensure_ascii=False)
+        work.pop("translation", None)
+        work.pop("translation_title", None)
+        work["translations"] = paired_texts(
+            work, ci, ci_simple, ci_translations, shi_simple, shi_translations, headings
+        )
+        if set(work["translations"]) != set(PAIRED_LOCALES):
+            raise ValueError(f"Incomplete paired languages for {work['id']}")
+    rendered = json.dumps(catalogue, ensure_ascii=False, separators=(",", ":")) + "\n"
+    if args.check:
+        if CATALOGUE.read_text(encoding="utf-8") != rendered:
+            parser.error("voucher catalogue is stale; run tools/sync_voucher_translations.py")
+    else:
+        CATALOGUE.write_text(rendered, encoding="utf-8")
+    print(f"voucher catalogue: {len(catalogue['works'])} works, {len(PAIRED_LOCALES)} paired languages")
 
 
 if __name__ == "__main__":
-    expected = translations()
-    if "--check" in sys.argv:
-        if CATALOGUE.read_text(encoding="utf-8") != expected:
-            sys.exit("Voucher translation catalogue is out of date; run tools/sync_voucher_translations.py")
-    else:
-        CATALOGUE.write_text(expected, encoding="utf-8")
+    main()

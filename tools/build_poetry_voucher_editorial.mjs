@@ -40,13 +40,13 @@ try{
     if(!work)throw Error('Editorial specimen work is missing.');
     const created=new Date(specimen.created);
     const ref=receiptReference(created,Uint8Array.from(specimen.entropy));
-    const translation=specimen.bilingual?work.translation:'';
+    const translation=specimen.bilingual?work.translations.en.body:'';
     const q=quotePoem(work.poem,translation,specimen.font);
     const sample=work.title+work.author+work.poem+translation+(work.edition||'')+'李函璞';
     await Promise.all(['EB','Courier','ShipCommon','Ship','IMing','Noto'].map(f=>document.fonts.load(`${specimen.size}px ${f}`,sample)));
     await document.fonts.load(`italic ${TYPE_CONFIG.translation}px EB`);
     const full=render({work,original:true,font:specimen.font,size:specimen.size,locale:specimen.locale,
-      title:work.title,author:work.author,poem:work.poem,translation,
+      title:work.title,author:work.author,poem:work.poem,translation,translationTitle:work.translations.en.title,translationLocale:'en',
       created,ref,...q,method:specimen.paymentMethod,tender:q.price}).full;
 
     // Homepage documentation: the printed paper is the object. Keep the

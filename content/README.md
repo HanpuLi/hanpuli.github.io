@@ -73,8 +73,10 @@ Edit overview copy in `poetry-voucher.json`, the studio template in
 to the generated routes. Do not edit the generated copies independently.
 
 The studio offers the five published literary translations (English, Japanese,
-German, French and Russian) independently of its interface language. Their
-authoritative text is in `ci-source.json`, `ci-translations/`,
+German, French and Russian) and a Simplified Chinese script edition,
+independently of its interface language. The Simplified edition mirrors the
+canonical text rather than translating it. Their authoritative text is in
+`ci-source.json`, `ci-simplified.json`, `ci-translations/`, `shi-simplified.json`,
 `shi-translations/` and the translated `shi.heading` values in `locales/`.
 Run `python3 tools/sync_voucher_translations.py` after editing those sources;
 `node tools/poetrycheck.mjs` verifies the offline catalogue is in sync.
@@ -95,9 +97,8 @@ code is understandable without a private abbreviation.
 The studio reuses `/assets/fonts/`; run both font-subsetting helpers after CJK
 copy changes. `node tools/poetrycheck.mjs` checks pricing, payment denominations,
 line breaking, translation completeness and the public-data boundary. The
-same check compares the voucher catalogue's original text and English
-translations with `ci-source.json`, `shi-source.json` and
-`shi-translations/en.json` so those copies cannot silently drift. The ordinary
+same check compares the voucher catalogue's original text and paired
+language editions with those literary sources so the copies cannot silently drift. The ordinary
 site checks cover links, metadata, HTML and overview accessibility.
 The GitHub browser suite includes all seven overview routes. After renderer or
 specimen changes, refresh the public documentation assets explicitly with
@@ -110,8 +111,8 @@ by SHA-256 (see `assets/fonts/LICENSES.md`):
 `zh_hk` for Traditional Chinese (Hong Kong), `zh_hans` for Simplified Chinese,
 `ja` for Japanese, and `latin` for English, German, French and Russian.
 Catalogue works keep their source language (Hong Kong Traditional Chinese)
-regardless of the studio UI locale; published English translations use the
-Latin build. Custom text follows the studio UI locale. The 12-dot native grid
+regardless of the studio UI locale; paired editions use their own language's
+pixel build. Custom text follows the studio UI locale. The 12-dot native grid
 uses 24/36-dot body sizes; small metadata stays at 12 dots. The optional
 website typeface edition adds £1.99 regardless of script: EB Garamond for Latin
 and Cyrillic alongside the site's CJK fonts, with 22/24/26-dot body sizes. This

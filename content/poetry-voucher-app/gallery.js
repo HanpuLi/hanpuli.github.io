@@ -87,7 +87,7 @@ const SKU_DEFINITIONS=Object.freeze({
   translation:Object.freeze({id:'translation',label:'附加翻譯',receipt:'TRANSLATION',taxCode:TAX_CODES.A.code,taxRate:TAX_CODES.A.rate}),
   custom:Object.freeze({id:'custom',label:'自選內容',receipt:'CUSTOM TEXT',taxCode:TAX_CODES.A.code,taxRate:TAX_CODES.A.rate})
 });
-const TRANSLATION_RECEIPTS=Object.freeze({en:'ENGLISH TRANSLATION',ja:'JAPANESE TRANSLATION',de:'GERMAN TRANSLATION',fr:'FRENCH TRANSLATION',ru:'RUSSIAN TRANSLATION'});
+const TRANSLATION_RECEIPTS=Object.freeze({en:'ENGLISH TRANSLATION','zh-Hans':'SIMPLIFIED CHINESE',ja:'JAPANESE TRANSLATION',de:'GERMAN TRANSLATION',fr:'FRENCH TRANSLATION',ru:'RUSSIAN TRANSLATION'});
 const noteValues=UK_CASH.notes,changeValues=Object.freeze([...UK_CASH.notes,...UK_CASH.coins]);
 function denominations(amount,values){
   const parts=[];
@@ -142,7 +142,7 @@ function quotePoem(poem,translation='',font='bitmap',custom=false,translationLoc
   if(lines&&font==='site')items.push(sku('font',TARIFF.addOn));
   if(lines&&translation.trim()){
     if(!Object.hasOwn(TRANSLATION_RECEIPTS,translationLocale))throw Error('Unsupported translation language.');
-    items.push({...sku('translation',TARIFF.addOn),receipt:TRANSLATION_RECEIPTS[translationLocale]});
+    items.push({...sku('translation',TARIFF.addOn),label:translationLocale==='zh-Hans'?'附加簡體版':SKU_DEFINITIONS.translation.label,receipt:TRANSLATION_RECEIPTS[translationLocale]});
   }
   if(lines&&custom)items.push(sku('custom',TARIFF.addOn));
   const price=items.reduce((sum,item)=>sum+item.amount,0);
@@ -434,7 +434,7 @@ function render(spec){
   if(!spec.original&&spec.author)p.text(spec.author,14,bodyFont,false,20);
   if(!spec.original){p.space(4);p.text('READER EDITION',12,mono,false,18);}p.space(16);
   for(const line of spec.poem.split('\n')){if(line)p.text(line,spec.size,bodyFont);else p.space(18);}
-  if(spec.translation){p.space(14);p.text(spec.translationTitle||spec.work.translation_title,TYPE_CONFIG.translation,translationFont,false,24,true);p.space(6);for(const line of spec.translation.split('\n')){if(line)p.text(line,TYPE_CONFIG.translation,translationFont,false,24);else p.space(10);}}
+  if(spec.translation){p.space(14);p.text(spec.translationTitle||spec.work?.translations?.[spec.translationLocale||'en']?.title||'',TYPE_CONFIG.translation,translationFont,false,24,true);p.space(6);for(const line of spec.translation.split('\n')){if(line)p.text(line,TYPE_CONFIG.translation,translationFont,false,24);else p.space(10);}}
   p.space(14);
   if(spec.original){if(spec.work.edition)p.text(spec.work.edition,12,bitmapFamily('zh-Hant'),true,20);p.text(spec.work.source_url.replace('https://',''),12,mono,true,18);}
   p.space(12);p.text('ART EDITION / NO CASH VALUE',12,mono,true,18);
