@@ -1113,7 +1113,7 @@ html[data-reading-motion] .site-home::before {
   grid-column: 1 / 13;
   align-self: start;
   justify-self: stretch;
-  width: min(100%, 560px);
+  width: min(100%, 450px);
   margin: clamp(28px, 3vw, 42px) auto 0;
   text-align: center;
 }
@@ -1131,6 +1131,7 @@ html[data-reading-motion] .site-home::before {
 
 .site-home .project-voucher-proof img {
   height: auto;
+  filter: drop-shadow(0 8px 14px rgb(23 22 20 / .08));
 }
 
 .site-home .project-voucher-proof figcaption {

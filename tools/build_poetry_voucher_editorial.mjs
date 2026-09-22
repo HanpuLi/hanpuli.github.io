@@ -32,34 +32,41 @@ try{
       title:work.title,author:work.author,poem:work.poem,translation:work.translation,
       created,ref,...q,method:'card',tender:q.price}).full;
 
+    // Homepage documentation: the printed paper is the object. Keep the
+    // renderer's 384-dot strip at native resolution and leave the surrounding
+    // canvas transparent; do not reintroduce a device / printer shell.
     const editorial=document.createElement('canvas');
-    editorial.width=1200;editorial.height=1800;
+    editorial.width=960;editorial.height=1800;
     const x=editorial.getContext('2d');
-    x.fillStyle='#171614';x.beginPath();x.roundRect(375,37,455,1740,42);x.fill();
-    x.drawImage(full,408,65);
+    x.drawImage(full,(editorial.width-full.width)/2,65);
 
     const small=document.createElement('canvas');
-    small.width=600;small.height=900;
+    small.width=480;small.height=900;
     const sx=small.getContext('2d');
     sx.imageSmoothingEnabled=true;sx.imageSmoothingQuality='high';
-    sx.drawImage(editorial,0,0,600,900);
+    sx.drawImage(editorial,0,0,480,900);
     return {
       ref,width:full.width,height:full.height,
+      previewWidth:editorial.width,previewHeight:editorial.height,
+      cornerAlpha:x.getImageData(0,0,1,1).data[3],
       png:editorial.toDataURL('image/png'),
-      webp1200:editorial.toDataURL('image/webp',0.92),
-      webp600:small.toDataURL('image/webp',0.92)
+      webp960:editorial.toDataURL('image/webp',0.94),
+      webp480:small.toDataURL('image/webp',0.94)
     };
   });
   assert.equal(result.width,384);
   assert.equal(result.height,1669);
+  assert.equal(result.previewWidth,960);
+  assert.equal(result.previewHeight,1800);
+  assert.equal(result.cornerAlpha,0);
   assert.match(result.ref,/^\d{12}$/);
   const dir=join(ROOT,'assets/projects/poetry-voucher');
   await Promise.all([
-    writeFile(join(dir,'poetry-voucher-editorial-1200.png'),decode(result.png)),
-    writeFile(join(dir,'poetry-voucher-editorial-1200.webp'),decode(result.webp1200)),
-    writeFile(join(dir,'poetry-voucher-editorial-600.webp'),decode(result.webp600))
+    writeFile(join(dir,'poetry-voucher-paper-960.png'),decode(result.png)),
+    writeFile(join(dir,'poetry-voucher-paper-960.webp'),decode(result.webp960)),
+    writeFile(join(dir,'poetry-voucher-paper-480.webp'),decode(result.webp480))
   ]);
-  console.log(`build_poetry_voucher_editorial: ${result.ref}, ${result.width}x${result.height} proof -> 1200x1800 + 600x900 assets`);
+  console.log(`build_poetry_voucher_editorial: ${result.ref}, native ${result.width}x${result.height} paper -> transparent 960x1800 + 480x900 assets`);
 }finally{
   await browser?.close();
   server.kill();
