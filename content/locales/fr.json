@@ -35,7 +35,7 @@
     "meta_description": "Hanpu Li écrit et mène des recherches à Londres, entre critique de cinéma, poésie, photographie, preuve spatiale et petits systèmes logiciels.",
     "eyebrow": "écriture / cinéma / photo / code · londres",
     "alias": "travaille également sous le nom de Caitlyn Lye",
-    "education": "York · langue anglaise et linguistique → cinéma · QMUL",
+    "education": "York · langue anglaise et linguistique · cinéma · QMUL",
     "lede": "Je regarde des films. J’écris aussi des ci.",
     "lede_note": "",
     "intro": "Une grande partie de mon travail commence par l’écriture : critique, recherche, poésie. Je photographie aussi et je développe un outil logiciel lorsqu’une méthode en a besoin.",
@@ -118,8 +118,8 @@
       "first_love_meta": "manuscrit de recherche · circulation privée",
       "film_essays_title": "Sur <em>Trainspotting</em>",
       "film_essays_description": "Un essai sur la voix off, l’espace, l’assujettissement et les limites de sa propre démonstration.",
-      "film_essays_meta": "lire l’essai →",
-      "first_love_verify": "documents de vérification →"
+      "film_essays_meta": "lire l’essai",
+      "first_love_verify": "documents de vérification"
     },
     "poetry": {
       "recent": "deux textes récents",
@@ -127,8 +127,8 @@
       "translation_w2": "<em>Zhegutian</em> · traduction",
       "translation_w3": "<em>Linjiangxian</em> · traduction",
       "cycle": "Également : <em>Seize poèmes de A et B</em>, cycle de réponses écrit par une seule personne en deux voix.",
-      "full_cycle": "tous les ci, texte source + traduction →",
-      "poem_link": "poème →",
+      "full_cycle": "tous les ci, texte source + traduction",
+      "poem_link": "poème",
       "preview_date": "9 septembre 2026"
     },
     "chronology": [
@@ -187,6 +187,6 @@
     "line": "Une étendue d’eau, nette à voir. Pas de barque.",
     "description": "Cette page n’existe pas, ou elle a été déplacée.",
     "source": "Hanpu Li · Seize poèmes de A et B · B2 · Tasuoxing",
-    "home": "← Retour à l’accueil"
+    "home": "Retour à l’accueil"
   }
 }

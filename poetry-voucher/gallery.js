@@ -83,7 +83,7 @@ function updateSource(){
   if(w){const a=document.createElement('a'),source=new URL(w.source_url);
     const route={'en':'','zh-Hant':'zh/','zh-Hans':'zh-hans/','ja':'ja/','de':'de/','fr':'fr/','ru':'ru/'}[uiLocale];
     a.href='/'+route+source.pathname.split('/').pop()+source.hash;
-    a.textContent=tr('原站作品 ↗')+' · '+w.source_id;$('source-note').append(a);}
+    a.textContent=tr('原站作品')+' · '+w.source_id;$('source-note').append(a);}
   else $('source-note').textContent=tr('寫下自己的作品。署名留空也可以。');
 }
 function updateLocale(){
@@ -121,7 +121,7 @@ function updatePrice(reroll=false){
   const number=n=>new Intl.NumberFormat(document.documentElement.lang).format(n);
   $('price-breakdown').replaceChildren();
   for(const item of quote.items){const row=document.createElement('div');row.textContent=`${tr(item.label)} × 1 — ${fmt(item.amount)}`;$('price-breakdown').append(row);}
-  $('price-weights').textContent=[`${tr('基本費')} ${fmt(quote.base)}`,`${tr('字元')} ${number(quote.characters)} × ${fmt(2)}`,`${tr('非空行')} ${number(quote.lines)} × ${fmt(5)}`,`${tr('分節')} ${number(quote.stanzas)} × ${fmt(10)}`].join(' + ')+` = ${fmt(quote.weighted)} → ${fmt(quote.edition)}`;
+  $('price-weights').textContent=[`${tr('基本費')} ${fmt(quote.base)}`,`${tr('字元')} ${number(quote.characters)} × ${fmt(2)}`,`${tr('非空行')} ${number(quote.lines)} × ${fmt(5)}`,`${tr('分節')} ${number(quote.stanzas)} × ${fmt(10)}`].join(' + ')+` = ${fmt(quote.weighted)}; ${fmt(quote.edition)}`;
   const parts=list=>list.map(part=>`${fmt(part.value)} × ${number(part.count)}`).join(' + ')||fmt(0);
   $('cash-notes').textContent=quote.method==='card'?tr('模擬刷卡，按總額支付；不收集卡號，不發起付款。'):`${tr('支付現金')}：${parts(quote.notes)}`;
   $('price-change').hidden=quote.method==='card';

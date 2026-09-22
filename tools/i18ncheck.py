@@ -16,13 +16,13 @@ CI_OUTSIDE_IDS = ("a10",)
 CI_SEPARATE_IDS = ("w2","w3")
 CI_IDS = CI_CYCLE_IDS + CI_OUTSIDE_IDS + CI_SEPARATE_IDS
 EXPECTED_EDUCATION = {
-    "en": "York · English Language and Linguistics → film · QMUL",
-    "zh": "約克 · 英語語言與語言學 → 電影 · QMUL",
-    "zh-hans": "约克 · 英语语言与语言学 → 电影 · QMUL",
-    "ja": "York · 英語・言語学 → 映画 · QMUL",
-    "de": "York · Englische Sprache und Linguistik → Film · QMUL",
-    "fr": "York · langue anglaise et linguistique → cinéma · QMUL",
-    "ru": "York · английский язык и лингвистика → кино · QMUL",
+    "en": "York · English Language and Linguistics · film · QMUL",
+    "zh": "約克 · 英語語言與語言學 · 電影 · QMUL",
+    "zh-hans": "约克 · 英语语言与语言学 · 电影 · QMUL",
+    "ja": "York · 英語・言語学 · 映画 · QMUL",
+    "de": "York · Englische Sprache und Linguistik · Film · QMUL",
+    "fr": "York · langue anglaise et linguistique · cinéma · QMUL",
+    "ru": "York · английский язык и лингвистика · кино · QMUL",
 }
 
 
@@ -457,7 +457,7 @@ def main() -> int:
             if '<footer class="page-footer essay-footer">' not in essay_text:
                 errors.append(f"{essay_path.relative_to(ROOT)}: missing shared page footer")
             elif not re.search(
-                rf'<footer class="page-footer essay-footer">.*?<a href="{re.escape(essay_home_href)}">← ',
+                rf'<footer class="page-footer essay-footer">.*?<a href="{re.escape(essay_home_href)}">',
                 essay_text,
                 flags=re.S,
             ):
@@ -583,7 +583,7 @@ def main() -> int:
                 if '<footer class="page-footer">' not in text:
                     errors.append(f"{path.relative_to(ROOT)}: missing shared page footer")
                 elif not re.search(
-                    rf'<footer class="page-footer">.*?<a href="{re.escape(home_href)}">← ',
+                    rf'<footer class="page-footer">.*?<a href="{re.escape(home_href)}">',
                     text,
                     flags=re.S,
                 ):

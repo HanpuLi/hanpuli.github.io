@@ -35,7 +35,7 @@
     "meta_description": "ロンドンを拠点に、映画批評、研究、詩、写真、空間的エビデンス、小規模なソフトウェア・システムを手がける Hanpu Li。",
     "eyebrow": "文章 / 映画 / 写真 / コード · ロンドン",
     "alias": "Caitlyn Lye 名義でも活動",
-    "education": "York · 英語・言語学 → 映画 · QMUL",
+    "education": "York · 英語・言語学 · 映画 · QMUL",
     "lede": "映画を観る。詞も書く。",
     "lede_note": "",
     "intro": "私の仕事の多くは書くことから始まる。批評、研究、詩。写真も撮るし、方法に道具が必要ならソフトウェアも作る。",
@@ -118,8 +118,8 @@
       "first_love_meta": "研究原稿 · 個別に共有",
       "film_essays_title": "『<em>Trainspotting</em>』論",
       "film_essays_description": "ヴォイスオーバー、空間、主体化、そして論証そのものの限界をたどる映画論。",
-      "film_essays_meta": "全文を読む →",
-      "first_love_verify": "検証資料 →"
+      "film_essays_meta": "全文を読む",
+      "first_love_verify": "検証資料"
     },
     "poetry": {
       "recent": "近作2首",
@@ -127,8 +127,8 @@
       "translation_w2": "<em>鷓鴣天</em> · 訳",
       "translation_w3": "<em>臨江仙</em> · 訳",
       "cycle": "ほかに、<em>甲乙十六首</em>。一人の作者が二つの声で応答する連作。",
-      "full_cycle": "詞作品一覧、原文 + 訳 →",
-      "poem_link": "詩 →",
+      "full_cycle": "詞作品一覧、原文 + 訳",
+      "poem_link": "詩",
       "preview_date": "2026年9月9日"
     },
     "chronology": [
@@ -187,6 +187,6 @@
     "line": "目の前にはひと筋の水。舟はない。",
     "description": "このページは存在しないか、別の場所へ移動しました。",
     "source": "Hanpu Li『甲乙十六首』・乙二「踏莎行」",
-    "home": "← ホームへ戻る"
+    "home": "ホームへ戻る"
   }
 }

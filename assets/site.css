@@ -1080,22 +1080,6 @@ html[data-reading-motion] .site-home::before {
   text-decoration: none;
 }
 
-.site-home .project h3 a::after {
-  content: " ↗" / "";
-  display: inline-block;
-  margin-inline-start: .1em;
-  color: var(--faint);
-  font-family: var(--mono);
-  font-size: .34em;
-  vertical-align: .35em;
-  transition: transform 180ms ease, color 180ms ease;
-}
-
-.site-home .project h3 a:hover::after {
-  transform: translate(.2em, -.14em);
-  color: var(--accent);
-}
-
 .site-home .project-main > p:last-child {
   max-width: 63ch;
   color: var(--muted);

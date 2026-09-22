@@ -36,7 +36,7 @@
     "eyebrow": "writing / film / photos / code · london",
     "location": "London",
     "alias": "also works as Caitlyn Lye",
-    "education": "York · English Language and Linguistics → film · QMUL",
+    "education": "York · English Language and Linguistics · film · QMUL",
     "lede": "I watch films. I also write ci.",
     "lede_note": "ci, not cis. Neither am I.",
     "intro": "Most of my work starts with writing: criticism, research, poetry. I also make photographs, and build software when a method needs a tool.",
@@ -119,8 +119,8 @@
       "first_love_meta": "research manuscript · private circulation",
       "film_essays_title": "On <em>Trainspotting</em>",
       "film_essays_description": "An essay on voiceover, space, subjection and the limits of its own argument.",
-      "film_essays_meta": "read full essay →",
-      "first_love_verify": "verification materials →"
+      "film_essays_meta": "read full essay",
+      "first_love_verify": "verification materials"
     },
     "poetry": {
       "recent": "two recent pieces",
@@ -128,8 +128,8 @@
       "translation_w2": "<em>Zhegutian</em> · translation",
       "translation_w3": "<em>Linjiangxian</em> · translation",
       "cycle": "Also: <em>Sixteen Poems of A and B</em>, a response cycle written by one author in two voices.",
-      "full_cycle": "all ci, source text + translation →",
-      "poem_link": "poem →",
+      "full_cycle": "all ci, source text + translation",
+      "poem_link": "poem",
       "preview_date": "9 September 2026"
     },
     "chronology": [
@@ -187,6 +187,6 @@
     "line": "One stretch of water, plain to see. No boat.",
     "description": "This page does not exist, or has moved elsewhere.",
     "source": "Hanpu Li · Sixteen Poems of A and B · B2 · Tasuoxing",
-    "home": "← Back home"
+    "home": "Back home"
   }
 }

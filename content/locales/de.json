@@ -35,7 +35,7 @@
     "meta_description": "Hanpu Li schreibt und forscht in London zu Filmkritik, Lyrik, Fotografie, räumlicher Evidenz und kleinen Softwaresystemen.",
     "eyebrow": "Schreiben / Film / Foto / Code · London",
     "alias": "arbeitet auch als Caitlyn Lye",
-    "education": "York · Englische Sprache und Linguistik → Film · QMUL",
+    "education": "York · Englische Sprache und Linguistik · Film · QMUL",
     "lede": "Ich schaue Filme. Ich schreibe auch Ci.",
     "lede_note": "",
     "intro": "Vieles beginnt bei mir mit Schreiben: Kritik, Forschung, Lyrik. Ich fotografiere auch und baue Software, wenn eine Methode ein Werkzeug braucht.",
@@ -118,8 +118,8 @@
       "first_love_meta": "Forschungsmanuskript · private Weitergabe",
       "film_essays_title": "Zu <em>Trainspotting</em>",
       "film_essays_description": "Ein Essay über Voice-over, Raum, Subjektivierung und die Grenzen der eigenen Argumentation.",
-      "film_essays_meta": "Essay lesen →",
-      "first_love_verify": "Prüfmaterialien →"
+      "film_essays_meta": "Essay lesen",
+      "first_love_verify": "Prüfmaterialien"
     },
     "poetry": {
       "recent": "zwei neuere Gedichte",
@@ -127,8 +127,8 @@
       "translation_w2": "<em>Zhegutian</em> · Übersetzung",
       "translation_w3": "<em>Linjiangxian</em> · Übersetzung",
       "cycle": "Außerdem: <em>Sechzehn Gedichte von A und B</em>, ein Antwortzyklus aus einer Hand in zwei Stimmen.",
-      "full_cycle": "alle Ci, Ausgangstext + Übersetzung →",
-      "poem_link": "Gedicht →",
+      "full_cycle": "alle Ci, Ausgangstext + Übersetzung",
+      "poem_link": "Gedicht",
       "preview_date": "9. September 2026"
     },
     "chronology": [
@@ -187,6 +187,6 @@
     "line": "Eine Wasserfläche, klar vor Augen. Kein Boot.",
     "description": "Diese Seite existiert nicht oder wurde verschoben.",
     "source": "Hanpu Li · Sechzehn Gedichte von A und B · B2 · Tasuoxing",
-    "home": "← Zur Startseite"
+    "home": "Zur Startseite"
   }
 }

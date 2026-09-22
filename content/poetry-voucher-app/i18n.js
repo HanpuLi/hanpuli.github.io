@@ -8,7 +8,6 @@ const localeRows=[
 ['網站字體版本','Website typeface edition','网站字体版本','サイト書体版','Website-Schriftenausgabe','Édition avec les polices du site','Версия со шрифтами сайта'],
 ['各語言的點陣字體均預設包含，使用 24／36 點整倍字形。網站字體 +£1.99，包含 EB Garamond 與網站的中日文字體，提供 22／24／26 點。附加英譯 +£1.99，僅提供已有原站英譯的作品。','Pixel typefaces are included by default for every supported language, at exact 24/36-dot sizes. Website typefaces add £1.99: EB Garamond and the site’s Chinese/Japanese fonts, at 22/24/26 dots. English translation adds £1.99, only for works with an existing published translation.','各语言的点阵字体均默认包含，使用 24／36 点整倍字形。网站字体 +£1.99，包含 EB Garamond 与网站的中日文字体，提供 22／24／26 点。附加英译 +£1.99，仅提供已有原站英译的作品。','各対応言語のドット書体は標準で追加料金なし、24／36ドットの整数倍で描画します。サイトの書体は +£1.99。EB Garamond とサイトの中国語・日本語書体を22／24／26ドットで使用します。英訳は +£1.99、公開済みの英訳がある作品のみ。','Pixelschriften sind für alle unterstützten Sprachen standardmäßig enthalten, mit exakten Rastergrößen von 24/36 Punkten. Website-Schriften kosten 1,99 £ extra: EB Garamond und die chinesischen/japanischen Schriften der Website, in 22/24/26 Punkten. Englische Übersetzung: +1,99 £, nur bei bereits veröffentlichten Übersetzungen.','Les polices matricielles sont incluses par défaut pour toutes les langues prises en charge, en 24/36 points de trame exacts. Les polices du site ajoutent 1,99 £ : EB Garamond et les polices chinoises/japonaises du site, en 22/24/26 points. Traduction anglaise : +1,99 £, uniquement si une traduction a déjà été publiée.','Пиксельные шрифты включены по умолчанию для всех поддерживаемых языков: точные размеры 24/36 точек растра. Шрифты сайта стоят дополнительно 1,99 £: EB Garamond и китайские/японские шрифты сайта, размеры 22/24/26 точек. Английский перевод: +1,99 £, только при наличии опубликованного перевода.'],
 ['作品介紹','Project overview','作品介绍','作品について','Projektübersicht','Présentation','О проекте'],
-['← 作品介紹','← Project overview','← 作品介绍','← 作品について','← Projektübersicht','← Présentation','← О проекте'],
 ['製作室','Studio','制作室','制作室','Gestaltungsraum','Atelier','Мастерская'],
 ['POETRY VOUCHER / STUDIO','POETRY VOUCHER / STUDIO','诗券 / 制作室','詩の券 / 制作室','POETRY VOUCHER / GESTALTUNG','POETRY VOUCHER / ATELIER','POETRY VOUCHER / МАСТЕРСКАЯ'],
 ['製作一張詩券','Make a poetry voucher','制作一张诗券','詩の券を作る','Einen Gedichtbon gestalten','Créer un bon poétique','Создать поэтический талон'],
@@ -54,13 +53,13 @@ const localeRows=[
 ['頁面導航','Navigation','页面导航','ナビゲーション','Navigation','Navigation','Навигация'],
 ['Make yours','Make yours','制作诗券','自分の詩券を作る','Selbst gestalten','Créer le vôtre','Создать свой'],
 ['About','About','关于作品','作品について','Über das Projekt','À propos','О проекте'],
-['Portfolio ↗','Portfolio ↗','作品集 ↗','ポートフォリオ ↗','Portfolio ↗','Portfolio ↗','Портфолио ↗'],
+['Portfolio','Portfolio','作品集','ポートフォリオ','Portfolio','Portfolio','Портфолио'],
 ['POETRY / INTERACTION / THERMAL PAPER · 2026','POETRY / INTERACTION / THERMAL PAPER · 2026','诗歌 / 交互 / 热敏纸 · 2026','詩 / インタラクション / 感熱紙 · 2026','LYRIK / INTERAKTION / THERMOPAPIER · 2026','POÉSIE / INTERACTION / PAPIER THERMIQUE · 2026','ПОЭЗИЯ / ИНТЕРАКТИВНОСТЬ / ТЕРМОБУМАГА · 2026'],
 ['詩券','Poetry slip','诗券','詩の券','Gedichtbon','Bon poétique','Поэтический талон'],
 ['一張小票。','A receipt.','一张小票。','一枚のレシート。','Ein Kassenbon.','Un ticket de caisse.','Кассовый чек.'],
 ['另一種值得留下的東西。','Something else worth keeping.','另一种值得留下的东西。','残しておきたい、もう一つのもの。','Und etwas, das man behalten möchte.','Autre chose à conserver.','И нечто, что хочется сохранить.'],
 ['上半張記錄一筆虛構交易，下半張留下完整的詩。借用日常收據的秩序，讓閱讀發生在一條本來很快會被丟棄的紙上。','A fictional transaction above; a complete poem below. The familiar order of a receipt becomes a place to read, on paper usually thrown away.','上半张记录一笔虚构交易，下半张留下完整的诗。借用日常收据的秩序，让阅读发生在一条本来很快会被丢弃的纸上。','上半分には架空の取引、下半分には一編の詩。日常のレシートの形式を借り、捨てられがちな紙を読む場所に変えます。','Oben eine fiktive Transaktion, unten ein vollständiges Gedicht. Die vertraute Ordnung eines Kassenbons wird zum Leseraum auf Papier, das sonst im Müll landet.','Une transaction fictive en haut, un poème entier en bas. La structure familière du ticket devient un espace de lecture sur un papier habituellement jeté.','Сверху вымышленная покупка, снизу целое стихотворение. Привычная структура чека превращает одноразовую бумагу в место для чтения.'],
-['選一首，或寫下自己的 ↓','Choose a poem, or write your own ↓','选一首，或写下自己的 ↓','詩を選ぶ、または自分で書く ↓','Ein Gedicht wählen oder selbst schreiben ↓','Choisir un poème ou écrire le vôtre ↓','Выберите стихотворение или напишите своё ↓'],
+['選一首，或寫下自己的','Choose a poem, or write your own','选一首，或写下自己的','詩を選ぶ、または自分で書く','Ein Gedicht wählen oder selbst schreiben','Choisir un poème ou écrire le vôtre','Выберите стихотворение или напишите своё'],
 ['MADE IN YOUR BROWSER · NO REMOTE PRINTING','MADE IN YOUR BROWSER · NO REMOTE PRINTING','浏览器本地生成 · 不远程打印','ブラウザー内で作成 · 遠隔印刷なし','LOKAL IM BROWSER · KEIN FERNDRUCK','CRÉATION LOCALE · AUCUNE IMPRESSION À DISTANCE','СОЗДАНИЕ В БРАУЗЕРЕ · БЕЗ УДАЛЁННОЙ ПЕЧАТИ'],
 ['Make an edition','Make an edition','制作版本','一枚を作る','Eine Ausgabe gestalten','Créer une édition','Создать экземпляр'],
 ['製作詩券','Poetry voucher','制作诗券','詩券を作る','Gedichtbon','Bon poétique','Поэтический талон'],
@@ -80,7 +79,7 @@ const localeRows=[
 ['標價 / GBP','Price / GBP','标价 / GBP','価格 / GBP','Preis / GBP','Prix / GBP','Цена / GBP'],
 ['現金 / GBP','Cash tendered / GBP','现金 / GBP','預かり現金 / GBP','Barzahlung / GBP','Espèces remises / GBP','Внесено наличными / GBP'],
 ['找零自動計算。僅為藝術樣本，不會收費；不填入真實銀行、會員或硬件身份資料。','Change is calculated automatically. This is an art specimen, not a payment. Do not enter real banking, loyalty or hardware identifiers.','找零自动计算。仅为艺术样本，不会收费；不填入真实银行、会员或硬件身份资料。','お釣りは自動計算されます。作品用の見本で、請求はありません。実際の銀行・会員・機器識別情報は入力しないでください。','Das Wechselgeld wird automatisch berechnet. Dies ist ein Kunstmuster, keine Zahlung. Keine echten Bank-, Kunden- oder Gerätekennungen eingeben.','La monnaie est calculée automatiquement. Il s’agit d’une œuvre, pas d’un paiement. Ne saisissez aucun identifiant bancaire, de fidélité ou d’appareil réel.','Сдача рассчитывается автоматически. Это художественный образец, не оплата. Не вводите реальные банковские, клиентские или аппаратные идентификаторы.'],
-['製作我的詩券 ↗','Make my poetry voucher ↗','制作我的诗券 ↗','詩券を作る ↗','Meinen Gedichtbon erstellen ↗','Créer mon bon poétique ↗','Создать мой талон ↗'],
+['製作我的詩券','Make my poetry voucher','制作我的诗券','詩券を作る','Meinen Gedichtbon erstellen','Créer mon bon poétique','Создать мой талон'],
 ['正在載入作品…','Loading works…','正在载入作品…','作品を読み込み中…','Werke werden geladen…','Chargement des œuvres…','Загрузка произведений…'],
 ['文字只在這個瀏覽器頁面中處理，不上傳、不自動儲存。下載不會讓 H10S 出紙；離開前請保存作品。','Text is processed only in this browser page. It is not uploaded or saved automatically. Downloads do not print on the H10S. Save your work before leaving.','文字只在这个浏览器页面中处理，不上传、不自动保存。下载不会让 H10S 出纸；离开前请保存作品。','文字はこのブラウザー内だけで処理され、送信・自動保存されません。ダウンロードしても H10S は印刷しません。ページを離れる前に保存してください。','Der Text bleibt in dieser Browserseite und wird weder hochgeladen noch automatisch gespeichert. Downloads lösen keinen H10S-Druck aus. Vor dem Verlassen bitte speichern.','Le texte reste dans cette page, sans envoi ni sauvegarde automatique. Le téléchargement ne déclenche pas l’imprimante H10S. Enregistrez avant de quitter.','Текст обрабатывается только на этой странице, без отправки и автосохранения. Скачивание не запускает H10S. Сохраните работу перед уходом.'],
 ['數位校樣','Digital proof','数字校样','デジタル校正','Digitale Druckvorschau','Épreuve numérique','Цифровая проба'],
@@ -96,9 +95,9 @@ const localeRows=[
 ['詩券排版；可切換讀原文取得文字版','Poetry voucher; choose Read the text for an accessible version','诗券排版；可切换读原文查看文字版','詩券のレイアウト。本文表示で文字を読めます','Gedichtbon; Textansicht für barrierefreies Lesen','Bon poétique ; choisir la vue texte pour une lecture accessible','Вёрстка талона; текст доступен в режиме чтения'],
 ['小票、CUT HERE 分隔及完整詩券','Receipt, CUT HERE separator and complete poetry voucher','小票、CUT HERE 分隔及完整诗券','レシート、切り取り線、詩券全体','Kassenbon, Schnittlinie und vollständiger Gedichtbon','Ticket, ligne de découpe et bon poétique complet','Чек, линия отреза и полный поэтический талон'],
 ['下載數位作品','Download your edition','下载数字作品','作品をダウンロード','Ausgabe herunterladen','Télécharger l’édition','Скачать экземпляр'],
-['詩券 PDF ↓','Voucher PDF ↓','诗券 PDF ↓','詩券 PDF ↓','Gedicht-PDF ↓','Bon PDF ↓','Талон PDF ↓'],
-['小票 PDF ↓','Receipt PDF ↓','小票 PDF ↓','レシート PDF ↓','Kassenbon-PDF ↓','Ticket PDF ↓','Чек PDF ↓'],
-['完整 PDF ↓','Full PDF ↓','完整 PDF ↓','全体 PDF ↓','Gesamt-PDF ↓','PDF complet ↓','Полный PDF ↓'],
+['詩券 PDF','Voucher PDF','诗券 PDF','詩券 PDF','Gedicht-PDF','Bon PDF','Талон PDF'],
+['小票 PDF','Receipt PDF','小票 PDF','レシート PDF','Kassenbon-PDF','Ticket PDF','Чек PDF'],
+['完整 PDF','Full PDF','完整 PDF','全体 PDF','Gesamt-PDF','PDF complet','Полный PDF'],
 ['03 / PROJECT NOTES','03 / PROJECT NOTES','03 / 项目说明','03 / プロジェクトノート','03 / PROJEKTNOTIZEN','03 / NOTES DU PROJET','03 / О ПРОЕКТЕ'],
 ['From till','From till','从收银','レジから','Von der Kasse','De la caisse','От кассы'],
 ['to text.','to text.','到文字。','詩へ。','zum Text.','au texte.','к тексту.'],
@@ -108,7 +107,7 @@ const localeRows=[
 ['為一台真實機器而作','Made for a real machine','为一台真实机器而作','実在の機器のために','Für ein echtes Gerät','Pour une véritable machine','Для настоящего устройства'],
 ['你也可以帶走一張','Take one of your own','你也可以带走一张','あなたの一枚を持ち帰る','Ein eigenes Exemplar mitnehmen','Emportez le vôtre','Заберите свой экземпляр'],
 ['POETRY VOUCHER · DIGITAL STUDY · 2026','POETRY VOUCHER · DIGITAL STUDY · 2026','诗券 · 数字实验 · 2026','詩券 · デジタル実験 · 2026','POETRY VOUCHER · DIGITALE STUDIE · 2026','POETRY VOUCHER · ÉTUDE NUMÉRIQUE · 2026','POETRY VOUCHER · ЦИФРОВОЙ ЭТЮД · 2026'],
-['Back to portfolio ↗','Back to portfolio ↗','返回作品集 ↗','ポートフォリオに戻る ↗','Zurück zum Portfolio ↗','Retour au portfolio ↗','Вернуться к портфолио ↗'],
+['Back to portfolio','Back to portfolio','返回作品集','ポートフォリオに戻る','Zurück zum Portfolio','Retour au portfolio','Вернуться к портфолио'],
 ['＋ 寫自己的詩','＋ Write your own','＋ 写自己的诗','＋ 自分の詩を書く','＋ Eigenes Gedicht schreiben','＋ Écrire votre poème','＋ Написать своё'],
 ['寫下自己的作品。署名留空也可以。','Write your own work. The byline is optional.','写下自己的作品。署名也可留空。','自分の作品を書いてください。署名は空欄でも構いません。','Schreiben Sie Ihr eigenes Werk. Die Verfasserangabe ist optional.','Écrivez votre œuvre. La signature est facultative.','Напишите своё произведение. Подпись необязательна.'],
 ['內容已改動；點「製作我的詩券」更新校樣。','Edits not yet rendered. Make your voucher to update the proof.','内容已改动；请重新制作以更新校样。','変更は未反映です。詩券を作成して校正を更新してください。','Änderungen noch nicht gesetzt. Erstellen Sie den Bon neu.','Modifications non composées. Créez le bon pour actualiser l’épreuve.','Изменения ещё не свёрстаны. Создайте талон заново.'],
@@ -130,7 +129,7 @@ const localeRows=[
 ['READER EDITION','READER EDITION','访客版本','読者版','LESERAUSGABE','ÉDITION DU LECTEUR','ЧИТАТЕЛЬСКАЯ ВЕРСИЯ'],
 ['DIGITAL PROOF','DIGITAL PROOF','数字校样','デジタル校正','DIGITALE DRUCKVORSCHAU','ÉPREUVE NUMÉRIQUE','ЦИФРОВАЯ ПРОБА'],
 ['約','Approx.','约','約','Ca.','Env.','Около'],
-['原站作品 ↗','Original publication ↗','原站作品 ↗','原掲載ページ ↗','Originalveröffentlichung ↗','Publication originale ↗','Оригинальная публикация ↗']
+['原站作品','Original publication','原站作品','原掲載ページ','Originalveröffentlichung','Publication originale','Оригинальная публикация']
 ];
 // Longer project notes are kept separately for readable translation maintenance.
 localeRows.push(
@@ -140,7 +139,7 @@ localeRows.push(
 ['選擇作者原作，或輸入自己的文字。排版和檔案生成都在瀏覽器中完成，不接入打印機。內置字體未收錄的字會由裝置字體補足，因此自訂文字的效果可能因裝置而異。','Choose an original work or enter your own text. Typesetting and file creation happen in your browser, without a printer connection. Characters missing from the bundled fonts fall back to device fonts, so custom text may look different across devices.','选择作者原作，或输入自己的文字。排版和文件生成都在浏览器中完成，不连接打印机。内置字体未收录的字会由设备字体补足，因此自定义文字的效果可能因设备而异。','原作を選ぶか自分の文字を入力できます。組版とファイル生成はブラウザー内で行い、印刷機には接続しません。内蔵フォントにない文字は端末のフォントで補われるため、表示は端末によって異なります。','Wählen Sie ein Original oder geben Sie eigenen Text ein. Satz und Dateierstellung bleiben im Browser, ohne Druckerverbindung. Zeichen, die in den mitgelieferten Schriften fehlen, werden durch Geräteschriften ergänzt; das Ergebnis kann je nach Gerät variieren.','Choisissez une œuvre ou votre propre texte. Composition et fichiers sont créés dans le navigateur, sans connexion à l’imprimante. Les caractères absents des polices intégrées utilisent celles de l’appareil ; le résultat peut varier.','Выберите оригинал или введите свой текст. Вёрстка и файлы создаются в браузере без подключения к принтеру. Символы, отсутствующие во встроенных шрифтах, берутся из шрифтов устройства, поэтому вид может различаться.']
 );
 // Original English headings also receive Chinese labels, rather than mixed UI.
-const traditionalOverrides={'Make yours':'製作詩券','About':'關於作品','Portfolio ↗':'作品集 ↗','Make an edition':'製作一個版本','From till':'從收銀','to text.':'到文字。','Back to portfolio ↗':'返回作品集 ↗','AUTHOR EDITION':'作者版本','READER EDITION':'訪客版本','DIGITAL PROOF':'數位校樣','POETRY / INTERACTION / THERMAL PAPER · 2026':'詩歌 / 互動 / 熱敏紙 · 2026','MADE IN YOUR BROWSER · NO REMOTE PRINTING':'瀏覽器本地生成 · 不遠程打印','58 MM PAPER / 384 DOTS / 1 BIT':'58 毫米紙寬 / 384 點 / 1 bit','01 / SELECT & COMPOSE':'01 / 選擇與創作','02 / DIGITAL PROOF':'02 / 數位校樣','03 / PROJECT NOTES':'03 / 項目說明','POETRY VOUCHER · DIGITAL STUDY · 2026':'詩券 · 數位實驗 · 2026'};
+const traditionalOverrides={'Make yours':'製作詩券','About':'關於作品','Portfolio':'作品集','Make an edition':'製作一個版本','From till':'從收銀','to text.':'到文字。','Back to portfolio':'返回作品集','AUTHOR EDITION':'作者版本','READER EDITION':'訪客版本','DIGITAL PROOF':'數位校樣','POETRY / INTERACTION / THERMAL PAPER · 2026':'詩歌 / 互動 / 熱敏紙 · 2026','MADE IN YOUR BROWSER · NO REMOTE PRINTING':'瀏覽器本地生成 · 不遠程打印','58 MM PAPER / 384 DOTS / 1 BIT':'58 毫米紙寬 / 384 點 / 1 bit','01 / SELECT & COMPOSE':'01 / 選擇與創作','02 / DIGITAL PROOF':'02 / 數位校樣','03 / PROJECT NOTES':'03 / 項目說明','POETRY VOUCHER · DIGITAL STUDY · 2026':'詩券 · 數位實驗 · 2026'};
 const localeMap=new Map(localeRows.map(row=>[row[0],row]));
 traditionalOverrides.Language='語言';
 const portfolioLinks=[...document.querySelectorAll('a[href="https://hanpuli.github.io/"]')];

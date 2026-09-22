@@ -36,7 +36,7 @@
     "eyebrow": "寫作 / 電影 / 攝影 / 程式 · 倫敦",
     "location": "倫敦",
     "alias": "亦以 Caitlyn Lye 名義工作",
-    "education": "約克 · 英語語言與語言學 → 電影 · QMUL",
+    "education": "約克 · 英語語言與語言學 · 電影 · QMUL",
     "lede": "看電影的，也寫寫詞。",
     "lede_note": "",
     "intro": "我的工作多半從寫開始：評論、研究、詩詞。我也拍照；方法需要工具時，便寫軟件。",
@@ -119,8 +119,8 @@
       "first_love_meta": "研究稿 · 私下傳閱",
       "film_essays_title": "論《<em>猜火車</em>》",
       "film_essays_description": "從旁白、空間與自我規訓寫到論證本身的邊界。",
-      "film_essays_meta": "讀全文 →",
-      "first_love_verify": "核驗材料 →"
+      "film_essays_meta": "讀全文",
+      "first_love_verify": "核驗材料"
     },
     "poetry": {
       "recent": "近作二首",
@@ -128,8 +128,8 @@
       "translation_w2": "《鷓鴣天》 · 原作",
       "translation_w3": "《臨江仙》 · 原作",
       "cycle": "另有《甲乙十六首》：一人分作兩聲的唱和集。",
-      "full_cycle": "全部詞作 →",
-      "poem_link": "詩 →",
+      "full_cycle": "全部詞作",
+      "poem_link": "詩",
       "preview_date": "二〇二六年九月九日"
     },
     "chronology": [
@@ -187,6 +187,6 @@
     "line": "分明一水無舟艇。",
     "description": "此頁不存在，或已移往別處。",
     "source": "李函璞《甲乙十六首》·乙二〈踏莎行〉",
-    "home": "← 返回首頁"
+    "home": "返回首頁"
   }
 }
