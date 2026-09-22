@@ -190,9 +190,13 @@ try {
   await page.locator('#generate').click();
   await page.locator('#full-pdf').waitFor({ state: 'visible' });
   const studioWidths = [320, 390, 768, 1440];
+  const studioLangs = {'en':'en-GB','zh-Hant':'zh-Hant-HK','zh-Hans':'zh-Hans','ja':'ja','de':'de','fr':'fr','ru':'ru'};
   for (const locale of ['en', 'zh-Hant', 'zh-Hans', 'ja', 'de', 'fr', 'ru']) {
     const originalProof = await page.locator('#full-pdf').getAttribute('href');
     await page.locator('#ui-locale').selectOption(locale);
+    const actualLang = await page.locator('html').getAttribute('lang');
+    if (actualLang !== studioLangs[locale]) failures.push(`studio ${locale}: html lang is ${actualLang}`);
+    if (await page.locator('html').getAttribute('translate') !== 'no') failures.push(`studio ${locale}: translate=no is missing`);
     if (await page.locator('#full-pdf').getAttribute('href') !== originalProof) {
       failures.push(`studio ${locale}: locale switch regenerated the proof`);
     }
@@ -208,6 +212,14 @@ try {
       }
     }
   }
+  const fallbackContext = await browser.newContext({ javaScriptEnabled: false });
+  const fallbackPage = await fallbackContext.newPage();
+  await fallbackPage.goto(BASE + '/poetry-voucher/make.html?lang=en');
+  if (await fallbackPage.locator('html').getAttribute('lang') !== 'zh-Hant-HK') failures.push('studio no-JS: fallback html lang is wrong');
+  if (await fallbackPage.locator('html').getAttribute('translate') !== 'no') failures.push('studio no-JS: translate=no is missing');
+  if (await fallbackPage.locator('#ui-locale').inputValue() !== 'zh-Hant') failures.push('studio no-JS: fallback locale selector is wrong');
+  await fallbackContext.close();
+
   await page.locator('#work').selectOption('custom');
   await page.locator('#title').fill('Browser QA');
   await page.locator('#poem').fill('One line\n\nAnother line');

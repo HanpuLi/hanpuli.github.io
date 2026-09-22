@@ -60,12 +60,12 @@ html[data-ui-locale="zh-Hans"]{
 :root{
   color-scheme:light dark;
   --bg:#f5f2eb;
-  --ink:#24211d;
-  --muted:#6a645c;
-  --line:#cdc7bc;
-  --panel:#ebe6dc;
+  --ink:#171614;
+  --muted:#625e57;
+  --line:#d7d2c8;
+  --panel:#ece8df;
   --field:#fcfaf6;
-  --accent:#813e2c;
+  --accent:#8a2f1d;
   --serif:EB,ShipCommon,Ship,IMing,Noto,serif;
   --ui:system-ui,-apple-system,'Segoe UI',sans-serif;
   --mono:Courier,monospace
@@ -75,10 +75,10 @@ html[data-ui-locale="zh-Hans"]{
     --bg:#151412;
     --ink:#e8e4dc;
     --muted:#aaa49a;
-    --line:#4b453c;
-    --panel:#24211d;
+    --line:#34312c;
+    --panel:#1d1b18;
     --field:#1c1a17;
-    --accent:#d98d74
+    --accent:#cf765e
   }
 }
 *{

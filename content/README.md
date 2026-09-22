@@ -92,6 +92,6 @@ under assets/fonts; it is not dependent on system fonts for catalogue works.
 There is no payment service, text upload, persistent text storage or physical
 printer API in this public app. Do not copy private device configuration,
 identifiers, credentials or print-service code into it. Public `TILL` and `PRN`
-values are display aliases, not hardware serial numbers. Custom glyphs outside
-the site's font subsets fall back to device fonts. Physical print calibration
+values are display aliases, not hardware serial numbers. Custom glyphs
+missing from the bundled fonts fall back to device fonts. Physical print calibration
 is separate from digital proofing.

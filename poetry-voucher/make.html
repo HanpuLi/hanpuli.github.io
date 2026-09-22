@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en-GB" data-locale="en">
+<html lang="zh-Hant-HK" translate="no" data-default-locale="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Make a Poetry Voucher by Hanpu Li. A browser-only poetry typesetting studio for 58 mm paper.">
+<meta name="description" content="Hanpu Li 的詩券製作室。全程在瀏覽器內完成，為 58 毫米紙面排版。">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' blob: data:; connect-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="robots" content="noindex,follow">
-<title>Poetry Voucher Studio · Hanpu Li</title>
+<title>詩券製作室 · Hanpu Li</title>
 <link rel="icon" type="image/svg+xml" href="/assets/site-mark.svg">
 <link rel="canonical" href="https://hanpuli.github.io/poetry-voucher/make.html">
 <link rel="stylesheet" href="studio.css">
@@ -15,9 +15,9 @@
 <body>
 <a class="skip" href="#edition">跳至作品</a>
 <header class="studio-header">
-  <a class="signature" href="https://hanpuli.github.io/">Hanpu Li <span lang="zh-Hant">李函璞</span></a>
+  <a class="signature" href="https://hanpuli.github.io/">Hanpu Li <span lang="zh-Hant-HK">李函璞</span></a>
   <nav aria-label="頁面導航"><a data-project-link href="/poetry-voucher/">作品介紹</a><span aria-current="page">製作室</span></nav>
-  <select id="ui-locale" aria-label="Language"><option value="en">English</option><option value="zh-Hant">繁體中文</option><option value="zh-Hans">简体中文</option><option value="ja">日本語</option><option value="de">Deutsch</option><option value="fr">Français</option><option value="ru">Русский</option></select>
+  <select id="ui-locale" aria-label="Language"><option value="en">English</option><option value="zh-Hant" selected>繁體中文</option><option value="zh-Hans">简体中文</option><option value="ja">日本語</option><option value="de">Deutsch</option><option value="fr">Français</option><option value="ru">Русский</option></select>
 </header>
 <main id="edition" tabindex="-1">
   <div class="studio-heading"><div><p class="eyebrow">POETRY VOUCHER / STUDIO</p><h1>製作一張詩券</h1></div><p class="studio-deck">選詩、排版，帶走一份數位作品。</p></div>
@@ -37,7 +37,7 @@
       <details class="receipt-details"><summary>小票明細與虛構計價</summary>
         <div class="pair"><div><label for="price">標價 / GBP</label><input id="price" type="text" value="0.00" readonly></div><div id="tender-group"><label for="tender">現金 / GBP</label><input id="tender" type="text" value="0.00" readonly></div></div>
         <div id="price-breakdown" class="note"></div><p id="price-weights" class="note"></p><p id="payment-summary" class="note"></p><p id="cash-notes" class="note"></p><p id="price-change" class="note"></p>
-        <p class="note">PV3：原文按字數、非空行和分節加權，向上調至最近的 £x.99。標點、空格、題名及署名不計字數。特殊字體、英譯及自選內容各加 £1.99；自寫或修改原作即屬自選內容。英譯不重複計字費，各商品相加為總價。</p>
+        <p class="note">PV3：原文按字數、非空行和分節加權，向上調至最近的 £x.99。標點、空格、題名及署名不計字數。網站字體、英譯及自選內容各加 £1.99；自寫或修改原作即屬自選內容。英譯不重複計字費，各商品相加為總價。</p>
         <p class="note">每次生成隨機安排刷卡、紙幣、硬幣或混合現金；超過 £10 不安排純硬幣。現金足額，找零使用流通面額。切換語言不重抽；全部為虛構交易。</p>
       </details>
       <div class="make-action"><button id="generate" type="button" class="primary" disabled>製作我的詩券 ↗</button><p id="message" role="status" aria-live="polite">正在載入作品…</p></div>
