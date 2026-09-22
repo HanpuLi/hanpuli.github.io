@@ -184,7 +184,7 @@ try {
   if(await page.locator('#font').inputValue()!=='bitmap'||await page.locator('#price').inputValue()!=='2.99')failures.push('studio: default bitmap/B3 base price is wrong');
   await page.locator('#size').selectOption('36');
   await page.locator('#font').selectOption('site');
-  if(await page.locator('#size').inputValue()!=='24'||await page.locator('#price').inputValue()!=='4.98')failures.push('studio: Mincho surcharge or size reset is wrong');
+  if(await page.locator('#size').inputValue()!=='24'||await page.locator('#price').inputValue()!=='4.98')failures.push('studio: website typeface surcharge or size reset is wrong');
   await page.locator('#font').selectOption('bitmap');
   if(await page.locator('#price').inputValue()!=='2.99')failures.push('studio: bitmap retains a font surcharge');
   await page.locator('#generate').click();

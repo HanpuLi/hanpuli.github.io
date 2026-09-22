@@ -48,7 +48,7 @@ function quotePoem(poem,translation='',font='bitmap',custom=false){
   const base=lines?100:0,weighted=base+characters*2+lines*5+stanzas*10;
   const edition=lines?Math.ceil((weighted-99)/100)*100+99:0;
   const items=lines?[{id:'poem',label:'詩券',receipt:'POETRY VOUCHER',amount:edition}]:[];
-  if(lines&&font==='site')items.push({id:'font',label:'明朝體版本',receipt:'MINCHO TYPEFACE',amount:199});
+  if(lines&&font==='site')items.push({id:'font',label:'網站字體版本',receipt:'WEBSITE TYPEFACES',amount:199});
   if(lines&&translation.trim())items.push({id:'translation',label:'附加英譯',receipt:'ENGLISH TRANSLATION',amount:199});
   if(lines&&custom)items.push({id:'custom',label:'自選內容',receipt:'CUSTOM TEXT',amount:199});
   const price=items.reduce((sum,item)=>sum+item.amount,0);

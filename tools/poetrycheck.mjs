@@ -21,7 +21,13 @@ assert.equal(extra.characters, base.characters);
 assert(!base.items.some(item=>item.id==='font'));
 assert.equal(quotePoem('春風吹\n\n雨聲來','','bitmap').price,base.price);
 assert.equal(quotePoem('春風吹\n\n雨聲來','','site').price,base.price+199);
-assert.equal(extra.items.find(item=>item.id==='font').receipt,'MINCHO TYPEFACE');
+assert.equal(extra.items.find(item=>item.id==='font').receipt,'WEBSITE TYPEFACES');
+for(const poem of ['A poem','詩詞','诗词','詩とひらがな','Größe für Wörter','Été à Noël','Стихотворение Ёжик']){
+  const pixel=quotePoem(poem,'','bitmap'),site=quotePoem(poem,'','site');
+  assert(!pixel.items.some(item=>item.id==='font'));
+  assert.equal(site.price,pixel.price+199);
+  assert.equal(site.items.find(item=>item.id==='font').label,'網站字體版本');
+}
 assert.deepEqual(Array.from(typeSizes('bitmap')),[24,36]);
 assert.deepEqual(Array.from(typeSizes('site')),[22,24,26]);
 assert(extra.items.every(item => item.amount % 100 === 99));

@@ -33,16 +33,45 @@ try{
     await page.locator('#ui-locale').selectOption(locale);
     assert.equal(await page.locator('#font').inputValue(),'bitmap');
     const labels=await page.locator('#font option').allTextContents();
-    const expected=await page.evaluate(()=>[tr('點陣體 · 預設，已包含'),tr('明朝體 · +£1.99')]);
+    const expected=await page.evaluate(()=>[tr('點陣體 · 預設，已包含'),tr('網站字體 · +£1.99')]);
     assert.deepEqual(labels,expected);
     await page.locator('#size').selectOption('36');await page.locator('#font').selectOption('site');
     assert.equal(await page.locator('#size').inputValue(),'24');assert.equal(await page.locator('#price').inputValue(),'4.98');
     assert.equal(await page.locator('#full-pdf').isVisible(),false);
-    assert.equal(await page.locator('#price-breakdown').textContent(),await page.evaluate(()=>`${tr('詩券')} × 1 — ${new Intl.NumberFormat(document.documentElement.lang,{style:'currency',currency:'GBP'}).format(2.99)}${tr('明朝體版本')} × 1 — ${new Intl.NumberFormat(document.documentElement.lang,{style:'currency',currency:'GBP'}).format(1.99)}`));
+    assert.equal(await page.locator('#price-breakdown').textContent(),await page.evaluate(()=>`${tr('詩券')} × 1 — ${new Intl.NumberFormat(document.documentElement.lang,{style:'currency',currency:'GBP'}).format(2.99)}${tr('網站字體版本')} × 1 — ${new Intl.NumberFormat(document.documentElement.lang,{style:'currency',currency:'GBP'}).format(1.99)}`));
     await page.locator('#size').selectOption('22');await page.locator('#font').selectOption('bitmap');
     assert.equal(await page.locator('#size').inputValue(),'24');assert.equal(await page.locator('#price').inputValue(),'2.99');
     assert.deepEqual(await page.locator('#size option').allTextContents(),['24','36']);
   }
+  // Confirm the actual raster-font face, not merely a CSS family declaration.
+  // These probes cover the seven supported language/script families.
+  const samples={en:'Poetry voucher', 'zh-Hant':'點陣字體詩詞罷籬鸞疊',
+    'zh-Hans':'点阵字体诗词简体龙门',ja:'詩の引換券 ひらがな カタカナ 漢字',
+    de:'ÄÖÜäöüß Größe für Wörter',fr:'ÀÂÆÇÉÈÊËÎÏÔŒÙÛÜŸàâæçéèêëîïôœùûüÿ',
+    ru:'Стихотворение Ёжик съел щуку ЙйЁёъыьэюя'};
+  const cdp=await page.context().newCDPSession(page);
+  await cdp.send('DOM.enable');await cdp.send('CSS.enable');
+  for(const [locale,text] of Object.entries(samples)){
+    await page.locator('#ui-locale').selectOption(locale);
+    const rendered=await page.evaluate(async({text})=>{
+      await document.fonts.load('24px FusionPixel',text);
+      let probe=document.getElementById('font-audit');
+      if(!probe){probe=document.createElement('span');probe.id='font-audit';document.body.append(probe);}
+      probe.style.cssText='position:fixed;top:0;left:0;z-index:9999;background:white;color:black;font:24px '+bitmap;
+      probe.textContent=text;probe.getBoundingClientRect();
+      await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+      const image=font=>{const q=quotePoem(text,'',font,true);return render({work:null,original:false,font,size:24,
+        title:text,author:'',poem:text,translation:'',ref:'SAMPLE000001',created:new Date('2026-09-22T12:00:00Z'),...q,method:'cash'}).voucher.toDataURL();};
+      return {different:image('bitmap')!==image('site'),pixelFee:quotePoem(text,'','bitmap',true).items.filter(i=>i.id==='font').length,
+        siteFee:quotePoem(text,'','site',true).items.find(i=>i.id==='font').amount};
+    },{text});
+    assert.deepEqual(rendered,{different:true,pixelFee:0,siteFee:199});
+    const {root}=await cdp.send('DOM.getDocument');
+    const {nodeId}=await cdp.send('DOM.querySelector',{nodeId:root.nodeId,selector:'#font-audit'});
+    const {fonts}=await cdp.send('CSS.getPlatformFontsForNode',{nodeId});
+    assert(fonts.length>0&&fonts.every(f=>f.isCustomFont&&/Fusion Pixel/.test(f.familyName)),`${locale}: unexpected pixel-font fallback: ${JSON.stringify(fonts)}`);
+  }
+  await page.evaluate(()=>document.getElementById('font-audit').remove());await cdp.detach();
   // Sample assets are refreshed only by explicit authoring command, never by QA.
   if(process.argv.includes('--write-samples')){
     const samples=await page.evaluate(()=>{
@@ -52,5 +81,5 @@ try{
     });
     for(const [kind,data] of Object.entries(samples))await writeFile(`poetry-voucher/sample-${kind}.png`,Buffer.from(data.split(',')[1],'base64'));
   }
-  console.log(JSON.stringify({renders:rows.length,maxRows:Math.max(...rows.map(r=>r.height)),locales:7,default:'bitmap',minchoFee:199}));
+  console.log(JSON.stringify({renders:rows.length,maxRows:Math.max(...rows.map(r=>r.height)),locales:7,actualPixelFontScripts:7,customRenders:14,default:'bitmap',websiteTypefaceFee:199}));
 }finally{await browser?.close();server.kill();}
