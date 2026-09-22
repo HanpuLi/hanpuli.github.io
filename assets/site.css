@@ -3989,3 +3989,70 @@ html[data-reading-large] .essay-page :is(
     display: none !important;
   }
 }
+
+/* Link affordance.
+   Links stay typographically quiet, but no longer rely on hover alone to
+   reveal that they are interactive. External destinations carry a compact
+   text badge instead of an arrow or icon. */
+body[class] a[href]:not(.skip-link) {
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 42%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .24em;
+  text-decoration-skip-ink: auto;
+}
+
+body[class] a[href]:not(.skip-link):hover {
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 2px;
+}
+
+body[class] a[href^="http://"]:not([href^="http://hanpuli.github.io/"]):not([href="http://hanpuli.github.io"])::after,
+body[class] a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not([href="https://hanpuli.github.io"])::after {
+  content: "external";
+  display: inline-block;
+  margin-inline-start: .48em;
+  padding: .12rem .28rem .08rem;
+  border: 1px solid currentColor;
+  color: inherit;
+  font-family: var(--mono);
+  font-size: .6875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+  vertical-align: .12em;
+  white-space: nowrap;
+  opacity: .62;
+}
+
+body.locale-zh a[href^="http://"]:not([href^="http://hanpuli.github.io/"]):not([href="http://hanpuli.github.io"])::after,
+body.locale-zh a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not([href="https://hanpuli.github.io"])::after {
+  content: "外站";
+}
+
+body.locale-zh-hans a[href^="http://"]:not([href^="http://hanpuli.github.io/"]):not([href="http://hanpuli.github.io"])::after,
+body.locale-zh-hans a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not([href="https://hanpuli.github.io"])::after {
+  content: "外站";
+}
+
+body.locale-ja a[href^="http://"]:not([href^="http://hanpuli.github.io/"]):not([href="http://hanpuli.github.io"])::after,
+body.locale-ja a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not([href="https://hanpuli.github.io"])::after {
+  content: "外部";
+}
+
+body.locale-de a[href^="http://"]:not([href^="http://hanpuli.github.io/"]):not([href="http://hanpuli.github.io"])::after,
+body.locale-de a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not([href="https://hanpuli.github.io"])::after {
+  content: "extern";
+}
+
+body.locale-fr a[href^="http://"]:not([href^="http://hanpuli.github.io/"]):not([href="http://hanpuli.github.io"])::after,
+body.locale-fr a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not([href="https://hanpuli.github.io"])::after {
+  content: "externe";
+}
+
+body.locale-ru a[href^="http://"]:not([href^="http://hanpuli.github.io/"]):not([href="http://hanpuli.github.io"])::after,
+body.locale-ru a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not([href="https://hanpuli.github.io"])::after {
+  content: "внеш.";
+}
