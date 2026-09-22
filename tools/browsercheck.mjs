@@ -229,7 +229,7 @@ try {
   const studioLangs = {'en':'en-GB','zh-Hant':'zh-Hant-HK','zh-Hans':'zh-Hans','ja':'ja','de':'de','fr':'fr','ru':'ru'};
   for (const locale of ['en', 'zh-Hant', 'zh-Hans', 'ja', 'de', 'fr', 'ru']) {
     const originalProof = await page.locator('#full-pdf').getAttribute('href');
-    await page.locator('#ui-locale').selectOption(locale);
+    await page.locator(`#ui-locale [data-locale="${locale}"]`).click();
     const actualLang = await page.locator('html').getAttribute('lang');
     if (actualLang !== studioLangs[locale]) failures.push(`studio ${locale}: html lang is ${actualLang}`);
     if (await page.locator('html').getAttribute('translate') !== 'no') failures.push(`studio ${locale}: translate=no is missing`);
@@ -256,7 +256,7 @@ try {
   await fallbackPage.goto(BASE + '/poetry-voucher/make.html?lang=en');
   if (await fallbackPage.locator('html').getAttribute('lang') !== 'zh-Hant-HK') failures.push('studio no-JS: fallback html lang is wrong');
   if (await fallbackPage.locator('html').getAttribute('translate') !== 'no') failures.push('studio no-JS: translate=no is missing');
-  if (await fallbackPage.locator('#ui-locale').inputValue() !== 'zh-Hant') failures.push('studio no-JS: fallback locale selector is wrong');
+  if (await fallbackPage.locator('#ui-locale [aria-current="page"]').getAttribute('data-locale') !== 'zh-Hant') failures.push('studio no-JS: fallback locale nav is wrong');
   await fallbackContext.close();
 
   await page.locator('#work').selectOption('custom');

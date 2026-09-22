@@ -75,7 +75,10 @@ The studio reuses `/assets/fonts/`; run both font-subsetting helpers after CJK
 copy changes. `node tools/poetrycheck.mjs` checks pricing, payment denominations,
 line breaking, translation completeness and the public-data boundary. The
 ordinary site checks cover links, metadata, HTML and overview accessibility.
-The GitHub browser suite includes all seven overview routes.
+The GitHub browser suite includes all seven overview routes. After renderer or
+specimen changes, refresh the public documentation assets explicitly with
+`npm run qa:voucher -- --write-samples` and
+`npm run build:voucher-editorial`; ordinary QA never rewrites those images.
 
 The default voucher typefaces are language-specific Fusion Pixel 12px Mono
 builds fetched from the upstream live preview on 2026-09-22 and pinned locally
@@ -97,6 +100,9 @@ works do not depend on system fonts.
 There is no payment service, text upload, persistent text storage or physical
 printer API in this public app. Do not copy private device configuration,
 identifiers, credentials or print-service code into it. Public `TILL` and `PRN`
-values are display aliases, not hardware serial numbers. Custom glyphs
-missing from the bundled fonts fall back to device fonts. Physical print calibration
-is separate from digital proofing.
+values are display aliases, not hardware serial numbers. Each generated specimen
+gets a local 12-digit receipt reference made from the London calendar date
+(`YYMMDD`) plus six digits of browser-generated entropy; the voucher and barcode
+reuse that reference, but it is not a server-backed or sequential transaction ID.
+Custom glyphs missing from the bundled fonts fall back to device fonts. Physical
+print calibration is separate from digital proofing.

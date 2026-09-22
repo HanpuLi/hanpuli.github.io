@@ -76,6 +76,12 @@ const bitmapFaces=Object.freeze({'zh-Hant':'FusionPixelZhHK','zh-Hans':'FusionPi
 function bitmapFace(locale){return bitmapFaces[locale]||bitmapFaces.en;}
 function bitmapFamily(locale){return `${bitmapFace(locale)}, sans-serif`;}
 function isBitmapFamily(family){return family.startsWith('FusionPixel');}
+function receiptReference(created,entropy){
+  const parts=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',year:'2-digit',month:'2-digit',day:'2-digit'}).formatToParts(created).filter(part=>part.type!=='literal').map(part=>[part.type,part.value]));
+  let suffix=0;
+  for(const byte of entropy)suffix=(suffix*256+byte)%1000000;
+  return parts.year+parts.month+parts.day+String(suffix).padStart(6,'0');
+}
 const $=id=>document.getElementById(id);
 const serif='EB, ShipCommon, Ship, IMing, Noto, serif',mono='Courier, monospace';
 let works=[],patterns,codes,stopCode,revision=0,objectURLs=[],messageKey='正在載入作品…',proofState=null;
@@ -194,7 +200,7 @@ function barcodeBits(ref){
   return [...values,check].map(v=>codes[v]).join('')+stopCode+'11';
 }
 function render(spec){
-  const p=new Paper(),ref=spec.ref,code=spec.original?spec.work.source_id:'MS',voucher=code+'-'+ref.slice(-6),contentLocale=spec.locale||(spec.original?'zh-Hant':'en');
+  const p=new Paper(),ref=spec.ref,code=spec.original?spec.work.source_id:'MS',voucher=code+'-'+ref,contentLocale=spec.locale||(spec.original?'zh-Hant':'en');
   const bodyFont=spec.font==='site'?serif:bitmapFamily(contentLocale),translationFont=spec.font==='site'?serif:bitmapFamily('en');
   p.threshold=spec.font==='site'?184:128;
   const items=spec.items||[{id:'poem',receipt:'POETRY VOUCHER',amount:spec.price}];
@@ -261,7 +267,7 @@ async function generate(event){
     if(spec.title.includes('\n')||spec.author.includes('\n'))throw Error('題名與署名請使用單行。');
     if(spec.tender<spec.price)throw Error('現金不能低於標價。');
     if(!['bitmap','site'].includes(spec.font)||!typeSizes(spec.font).includes(size))throw Error('不支援的字號。');
-    const random=new Uint8Array(6);crypto.getRandomValues(random);spec.ref=Array.from(random,b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();
+    const random=new Uint8Array(4);crypto.getRandomValues(random);spec.ref=receiptReference(spec.created,random);
     const fontSample=spec.poem+spec.title+spec.author+(work?.edition||'')+'李函璞';
     const pixelLoads=new Set();
     if(spec.font==='bitmap')pixelLoads.add(bitmapFace(spec.locale));

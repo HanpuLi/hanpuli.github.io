@@ -160,14 +160,20 @@ while(walker.nextNode()){
 }
 const attributeBindings=[];
 document.querySelectorAll('[aria-label],[alt]').forEach(node=>{
+  if(node.closest('#ui-locale'))return;
   for(const attr of ['aria-label','alt']){const key=node.getAttribute(attr);if(localeMap.has(key))attributeBindings.push({node,attr,key});}
 });
 function tr(key){return uiLocale==='zh-Hant'&&traditionalOverrides[key]||localeMap.get(key)?.[localeNames.indexOf(uiLocale)]||key;}
+const localeNav=document.getElementById('ui-locale');
 function applyLocale(){
   const htmlLang={'en':'en-GB','zh-Hant':'zh-Hant-HK','zh-Hans':'zh-Hans','ja':'ja','de':'de','fr':'fr','ru':'ru'}[uiLocale];
   document.documentElement.lang=htmlLang;
   document.documentElement.dataset.uiLocale=uiLocale;
-  document.getElementById('ui-locale').value=uiLocale;
+  localeNav.querySelectorAll('[data-locale]').forEach(link=>{
+    const current=link.dataset.locale===uiLocale;
+    link.classList.toggle('current',current);
+    if(current)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');
+  });
   staticBindings.forEach(({node,key,prefix,suffix})=>node.nodeValue=prefix+tr(key)+suffix);
   attributeBindings.forEach(({node,attr,key})=>node.setAttribute(attr,tr(key)));
   document.title=tr('製作室')+' · Poetry Voucher · Hanpu Li';
@@ -177,8 +183,13 @@ function applyLocale(){
   portfolioWorkLinks.forEach(link=>link.href='https://hanpuli.github.io/'+route+'#work');
   document.querySelectorAll('[data-project-link]').forEach(link=>link.href='/'+route+'poetry-voucher/');
 }
-document.getElementById('ui-locale').addEventListener('change',event=>{
-  uiLocale=event.target.value;applyLocale();
+localeNav.addEventListener('click',event=>{
+  const link=event.target.closest('[data-locale]');
+  if(!link)return;
+  event.preventDefault();
+  const next=normaliseLocale(link.dataset.locale);
+  if(!next||next===uiLocale)return;
+  uiLocale=next;applyLocale();
   const url=new URL(location.href);url.searchParams.set('lang',uiLocale);history.replaceState(null,'',url);
   document.dispatchEvent(new Event('presslocalechange'));
 });

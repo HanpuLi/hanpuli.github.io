@@ -886,7 +886,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         meta_description = POETRY_VOUCHER[locale_id]["description"]
         social_image = f"{BASE_URL}/poetry-voucher/sample-voucher.png"
         social_alt = POETRY_VOUCHER[locale_id]["preview_alt"]
-        social_width, social_height, social_type = 384, 559, "image/png"
+        social_width, social_height, social_type = 384, 575, "image/png"
         og_type, page_kind = "article", "poetry-voucher"
     elif page == "about":
         meta_title = about["meta_title"]

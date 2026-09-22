@@ -2,6 +2,7 @@
   "name": "hanpuli-github-io-qa",
   "private": true,
   "scripts": {
+    "build:voucher-editorial": "node tools/build_poetry_voucher_editorial.mjs",
     "qa:html": "git ls-files -z '*.html' ':!:templates/**' | xargs -0 html-validate",
     "qa:browser": "node tools/browsercheck.mjs",
     "qa:voucher": "node tools/vouchertypecheck.mjs",

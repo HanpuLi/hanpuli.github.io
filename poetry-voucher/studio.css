@@ -75,6 +75,11 @@
   src:url('/assets/fonts/noto-serif-sc-subset.woff2');
   font-display:swap
 }
+@font-face{
+  font-family:NotoLocale;
+  src:url('/assets/fonts/noto-serif-sc-locale.woff2');
+  font-display:swap
+}
 html[data-ui-locale="zh-Hans"]{
   --serif:EB,Noto,ShipCommon,Ship,IMing,serif
 }
@@ -162,25 +167,66 @@ button:disabled{
   font-size:14px;
   margin-left:10px
 }
-.studio-header nav{
+.studio-nav{
   display:flex;
   align-items:center;
   gap:24px;
   margin-inline-start:auto;
   font-size:13px
 }
-.studio-header nav a{
+.studio-nav a{
   text-decoration:none
 }
-.studio-header nav [aria-current]{
+.studio-nav [aria-current]{
   color:var(--muted)
 }
-#ui-locale{
-  max-width:145px;
-  width:auto;
-  min-height:42px;
-  padding:6px 9px;
-  font-size:13px
+.language-nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:clamp(3px,.45vw,7px);
+  font:13px/1.2 var(--mono);
+  letter-spacing:.055em;
+  text-transform:uppercase
+}
+.language-nav a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width:36px;
+  min-height:44px;
+  margin-block:-5px;
+  padding-block:5px;
+  color:var(--muted);
+  text-decoration:none
+}
+.language-nav a:hover{
+  color:var(--accent)
+}
+.language-nav .current{
+  color:var(--ink);
+  border-bottom:1px solid var(--ink)
+}
+.language-short{
+  display:inline-block
+}
+.language-nav [lang="zh-Hans"]{
+  font-family:NotoLocale,Noto,serif
+}
+[lang="zh-Hans"]>.language-short{
+  transform:scale(.96);
+  transform-origin:center
+}
+.visually-hidden{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important
 }
 .studio-heading{
   display:flex;
@@ -505,16 +551,20 @@ noscript{
     flex-wrap:wrap;
     gap:16px
   }
-  .studio-header nav{
+  .studio-nav{
     order:3;
     width:100%;
     margin:0;
     padding-top:8px;
     border-top:1px solid var(--line)
   }
-  #ui-locale{
+  .language-nav{
     margin-inline-start:auto;
-    max-width:128px
+    gap:2px;
+    font-size:.8125rem
+  }
+  .language-nav a{
+    margin-block:0
   }
   .signature{
     font-size:25px

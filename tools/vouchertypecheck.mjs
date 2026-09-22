@@ -14,14 +14,17 @@ try{
   await page.locator('#full-pdf').waitFor({state:'visible'});
   assert.equal(await page.locator('#font').inputValue(),'bitmap');
   assert.equal(await page.locator('#price').inputValue(),'2.99');
+  assert.deepEqual(await page.locator('#ui-locale .language-short').allTextContents(),['EN','繁','简','日','DE','FR','RU']);
+  assert.match(await page.locator('#proof-note').textContent(),/^\d{12} \/ /);
   const rows=await page.evaluate(async()=>{
     const sample=works.map(w=>w.poem+w.translation).join('');
+    const sampleDate=new Date('2026-09-22T12:00:00Z'),sampleRef=receiptReference(sampleDate,Uint8Array.from([0x12,0x34,0x56,0x78]));
     await Promise.all([...new Set(Object.values(bitmapFaces))].map(f=>document.fonts.load(`24px ${f}`,sample)));
     const summaries=[];
     for(const work of works)for(const font of ['bitmap','site'])for(const size of typeSizes(font))for(const bilingual of [false,true]){
       const translation=bilingual?work.translation||'':'',q=quotePoem(work.poem,translation,font);
       const spec={work,original:true,font,size,locale:'zh-Hant',title:work.title,author:work.author,poem:work.poem,translation,
-        created:new Date('2026-09-22T12:00:00Z'),ref:'SAMPLE000001',...q,method:'cash'};
+        created:sampleDate,ref:sampleRef,...q,method:'cash'};
       const rendered=render(spec),data=rendered.full.getContext('2d').getImageData(0,0,384,rendered.full.height).data;
       let binary=true;for(let i=0;i<data.length;i++){if(i%4===3?data[i]!==255:data[i]!==0&&data[i]!==255){binary=false;break;}}
       summaries.push({id:work.id,font,size,bilingual,height:rendered.full.height,binary,price:q.price,fee:q.items.filter(i=>i.id==='font').reduce((n,i)=>n+i.amount,0)});
@@ -31,7 +34,8 @@ try{
   assert.equal(rows.length,230);assert(rows.every(r=>r.binary&&r.height+140<=6000),JSON.stringify(rows.filter(r=>!r.binary||r.height+140>6000)));
   assert(rows.every(r=>r.fee===(r.font==='site'?199:0)));
   for(const locale of ['en','zh-Hant','zh-Hans','ja','de','fr','ru']){
-    await page.locator('#ui-locale').selectOption(locale);
+    await page.locator(`#ui-locale [data-locale="${locale}"]`).click();
+    assert.equal(await page.locator('#ui-locale [aria-current="page"]').getAttribute('data-locale'),locale);
     assert.equal(await page.locator('#font').inputValue(),'bitmap');
     const labels=await page.locator('#font option').allTextContents();
     const expected=await page.evaluate(()=>[tr('點陣體 · 預設，已包含'),tr('網站字體 · +£1.99')]);
@@ -52,8 +56,14 @@ try{
     ru:'Стихотворение Ёжик съел щуку ЙйЁёъыьэюя'};
   const cdp=await page.context().newCDPSession(page);
   await cdp.send('DOM.enable');await cdp.send('CSS.enable');
+  {
+    const {root}=await cdp.send('DOM.getDocument');
+    const {nodeId}=await cdp.send('DOM.querySelector',{nodeId:root.nodeId,selector:'#ui-locale [data-locale="zh-Hans"] .language-short'});
+    const {fonts}=await cdp.send('CSS.getPlatformFontsForNode',{nodeId});
+    assert(fonts.length>0&&fonts.every(f=>f.isCustomFont&&/Noto Serif SC/.test(f.familyName)),'zh-Hans locale label fallback: '+JSON.stringify(fonts));
+  }
   for(const [locale,text] of Object.entries(samples)){
-    await page.locator('#ui-locale').selectOption(locale);
+    await page.locator(`#ui-locale [data-locale="${locale}"]`).click();
     const rendered=await page.evaluate(async({locale,text})=>{
       const family=bitmapFace(locale);
       await document.fonts.load(`24px ${family}`,text);
@@ -62,8 +72,9 @@ try{
       probe.style.cssText='position:fixed;top:0;left:0;z-index:9999;background:white;color:black;font:24px '+bitmapFamily(locale);
       probe.textContent=text;probe.getBoundingClientRect();
       await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+      const sampleDate=new Date('2026-09-22T12:00:00Z'),sampleRef=receiptReference(sampleDate,Uint8Array.from([0x12,0x34,0x56,0x78]));
       const image=font=>{const q=quotePoem(text,'',font,true);return render({work:null,original:false,font,size:24,locale,
-        title:text,author:'',poem:text,translation:'',ref:'SAMPLE000001',created:new Date('2026-09-22T12:00:00Z'),...q,method:'cash'}).voucher.toDataURL();};
+        title:text,author:'',poem:text,translation:'',ref:sampleRef,created:sampleDate,...q,method:'cash'}).voucher.toDataURL();};
       return {family,different:image('bitmap')!==image('site'),pixelFee:quotePoem(text,'','bitmap',true).items.filter(i=>i.id==='font').length,
         siteFee:quotePoem(text,'','site',true).items.find(i=>i.id==='font').amount};
     },{locale,text});
@@ -80,7 +91,8 @@ try{
   if(process.argv.includes('--write-samples')){
     const samples=await page.evaluate(()=>{
       const work=works.find(w=>w.id==='ci-b3'),q=quotePoem(work.poem,'','bitmap');
-      const r=render({work,original:true,font:'bitmap',size:24,locale:'zh-Hant',title:work.title,author:work.author,poem:work.poem,translation:'',ref:'SAMPLE000001',created:new Date('2026-09-22T12:00:00Z'),...q,method:'cash'});
+      const sampleDate=new Date('2026-09-22T12:00:00Z'),sampleRef=receiptReference(sampleDate,Uint8Array.from([0x12,0x34,0x56,0x78]));
+      const r=render({work,original:true,font:'bitmap',size:24,locale:'zh-Hant',title:work.title,author:work.author,poem:work.poem,translation:'',ref:sampleRef,created:sampleDate,...q,method:'cash'});
       return {receipt:r.receipt.toDataURL(),voucher:r.voucher.toDataURL()};
     });
     for(const [kind,data] of Object.entries(samples))await writeFile(`poetry-voucher/sample-${kind}.png`,Buffer.from(data.split(',')[1],'base64'));

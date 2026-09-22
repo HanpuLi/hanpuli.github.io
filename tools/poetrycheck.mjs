@@ -8,10 +8,13 @@ const file = path => readFileSync(new URL('../' + path, import.meta.url));
 const read = path => file(path).toString('utf8');
 const sha256 = path => createHash('sha256').update(file(path)).digest('hex');
 const source = read('content/poetry-voucher-app/gallery.js');
-const { quotePoem, automaticPayment, wrapText, typeSizes, bitmapFace } = vm.runInNewContext(
-  source.split('const $=')[0] + ';({quotePoem,automaticPayment,wrapText,typeSizes,bitmapFace})'
+const { quotePoem, automaticPayment, wrapText, typeSizes, bitmapFace, receiptReference } = vm.runInNewContext(
+  source.split('const $=')[0] + ';({quotePoem,automaticPayment,wrapText,typeSizes,bitmapFace,receiptReference})'
 );
 const count = parts => parts.reduce((sum, part) => sum + part.value * part.count, 0);
+const sampleRef=receiptReference(new Date('2026-09-22T12:00:00Z'),Uint8Array.from([0x12,0x34,0x56,0x78]));
+assert.equal(sampleRef,'260922419896');
+assert.match(sampleRef,/^\d{12}$/);
 assert.equal(quotePoem('').price, 0);
 const base = quotePoem('春風吹\n\n雨聲來');
 assert.equal(base.characters, 6);
