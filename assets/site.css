@@ -1104,6 +1104,42 @@ html[data-reading-motion] .site-home::before {
   text-wrap: pretty;
 }
 
+.site-home .project-voucher-deck {
+  max-width: 34ch;
+  margin-bottom: .7em;
+  color: var(--ink);
+  font-size: clamp(18px, 1.45vw, 22px);
+  line-height: 1.42;
+}
+
+.site-home .project-voucher-proof {
+  grid-column: 10 / 13;
+  align-self: start;
+  justify-self: end;
+  margin: 0;
+  text-align: end;
+}
+
+.site-home .project-voucher-proof a {
+  display: block;
+  width: min(100%, 180px);
+  margin-inline-start: auto;
+}
+
+.site-home .project-voucher-proof img {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 7px;
+  background: #fff;
+  border-bottom: 2px dotted #d8d5cf;
+  box-shadow: 0 8px 22px #00000012;
+}
+
+.site-home .project-voucher-proof figcaption {
+  margin-top: 9px;
+}
+
 .site-home .project-proof,
 .site-home .project-meta {
   grid-column: 9 / 13;
@@ -2512,6 +2548,10 @@ html[data-reading-motion] .site-home::before {
     overflow-x: visible;
     padding-bottom: 2px;
     line-height: 1.35;
+  }
+
+  .site-home.locale-ru .section-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .site-home .section-nav a span {

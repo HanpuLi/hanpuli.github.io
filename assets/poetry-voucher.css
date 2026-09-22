@@ -1,3 +1,19 @@
+.pv-context{
+  display:flex;
+  justify-content:space-between;
+  gap:1.5rem;
+  padding-block:1.1rem;
+  border-bottom:1px solid var(--line);
+  font:.78rem/1.5 var(--mono);
+  color:var(--muted)
+}
+.pv-context a{
+  color:inherit;
+  text-decoration:none
+}
+.pv-context a:hover{
+  color:var(--accent)
+}
 .pv-intro{
   display:grid;
   grid-template-columns:1.2fr 1fr;
@@ -83,19 +99,31 @@
 }
 .pv-notes{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-columns:minmax(0,1.7fr) repeat(2,minmax(0,1fr));
   gap:clamp(1.5rem,4vw,4rem);
   padding-block:clamp(3rem,6vw,6rem);
   border-bottom:1px solid var(--line)
 }
+.pv-notes section:first-child{
+  padding-inline-end:clamp(0rem,2vw,2rem)
+}
 .pv-notes h2{
-  font-size:1.5rem;
+  font-size:1.35rem;
   font-weight:400;
-  line-height:1.4
+  line-height:1.35
+}
+.pv-notes section:first-child h2{
+  font-size:clamp(1.8rem,2.4vw,2.45rem);
+  line-height:1.08
 }
 .pv-notes p:not(.eyebrow){
   line-height:1.9;
   color:var(--muted)
+}
+.pv-notes section:first-child p:not(.eyebrow){
+  max-inline-size:42ch;
+  color:var(--ink);
+  font-size:1.08rem
 }
 .pv-end{
   display:flex;

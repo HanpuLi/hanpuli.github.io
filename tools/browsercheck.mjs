@@ -178,6 +178,25 @@ try {
     }
   }
 
+  // Poetry Voucher is curated as Work 02.3: home -> project -> studio,
+  // with explicit routes back to the home Work section.
+  const studioLocaleForPath = {'':'en','zh':'zh-Hant','zh-hans':'zh-Hans','ja':'ja','de':'de','fr':'fr','ru':'ru'};
+  for (const locale of locales) {
+    const prefix = locale ? `/${locale}/` : '/';
+    const projectPath = prefix + 'poetry-voucher/';
+    await page.goto(BASE + prefix, { waitUntil: 'load' });
+    const voucherCard = page.locator('#work #poetry-voucher');
+    if (await voucherCard.count() !== 1) failures.push(`${prefix}: Poetry Voucher is not nested under Work`);
+    if (await voucherCard.locator('a[href*="/poetry-voucher/make.html"]').count()) failures.push(`${prefix}: home bypasses the project page and links directly to Studio`);
+    if (!await voucherCard.locator(`h3 a[href="${projectPath}"]`).count()) failures.push(`${prefix}: Poetry Voucher project link is missing`);
+
+    await page.goto(BASE + projectPath, { waitUntil: 'load' });
+    if (await page.locator('.pv-context a').getAttribute('href') !== prefix + '#work') failures.push(`${projectPath}: Work context backlink is wrong`);
+    if (await page.locator('.page-wordmark').getAttribute('href') !== prefix) failures.push(`${projectPath}: wordmark home link is wrong`);
+    const expectedMaker = '/poetry-voucher/make.html?lang=' + studioLocaleForPath[locale];
+    if (await page.locator('.pv-intro .pv-cta').getAttribute('href') !== expectedMaker) failures.push(`${projectPath}: Studio link is wrong`);
+  }
+
   // The maker is deliberately separate from the static project page.
   await page.goto(BASE + '/poetry-voucher/make.html?lang=en');
   await page.locator('#full-pdf').waitFor({ state: 'visible' });
@@ -197,6 +216,9 @@ try {
     const actualLang = await page.locator('html').getAttribute('lang');
     if (actualLang !== studioLangs[locale]) failures.push(`studio ${locale}: html lang is ${actualLang}`);
     if (await page.locator('html').getAttribute('translate') !== 'no') failures.push(`studio ${locale}: translate=no is missing`);
+    const studioRoute = {'en':'','zh-Hant':'zh/','zh-Hans':'zh-hans/','ja':'ja/','de':'de/','fr':'fr/','ru':'ru/'}[locale];
+    if (await page.locator('[data-project-link]').first().getAttribute('href') !== '/' + studioRoute + 'poetry-voucher/') failures.push(`studio ${locale}: project backlink is wrong`);
+    if (await page.locator('[data-portfolio-link]').getAttribute('href') !== 'https://hanpuli.github.io/' + studioRoute + '#work') failures.push(`studio ${locale}: portfolio Work backlink is wrong`);
     if (await page.locator('#full-pdf').getAttribute('href') !== originalProof) {
       failures.push(`studio ${locale}: locale switch regenerated the proof`);
     }

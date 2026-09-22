@@ -144,6 +144,7 @@ const traditionalOverrides={'Make yours':'製作詩券','About':'關於作品','
 const localeMap=new Map(localeRows.map(row=>[row[0],row]));
 traditionalOverrides.Language='語言';
 const portfolioLinks=[...document.querySelectorAll('a[href="https://hanpuli.github.io/"]')];
+const portfolioWorkLinks=[...document.querySelectorAll('[data-portfolio-link]')];
 function normaliseLocale(value){
   if(!value)return null;value=value.toLowerCase();
   if(['zh','zh-hant','zh-hant-hk','zh-tw','zh-hk'].includes(value))return 'zh-Hant';
@@ -174,6 +175,7 @@ function applyLocale(){
   document.querySelector('meta[name="description"]').content=tr('製作詩券')+' · Hanpu Li · '+tr('MADE IN YOUR BROWSER · NO REMOTE PRINTING');
   const route={'en':'','zh-Hant':'zh/','zh-Hans':'zh-hans/','ja':'ja/','de':'de/','fr':'fr/','ru':'ru/'}[uiLocale];
   portfolioLinks.forEach(link=>link.href='https://hanpuli.github.io/'+route);
+  portfolioWorkLinks.forEach(link=>link.href='https://hanpuli.github.io/'+route+'#work');
   document.querySelectorAll('[data-project-link]').forEach(link=>link.href='/'+route+'poetry-voucher/');
 }
 document.getElementById('ui-locale').addEventListener('change',event=>{
