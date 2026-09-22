@@ -181,6 +181,14 @@ try {
   // The maker is deliberately separate from the static project page.
   await page.goto(BASE + '/poetry-voucher/make.html?lang=en');
   await page.locator('#full-pdf').waitFor({ state: 'visible' });
+  if(await page.locator('#font').inputValue()!=='bitmap'||await page.locator('#price').inputValue()!=='2.99')failures.push('studio: default bitmap/B3 base price is wrong');
+  await page.locator('#size').selectOption('36');
+  await page.locator('#font').selectOption('site');
+  if(await page.locator('#size').inputValue()!=='24'||await page.locator('#price').inputValue()!=='4.98')failures.push('studio: Mincho surcharge or size reset is wrong');
+  await page.locator('#font').selectOption('bitmap');
+  if(await page.locator('#price').inputValue()!=='2.99')failures.push('studio: bitmap retains a font surcharge');
+  await page.locator('#generate').click();
+  await page.locator('#full-pdf').waitFor({ state: 'visible' });
   const studioWidths = [320, 390, 768, 1440];
   for (const locale of ['en', 'zh-Hant', 'zh-Hans', 'ja', 'de', 'fr', 'ru']) {
     const originalProof = await page.locator('#full-pdf').getAttribute('href');

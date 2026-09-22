@@ -1,4 +1,11 @@
 @font-face{
+  font-family:FusionPixel;
+  src:url('/assets/fonts/fusion-pixel-12px-zh-hant.woff2');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap
+}
+@font-face{
   font-family:EB;
   src:url('/assets/fonts/eb-garamond-latin-400.woff2');
   font-display:swap

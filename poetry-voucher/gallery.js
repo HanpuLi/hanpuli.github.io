@@ -34,7 +34,7 @@ function automaticPayment(price,roll,cashRoll=0.5){
   }
   return {...paymentFor(price,mode),mode};
 }
-function quotePoem(poem,translation='',font='standard',custom=false){
+function quotePoem(poem,translation='',font='bitmap',custom=false){
   let characters=0,lines=0,stanzas=0;
   for(const text of [poem]){
     let inStanza=false;
@@ -48,7 +48,7 @@ function quotePoem(poem,translation='',font='standard',custom=false){
   const base=lines?100:0,weighted=base+characters*2+lines*5+stanzas*10;
   const edition=lines?Math.ceil((weighted-99)/100)*100+99:0;
   const items=lines?[{id:'poem',label:'詩券',receipt:'POETRY VOUCHER',amount:edition}]:[];
-  if(lines&&font==='site')items.push({id:'font',label:'個人站字體',receipt:'TYPEFACE EDITION',amount:199});
+  if(lines&&font==='site')items.push({id:'font',label:'明朝體版本',receipt:'MINCHO TYPEFACE',amount:199});
   if(lines&&translation.trim())items.push({id:'translation',label:'附加英譯',receipt:'ENGLISH TRANSLATION',amount:199});
   if(lines&&custom)items.push({id:'custom',label:'自選內容',receipt:'CUSTOM TEXT',amount:199});
   const price=items.reduce((sum,item)=>sum+item.amount,0);
@@ -71,8 +71,10 @@ function wrapText(text,measure,width=352){
   }
   lines.push(line);return lines;
 }
+function typeSizes(font){return font==='site'?[22,24,26]:[24,36];}
 const $=id=>document.getElementById(id);
 const serif='EB, ShipCommon, Ship, IMing, Noto, serif',mono='Courier, monospace';
+const bitmap='FusionPixel, sans-serif';
 let works=[],patterns,codes,stopCode,revision=0,objectURLs=[],messageKey='正在載入作品…',proofState=null;
 let paymentRoll=null,cashRoll=0.5;
 function message(key){messageKey=key;$('message').textContent=tr(key);}
@@ -100,6 +102,12 @@ function updateLocale(){
 }
 document.addEventListener('presslocalechange',updateLocale);
 const fields=['title','author','poem','language','size','font'];
+function syncTypeSize(){
+  const sizes=typeSizes($('font').value),current=Number($('size').value);
+  if([...$('size').options].map(o=>Number(o.value)).join()===sizes.join())return;
+  $('size').replaceChildren(...sizes.map(size=>{const option=document.createElement('option');option.value=String(size);option.textContent=String(size);return option;}));
+  $('size').value=String(sizes.includes(current)?current:24);
+}
 function updatePrice(reroll=false){
   const w=currentWork(),translation=unchanged(w)&&$('language').value==='bilingual'?w.translation:'';
   const quote=quotePoem($('poem').value,translation,$('font').value,!unchanged(w));
@@ -123,6 +131,7 @@ function updatePrice(reroll=false){
 function currentWork(){return works.find(w=>w.id===$('work').value);}
 function unchanged(w){return w&&['title','author','poem'].every(k=>$(k).value===w[k]);}
 function dirty(event){
+  if(event?.target?.id==='font')syncTypeSize();
   revision++;
   document.querySelectorAll('.downloads a').forEach(a=>a.hidden=true);
   const selected=currentWork();
@@ -160,17 +169,19 @@ class Paper{
     }this.space(12*sy);
   }
   text(text,size=22,family=serif,center=false,leading=size+7,italic=false){
+    // The pixel face was drawn at12 dots. Never interpolate its grid or fake italics.
+    if(family===bitmap){size=size<16?12:Math.max(24,Math.round(size/12)*12);leading=Math.max(leading,size+8);italic=false;}
     this.x.font=`${italic?'italic ':''}${size}px ${family}`;this.x.textBaseline='alphabetic';
     const lines=wrapText(text,value=>this.x.measureText(value).width);
     for(const part of lines){
       this.space(0);const width=this.x.measureText(part).width;
-      this.x.fillText(part,center?(384-width)/2:16,this.y+size);this.space(leading);
+      this.x.fillText(part,center?Math.round((384-width)/2):16,this.y+size);this.space(leading);
     }
   }
   finish(){
     const c=canvas(384,this.y+12),x=c.getContext('2d');x.drawImage(this.c,0,0);
     const pixels=x.getImageData(0,0,c.width,c.height);
-    for(let i=0;i<pixels.data.length;i+=4){const v=(pixels.data[i]+pixels.data[i+1]+pixels.data[i+2])/3<184?0:255;pixels.data[i]=pixels.data[i+1]=pixels.data[i+2]=v;pixels.data[i+3]=255;}
+    for(let i=0;i<pixels.data.length;i+=4){const v=(pixels.data[i]+pixels.data[i+1]+pixels.data[i+2])/3<(this.threshold??184)?0:255;pixels.data[i]=pixels.data[i+1]=pixels.data[i+2]=v;pixels.data[i+3]=255;}
     x.putImageData(pixels,0,0);return c;
   }
 }
@@ -181,7 +192,8 @@ function barcodeBits(ref){
 }
 function render(spec){
   const p=new Paper(),ref=spec.ref,code=spec.original?spec.work.source_id:'MS',voucher=code+'-'+ref.slice(-6);
-  const bodyFont=spec.font==='standard'?'sans-serif':serif;
+  const bodyFont=spec.font==='site'?serif:bitmap;
+  p.threshold=spec.font==='site'?184:128;
   const items=spec.items||[{id:'poem',receipt:'POETRY VOUCHER',amount:spec.price}];
   p.till('HANPU LI',null,true);p.till('LONDON',null,true);p.till('HANPULI.GITHUB.IO',null,true);p.space(12);
   p.till('CUSTOMER COPY',null,true);p.space(12);
@@ -197,7 +209,7 @@ function render(spec){
   for(const bit of bits){if(bit==='1')p.x.fillRect(Math.floor(x),p.y,module,38);x+=module;}p.space(50);
   p.text('SPECIMEN / NOT PROOF OF PURCHASE',12,mono,true,18);
   const receiptEnd=p.y+12;p.space(34);p.till('-------- CUT HERE --------',null,true);p.space(34);const voucherStart=p.y;
-  if(spec.original){p.text('Hanpu Li',42,serif,true,48);p.text('李函璞',20,serif,true,29);p.space(10);}
+  if(spec.original){p.text('Hanpu Li',42,serif,true,48);p.text('李函璞',20,bodyFont,true,29);p.space(10);}
   p.text('POETRY VOUCHER',16,mono,true,24);p.text('NO. '+voucher,14,mono,true,21);
   p.space(8);p.x.fillRect(16,p.y,352,1);p.space(16);p.text(spec.title,22,bodyFont,false,29);
   if(!spec.original&&spec.author)p.text(spec.author,14,bodyFont,false,20);
@@ -205,7 +217,7 @@ function render(spec){
   for(const line of spec.poem.split('\n')){if(line)p.text(line,spec.size,bodyFont);else p.space(18);}
   if(spec.translation){p.space(14);p.text(spec.work.translation_title,19,bodyFont,false,24,true);p.space(6);for(const line of spec.translation.split('\n')){if(line)p.text(line,19,bodyFont,false,24);else p.space(10);}}
   p.space(14);
-  if(spec.original){if(spec.work.edition)p.text(spec.work.edition,13,serif,true,18);p.text(spec.work.source_url.replace('https://',''),12,mono,true,18);}
+  if(spec.original){if(spec.work.edition)p.text(spec.work.edition,12,bitmap,true,20);p.text(spec.work.source_url.replace('https://',''),12,mono,true,18);}
   p.space(12);p.text('ART EDITION / NO CASH VALUE',12,mono,true,18);
   const full=p.finish();
   const crop=(start,end)=>{const c=canvas(384,end-start);c.getContext('2d').drawImage(full,0,start,384,end-start,0,0,384,end-start);return c;};
@@ -245,9 +257,9 @@ async function generate(event){
     if(/[\u0000-\u0008\u000b-\u001f\u007f]/.test(spec.title+spec.author+spec.poem))throw Error('文字包含不支援的控制字元。');
     if(spec.title.includes('\n')||spec.author.includes('\n'))throw Error('題名與署名請使用單行。');
     if(spec.tender<spec.price)throw Error('現金不能低於標價。');
-    if(![22,24,26].includes(size))throw Error('不支援的字號。');
+    if(!['bitmap','site'].includes(spec.font)||!typeSizes(spec.font).includes(size))throw Error('不支援的字號。');
     const random=new Uint8Array(6);crypto.getRandomValues(random);spec.ref=Array.from(random,b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();
-    await Promise.all(['EB','Courier','ShipCommon','Ship','IMing','Noto'].map(f=>document.fonts.load(`22px ${f}`,spec.poem+'李函璞')));
+    await Promise.all(['EB','Courier','ShipCommon','Ship','IMing','Noto','FusionPixel'].map(f=>document.fonts.load(`24px ${f}`,spec.poem+spec.title+spec.author+(work?.edition||'')+'李函璞')));
     await document.fonts.load('italic 19px EB');
     const result=render(spec),png=await new Promise(resolve=>result.full.toBlob(resolve,'image/png'));
     if(revision!==currentRevision){message('排版時內容已改動，請再製作一次。');return;}
@@ -274,7 +286,7 @@ fields.forEach(id=>$(id).addEventListener('input',dirty));$('work').addEventList
 (async()=>{try{
   const r=await fetch('editions.json');if(!r.ok)throw Error('作品目錄暫時無法載入，請重新整理。');
   const data=await r.json();works=data.works;patterns=data.patterns;codes=data.code128;stopCode=data.code128_stop;
-  updateLocale();
+  syncTypeSize();updateLocale();
   const requested=new URL(location.href).searchParams.get('work');
   $('work').value=works.some(w=>w.id===requested)?requested:requested==='custom'?'custom':'ci-b3';$('work').disabled=false;loadWork();if(currentWork())await generate();
 }catch(error){message(error.message);}})();

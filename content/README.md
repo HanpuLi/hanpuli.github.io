@@ -77,6 +77,15 @@ line breaking, translation completeness and the public-data boundary. The
 ordinary site checks cover links, metadata, HTML and overview accessibility.
 The GitHub browser suite includes all seven overview routes.
 
+The default voucher typeface is Fusion Pixel Traditional Chinese, included
+in the specimen price. Its 12-dot native grid uses 24/36-dot body sizes; small
+metadata stays at 12 dots. The optional portfolio Mincho/EB Garamond edition
+adds £1.99 and retains 22/24/26-dot body sizes. The Latin author masthead is
+fixed identity typography, not a separately charged option. Switching fonts
+keeps a compatible size or resets to 24 and invalidates stale downloads.
+The full unmodified pixel webfont and its upstream OFL notices are bundled
+under assets/fonts; it is not dependent on system fonts for catalogue works.
+
 There is no payment service, text upload, persistent text storage or physical
 printer API in this public app. Do not copy private device configuration,
 identifiers, credentials or print-service code into it. Public `TILL` and `PRN`

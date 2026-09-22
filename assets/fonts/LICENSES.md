@@ -1,5 +1,6 @@
 # Webfont 授权说明
 
+- **fusion-pixel-12px-zh-hant.woff2** — Fusion Pixel Font（TakWolf），2026.09.01 版原始繁体等宽12px字体，仅改文件名，未修改字体。仅诗券制作室使用。SIL OFL 1.1，完整许可及上游声明见 [fusion-pixel/OFL.txt](fusion-pixel/OFL.txt) 和 `fusion-pixel/LICENSES/`。来源：https://github.com/TakWolf/fusion-pixel-font/releases/tag/2026.09.01 。SHA256：`9f24e3a2067c48e74aeef5b48cc3e95ad59adec9e1cb853f3c18a23ffb4c411e`。
 - **shippori-mincho-subset.woff2** — Shippori Mincho（しっぽり明朝，FONTDASU），
   SIL Open Font License 1.1（https://github.com/google/fonts/blob/main/ofl/shipporimincho/OFL.txt ）。
   此文件为站点用字子集，非完整字体。

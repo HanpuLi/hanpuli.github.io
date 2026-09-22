@@ -3,6 +3,10 @@
 // Japanese, German, French, Russian. Original poems are never translated here.
 const localeNames=['zh-Hant','en','zh-Hans','ja','de','fr','ru'];
 const localeRows=[
+['點陣體 · 預設，已包含','Pixel typeface · default, included','点阵体 · 默认，已包含','ドット書体 · 標準、追加料金なし','Pixelschrift · Standard, inklusive','Police matricielle · par défaut, incluse','Пиксельный шрифт · по умолчанию, включён'],
+['明朝體 · +£1.99','Mincho · +£1.99','明朝体 · +£1.99','明朝体 · +£1.99','Mincho · +1,99 £','Mincho · +1,99 £','Mincho · +1,99 £'],
+['明朝體版本','Mincho edition','明朝体版本','明朝体版','Mincho-Ausgabe','Édition Mincho','Версия Mincho'],
+['點陣體預設包含，使用 24／36 點整倍字形。明朝體 +£1.99，搭配 EB Garamond，提供 22／24／26 點。附加英譯 +£1.99，僅提供已有原站英譯的作品。','The default pixel typeface is included, using exact 24/36-dot sizes. Mincho with EB Garamond adds £1.99, in 22/24/26 dots. English translation adds £1.99, only for works with an existing published translation.','点阵体默认包含，使用 24／36 点整倍字形。明朝体 +£1.99，搭配 EB Garamond，提供 22／24／26 点。附加英译 +£1.99，仅提供已有原站英译的作品。','標準のドット書体は追加料金なし、24／36ドットの整数倍で描画。明朝体と EB Garamond は +£1.99、22／24／26ドット。英訳は +£1.99、公開済みの英訳がある作品のみ。','Die Pixelschrift ist standardmäßig enthalten, mit exakten Rastergrößen von 24/36 Punkten. Mincho mit EB Garamond kostet 1,99 £ extra, in 22/24/26 Punkten. Englische Übersetzung: +1,99 £, nur bei bereits veröffentlichten Übersetzungen.','La police matricielle est incluse par défaut, en 24/36 points de trame exacts. Mincho avec EB Garamond : +1,99 £, en 22/24/26 points. Traduction anglaise : +1,99 £, uniquement si une traduction a déjà été publiée.','Пиксельный шрифт включён по умолчанию: точные размеры 24/36 точек растра. Mincho с EB Garamond: +1,99 £, размеры 22/24/26 точек. Английский перевод: +1,99 £, только при наличии опубликованного перевода.'],
 ['作品介紹','Project overview','作品介绍','作品について','Projektübersicht','Présentation','О проекте'],
 ['← 作品介紹','← Project overview','← 作品介绍','← 作品について','← Projektübersicht','← Présentation','← О проекте'],
 ['製作室','Studio','制作室','制作室','Gestaltungsraum','Atelier','Мастерская'],

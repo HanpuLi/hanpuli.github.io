@@ -5,8 +5,8 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 const read = path => readFileSync(new URL('../' + path, import.meta.url), 'utf8');
 const source = read('content/poetry-voucher-app/gallery.js');
-const { quotePoem, automaticPayment, wrapText } = vm.runInNewContext(
-  source.split('const $=')[0] + ';({quotePoem,automaticPayment,wrapText})'
+const { quotePoem, automaticPayment, wrapText, typeSizes } = vm.runInNewContext(
+  source.split('const $=')[0] + ';({quotePoem,automaticPayment,wrapText,typeSizes})'
 );
 const count = parts => parts.reduce((sum, part) => sum + part.value * part.count, 0);
 assert.equal(quotePoem('').price, 0);
@@ -18,6 +18,12 @@ assert.equal(quotePoem('é').price, quotePoem('e\u0301').price);
 const extra = quotePoem('春風吹\n\n雨聲來', 'English', 'site', true);
 assert.equal(extra.price, base.price + 3 * 199);
 assert.equal(extra.characters, base.characters);
+assert(!base.items.some(item=>item.id==='font'));
+assert.equal(quotePoem('春風吹\n\n雨聲來','','bitmap').price,base.price);
+assert.equal(quotePoem('春風吹\n\n雨聲來','','site').price,base.price+199);
+assert.equal(extra.items.find(item=>item.id==='font').receipt,'MINCHO TYPEFACE');
+assert.deepEqual(Array.from(typeSizes('bitmap')),[24,36]);
+assert.deepEqual(Array.from(typeSizes('site')),[22,24,26]);
 assert(extra.items.every(item => item.amount % 100 === 99));
 const line='燭暗蛩寒簾影瘦，殘酲猶帶微温。';
 const wrapped=wrapText(line,text=>[...text].length*24);
