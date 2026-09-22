@@ -274,18 +274,20 @@ textarea{
 .primary{
   width:100%;
   min-height:52px;
-  padding:13px 16px;
-  background:var(--ink);
-  color:var(--bg);
-  border:1px solid var(--ink);
-  border-radius:3px;
-  font-size:15px;
-  font-weight:500
+  padding:13px 0;
+  background:transparent;
+  color:var(--ink);
+  border:0;
+  border-block:1px solid var(--ink);
+  border-radius:0;
+  font:13px/1.55 var(--mono);
+  letter-spacing:.02em;
+  text-align:start
 }
 .primary:hover{
-  background:var(--accent);
-  border-color:var(--accent);
-  color:var(--bg)
+  background:transparent;
+  color:var(--accent);
+  border-color:currentColor
 }
 #message{
   font-size:12px;
@@ -315,17 +317,22 @@ textarea{
 }
 .view-switch button{
   min-height:42px;
-  padding:7px 11px;
+  padding:7px 8px;
   background:transparent;
   color:var(--muted);
-  border:1px solid transparent;
-  border-radius:3px;
-  font-size:12px
+  border:0;
+  border-bottom:1px solid transparent;
+  border-radius:0;
+  font:12px/1.4 var(--mono)
 }
 .view-switch button[aria-pressed=true]{
-  background:var(--field);
-  border-color:var(--line);
+  background:transparent;
+  border-color:var(--ink);
   color:var(--ink)
+}
+.view-switch button:hover{
+  color:var(--accent);
+  border-color:currentColor
 }
 .proof-desk{
   display:grid;
@@ -398,20 +405,25 @@ figcaption{
   gap:10px
 }
 .downloads a{
-  font-size:13px;
+  display:inline-flex;
+  align-items:center;
   min-height:44px;
-  border:1px solid var(--line);
-  padding:10px 13px;
+  border:0;
+  border-bottom:1px solid var(--line);
+  padding:8px 0;
+  color:var(--muted);
   text-decoration:none;
-  border-radius:3px
+  border-radius:0;
+  font:12px/1.4 var(--mono)
 }
 .downloads a:first-child{
-  background:var(--ink);
-  color:var(--bg);
+  background:transparent;
+  color:var(--ink);
   border-color:var(--ink)
 }
 .downloads a:hover{
-  border-color:var(--accent)
+  color:var(--accent);
+  border-color:currentColor
 }
 #proof-note{
   margin-top:16px;

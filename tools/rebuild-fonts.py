@@ -80,7 +80,6 @@ for f in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
     parser.feed(open(f, encoding="utf-8").read())
     t = "".join(parser.parts)
     chars.update(c for c in t if ord(c) >= 0x2E80 or c in "£²·–—’←→")
-chars.discard("🐈")
 # The Simplified-Chinese locale switch label is rendered by the one-glyph
 # Noto Serif SC locale subset built by rebuild-zh-hans-font.py, not Shippori/I.Ming.
 chars.discard("简")

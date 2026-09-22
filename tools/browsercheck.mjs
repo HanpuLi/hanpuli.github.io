@@ -129,12 +129,24 @@ try {
                 .map((rect) => Math.round(rect.y))
             ).size;
           }
+          let voucherCenterDelta = null;
+          const voucherCard = document.querySelector("#poetry-voucher");
+          const voucherProof = voucherCard?.querySelector(".project-voucher-proof");
+          if (voucherCard && voucherProof) {
+            const cardRect = voucherCard.getBoundingClientRect();
+            const proofRect = voucherProof.getBoundingClientRect();
+            voucherCenterDelta = Math.abs(
+              (proofRect.left + proofRect.width / 2) -
+              (cardRect.left + cardRect.width / 2)
+            );
+          }
           return {
             scrollWidth: Math.max(root.scrollWidth, body.scrollWidth),
             innerWidth: window.innerWidth,
             candidates,
             clippedNavItems,
             notfoundHeadingLines,
+            voucherCenterDelta,
           };
         });
 
@@ -151,6 +163,11 @@ try {
         if (width >= 900 && geometry.notfoundHeadingLines > 2) {
           failures.push(
             `${path} @ ${width}: 404 quotation wraps to ${geometry.notfoundHeadingLines} lines`
+          );
+        }
+        if (geometry.voucherCenterDelta !== null && geometry.voucherCenterDelta > 1) {
+          failures.push(
+            `${path} @ ${width}: Poetry Voucher artwork is off-centre by ${geometry.voucherCenterDelta.toFixed(1)}px`
           );
         }
 

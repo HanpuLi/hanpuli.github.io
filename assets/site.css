@@ -1112,32 +1112,33 @@ html[data-reading-motion] .site-home::before {
   line-height: 1.42;
 }
 
-.site-home .project-voucher-proof {
-  grid-column: 10 / 13;
+.site-home .project-proof.project-voucher-proof {
+  grid-column: 1 / 13;
   align-self: start;
-  justify-self: end;
-  margin: 0;
-  text-align: end;
+  justify-self: stretch;
+  width: min(100%, 560px);
+  margin: clamp(28px, 3vw, 42px) auto 0;
+  text-align: center;
 }
 
-.site-home .project-voucher-proof a {
-  display: block;
-  width: min(100%, 180px);
-  margin-inline-start: auto;
-}
-
+.site-home .project-voucher-proof a,
+.site-home .project-voucher-proof picture,
 .site-home .project-voucher-proof img {
   display: block;
   width: 100%;
+}
+
+.site-home .project-voucher-proof a {
+  margin: 0;
+}
+
+.site-home .project-voucher-proof img {
   height: auto;
-  padding: 7px;
-  background: #fff;
-  border-bottom: 2px dotted #d8d5cf;
-  box-shadow: 0 8px 22px #00000012;
 }
 
 .site-home .project-voucher-proof figcaption {
-  margin-top: 9px;
+  margin-top: 8px;
+  text-align: center;
 }
 
 .site-home .project-proof,
@@ -1679,11 +1680,6 @@ html[data-reading-motion] .site-home::before {
   font-family: var(--mono);
   font-size: .8125rem;
   letter-spacing: .02em;
-}
-
-.site-home .footer-cat {
-  font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
-  letter-spacing: normal;
 }
 
 /* Shared navigation for literary pages */
