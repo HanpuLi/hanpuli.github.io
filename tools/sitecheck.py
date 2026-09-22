@@ -153,7 +153,8 @@ def check_css(errors: list[str]) -> None:
             parsed = urlsplit(ref)
             if parsed.scheme or parsed.netloc or ref.startswith("data:"):
                 continue
-            target = (css.parent / unquote(parsed.path)).resolve()
+            target = ((ROOT / unquote(parsed.path).lstrip('/')) if parsed.path.startswith('/')
+                      else (css.parent / unquote(parsed.path))).resolve()
             if not target.exists():
                 line = text.count("\n", 0, match.start()) + 1
                 errors.append(f"{css.relative_to(ROOT)}:{line}: missing CSS asset {ref!r}")
@@ -172,6 +173,7 @@ def check_discovery(errors: list[str]) -> None:
         for page in ("ci.html", "shi.html", "about.html"):
             expected.add(f"{base_url}{prefix}/{page}")
         expected.add(f"{base_url}{prefix}/writing/trainspotting/")
+        expected.add(f"{base_url}{prefix}/poetry-voucher/")
 
     sitemap = ROOT / "sitemap.xml"
     try:

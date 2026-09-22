@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{HTML_LANG}}" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{PV_TITLE}} · Hanpu Li</title>
+<meta name="description" content="{{PV_DESCRIPTION}}">
+<link rel="canonical" href="{{CANONICAL_URL}}">
+{{HREFLANG_LINKS}}
+{{SOCIAL_META}}
+{{ICON_LINKS}}
+<script src="/assets/accessibility.js"></script>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/poetry-voucher.css">
+{{STRUCTURED_DATA}}
+</head>
+<body class="essay-page voucher-project locale-{{LOCALE}}">
+<a class="skip-link" href="#main">{{common.skip_content}}</a>
+{{READING_TOOLS}}
+<div class="wrap">
+<header class="page-topbar">
+  <a class="page-wordmark" href="{{HOME_HREF}}">{{PRIMARY_NAME}} <span lang="zh-Hant-HK">{{CHINESE_NAME}}</span></a>
+  <nav class="page-nav" aria-label="{{common.site_nav_label_attr}}">{{PORTFOLIO_NAV}}</nav>
+  <nav class="page-languages" aria-label="{{common.language_nav_label_attr}}">{{LANG_SWITCHER}}</nav>
+</header>
+<main id="main" tabindex="-1">
+  <section class="pv-intro" aria-labelledby="pv-title">
+    <div class="pv-heading"><p class="eyebrow">{{PV_TYPE}} · 2026</p><h1 id="pv-title"><span lang="en">Poetry<br><em>Voucher</em></span></h1><p class="pv-subtitle">{{PV_SUBTITLE}}</p></div>
+    <div class="pv-description"><p>{{PV_DESCRIPTION}}</p><a class="pv-cta" href="{{PV_MAKE_URL}}">{{PV_MAKE}} <span aria-hidden="true">↗</span></a><a class="pv-text-link" href="{{CI_HREF}}">{{PV_READ}} <span aria-hidden="true">↗</span></a></div>
+  </section>
+  <figure class="pv-sample" aria-label="{{PV_PREVIEW_ALT}}">
+    <div class="pv-papers"><div><p>{{PV_RECEIPT}}</p><img src="/poetry-voucher/sample-receipt.png" width="384" height="614" alt="{{PV_RECEIPT}}" decoding="async"></div><div><p>{{PV_VOUCHER}}</p><img src="/poetry-voucher/sample-voucher.png" width="384" height="559" alt="{{PV_VOUCHER}}" decoding="async"></div></div>
+    <figcaption>{{PV_SAMPLE}}</figcaption>
+  </figure>
+  <div class="pv-notes">
+    <section><p class="eyebrow">01</p><h2>{{PV_PROCESS}}</h2><p>{{PV_PROCESS_BODY}}</p></section>
+    <section><p class="eyebrow">02</p><h2>{{PV_PRIVACY}}</h2><p>{{PV_PRIVACY_BODY}}</p></section>
+    <section><p class="eyebrow">03</p><h2>{{PV_HARDWARE}}</h2><p>{{PV_HARDWARE_BODY}}</p></section>
+  </div>
+  <div class="pv-end"><a class="pv-cta" href="{{PV_MAKE_URL}}">{{PV_EDIT}} <span aria-hidden="true">↗</span></a><p>58 mm / 384 dots / 1 bit</p></div>
+</main>
+<footer class="page-footer"><p><a href="{{HOME_HREF}}">← Hanpu Li</a></p><p><a href="{{CI_HREF}}">{{PV_READ}}</a> · <a href="{{ABOUT_HREF}}">{{ABOUT_LINK_LABEL}}</a></p></footer>
+</div>
+</body>
+</html>

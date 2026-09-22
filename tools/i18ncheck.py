@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -385,6 +386,14 @@ def main() -> int:
             (CONTENT / "shi-simplified.json").read_text(encoding="utf-8"),
             load(CONTENT / "essay-trainspotting.json")["zh-hans"]["language_note"],
             json.dumps(about_site["zh-hans"], ensure_ascii=False),
+            json.dumps(load(CONTENT / "poetry-voucher.json")["zh-hans"], ensure_ascii=False),
+            subprocess.check_output([
+                "node", "-e",
+                "const fs=require('node:fs'),vm=require('node:vm');"
+                "const s=fs.readFileSync('content/poetry-voucher-app/i18n.js','utf8');"
+                "process.stdout.write(vm.runInNewContext(s.split('const traditionalOverrides')[0]"
+                "+ ';localeRows.map(row=>row[2]).join(\"\")'));"
+            ], cwd=ROOT, text=True),
         ]
     )
     forbidden_traditional = set("體語攝寫詞詩電郵證據閱讀顯儲裝襯線縮欄寬簡動對虛擬製遙經濟擴綠轉換檔錄劇膠發義聲幀長評論會這兩倫學麗後無題頂頁別處")

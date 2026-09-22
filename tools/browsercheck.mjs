@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { spawn } from "node:child_process";
+import { readFile } from "node:fs/promises";
 import { setTimeout as sleep } from "node:timers/promises";
 import AxeBuilder from "@axe-core/playwright";
 import { chromium } from "@playwright/test";
@@ -13,6 +14,7 @@ const pageSuffixes = [
   "shi.html",
   "about.html",
   "writing/trainspotting/",
+  "poetry-voucher/",
   "404.html",
 ];
 const widths = [320, 390, 520, 640, 768, 900, 1024, 1440, 1728];
@@ -176,6 +178,44 @@ try {
     }
   }
 
+  // The maker is deliberately separate from the static project page.
+  await page.goto(BASE + '/poetry-voucher/make.html?lang=en');
+  await page.locator('#full-pdf').waitFor({ state: 'visible' });
+  const studioWidths = [320, 390, 768, 1440];
+  for (const locale of ['en', 'zh-Hant', 'zh-Hans', 'ja', 'de', 'fr', 'ru']) {
+    const originalProof = await page.locator('#full-pdf').getAttribute('href');
+    await page.locator('#ui-locale').selectOption(locale);
+    if (await page.locator('#full-pdf').getAttribute('href') !== originalProof) {
+      failures.push(`studio ${locale}: locale switch regenerated the proof`);
+    }
+    for (const width of studioWidths) {
+      await page.setViewportSize({ width, height: 900 });
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1);
+      if (overflow) failures.push(`studio ${locale} @ ${width}: horizontal overflow`);
+      if (['en', 'zh-Hans'].includes(locale) && axeWidths.has(width)) {
+        const results = await new AxeBuilder({ page }).analyze();
+        for (const violation of results.violations) {
+          failures.push(`studio ${locale} @ ${width}: axe ${violation.id}: ${violation.help}`);
+        }
+      }
+    }
+  }
+  await page.locator('#work').selectOption('custom');
+  await page.locator('#title').fill('Browser QA');
+  await page.locator('#poem').fill('One line\n\nAnother line');
+  await page.locator('#generate').click();
+  await page.locator('#full-pdf').waitFor({ state: 'visible' });
+  const downloadReady = page.waitForEvent('download');
+  await page.locator('#full-pdf').click();
+  const download = await downloadReady;
+  const pdfBytes = await readFile(await download.path());
+  const imageWidth = await page.locator('#full-image').evaluate(image => image.naturalWidth);
+  if (!pdfBytes.subarray(0,8).equals(Buffer.from('%PDF-1.4')) || imageWidth !== 384) {
+    failures.push('studio: invalid generated PDF or PNG');
+  }
+  await page.locator('#poem').fill('An edit after generation');
+  if (await page.locator('#full-pdf').isVisible()) failures.push('studio: stale download still available after edit');
+
   await context.close();
 } finally {
   if (browser) await browser.close();
@@ -189,5 +229,6 @@ if (failures.length) {
 }
 console.log(
   `browsercheck: ${locales.length * pageSuffixes.length * widths.length} geometry cases and ` +
-  `${axeLocales.size * pageSuffixes.length * axeWidths.size} representative axe scans passed`
+  `${axeLocales.size * pageSuffixes.length * axeWidths.size} representative axe scans passed; ` +
+  'studio: 28 geometry cases, 4 axe scans, locale stability and custom export passed'
 );

@@ -15,6 +15,7 @@ python3 tools/i18ncheck.py
 python3 tools/a11ycheck.py
 node --check assets/accessibility.js
 python3 tools/sitecheck.py
+node tools/poetrycheck.mjs
 ```
 
 The localisation checker enforces locale-schema parity, the complete literary corpus, Simplified-Chinese script data and line/stanza parity, generated `hreflang` metadata and the shared social/structured-data contract. The accessibility checker covers landmark and heading structure, accessible names, labelled controls, skip-link targets, keyboard-order hazards and reading-preference controls. The site checker verifies local links and fragments, image/CSS assets, duplicate IDs, image alt text, document language, titles, viewport metadata and valid JSON-LD without making network requests.
@@ -34,6 +35,19 @@ uv run --with opencc-python-reimplemented python tools/update_simplified_literar
 ```
 
 The mirrors record the source SHA-256 and CI fails if they become stale. Editorial Simplified-Chinese UI copy in `content/locales/zh-hans.json` is maintained separately and is not overwritten by that helper.
+
+## Poetry Voucher
+
+The portfolio now includes [Poetry Voucher](https://hanpuli.github.io/poetry-voucher/):
+a seven-language project overview and a separate [browser-only studio](https://hanpuli.github.io/poetry-voucher/make.html?lang=en).
+The studio uses an authored locale dictionary to preserve unsaved work during
+language changes. No framework, remote printing, payment provider or text
+upload is involved. Its authoring map is in `content/README.md`.
+
+The QA suite includes all overview routes, 28 studio viewport/locale cases,
+four studio axe scans, custom-text export and stale-download checks. The
+browser-free poetry checks cover 91,456 tender/change combinations, item
+pricing, CJK clause wrapping, translation completeness and public-data safety.
 
 ## Accessibility
 

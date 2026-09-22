@@ -42,6 +42,7 @@ def page_paths() -> list[Path]:
     return [
         *portfolio_paths(),
         *essay_paths(),
+        *[ROOT / locale / "poetry-voucher" / "index.html" for locale in LOCALES],
         ROOT / "mail-assistant" / "index.html",
         ROOT / "mail-assistant" / "privacy.html",
         ROOT / "mail-assistant" / "terms.html",

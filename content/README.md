@@ -20,7 +20,7 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `about-site.json` — localised implementation notes for the public About-this-site page, including architecture, typography, accessibility, performance and QA.
 
 English is the default site at `/`. Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are emitted at
-`/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Ordinary language switching is static navigation and the published pages do not translate at runtime. The one exception is the root custom 404: GitHub Pages uses that same file for real missing URLs under every locale, so it contains a small path-aware router that selects the already-authored locale copy in place while preserving the 404 response.
+`/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Ordinary language switching is static navigation. Two interactive exceptions select already-authored copy at runtime: the root custom 404 router (preserving the 404 response), and the Poetry Voucher studio (preserving the visitor's unsaved text while changing interface language).
 
 ## Editing
 
@@ -61,3 +61,25 @@ uv run --with fonttools --with brotli python tools/rebuild-zh-hans-font.py
 ```
 
 Never add Garamond Premier Pro or another licensed local font to the repository.
+
+## Poetry Voucher
+
+The public project has two surfaces: seven static `/poetry-voucher/` overview
+editions and one browser-only `/poetry-voucher/make.html?lang=…` studio.
+Edit overview copy in `poetry-voucher.json`, the studio template in
+`../templates/poetry-voucher-studio.html`, and its JavaScript, data and CSS in
+`poetry-voucher-app/`. Run `python3 tools/build_site.py` to publish those sources
+to the generated routes. Do not edit the generated copies independently.
+
+The studio reuses `/assets/fonts/`; run both font-subsetting helpers after CJK
+copy changes. `node tools/poetrycheck.mjs` checks pricing, payment denominations,
+line breaking, translation completeness and the public-data boundary. The
+ordinary site checks cover links, metadata, HTML and overview accessibility.
+The GitHub browser suite includes all seven overview routes.
+
+There is no payment service, text upload, persistent text storage or physical
+printer API in this public app. Do not copy private device configuration,
+identifiers, credentials or print-service code into it. Public `TILL` and `PRN`
+values are display aliases, not hardware serial numbers. Custom glyphs outside
+the site's font subsets fall back to device fonts. Physical print calibration
+is separate from digital proofing.

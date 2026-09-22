@@ -20,7 +20,7 @@ CONTENT = ROOT / "content"
 TEMPLATES = ROOT / "templates"
 TOKEN_RE = re.compile(r"{{([A-Za-z0-9_.]+)}}")
 ROOT_LOCALE = "en"
-PAGES = ("index", "ci", "shi", "about", "404")
+PAGES = ("index", "ci", "shi", "about", "404", "poetry-voucher")
 
 
 def load_json(path: Path) -> Any:
@@ -38,6 +38,7 @@ SHI_SOURCE = load_json(CONTENT / "shi-source.json")
 SHI_SIMPLIFIED = load_json(CONTENT / "shi-simplified.json")
 TRAINSPOTTING_ESSAY = load_json(CONTENT / "essay-trainspotting.json")
 ABOUT_SITE = load_json(CONTENT / "about-site.json")
+POETRY_VOUCHER = load_json(CONTENT / "poetry-voucher.json")
 CHINESE_LOCALES = {"zh", "zh-hans"}
 BASE_URL = IDENTITY["site_url"].rstrip("/")
 PERSON_ID = f"{BASE_URL}/#person"
@@ -86,6 +87,8 @@ def validate_locale_schema(locale_id: str, locale: dict[str, Any], base: dict[st
 
 
 def page_path(locale_id: str, page: str) -> str:
+    if page == "poetry-voucher":
+        return ("/" if locale_id == ROOT_LOCALE else f"/{locale_id}/") + "poetry-voucher/"
     if page == "index":
         return "/" if locale_id == ROOT_LOCALE else f"/{locale_id}/"
     name = f"{page}.html"
@@ -140,6 +143,8 @@ def essay_language_switcher(locale_id: str) -> str:
 
 def output_path(locale_id: str, page: str) -> Path:
     folder = ROOT if locale_id == ROOT_LOCALE else ROOT / locale_id
+    if page == "poetry-voucher":
+        return folder / page / "index.html"
     return folder / ("index.html" if page == "index" else f"{page}.html")
 
 
@@ -318,6 +323,7 @@ def structured_data_html(
             "ci": "CollectionPage",
             "shi": "CollectionPage",
             "essay": "Article",
+            "poetry-voucher": "CreativeWork",
         }
         page_type = type_map[page_kind]
         node = {
@@ -875,6 +881,13 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         social_alt = meta_title
         og_type = "article"
         page_kind = page
+    elif page == "poetry-voucher":
+        meta_title = POETRY_VOUCHER[locale_id]["title"] + " · Hanpu Li"
+        meta_description = POETRY_VOUCHER[locale_id]["description"]
+        social_image = f"{BASE_URL}/poetry-voucher/sample-voucher.png"
+        social_alt = POETRY_VOUCHER[locale_id]["preview_alt"]
+        social_width, social_height, social_type = 384, 559, "image/png"
+        og_type, page_kind = "article", "poetry-voucher"
     elif page == "about":
         meta_title = about["meta_title"]
         meta_description = about["meta_description"]
@@ -933,6 +946,9 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         else ""
     )
     return {
+        **{"PV_" + key.upper(): html.escape(value, quote=True) for key, value in POETRY_VOUCHER[locale_id].items()},
+        "PV_HREF": page_path(locale_id, "poetry-voucher"),
+        "PV_MAKE_URL": "/poetry-voucher/make.html?lang=" + {"zh":"zh-Hant", "zh-hans":"zh-Hans"}.get(locale_id, locale_id),
         "HTML_LANG": html.escape(lang["html_lang"], quote=True),
         "SOURCE_LANG": "zh-Hans" if locale_id == "zh-hans" else "zh-Hant-HK",
         "CI_GLYPH": "词" if locale_id == "zh-hans" else "詞",
@@ -944,7 +960,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "OG_LOCALE": html.escape(lang["og_locale"], quote=True),
         "SOCIAL_META": social_meta,
         "STRUCTURED_DATA": structured_data,
-        "ICON_LINKS": icon_links("/" if page == "404" else asset_prefix(locale_id)),
+        "ICON_LINKS": icon_links("/" if page in {"404", "poetry-voucher"} else asset_prefix(locale_id)),
         "FONT_PRELOADS": font_preloads(locale_id, page),
         "NOTFOUND_RUNTIME": notfound_runtime() if page == "404" and locale_id == ROOT_LOCALE else "",
         "READING_TOOLS": reading_tools(locale),
@@ -1022,6 +1038,10 @@ def render_page(locale_id: str, page: str, locale: dict[str, Any]) -> str:
 
 
 def build(check: bool = False) -> list[Path]:
+    if set(POETRY_VOUCHER) != set(LANG_BY_ID):
+        raise BuildError("Poetry Voucher locale mismatch")
+    for lid, copy in POETRY_VOUCHER.items():
+        validate_locale_schema(lid, copy, POETRY_VOUCHER["en"])
     en_locale = load_json(CONTENT / "locales" / "en.json")
     locales: dict[str, dict[str, Any]] = {}
     for language in LANGUAGES:
@@ -1066,6 +1086,8 @@ def build(check: bool = False) -> list[Path]:
             (ROOT / lid).mkdir(exist_ok=True)
         for page in PAGES:
             target = output_path(lid, page)
+            if not check:
+                target.parent.mkdir(parents=True, exist_ok=True)
             rendered = render_page(lid, page, locale)
             if not rendered.endswith("\n"):
                 rendered += "\n"
@@ -1154,7 +1176,7 @@ def build(check: bool = False) -> list[Path]:
     sitemap_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
                      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for language in LANGUAGES:
-        for page in ("index", "ci", "shi", "about"):
+        for page in ("index", "ci", "shi", "about", "poetry-voucher"):
             sitemap_lines.append(f'  <url><loc>{html.escape(absolute_url(language["id"], page))}</loc></url>')
         sitemap_lines.append(f'  <url><loc>{html.escape(BASE_URL + essay_page_path(language["id"]))}</loc></url>')
     sitemap_lines.append("</urlset>")
@@ -1166,6 +1188,17 @@ def build(check: bool = False) -> list[Path]:
         if not check:
             sitemap_path.write_text(sitemap, encoding="utf-8")
 
+    app_sources = [(TEMPLATES / 'poetry-voucher-studio.html', ROOT / 'poetry-voucher' / 'make.html')]
+    # Explicit public bundle: never sweep private printer files into the output.
+    app_sources += [(CONTENT / 'poetry-voucher-app' / name, ROOT / 'poetry-voucher' / name)
+                    for name in ('gallery.js', 'i18n.js', 'editions.json', 'studio.css')]
+    for source, target in app_sources:
+        data = source.read_bytes()
+        if not target.exists() or target.read_bytes() != data:
+            changed.append(target)
+            if not check:
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(data)
     return changed
 
 

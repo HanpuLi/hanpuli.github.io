@@ -67,6 +67,16 @@ def collect_text() -> str:
     text += essay["zh-hans"]["language_note"]
     about = json.loads((CONTENT / "about-site.json").read_text(encoding="utf-8"))
     text += json.dumps(about["zh-hans"], ensure_ascii=False)
+    voucher = json.loads((CONTENT / "poetry-voucher.json").read_text(encoding="utf-8"))
+    text += json.dumps(voucher["zh-hans"], ensure_ascii=False)
+    # Include the local interactive studio's Simplified-Chinese interface.
+    text += subprocess.check_output([
+        "node", "-e",
+        "const fs=require('node:fs'),vm=require('node:vm');"
+        "const s=fs.readFileSync('content/poetry-voucher-app/i18n.js','utf8');"
+        "process.stdout.write(vm.runInNewContext(s.split('const traditionalOverrides')[0]"
+        "+ ';localeRows.map(row=>row[2]).join(\"\")'));"
+    ], cwd=ROOT, text=True)
     return "".join(sorted({char for char in text if wanted_character(char)}))
 
 

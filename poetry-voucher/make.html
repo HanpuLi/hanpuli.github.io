@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-locale="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Make a Poetry Voucher by Hanpu Li. A browser-only poetry typesetting studio for 58 mm paper.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' blob: data:; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="noindex,follow">
+<title>Poetry Voucher Studio · Hanpu Li</title>
+<link rel="icon" type="image/svg+xml" href="/assets/site-mark.svg">
+<link rel="canonical" href="https://hanpuli.github.io/poetry-voucher/make.html">
+<link rel="stylesheet" href="studio.css">
+<script src="i18n.js" defer></script><script src="gallery.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#edition">跳至作品</a>
+<header class="studio-header">
+  <a class="signature" href="https://hanpuli.github.io/">Hanpu Li <span lang="zh-Hant">李函璞</span></a>
+  <nav aria-label="頁面導航"><a data-project-link href="/poetry-voucher/">作品介紹</a><span aria-current="page">製作室</span></nav>
+  <select id="ui-locale" aria-label="Language"><option value="en">English</option><option value="zh-Hant">繁體中文</option><option value="zh-Hans">简体中文</option><option value="ja">日本語</option><option value="de">Deutsch</option><option value="fr">Français</option><option value="ru">Русский</option></select>
+</header>
+<main id="edition" tabindex="-1">
+  <div class="studio-heading"><div><p class="eyebrow">POETRY VOUCHER / STUDIO</p><h1>製作一張詩券</h1></div><p class="studio-deck">選詩、排版，帶走一份數位作品。</p></div>
+  <div class="workspace">
+    <section class="controls" aria-label="作品編輯器">
+      <fieldset><legend><span aria-hidden="true">01</span> 內容</legend>
+        <label for="work">從作品開始</label><select id="work" disabled><option>載入作品…</option></select><p id="source-note" class="note"></p>
+        <label for="title">題名</label><input id="title" type="text" maxlength="160">
+        <label for="author">署名</label><input id="author" type="text" maxlength="100">
+        <label for="poem">正文 / 保留分行與分節</label><textarea id="poem" maxlength="1800" spellcheck="false" aria-describedby="privacy-note"></textarea>
+      </fieldset>
+      <fieldset><legend><span aria-hidden="true">02</span> 排版</legend>
+        <label for="font">詩券字體</label><select id="font"><option value="standard">標準無襯線體 · 已包含</option><option value="site" selected>個人站字體 · +£1.99</option></select>
+        <div class="pair"><div><label for="language">版本</label><select id="language"><option value="receipt">原文</option><option value="bilingual">原文與站上英譯</option></select></div><div><label for="size">字號 / dots</label><select id="size"><option>22</option><option selected>24</option><option>26</option></select></div></div>
+        <p class="note">特殊字體使用個人站的明朝體與 EB Garamond。附加英譯 +£1.99，僅提供已有原站英譯的作品。</p>
+      </fieldset>
+      <details class="receipt-details"><summary>小票明細與虛構計價</summary>
+        <div class="pair"><div><label for="price">標價 / GBP</label><input id="price" type="text" value="0.00" readonly></div><div id="tender-group"><label for="tender">現金 / GBP</label><input id="tender" type="text" value="0.00" readonly></div></div>
+        <div id="price-breakdown" class="note"></div><p id="price-weights" class="note"></p><p id="payment-summary" class="note"></p><p id="cash-notes" class="note"></p><p id="price-change" class="note"></p>
+        <p class="note">PV3：原文按字數、非空行和分節加權，向上調至最近的 £x.99。標點、空格、題名及署名不計字數。特殊字體、英譯及自選內容各加 £1.99；自寫或修改原作即屬自選內容。英譯不重複計字費，各商品相加為總價。</p>
+        <p class="note">每次生成隨機安排刷卡、紙幣、硬幣或混合現金；超過 £10 不安排純硬幣。現金足額，找零使用流通面額。切換語言不重抽；全部為虛構交易。</p>
+      </details>
+      <div class="make-action"><button id="generate" type="button" class="primary" disabled>製作我的詩券 ↗</button><p id="message" role="status" aria-live="polite">正在載入作品…</p></div>
+      <p id="privacy-note" class="note">文字只在這個瀏覽器頁面中處理，不上傳、不自動儲存。下載不會讓 H10S 出紙；離開前請保存作品。</p>
+    </section>
+    <section class="proof-area" aria-label="數位校樣" tabindex="-1">
+      <div class="proof-toolbar"><h2><span aria-hidden="true">03</span> 校樣</h2><div class="view-switch" role="group" aria-label="預覽方式"><button type="button" data-view="pair" aria-pressed="true">分開看</button><button type="button" data-view="full" aria-pressed="false">完整紙條</button><button type="button" data-view="text" aria-pressed="false">讀原文</button></div></div>
+      <div id="pair-view" class="proof-desk"><figure><figcaption>01 — RECEIPT / 小票</figcaption><div class="paper"><img id="receipt-image" src="sample-receipt.png" alt="虛構交易小票，並非購物憑證" hidden></div></figure><figure><figcaption>02 — VOUCHER / 詩券</figcaption><div class="paper"><img id="voucher-image" src="sample-voucher.png" alt="詩券排版；可切換讀原文取得文字版" hidden></div></figure></div>
+      <div id="full-view" class="proof-desk single" hidden><figure><figcaption>RECEIPT + VOUCHER / 連續紙條</figcaption><div class="paper"><img id="full-image" src="sample-voucher.png" alt="小票、CUT HERE 分隔及完整詩券" hidden></div></figure></div>
+      <article id="text-view" class="reading" hidden><h3 id="reading-title">題名</h3><p id="reading-author"></p><div id="reading-poem" class="verse"></div><section id="translation-section" hidden lang="en"><h4 id="translation-title">Translation</h4><div id="translation" class="verse"></div></section></article>
+      <div class="export-bar"><h2>帶走作品</h2><div class="downloads" role="group" aria-label="下載數位作品"><a id="full-pdf" href="#edition" hidden download="poetry-edition.pdf">完整 PDF ↓</a><a id="voucher-pdf" href="#edition" hidden download="poetry-voucher.pdf">詩券 PDF ↓</a><a id="receipt-pdf" href="#edition" hidden download="specimen-receipt.pdf">小票 PDF ↓</a><a id="full-png" href="#edition" hidden download="poetry-edition.png">PNG ↓</a></div><p id="proof-note" class="micro"></p></div>
+    </section>
+  </div>
+</main>
+<footer><a data-project-link href="/poetry-voucher/">← 作品介紹</a><span>58 mm / 384 dots / 1 bit</span><a href="https://hanpuli.github.io/">Back to portfolio ↗</a></footer>
+<noscript><p>製作詩券需要 JavaScript。<a href="/poetry-voucher/">Poetry Voucher</a></p></noscript>
+</body>
+</html>
