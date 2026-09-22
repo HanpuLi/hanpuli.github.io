@@ -78,12 +78,20 @@ Renderer policy and artwork constants have one source in `gallery.js`: `TARIFF`,
 or translated copy; dynamic pricing/type/payment notes are formatted from those
 objects. The stable documentation fixtures are named separately as
 `BASIC_SPECIMEN` in `tools/vouchertypecheck.mjs` and `EDITORIAL_SPECIMEN` in
-`tools/build_poetry_voucher_editorial.mjs`.
+`tools/build_poetry_voucher_editorial.mjs`. The overview shows B3 as an
+original-text, cash-payment basic specimen; the homepage shows B3 with the
+published English translation and a simulated card-payment editorial specimen.
+Both are frozen documentation scenes, not two views of one transaction. Reader
+text and edited published works use the visible `CUSTOM` voucher prefix so the
+code is understandable without a private abbreviation.
 
 The studio reuses `/assets/fonts/`; run both font-subsetting helpers after CJK
 copy changes. `node tools/poetrycheck.mjs` checks pricing, payment denominations,
 line breaking, translation completeness and the public-data boundary. The
-ordinary site checks cover links, metadata, HTML and overview accessibility.
+same check compares the voucher catalogue's original text and English
+translations with `ci-source.json`, `shi-source.json` and
+`shi-translations/en.json` so those copies cannot silently drift. The ordinary
+site checks cover links, metadata, HTML and overview accessibility.
 The GitHub browser suite includes all seven overview routes. After renderer or
 specimen changes, refresh the public documentation assets explicitly with
 `npm run qa:voucher -- --write-samples` and

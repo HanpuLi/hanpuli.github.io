@@ -45,7 +45,7 @@ const RECEIPT_CONFIG=Object.freeze({
   lineChars:30,
   columns:Object.freeze({qty:3,description:11,rsp:6,amount:6}),
   defaultWork:'ci-b3',
-  customWorkCode:'MS',
+  customWorkCode:'CUSTOM',
   referenceDigits:6,
   paymentRefDigits:8,
   cardEndingDigits:4,

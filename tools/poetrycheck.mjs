@@ -19,6 +19,8 @@ assert.equal(PAPER_CONFIG.paperMm*PAPER_CONFIG.dotsPerMm,PAPER_CONFIG.printableD
 const sampleRef=receiptReference(new Date('2026-09-22T12:00:00Z'),Uint8Array.from([0x12,0x34,0x56,0x78]));
 assert.equal(sampleRef,'260922419896');
 assert.match(sampleRef,/^\d{12}$/);
+assert('VOUCHER'.length+RECEIPT_CONFIG.customWorkCode.length+1+sampleRef.length<=RECEIPT_CONFIG.lineChars,
+  'custom voucher reference must fit on the receipt line');
 assert.equal(quotePoem('').price, 0);
 const base = quotePoem('春風吹\n\n雨聲來');
 assert.equal(base.characters, 6);
@@ -170,6 +172,45 @@ for (const work of data.works) {
   assert(['/ci.html', '/shi.html'].includes(url.pathname));
   assert(url.hash);
   assert(work.title && work.poem);
+}
+const ciSource=JSON.parse(read('content/ci-source.json'));
+const shiSource=JSON.parse(read('content/shi-source.json'));
+const shiEnglish=JSON.parse(read('content/shi-translations/en.json'));
+const ciById=new Map(ciSource.poems.map(poem=>[poem.id,poem]));
+assert.equal(data.works.filter(work=>work.kind==='CI').length,ciSource.poems.length);
+assert.equal(data.works.filter(work=>work.kind==='POEM').length,shiSource.drafts.reduce((count,draft)=>count+draft.parts.length,0));
+for(const work of data.works){
+  if(work.kind==='CI'){
+    const id=work.id.slice(3),sourcePoem=ciById.get(id);
+    assert(sourcePoem,`missing canonical ci source for ${work.id}`);
+    assert.equal(work.id,`ci-${sourcePoem.id}`);
+    assert.equal(work.source_id,id.toUpperCase(),work.id);
+    assert.equal(work.source_url,`https://hanpuli.github.io/ci.html#${id}`,work.id);
+    assert.equal(work.title,sourcePoem.source_title,work.id);
+    assert.equal(work.poem,sourcePoem.source_body,work.id);
+    assert.equal(work.translation_title,sourcePoem.en.title,work.id);
+    assert.equal(work.translation,sourcePoem.en.body,work.id);
+    assert.equal(work.collection,sourcePoem.voice==='separate'?'詞':ciSource.title,work.id);
+    const edition=sourcePoem.date||(
+      ciSource.outside_dates[id]?`外編 · ${ciSource.outside_dates[id]}`:`集作日期 ${ciSource.cycle_date}`
+    );
+    assert.equal(work.edition,edition,work.id);
+    continue;
+  }
+  assert.equal(work.kind,'POEM',work.id);
+  const match=/^shi-d([1-9]\d*)-([1-9]\d*)$/.exec(work.id);
+  assert(match,`invalid shi catalogue id: ${work.id}`);
+  const [draftNumber,partNumber]=match.slice(1).map(Number);
+  const draft=shiSource.drafts[draftNumber-1],part=draft?.parts[partNumber-1];
+  const translatedPart=shiEnglish.drafts[draftNumber-1]?.parts[partNumber-1];
+  assert(part&&translatedPart,`missing canonical shi source for ${work.id}`);
+  assert.equal(work.source_id,`D${draftNumber}.${partNumber}`,work.id);
+  assert.equal(work.source_url,'https://hanpuli.github.io/shi.html#drafts',work.id);
+  assert.equal(work.collection,shiSource.title,work.id);
+  assert.equal(work.title,`${shiSource.title} · ${part.number}`,work.id);
+  assert.equal(work.edition,draft.title,work.id);
+  assert.equal(work.poem,part.body,work.id);
+  assert.equal(work.translation,translatedPart.body,work.id);
 }
 for (const file of ['gallery.js', 'i18n.js', 'editions.json', 'studio.css']) {
   const text = read('content/poetry-voucher-app/' + file);
