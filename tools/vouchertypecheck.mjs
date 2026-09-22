@@ -15,11 +15,12 @@ try{
   assert.equal(await page.locator('#font').inputValue(),'bitmap');
   assert.equal(await page.locator('#price').inputValue(),'2.99');
   const rows=await page.evaluate(async()=>{
-    await document.fonts.load('24px FusionPixel',works.map(w=>w.poem+w.translation).join(''));
+    const sample=works.map(w=>w.poem+w.translation).join('');
+    await Promise.all([...new Set(Object.values(bitmapFaces))].map(f=>document.fonts.load(`24px ${f}`,sample)));
     const summaries=[];
     for(const work of works)for(const font of ['bitmap','site'])for(const size of typeSizes(font))for(const bilingual of [false,true]){
       const translation=bilingual?work.translation||'':'',q=quotePoem(work.poem,translation,font);
-      const spec={work,original:true,font,size,title:work.title,author:work.author,poem:work.poem,translation,
+      const spec={work,original:true,font,size,locale:'zh-Hant',title:work.title,author:work.author,poem:work.poem,translation,
         created:new Date('2026-09-22T12:00:00Z'),ref:'SAMPLE000001',...q,method:'cash'};
       const rendered=render(spec),data=rendered.full.getContext('2d').getImageData(0,0,384,rendered.full.height).data;
       let binary=true;for(let i=0;i<data.length;i++){if(i%4===3?data[i]!==255:data[i]!==0&&data[i]!==255){binary=false;break;}}
@@ -53,30 +54,33 @@ try{
   await cdp.send('DOM.enable');await cdp.send('CSS.enable');
   for(const [locale,text] of Object.entries(samples)){
     await page.locator('#ui-locale').selectOption(locale);
-    const rendered=await page.evaluate(async({text})=>{
-      await document.fonts.load('24px FusionPixel',text);
+    const rendered=await page.evaluate(async({locale,text})=>{
+      const family=bitmapFace(locale);
+      await document.fonts.load(`24px ${family}`,text);
       let probe=document.getElementById('font-audit');
       if(!probe){probe=document.createElement('span');probe.id='font-audit';document.body.append(probe);}
-      probe.style.cssText='position:fixed;top:0;left:0;z-index:9999;background:white;color:black;font:24px '+bitmap;
+      probe.style.cssText='position:fixed;top:0;left:0;z-index:9999;background:white;color:black;font:24px '+bitmapFamily(locale);
       probe.textContent=text;probe.getBoundingClientRect();
       await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
-      const image=font=>{const q=quotePoem(text,'',font,true);return render({work:null,original:false,font,size:24,
+      const image=font=>{const q=quotePoem(text,'',font,true);return render({work:null,original:false,font,size:24,locale,
         title:text,author:'',poem:text,translation:'',ref:'SAMPLE000001',created:new Date('2026-09-22T12:00:00Z'),...q,method:'cash'}).voucher.toDataURL();};
-      return {different:image('bitmap')!==image('site'),pixelFee:quotePoem(text,'','bitmap',true).items.filter(i=>i.id==='font').length,
+      return {family,different:image('bitmap')!==image('site'),pixelFee:quotePoem(text,'','bitmap',true).items.filter(i=>i.id==='font').length,
         siteFee:quotePoem(text,'','site',true).items.find(i=>i.id==='font').amount};
-    },{text});
-    assert.deepEqual(rendered,{different:true,pixelFee:0,siteFee:199});
+    },{locale,text});
+    const expectedFamily={'zh-Hant':'FusionPixelZhHK','zh-Hans':'FusionPixelZhHans',ja:'FusionPixelJa',en:'FusionPixelLatin',de:'FusionPixelLatin',fr:'FusionPixelLatin',ru:'FusionPixelLatin'}[locale];
+    assert.deepEqual(rendered,{family:expectedFamily,different:true,pixelFee:0,siteFee:199});
     const {root}=await cdp.send('DOM.getDocument');
     const {nodeId}=await cdp.send('DOM.querySelector',{nodeId:root.nodeId,selector:'#font-audit'});
     const {fonts}=await cdp.send('CSS.getPlatformFontsForNode',{nodeId});
-    assert(fonts.length>0&&fonts.every(f=>f.isCustomFont&&/Fusion Pixel/.test(f.familyName)),`${locale}: unexpected pixel-font fallback: ${JSON.stringify(fonts)}`);
+    const expectedFlavor={'zh-Hant':'zh-HK','zh-Hans':'zh-Hans',ja:'ja',en:'latin',de:'latin',fr:'latin',ru:'latin'}[locale];
+    assert(fonts.length>0&&fonts.every(f=>f.isCustomFont&&f.familyName.includes(`Fusion Pixel 12px Mono ${expectedFlavor}`)),`${locale}: unexpected pixel-font fallback: ${JSON.stringify(fonts)}`);
   }
   await page.evaluate(()=>document.getElementById('font-audit').remove());await cdp.detach();
   // Sample assets are refreshed only by explicit authoring command, never by QA.
   if(process.argv.includes('--write-samples')){
     const samples=await page.evaluate(()=>{
       const work=works.find(w=>w.id==='ci-b3'),q=quotePoem(work.poem,'','bitmap');
-      const r=render({work,original:true,font:'bitmap',size:24,title:work.title,author:work.author,poem:work.poem,translation:'',ref:'SAMPLE000001',created:new Date('2026-09-22T12:00:00Z'),...q,method:'cash'});
+      const r=render({work,original:true,font:'bitmap',size:24,locale:'zh-Hant',title:work.title,author:work.author,poem:work.poem,translation:'',ref:'SAMPLE000001',created:new Date('2026-09-22T12:00:00Z'),...q,method:'cash'});
       return {receipt:r.receipt.toDataURL(),voucher:r.voucher.toDataURL()};
     });
     for(const [kind,data] of Object.entries(samples))await writeFile(`poetry-voucher/sample-${kind}.png`,Buffer.from(data.split(',')[1],'base64'));

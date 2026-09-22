@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 // Browser-free invariants for the public studio. Rendering is tested in-browser.
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
-const read = path => readFileSync(new URL('../' + path, import.meta.url), 'utf8');
+const file = path => readFileSync(new URL('../' + path, import.meta.url));
+const read = path => file(path).toString('utf8');
+const sha256 = path => createHash('sha256').update(file(path)).digest('hex');
 const source = read('content/poetry-voucher-app/gallery.js');
-const { quotePoem, automaticPayment, wrapText, typeSizes } = vm.runInNewContext(
-  source.split('const $=')[0] + ';({quotePoem,automaticPayment,wrapText,typeSizes})'
+const { quotePoem, automaticPayment, wrapText, typeSizes, bitmapFace } = vm.runInNewContext(
+  source.split('const $=')[0] + ';({quotePoem,automaticPayment,wrapText,typeSizes,bitmapFace})'
 );
 const count = parts => parts.reduce((sum, part) => sum + part.value * part.count, 0);
 assert.equal(quotePoem('').price, 0);
@@ -30,6 +33,20 @@ for(const poem of ['A poem','詩詞','诗词','詩とひらがな','Größe für
 }
 assert.deepEqual(Array.from(typeSizes('bitmap')),[24,36]);
 assert.deepEqual(Array.from(typeSizes('site')),[22,24,26]);
+assert.equal(bitmapFace('zh-Hant'),'FusionPixelZhHK');
+assert.equal(bitmapFace('zh-Hans'),'FusionPixelZhHans');
+assert.equal(bitmapFace('ja'),'FusionPixelJa');
+for(const locale of ['en','de','fr','ru'])assert.equal(bitmapFace(locale),'FusionPixelLatin');
+const pixelFonts={
+  'assets/fonts/fusion-pixel-12px-latin.woff2':'095cfda45b63eedc1e985da815ef73c1c910e698b5632098076af83738f109e1',
+  'assets/fonts/fusion-pixel-12px-zh-hans.woff2':'01559eceaa1bda8d59bf4a44ab95674c346ffd3a25582eea201947324e707a2a',
+  'assets/fonts/fusion-pixel-12px-zh-hk.woff2':'573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c',
+  'assets/fonts/fusion-pixel-12px-ja.woff2':'1ddc7d7112d8deb626c1ab1714b180983d637c590a4c516dcb0277a100db573b'
+};
+for(const [path,hash] of Object.entries(pixelFonts))assert.equal(sha256(path),hash,path);
+const studioCss=read('content/poetry-voucher-app/studio.css');
+for(const family of ['FusionPixelLatin','FusionPixelZhHans','FusionPixelZhHK','FusionPixelJa'])assert(studioCss.includes(`font-family:${family};`),family);
+assert(!studioCss.includes('fusion-pixel-12px-zh-hant.woff2'));
 assert(extra.items.every(item => item.amount % 100 === 99));
 const line='燭暗蛩寒簾影瘦，殘酲猶帶微温。';
 const wrapped=wrapText(line,text=>[...text].length*24);

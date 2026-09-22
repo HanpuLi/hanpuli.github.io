@@ -77,17 +77,22 @@ line breaking, translation completeness and the public-data boundary. The
 ordinary site checks cover links, metadata, HTML and overview accessibility.
 The GitHub browser suite includes all seven overview routes.
 
-The default voucher typeface is Fusion Pixel, included for every supported
-language (the bundled Traditional-Chinese variant also contains Latin accents,
-Cyrillic, kana and Simplified-Chinese glyphs). Its 12-dot native grid uses
-24/36-dot body sizes; small metadata stays at 12 dots. The optional website
-typeface edition adds £1.99 regardless of script: EB Garamond for Latin and
-Cyrillic alongside the site's CJK fonts, with 22/24/26-dot body sizes. This
-is not a Mincho-only surcharge. The Latin author masthead is
-fixed identity typography, not a separately charged option. Switching fonts
-keeps a compatible size or resets to 24 and invalidates stale downloads.
-The full unmodified pixel webfont and its upstream OFL notices are bundled
-under assets/fonts; it is not dependent on system fonts for catalogue works.
+The default voucher typefaces are language-specific Fusion Pixel 12px Mono
+builds fetched from the upstream live preview on 2026-09-22 and pinned locally
+by SHA-256 (see `assets/fonts/LICENSES.md`):
+`zh_hk` for Traditional Chinese (Hong Kong), `zh_hans` for Simplified Chinese,
+`ja` for Japanese, and `latin` for English, German, French and Russian.
+Catalogue works keep their source language (Hong Kong Traditional Chinese)
+regardless of the studio UI locale; published English translations use the
+Latin build. Custom text follows the studio UI locale. The 12-dot native grid
+uses 24/36-dot body sizes; small metadata stays at 12 dots. The optional
+website typeface edition adds £1.99 regardless of script: EB Garamond for Latin
+and Cyrillic alongside the site's CJK fonts, with 22/24/26-dot body sizes. This
+is not a Mincho-only surcharge. The Latin author masthead is fixed identity
+typography, not a separately charged option. Switching fonts keeps a compatible
+size or resets to 24 and invalidates stale downloads. The generated pixel
+webfonts and their upstream OFL notices are bundled under assets/fonts; catalogue
+works do not depend on system fonts.
 
 There is no payment service, text upload, persistent text storage or physical
 printer API in this public app. Do not copy private device configuration,
