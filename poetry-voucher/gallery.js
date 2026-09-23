@@ -160,9 +160,11 @@ function quotePoem(poem,translation='',font='bitmap',custom=false,translationLoc
   const edition=lines?Math.ceil((weighted-TARIFF.roundEnding)/TARIFF.roundUnit)*TARIFF.roundUnit+TARIFF.roundEnding:0;
   const items=lines?[sku('poem',edition)]:[];
   if(lines&&font==='site')items.push(sku('font',TARIFF.addOn));
-  if(lines&&translation.trim()){
-    if(!Object.hasOwn(TRANSLATION_RECEIPTS,translationLocale))throw Error('Unsupported translation language.');
-    items.push({...sku('translation',TARIFF.addOn),label:translationLocale==='zh-Hans'?'附加簡體版':SKU_DEFINITIONS.translation.label,receipt:TRANSLATION_RECEIPTS[translationLocale]});
+  const additions=Array.isArray(translation)?translation:translation.trim()?[{locale:translationLocale,body:translation}]:[];
+  for(const addition of additions){
+    if(!lines||!addition.body?.trim())continue;
+    if(!Object.hasOwn(TRANSLATION_RECEIPTS,addition.locale))throw Error('Unsupported translation language.');
+    items.push({...sku('translation',TARIFF.addOn),label:addition.locale==='zh-Hans'?'附加簡體版':SKU_DEFINITIONS.translation.label,receipt:TRANSLATION_RECEIPTS[addition.locale]});
   }
   if(lines&&custom)items.push(sku('custom',TARIFF.addOn));
   const price=items.reduce((sum,item)=>sum+itemAmount(item),0);
@@ -328,8 +330,8 @@ function syncTypeSize(){
   $('size').value=String(sizes.includes(current)?current:TYPE_CONFIG.defaultSize);
 }
 function updatePrice(reroll=false){
-  const w=currentWork(),selected=selectedTranslation(w);
-  const quote=quotePoem($('poem').value,selected?.body||'',$('font').value,!unchanged(w),selected?.locale||'en');
+  const w=currentWork(),selected=selectedTranslations(w);
+  const quote=quotePoem(document.body.classList.contains('shop-page')&&unchanged(w)?w.poem:$('poem').value,selected,$('font').value,!unchanged(w));
   if(reroll){const bytes=new Uint32Array(2);crypto.getRandomValues(bytes);paymentRoll=bytes[0]/4294967296;cashRoll=bytes[1]/4294967296;}
   Object.assign(quote,automaticPayment(quote.price,paymentRoll??0,cashRoll));
   const modes={card:'刷卡 · 模擬交易',notes:'現金 · 自動紙幣',coins:'現金 · 硬幣支付',mixed:'現金 · 紙幣硬幣混合支付'};
@@ -348,10 +350,18 @@ function updatePrice(reroll=false){
   return quote;
 }
 function currentWork(){return works.find(w=>w.id===$('work').value);}
-function unchanged(w){return w&&['title','author','poem'].every(k=>$(k).value===w[k]);}
+function unchanged(w){
+  if(!w)return false;
+  const simplified=document.body.classList.contains('shop-page')&&$('original-script').value==='zh-Hans'?w.translations?.['zh-Hans']:null;
+  return $('title').value===(simplified?.title||w.title)&&$('author').value===w.author&&$('poem').value===(simplified?.body||w.poem);
+}
 function selectedTranslation(work){
   const locale=$('language').value;
   return unchanged(work)&&work.translations?.[locale]?{locale,...work.translations[locale]}:null;
+}
+function selectedTranslations(work){
+  if(document.body.classList.contains('shop-page'))return unchanged(work)?[...document.querySelectorAll('#translation-options input:checked')].map(input=>({locale:input.value,...work.translations[input.value]})):[];
+  const selected=selectedTranslation(work);return selected?[selected]:[];
 }
 function dirty(event){
   if(event?.target?.id==='font')syncTypeSize();
@@ -364,6 +374,12 @@ function dirty(event){
   const w=currentWork(),paired=unchanged(w);
   for(const option of $('language').options)if(option.value!=='receipt')option.disabled=!paired||!w.translations?.[option.value];
   if(!paired)$('language').value='receipt';
+  if(document.body.classList.contains('shop-page')){
+    $('original-script').disabled=!paired;
+    $('script-choice').hidden=!paired;
+    document.querySelectorAll('#translation-options input').forEach(input=>{input.disabled=!paired||!w.translations?.[input.value];if(input.disabled)input.checked=false;});
+    $('translation-options').hidden=!paired;
+  }
   try{updatePrice();}catch(error){message(error.message);return;}
   message('內容已改動；點「製作我的詩券」更新校樣。');
   document.querySelectorAll('.downloads a').forEach(a=>a.hidden=true);
@@ -372,6 +388,10 @@ function loadWork(){
   const w=currentWork();
   for(const key of ['title','author','poem'])$(key).value=w?w[key]:'';
   $('language').value='receipt';
+  if(document.body.classList.contains('shop-page')){
+    $('original-script').value='zh-Hant';
+    document.querySelectorAll('#translation-options input').forEach(input=>input.checked=false);
+  }
   updateSource();
   dirty();
 }
@@ -415,7 +435,7 @@ function barcodeBits(ref){
 }
 function render(spec){
   const p=new Paper(),ref=spec.ref,code=spec.original?spec.work.source_id:RECEIPT_CONFIG.customWorkCode,voucher=spec.voucherId||code+'-'+ref,contentLocale=spec.locale||(spec.original?'zh-Hant':'en');
-  const bodyFont=spec.font==='site'?serif:bitmapFamily(contentLocale),translationFont=spec.font==='site'?serif:bitmapFamily(spec.translationLocale||'en');
+  const bodyFont=spec.font==='site'?serif:bitmapFamily(contentLocale),translationFont=locale=>spec.font==='site'?serif:bitmapFamily(locale);
   p.threshold=TYPE_CONFIG.threshold[spec.font];
   const items=spec.items||[sku('poem',spec.price)],meta=receiptMeta(ref),tax=vatSummary(items);
   if(items.reduce((sum,item)=>sum+itemAmount(item),0)!==spec.price)throw Error('Receipt total does not match item amounts.');
@@ -466,7 +486,11 @@ function renderVoucherBody(p,spec,voucher,bodyFont,translationFont){
   if(!spec.original&&spec.author)p.text(spec.author,14,bodyFont,false,20);
   if(!spec.original){p.space(4);label('READER EDITION',false);}p.space(16);
   for(const line of spec.poem.split('\n')){if(line)p.text(line,spec.size,bodyFont);else p.space(18);}
-  if(spec.translation){p.space(14);p.text(spec.translationTitle||spec.work?.translations?.[spec.translationLocale||'en']?.title||'',TYPE_CONFIG.translation,translationFont,false,24,true);p.space(6);for(const line of spec.translation.split('\n')){if(line)p.text(line,TYPE_CONFIG.translation,translationFont,false,24);else p.space(10);}}
+  const translations=Array.isArray(spec.translations)?spec.translations:(spec.translation?[{locale:spec.translationLocale||'en',title:spec.translationTitle,body:spec.translation}]:[]);
+  for(const translation of translations){const family=typeof translationFont==='function'?translationFont(translation.locale):translationFont;
+    p.space(14);p.text(translation.title||spec.work?.translations?.[translation.locale]?.title||'',TYPE_CONFIG.translation,family,false,24,true);p.space(6);
+    for(const line of translation.body.split('\n')){if(line)p.text(line,TYPE_CONFIG.translation,family,false,24);else p.space(10);}
+  }
   p.space(14);
   if(spec.original){if(spec.work.edition)label(spec.work.edition,true,bodyFont);label(spec.work.source_url.replace('https://',''));}
   p.space(12);label('ART EDITION');label('NO CASH VALUE');
@@ -495,10 +519,11 @@ async function generate(event){
   const currentRevision=revision;
   try{
     message('在此裝置排版中…');
-    const work=currentWork(),original=unchanged(work),size=Number($('size').value),selected=selectedTranslation(work);
+    const work=currentWork(),original=unchanged(work),size=Number($('size').value),selected=selectedTranslations(work),shop=document.body.classList.contains('shop-page');
     const quote=updatePrice(true);
-    const spec={title:$('title').value.trim(),author:$('author').value,poem:$('poem').value.replace(/\r\n?/g,'\n'),size,work,original,locale:original?'zh-Hant':uiLocale,
-      price:quote.price,tender:quote.tender,method:quote.method,items:quote.items,font:$('font').value,created:new Date(),translation:selected?.body||'',translationTitle:selected?.title||'',translationLocale:selected?.locale||''};
+    const script=shop&&original?$('original-script').value:'zh-Hant',scriptText=script==='zh-Hans'?work.translations['zh-Hans']:null;
+    const spec={title:scriptText?.title||$('title').value.trim(),author:$('author').value,poem:scriptText?.body||$('poem').value.replace(/\r\n?/g,'\n'),size,work,original,locale:original?script:uiLocale,
+      price:quote.price,tender:quote.tender,method:quote.method,items:quote.items,font:$('font').value,created:new Date(),translations:shop?selected:undefined,translation:selected[0]?.body||'',translationTitle:selected[0]?.title||'',translationLocale:selected[0]?.locale||''};
     if(!spec.title||!spec.poem.trim())throw Error('請填寫題名和正文。');
     if(spec.title.length>INPUT_LIMITS.title||spec.author.length>INPUT_LIMITS.author||spec.poem.length>INPUT_LIMITS.poem)throw Error('文字超出長度上限。');
     if(/[\u0000-\u0008\u000b-\u001f\u007f]/.test(spec.title+spec.author+spec.poem))throw Error('文字包含不支援的控制字元。');
@@ -506,10 +531,10 @@ async function generate(event){
     if(spec.tender<spec.price)throw Error('現金不能低於標價。');
     if(!['bitmap','site'].includes(spec.font)||!typeSizes(spec.font).includes(size))throw Error('不支援的字號。');
     const random=new Uint8Array(4);crypto.getRandomValues(random);spec.ref=receiptReference(spec.created,random);
-    const fontSample=spec.poem+spec.title+spec.author+(work?.edition||'')+spec.translationTitle+spec.translation+'李函璞';
+    const fontSample=spec.poem+spec.title+spec.author+(work?.edition||'')+selected.map(item=>item.title+item.body).join('')+'李函璞';
     const pixelLoads=new Set();
     if(spec.font==='bitmap')pixelLoads.add(bitmapFace(spec.locale));
-    if(spec.font==='bitmap'&&spec.translation)pixelLoads.add(bitmapFace(spec.translationLocale));
+    if(spec.font==='bitmap')selected.forEach(item=>pixelLoads.add(bitmapFace(item.locale)));
     if(spec.original)pixelLoads.add(bitmapFace('zh-Hant'));
     await Promise.all([
       ...['EB','Courier','ShipCommon','Ship','IMing','Noto','FusionPixelLatin'].map(f=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px ${f}`,fontSample)),
@@ -521,8 +546,8 @@ async function generate(event){
     objectURLs.forEach(URL.revokeObjectURL);objectURLs=[];
     for(const kind of ['receipt','voucher','full']){$(kind+'-image').src=result[kind].toDataURL('image/png');$(kind+'-image').hidden=false;$(kind+'-pdf').href=blobURL(pdf(result[kind]));$(kind+'-pdf').hidden=false;}
     $('full-png').href=blobURL(png);$('full-png').hidden=false;
-    $('reading-title').textContent=spec.title;$('reading-author').textContent=spec.author;$('reading-poem').textContent=spec.poem;
-    $('translation-section').hidden=!spec.translation;$('translation-section').lang=spec.translationLocale||'en';$('translation-title').textContent=spec.translationTitle;$('translation').textContent=spec.translation;
+    $('reading-title').textContent=spec.title;$('reading-author').textContent=spec.author;$('reading-poem').textContent=spec.poem;$('reading-poem').lang=spec.locale;
+    $('translation-section').hidden=!selected.length;$('translation-section').lang=selected[0]?.locale||'en';$('translation-title').textContent=selected.map(item=>item.title).join(' / ');$('translation').textContent=selected.map(item=>item.body).join('\n\n');
     proofState={ref:spec.ref,original,mm:(result.full.height+PAPER_CONFIG.pdfVerticalMarginDots*2)/PAPER_CONFIG.dotsPerMm};updateLocale();
     message('詩券已生成，可下載。沒有上傳文字，也沒有發出打印任務。');
     if(event?.type==='click'&&matchMedia('(max-width:680px)').matches){
@@ -537,7 +562,19 @@ document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',(
   for(const name of ['pair','full','text'])$(name+'-view').hidden=name!==b.dataset.view;
   document.querySelectorAll('[data-view]').forEach(other=>other.setAttribute('aria-pressed',String(other===b)));
 }));
-fields.forEach(id=>$(id).addEventListener('input',dirty));$('work').addEventListener('change',loadWork);$('generate').addEventListener('click',generate);
+fields.forEach(id=>$(id).addEventListener('input',dirty));
+if(document.body.classList.contains('shop-page')){
+  $('original-script').addEventListener('change',event=>{
+    const w=currentWork(),simple=w?.translations?.['zh-Hans'];
+    if(w&&simple&&$('author').value===w.author&&[[w.title,w.poem],[simple.title,simple.body]].some(([title,poem])=>$('title').value===title&&$('poem').value===poem)){
+      $('title').value=event.target.value==='zh-Hans'?simple.title:w.title;
+      $('poem').value=event.target.value==='zh-Hans'?simple.body:w.poem;
+    }
+    dirty(event);
+  });
+  document.querySelectorAll('#translation-options input').forEach(input=>input.addEventListener('change',dirty));
+}
+$('work').addEventListener('change',loadWork);$('generate').addEventListener('click',generate);
 (async()=>{try{
   const r=await fetch('editions.json');if(!r.ok)throw Error('作品目錄暫時無法載入，請重新整理。');
   const data=await r.json();works=data.works;patterns=data.patterns;codes=data.code128;stopCode=data.code128_stop;

@@ -28,8 +28,6 @@ npm run qa
 
 This validates tracked public HTML, then uses Chromium to exercise the seven portfolio locales at 320, 390, 520, 640, 768, 900, 1024, 1440 and 1728 px across the home, ci, poem, About, Credits & contexts, essay, Poetry Voucher and 404 page types. Each page is loaded once and resized through the matrix so intermediate-width regressions are covered without multiplying network waits. It checks page-level overflow, clipped navigation labels, overlapping interactive targets and wide-screen 404 quotation wrapping across every locale. Since the dependency-free accessibility checker already inspects every generated page structurally, axe-core runs the eight page types in representative English and Simplified-Chinese editions at narrow and wide widths rather than repeating the same DOM audit seven times. A second browser pass serves real missing URLs with GitHub Pages-style custom-404 semantics and verifies the 404 status, path-based locale selection, root-relative stylesheet loading, language switching and axe results at phone and desktop widths. The same suite runs in the `browser-qa` CI job after the dependency-free checks pass.
 
-The `qa:editorial` pass checks line breaks that overflow and axe cannot judge: French punctuation and eyebrow grouping, the Japanese research title, the English photography note and the wide contexts heading. It also checks the Russian Chinese-name font run and verifies that reading options remain a 44 px target in normal page flow.
-
 The Traditional Chinese literary source remains canonical. When `content/ci-source.json` or `content/shi-source.json` changes, regenerate the script-only Simplified Chinese mirrors before building:
 
 ```sh
@@ -43,7 +41,9 @@ The mirrors record the source SHA-256 and CI fails if they become stale. Editori
 The portfolio includes [Poetry Voucher](https://hanpuli.github.io/poetry-voucher/):
 a seven-language project overview, a [poetry shop](https://hanpuli.github.io/poetry-voucher/shop.html?lang=en),
 and the original [single-edition studio](https://hanpuli.github.io/poetry-voucher/make.html?lang=en).
-The shop offers all 23 catalogue works, configurable editions, a persistent local
+The shop offers all 23 catalogue works, a Traditional or Simplified Chinese
+original and independently selectable English, Japanese, German, French and
+Russian translation add-ons, a persistent local
 bag, fictional checkout and downloadable receipts and vouchers. Each order freezes
 its contents, prices and payment scene. A whole-order PDF contains one receipt
 (which can continue onto further pages) and separately numbered poetry vouchers.

@@ -10,18 +10,22 @@
   let bag=[],editingId=null,editingLocale='en',busy=false,ready=false,storageOK=true,toastTimer,toastKey=null,editorStatusKey=null,checkoutStatusKey=null,orders=[],pendingOrder=null;
   const clone=value=>JSON.parse(JSON.stringify(value));
   const units=()=>bag.reduce((sum,line)=>sum+line.quantity,0);
-  const keyOf=line=>JSON.stringify([line.workId,line.title,line.author,line.poem,line.locale,line.language,line.font,line.size]);
+  const keyOf=line=>JSON.stringify([line.workId,line.title,line.author,line.poem,line.locale,line.translations,line.font,line.size]);
   const workFor=line=>works.find(work=>work.id===line.workId);
-  function quote(line){const w=workFor(line),paired=line.language==='receipt'?null:w?.translations?.[line.language];return quotePoem(line.poem,paired?.body||'',line.font,!w,paired?line.language:'en');}
+  function quote(line){const w=workFor(line),additions=(line.translations||[]).map(locale=>({locale,body:w?.translations?.[locale]?.body||''}));return quotePoem(w?.poem||line.poem,additions,line.font,!w);}
   function validateLine(raw){
     if(!raw||typeof raw!=='object'||!Number.isInteger(raw.quantity)||raw.quantity<1||raw.quantity>MAX_UNITS)throw Error('quantity');
     if(!['bitmap','site'].includes(raw.font)||!typeSizes(raw.font).includes(raw.size))throw Error('type');
     if(!SHOP_LANGS.includes(raw.locale))throw Error('locale');
     const w=works.find(work=>work.id===raw.workId);
-    const line={id:crypto.randomUUID(),workId:w?.id||null,font:raw.font,size:raw.size,language:raw.language,locale:w?'zh-Hant':raw.locale,quantity:raw.quantity};
+    const legacy=raw.language&&raw.language!=='receipt'?raw.language:null;
+    const locale=w?(raw.locale==='zh-Hans'||legacy==='zh-Hans'?'zh-Hans':'zh-Hant'):raw.locale;
+    const translations=w?(Array.isArray(raw.translations)?raw.translations:legacy&&legacy!=='zh-Hans'?[legacy]:[]):[];
+    if(translations.length>5||new Set(translations).size!==translations.length||translations.some(value=>!['en','ja','de','fr','ru'].includes(value)||!w.translations?.[value]))throw Error('translation');
+    const line={id:crypto.randomUUID(),workId:w?.id||null,font:raw.font,size:raw.size,locale,translations:['en','ja','de','fr','ru'].filter(value=>translations.includes(value)),quantity:raw.quantity};
     if(raw.workId&&!w)throw Error('work');
-    if(w){for(const k of ['title','author','poem'])line[k]=w[k];if(line.language!=='receipt'&&!w.translations?.[line.language])throw Error('translation');}
-    else {for(const k of ['title','author','poem']){if(typeof raw[k]!=='string'||raw[k].length>INPUT_LIMITS[k])throw Error('text');line[k]=raw[k];}line.language='receipt';}
+    if(w){line.title=locale==='zh-Hans'?w.translations['zh-Hans'].title:w.title;line.author=w.author;line.poem=locale==='zh-Hans'?w.translations['zh-Hans'].body:w.poem;}
+    else {for(const k of ['title','author','poem']){if(typeof raw[k]!=='string'||raw[k].length>INPUT_LIMITS[k])throw Error('text');line[k]=raw[k];}}
     if(!line.title.trim()||!line.poem.trim()||/[\u0000-\u0008\u000b-\u001f\u007f]/.test(line.title+line.author+line.poem)||/[\r\n]/.test(line.title+line.author))throw Error('text');
     if(!quote(line).price)throw Error('empty');
     return line;
@@ -49,8 +53,8 @@
     const work=currentWork(),original=unchanged(work),reading=work?.translations?.[uiLocale]||work;
     el('shop-reading').hidden=!original;el('original-language-note').hidden=!original;
     if(original){el('shop-reading-title').textContent=reading.title;el('shop-reading-text').textContent=reading.body||reading.poem;el('shop-reading-title').lang=el('shop-reading-text').lang=work.translations?.[uiLocale]?contentLang(uiLocale):'zh-Hant-HK';}
-    for(const id of ['title','author','poem'])el(id).lang=original?'zh-Hant-HK':contentLang(editingLocale);
-    el('language').options[0].textContent=t('originalLanguage');
+    for(const id of ['title','author','poem'])el(id).lang=original?contentLang(el('original-script').value):contentLang(editingLocale);
+    el('original-language-note').textContent=el('original-script').value==='zh-Hans'?t('originalSimplified'):t('originalLanguage');
   }
   function catalogue(){
     const grid=el('product-grid'),search=el('shop-search').value.trim().toLocaleLowerCase(),filter=el('shop-filter').value;
@@ -74,7 +78,7 @@
   }
   function addDefault(work){
     editingId=null;
-    const line=validateLine({workId:work.id,font:'bitmap',size:TYPE_CONFIG.defaultSize,language:'receipt',locale:'zh-Hant',quantity:1});
+    const line=validateLine({workId:work.id,font:'bitmap',size:TYPE_CONFIG.defaultSize,locale:'zh-Hant',translations:[],quantity:1});
     insert(line);
   }
   function insert(line){
@@ -87,18 +91,18 @@
   function openEditor(workId,line=null){
     editorStatusKey=null;el('editor-status').textContent='';editingId=line?.id||null;editingLocale=line?.locale||uiLocale;
     el('work').value=workId||'custom';loadWork();
-    if(line){for(const k of ['title','author','poem','font','language'])el(k).value=line[k];syncTypeSize();el('size').value=String(line.size);dirty();}
+    if(line){for(const k of ['title','author','poem'])el(k).value=line[k];el('font').value=line.font;el('original-script').value=line.workId?line.locale:'zh-Hant';document.querySelectorAll('#translation-options input').forEach(input=>input.checked=line.translations.includes(input.value));syncTypeSize();el('size').value=String(line.size);dirty();}
     else {el('font').value='bitmap';syncTypeSize();el('size').value=String(TYPE_CONFIG.defaultSize);dirty();}
     el('save-line').textContent=t(line?'save':'add');editorPrice();show('product-editor');
   }
-  function editorPrice(){editorReading();try{el('editor-price').textContent=uiMoney(updatePrice().price);}catch{el('editor-price').textContent='—';}}
+  function editorPrice(){editorReading();el('typeface-note').textContent=t('typefaceShopNote').replace('{price}',uiMoney(TARIFF.addOn));try{el('editor-price').textContent=uiMoney(updatePrice().price);}catch{el('editor-price').textContent='—';}}
   function saveEditor(){
     const w=currentWork(),original=unchanged(w);
     if(!el('title').value.trim()||!el('poem').value.trim()){notify('required');return;}
-    try{const line=validateLine({workId:original?w.id:null,title:el('title').value.trim(),author:el('author').value,poem:el('poem').value.replace(/\r\n?/g,'\n'),locale:original?'zh-Hant':editingLocale,font:el('font').value,size:Number(el('size').value),language:original?el('language').value:'receipt',quantity:1});if(insert(line))close('product-editor');}
+    try{const line=validateLine({workId:original?w.id:null,title:el('title').value.trim(),author:el('author').value,poem:el('poem').value.replace(/\r\n?/g,'\n'),locale:original?el('original-script').value:editingLocale,translations:original?[...document.querySelectorAll('#translation-options input:checked')].map(input=>input.value):[],font:el('font').value,size:Number(el('size').value),quantity:1});if(insert(line))close('product-editor');}
     catch{notify('invalid');}
   }
-  function lineDetails(line){return `${line.language==='receipt'?(line.workId?t('originalLanguage'):languageName(line.locale)):t('paired')+' · '+languageName(line.language)} / ${line.font==='site'?tr('網站字體'):tr('點陣體 · 預設，已包含')} / ${line.size}`;}
+  function lineDetails(line){const script=line.workId?(line.locale==='zh-Hans'?t('originalSimplified'):t('originalLanguage')):languageName(line.locale),added=line.translations.length?' + '+line.translations.map(languageName).join(', '):'';return `${script}${added} / ${line.font==='site'?tr('網站字體'):tr('點陣體 · 預設，已包含')} / ${line.size}`;}
   function renderBag(focusId=null){
     el('bag-count').textContent=String(units());const container=el('bag-lines');container.replaceChildren();
     if(!bag.length)container.append(node('p',t('empty'),'empty-bag'));
@@ -164,15 +168,15 @@
     return {ref,created,lines,items,total,units:units(),tariff:TARIFF.version,payment:automaticPayment(total,random[0]/4294967296,random[1]/4294967296)};
   }
   async function prepare(order){
-    const sample=order.lines.map(line=>line.poem+line.title+line.author+(line.work?.translations?.[line.language]?.body||'')).join('')+'李函璞';
+    const sample=order.lines.map(line=>line.poem+line.title+line.author+line.translations.map(locale=>line.work?.translations?.[locale]?.body||'').join('')).join('')+'李函璞';
     await Promise.all(['EB','Courier','ShipCommon','Ship','IMing','Noto',...new Set(SHOP_LANGS.map(bitmapFace))].map(font=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px ${font}`,sample)));
     await document.fonts.load(`italic ${TYPE_CONFIG.translation}px EB`);
     const receipt=receiptPages(order),vouchers=[];let index=0;
-    for(const line of order.lines){const translation=line.work?.translations?.[line.language];
+    for(const line of order.lines){const translations=line.translations.map(locale=>({locale,...line.work.translations[locale]}));
       for(let unit=0;unit<line.quantity;unit++){
         index++;const voucherId=(line.work?.source_id||'CUSTOM')+'-'+order.ref+'-'+String(index).padStart(2,'0'),paper=new PagedPaper();paper.threshold=TYPE_CONFIG.threshold[line.font];
-        const spec={...line,original:!!line.work,translation:translation?.body||'',translationTitle:translation?.title||'',translationLocale:line.language};
-        renderVoucherBody(paper,spec,voucherId,line.font==='site'?serif:bitmapFamily(line.locale),line.font==='site'?serif:bitmapFamily(line.language));
+        const spec={...line,original:!!line.work,translations};
+        renderVoucherBody(paper,spec,voucherId,line.font==='site'?serif:bitmapFamily(line.locale),locale=>line.font==='site'?serif:bitmapFamily(locale));
         const pages=paper.finishPages();vouchers.push({id:voucherId,title:line.title,line,pages});
         await new Promise(resolve=>setTimeout(resolve,0));
       }
@@ -191,7 +195,7 @@
       const receipt=node('figure',undefined,'receipt-proof');receipt.append(node('figcaption',t('receipt')+' / '+order.ref));for(const page of result.receipt){const img=node('img');img.src=page.toDataURL('image/png');img.alt=t('receipt')+' '+order.ref;img.width=page.width;img.height=page.height;receipt.append(img);}proofs.append(receipt);
       for(const voucher of result.vouchers){const figure=node('figure',undefined,'voucher-proof');figure.dataset.lineId=voucher.line.id;figure.append(node('figcaption',lineTitle(voucher.line)),node('p',voucher.id,'micro'));for(const [i,page] of voucher.pages.entries()){const img=node('img');img.src=page.toDataURL('image/png');img.alt=voucher.title+' / '+(i+1);img.width=page.width;img.height=page.height;img.loading='lazy';figure.append(img);const png=await new Promise(resolve=>page.toBlob(resolve,'image/png'));if(!png)throw Error('PNG encoding');figure.append(download('PNG'+(voucher.pages.length>1?' '+(i+1):''),png,`${voucher.id}-${i+1}.png`,urls));}figure.append(download('PDF',multipagePDF(voucher.pages),voucher.id+'.pdf',urls));proofs.append(figure);}
       // Accessible text remains available alongside the image proofs.
-      for(const line of order.lines){const reading=node('details',undefined,'order-reading');reading.dataset.lineId=line.id;const original=node('p',line.poem,'verse');original.lang=contentLang(line.locale);reading.append(node('summary',lineTitle(line)),original);const translated=line.work?.translations?.[line.language];if(translated){const text=node('p',translated.body,'verse');text.lang=line.language;reading.append(text);}section.append(reading);}
+      for(const line of order.lines){const reading=node('details',undefined,'order-reading');reading.dataset.lineId=line.id;const original=node('p',line.poem,'verse');original.lang=contentLang(line.locale);reading.append(node('summary',lineTitle(line)),original);for(const locale of line.translations){const translated=line.work?.translations?.[locale];if(translated){const text=node('p',translated.body,'verse');text.lang=locale;reading.append(text);}}section.append(reading);}
       section.prepend(heading,proofs);updateOrderUI(order,section);return {section,urls};
     }catch(error){urls.forEach(URL.revokeObjectURL);throw error;}
   }
@@ -213,6 +217,7 @@
     if(!saved){orderPageStatus='orderMissing';el('order-heading').textContent=t('order');el('order-page-status').textContent=t(orderPageStatus);return;}
     try{
       const order=JSON.parse(saved);if(order.ref!==ref||!Array.isArray(order.lines)||order.lines.length>MAX_UNITS)throw Error('saved order');
+      for(const line of order.lines)if(!Array.isArray(line.translations))line.translations=line.language&&line.language!=='receipt'?[line.language]:[];
       order.created=new Date(order.created);const result=await prepare(order),output=await outputOrder(order,result);
       orders.push({order,...output});el('order-proofs').replaceChildren(output.section);orderPageStatus=null;el('order-page-status').textContent='';el('order-heading').focus({preventScroll:true});
     }catch(error){console.error('Saved order could not be opened',error);orderPageStatus='orderUnavailable';el('order-heading').textContent=t('order');el('order-page-status').textContent=t(orderPageStatus);}
@@ -227,7 +232,7 @@
     finally{busy=false;el('place-order').disabled=false;el('back-to-bag').disabled=false;renderBag();}
   }
   function translateUI(){
-    document.querySelectorAll('[data-shop]').forEach(n=>n.textContent=t(n.dataset.shop));document.querySelectorAll('[data-shop-placeholder]').forEach(n=>n.placeholder=t(n.dataset.shopPlaceholder));document.querySelectorAll('[data-order-link]').forEach(n=>n.href='order.html?lang='+encodeURIComponent(uiLocale));document.title=t(orderPage?'order':'shop')+' · Poetry Voucher · Hanpu Li';if(orderPageStatus){el('order-page-status').textContent=t(orderPageStatus);if(orderPageStatus!=='orderLoading')el('order-heading').textContent=t('order');}
+    document.querySelectorAll('[data-shop]').forEach(n=>n.textContent=t(n.dataset.shop).replace('{price}',uiMoney(TARIFF.addOn)));document.querySelectorAll('[data-shop-placeholder]').forEach(n=>n.placeholder=t(n.dataset.shopPlaceholder));document.querySelectorAll('[data-order-link]').forEach(n=>n.href='order.html?lang='+encodeURIComponent(uiLocale));document.title=t(orderPage?'order':'shop')+' · Poetry Voucher · Hanpu Li';if(orderPageStatus){el('order-page-status').textContent=t(orderPageStatus);if(orderPageStatus!=='orderLoading')el('order-heading').textContent=t('order');}
     if(ready){catalogue();renderBag();renderCheckout();editorPrice();}for(const entry of orders)updateOrderUI(entry.order,entry.section);if(toastKey)el('shop-status').textContent=t(toastKey);if(editorStatusKey)el('editor-status').textContent=t(editorStatusKey);if(checkoutStatusKey)el('checkout-status').textContent=t(checkoutStatusKey);if(editingId)el('save-line').textContent=t('save');
   }
   document.querySelectorAll('[data-close]').forEach(n=>n.addEventListener('click',()=>{if(!busy)close(n.dataset.close);}));
@@ -235,7 +240,7 @@
   el('open-bag').addEventListener('click',()=>show('bag-dialog'));el('custom-work').addEventListener('click',()=>openEditor(null));el('save-line').addEventListener('click',saveEditor);
   el('save-custom').addEventListener('change',persist);el('shop-search').addEventListener('input',catalogue);el('shop-filter').addEventListener('change',catalogue);el('to-checkout').addEventListener('click',checkout);el('place-order').addEventListener('click',placeOrder);
   el('back-to-bag').addEventListener('click',()=>{close('checkout-dialog');show('bag-dialog');});
-  document.querySelector('.controls').addEventListener('input',editorPrice);el('work').addEventListener('change',editorPrice);
+  document.querySelector('.controls').addEventListener('input',editorPrice);el('work').addEventListener('change',editorPrice);el('original-script').addEventListener('change',editorPrice);
   document.addEventListener('presslocalechange',translateUI);
   const initialise=()=>{if(ready)return;ready=true;restore();translateUI();el('custom-work').disabled=false;const requested=new URL(location.href).searchParams.get('work');if(orderPage)openSavedOrder();else if(requested)openEditor(works.some(w=>w.id===requested)?requested:null);};
   document.addEventListener('catalogueready',initialise);
