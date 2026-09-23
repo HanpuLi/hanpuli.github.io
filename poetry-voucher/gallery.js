@@ -121,10 +121,28 @@ function automaticPayment(price,roll,cashRoll=0.5){
   }
   return {...paymentFor(price,mode),mode};
 }
-function sku(id,amount){
+function itemQuantity(item){
+  const quantity=item.quantity??1;
+  if(!Number.isSafeInteger(quantity)||quantity<1||quantity>10**RECEIPT_CONFIG.columns.qty-1)throw Error('Invalid receipt quantity.');
+  return quantity;
+}
+function itemUnitPrice(item){
+  // Legacy one-unit fixtures specify only amount; authored SKUs specify both.
+  const unitPrice=item.unitPrice??item.amount;
+  if(!Number.isSafeInteger(unitPrice)||unitPrice<0)throw Error('Invalid receipt unit price.');
+  return unitPrice;
+}
+function itemAmount(item){
+  const amount=itemQuantity(item)*itemUnitPrice(item);
+  if(!Number.isSafeInteger(amount)||(item.amount!==undefined&&item.amount!==amount))throw Error('Receipt line amount does not match quantity and unit price.');
+  return amount;
+}
+function sku(id,unitPrice,quantity=1){
   const definition=SKU_DEFINITIONS[id];
   if(!definition)throw Error('Unknown receipt SKU.');
-  return {...definition,amount};
+  const item={...definition,unitPrice,quantity,amount:unitPrice*quantity};
+  itemAmount(item);
+  return item;
 }
 function quotePoem(poem,translation='',font='bitmap',custom=false,translationLocale='en'){
   let characters=0,lines=0,stanzas=0;
@@ -147,7 +165,7 @@ function quotePoem(poem,translation='',font='bitmap',custom=false,translationLoc
     items.push({...sku('translation',TARIFF.addOn),label:translationLocale==='zh-Hans'?'附加簡體版':SKU_DEFINITIONS.translation.label,receipt:TRANSLATION_RECEIPTS[translationLocale]});
   }
   if(lines&&custom)items.push(sku('custom',TARIFF.addOn));
-  const price=items.reduce((sum,item)=>sum+item.amount,0);
+  const price=items.reduce((sum,item)=>sum+itemAmount(item),0);
   return {characters,lines,stanzas,base,weighted,edition,items,price,...cashPayment(price)};
 }
 // Tax codes are fictional POS display metadata attached explicitly to each SKU;
@@ -164,7 +182,7 @@ function vatSummary(items){
   const groups=new Map();
   for(const item of items){
     const rate=receiptTaxRate(item),code=receiptTaxCode(item),key=code+':'+rate,group=groups.get(key)||{rate,code,gross:0};
-    group.gross+=item.amount;groups.set(key,group);
+    group.gross+=itemAmount(item);groups.set(key,group);
   }
   return [...groups.values()].sort((a,b)=>a.rate-b.rate).map(group=>{
     const net=group.rate===0?group.gross:Math.round(group.gross*100/(100+group.rate));
@@ -219,8 +237,10 @@ function receiptItemLine(qty='',description='',rsp='',amount=''){
 }
 function receiptItemRows(item,code){
   const description=item.receipt+(item.id==='poem'?' '+code:'');
-  const lines=wrapTillField(description,RECEIPT_CONFIG.columns.description),rsp=(item.amount/100).toFixed(2),amount=rsp+receiptTaxCode(item);
-  return lines.map((line,index)=>receiptItemLine(index===0?'1':'',line,index===0?rsp:'',index===0?amount:''));
+  const quantity=String(itemQuantity(item)),rsp=(itemUnitPrice(item)/100).toFixed(2),amount=(itemAmount(item)/100).toFixed(2)+receiptTaxCode(item);
+  if(rsp.length>RECEIPT_CONFIG.columns.rsp||amount.length>RECEIPT_CONFIG.columns.amount)throw Error('Receipt line price exceeds column width.');
+  const lines=wrapTillField(description,RECEIPT_CONFIG.columns.description);
+  return lines.map((line,index)=>receiptItemLine(index===0?quantity:'',line,index===0?rsp:'',index===0?amount:''));
 }
 function wrapText(text,measure,width=PAPER_CONFIG.bodyWidthDots){
   const lines=[];let line='';
@@ -319,7 +339,7 @@ function updatePrice(reroll=false){
   const fmt=uiMoney;
   const number=n=>new Intl.NumberFormat(document.documentElement.lang).format(n);
   $('price-breakdown').replaceChildren();
-  for(const item of quote.items){const row=document.createElement('div');row.textContent=`${tr(item.label)} × 1 — ${fmt(item.amount)}`;$('price-breakdown').append(row);}
+  for(const item of quote.items){const row=document.createElement('div');row.textContent=`${tr(item.label)} × ${itemQuantity(item)} — ${fmt(itemAmount(item))}`;$('price-breakdown').append(row);}
   $('price-weights').textContent=[`${tr('基本費')} ${fmt(quote.base)}`,`${tr('字元')} ${number(quote.characters)} × ${fmt(TARIFF.character)}`,`${tr('非空行')} ${number(quote.lines)} × ${fmt(TARIFF.line)}`,`${tr('分節')} ${number(quote.stanzas)} × ${fmt(TARIFF.stanza)}`].join(' + ')+` = ${fmt(quote.weighted)}; ${fmt(quote.edition)}`;
   const parts=list=>list.map(part=>`${fmt(part.value)} × ${number(part.count)}`).join(' + ')||fmt(0);
   $('cash-notes').textContent=quote.method==='card'?tr('模擬刷卡，按總額支付；不收集卡號，不發起付款。'):`${tr('支付現金')}：${parts(quote.notes)}`;
@@ -398,6 +418,7 @@ function render(spec){
   const bodyFont=spec.font==='site'?serif:bitmapFamily(contentLocale),translationFont=spec.font==='site'?serif:bitmapFamily(spec.translationLocale||'en');
   p.threshold=TYPE_CONFIG.threshold[spec.font];
   const items=spec.items||[sku('poem',spec.price)],meta=receiptMeta(ref),tax=vatSummary(items);
+  if(items.reduce((sum,item)=>sum+itemAmount(item),0)!==spec.price)throw Error('Receipt total does not match item amounts.');
   const date=new Intl.DateTimeFormat(RECEIPT_CONFIG.locale,{timeZone:RECEIPT_CONFIG.timeZone,day:'2-digit',month:'2-digit',year:'numeric'}).format(spec.created);
   const time=new Intl.DateTimeFormat(RECEIPT_CONFIG.locale,{timeZone:RECEIPT_CONFIG.timeZone,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(spec.created);
   const merchant=RECEIPT_CONFIG.merchant,currency=RECEIPT_CONFIG.currency,separator='-'.repeat(RECEIPT_CONFIG.lineChars);
@@ -411,7 +432,7 @@ function render(spec){
   p.till('TOTAL TO PAY',currency+' '+priceText(spec.price),false,true);
   if(spec.method==='card')p.till('RECEIVED','CARD');
   else {p.till('RECEIVED',currency+' '+priceText(spec.tender));p.till('CHANGE',currency+' '+priceText(spec.tender-spec.price));}
-  p.till('NUMBER OF ITEMS',String(items.length));
+  p.till('NUMBER OF ITEMS',String(items.reduce((sum,item)=>sum+itemQuantity(item),0)));
   p.space(10);p.till('VAT SUMMARY',null,true);p.till('RATE','NET VAT GROSS');
   for(const row of tax)p.till(row.code+' '+row.rate+'%',[row.net,row.vat,row.gross].map(priceText).join(' '));
   p.till('VAT TOTAL',currency+' '+priceText(tax.reduce((sum,row)=>sum+row.vat,0)));p.till('NOT A VAT INVOICE',null,true);p.space(10);

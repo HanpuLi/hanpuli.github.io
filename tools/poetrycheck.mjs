@@ -9,8 +9,8 @@ const file = path => readFileSync(new URL('../' + path, import.meta.url));
 const read = path => file(path).toString('utf8');
 const sha256 = path => createHash('sha256').update(file(path)).digest('hex');
 const source = read('content/poetry-voucher-app/gallery.js');
-const { quotePoem, automaticPayment, wrapText, typeSizes, bitmapFace, receiptReference, receiptTaxCode, vatSummary, receiptMeta, receiptItemLine, receiptItemRows, TARIFF, UK_CASH, PAYMENT_SCENE, RECEIPT_CONFIG, PAPER_CONFIG, TYPE_CONFIG, SKU_DEFINITIONS } = vm.runInNewContext(
-  source.split('const $=')[0] + ';({quotePoem,automaticPayment,wrapText,typeSizes,bitmapFace,receiptReference,receiptTaxCode,vatSummary,receiptMeta,receiptItemLine,receiptItemRows,TARIFF,UK_CASH,PAYMENT_SCENE,RECEIPT_CONFIG,PAPER_CONFIG,TYPE_CONFIG,SKU_DEFINITIONS})'
+const { quotePoem, automaticPayment, wrapText, typeSizes, bitmapFace, receiptReference, receiptTaxCode, vatSummary, receiptMeta, receiptItemLine, receiptItemRows, itemQuantity, itemUnitPrice, itemAmount, sku, TARIFF, UK_CASH, PAYMENT_SCENE, RECEIPT_CONFIG, PAPER_CONFIG, TYPE_CONFIG, SKU_DEFINITIONS } = vm.runInNewContext(
+  source.split('const $=')[0] + ';({quotePoem,automaticPayment,wrapText,typeSizes,bitmapFace,receiptReference,receiptTaxCode,vatSummary,receiptMeta,receiptItemLine,receiptItemRows,itemQuantity,itemUnitPrice,itemAmount,sku,TARIFF,UK_CASH,PAYMENT_SCENE,RECEIPT_CONFIG,PAPER_CONFIG,TYPE_CONFIG,SKU_DEFINITIONS})'
 );
 const count = parts => parts.reduce((sum, part) => sum + part.value * part.count, 0);
 assert.equal(Object.values(PAYMENT_SCENE.weights).reduce((sum,value)=>sum+value,0),1);
@@ -44,6 +44,19 @@ for(const [locale,receipt] of Object.entries({en:'ENGLISH TRANSLATION',ja:'JAPAN
 assert.equal(TARIFF.version,'PV3');
 assert.equal(extra.price, base.price + 3 * TARIFF.addOn);
 assert.equal(extra.characters, base.characters);
+assert.deepEqual(Array.from(extra.items,item=>item.id),['poem','font','translation','custom']);
+assert.equal(extra.items.reduce((sum,item)=>sum+itemQuantity(item),0),4);
+assert(extra.items.every(item=>itemQuantity(item)===1&&itemUnitPrice(item)===itemAmount(item)));
+assert.equal(extra.items.reduce((sum,item)=>sum+itemAmount(item),0),extra.price);
+const twoUnits=sku('translation',TARIFF.addOn,2);
+assert.equal(itemQuantity(twoUnits),2);
+assert.equal(itemUnitPrice(twoUnits),TARIFF.addOn);
+assert.equal(itemAmount(twoUnits),TARIFF.addOn*2);
+assert.equal(receiptItemRows(twoUnits,'B3')[0].slice(0,3).trim(),'2');
+assert.equal(receiptItemRows(twoUnits,'B3')[0].slice(16,22).trim(),'1.99');
+assert.equal(receiptItemRows(twoUnits,'B3')[0].slice(23,29).trim(),'3.98A');
+assert.equal(vatSummary([twoUnits])[0].gross,398);
+assert.throws(()=>itemAmount({...twoUnits,amount:199}),/does not match/);
 const baseTax=Array.from(vatSummary(base.items),row=>({...row}));
 assert.equal(baseTax.length,1);
 assert.equal(baseTax[0].code,'A');

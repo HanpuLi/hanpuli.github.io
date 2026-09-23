@@ -133,6 +133,11 @@ The specimen models every displayed SKU at an illustrative 20% VAT-inclusive
 rate; this is not a determination of the VAT treatment of an actual supply.
 The item-level `RSP` and `AMT` columns show VAT-inclusive prices; `NET` in the
 VAT summary is the pre-tax amount derived from those displayed prices.
+Each distinct add-on is its own receipt line. `QTY` counts units of that line,
+`RSP` is its unit price, and `AMT` is `QTY × RSP`; the subtotal and VAT summary
+use those calculated line amounts. `NUMBER OF ITEMS` sums unit quantities across
+all lines. Selecting several different add-ons therefore increases the item
+count while each one-unit line correctly has the same `RSP` and `AMT`.
 Public store, till and terminal values are stable display aliases, not hardware
 or merchant identifiers. Operator number, fictional card ending, entry mode and
 authorization code are derived deterministically from the local receipt reference;
