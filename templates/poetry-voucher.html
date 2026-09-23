@@ -16,15 +16,17 @@
 </head>
 <body class="essay-page voucher-project locale-{{LOCALE}}">
 <a class="skip-link" href="#main">{{common.skip_content}}</a>
-{{READING_TOOLS}}
 <div class="wrap">
 <header class="page-topbar">
   <a class="page-wordmark" href="{{HOME_HREF}}">{{PRIMARY_NAME}} <span lang="zh-Hant-HK">{{CHINESE_NAME}}</span></a>
   <nav class="page-nav" aria-label="{{common.site_nav_label_attr}}">{{PORTFOLIO_NAV}}</nav>
-  <nav class="page-languages" aria-label="{{common.language_nav_label_attr}}">{{LANG_SWITCHER}}</nav>
+  <div class="page-utility">
+    <nav class="page-languages" aria-label="{{common.language_nav_label_attr}}">{{LANG_SWITCHER}}</nav>
+  </div>
+  {{READING_TOOLS}}
 </header>
 <main id="main" tabindex="-1">
-  <div class="pv-context"><a href="{{HOME_HREF}}#work">02 / {{common.nav.work}}</a><span>02.3 / 2026</span></div>
+  <div class="pv-context"><a href="{{HOME_HREF}}#work">{{PV_SECTION_NUMBER}} / {{common.nav.work}}</a><span>{{PV_PROJECT_NUMBER}} / 2026</span></div>
   <section class="pv-intro" aria-labelledby="pv-title">
     <div class="pv-heading"><p class="eyebrow">{{PV_TYPE}}</p><h1 id="pv-title"><span lang="en">Poetry<br><em>Voucher</em></span></h1><p class="pv-subtitle">{{PV_SUBTITLE}}</p></div>
     <div class="pv-description"><p>{{PV_DESCRIPTION}}</p><a class="pv-cta" href="{{PV_MAKE_URL}}">{{PV_MAKE}}</a><a class="pv-text-link" href="{{CI_HREF}}">{{PV_READ}}</a></div>

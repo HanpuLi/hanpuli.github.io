@@ -261,17 +261,19 @@ for(const work of data.works){
   const expectedShelf=work.kind==='POEM'?shiSource.title:
     ciById.get(ciId).voice==='separate'||ciSource.outside_dates[ciId]?'詞':ciSource.title;
   assert.equal(work.shelf,expectedShelf,work.id);
-  for(const language of ['receipt',...Object.keys(work.translations)]){
-    const line=shopCart.validateLine({workId:work.id,locale:'en',language,font:'bitmap',size:TYPE_CONFIG.defaultSize,quantity:1});
-    assert.equal(line.workId,work.id);assert.equal(line.poem,work.poem);assert.equal(line.language,language);
-    assert.equal(shopCart.quote(line).price,quotePoem(work.poem).price+(language==='receipt'?0:TARIFF.addOn));
-    if(language!=='receipt')assert(work.translations[language].body.trim(),`${work.id}: empty ${language}`);
+  for(const locale of ['zh-Hant','zh-Hans'])for(const translations of [[],...['en','ja','de','fr','ru'].map(language=>[language]),['en','ja','de','fr','ru']]){
+    const line=shopCart.validateLine({workId:work.id,locale,translations,font:'bitmap',size:TYPE_CONFIG.defaultSize,quantity:1});
+    assert.equal(line.workId,work.id);assert.equal(line.locale,locale);
+    assert.equal(line.poem,locale==='zh-Hans'?work.translations['zh-Hans'].body:work.poem);
+    assert.deepEqual([...line.translations],translations);
+    assert.equal(shopCart.quote(line).price,quotePoem(work.poem).price+translations.length*TARIFF.addOn);
     shopVariants++;if(work.shelf!==ciSource.title)outsideVariants++;
   }
-  assert.throws(()=>shopCart.validateLine({workId:work.id,locale:'en',language:'missing',font:'bitmap',size:TYPE_CONFIG.defaultSize,quantity:1}));
+  assert.throws(()=>shopCart.validateLine({workId:work.id,locale:'zh-Hant',translations:['missing'],font:'bitmap',size:TYPE_CONFIG.defaultSize,quantity:1}));
+  assert.throws(()=>shopCart.validateLine({workId:work.id,locale:'zh-Hant',translations:['en','en'],font:'bitmap',size:TYPE_CONFIG.defaultSize,quantity:1}));
 }
 assert.equal(data.works.filter(w=>w.shelf===ciSource.title).length,16);
-console.log(`shop catalogue: ${shopVariants} purchasable variants, including ${outsideVariants} outside the sixteen-poem cycle; actual cart validation and pricing OK`);
+console.log(`shop catalogue: ${shopVariants} checked configurations, including ${outsideVariants} outside the sixteen-poem cycle; actual cart validation and pricing OK`);
 for (const file of ['gallery.js', 'i18n.js', 'editions.json', 'studio.css']) {
   const text = read('content/poetry-voucher-app/' + file);
   assert(!/tail95239f|100\.99\.73|192\.168\.|\/api\/print|\/dev\/|Bearer\s|sendBeacon|WebSocket/.test(text), file + ': private endpoint or telemetry');

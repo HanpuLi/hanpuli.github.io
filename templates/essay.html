@@ -18,16 +18,18 @@
 </head>
 <body class="essay-page locale-{{LOCALE}}">
 <a class="skip-link" href="#essay-main">{{common.skip_content}}</a>
-{{READING_TOOLS}}
 <div class="wrap">
   <header class="page-topbar">
     <a class="page-wordmark" href="{{HOME_HREF}}">{{PRIMARY_NAME}} <span lang="zh-Hant-HK">{{CHINESE_NAME}}</span></a>
     <nav class="page-nav" aria-label="{{common.site_nav_label_attr}}">
       {{PORTFOLIO_NAV}}
     </nav>
-    <nav class="page-languages" aria-label="{{common.language_nav_label_attr}}">
-      {{ESSAY_LANG_SWITCHER}}
-    </nav>
+    <div class="page-utility">
+      <nav class="page-languages" aria-label="{{common.language_nav_label_attr}}">
+        {{ESSAY_LANG_SWITCHER}}
+      </nav>
+    </div>
+    {{READING_TOOLS}}
   </header>
 
   <main id="essay-main" tabindex="-1">

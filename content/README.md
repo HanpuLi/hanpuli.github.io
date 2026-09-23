@@ -159,8 +159,11 @@ translations in `poetry-voucher-app/shop-copy.js`, and behaviour/styles in
 The shop reuses the studio's catalogue, tariff, receipt math, type policy and
 `renderVoucherBody()`; it does not maintain a second literary corpus.
 
-A cart line holds a work or custom-text snapshot, content locale, paired edition,
-font, size and quantity. Exact configurations merge. Editing is transactional;
+A cart line holds a work or custom-text snapshot, original-script locale, any
+selected published translations, font, size and quantity. Catalogue originals
+can use Traditional or Simplified Chinese at the same base price; English,
+Japanese, German, French and Russian translations are independent add-ons and
+can be combined. Exact configurations merge. Editing is transactional;
 cancel leaves the original intact. Restored lines are validated and repriced.
 Orders freeze their texts, quantities, tariff, total and one payment scene.
 Each voucher gets an order-linked suffix; receipt SKU counts and voucher counts

@@ -165,6 +165,45 @@ PORTFOLIO_NAV_ITEMS = (
     ("06", "profile", "profile"),
 )
 
+PROJECT_ORDINALS = {
+    "poetry_voucher": 1,
+    "material": 2,
+    "scoperail": 3,
+}
+
+PHOTO_NOTE_KEEP_TOGETHER = {
+    "en": ("35 mm", "instant film", "before a take"),
+    "zh": ("35 mm", "即影即有"),
+    "zh-hans": ("35 mm", "即时成像胶片"),
+    "ja": ("35 mmフィルム", "インスタントフィルム"),
+    "de": ("35-mm-Film", "Sofortbildfilm"),
+    "fr": ("35 mm", "film instantané"),
+    "ru": ("35 мм", "моментальная плёнка"),
+}
+
+
+def section_number(section_key: str) -> str:
+    return next(
+        number for number, key, _anchor in PORTFOLIO_NAV_ITEMS if key == section_key
+    )
+
+
+def project_number(project_key: str) -> str:
+    return f"{section_number('work')}.{PROJECT_ORDINALS[project_key]}"
+
+
+def photography_note_html(locale_id: str, note: str) -> str:
+    rendered = html.escape(note)
+    for phrase in PHOTO_NOTE_KEEP_TOGETHER[locale_id]:
+        escaped_phrase = html.escape(phrase)
+        if escaped_phrase not in rendered:
+            raise BuildError(f"photography note is missing its protected phrase: {locale_id}/{phrase}")
+        rendered = rendered.replace(
+            escaped_phrase,
+            f'<span class="keep-together">{escaped_phrase}</span>',
+        )
+    return rendered
+
 
 def portfolio_nav_html(
     locale_id: str,
@@ -842,15 +881,17 @@ def notfound_locale_template(locale_id: str) -> str:
     return (
         f'<template id="{template_id}" data-html-lang="{html_lang}" data-title="{title}">\n'
         f'  <a class="skip-link" href="#main">{skip}</a>\n'
-        f'  {reading_tools(locale, inert=True)}\n'
         '  <div class="page-topbar" data-notfound-header>\n'
         f'    <a class="page-wordmark" href="{home_href}">{primary} '
         f'<span lang="zh-Hant-HK">{chinese_name}</span></a>\n'
         f'    <div class="page-nav" data-label="{site_nav_label}" data-notfound-nav>\n'
         f'      {portfolio_nav_html(locale_id, locale)}\n'
         '    </div>\n'
-        f'    <div class="page-languages" data-label="{language_nav_label}" data-notfound-languages>\n'
-        f'      {language_switcher(locale_id, "404")}\n'
+        '    <div class="page-utility">\n'
+        f'      <div class="page-languages" data-label="{language_nav_label}" data-notfound-languages>\n'
+        f'        {language_switcher(locale_id, "404")}\n'
+        '      </div>\n'
+        f'      {reading_tools(locale, inert=True)}\n'
         '    </div>\n'
         '  </div>\n'
         '  <div class="notfound-shell" data-notfound-main tabindex="-1">\n'
@@ -893,7 +934,7 @@ def notfound_runtime() -> str:
         '    source.replaceWith(element);\n'
         '    return element;\n'
         '  };\n'
-        '  const readingTools = upgrade(".reading-tools", "aside", true);\n'
+        '  upgrade(".reading-tools", "aside", true);\n'
         '  upgrade(".page-nav", "nav", true);\n'
         '  const languageNav = upgrade(".page-languages", "nav", true);\n'
         '  const topbar = upgrade(".page-topbar", "header");\n'
@@ -901,7 +942,6 @@ def notfound_runtime() -> str:
         '  if (main) { main.id = "main"; main.tabIndex = -1; }\n'
         '  for (const [selector, replacement] of [\n'
         '    [".skip-link", fragment.querySelector(".skip-link")],\n'
-        '    [".reading-tools", readingTools],\n'
         '    [".page-topbar", topbar],\n'
         '    [".notfound-shell", main],\n'
         '  ]) {\n'
@@ -1028,6 +1068,11 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
     return {
         **{"PV_" + key.upper(): html.escape(value, quote=True) for key, value in POETRY_VOUCHER[locale_id].items()},
         "PV_HREF": page_path(locale_id, "poetry-voucher"),
+        "PV_SECTION_NUMBER": section_number("work"),
+        "PV_PROJECT_NUMBER": project_number("poetry_voucher"),
+        "MATERIAL_PROJECT_NUMBER": project_number("material"),
+        "SCOPERAIL_PROJECT_NUMBER": project_number("scoperail"),
+        "PHOTO_NOTE": photography_note_html(locale_id, locale["home"]["photos"]["note"]),
         "PV_MAKE_URL": "/poetry-voucher/shop.html?lang=" + {"zh":"zh-Hant", "zh-hans":"zh-Hans"}.get(locale_id, locale_id),
         "PV_RECEIPT_WIDTH": str(pv_receipt_width),
         "PV_RECEIPT_HEIGHT": str(pv_receipt_height),

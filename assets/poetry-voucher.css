@@ -29,7 +29,12 @@
   margin:1.5rem 0 2rem
 }
 .pv-heading h1 em{
+  position:relative;
+  inset-inline-start:-.137em;
   font-weight:400
+}
+html[data-reading-sans] .pv-heading h1 em{
+  inset-inline-start:0
 }
 .pv-subtitle{
   font-size:clamp(1.2rem,2vw,1.75rem);

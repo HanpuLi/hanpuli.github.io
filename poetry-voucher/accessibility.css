@@ -1,14 +1,16 @@
 /* Shared local reading preferences for the voucher shop and studio. */
-.reading-tools{display:none;position:relative;width:min(calc(100% - 40px),1412px);margin:14px auto 0;z-index:120;color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
+.reading-tools{display:none;position:relative;width:100%;min-width:0;margin:0;z-index:1;color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
+.studio-header{flex-wrap:wrap}
+.studio-header .reading-tools{order:4;flex:0 0 100%;width:100%;margin:0}
 .reading-js .reading-tools{display:block}
-.reading-tools details{position:relative;display:grid;justify-items:end}
+.reading-tools details{position:relative;display:grid;width:100%;justify-items:end}
 .reading-tools summary{display:inline-flex;min-width:44px;min-height:44px;align-items:center;justify-content:center;gap:.55em;padding:8px 12px;border:1px solid var(--muted);background:var(--bg);color:var(--ink);box-shadow:0 4px 18px #0002;cursor:pointer;list-style:none;user-select:none}
 .reading-tools summary::-webkit-details-marker{display:none}
 .reading-tools summary::after{content:"+";color:var(--muted);font-size:18px;line-height:1}
 .reading-tools details[open] summary::after{content:"−"}
 .reading-tools-mark{font-weight:700;letter-spacing:-.03em}
 .reading-tools-label{font-size:15px;font-weight:600}
-.reading-panel{position:static;width:min(360px,calc(100vw - 28px));max-height:min(72vh,640px);overflow:auto;overscroll-behavior:contain;margin-top:10px;padding:18px;border:1px solid var(--muted);background:var(--bg);box-shadow:0 8px 28px #0003;color:var(--ink)}
+.reading-panel{position:static;width:min(360px,100%);max-width:100%;box-sizing:border-box;max-height:min(72vh,640px);overflow:auto;overscroll-behavior:contain;margin-top:10px;padding:18px;border:1px solid var(--muted);background:var(--bg);box-shadow:0 8px 28px #0003;color:var(--ink)}
 .reading-panel fieldset{border:0}
 .reading-panel legend{margin-bottom:6px;font-size:18px;font-weight:700;line-height:1.3}
 .reading-description{margin-bottom:12px;color:var(--muted);font-size:15px;line-height:1.5}
@@ -18,6 +20,8 @@
 .reading-reset{min-width:88px;min-height:44px;margin-top:12px;padding:8px 14px;border:1px solid var(--muted);background:var(--panel);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
 .reading-tools summary:hover,.reading-reset:hover{border-color:var(--accent)}
 html[data-reading-sans]{--serif:var(--ui);--mono:var(--ui)}
+html[data-reading-sans] .shop-title-italic{transform:none}
+html[data-reading-sans] .studio-header .language-nav [lang="zh-Hans"] .language-short{position:relative;top:-1px}
 html[data-reading-large] body.shop-page,html[data-reading-large] body.studio-page{font-size:18px}
 html[data-reading-large] .shop-page :is(.shop-intro,.product-excerpt,.bag-line,.order-reading,.note,.micro),html[data-reading-large] .studio-page :is(.workspace,.controls,.note,.micro,.reading .verse){font-size:calc(1em + 2px)}
 html[data-reading-spacing] body.shop-page,html[data-reading-spacing] body.studio-page{line-height:1.82}
