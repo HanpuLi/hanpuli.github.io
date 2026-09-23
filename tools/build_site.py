@@ -518,10 +518,12 @@ def ci_poem_html(
     pair_class = "poem-pair source-only"
     if locale_id not in CHINESE_LOCALES:
         item = translations[poem["id"]]
+        # Keep the title divider with the preceding phrase when a long title wraps.
+        translation_title = html.escape(item["title"].replace(" · ", "\u00a0· "))
         versions.append(
             f'      <section class="poem-version translation" '
             f'lang="{html.escape(target_lang, quote=True)}">\n'
-            f'        <h3>{html.escape(item["title"])}</h3>\n'
+            f'        <h3>{translation_title}</h3>\n'
             f'        <div class="body">{html.escape(item["body"])}</div>\n'
             f'      </section>'
         )
@@ -706,14 +708,19 @@ def contexts_sections_html(locale_id: str) -> str:
                     f'            <p class="contexts-record-link"><a href="{html.escape(record["href"], quote=True)}">'
                     f'{html.escape(record["link_label"])}</a></p>\n'
                 )
+            credit = ""
+            if not (section["id"] == "public-records" and record["credit"] == "Hanpu Li"):
+                credit = (
+                    f'            <p class="contexts-credit"><span>{html.escape(copy["credit_label"])}</span> '
+                    f'{html.escape(record["credit"])}</p>\n'
+                )
             records.append(
                 '        <article class="contexts-record">\n'
                 f'          <p class="contexts-date">{html.escape(record["date"])}</p>\n'
                 '          <div class="contexts-record-main">\n'
                 f'            <h3>{html.escape(record["title"])}</h3>\n'
                 f'            <p class="contexts-detail">{html.escape(record["detail"])}</p>\n'
-                f'            <p class="contexts-credit"><span>{html.escape(copy["credit_label"])}</span> '
-                f'{html.escape(record["credit"])}</p>\n'
+                f'{credit}'
                 f'{link}'
                 '          </div>\n'
                 '        </article>'

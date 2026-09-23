@@ -1,14 +1,14 @@
 /* Shared local reading preferences for the voucher shop and studio. */
-.reading-tools{display:none;position:fixed;right:14px;bottom:14px;z-index:120;color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
+.reading-tools{display:none;position:relative;width:min(calc(100% - 40px),1412px);margin:14px auto 0;z-index:120;color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.5}
 .reading-js .reading-tools{display:block}
-.reading-tools details{position:relative}
+.reading-tools details{position:relative;display:grid;justify-items:end}
 .reading-tools summary{display:inline-flex;min-width:44px;min-height:44px;align-items:center;justify-content:center;gap:.55em;padding:8px 12px;border:1px solid var(--muted);background:var(--bg);color:var(--ink);box-shadow:0 4px 18px #0002;cursor:pointer;list-style:none;user-select:none}
 .reading-tools summary::-webkit-details-marker{display:none}
 .reading-tools summary::after{content:"+";color:var(--muted);font-size:18px;line-height:1}
 .reading-tools details[open] summary::after{content:"−"}
 .reading-tools-mark{font-weight:700;letter-spacing:-.03em}
 .reading-tools-label{font-size:15px;font-weight:600}
-.reading-panel{position:absolute;right:0;bottom:calc(100% + 10px);width:min(360px,calc(100vw - 28px));max-height:min(72vh,640px);overflow:auto;overscroll-behavior:contain;padding:18px;border:1px solid var(--muted);background:var(--bg);box-shadow:0 8px 28px #0003;color:var(--ink)}
+.reading-panel{position:static;width:min(360px,calc(100vw - 28px));max-height:min(72vh,640px);overflow:auto;overscroll-behavior:contain;margin-top:10px;padding:18px;border:1px solid var(--muted);background:var(--bg);box-shadow:0 8px 28px #0003;color:var(--ink)}
 .reading-panel fieldset{border:0}
 .reading-panel legend{margin-bottom:6px;font-size:18px;font-weight:700;line-height:1.3}
 .reading-description{margin-bottom:12px;color:var(--muted);font-size:15px;line-height:1.5}

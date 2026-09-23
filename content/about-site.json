@@ -821,11 +821,11 @@
   },
   "fr": {
     "meta_title": "À propos du site · Hanpu Li",
-    "meta_description": "Notes d’implémentation du site de Hanpu Li : architecture statique, publication multilingue, typographie, accessibilité, médias responsives, tests et GitHub Pages.",
+    "meta_description": "Notes d’implémentation du site de Hanpu Li : architecture statique, publication multilingue, typographie, accessibilité, médias responsives, tests et GitHub Pages.",
     "eyebrow": "notes de publication · 2026",
     "title": "À propos du site",
-    "lede": "Ce site est d’abord une publication, non une application. Chacune des sept éditions linguistiques est un document statique complet, avec des polices locales, sans suivi ni traduction à l’exécution ; l’architecture technique sert à stabiliser ces choix éditoriaux.",
-    "principle": "L’autorité du texte source, la relation entre source et traduction, la lisibilité et la vie privée passent d’abord ; les détails de construction et de contrôle en découlent.",
+    "lede": "Ce site est d’abord une publication, non une application. Chacune des sept éditions linguistiques est un document statique complet, avec des polices locales, sans suivi ni traduction à l’exécution ; l’architecture technique sert à stabiliser ces choix éditoriaux.",
+    "principle": "L’autorité du texte source, la relation entre source et traduction, la lisibilité et la vie privée passent d’abord ; les détails de construction et de contrôle en découlent.",
     "sections": [
       {
         "id": "languages",
@@ -834,7 +834,7 @@
         "dek": "Sept éditions, aucune traduction à l’exécution.",
         "body": [
           "L’anglais, le chinois traditionnel de Hong Kong, le chinois simplifié, le japonais, l’allemand, le français et le russe sont générés comme éditions statiques distinctes, avec URL canoniques et liens alternatifs hreflang et métadonnées propres à chaque langue.",
-          "Les textes littéraires suivent des règles plus strictes que les libellés d’interface. Quand cela est défini, le chinois traditionnel fait foi ; les miroirs littéraires simplifiés ne changent que l’écriture et sont contrôlés par hachage de la source, tandis que des tests dédiés vérifient la structure des lignes et des strophes des traductions."
+          "Les textes littéraires suivent des règles plus strictes que les libellés d’interface. Quand cela est défini, le chinois traditionnel fait foi ; les miroirs littéraires simplifiés ne changent que l’écriture et sont contrôlés par hachage de la source, tandis que des tests dédiés vérifient la structure des lignes et des strophes des traductions."
         ],
         "facts": [
           {
@@ -857,7 +857,7 @@
         "title": "Architecture",
         "dek": "Statique par choix.",
         "body": [
-          "Le portfolio est généré sous forme de documents HTML5 complets à partir de petits gabarits et de JSON structuré. Un générateur fondé sur la bibliothèque standard de Python 3 produit chaque version linguistique à l’avance ; le navigateur n’assemble pas le site à l’exécution.",
+          "Le portfolio est généré sous forme de documents HTML5 complets à partir de petits gabarits et de JSON structuré. Un générateur fondé sur la bibliothèque standard de Python 3 produit chaque version linguistique à l’avance ; le navigateur n’assemble pas le site à l’exécution.",
           "Le site est servi par GitHub Pages depuis la branche main. Le portfolio n’a derrière lui ni CMS, ni framework applicatif, ni base de données, ni application côté serveur."
         ],
         "facts": [
@@ -881,8 +881,8 @@
         "title": "Mise en page & typographie",
         "dek": "Du CSS éditorial plutôt qu’un framework de composants.",
         "body": [
-          "La mise en page utilise CSS Grid, subgrid, container queries, logical properties, custom properties et des dimensions fluides via clamp(). Les media queries restent des solutions de repli prudentes ; quand les container queries sont disponibles, chaque module se réorganise selon sa propre largeur.",
-          "Les polices sont auto-hébergées en WOFF2. EB Garamond sert principalement au texte latin, Courier Prime et Cousine aux métadonnées, Shippori Mincho au chinois traditionnel et au japonais, Noto Serif SC au chinois simplifié ; un minuscule sous-ensemble I.Ming complète les rares glyphes hongkongais manquants. Les sous-ensembles CJK sont reconstruits avec fontTools et Brotli ; la source Noto est épinglée par commit et SHA-256."
+          "La mise en page utilise CSS Grid, subgrid, container queries, logical properties, custom properties et des dimensions fluides via clamp(). Les media queries restent des solutions de repli prudentes ; quand les container queries sont disponibles, chaque module se réorganise selon sa propre largeur.",
+          "Les polices sont auto-hébergées en WOFF2. EB Garamond sert principalement au texte latin, Courier Prime et Cousine aux métadonnées, Shippori Mincho au chinois traditionnel et au japonais, Noto Serif SC au chinois simplifié ; un minuscule sous-ensemble I.Ming complète les rares glyphes hongkongais manquants. Les sous-ensembles CJK sont reconstruits avec fontTools et Brotli ; la source Noto est épinglée par commit et SHA-256."
         ],
         "facts": [
           {
@@ -929,8 +929,8 @@
         "title": "Images et performances",
         "dek": "Médias responsives, sans moteur de galerie à l’exécution.",
         "body": [
-          "Les photographies et planches de recherche utilisent picture/srcset avec variantes WebP et JPEG, dimensions explicites et tailles responsives. L’image d’ouverture est prioritaire ; les médias plus bas dans la page sont chargés en différé et décodés de façon asynchrone.",
-          "Les sections sous la ligne de flottaison peuvent utiliser content-visibility. View Transitions et scroll-linked motion restent des améliorations progressives facultatives ; reduced motion désactive les animations."
+          "Les photographies et planches de recherche utilisent picture/srcset avec variantes WebP et JPEG, dimensions explicites et tailles responsives. L’image d’ouverture est prioritaire ; les médias plus bas dans la page sont chargés en différé et décodés de façon asynchrone.",
+          "Les sections sous la ligne de flottaison peuvent utiliser content-visibility. View Transitions et scroll-linked motion restent des améliorations progressives facultatives ; reduced motion désactive les animations."
         ],
         "facts": [
           {
@@ -954,7 +954,7 @@
         "dek": "Le résultat généré est lui-même testé.",
         "body": [
           "Le dépôt vérifie que les pages générées sont à jour, que les schémas de locale concordent, que la structure des textes littéraires n’a pas dérivé, que les zones sémantiques et contrôles d’accessibilité restent intacts, que les liens locaux et leurs ancres se résolvent, que les images ont un texte alternatif et que la syntaxe JavaScript est valide.",
-          "La QA navigateur ajoute des contrôles géométriques dans plusieurs langues et à différentes largeurs de fenêtre, des audits axe-core et une validation HTML. Dans GitHub Actions, les contrôles légers passent d’abord, puis la suite navigateur s’exécute à chaque push et pull request ; GitHub Pages publie indépendamment les mêmes fichiers statiques depuis main."
+          "La QA navigateur ajoute des contrôles géométriques dans plusieurs langues et à différentes largeurs de fenêtre, des audits axe-core et une validation HTML. Dans GitHub Actions, les contrôles légers passent d’abord, puis la suite navigateur s’exécute à chaque push et pull request ; GitHub Pages publie indépendamment les mêmes fichiers statiques depuis main."
         ],
         "facts": [
           {
@@ -974,7 +974,7 @@
     ],
     "scope_title": "Principes",
     "scope_body": [
-      "Le contenu source, les fichiers générés et le comportement du navigateur restent des couches distinctes : on modifie les données structurées et les gabarits, on reconstruit, puis on vérifie les documents produits.",
+      "Le contenu source, les fichiers générés et le comportement du navigateur restent des couches distinctes : on modifie les données structurées et les gabarits, on reconstruit, puis on vérifie les documents produits.",
       "L’amélioration progressive est volontairement facultative. Une fonction CSS non prise en charge, JavaScript désactivé ou un stockage local indisponible ne doivent ni masquer le travail ni empêcher la navigation."
     ],
     "privacy_title": "Vie privée à l’exécution",

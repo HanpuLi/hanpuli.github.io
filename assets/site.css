@@ -132,7 +132,7 @@
 .essay-page.locale-ru,
 .about-page.locale-ru,
 .notfound-page.locale-ru {
-  --mono: "Cousine RU", "Courier Prime", "Courier New", monospace;
+  --mono: "Cousine RU", "Courier Prime", "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
 }
 
 .site-home.locale-zh-hans,
@@ -280,9 +280,9 @@ main[tabindex="-1"]:focus {
 
 .reading-tools {
   display: none;
-  position: fixed;
-  right: max(14px, var(--gutter));
-  bottom: max(14px, var(--gutter));
+  position: relative;
+  width: min(calc(100% - 2 * var(--gutter)), var(--max));
+  margin: max(14px, var(--gutter)) auto 0;
   z-index: 120;
   color: var(--ink);
   font-family: var(--readable-sans);
@@ -296,6 +296,8 @@ main[tabindex="-1"]:focus {
 
 .reading-tools details {
   position: relative;
+  display: grid;
+  justify-items: end;
 }
 
 .reading-tools summary {
@@ -341,13 +343,12 @@ main[tabindex="-1"]:focus {
 }
 
 .reading-panel {
-  position: absolute;
-  right: 0;
-  bottom: calc(100% + 10px);
+  position: static;
   width: min(360px, calc(100vw - 28px));
   max-height: min(72vh, 640px);
   overflow: auto;
   overscroll-behavior: contain;
+  margin-top: 10px;
   padding: 18px;
   border: 1px solid var(--muted);
   background: var(--paper);
@@ -1952,9 +1953,15 @@ html[data-reading-motion] .site-home::before {
   text-wrap: balance;
 }
 
-.literary-page .poem.yi .source h3,
-.literary-page .poem-version.translation h3 {
+.literary-page .poem.yi .source h3 {
   color: var(--muted);
+}
+
+.literary-page .poem-version.translation h3 {
+  color: var(--ink);
+  font-size: clamp(19px, 1.55vw, 21px);
+  line-height: 1.42;
+  letter-spacing: 0;
 }
 
 .literary-page .poem-version .body {
@@ -2545,10 +2552,6 @@ html[data-reading-motion] .site-home::before {
     line-height: 1.35;
   }
 
-  .site-home.locale-ru .section-nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .site-home .section-nav a span {
     display: none;
   }
@@ -2889,22 +2892,7 @@ html[data-reading-motion] .site-home::before {
 
 @media (max-width: 800px) {
   .about-page .reading-tools {
-    position: relative;
-    right: auto;
-    bottom: auto;
     width: min(calc(100% - (2 * var(--gutter))), 1440px);
-    margin: max(14px, var(--gutter)) auto 0;
-  }
-
-  .about-page .reading-tools details {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .about-page .reading-panel {
-    top: calc(100% + 10px);
-    right: 0;
-    bottom: auto;
   }
 }
 
@@ -3171,6 +3159,14 @@ html[data-reading-motion] .site-home::before {
 ),
 .essay-page .essay-body :is(p, li) {
   text-wrap: pretty;
+}
+
+.site-home #photo .section-note {
+  text-wrap: balance;
+}
+
+.site-home .project-feature .project-proof dd {
+  font-size: clamp(22px, 1.7vw, 27px);
 }
 
 .site-home:is(.locale-de, .locale-fr, .locale-ru) :is(
@@ -3587,6 +3583,21 @@ html[data-reading-motion]::view-transition-new(root) {
   line-height: 1.02;
   letter-spacing: -.025em;
   text-wrap: balance;
+}
+
+.contexts-page #public-records h2 {
+  max-width: none;
+}
+
+.site-home.locale-ja .project-feature h3 {
+  line-height: 1.14;
+}
+
+@media (max-width: 760px) {
+  .site-home.locale-ja .project-feature h3 {
+    font-size: clamp(20px, 6.25vw, 38px);
+    word-break: keep-all;
+  }
 }
 
 .about-page .about-section-dek {
@@ -4027,21 +4038,30 @@ html[data-reading-large] .essay-page :is(
   }
 }
 
-/* Link affordance.
-   Links stay typographically quiet, but no longer rely on hover alone to
-   reveal that they are interactive. External destinations carry a compact
-   text badge instead of an arrow or icon. */
+/* Content links retain a quiet persistent cue. Navigation and links already
+   marked by a border use their own affordance, without a second underline. */
 body[class] a[href]:not(.skip-link) {
   text-decoration-line: underline;
-  text-decoration-color: color-mix(in srgb, currentColor 42%, transparent);
+  text-decoration-color: color-mix(in srgb, currentColor 34%, transparent);
   text-decoration-thickness: 1px;
-  text-underline-offset: .24em;
+  text-underline-offset: .3em;
   text-decoration-skip-ink: auto;
 }
 
 body[class] a[href]:not(.skip-link):hover {
   text-decoration-color: currentColor;
-  text-decoration-thickness: 2px;
+}
+
+body[class] :is(.masthead, .page-topbar, .site-footer, .page-footer, .poetry-index, .about-toc) a[href] {
+  text-decoration-line: none;
+}
+
+body:is(.literary-page, .shi-page, .essay-page, .contexts-page) main a[href]:visited {
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+body:is(.literary-page, .shi-page, .essay-page, .contexts-page) main a[href]:visited:hover {
+  text-decoration-color: currentColor;
 }
 
 body[class] a[href^="http://"]:not([href^="http://hanpuli.github.io/"]):not([href="http://hanpuli.github.io"])::after,

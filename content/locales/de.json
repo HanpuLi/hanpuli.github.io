@@ -47,7 +47,7 @@
       },
       "photo": {
         "title": "Fotografien",
-        "kicker": "Stills / Film / Polaroid"
+        "kicker": "Dreharbeit / 35 mm / Sofortbild"
       },
       "writing": {
         "title": "Texte",
@@ -94,11 +94,11 @@
     },
     "photos": {
       "medium": {
-        "still": "Still",
-        "film": "Film",
-        "instant": "Sofortbild"
+        "still": "Digitalfoto",
+        "film": "35-mm-Film",
+        "instant": "Sofortbildfilm"
       },
-      "note": "Stills, Film und Polaroid · meist die Stunde vor einem Take.",
+      "note": "Digitale Fotografien, 35-mm-Film und Sofortbildfilm · meist in der Stunde vor einem Take.",
       "alt": {
         "01": "Dachgitter eines Museums, eine Figur auf der Brüstung",
         "02": "allein zwischen den Sitzreihen, ein Blumenstrauß neben ihr",
