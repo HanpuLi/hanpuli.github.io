@@ -73,6 +73,7 @@ const TYPE_CONFIG=Object.freeze({
   translation:19,
   authorLatin:42,
   authorCjk:20,
+  authorNameGapDots:12,
   pixelGrid:12,
   pixelSmallCutoff:16,
   pixelMinBody:24
@@ -428,7 +429,7 @@ function render(spec){
   p.till('PLEASE KEEP FOR YOUR RECORDS',null,true);p.space(8);
   p.till('FICTIONAL TRANSACTION',null,true);p.till('NO PAYMENT PROCESSED',null,true);p.till('NOT PROOF OF PURCHASE',null,true);
   const receiptEnd=p.y+PAPER_CONFIG.receiptInsetDots;p.space(34);p.till('-------- CUT HERE --------',null,true);p.space(34);const voucherStart=p.y;
-  if(spec.original){p.text('Hanpu Li',TYPE_CONFIG.authorLatin,serif,true,48);p.text('李函璞',TYPE_CONFIG.authorCjk,bodyFont,true,29);p.space(10);}
+  if(spec.original){p.text('Hanpu Li',TYPE_CONFIG.authorLatin,serif,true,48);p.space(TYPE_CONFIG.authorNameGapDots);p.text('李函璞',TYPE_CONFIG.authorCjk,bodyFont,true,29);p.space(10);}
   p.text('POETRY VOUCHER',16,mono,true,24);p.text('NO. '+voucher,14,mono,true,21);
   p.space(8);p.x.fillRect(PAPER_CONFIG.bodyInsetDots,p.y,PAPER_CONFIG.bodyWidthDots,1);p.space(16);p.text(spec.title,22,bodyFont,false,29);
   if(!spec.original&&spec.author)p.text(spec.author,14,bodyFont,false,20);
