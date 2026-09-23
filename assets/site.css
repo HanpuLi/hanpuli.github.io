@@ -2000,6 +2000,14 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   text-wrap: balance;
 }
 
+.literary-page .poem-version.source h3 .voice-index {
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: .78em;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+
 .literary-page .poem.yi .source h3 {
   color: var(--muted);
 }

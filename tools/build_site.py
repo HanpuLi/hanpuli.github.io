@@ -549,6 +549,13 @@ def ci_poem_html(
     voice = poem["voice"]
     classes = "poem" + (f" {voice}" if voice in {"jia", "yi"} else "")
     source_title = html.escape(poem["source_title"])
+    if locale_id not in CHINESE_LOCALES and voice in {"jia", "yi"}:
+        voice_letter = "A" if voice == "jia" else "B"
+        voice_index = f'{voice_letter}{poem["id"][1:]}'
+        source_title = (
+            f'<span class="voice-index" lang="en">{voice_index}&#160;·&#160;</span>'
+            f"{source_title}"
+        )
     source_body = html.escape(poem["source_body"])
     source_date = (
         f'\n        <div class="date">{html.escape(poem["date"])}</div>'
