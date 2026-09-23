@@ -426,6 +426,16 @@ def chronology_html(items: list[dict[str, str]]) -> str:
     )
 
 
+def material_title_html(locale_id: str, title: str) -> str:
+    rendered = html.escape(title)
+    if locale_id == "ja":
+        for word in ("バーチャルプロダクション", "フットプリント"):
+            rendered = rendered.replace(
+                word, f'<span class="project-title-unit">{word}</span>'
+            )
+    return rendered
+
+
 def ci_source(locale_id: str) -> dict[str, Any]:
     return CI_SIMPLIFIED if locale_id == "zh-hans" else CI_SOURCE
 
@@ -1080,6 +1090,9 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "CONTEXTS_SECTIONS": contexts_sections_html(locale_id),
         "CONTEXTS_FOOTER_NOTE": html.escape(contexts["footer_note"]),
         "MATERIAL_URL": html.escape(SHARED["projects"]["material"]["url"], quote=True),
+        "MATERIAL_TITLE": material_title_html(
+            locale_id, locale["home"]["projects"]["material"]["title"]
+        ),
         "MATERIAL_GREEN_VALUE": html.escape(SHARED["projects"]["material"]["proof_values"]["green"]),
         "MATERIAL_NDVI_VALUE": html.escape(SHARED["projects"]["material"]["proof_values"]["ndvi"]),
         "MATERIAL_S106_VALUE": html.escape(SHARED["projects"]["material"]["proof_values"]["s106"]),

@@ -3593,6 +3593,11 @@ html[data-reading-motion]::view-transition-new(root) {
   line-height: 1.14;
 }
 
+.site-home.locale-ja .project-feature h3 .project-title-unit {
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+
 @media (max-width: 760px) {
   .site-home.locale-ja .project-feature h3 {
     font-size: clamp(20px, 6.25vw, 38px);
