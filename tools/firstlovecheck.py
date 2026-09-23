@@ -74,7 +74,10 @@ def main() -> int:
                 errors.append(f"{rel}: language links do not preserve the fragment")
 
     script = (ROOT / "assets" / "first-love-access.js").read_text(encoding="utf-8")
-    required_script = [API_BASE, "location.hash", "Authorization", "Bearer ", "URL.createObjectURL", "URL.revokeObjectURL"]
+    required_script = [
+        API_BASE, "location.hash", "Authorization", "Bearer ",
+        "targetAddressSpace", "URL.createObjectURL", "URL.revokeObjectURL",
+    ]
     for needle in required_script:
         if needle not in script:
             errors.append(f"first-love-access.js: missing {needle!r}")

@@ -2911,6 +2911,7 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   .page-topbar .page-nav {
     grid-column: 1 / -1;
     grid-row: 2;
+    display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 6px 16px;

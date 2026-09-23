@@ -34,8 +34,72 @@
     if (statusReturn) statusReturn.href = privateUrl(root.dataset.statusPath, tokenAtLoad).href;
   }
 
+  const REQUEST_TIMEOUT_MS = 20000;
+  const NETWORK_PROBE_TIMEOUT_MS = 10000;
+  let targetAddressSpacePromise;
+
+  const detectTargetAddressSpace = () => {
+    if (targetAddressSpacePromise) return targetAddressSpacePromise;
+    targetAddressSpacePromise = new Promise((resolve, reject) => {
+      const controllers = [];
+      let failures = 0;
+      let settled = false;
+      const timer = setTimeout(() => {
+        controllers.forEach((controller) => controller.abort());
+        if (!settled) reject(new DOMException('Network probe timed out', 'AbortError'));
+      }, NETWORK_PROBE_TIMEOUT_MS);
+      const finish = (value) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        controllers.forEach((controller) => controller.abort());
+        resolve(value);
+      };
+      const fail = () => {
+        failures += 1;
+        if (failures === 2 && !settled) {
+          settled = true;
+          clearTimeout(timer);
+          reject(new TypeError('Access service is unreachable'));
+        }
+      };
+      [null, 'local'].forEach((targetAddressSpace) => {
+        const controller = new AbortController();
+        controllers.push(controller);
+        const options = {
+          cache: 'no-store',
+          credentials: 'omit',
+          referrerPolicy: 'no-referrer',
+          signal: controller.signal,
+        };
+        if (targetAddressSpace) options.targetAddressSpace = targetAddressSpace;
+        fetch(API + '/v1/health', options).then((response) => {
+          if (!response.ok) throw new Error('health_check_failed');
+          finish(targetAddressSpace);
+        }).catch(fail);
+      });
+    });
+    return targetAddressSpacePromise;
+  };
+
+  const timedFetch = async (url, options = {}) => {
+    const targetAddressSpace = await detectTargetAddressSpace();
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+    const requestOptions = {...options, signal: controller.signal};
+    if (targetAddressSpace) requestOptions.targetAddressSpace = targetAddressSpace;
+    try {
+      return await fetch(url, requestOptions);
+    } finally {
+      clearTimeout(timer);
+    }
+  };
+  const isNetworkError = (error) => (
+    error instanceof TypeError || error?.name === 'AbortError'
+  );
+
   const api = async (path, options = {}) => {
-    const response = await fetch(API + path, {
+    const response = await timedFetch(API + path, {
       cache: 'no-store',
       credentials: 'omit',
       referrerPolicy: 'no-referrer',
@@ -142,7 +206,7 @@
         }, {once: true});
         box.focus?.();
       } catch (error) {
-        setText(output, error instanceof TypeError ? text('network') : text('error'));
+        setText(output, isNetworkError(error) ? text('network') : text('error'));
       } finally {
         if (button) {
           button.disabled = false;
@@ -177,7 +241,7 @@
         }
       }
     }).catch((error) => {
-      setText(root.querySelector('[data-state]'), error instanceof TypeError ? text('network') : text('unavailable'));
+      setText(root.querySelector('[data-state]'), isNetworkError(error) ? text('network') : text('unavailable'));
     });
     return;
   }
@@ -199,7 +263,7 @@
         }
         fillVersion(status);
         setText(state, text('loading'));
-        const response = await fetch(API + '/v1/document', {
+        const response = await timedFetch(API + '/v1/document', {
           headers: authorization,
           cache: 'no-store',
           credentials: 'omit',
@@ -218,7 +282,7 @@
         open.hidden = false;
         setText(state, '');
       } catch (error) {
-        setText(state, error instanceof TypeError ? text('network') : text('unavailable'));
+        setText(state, isNetworkError(error) ? text('network') : text('unavailable'));
       }
     })();
   }
