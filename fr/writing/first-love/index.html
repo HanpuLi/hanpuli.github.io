@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google" content="notranslate">
+
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; font-src &#x27;self&#x27;; connect-src https://donglebook-escape.tail95239f.ts.net:10000; frame-src blob:; object-src blob:; img-src &#x27;self&#x27; data: blob:; media-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;self&#x27;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Sur First Love de Takashi Miike · Hanpu Li</title>
 <meta name="description" content="Une étude approfondie de First Love de Takashi Miike, consacrée aux rapports de genre, à l’obligation et à la forme générique, avec analyse formelle et vérifications reproductibles.">
 <link rel="canonical" href="https://hanpuli.github.io/fr/writing/first-love/">
@@ -21,88 +22,41 @@
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/assets/site-mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
-<script src="/assets/first-love-access.js" defer></script>
 <link rel="stylesheet" href="/assets/site.css">
-<link rel="stylesheet" href="/assets/first-love-access.css">
+<link rel="stylesheet" href="/assets/first-love-public.css">
 </head>
 <body class="first-love-page locale-fr">
 <a class="skip-link" href="#main">Aller au contenu</a>
 <div class="wrap">
   <header class="page-topbar">
     <a class="page-wordmark" href="/fr/">Hanpu Li <span lang="zh-Hant-HK">李函璞</span></a>
-    <nav class="page-nav" aria-label="Sections du portfolio">
-      <span aria-current="page"><span class="nav-no">01</span> écrits</span>
+    <nav class="page-nav" aria-label="Sections du portfolio"><span aria-current="page"><span class="nav-no">01</span> écrits</span>
       <a href="/fr/ci.html"><span class="nav-no">02</span> ci</a>
       <a href="/fr/#work"><span class="nav-no">03</span> recherche</a>
       <a href="/fr/#photo"><span class="nav-no">04</span> photos</a>
       <a href="/fr/shi.html"><span class="nav-no">05</span> poème</a>
-      <a href="/fr/#profile"><span class="nav-no">06</span> contextes</a>
-    </nav>
-    <div class="page-utility">
-      <nav class="page-languages" aria-label="Langue">
-        <a href="/writing/first-love/" hreflang="en-GB" lang="en-GB" aria-label="English" title="English"><span class="language-short" aria-hidden="true">EN</span></a>
-        <a href="/zh/writing/first-love/" hreflang="zh-Hant-HK" lang="zh-Hant-HK" aria-label="繁體中文" title="繁體中文"><span class="language-short" aria-hidden="true">繁</span></a>
-        <a href="/zh-hans/writing/first-love/" hreflang="zh-Hans" lang="zh-Hans" aria-label="简体中文" title="简体中文"><span class="language-short" aria-hidden="true">简</span></a>
-        <a href="/ja/writing/first-love/" hreflang="ja" lang="ja" aria-label="日本語" title="日本語"><span class="language-short" aria-hidden="true">日</span></a>
-        <a href="/de/writing/first-love/" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch"><span class="language-short" aria-hidden="true">DE</span></a>
+      <a href="/fr/#profile"><span class="nav-no">06</span> contextes</a></nav>
+    <div class="page-utility"><nav class="page-languages" aria-label="Langue"><a href="/writing/first-love/" hreflang="en-GB" lang="en-GB" aria-label="English" title="English"><span class="language-short" aria-hidden="true">EN</span><span class="visually-hidden">English</span></a>
+        <a href="/zh/writing/first-love/" hreflang="zh-Hant-HK" lang="zh-Hant-HK" aria-label="繁體中文" title="繁體中文"><span class="language-short" aria-hidden="true">繁</span><span class="visually-hidden">繁體中文</span></a>
+        <a href="/zh-hans/writing/first-love/" hreflang="zh-Hans" lang="zh-Hans" aria-label="简体中文" title="简体中文"><span class="language-short" aria-hidden="true">简</span><span class="visually-hidden">简体中文</span></a>
+        <a href="/ja/writing/first-love/" hreflang="ja" lang="ja" aria-label="日本語" title="日本語"><span class="language-short" aria-hidden="true">日</span><span class="visually-hidden">日本語</span></a>
+        <a href="/de/writing/first-love/" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch"><span class="language-short" aria-hidden="true">DE</span><span class="visually-hidden">Deutsch</span></a>
         <span class="current" lang="fr" aria-current="page" title="Français"><span class="language-short" aria-hidden="true">FR</span><span class="visually-hidden">Français</span></span>
-        <a href="/ru/writing/first-love/" hreflang="ru" lang="ru" aria-label="Русский" title="Русский"><span class="language-short" aria-hidden="true">RU</span></a>
-      </nav>
-    </div>
-    <aside class="reading-tools" aria-label="Lecture">
-  <details>
-    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">Lecture</span><span class="visually-hidden">Lecture</span></summary>
-    <div class="reading-panel"><fieldset>
-      <legend>Préférences de lecture</legend>
-      <p class="reading-description">Ajustez l’affichage pour faciliter la lecture. Les réglages restent sur cet appareil.</p>
-      <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>Police sans empattement</span></label>
+        <a href="/ru/writing/first-love/" hreflang="ru" lang="ru" aria-label="Русский" title="Русский"><span class="language-short" aria-hidden="true">RU</span><span class="visually-hidden">Русский</span></a></nav></div>
+    <aside class="reading-tools" aria-label="Lecture"><details><summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">Lecture</span><span class="visually-hidden">Lecture</span></summary><div class="reading-panel"><fieldset><legend>Préférences de lecture</legend><p class="reading-description">Ajustez l’affichage pour faciliter la lecture. Les réglages restent sur cet appareil.</p><label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>Police sans empattement</span></label>
 <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>Texte plus grand</span></label>
 <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>Espacement du texte accru</span></label>
 <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>Colonnes de texte plus étroites</span></label>
 <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>Mise en page simplifiée sur une colonne</span></label>
 <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>Réduire les animations</span></label>
-<label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>Contraste renforcé</span></label>
-    </fieldset>
-    <button type="button" class="reading-reset" data-reading-reset>Réinitialiser</button></div>
-  </details>
-</aside>
+<label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>Contraste renforcé</span></label></fieldset><button type="button" class="reading-reset" data-reading-reset>Réinitialiser</button></div></details></aside>
   </header>
-  <main id="main" tabindex="-1" data-first-love-access data-page="request" data-error="La demande n’a pas pu être envoyée. Veuillez réessayer." data-missing="Ce lien de statut privé est incomplet." data-pending="Votre demande est en attente." data-active="L’accès est actif." data-declined="Cette demande a été refusée." data-revoked="L’accès a été révoqué." data-expired="L’accès a expiré." data-unavailable="Le manuscrit n’est pas disponible via ce lien." data-checking="Vérification de l’accès…" data-submitting="Envoi en cours…" data-copied="Copié" data-network="Le service d’accès est indisponible. Réessayez lorsqu’il sera en ligne." data-version-label="Version" data-version-date-label="Date de la version" data-pages-label="Pages" data-expires-label="Expiration de l’accès" data-no-expiry="Aucune expiration" data-status-path="/fr/writing/first-love/status/" data-reader-path="/fr/writing/first-love/read/">
-    <header class="first-love-hero">
-      <div><p class="first-love-eyebrow">manuscrit de recherche · circulation privée</p><h1>Sur First Love de Takashi Miike</h1></div>
-      <div class="first-love-copy"><p>Le manuscrit intégral circule de manière privée et n’est pas publié en libre accès. Vous pouvez demander un accès ci-dessous; il est accordé individuellement et non automatiquement.</p></div>
-    </header>
-    <section class="access-panel" aria-labelledby="request-heading">
-      <h2 id="request-heading">Demander l’accès</h2>
-      <p>Le manuscrit intégral circule de manière privée et n’est pas publié en libre accès. Vous pouvez demander un accès ci-dessous; il est accordé individuellement et non automatiquement.</p>
-      <form class="access-form" data-request-form>
-        <label>Nom<input type="text" name="name" autocomplete="name" required maxlength="160"></label>
-        <label>E-mail<input name="email" type="email" autocomplete="email" required maxlength="254"></label>
-        <label>Affiliation ou fonction (facultatif)<input type="text" name="affiliation" autocomplete="organization" maxlength="240"></label>
-        <label>Motif de lecture (facultatif)<textarea name="reason" maxlength="2000"></textarea></label>
-        <label class="access-honeypot" aria-hidden="true">Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label>
-        <button type="submit">Demander l’accès</button>
-      </form>
-      <p class="access-result" data-result role="status" aria-live="polite"></p>
-      <div class="access-success" data-success hidden>
-        <h3>Demande reçue.</h3>
-        <p>Conservez ce lien de statut privé. Le site ne peut pas le récupérer et le manuscrit n’est pas envoyé en pièce jointe.</p>
-        <p class="first-love-meta"><span>Référence de la demande</span> <span data-request-id></span></p>
-        <label class="private-url-label">First Love · statut d’accès<input type="text" class="private-url" data-private-url readonly></label>
-        <div class="access-actions"><button class="access-action" type="button" data-copy>Copier le lien de statut</button><a class="access-action" data-open-status>Ouvrir le statut</a></div>
-      </div>
-      <aside class="access-privacy" aria-label="Privacy">Le nom, l’e-mail et les informations facultatives servent uniquement à décider et administrer l’accès. Après approbation, les ouvertures du lien délivré sont enregistrées. Une ouverture ne prouve pas que le manuscrit a été lu. Aucun marketing ni suivi page par page.</aside>
-      <p class="access-companion"><a href="https://github.com/HanpuLi/first-love-verification">méthodes / dossier de vérification</a></p>
-    </section>
+  <main id="main" tabindex="-1">
+    <header class="first-love-hero"><div><p class="first-love-eyebrow">manuscrit de recherche · lecture publique</p><h1>Sur First Love de Takashi Miike</h1></div><div class="first-love-copy"><p>Le manuscrit intégral se lit immédiatement dans le navigateur, sans compte, demande ni approbation.</p></div></header>
+    <section class="access-panel"><p><a class="access-action" href="https://node.tail95239f.ts.net:10000/first-love-reader/v/first-love-v113-2026-08-27/">Lire le manuscrit intégral</a></p><p class="reader-notice">La vue recomposée facilite la lecture ; la mise en page originale permet de vérifier les figures, les tableaux et la typographie exacte. Les images peuvent toujours être enregistrées ou reconnues par OCR.</p><p class="access-companion"><a href="https://github.com/HanpuLi/first-love-verification">méthodes / dossier de vérification</a></p></section>
   </main>
-  <footer class="page-footer essay-footer">
-    <p><a href="/fr/">Hanpu Li</a></p>
-    <p class="page-footer-context"><a href="/fr/#writing">écrits</a> <span aria-hidden="true">·</span> <a href="/fr/about.html">à propos du site</a></p>
-  </footer>
+  <footer class="page-footer essay-footer"><p><a href="/fr/">Hanpu Li</a></p><p class="page-footer-context"><a href="/fr/#writing">écrits</a> <span aria-hidden="true">·</span> <a href="/fr/about.html">à propos du site</a></p></footer>
 </div>
 </body>
 </html>

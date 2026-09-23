@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static contract checks for the First Love controlled-reading surface."""
+"""Check the public First Love landing pages and legacy-link redirects."""
 from __future__ import annotations
 
 import json
@@ -7,31 +7,35 @@ import sys
 from html.parser import HTMLParser
 from pathlib import Path
 
+from first_love_public_pages import READER_URL
+
 ROOT = Path(__file__).resolve().parents[1]
-API_BASE = "https://donglebook-escape.tail95239f.ts.net:10000/first-love-api"
-LANGUAGES = json.loads((ROOT / "content" / "languages.json").read_text(encoding="utf-8"))
+LANGUAGES = json.loads((ROOT / "content/languages.json").read_text(encoding="utf-8"))
 
 
 class Outline(HTMLParser):
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.h1 = 0
-        self.names: set[str] = set()
+        self.main = 0
+        self.forms = 0
+        self.links: list[str] = []
+        self.scripts: list[str] = []
         self.robots = ""
         self.csp = ""
-        self.has_root = False
-        self.preserve_links = 0
 
     def handle_starttag(self, tag: str, attrs_raw: list[tuple[str, str | None]]) -> None:
         attrs = dict(attrs_raw)
         if tag == "h1":
             self.h1 += 1
-        if tag in {"input", "textarea"} and attrs.get("name"):
-            self.names.add(str(attrs["name"]))
-        if tag == "main" and "data-first-love-access" in attrs:
-            self.has_root = True
-        if tag == "a" and "data-preserve-fragment" in attrs:
-            self.preserve_links += 1
+        if tag == "main" and attrs.get("id") == "main":
+            self.main += 1
+        if tag == "form":
+            self.forms += 1
+        if tag == "a" and attrs.get("href"):
+            self.links.append(str(attrs["href"]))
+        if tag == "script" and attrs.get("src"):
+            self.scripts.append(str(attrs["src"]))
         if tag == "meta" and attrs.get("name") == "robots":
             self.robots = str(attrs.get("content") or "")
         if tag == "meta" and attrs.get("http-equiv") == "Content-Security-Policy":
@@ -51,43 +55,45 @@ def main() -> int:
         if not path.is_file():
             errors.append(f"missing generated page: {path.relative_to(ROOT)}")
             continue
-        text = path.read_text(encoding="utf-8")
+        source = path.read_text(encoding="utf-8")
         parser = Outline()
-        parser.feed(text)
+        parser.feed(source)
         rel = path.relative_to(ROOT)
-        if parser.h1 != 1:
-            errors.append(f"{rel}: expected one h1, found {parser.h1}")
-        if not parser.has_root:
-            errors.append(f"{rel}: missing data-first-love-access root")
-        if API_BASE.rsplit("/", 1)[0] not in parser.csp:
-            errors.append(f"{rel}: CSP does not name the exact API origin")
+        if parser.h1 != 1 or parser.main != 1:
+            errors.append(f"{rel}: expected one h1 and one main landmark")
+        if parser.forms:
+            errors.append(f"{rel}: access request form remains")
+        if parser.links.count(READER_URL) != 1:
+            errors.append(f"{rel}: expected one direct reader link")
+        if parser.scripts != ["/assets/accessibility.js"]:
+            errors.append(f"{rel}: unexpected scripts {parser.scripts}")
+        if "connect-src 'none'" not in parser.csp or "form-action 'none'" not in parser.csp:
+            errors.append(f"{rel}: public landing page CSP is too broad")
         if page == "request":
-            required = {"name", "email", "affiliation", "reason", "company"}
-            if not required <= parser.names:
-                errors.append(f"{rel}: request form missing fields {sorted(required - parser.names)}")
             if "noindex" in parser.robots:
-                errors.append(f"{rel}: public request page is unexpectedly noindex")
-        else:
-            if not {"noindex", "noarchive", "nosnippet"} <= set(parser.robots.split(",")):
-                errors.append(f"{rel}: private page robots directive is incomplete")
-            if parser.preserve_links < len(LANGUAGES) - 1:
-                errors.append(f"{rel}: language links do not preserve the fragment")
+                errors.append(f"{rel}: public overview is unexpectedly noindex")
+        elif not {"noindex", "noarchive", "nosnippet"} <= set(parser.robots.split(",")):
+            errors.append(f"{rel}: legacy route robots directive is incomplete")
+        for marker in ("first-love-api", "v1/document", "Bearer ", "data-preserve-fragment"):
+            if marker in source:
+                errors.append(f"{rel}: old controlled-access marker {marker!r}")
 
-    script = (ROOT / "assets" / "first-love-access.js").read_text(encoding="utf-8")
-    required_script = [
-        API_BASE, "location.hash", "Authorization", "Bearer ",
-        "targetAddressSpace", "URL.createObjectURL", "URL.revokeObjectURL",
-    ]
-    for needle in required_script:
-        if needle not in script:
-            errors.append(f"first-love-access.js: missing {needle!r}")
-    forbidden = ["node.tail95239f.ts.net", "localStorage", "sessionStorage", "URLSearchParams", "?token", "document.cookie", "console.log"]
-    for needle in forbidden:
-        if needle in script:
-            errors.append(f"first-love-access.js: forbidden token/storage pattern {needle!r}")
+    for item in LANGUAGES:
+        lid = item["id"]
+        homepage = ROOT / ("index.html" if lid == "en" else f"{lid}/index.html")
+        source = homepage.read_text(encoding="utf-8")
+        if READER_URL not in source:
+            errors.append(f"{homepage.relative_to(ROOT)}: missing immediate reading link")
+        if "first-love-api" in source:
+            errors.append(f"{homepage.relative_to(ROOT)}: old API reference remains")
 
-    for path in (ROOT / "writing" / "first-love").rglob("*.pdf"):
-        errors.append(f"private PDF found in public tree: {path.relative_to(ROOT)}")
+    for old in ("assets/first-love-access.js", "tools/first_love_pages.py", "content/first-love-access.json"):
+        if (ROOT / old).exists():
+            errors.append(f"obsolete controlled-access file remains: {old}")
+    for pattern in ("*.pdf", "page-*.json", "page-*.png", "manifest.json"):
+        for path in (ROOT / "writing" / "first-love").rglob(pattern):
+            errors.append(f"private manuscript file in public tree: {path.relative_to(ROOT)}")
+
     sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
     for item in LANGUAGES:
         lid = item["id"]
@@ -98,9 +104,9 @@ def main() -> int:
         for private in ("status", "read"):
             private_url = public_url + private + "/"
             if private_url in sitemap:
-                errors.append(f"private page appears in sitemap: {private_url}")
+                errors.append(f"legacy page appears in sitemap: {private_url}")
 
-    copy = json.loads((ROOT / "content" / "first-love-access.json").read_text(encoding="utf-8"))
+    copy = json.loads((ROOT / "content/first-love-public.json").read_text(encoding="utf-8"))
     expected = {item["id"] for item in LANGUAGES}
     if set(copy) != expected:
         errors.append("First Love copy locale set does not match languages.json")
@@ -113,7 +119,7 @@ def main() -> int:
     if errors:
         print("\n".join(errors), file=sys.stderr)
         return 1
-    print(f"firstlovecheck: {len(pages)} generated pages, fragment credentials, CSP, sitemap and public-file boundary OK")
+    print(f"firstlovecheck: {len(pages)} public/legacy pages, direct reader links, CSP, sitemap and public-file boundary OK")
     return 0
 
 

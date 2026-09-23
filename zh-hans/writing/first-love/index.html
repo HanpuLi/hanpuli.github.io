@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google" content="notranslate">
+
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; font-src &#x27;self&#x27;; connect-src https://donglebook-escape.tail95239f.ts.net:10000; frame-src blob:; object-src blob:; img-src &#x27;self&#x27; data: blob:; media-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;self&#x27;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>论三池崇史《初恋》 · Hanpu Li</title>
 <meta name="description" content="一篇关于三池崇史《初恋》中性别、义务与类型形式的长篇研究，结合形式细读与可复现核验。">
 <link rel="canonical" href="https://hanpuli.github.io/zh-hans/writing/first-love/">
@@ -21,89 +22,41 @@
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/assets/site-mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/noto-serif-sc-subset.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
-<script src="/assets/first-love-access.js" defer></script>
 <link rel="stylesheet" href="/assets/site.css">
-<link rel="stylesheet" href="/assets/first-love-access.css">
+<link rel="stylesheet" href="/assets/first-love-public.css">
 </head>
 <body class="first-love-page locale-zh-hans">
 <a class="skip-link" href="#main">跳至正文</a>
 <div class="wrap">
   <header class="page-topbar">
     <a class="page-wordmark" href="/zh-hans/">Hanpu Li <span lang="zh-Hant-HK">李函璞</span></a>
-    <nav class="page-nav" aria-label="作品集分区">
-      <span aria-current="page"><span class="nav-no">01</span> 写作</span>
+    <nav class="page-nav" aria-label="作品集分区"><span aria-current="page"><span class="nav-no">01</span> 写作</span>
       <a href="/zh-hans/ci.html"><span class="nav-no">02</span> 词</a>
       <a href="/zh-hans/#work"><span class="nav-no">03</span> 研究</a>
       <a href="/zh-hans/#photo"><span class="nav-no">04</span> 摄影</a>
       <a href="/zh-hans/shi.html"><span class="nav-no">05</span> 诗</a>
-      <a href="/zh-hans/#profile"><span class="nav-no">06</span> 脉络</a>
-    </nav>
-    <div class="page-utility">
-      <nav class="page-languages" aria-label="语言">
-        <a href="/writing/first-love/" hreflang="en-GB" lang="en-GB" aria-label="English" title="English"><span class="language-short" aria-hidden="true">EN</span></a>
-        <a href="/zh/writing/first-love/" hreflang="zh-Hant-HK" lang="zh-Hant-HK" aria-label="繁體中文" title="繁體中文"><span class="language-short" aria-hidden="true">繁</span></a>
+      <a href="/zh-hans/#profile"><span class="nav-no">06</span> 脉络</a></nav>
+    <div class="page-utility"><nav class="page-languages" aria-label="语言"><a href="/writing/first-love/" hreflang="en-GB" lang="en-GB" aria-label="English" title="English"><span class="language-short" aria-hidden="true">EN</span><span class="visually-hidden">English</span></a>
+        <a href="/zh/writing/first-love/" hreflang="zh-Hant-HK" lang="zh-Hant-HK" aria-label="繁體中文" title="繁體中文"><span class="language-short" aria-hidden="true">繁</span><span class="visually-hidden">繁體中文</span></a>
         <span class="current" lang="zh-Hans" aria-current="page" title="简体中文"><span class="language-short" aria-hidden="true">简</span><span class="visually-hidden">简体中文</span></span>
-        <a href="/ja/writing/first-love/" hreflang="ja" lang="ja" aria-label="日本語" title="日本語"><span class="language-short" aria-hidden="true">日</span></a>
-        <a href="/de/writing/first-love/" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch"><span class="language-short" aria-hidden="true">DE</span></a>
-        <a href="/fr/writing/first-love/" hreflang="fr" lang="fr" aria-label="Français" title="Français"><span class="language-short" aria-hidden="true">FR</span></a>
-        <a href="/ru/writing/first-love/" hreflang="ru" lang="ru" aria-label="Русский" title="Русский"><span class="language-short" aria-hidden="true">RU</span></a>
-      </nav>
-    </div>
-    <aside class="reading-tools" aria-label="阅读选项">
-  <details>
-    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">阅读选项</span><span class="visually-hidden">阅读选项</span></summary>
-    <div class="reading-panel"><fieldset>
-      <legend>阅读偏好</legend>
-      <p class="reading-description">调整本站的阅读样式。设置仅保存在此设备。</p>
-      <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>使用无衬线字体</span></label>
+        <a href="/ja/writing/first-love/" hreflang="ja" lang="ja" aria-label="日本語" title="日本語"><span class="language-short" aria-hidden="true">日</span><span class="visually-hidden">日本語</span></a>
+        <a href="/de/writing/first-love/" hreflang="de" lang="de" aria-label="Deutsch" title="Deutsch"><span class="language-short" aria-hidden="true">DE</span><span class="visually-hidden">Deutsch</span></a>
+        <a href="/fr/writing/first-love/" hreflang="fr" lang="fr" aria-label="Français" title="Français"><span class="language-short" aria-hidden="true">FR</span><span class="visually-hidden">Français</span></a>
+        <a href="/ru/writing/first-love/" hreflang="ru" lang="ru" aria-label="Русский" title="Русский"><span class="language-short" aria-hidden="true">RU</span><span class="visually-hidden">Русский</span></a></nav></div>
+    <aside class="reading-tools" aria-label="阅读选项"><details><summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">阅读选项</span><span class="visually-hidden">阅读选项</span></summary><div class="reading-panel"><fieldset><legend>阅读偏好</legend><p class="reading-description">调整本站的阅读样式。设置仅保存在此设备。</p><label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>使用无衬线字体</span></label>
 <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>放大文字</span></label>
 <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>增加文字间距</span></label>
 <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>缩短行宽</span></label>
 <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>切换为单栏布局</span></label>
 <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>减少动态效果</span></label>
-<label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>提高对比度</span></label>
-    </fieldset>
-    <button type="button" class="reading-reset" data-reading-reset>重置</button></div>
-  </details>
-</aside>
+<label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>提高对比度</span></label></fieldset><button type="button" class="reading-reset" data-reading-reset>重置</button></div></details></aside>
   </header>
-  <main id="main" tabindex="-1" data-first-love-access data-page="request" data-error="未能提交申请，请稍后再试。" data-missing="这条私人状态链接不完整。" data-pending="申请待处理。" data-active="阅览权限已生效。" data-declined="此申请未获批准。" data-revoked="阅览权限已撤销。" data-expired="阅览权限已到期。" data-unavailable="此链接目前无法阅览稿件。" data-checking="正在查询阅览状态……" data-submitting="正在提交……" data-copied="已复制" data-network="目前无法连接访问服务；请在服务恢复后重试。" data-version-label="版本" data-version-date-label="版本日期" data-pages-label="页数" data-expires-label="到期时间" data-no-expiry="未设到期日" data-status-path="/zh-hans/writing/first-love/status/" data-reader-path="/zh-hans/writing/first-love/read/">
-    <header class="first-love-hero">
-      <div><p class="first-love-eyebrow">研究稿 · 私下传阅</p><h1>论三池崇史《初恋》</h1></div>
-      <div class="first-love-copy"><p>全文采用私下传阅，不公开发布。可在下方提出申请；阅览权逐一授予，不会自动开通。</p></div>
-    </header>
-    <section class="access-panel" aria-labelledby="request-heading">
-      <h2 id="request-heading">申请阅览</h2>
-      <p>全文采用私下传阅，不公开发布。可在下方提出申请；阅览权逐一授予，不会自动开通。</p>
-      <form class="access-form" data-request-form>
-        <label>姓名<input type="text" name="name" autocomplete="name" required maxlength="160"></label>
-        <label>邮箱<input name="email" type="email" autocomplete="email" required maxlength="254"></label>
-        <label>机构或身份（选填）<input type="text" name="affiliation" autocomplete="organization" maxlength="240"></label>
-        <label>阅览用途（选填）<textarea name="reason" maxlength="2000"></textarea></label>
-        <label class="access-honeypot" aria-hidden="true">Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label>
-        <button type="submit">申请阅览</button>
-      </form>
-      <p class="access-result" data-result role="status" aria-live="polite"></p>
-      <div class="access-success" data-success hidden>
-        <h3>申请已收到。</h3>
-        <p>请保存这条私人状态链接。网站无法替你找回，也不会通过邮件附件发送稿件。</p>
-        <p class="first-love-meta"><span>申请编号</span> <span data-request-id></span></p>
-        <label class="private-url-label">《初恋》· 阅览状态<input type="text" class="private-url" data-private-url readonly></label>
-        <div class="access-actions"><button class="access-action" type="button" data-copy>复制状态链接</button><a class="access-action" data-open-status>查看状态</a></div>
-      </div>
-      <aside class="access-privacy" aria-label="Privacy">姓名、邮箱及选填内容仅用于决定和管理稿件访问。获准后，系统会记录所发链接的打开时间；打开不代表已阅读全文。不用于营销，也不记录逐页行为。</aside>
-      <p class="access-companion"><a href="https://github.com/HanpuLi/first-love-verification">方法／验证附录</a></p>
-    </section>
+  <main id="main" tabindex="-1">
+    <header class="first-love-hero"><div><p class="first-love-eyebrow">研究稿 · 公开阅读</p><h1>论三池崇史《初恋》</h1></div><div class="first-love-copy"><p>可立即在浏览器阅读全文，无需账户、申请或审批。</p></div></header>
+    <section class="access-panel"><p><a class="access-action" href="https://node.tail95239f.ts.net:10000/first-love-reader/v/first-love-v113-2026-08-27/">阅读完整文稿</a></p><p class="reader-notice">可选用重排页面方便阅读，或查看原版排版以核对图片、表格和字体细节。页面图片仍可被保存或通过 OCR 识别。</p><p class="access-companion"><a href="https://github.com/HanpuLi/first-love-verification">方法／核验附录</a></p></section>
   </main>
-  <footer class="page-footer essay-footer">
-    <p><a href="/zh-hans/">Hanpu Li</a></p>
-    <p class="page-footer-context"><a href="/zh-hans/#writing">写作</a> <span aria-hidden="true">·</span> <a href="/zh-hans/about.html">关于本站</a></p>
-  </footer>
+  <footer class="page-footer essay-footer"><p><a href="/zh-hans/">Hanpu Li</a></p><p class="page-footer-context"><a href="/zh-hans/#writing">写作</a> <span aria-hidden="true">·</span> <a href="/zh-hans/about.html">关于本站</a></p></footer>
 </div>
 </body>
 </html>

@@ -1,0 +1,112 @@
+.first-love-page.locale-ru {
+  --mono: "Cousine RU", "Courier Prime", "Shippori Common", "Shippori Mincho", "Courier New", monospace;
+}
+
+.first-love-page.locale-zh-hans {
+  --serif: "EB Garamond", Georgia, "Noto Serif SC Site", "Songti SC", "Noto Serif CJK SC", serif;
+  --mono: "Courier Prime", "Noto Serif SC Site", "Songti SC", "Courier New", monospace;
+}
+
+.first-love-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"] {
+  font-family: "Noto Serif SC Locale", "Songti SC", "Noto Serif CJK SC", serif;
+}
+
+.first-love-page main {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 7rem) 0;
+}
+
+.first-love-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, .9fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: end;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.first-love-hero h1 {
+  max-width: 13ch;
+  margin: .3rem 0 0;
+  font-size: clamp(2.5rem, 7vw, 5.8rem);
+  font-weight: 400;
+  line-height: .95;
+  overflow-wrap: anywhere;
+}
+
+.first-love-eyebrow {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .78rem;
+  letter-spacing: .035em;
+  text-transform: lowercase;
+}
+
+.first-love-copy {
+  max-width: var(--measure-copy);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.first-love-copy p {
+  margin: 0;
+}
+
+.access-panel {
+  max-width: 46rem;
+  margin: clamp(3rem, 7vw, 6rem) 0;
+}
+
+.access-action {
+  display: inline-block;
+  max-width: 100%;
+  border: 1px solid var(--ink);
+  padding: .65rem .9rem;
+  color: inherit;
+  text-align: left;
+  text-decoration: none;
+}
+
+.access-action:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.access-action:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.access-companion {
+  margin-top: 1.5rem;
+  font-family: var(--mono);
+  font-size: .78rem;
+}
+
+.reader-notice {
+  max-width: 52rem;
+  color: var(--accent);
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+html[data-reading-simple] .first-love-hero {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 700px) {
+  .first-love-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+html[data-reading-simple] .first-love-page main,
+html[data-reading-measure] .first-love-page main {
+  max-width: 900px;
+}
+
+@media (forced-colors: active) {
+  .access-action { border-color: CanvasText; }
+}
