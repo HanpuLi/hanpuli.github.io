@@ -132,7 +132,8 @@
       "film_essays_title": "О <em>Trainspotting</em>",
       "film_essays_description": "Эссе о закадровом голосе, пространстве, подчинении субъекта и пределах собственной аргументации.",
       "film_essays_meta": "читать эссе",
-      "first_love_verify": "методы / материалы проверки"
+      "first_love_verify": "методы / материалы проверки",
+      "first_love_request": "запросить доступ"
     },
     "poetry": {
       "recent": "два недавних текста",

@@ -15,6 +15,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from first_love_pages import build as build_first_love_pages, path_for as first_love_page_path
+
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
 TEMPLATES = ROOT / "templates"
@@ -1155,6 +1157,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "FIRST_LOVE_VERIFY_URL": html.escape(
             SHARED["writing"]["first_love_verification_url"], quote=True
         ),
+        "FIRST_LOVE_HREF": first_love_page_path(locale_id, "request"),
         "HOME_HREF": page_path(locale_id, "index"),
         "CI_HREF": page_path(locale_id, "ci"),
         "SHI_HREF": page_path(locale_id, "shi"),
@@ -1349,6 +1352,7 @@ def build(check: bool = False) -> list[Path]:
         for page in ("index", "ci", "shi", "about", "contexts", "poetry-voucher"):
             sitemap_lines.append(f'  <url><loc>{html.escape(absolute_url(language["id"], page))}</loc></url>')
         sitemap_lines.append(f'  <url><loc>{html.escape(BASE_URL + essay_page_path(language["id"]))}</loc></url>')
+        sitemap_lines.append(f'  <url><loc>{html.escape(BASE_URL + first_love_page_path(language["id"], "request"))}</loc></url>')
     sitemap_lines.append("</urlset>")
     sitemap = "\n".join(sitemap_lines) + "\n"
     sitemap_path = ROOT / "sitemap.xml"
@@ -1373,6 +1377,7 @@ def build(check: bool = False) -> list[Path]:
             if not check:
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(data)
+    changed.extend(build_first_love_pages(ROOT, check=check))
     return changed
 
 

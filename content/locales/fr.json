@@ -131,7 +131,8 @@
       "film_essays_title": "Sur <em>Trainspotting</em>",
       "film_essays_description": "Un essai sur la voix off, l’espace, l’assujettissement et les limites de sa propre démonstration.",
       "film_essays_meta": "lire l’essai",
-      "first_love_verify": "méthodes / dossier de vérification"
+      "first_love_verify": "méthodes / dossier de vérification",
+      "first_love_request": "demander l’accès"
     },
     "poetry": {
       "recent": "deux textes récents",

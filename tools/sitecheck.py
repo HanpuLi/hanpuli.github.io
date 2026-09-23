@@ -173,6 +173,7 @@ def check_discovery(errors: list[str]) -> None:
         for page in ("ci.html", "shi.html", "about.html", "contexts.html"):
             expected.add(f"{base_url}{prefix}/{page}")
         expected.add(f"{base_url}{prefix}/writing/trainspotting/")
+        expected.add(f"{base_url}{prefix}/writing/first-love/")
         expected.add(f"{base_url}{prefix}/poetry-voucher/")
 
     sitemap = ROOT / "sitemap.xml"
