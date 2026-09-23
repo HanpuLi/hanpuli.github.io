@@ -391,10 +391,10 @@ class Paper{
       glyph.split(' ').forEach((row,y)=>[...row].forEach((bit,x)=>{if(bit==='1')this.x.fillRect(PAPER_CONFIG.receiptInsetDots+i*PAPER_CONFIG.receiptCellDots+x*2,this.y+(y+2)*sy,2,sy);}));
     }this.space(12*sy);
   }
-  text(text,size=22,family=serif,center=false,leading=size+7,italic=false){
+  text(text,size=22,family=serif,center=false,leading=size+7,italic=false,weight=400){
     // The pixel face stays on its native grid. Never interpolate it or fake italics.
     if(isBitmapFamily(family)){size=size<TYPE_CONFIG.pixelSmallCutoff?TYPE_CONFIG.pixelGrid:Math.max(TYPE_CONFIG.pixelMinBody,Math.round(size/TYPE_CONFIG.pixelGrid)*TYPE_CONFIG.pixelGrid);leading=Math.max(leading,size+8);italic=false;}
-    this.x.font=`${italic?'italic ':''}${size}px ${family}`;this.x.textBaseline='alphabetic';
+    this.x.font=`${italic?'italic ':''}${weight} ${size}px ${family}`;this.x.textBaseline='alphabetic';
     const lines=wrapText(text,value=>this.x.measureText(value).width);
     for(const part of lines){
       this.space(0);const width=this.x.measureText(part).width;
@@ -457,16 +457,19 @@ function render(spec){
   return {full,receipt:crop(0,receiptEnd),voucher:crop(voucherStart,full.height)};
 }
 function renderVoucherBody(p,spec,voucher,bodyFont,translationFont){
-  if(spec.original){p.text('Hanpu Li',TYPE_CONFIG.authorLatin,serif,true,48);p.space(TYPE_CONFIG.authorNameGapDots);p.text('李函璞',TYPE_CONFIG.authorCjk,bodyFont,true,29);p.space(10);}
-  p.text('POETRY VOUCHER',16,mono,true,24);p.text('NO. '+voucher,14,mono,true,21);
-  p.space(8);p.x.fillRect(PAPER_CONFIG.bodyInsetDots,p.y,PAPER_CONFIG.bodyWidthDots,1);p.space(16);p.text(spec.title,22,bodyFont,false,29);
+  if(spec.original){p.text('Hanpu Li',TYPE_CONFIG.authorLatin,bodyFont,true,56);p.space(TYPE_CONFIG.authorNameGapDots);p.text('李函璞',TYPE_CONFIG.authorCjk,bodyFont,true,29);p.space(10);}
+  // Every voucher element follows the purchased typeface. Metadata gets its own optical size.
+  const pixel=isBitmapFamily(bodyFont),labelFont=pixel?bitmapFamily('en'):serif;
+  const label=(text,center=true,family=labelFont)=>p.text(text,24,family,center,32,false,pixel?400:600);
+  label('POETRY VOUCHER');label('NO. '+voucher);
+  p.space(8);p.x.fillRect(PAPER_CONFIG.bodyInsetDots,p.y,PAPER_CONFIG.bodyWidthDots,2);p.space(16);p.text(spec.title,22,bodyFont,false,29);
   if(!spec.original&&spec.author)p.text(spec.author,14,bodyFont,false,20);
-  if(!spec.original){p.space(4);p.text('READER EDITION',12,mono,false,18);}p.space(16);
+  if(!spec.original){p.space(4);label('READER EDITION',false);}p.space(16);
   for(const line of spec.poem.split('\n')){if(line)p.text(line,spec.size,bodyFont);else p.space(18);}
   if(spec.translation){p.space(14);p.text(spec.translationTitle||spec.work?.translations?.[spec.translationLocale||'en']?.title||'',TYPE_CONFIG.translation,translationFont,false,24,true);p.space(6);for(const line of spec.translation.split('\n')){if(line)p.text(line,TYPE_CONFIG.translation,translationFont,false,24);else p.space(10);}}
   p.space(14);
-  if(spec.original){if(spec.work.edition)p.text(spec.work.edition,12,bitmapFamily('zh-Hant'),true,20);p.text(spec.work.source_url.replace('https://',''),12,mono,true,18);}
-  p.space(12);p.text('ART EDITION / NO CASH VALUE',12,mono,true,18);
+  if(spec.original){if(spec.work.edition)label(spec.work.edition,true,bodyFont);label(spec.work.source_url.replace('https://',''));}
+  p.space(12);label('ART EDITION');label('NO CASH VALUE');
 }
 function pdf(c){
   // Lossless 1-bit PDF. The 384-dot image sits on a 58mm / 8-dots-per-mm paper model.
@@ -509,7 +512,7 @@ async function generate(event){
     if(spec.font==='bitmap'&&spec.translation)pixelLoads.add(bitmapFace(spec.translationLocale));
     if(spec.original)pixelLoads.add(bitmapFace('zh-Hant'));
     await Promise.all([
-      ...['EB','Courier','ShipCommon','Ship','IMing','Noto'].map(f=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px ${f}`,fontSample)),
+      ...['EB','Courier','ShipCommon','Ship','IMing','Noto','FusionPixelLatin'].map(f=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px ${f}`,fontSample)),
       ...[...pixelLoads].map(f=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px ${f}`,fontSample))
     ]);
     await document.fonts.load(`italic ${TYPE_CONFIG.translation}px EB`);

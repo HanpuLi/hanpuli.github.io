@@ -2,6 +2,12 @@
 // Authored interface copy; literary text always comes from the published catalogue.
 const SHOP_LANGS=['en','zh-Hant','zh-Hans','ja','de','fr','ru'];
 const SHOP_COPY={
+orders:['Orders','訂單','订单','注文','Bestellungen','Commandes','Заказы'],
+paperWidth:['Paper width','紙張寬度','纸张宽度','用紙幅','Papierbreite','Largeur du papier','Ширина бумаги'],
+orderStorage:['Keep this tab to revisit your order. Download your files before closing it.','保留此分頁即可再次查看訂單。關閉前請下載檔案。','保留此标签页即可再次查看订单。关闭前请下载文件。','このタブを残すと注文を再表示できます。閉じる前にファイルを保存してください。','In diesem Tab können Sie Ihre Bestellung erneut öffnen. Laden Sie die Dateien vor dem Schließen herunter.','Gardez cet onglet pour retrouver votre commande. Téléchargez les fichiers avant de le fermer.','Сохраните эту вкладку, чтобы вернуться к заказу. Скачайте файлы перед её закрытием.'],
+orderLoading:['Opening your order…','正在開啟訂單…','正在打开订单…','注文を開いています…','Bestellung wird geöffnet…','Ouverture de votre commande…','Открываем заказ…'],
+orderMissing:['This order is not saved in this tab. Open it in the tab where you purchased, or return to the shop.','此分頁沒有這筆訂單。請在購買時使用的分頁開啟，或返回商店。','此标签页没有这笔订单。请在购买时使用的标签页打开，或返回商店。','このタブには注文がありません。購入時のタブで開くか、ショップに戻ってください。','Diese Bestellung ist in diesem Tab nicht gespeichert. Öffnen Sie den beim Kauf verwendeten Tab oder kehren Sie zum Shop zurück.','Cette commande n’est pas enregistrée dans cet onglet. Ouvrez l’onglet utilisé pour l’achat ou retournez à la boutique.','Заказ не сохранён в этой вкладке. Откройте вкладку, где совершили покупку, или вернитесь в магазин.'],
+orderUnavailable:['Your saved order could not be opened. Reload this page to try again; no new purchase will be made.','未能開啟已保存訂單。請重新載入此頁；不會再次購買。','无法打开已保存订单。请重新加载此页；不会再次购买。','保存済み注文を開けませんでした。再読み込みしてください。新たな購入は行われません。','Die gespeicherte Bestellung konnte nicht geöffnet werden. Laden Sie die Seite neu; es wird kein neuer Kauf ausgelöst.','Impossible d’ouvrir la commande enregistrée. Rechargez cette page ; aucun nouvel achat ne sera effectué.','Не удалось открыть сохранённый заказ. Обновите страницу; повторной покупки не будет.'],
 shop:['Shop','商店','商店','ショップ','Shop','Boutique','Магазин'],
 bag:['Bag','購物袋','购物袋','買い物袋','Warenkorb','Panier','Корзина'],
 deck:['A poem, by the piece.','詩，逐件出售。','诗，逐件出售。','詩を、一篇ずつ。','Gedichte, Stück für Stück.','Un poème, à la pièce.','Стихи, поштучно.'],

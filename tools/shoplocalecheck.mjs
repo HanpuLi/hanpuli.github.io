@@ -23,16 +23,20 @@ try{
   assert.equal(await page.locator('.bag-line h3').textContent(),expected.title);await page.locator('.bag-line input[type=number]').fill('2');await page.locator('.bag-line input[type=number]').press('Tab');
   await page.locator('#to-checkout').click();assert((await page.locator('#checkout-summary').textContent()).includes(expected.title));assert.equal(await page.locator('#place-order').textContent(),copy.SHOP_COPY.place[index]);
   const a11y=await new AxeBuilder({page}).analyze();assert.deepEqual(a11y.violations.map(v=>({id:v.id,target:v.nodes.map(n=>n.target)})),[],lang+' checkout axe');
-  await page.locator('#place-order').click();await page.waitForFunction(()=>poetryShop.snapshot().orders.length===1,{},{timeout:30000});assert.equal(await page.locator('.order-record a').first().textContent(),copy.SHOP_COPY.orderPdf[index]);assert.equal(await page.locator('.voucher-proof figcaption').first().textContent(),expected.title);
+  await page.locator('#place-order').click();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1,{},{timeout:30000});assert.equal(await page.locator('.order-record a').first().textContent(),copy.SHOP_COPY.orderPdf[index]);assert.equal(await page.locator('.voucher-proof figcaption').first().textContent(),expected.title);
   const snapshot=await page.evaluate(()=>poetryShop.snapshot().orders[0]),href=await page.locator('.order-record a').first().getAttribute('href');
   assert.equal(snapshot.lines[0].language,lang==='zh-Hant'?'receipt':lang);assert.equal(snapshot.units,2);
   const downloading=page.waitForEvent('download');await page.locator('.order-record a').first().click();const download=await downloading;const pdf=(await readFile(await download.path())).toString('latin1');assert(pdf.startsWith('%PDF-1.4'));assert(Number(pdf.match(/\/Count (\d+)/)[1])>=3);
   const nextIndex=(index+1)%7,next=copy.SHOP_LANGS[nextIndex];await page.locator(`[data-locale="${next}"]`).click();assert.deepEqual(await page.evaluate(()=>poetryShop.snapshot().orders[0]),snapshot);assert.equal(await page.locator('.order-record a').first().getAttribute('href'),href);assert.equal(await page.locator('.order-record a').first().textContent(),copy.SHOP_COPY.orderPdf[nextIndex]);
-  await page.locator(`[data-locale="${lang}"]`).click();await page.locator('#custom-work').click();await page.locator('#save-line').click();assert.equal(await page.locator('#editor-status').textContent(),copy.SHOP_COPY.required[index]);
-  await page.locator('[data-close="product-editor"]').click();
+  await page.locator(`[data-locale="${lang}"]`).click();
+  assert(new URL(page.url()).pathname.endsWith('/order.html'));assert.equal(await page.locator('#shop-front').isVisible(),false);
+  const orderAudit=await new AxeBuilder({page}).analyze();assert.deepEqual(orderAudit.violations.map(v=>({id:v.id,target:v.nodes.map(n=>n.target)})),[],lang+' order axe');
   for(const width of [320,390,768,1440]){await page.setViewportSize({width,height:900});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),lang+' completed order overflow '+width);}
+  await page.reload();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1);assert.equal((await page.evaluate(()=>poetryShop.snapshot().orders[0])).ref,snapshot.ref);
+  await page.locator('#keep-shopping').click();await page.waitForFunction(()=>document.querySelectorAll('.product-card').length===23);
+  await page.locator('#custom-work').click();await page.locator('#save-line').click();assert.equal(await page.locator('#editor-status').textContent(),copy.SHOP_COPY.required[index]);await page.locator('[data-close="product-editor"]').click();
   console.log(lang+': full reading, paired selection, bag, checkout, real PDF download, order language switch and validation passed');await context.close();
  }
  const context=await browser.newContext({locale:'fr-FR'});const page=await context.newPage();await page.goto(base+'/poetry-voucher/shop.html');await page.waitForFunction(()=>document.querySelectorAll('.product-card').length===23);assert.equal(await page.locator('html').getAttribute('data-ui-locale'),'fr');await context.close();
- assert.deepEqual(errors,[]);console.log('shoplocalecheck: all 7 complete purchase/download journeys, 7 checkout axe scans, 28 completed-order layouts, dictionary completeness and browser-language detection OK');
+ assert.deepEqual(errors,[]);console.log('shoplocalecheck: all 7 complete purchase/download journeys, 14 checkout/order axe scans, 28 completed-order layouts, dictionary completeness and browser-language detection OK');
 }finally{await browser.close();server?.kill('SIGTERM');}

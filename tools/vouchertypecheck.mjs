@@ -133,6 +133,24 @@ try{
     assert(fonts.length>0&&fonts.every(f=>f.isCustomFont&&f.familyName.includes(`Fusion Pixel 12px Mono ${expectedFlavor}`)),`${locale}: unexpected pixel-font fallback: ${JSON.stringify(fonts)}`);
   }
   await page.evaluate(()=>document.getElementById('font-audit').remove());await cdp.detach();
+  // Purchased typography applies to metadata as well as the poem; inspect actual one-bit pixels.
+  const metadata=await page.evaluate(()=>{
+    const results=[];
+    for(const font of ['bitmap','site']){
+      const family=font==='bitmap'?bitmapFamily('en'):serif,weight=font==='bitmap'?400:600;
+      const probe=w=>{const p=new Paper();p.text('NO. W3-02260923000001-01',24,family,true,32,false,w);return p.finish();};
+      const image=probe(weight),data=image.getContext('2d').getImageData(0,0,image.width,image.height).data;
+      const runs=[];let ink=0;for(let y=0;y<image.height;y++){let run=0;for(let x=0;x<=image.width;x++){if(x<image.width&&data[(y*image.width+x)*4]===0){run++;ink++;}else if(run){runs.push(run);run=0;}}}
+      const normal=probe(400).getContext('2d').getImageData(0,0,image.width,image.height).data;let normalInk=0;for(let i=0;i<normal.length;i+=4)if(normal[i]===0)normalInk++;
+      const work=works.find(w=>w.id==='ci-w3'),p=new Paper(),calls=[],text=p.text.bind(p);p.text=(...args)=>{calls.push(args);return text(...args);};
+      renderVoucherBody(p,{...work,work,original:true,size:24,font},'W3-02260923000001-01',font==='bitmap'?bitmapFamily('zh-Hant'):serif,family);
+      const labels=calls.filter(a=>/^(NO\. |POETRY VOUCHER|ART EDITION|NO CASH VALUE|hanpuli\.github)/.test(a[0]));
+      results.push({font,ink,normalInk,minRun:Math.min(...runs),labels:labels.map(a=>({size:a[1],family:a[2],weight:a[6]})),authorFamily:calls.find(a=>a[0]==='Hanpu Li')[2],png:p.finish().toDataURL()});
+    }
+    return results;
+  });
+  for(const row of metadata){assert.equal(row.labels.length,5);assert(row.labels.every(label=>label.size===24));if(row.font==='bitmap'){assert(row.minRun>=2,'pixel metadata must have at least two-dot horizontal strokes');assert(row.labels.every(label=>label.family.startsWith('FusionPixel')));assert(row.authorFamily.startsWith('FusionPixel'));}else{assert(row.labels.every(label=>label.family.startsWith('EB')&&label.weight===600));assert(row.ink>row.normalInk,'website metadata must retain more ink than its regular-weight form');assert(row.authorFamily.startsWith('EB'));}await writeFile('/tmp/voucher-'+row.font+'-updated.png',Buffer.from(row.png.split(',')[1],'base64'));}
+  console.log('Voucher metadata: purchased font throughout; 24-dot labels; two-dot bitmap strokes; heavier website labels verified. No printing.');
   // Sample assets are refreshed only by explicit authoring command, never by QA.
   if(process.argv.includes('--write-samples')){
     const samples=await page.evaluate(specimen=>{

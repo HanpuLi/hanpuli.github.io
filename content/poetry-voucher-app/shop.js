@@ -1,6 +1,8 @@
 'use strict';
 (() => {
-  const MAX_UNITS=24, STORAGE_KEY='poetry-voucher-bag-v1';
+  const MAX_UNITS=24, STORAGE_KEY='poetry-voucher-bag-v1', ORDER_KEY='poetry-voucher-order-v1-';
+  const orderPage=typeof document!=='undefined'&&document.body.dataset.page==='order';
+  let orderPageStatus=null;
   const el=id=>document.getElementById(id);
   const t=key=>SHOP_COPY[key]?.[SHOP_LANGS.indexOf(uiLocale)]||SHOP_COPY[key]?.[0]||key;
   const node=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
@@ -124,9 +126,9 @@
     ensure(height){if(this.y+height<=PAPER_CONFIG.contentMaxDots)return;this.pages.push(super.finish());this.c=canvas(PAPER_CONFIG.printableDots,PAPER_CONFIG.canvasMaxDots);this.x=this.c.getContext('2d');this.y=PAPER_CONFIG.receiptInsetDots;}
     space(n){this.ensure(n);this.y+=n;}
     till(left='',right=null,center=false,tall=false){this.ensure(tall?48:24);super.till(left,right,center,tall);}
-    text(text,size=22,family=serif,center=false,leading=size+7,italic=false){
+    text(text,size=22,family=serif,center=false,leading=size+7,italic=false,weight=400){
       if(isBitmapFamily(family)){size=size<TYPE_CONFIG.pixelSmallCutoff?TYPE_CONFIG.pixelGrid:Math.max(TYPE_CONFIG.pixelMinBody,Math.round(size/TYPE_CONFIG.pixelGrid)*TYPE_CONFIG.pixelGrid);leading=Math.max(leading,size+8);italic=false;}
-      const setFont=()=>{this.x.font=`${italic?'italic ':''}${size}px ${family}`;this.x.textBaseline='alphabetic';};setFont();
+      const setFont=()=>{this.x.font=`${italic?'italic ':''}${weight} ${size}px ${family}`;this.x.textBaseline='alphabetic';};setFont();
       for(const part of wrapText(text,value=>this.x.measureText(value).width)){this.ensure(leading+4);setFont();const width=this.x.measureText(part).width;this.x.fillText(part,center?Math.round((PAPER_CONFIG.printableDots-width)/2):PAPER_CONFIG.bodyInsetDots,this.y+size);this.y+=leading;}
     }
     finishPages(){return [...this.pages,super.finish()];}
@@ -182,7 +184,7 @@
     // Build off-DOM first: an export failure cannot clear the bag or erase an earlier order.
     const urls=[],section=node('article',undefined,'completed-order'),heading=node('div',undefined,'order-record'),proofs=node('div',undefined,'order-proof-grid');
     try{
-      const title=node('h3'),meta=node('p'),payment=node('p',undefined,'micro'),hint=node('p',undefined,'micro');
+      const title=node('h2'),meta=node('p'),payment=node('p',undefined,'micro'),hint=node('p',undefined,'micro');
       title.dataset.orderField='title';meta.dataset.orderField='meta';payment.dataset.orderField='payment';hint.dataset.shop='downloadHint';
       const fullLink=download(t('orderPdf'),multipagePDF([...result.receipt,...result.vouchers.flatMap(v=>v.pages)]),`poetry-order-${order.ref}.pdf`,urls),receiptLink=download(t('receiptPdf'),multipagePDF(result.receipt),`receipt-${order.ref}.pdf`,urls);
       fullLink.dataset.shop='orderPdf';receiptLink.dataset.shop='receiptPdf';heading.append(title,meta,payment,fullLink,receiptLink,hint);
@@ -202,26 +204,40 @@
     section.querySelectorAll('.receipt-proof img').forEach(img=>img.alt=t('receipt')+' '+order.ref);
     for(const line of order.lines)for(const part of section.querySelectorAll('[data-line-id]'))if(part.dataset.lineId===line.id){const label=part.querySelector('figcaption,summary');label.textContent=lineTitle(line);label.lang=displayLang(line);part.querySelectorAll('img').forEach((img,i)=>img.alt=lineTitle(line)+' / '+(i+1));}
   }
+  function rememberOrder(order){sessionStorage.setItem(ORDER_KEY+order.ref,JSON.stringify(order));sessionStorage.setItem(ORDER_KEY+'latest',order.ref);}
+  async function openSavedOrder(){
+    let ref=new URL(location.href).searchParams.get('order');try{ref ||= sessionStorage.getItem(ORDER_KEY+'latest');}catch{}
+    orderPageStatus='orderLoading';el('order-page-status').textContent=t(orderPageStatus);
+    let saved;
+    try{saved=ref&&/^\d{12,14}$/.test(ref)?sessionStorage.getItem(ORDER_KEY+ref):null;}catch{}
+    if(!saved){orderPageStatus='orderMissing';el('order-heading').textContent=t('order');el('order-page-status').textContent=t(orderPageStatus);return;}
+    try{
+      const order=JSON.parse(saved);if(order.ref!==ref||!Array.isArray(order.lines)||order.lines.length>MAX_UNITS)throw Error('saved order');
+      order.created=new Date(order.created);const result=await prepare(order),output=await outputOrder(order,result);
+      orders.push({order,...output});el('order-proofs').replaceChildren(output.section);orderPageStatus=null;el('order-page-status').textContent='';el('order-heading').focus({preventScroll:true});
+    }catch(error){console.error('Saved order could not be opened',error);orderPageStatus='orderUnavailable';el('order-heading').textContent=t('order');el('order-page-status').textContent=t(orderPageStatus);}
+  }
   async function placeOrder(){
     if(busy||!bag.length)return;busy=true;el('place-order').disabled=true;el('back-to-bag').disabled=true;checkoutStatusKey='preparing';el('checkout-status').textContent=t(checkoutStatusKey);
     try{
       const order=pendingOrder||(pendingOrder=freezeOrder()),result=await prepare(order),output=await outputOrder(order,result);
-      orders.push({order,...output});el('order-proofs').prepend(output.section);bag=[];pendingOrder=null;persist();renderBag();close('checkout-dialog');el('order-section').hidden=false;el('order-heading').focus({preventScroll:true});el('order-section').scrollIntoView({behavior:'instant',block:'start'});
+      try{rememberOrder(order);}catch(error){output.urls.forEach(URL.revokeObjectURL);throw error;}
+      bag=[];pendingOrder=null;persist();renderBag();close('checkout-dialog');output.urls.forEach(URL.revokeObjectURL);location.assign('order.html?lang='+encodeURIComponent(uiLocale)+'&order='+order.ref);
     }catch(error){console.error('Order preparation failed',error);checkoutStatusKey='failed';el('checkout-status').textContent=t(checkoutStatusKey);}
     finally{busy=false;el('place-order').disabled=false;el('back-to-bag').disabled=false;renderBag();}
   }
   function translateUI(){
-    document.querySelectorAll('[data-shop]').forEach(n=>n.textContent=t(n.dataset.shop));document.querySelectorAll('[data-shop-placeholder]').forEach(n=>n.placeholder=t(n.dataset.shopPlaceholder));document.title=t('shop')+' · Poetry Voucher · Hanpu Li';
+    document.querySelectorAll('[data-shop]').forEach(n=>n.textContent=t(n.dataset.shop));document.querySelectorAll('[data-shop-placeholder]').forEach(n=>n.placeholder=t(n.dataset.shopPlaceholder));document.querySelectorAll('[data-order-link]').forEach(n=>n.href='order.html?lang='+encodeURIComponent(uiLocale));document.title=t(orderPage?'order':'shop')+' · Poetry Voucher · Hanpu Li';if(orderPageStatus){el('order-page-status').textContent=t(orderPageStatus);if(orderPageStatus!=='orderLoading')el('order-heading').textContent=t('order');}
     if(ready){catalogue();renderBag();renderCheckout();editorPrice();}for(const entry of orders)updateOrderUI(entry.order,entry.section);if(toastKey)el('shop-status').textContent=t(toastKey);if(editorStatusKey)el('editor-status').textContent=t(editorStatusKey);if(checkoutStatusKey)el('checkout-status').textContent=t(checkoutStatusKey);if(editingId)el('save-line').textContent=t('save');
   }
   document.querySelectorAll('[data-close]').forEach(n=>n.addEventListener('click',()=>{if(!busy)close(n.dataset.close);}));
   document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('cancel',event=>{if(busy)event.preventDefault();}));
   el('open-bag').addEventListener('click',()=>show('bag-dialog'));el('custom-work').addEventListener('click',()=>openEditor(null));el('save-line').addEventListener('click',saveEditor);
   el('save-custom').addEventListener('change',persist);el('shop-search').addEventListener('input',catalogue);el('shop-filter').addEventListener('change',catalogue);el('to-checkout').addEventListener('click',checkout);el('place-order').addEventListener('click',placeOrder);
-  el('back-to-bag').addEventListener('click',()=>{close('checkout-dialog');show('bag-dialog');});el('keep-shopping').addEventListener('click',()=>{el('catalogue').scrollIntoView({behavior:'instant'});el('shop-search').focus({preventScroll:true});});
+  el('back-to-bag').addEventListener('click',()=>{close('checkout-dialog');show('bag-dialog');});
   document.querySelector('.controls').addEventListener('input',editorPrice);el('work').addEventListener('change',editorPrice);
   document.addEventListener('presslocalechange',translateUI);
-  const initialise=()=>{if(ready)return;ready=true;restore();translateUI();el('custom-work').disabled=false;const requested=new URL(location.href).searchParams.get('work');if(requested)openEditor(works.some(w=>w.id===requested)?requested:null);};
+  const initialise=()=>{if(ready)return;ready=true;restore();translateUI();el('custom-work').disabled=false;const requested=new URL(location.href).searchParams.get('work');if(orderPage)openSavedOrder();else if(requested)openEditor(works.some(w=>w.id===requested)?requested:null);};
   document.addEventListener('catalogueready',initialise);
   document.addEventListener('catalogueerror',()=>{notify('loadError');el('no-results').hidden=false;el('no-results').textContent=t('loadError');});
   el('custom-work').disabled=true;translateUI();renderBag();if(works.length)initialise();

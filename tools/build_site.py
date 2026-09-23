@@ -1287,12 +1287,15 @@ def build(check: bool = False) -> list[Path]:
             sitemap_path.write_text(sitemap, encoding="utf-8")
 
     app_sources = [(TEMPLATES / 'poetry-voucher-studio.html', ROOT / 'poetry-voucher' / 'make.html'),
-                   (TEMPLATES / 'poetry-voucher-shop.html', ROOT / 'poetry-voucher' / 'shop.html')]
+                   (TEMPLATES / 'poetry-voucher-shop.html', ROOT / 'poetry-voucher' / 'shop.html'),
+                   (TEMPLATES / 'poetry-voucher-shop.html', ROOT / 'poetry-voucher' / 'order.html')]
     # Explicit public bundle: never sweep private printer files into the output.
     app_sources += [(CONTENT / 'poetry-voucher-app' / name, ROOT / 'poetry-voucher' / name)
                     for name in ('gallery.js', 'i18n.js', 'editions.json', 'studio.css', 'shop.js', 'shop-copy.js', 'shop.css')]
     for source, target in app_sources:
         data = source.read_bytes()
+        if target.name == 'order.html':
+            data = data.replace(b'data-page="shop"', b'data-page="order"').replace(b'<div id="shop-front">', b'<div id="shop-front" hidden>').replace(b'aria-labelledby="order-heading" hidden', b'aria-labelledby="order-heading"').replace(b'/poetry-voucher/shop.html">\n<link rel="stylesheet"', b'/poetry-voucher/order.html">\n<link rel="stylesheet"')
         if not target.exists() or target.read_bytes() != data:
             changed.append(target)
             if not check:
