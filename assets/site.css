@@ -155,12 +155,12 @@
 }
 
 .language-short {
-  display: inline-block;
-}
-
-[lang="zh-Hans"] > .language-short {
-  transform: scale(.96);
-  transform-origin: center;
+  display: inline-flex;
+  min-height: 1.25em;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .locale-zh-hans [lang="zh-Hant-HK"] {
@@ -856,7 +856,7 @@ html[data-reading-motion] .site-home::before {
   align-self: center;
   font-size: clamp(108px, 13.6vw, 244px);
   font-weight: 400;
-  line-height: .69;
+  line-height: .9;
   letter-spacing: -.064em;
   text-wrap: balance;
 }
@@ -2570,7 +2570,7 @@ html[data-reading-motion] .site-home::before {
     grid-column: 1 / 13;
     grid-row: auto;
     font-size: clamp(82px, 27vw, 126px);
-    line-height: .72;
+    line-height: .9;
   }
 
   .site-home .hero-id {

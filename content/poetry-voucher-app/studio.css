@@ -208,15 +208,17 @@ button:disabled{
   border-bottom:1px solid var(--ink)
 }
 .language-short{
-  display:inline-block
+  display:inline-flex;
+  min-height:1.25em;
+  align-items:center;
+  justify-content:center;
+  line-height:1;
+  vertical-align:middle
 }
 .language-nav [lang="zh-Hans"]{
   font-family:NotoLocale,Noto,serif
 }
-[lang="zh-Hans"]>.language-short{
-  transform:scale(.96);
-  transform-origin:center
-}
+
 .visually-hidden{
   position:absolute!important;
   width:1px!important;

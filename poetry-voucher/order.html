@@ -9,11 +9,30 @@
 <title>詩券製作室 · Hanpu Li</title>
 <link rel="icon" type="image/svg+xml" href="/assets/site-mark.svg">
 <link rel="canonical" href="https://hanpuli.github.io/poetry-voucher/order.html">
-<link rel="stylesheet" href="studio.css"><link rel="stylesheet" href="shop.css">
-<script src="shop-copy.js" defer></script><script src="i18n.js" defer></script><script src="gallery.js" defer></script><script src="shop.js" defer></script>
+<link rel="stylesheet" href="studio.css"><link rel="stylesheet" href="shop.css"><link rel="stylesheet" href="accessibility.css">
+<script src="/assets/accessibility.js" defer></script><script src="shop-copy.js" defer></script><script src="i18n.js" defer></script><script src="gallery.js" defer></script><script src="shop.js" defer></script>
 </head>
 <body class="shop-page" data-page="order">
 <a class="skip" href="#shop">跳至作品</a>
+<aside class="reading-tools" aria-label="閱讀選項">
+  <details>
+    <summary><span class="reading-tools-mark" aria-hidden="true">Aa</span><span class="reading-tools-label" aria-hidden="true">閱讀選項</span><span class="visually-hidden">閱讀選項</span></summary>
+    <div class="reading-panel">
+      <fieldset>
+        <legend>閱讀偏好</legend>
+        <p class="reading-description">調整本站的閱讀顯示。設定只會儲存在此裝置。</p>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="sans"><span>使用無襯線字體</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="large"><span>放大文字</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="spacing"><span>增加文字間距</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="measure"><span>縮短行寬</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="simple"><span>簡化為單欄版面</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="motion"><span>減少動態效果</span></label>
+        <label class="reading-option"><input type="checkbox" data-reading-pref="contrast"><span>提高對比度</span></label>
+      </fieldset>
+      <button type="button" class="reading-reset" data-reading-reset>重設</button>
+    </div>
+  </details>
+</aside>
 <header class="studio-header">
   <a class="signature" href="https://hanpuli.github.io/">Hanpu Li <span lang="zh-Hant-HK">李函璞</span></a>
   <nav class="studio-nav" aria-label="頁面導航"><a data-project-link href="/poetry-voucher/">作品介紹</a><a data-shop-link href="shop.html" data-shop="shop">Shop</a><a data-order-link href="order.html" data-shop="orders">Orders</a><button id="open-bag" type="button"><span data-shop="bag">Bag</span> <span id="bag-count">0</span></button></nav>
@@ -29,10 +48,10 @@
 </header>
 <main id="shop" tabindex="-1">
 <div id="shop-front" hidden>
-<section class="shop-masthead" aria-labelledby="shop-title"><div><p class="eyebrow">HANPU LI / EDITIONS / EST. 2026</p><h1 id="shop-title">Poetry<br><em>Voucher</em><span class="shop-period">.</span></h1></div><div class="shop-intro"><p class="shop-deck" data-shop="deck">A poem, by the piece.</p><p data-shop="intro">Browse the shelves. Choose an edition. Take a little language with you.</p><a href="#catalogue" class="shop-enter" data-shop="browse">Browse the collection ↓</a><p class="shop-imprint">LONDON · 58 MM · ART EDITIONS</p></div></section>
+<section class="shop-masthead" aria-labelledby="shop-title"><div><p class="eyebrow">HANPU LI / EDITIONS / EST. 2026</p><h1 id="shop-title">Poetry<br><em>Voucher</em><span class="shop-period">.</span></h1></div><div class="shop-intro"><p class="shop-deck" data-shop="deck">A poem, by the piece.</p><p data-shop="intro">Browse the shelves. Choose an edition. Take a little language with you.</p><a href="#catalogue" class="shop-enter" data-shop="browse">Browse the collection</a><p class="shop-imprint">LONDON · 58 MM · ART EDITIONS</p></div></section>
 <div class="shop-strip"><span data-shop="editionNote">Poems &amp; lyrics · Original texts &amp; paired editions</span><span data-shop="fiction">Art editions</span></div>
-<section id="catalogue" aria-labelledby="catalogue-heading"><div class="catalogue-top"><div><p class="eyebrow" data-shop="stageCollection">01 / COLLECTION</p><h2 id="catalogue-heading" data-shop="collection">On the shelves</h2></div><button id="custom-work" type="button" class="text-button" data-shop="custom">Bring your own words ↗</button></div><div class="catalogue-tools"><label><span class="visually-hidden" data-shop="search">Search poems</span><input id="shop-search" type="search" data-shop-placeholder="search" placeholder="Search poems"></label><label><span class="visually-hidden" data-shop="filter">Collection</span><select id="shop-filter"><option value="all" data-shop="all">All editions</option><option value="甲乙十六首" data-shop="cycle">The A/B cycle</option><option value="詞" data-shop="lyrics">Other lyrics</option><option value="屋頂裂開" data-shop="roof">The Roof Splits Open</option></select></label><span id="catalogue-count" aria-live="polite"></span></div><div id="product-grid" class="product-grid"></div><p id="no-results" data-shop="noResults" hidden>No editions found.</p></section>
-<section class="shop-colophon"><div class="paper-width"><span class="colophon-number">58<small> mm</small></span><span class="micro" data-shop="paperWidth">Paper width</span></div><div><h2 data-shop="colophonTitle">Something to hold on to.</h2><p data-shop="colophon">A till counts characters, lines and pauses. The receipt records a transaction; the voucher keeps the poem. Nothing is charged. What you take away is an edition.</p></div><a data-project-link href="/poetry-voucher/" data-shop="about">About this work ↗</a></section>
+<section id="catalogue" aria-labelledby="catalogue-heading"><div class="catalogue-top"><div><p class="eyebrow" data-shop="stageCollection">01 / COLLECTION</p><h2 id="catalogue-heading" data-shop="collection">On the shelves</h2></div><button id="custom-work" type="button" class="text-button" data-shop="custom">Bring your own words</button></div><div class="catalogue-tools"><label><span class="visually-hidden" data-shop="search">Search poems</span><input id="shop-search" type="search" data-shop-placeholder="search" placeholder="Search poems"></label><label><span class="visually-hidden" data-shop="filter">Collection</span><select id="shop-filter"><option value="all" data-shop="all">All editions</option><option value="甲乙十六首" data-shop="cycle">The A/B cycle</option><option value="詞" data-shop="lyrics">Other lyrics</option><option value="屋頂裂開" data-shop="roof">The Roof Splits Open</option></select></label><span id="catalogue-count" aria-live="polite"></span></div><div id="product-grid" class="product-grid"></div><p id="no-results" data-shop="noResults" hidden>No editions found.</p></section>
+<section class="shop-colophon"><div class="paper-width"><span class="colophon-number">58<small> mm</small></span><span class="micro" data-shop="paperWidth">Paper width</span></div><div><h2 data-shop="colophonTitle">Something to hold on to.</h2><p data-shop="colophon">A till counts characters, lines and pauses. The receipt records a transaction; the voucher keeps the poem. Nothing is charged. What you take away is an edition.</p></div><a data-project-link href="/poetry-voucher/" data-shop="about">About this work</a></section>
 </div>
 <section id="order-section" class="order-section" aria-labelledby="order-heading"><div class="order-heading"><div><p class="eyebrow" data-shop="stageOrder">04 / YOUR EDITIONS</p><h1 id="order-heading" tabindex="-1" data-shop="thankYou">Thank you. These words are yours to keep.</h1><p id="order-page-status" role="status"></p><p class="micro" data-shop="orderStorage">Keep this tab to revisit your order. Download your files before closing it.</p><p id="order-meta"></p><p id="order-payment"></p></div><div id="order-downloads" class="order-downloads"></div></div><div id="order-proofs"></div><a id="keep-shopping" class="text-button" data-shop-link href="shop.html" data-shop="continue">Continue browsing</a></section>
 </main>

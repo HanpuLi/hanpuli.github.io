@@ -98,7 +98,18 @@ const localeRows=[
 ['DIGITAL PROOF','DIGITAL PROOF','数字校样','デジタル校正','DIGITALE DRUCKVORSCHAU','ÉPREUVE NUMÉRIQUE','ЦИФРОВАЯ ПРОБА'],
 ['約','Approx.','约','約','Ca.','Env.','Около'],
 ['原站作品','Original publication','原站作品','原掲載ページ','Originalveröffentlichung','Publication originale','Оригинальная публикация'],
-['MADE IN YOUR BROWSER · NO REMOTE PRINTING','MADE IN YOUR BROWSER · NO REMOTE PRINTING','浏览器本地生成 · 不远程打印','ブラウザー内で作成 · 遠隔印刷なし','LOKAL IM BROWSER · KEIN FERNDRUCK','CRÉATION LOCALE · AUCUNE IMPRESSION À DISTANCE','СОЗДАНИЕ В БРАУЗЕРЕ · БЕЗ УДАЛЁННОЙ ПЕЧАТИ']
+['MADE IN YOUR BROWSER · NO REMOTE PRINTING','MADE IN YOUR BROWSER · NO REMOTE PRINTING','浏览器本地生成 · 不远程打印','ブラウザー内で作成 · 遠隔印刷なし','LOKAL IM BROWSER · KEIN FERNDRUCK','CRÉATION LOCALE · AUCUNE IMPRESSION À DISTANCE','СОЗДАНИЕ В БРАУЗЕРЕ · БЕЗ УДАЛЁННОЙ ПЕЧАТИ'],
+["閱讀選項","Reading options","阅读选项","読みやすさ","Lesen","Lecture","Чтение"],
+["閱讀偏好","Reading preferences","阅读偏好","読みやすさの設定","Leseeinstellungen","Préférences de lecture","Настройки чтения"],
+["調整本站的閱讀顯示。設定只會儲存在此裝置。","Adjust this site for easier reading. Settings stay on this device.","调整本站的阅读样式。设置仅保存在此设备。","読みやすい表示に調整できます。設定はこの端末にだけ保存されます。","Darstellung für leichteres Lesen anpassen. Einstellungen werden nur auf diesem Gerät gespeichert.","Ajustez l’affichage pour faciliter la lecture. Les réglages restent sur cet appareil.","Настройте отображение для более удобного чтения. Параметры сохраняются только на этом устройстве."],
+["使用無襯線字體","Use sans-serif text","使用无衬线字体","ゴシック体（サンセリフ）を使う","Serifenlose Schrift","Police sans empattement","Шрифт без засечек"],
+["放大文字","Larger text","放大文字","文字を大きくする","Größere Schrift","Texte plus grand","Увеличить текст"],
+["增加文字間距","More text spacing","增加文字间距","文字間隔を広げる","Mehr Textabstand","Espacement du texte accru","Увеличить интервалы"],
+["縮短行寬","Narrower text columns","缩短行宽","行幅を短くする","Schmalere Textspalten","Colonnes de texte plus étroites","Сузить текстовые колонки"],
+["簡化為單欄版面","Simpler one-column layout","切换为单栏布局","1列のシンプルなレイアウト","Einfaches einspaltiges Layout","Mise en page simplifiée sur une colonne","Упрощённая одноколоночная вёрстка"],
+["減少動態效果","Reduce motion","减少动态效果","動きを減らす","Bewegung reduzieren","Réduire les animations","Сократить анимацию"],
+["提高對比度","Higher contrast","提高对比度","コントラストを上げる","Höherer Kontrast","Contraste renforcé","Повысить контраст"],
+["重設","Reset","重置","リセット","Zurücksetzen","Réinitialiser","Сбросить"],
 ];
 // Original English headings also receive Chinese labels, rather than mixed UI.
 const traditionalOverrides={
