@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Browser-free invariants for the public studio. Rendering is tested in-browser.
 import assert from 'node:assert/strict';
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
@@ -247,6 +247,31 @@ for(const work of data.works){
   assert.equal(work.translations.en.body,translatedPart.body,work.id);
   assert.equal(work.translations['zh-Hans'].body,shiSimplified.drafts[draftNumber-1]?.parts[partNumber-1]?.body,work.id);
 }
+// Exercise the actual cart admission and pricing functions for every published variant.
+const shopPrefix=read('content/poetry-voucher-app/shop.js').split('  function notify(')[0];
+const shopCart=vm.runInNewContext(shopPrefix+'return {validateLine,quote};})()',{
+  works:data.works,crypto:{randomUUID},typeSizes,quotePoem,
+  SHOP_LANGS:['en','zh-Hant','zh-Hans','ja','de','fr','ru']
+});
+const expectedIds=[...ciSource.poems.map(p=>`ci-${p.id}`),...shiSource.drafts.flatMap((d,i)=>d.parts.map((p,j)=>`shi-d${i+1}-${j+1}`))];
+assert.deepEqual(data.works.map(w=>w.id).sort(),expectedIds.sort());
+let shopVariants=0,outsideVariants=0;
+for(const work of data.works){
+  const ciId=work.id.slice(3);
+  const expectedShelf=work.kind==='POEM'?shiSource.title:
+    ciById.get(ciId).voice==='separate'||ciSource.outside_dates[ciId]?'詞':ciSource.title;
+  assert.equal(work.shelf,expectedShelf,work.id);
+  for(const language of ['receipt',...Object.keys(work.translations)]){
+    const line=shopCart.validateLine({workId:work.id,locale:'en',language,font:'bitmap',size:TYPE_CONFIG.defaultSize,quantity:1});
+    assert.equal(line.workId,work.id);assert.equal(line.poem,work.poem);assert.equal(line.language,language);
+    assert.equal(shopCart.quote(line).price,quotePoem(work.poem).price+(language==='receipt'?0:TARIFF.addOn));
+    if(language!=='receipt')assert(work.translations[language].body.trim(),`${work.id}: empty ${language}`);
+    shopVariants++;if(work.shelf!==ciSource.title)outsideVariants++;
+  }
+  assert.throws(()=>shopCart.validateLine({workId:work.id,locale:'en',language:'missing',font:'bitmap',size:TYPE_CONFIG.defaultSize,quantity:1}));
+}
+assert.equal(data.works.filter(w=>w.shelf===ciSource.title).length,16);
+console.log(`shop catalogue: ${shopVariants} purchasable variants, including ${outsideVariants} outside the sixteen-poem cycle; actual cart validation and pricing OK`);
 for (const file of ['gallery.js', 'i18n.js', 'editions.json', 'studio.css']) {
   const text = read('content/poetry-voucher-app/' + file);
   assert(!/tail95239f|100\.99\.73|192\.168\.|\/api\/print|\/dev\/|Bearer\s|sendBeacon|WebSocket/.test(text), file + ': private endpoint or telemetry');

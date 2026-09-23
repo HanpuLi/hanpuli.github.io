@@ -63,7 +63,23 @@ def main():
         locale: read(CONTENT / "locales" / f"{locale.lower()}.json")["shi"]["heading"]
         for locale in PAIRED_LOCALES
     }
+    shi_source = read(CONTENT / "shi-source.json")
+    expected_ids = {f"ci-{key}" for key in ci} | {
+        f"shi-d{draft_number}-{part_number}"
+        for draft_number, draft in enumerate(shi_source["drafts"], 1)
+        for part_number, _ in enumerate(draft["parts"], 1)
+    }
+    actual_ids = [work["id"] for work in catalogue["works"]]
+    if set(actual_ids) != expected_ids or len(actual_ids) != len(expected_ids):
+        raise ValueError("Voucher catalogue must contain every published work exactly once")
     for work in catalogue["works"]:
+        # Literary collection metadata remains intact; shop shelves exclude appendices.
+        key = work["id"].removeprefix("ci-")
+        work["shelf"] = (
+            shi_source["title"] if work["kind"] == "POEM" else
+            "詞" if ci[key]["voice"] == "separate" or key in ci_source["outside_dates"] else
+            ci_source["title"]
+        )
         work.pop("translation", None)
         work.pop("translation_title", None)
         work["translations"] = paired_texts(

@@ -414,7 +414,7 @@ function barcodeBits(ref){
   return [...values,check].map(v=>codes[v]).join('')+stopCode+'11';
 }
 function render(spec){
-  const p=new Paper(),ref=spec.ref,code=spec.original?spec.work.source_id:RECEIPT_CONFIG.customWorkCode,voucher=code+'-'+ref,contentLocale=spec.locale||(spec.original?'zh-Hant':'en');
+  const p=new Paper(),ref=spec.ref,code=spec.original?spec.work.source_id:RECEIPT_CONFIG.customWorkCode,voucher=spec.voucherId||code+'-'+ref,contentLocale=spec.locale||(spec.original?'zh-Hant':'en');
   const bodyFont=spec.font==='site'?serif:bitmapFamily(contentLocale),translationFont=spec.font==='site'?serif:bitmapFamily(spec.translationLocale||'en');
   p.threshold=TYPE_CONFIG.threshold[spec.font];
   const items=spec.items||[sku('poem',spec.price)],meta=receiptMeta(ref),tax=vatSummary(items);
@@ -451,6 +451,12 @@ function render(spec){
   p.till('PLEASE KEEP FOR YOUR RECORDS',null,true);p.space(8);
   p.till('FICTIONAL TRANSACTION',null,true);p.till('NO PAYMENT PROCESSED',null,true);p.till('NOT PROOF OF PURCHASE',null,true);
   const receiptEnd=p.y+PAPER_CONFIG.receiptInsetDots;p.space(34);p.till('-------- CUT HERE --------',null,true);p.space(34);const voucherStart=p.y;
+  renderVoucherBody(p,spec,voucher,bodyFont,translationFont);
+  const full=p.finish();
+  const crop=(start,end)=>{const c=canvas(PAPER_CONFIG.printableDots,end-start);c.getContext('2d').drawImage(full,0,start,PAPER_CONFIG.printableDots,end-start,0,0,PAPER_CONFIG.printableDots,end-start);return c;};
+  return {full,receipt:crop(0,receiptEnd),voucher:crop(voucherStart,full.height)};
+}
+function renderVoucherBody(p,spec,voucher,bodyFont,translationFont){
   if(spec.original){p.text('Hanpu Li',TYPE_CONFIG.authorLatin,serif,true,48);p.space(TYPE_CONFIG.authorNameGapDots);p.text('李函璞',TYPE_CONFIG.authorCjk,bodyFont,true,29);p.space(10);}
   p.text('POETRY VOUCHER',16,mono,true,24);p.text('NO. '+voucher,14,mono,true,21);
   p.space(8);p.x.fillRect(PAPER_CONFIG.bodyInsetDots,p.y,PAPER_CONFIG.bodyWidthDots,1);p.space(16);p.text(spec.title,22,bodyFont,false,29);
@@ -461,9 +467,6 @@ function render(spec){
   p.space(14);
   if(spec.original){if(spec.work.edition)p.text(spec.work.edition,12,bitmapFamily('zh-Hant'),true,20);p.text(spec.work.source_url.replace('https://',''),12,mono,true,18);}
   p.space(12);p.text('ART EDITION / NO CASH VALUE',12,mono,true,18);
-  const full=p.finish();
-  const crop=(start,end)=>{const c=canvas(PAPER_CONFIG.printableDots,end-start);c.getContext('2d').drawImage(full,0,start,PAPER_CONFIG.printableDots,end-start,0,0,PAPER_CONFIG.printableDots,end-start);return c;};
-  return {full,receipt:crop(0,receiptEnd),voucher:crop(voucherStart,full.height)};
 }
 function pdf(c){
   // Lossless 1-bit PDF. The 384-dot image sits on a 58mm / 8-dots-per-mm paper model.
@@ -538,5 +541,5 @@ fields.forEach(id=>$(id).addEventListener('input',dirty));$('work').addEventList
   for(const [id,maxLength] of Object.entries(INPUT_LIMITS))$(id).maxLength=maxLength;
   syncTypeSize();updateLocale();
   const requested=new URL(location.href).searchParams.get('work');
-  $('work').value=works.some(w=>w.id===requested)?requested:requested==='custom'?'custom':RECEIPT_CONFIG.defaultWork;$('work').disabled=false;loadWork();if(currentWork())await generate();
-}catch(error){message(error.message);}})();
+  $('work').value=works.some(w=>w.id===requested)?requested:requested==='custom'?'custom':RECEIPT_CONFIG.defaultWork;$('work').disabled=false;loadWork();if(document.body.classList.contains('shop-page'))document.dispatchEvent(new Event('catalogueready'));else if(currentWork())await generate();
+}catch(error){message(error.message);document.dispatchEvent(new CustomEvent('catalogueerror',{detail:error.message}));}})();

@@ -1011,7 +1011,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
     return {
         **{"PV_" + key.upper(): html.escape(value, quote=True) for key, value in POETRY_VOUCHER[locale_id].items()},
         "PV_HREF": page_path(locale_id, "poetry-voucher"),
-        "PV_MAKE_URL": "/poetry-voucher/make.html?lang=" + {"zh":"zh-Hant", "zh-hans":"zh-Hans"}.get(locale_id, locale_id),
+        "PV_MAKE_URL": "/poetry-voucher/shop.html?lang=" + {"zh":"zh-Hant", "zh-hans":"zh-Hans"}.get(locale_id, locale_id),
         "PV_RECEIPT_WIDTH": str(pv_receipt_width),
         "PV_RECEIPT_HEIGHT": str(pv_receipt_height),
         "PV_VOUCHER_WIDTH": str(pv_voucher_width),
@@ -1286,10 +1286,11 @@ def build(check: bool = False) -> list[Path]:
         if not check:
             sitemap_path.write_text(sitemap, encoding="utf-8")
 
-    app_sources = [(TEMPLATES / 'poetry-voucher-studio.html', ROOT / 'poetry-voucher' / 'make.html')]
+    app_sources = [(TEMPLATES / 'poetry-voucher-studio.html', ROOT / 'poetry-voucher' / 'make.html'),
+                   (TEMPLATES / 'poetry-voucher-shop.html', ROOT / 'poetry-voucher' / 'shop.html')]
     # Explicit public bundle: never sweep private printer files into the output.
     app_sources += [(CONTENT / 'poetry-voucher-app' / name, ROOT / 'poetry-voucher' / name)
-                    for name in ('gallery.js', 'i18n.js', 'editions.json', 'studio.css')]
+                    for name in ('gallery.js', 'i18n.js', 'editions.json', 'studio.css', 'shop.js', 'shop-copy.js', 'shop.css')]
     for source, target in app_sources:
         data = source.read_bytes()
         if not target.exists() or target.read_bytes() != data:

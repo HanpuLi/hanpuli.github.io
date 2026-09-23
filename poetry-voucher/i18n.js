@@ -3,6 +3,7 @@
 // Japanese, German, French, Russian. Original poems are never translated here.
 const localeNames=['zh-Hant','en','zh-Hans','ja','de','fr','ru'];
 const localeRows=[
+['詩券商店','Poetry shop','诗券商店','詩のショップ','Gedichtshop','Boutique de poésie','Магазин стихов'],
 ['點陣體 · 預設，已包含','Pixel typeface · default, included','点阵体 · 默认，已包含','ドット書体 · 標準、追加料金なし','Pixelschrift · Standard, inklusive','Police matricielle · par défaut, incluse','Пиксельный шрифт · по умолчанию, включён'],
 ['網站字體','Website typefaces','网站字体','サイトの書体','Website-Schriften','Polices du site','Шрифты сайта'],
 ['TYPEFACE_NOTE_TEMPLATE','Language-specific pixel typefaces are included by default at {bitmapSizes} dots. Website typefaces +{addOn} include EB Garamond and the site’s Chinese/Japanese fonts at {siteSizes} dots. A published translation or Simplified Chinese script edition adds {addOn} when available for the selected work.','各语言的点阵字体均默认包含，使用 {bitmapSizes} 点整倍字形。网站字体 +{addOn}，包含 EB Garamond 与网站的中日文字体，提供 {siteSizes} 点。附加已发布译文或简体字版本 +{addOn}，仅提供已有对应版本的作品。','言語別のドット書体は標準で含まれ、{bitmapSizes} ドットで使用します。サイトの書体は +{addOn} で、EB Garamond とサイトの中国語・日本語書体を {siteSizes} ドットで使用します。公開済みの翻訳または簡体字版は +{addOn} で、該当版のある作品のみ利用できます。','Sprachspezifische Pixelschriften sind standardmäßig enthalten und werden mit {bitmapSizes} Punkten verwendet. Website-Schriften kosten +{addOn} und umfassen EB Garamond sowie die chinesischen/japanischen Schriften der Website in {siteSizes} Punkten. Eine veröffentlichte Übersetzung oder die Ausgabe in vereinfachten Schriftzeichen kostet +{addOn}, sofern sie für das Werk vorliegt.','Les polices matricielles propres à chaque langue sont incluses par défaut en {bitmapSizes} points. Les polices du site ajoutent +{addOn} et comprennent EB Garamond ainsi que les polices chinoises/japonaises du site en {siteSizes} points. Une traduction publiée ou la version en caractères chinois simplifiés ajoute +{addOn}, si elle est disponible pour l’œuvre.','Языковые пиксельные шрифты включены по умолчанию и используются в размере {bitmapSizes} точек. Шрифты сайта стоят +{addOn} и включают EB Garamond, а также китайские/японские шрифты сайта в размере {siteSizes} точек. Опубликованный перевод или версия на упрощённом китайском стоит +{addOn}, если она доступна для произведения.'],
@@ -120,7 +121,7 @@ function normaliseLocale(value){
   if(['zh-hans','zh-cn','zh-sg','zh-hans-cn'].includes(value))return 'zh-Hans';
   return ['en','ja','de','fr','ru'].find(lang=>value===lang||value.startsWith(lang+'-'))||null;
 }
-let uiLocale=normaliseLocale(new URL(location.href).searchParams.get('lang'))||normaliseLocale(document.documentElement.dataset.defaultLocale)||normaliseLocale(navigator.language)||'en';
+let uiLocale=normaliseLocale(new URL(location.href).searchParams.get('lang'))||(document.body.classList.contains('shop-page')?normaliseLocale(navigator.language):null)||normaliseLocale(document.documentElement.dataset.defaultLocale)||normaliseLocale(navigator.language)||'en';
 const staticBindings=[];
 const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
 while(walker.nextNode()){
@@ -151,6 +152,7 @@ function applyLocale(){
   const route={'en':'','zh-Hant':'zh/','zh-Hans':'zh-hans/','ja':'ja/','de':'de/','fr':'fr/','ru':'ru/'}[uiLocale];
   portfolioLinks.forEach(link=>link.href='https://hanpuli.github.io/'+route);
   portfolioWorkLinks.forEach(link=>link.href='https://hanpuli.github.io/'+route+'#work');
+  document.querySelectorAll('[data-shop-link]').forEach(link=>link.href='/poetry-voucher/shop.html?lang='+uiLocale);
   document.querySelectorAll('[data-project-link]').forEach(link=>link.href='/'+route+'poetry-voucher/');
 }
 localeNav.addEventListener('click',event=>{

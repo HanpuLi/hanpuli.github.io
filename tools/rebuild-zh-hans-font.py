@@ -79,6 +79,7 @@ def collect_text() -> str:
         "process.stdout.write(vm.runInNewContext(s.split('const traditionalOverrides')[0]"
         "+ ';localeRows.map(row=>row[2]).join(\"\")'));"
     ], cwd=ROOT, text=True)
+    text += subprocess.check_output(["node", "-e", "const fs=require('fs'),vm=require('vm'); const s=fs.readFileSync('content/poetry-voucher-app/shop-copy.js','utf8'); process.stdout.write(vm.runInNewContext(s+';Object.values(SHOP_COPY).map(r=>r[2]).join(\"\")'));"], cwd=ROOT, text=True)
     return "".join(sorted({char for char in text if wanted_character(char)}))
 
 

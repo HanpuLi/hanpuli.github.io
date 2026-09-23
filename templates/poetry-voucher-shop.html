@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK" translate="no" data-default-locale="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Hanpu Li 的詩券製作室。全程在瀏覽器內完成，為 58 毫米紙面排版。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' blob: data:; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="noindex,follow">
+<title>詩券製作室 · Hanpu Li</title>
+<link rel="icon" type="image/svg+xml" href="/assets/site-mark.svg">
+<link rel="canonical" href="https://hanpuli.github.io/poetry-voucher/shop.html">
+<link rel="stylesheet" href="studio.css"><link rel="stylesheet" href="shop.css">
+<script src="shop-copy.js" defer></script><script src="i18n.js" defer></script><script src="gallery.js" defer></script><script src="shop.js" defer></script>
+</head>
+<body class="shop-page">
+<a class="skip" href="#shop">跳至作品</a>
+<header class="studio-header">
+  <a class="signature" href="https://hanpuli.github.io/">Hanpu Li <span lang="zh-Hant-HK">李函璞</span></a>
+  <nav class="studio-nav" aria-label="頁面導航"><a data-project-link href="/poetry-voucher/">作品介紹</a><a href="#catalogue" data-shop="shop">Shop</a><button id="open-bag" type="button"><span data-shop="bag">Bag</span> <span id="bag-count">0</span></button></nav>
+  <nav id="ui-locale" class="language-nav" aria-label="Language">
+    <a href="?lang=en" data-locale="en" lang="en-GB" aria-label="English" title="English"><span class="language-short" aria-hidden="true">EN</span><span class="visually-hidden">English</span></a>
+    <a href="?lang=zh-Hant" data-locale="zh-Hant" lang="zh-Hant-HK" class="current" aria-current="page" aria-label="繁體中文" title="繁體中文"><span class="language-short" aria-hidden="true">繁</span><span class="visually-hidden">繁體中文</span></a>
+    <a href="?lang=zh-Hans" data-locale="zh-Hans" lang="zh-Hans" aria-label="简体中文" title="简体中文"><span class="language-short" aria-hidden="true">简</span><span class="visually-hidden">简体中文</span></a>
+    <a href="?lang=ja" data-locale="ja" lang="ja" aria-label="日本語" title="日本語"><span class="language-short" aria-hidden="true">日</span><span class="visually-hidden">日本語</span></a>
+    <a href="?lang=de" data-locale="de" lang="de" aria-label="Deutsch" title="Deutsch"><span class="language-short" aria-hidden="true">DE</span><span class="visually-hidden">Deutsch</span></a>
+    <a href="?lang=fr" data-locale="fr" lang="fr" aria-label="Français" title="Français"><span class="language-short" aria-hidden="true">FR</span><span class="visually-hidden">Français</span></a>
+    <a href="?lang=ru" data-locale="ru" lang="ru" aria-label="Русский" title="Русский"><span class="language-short" aria-hidden="true">RU</span><span class="visually-hidden">Русский</span></a>
+  </nav>
+</header>
+<main id="shop" tabindex="-1">
+<section class="shop-masthead" aria-labelledby="shop-title"><div><p class="eyebrow">HANPU LI / EDITIONS / EST. 2026</p><h1 id="shop-title">Poetry<br><em>Voucher</em><span class="shop-period">.</span></h1></div><div class="shop-intro"><p class="shop-deck" data-shop="deck">A poem, by the piece.</p><p data-shop="intro">Browse the shelves. Choose an edition. Take a little language with you.</p><a href="#catalogue" class="shop-enter" data-shop="browse">Browse the collection ↓</a><p class="shop-imprint">LONDON · 58 MM · ART EDITIONS</p></div></section>
+<div class="shop-strip"><span data-shop="editionNote">Poems &amp; lyrics · Original texts &amp; paired editions</span><span data-shop="fiction">Art editions</span></div>
+<section id="catalogue" aria-labelledby="catalogue-heading"><div class="catalogue-top"><div><p class="eyebrow" data-shop="stageCollection">01 / COLLECTION</p><h2 id="catalogue-heading" data-shop="collection">On the shelves</h2></div><button id="custom-work" type="button" class="text-button" data-shop="custom">Bring your own words ↗</button></div><div class="catalogue-tools"><label><span class="visually-hidden" data-shop="search">Search poems</span><input id="shop-search" type="search" data-shop-placeholder="search" placeholder="Search poems"></label><label><span class="visually-hidden" data-shop="filter">Collection</span><select id="shop-filter"><option value="all" data-shop="all">All editions</option><option value="甲乙十六首" data-shop="cycle">The A/B cycle</option><option value="詞" data-shop="lyrics">Other lyrics</option><option value="屋頂裂開" data-shop="roof">The Roof Splits Open</option></select></label><span id="catalogue-count" aria-live="polite"></span></div><div id="product-grid" class="product-grid"></div><p id="no-results" data-shop="noResults" hidden>No editions found.</p></section>
+<section class="shop-colophon"><span class="colophon-number">58</span><div><h2 data-shop="colophonTitle">Something to hold on to.</h2><p data-shop="colophon">A till counts characters, lines and pauses. The receipt records a transaction; the voucher keeps the poem. Nothing is charged. What you take away is an edition.</p></div><a data-project-link href="/poetry-voucher/" data-shop="about">About this work ↗</a></section>
+<section id="order-section" class="order-section" aria-labelledby="order-heading" hidden><div class="order-heading"><div><p class="eyebrow" data-shop="stageOrder">04 / YOUR EDITIONS</p><h2 id="order-heading" tabindex="-1" data-shop="thankYou">Thank you. These words are yours to keep.</h2><p id="order-meta"></p><p id="order-payment"></p></div><div id="order-downloads" class="order-downloads"></div></div><div id="order-proofs"></div><button id="keep-shopping" class="text-button" type="button" data-shop="continue">Continue browsing</button></section>
+</main>
+<dialog id="product-editor" aria-labelledby="editor-heading"><button class="dialog-close" type="button" data-close="product-editor" data-shop="close">Close</button><div id="edition" tabindex="-1">
+  <div class="studio-heading"><div><p class="eyebrow">POETRY VOUCHER / STUDIO</p><h2 id="editor-heading" data-shop="configure">Choose your edition</h2></div><p class="studio-deck">選詩、排版，帶走一份數位作品。</p></div>
+  <div class="workspace">
+    <section class="controls" aria-label="作品編輯器">
+      <fieldset><legend><span aria-hidden="true">01</span> 內容</legend>
+        <label for="work">從作品開始</label><select id="work" disabled><option>載入作品…</option></select><p id="source-note" class="note"></p>
+        <details id="shop-reading" class="shop-reading"><summary data-shop="readFull">Read the complete poem</summary><p class="micro" data-shop="readingNote">Reading in your interface language. Choose the printed language in Edition below.</p><h3 id="shop-reading-title">Poetry Voucher</h3><div id="shop-reading-text" class="verse"></div></details><p id="original-language-note" class="micro" data-shop="originalLanguage">Original text · Traditional Chinese</p><label for="title">題名</label><input id="title" type="text">
+        <label for="author">署名</label><input id="author" type="text">
+        <label for="poem">正文 / 保留分行與分節</label><textarea id="poem" spellcheck="false" aria-describedby="privacy-note"></textarea>
+      </fieldset>
+      <fieldset><legend><span aria-hidden="true">02</span> 排版</legend>
+        <label for="font">詩券字體</label><select id="font"><option value="bitmap" selected>點陣體 · 預設，已包含</option><option value="site">網站字體</option></select>
+        <div class="pair"><div><label for="language">版本</label><select id="language"><option value="receipt">原文</option><option value="zh-Hans">原文與簡體版</option><option value="en">原文與英譯</option><option value="ja">原文與日譯</option><option value="de">原文與德譯</option><option value="fr">原文與法譯</option><option value="ru">原文與俄譯</option></select></div><div><label for="size">字號 / dots</label><select id="size"></select></div></div>
+        <p id="typeface-note" class="note"></p>
+      </fieldset>
+      <details class="receipt-details"><summary>小票明細與虛構計價</summary>
+        <div class="pair"><div><label id="price-label" for="price">標價</label><input id="price" type="text" value="0.00" readonly></div><div id="tender-group"><label id="tender-label" for="tender">現金</label><input id="tender" type="text" value="0.00" readonly></div></div>
+        <div id="price-breakdown" class="note"></div><p id="price-weights" class="note"></p><p id="payment-summary" class="note"></p><p id="cash-notes" class="note"></p><p id="price-change" class="note"></p>
+        <p id="tariff-note" class="note"></p>
+        <p id="payment-note" class="note"></p>
+      </details>
+      <div class="make-action"><button id="generate" type="button" class="primary" disabled>製作我的詩券</button><p id="message" role="status" aria-live="polite">正在載入作品…</p></div>
+      <p id="privacy-note" class="note" data-shop="privacy">Custom text stays in this tab unless you choose to save it on this device.</p>
+    </section>
+    <section class="proof-area" aria-label="數位校樣" tabindex="-1">
+      <div class="proof-toolbar"><h2><span aria-hidden="true">03</span> 校樣</h2><div class="view-switch" role="group" aria-label="預覽方式"><button type="button" data-view="pair" aria-pressed="true">分開看</button><button type="button" data-view="full" aria-pressed="false">完整紙條</button><button type="button" data-view="text" aria-pressed="false">讀原文</button></div></div>
+      <div id="pair-view" class="proof-desk"><figure><figcaption>01 — RECEIPT / 小票</figcaption><div class="paper"><img id="receipt-image" src="sample-receipt.png" alt="虛構交易小票，並非購物憑證" hidden></div></figure><figure><figcaption>02 — VOUCHER / 詩券</figcaption><div class="paper"><img id="voucher-image" src="sample-voucher.png" alt="詩券排版；可切換讀原文取得文字版" hidden></div></figure></div>
+      <div id="full-view" class="proof-desk single" hidden><figure><figcaption>RECEIPT + VOUCHER / 連續紙條</figcaption><div class="paper"><img id="full-image" src="sample-voucher.png" alt="小票、CUT HERE 分隔及完整詩券" hidden></div></figure></div>
+      <article id="text-view" class="reading" hidden><h3 id="reading-title">題名</h3><p id="reading-author"></p><div id="reading-poem" class="verse"></div><section id="translation-section" hidden lang="en"><h4 id="translation-title">Translation</h4><div id="translation" class="verse"></div></section></article>
+      <div class="export-bar"><h2>帶走作品</h2><div class="downloads" role="group" aria-label="下載數位作品"><a id="full-pdf" href="#edition" hidden download="poetry-edition.pdf">完整 PDF</a><a id="voucher-pdf" href="#edition" hidden download="poetry-voucher.pdf">詩券 PDF</a><a id="receipt-pdf" href="#edition" hidden download="specimen-receipt.pdf">小票 PDF</a><a id="full-png" href="#edition" hidden download="poetry-edition.png">PNG</a></div><p id="proof-note" class="micro"></p></div>
+    </section>
+  </div>
+</div><p id="editor-status" role="status"></p><div class="editor-actions"><div><span data-shop="unitPrice">Per edition</span><strong id="editor-price"></strong></div><button id="save-line" class="primary" type="button" data-shop="add">Add to bag</button></div></dialog>
+<dialog id="bag-dialog" aria-labelledby="bag-heading"><div class="dialog-heading"><div><p class="eyebrow" data-shop="stageBag">02 / YOUR SELECTION</p><h2 id="bag-heading" data-shop="bag">Bag</h2></div><button class="dialog-close" type="button" data-close="bag-dialog" data-shop="close">Close</button></div><div id="bag-lines"></div><div class="bag-footer"><label class="save-choice"><input id="save-custom" type="checkbox"><span data-shop="saveCustom">Save custom text on this device too</span></label><p class="micro" id="storage-note" data-shop="storage">Catalogue selections are saved on this device. Custom text stays in this tab by default.</p><div class="total-line"><span data-shop="total">Total</span><strong id="bag-total"></strong></div><p class="micro" data-shop="noCharge">No money will be taken.</p><button id="to-checkout" class="primary" type="button" data-shop="checkout">Go to checkout</button><button class="text-button" type="button" data-close="bag-dialog" data-shop="continue">Continue browsing</button></div></dialog>
+<dialog id="checkout-dialog" aria-labelledby="checkout-heading"><div class="dialog-heading"><div><p class="eyebrow" data-shop="stageCheckout">03 / AT THE TILL</p><h2 id="checkout-heading" data-shop="checkoutTitle">Checkout</h2></div><button class="dialog-close" type="button" data-close="checkout-dialog" data-shop="close">Close</button></div><div id="checkout-summary"></div><div class="total-line"><span data-shop="total">Total</span><strong id="checkout-total"></strong></div><div class="payment-panel"><p class="eyebrow" data-shop="payment">PAYMENT</p><p data-shop="paymentText">No payment is collected. No card details or personal information are needed.</p></div><p class="micro" data-shop="receiptArtwork">The thermal receipt uses English till lettering. Your order details and controls are shown in your chosen language.</p><p class="micro" data-shop="delivery">Your receipt and poetry vouchers will be prepared here, ready to download. No physical delivery.</p><button id="place-order" class="primary" type="button" data-shop="place">Complete purchase</button><p id="checkout-status" role="status"></p><button id="back-to-bag" class="text-button" type="button" data-shop="back">Back to bag</button></dialog>
+
+<div id="shop-status" class="shop-toast" role="status" aria-live="polite"></div>
+<footer><a data-project-link href="/poetry-voucher/">作品介紹</a><span id="paper-spec"></span><a data-portfolio-link href="https://hanpuli.github.io/#work">Back to portfolio</a></footer>
+<noscript><p>製作詩券需要 JavaScript。<a href="/poetry-voucher/">Poetry Voucher</a></p></noscript>
+</body>
+</html>

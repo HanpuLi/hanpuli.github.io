@@ -80,6 +80,9 @@ for f in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
     parser.feed(open(f, encoding="utf-8").read())
     t = "".join(parser.parts)
     chars.update(c for c in t if ord(c) >= 0x2E80 or c in "£²·–—’←→")
+# Runtime shop labels do not appear in generated HTML until the locale is selected.
+shop_text = subprocess.check_output(["node", "-e", "const fs=require('fs'),vm=require('vm'); const s=fs.readFileSync('content/poetry-voucher-app/shop-copy.js','utf8'); process.stdout.write(vm.runInNewContext(s+';Object.values(SHOP_COPY).map(r=>r[1]+r[3]).join(\"\")'));"], cwd=ROOT, text=True)
+chars.update(c for c in shop_text if ord(c) >= 0x2E80)
 # The Simplified-Chinese locale switch label is rendered by the one-glyph
 # Noto Serif SC locale subset built by rebuild-zh-hans-font.py, not Shippori/I.Ming.
 chars.discard("简")

@@ -65,8 +65,9 @@ Never add Garamond Premier Pro or another licensed local font to the repository.
 
 ## Poetry Voucher
 
-The public project has two surfaces: seven static `/poetry-voucher/` overview
-editions and one browser-only `/poetry-voucher/make.html?lang=…` studio.
+The public project has seven static `/poetry-voucher/` overview editions, a
+browser-only `/poetry-voucher/shop.html?lang=…` shop, and the original
+`/poetry-voucher/make.html?lang=…` single-edition studio.
 Edit overview copy in `poetry-voucher.json`, the studio template in
 `../templates/poetry-voucher-studio.html`, and its JavaScript, data and CSS in
 `poetry-voucher-app/`. Run `python3 tools/build_site.py` to publish those sources
@@ -122,8 +123,10 @@ size or resets to 24 and invalidates stale downloads. The generated pixel
 webfonts and their upstream OFL notices are bundled under assets/fonts; catalogue
 works do not depend on system fonts.
 
-There is no payment service, text upload, persistent text storage or physical
-printer API in this public app. Do not copy private device configuration,
+There is no payment service, text upload or physical printer API in this public
+app. The shop persists validated catalogue selections locally. Custom text is
+transient unless the visitor explicitly enables device storage; disabling that
+option removes custom text from saved storage without removing the in-tab bag. Do not copy private device configuration,
 identifiers, credentials or print-service code into it. The receipt deliberately
 uses a plausible UK POS information hierarchy (store/till/transaction fields,
 item tax codes, subtotal/total, VAT analysis and cash/card detail), but every
@@ -147,3 +150,26 @@ plus six digits of browser-generated entropy; the voucher and barcode reuse that
 reference, but it is not a server-backed or sequential transaction ID.
 Custom glyphs missing from the bundled fonts fall back to device fonts. Physical
 print calibration is separate from digital proofing.
+
+### Shop authoring and order boundaries
+
+Edit the shop shell in `templates/poetry-voucher-shop.html`, authored interface
+translations in `poetry-voucher-app/shop-copy.js`, and behaviour/styles in
+`shop.js` / `shop.css`. The build copies an explicit allowlist of app files.
+The shop reuses the studio's catalogue, tariff, receipt math, type policy and
+`renderVoucherBody()`; it does not maintain a second literary corpus.
+
+A cart line holds a work or custom-text snapshot, content locale, paired edition,
+font, size and quantity. Exact configurations merge. Editing is transactional;
+cancel leaves the original intact. Restored lines are validated and repriced.
+Orders freeze their texts, quantities, tariff, total and one payment scene.
+Each voucher gets an order-linked suffix; receipt SKU counts and voucher counts
+are separate. No order is cleared from the bag until its downloads are ready.
+A failed export leaves the bag and the pending payment scene intact for retry.
+Earlier orders remain available for the life of the tab.
+
+Orders support up to 24 vouchers. Long receipts and poems paginate, using the
+same 58 mm paper geometry and lossless one-bit PDF encoding. There is no claim
+of stock scarcity, fulfilment by post, live merchant authorization or actual
+payment. The catalogue, editor, bag and checkout retain seven-language keyboard
+and screen-reader support. Run `npm run qa:shop` for the complete browser flow.

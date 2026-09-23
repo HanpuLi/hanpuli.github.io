@@ -407,6 +407,12 @@ def main() -> int:
                 "process.stdout.write(vm.runInNewContext(s.split('const traditionalOverrides')[0]"
                 "+ ';localeRows.map(row=>row[2]).join(\"\")'));"
             ], cwd=ROOT, text=True),
+            subprocess.check_output([
+                "node", "-e",
+                "const fs=require('fs'),vm=require('vm');"
+                "const s=fs.readFileSync('content/poetry-voucher-app/shop-copy.js','utf8');"
+                "process.stdout.write(vm.runInNewContext(s+';Object.values(SHOP_COPY).map(r=>r[2]).join(\"\")'));"
+            ], cwd=ROOT, text=True),
         ]
     )
     forbidden_traditional = set("體語攝寫詞詩電郵證據閱讀顯儲裝襯線縮欄寬簡動對虛擬製遙經濟擴綠轉換檔錄劇膠發義聲幀長評論會這兩倫學麗後無題頂頁別處")

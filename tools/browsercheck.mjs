@@ -211,7 +211,7 @@ try {
     await page.goto(BASE + projectPath, { waitUntil: 'load' });
     if (await page.locator('.pv-context a').getAttribute('href') !== prefix + '#work') failures.push(`${projectPath}: Work context backlink is wrong`);
     if (await page.locator('.page-wordmark').getAttribute('href') !== prefix) failures.push(`${projectPath}: wordmark home link is wrong`);
-    const expectedMaker = '/poetry-voucher/make.html?lang=' + studioLocaleForPath[locale];
+    const expectedMaker = '/poetry-voucher/shop.html?lang=' + studioLocaleForPath[locale];
     if (await page.locator('.pv-intro .pv-cta').getAttribute('href') !== expectedMaker) failures.push(`${projectPath}: Studio link is wrong`);
   }
 

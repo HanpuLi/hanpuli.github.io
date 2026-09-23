@@ -38,16 +38,22 @@ The mirrors record the source SHA-256 and CI fails if they become stale. Editori
 
 ## Poetry Voucher
 
-The portfolio now includes [Poetry Voucher](https://hanpuli.github.io/poetry-voucher/):
-a seven-language project overview and a separate [browser-only studio](https://hanpuli.github.io/poetry-voucher/make.html?lang=en).
-The studio uses an authored locale dictionary to preserve unsaved work during
-language changes. No framework, remote printing, payment provider or text
-upload is involved. Its authoring map is in `content/README.md`.
+The portfolio includes [Poetry Voucher](https://hanpuli.github.io/poetry-voucher/):
+a seven-language project overview, a [poetry shop](https://hanpuli.github.io/poetry-voucher/shop.html?lang=en),
+and the original [single-edition studio](https://hanpuli.github.io/poetry-voucher/make.html?lang=en).
+The shop offers all 23 catalogue works, configurable editions, a persistent local
+bag, fictional checkout and downloadable receipts and vouchers. Each order freezes
+its contents, prices and payment scene. A whole-order PDF contains one receipt
+(which can continue onto further pages) and separately numbered poetry vouchers.
+Custom text stays in the current tab unless the visitor explicitly enables local
+saving. There is no real payment, upload or remote printing.
 
-The QA suite includes all overview routes, 28 studio viewport/locale cases,
-four studio axe scans, custom-text export and stale-download checks. The
-browser-free poetry checks cover 91,456 tender/change combinations, item
-pricing, CJK clause wrapping, translation completeness and public-data safety.
+The authoring map is in `content/README.md`. `npm run qa:shop` starts its own local
+server and checks cart merging, variant editing, quantities, local recovery,
+custom-text consent, language switching, duplicate checkout clicks, multipage
+PDF downloads, retained earlier orders, 28 viewport/locale cases and four axe
+surfaces. The existing single-edition checks continue to cover typography,
+91,456 tender/change combinations, pricing and published-text integrity.
 
 ## Accessibility
 
