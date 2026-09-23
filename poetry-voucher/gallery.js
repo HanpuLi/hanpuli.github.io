@@ -69,7 +69,8 @@ const TYPE_CONFIG=Object.freeze({
   bitmapSizes:Object.freeze([24,36]),
   siteSizes:Object.freeze([22,24,26]),
   defaultSize:24,
-  threshold:Object.freeze({bitmap:128,site:184}),
+  // Preserve small counters in the site's CJK faces after one-bit conversion.
+  threshold:Object.freeze({bitmap:128,site:160}),
   translation:19,
   authorLatin:42,
   authorCjk:20,
