@@ -226,7 +226,7 @@ def render(site: str, languages: list[dict], locales: dict[str, dict], about: di
     request_path = path_for(locale_id, "request")
     status_path = path_for(locale_id, "status")
     title = copy["title"] if page == "request" else copy["statusTitle"] if page == "status" else copy["readerTitle"]
-    subtitle = copy["description"] if page == "request" else copy["intro"] if page == "status" else copy["notice"]
+    subtitle = copy["intro"] if page == "request" else copy["statusIntro"] if page == "status" else copy["readerIntro"]
     main_attrs = _data_attributes(copy, page, locale_id)
     if page == "request":
         body = f'''<section class="access-panel" aria-labelledby="request-heading">

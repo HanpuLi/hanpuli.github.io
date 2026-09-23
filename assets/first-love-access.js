@@ -236,7 +236,7 @@
         const details = root.querySelector('[data-version-details]');
         if (details) {
           setText(details.querySelector('[data-request-id]'), body.request_id || '');
-          details.querySelectorAll('div:not(:first-child)').forEach((row) => { row.hidden = true; });
+          details.querySelectorAll('div:not(:first-child)').forEach((row) => { row.remove(); });
           details.hidden = !body.request_id;
         }
       }

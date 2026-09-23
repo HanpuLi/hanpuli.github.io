@@ -41,7 +41,9 @@
     "copied": "Copied",
     "network": "The access service could not be reached. Try again when it is online.",
     "logNotice": "The service records that the issued private link opened the document. That record does not establish that the manuscript was read.",
-    "verification": "methods / verification companion"
+    "verification": "methods / verification companion",
+    "statusIntro": "This private page shows the current state of the reading request and, when active, the assigned manuscript version.",
+    "readerIntro": "This reader serves the exact manuscript version assigned to the private access credential."
   },
   "zh": {
     "title": "論三池崇史《初戀》",
@@ -85,7 +87,9 @@
     "copied": "已複製",
     "network": "目前無法連接存取服務；請在服務恢復後重試。",
     "logNotice": "服務會記錄所發私人連結曾開啟文件；該紀錄不等於文稿已被閱讀。",
-    "verification": "方法／驗證附錄"
+    "verification": "方法／驗證附錄",
+    "statusIntro": "本私人頁面顯示閱讀申請的當前狀態；獲准後亦會列出所指定的文稿版本。",
+    "readerIntro": "本閱覽器只提供此私人存取憑證所指定的確切文稿版本。"
   },
   "zh-hans": {
     "title": "论三池崇史《初恋》",
@@ -129,7 +133,9 @@
     "copied": "已复制",
     "network": "目前无法连接访问服务；请在服务恢复后重试。",
     "logNotice": "服务会记录所发私人链接曾打开文件；该记录不等于文稿已经被阅读。",
-    "verification": "方法／验证附录"
+    "verification": "方法／验证附录",
+    "statusIntro": "本私人页面显示阅读申请的当前状态；获准后也会列出所指定的文稿版本。",
+    "readerIntro": "本阅览器只提供此私人访问凭证所指定的确切文稿版本。"
   },
   "ja": {
     "title": "三池崇史『First Love』論",
@@ -173,7 +179,9 @@
     "copied": "コピーしました",
     "network": "アクセスサービスに接続できません。サービスがオンラインになってから再度お試しください。",
     "logNotice": "発行した非公開リンクが文書を開いたことは記録されます。その記録は、原稿を読んだことの証明ではありません。",
-    "verification": "方法／検証資料"
+    "verification": "方法／検証資料",
+    "statusIntro": "この非公開ページでは、閲覧申請の現在の状態と、承認後に割り当てられた原稿版を確認できます。",
+    "readerIntro": "この閲覧画面では、非公開アクセス資格に割り当てられた原稿版だけを表示します。"
   },
   "de": {
     "title": "Zu Takashi Miikes First Love",
@@ -217,7 +225,9 @@
     "copied": "Kopiert",
     "network": "Der Zugangsdienst ist nicht erreichbar. Versuchen Sie es erneut, wenn er online ist.",
     "logNotice": "Der Dienst zeichnet auf, dass der ausgegebene private Link das Dokument geöffnet hat. Daraus folgt nicht, dass das Manuskript gelesen wurde.",
-    "verification": "Methoden / Verifikationsmaterial"
+    "verification": "Methoden / Verifikationsmaterial",
+    "statusIntro": "Diese private Seite zeigt den aktuellen Stand der Leseanfrage und nach einer Bewilligung die zugewiesene Manuskriptfassung.",
+    "readerIntro": "Dieses Lesefenster stellt genau die Manuskriptfassung bereit, die dem privaten Zugangsnachweis zugewiesen ist."
   },
   "fr": {
     "title": "Sur First Love de Takashi Miike",
@@ -261,7 +271,9 @@
     "copied": "Copié",
     "network": "Le service d’accès est indisponible. Réessayez lorsqu’il sera en ligne.",
     "logNotice": "Le service enregistre l’ouverture du document par le lien privé délivré. Cet enregistrement ne prouve pas que le manuscrit a été lu.",
-    "verification": "méthodes / dossier de vérification"
+    "verification": "méthodes / dossier de vérification",
+    "statusIntro": "Cette page privée indique l’état actuel de la demande et, après acceptation, la version du manuscrit qui lui a été attribuée.",
+    "readerIntro": "Ce lecteur sert uniquement la version exacte du manuscrit attribuée au titre d’accès privé."
   },
   "ru": {
     "title": "О First Love Такаси Миикэ",
@@ -305,6 +317,8 @@
     "copied": "Скопировано",
     "network": "Сервис доступа недоступен. Повторите попытку, когда он будет в сети.",
     "logNotice": "Сервис записывает, что выданная частная ссылка открыла документ. Эта запись не доказывает, что рукопись была прочитана.",
-    "verification": "методы / материалы проверки"
+    "verification": "методы / материалы проверки",
+    "statusIntro": "Эта частная страница показывает текущее состояние запроса и, после одобрения, назначенную версию рукописи.",
+    "readerIntro": "Этот просмотрщик предоставляет только ту версию рукописи, которая назначена частному ключу доступа."
   }
 }
