@@ -15,6 +15,9 @@ const pageSuffixes = [
   "about.html",
   "contexts.html",
   "writing/trainspotting/",
+  "writing/first-love/",
+  "writing/first-love/status/",
+  "writing/first-love/read/",
   "poetry-voucher/",
   "404.html",
 ];

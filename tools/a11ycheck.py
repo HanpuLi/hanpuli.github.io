@@ -38,10 +38,22 @@ def essay_paths() -> list[Path]:
     ]
 
 
+def first_love_paths() -> list[Path]:
+    pages = ("", "status", "read")
+    return [
+        (ROOT / locale / "writing" / "first-love" / page / "index.html")
+        if locale
+        else (ROOT / "writing" / "first-love" / page / "index.html")
+        for locale in LOCALES
+        for page in pages
+    ]
+
+
 def page_paths() -> list[Path]:
     return [
         *portfolio_paths(),
         *essay_paths(),
+        *first_love_paths(),
         *[ROOT / locale / "poetry-voucher" / "index.html" for locale in LOCALES],
         ROOT / "mail-assistant" / "index.html",
         ROOT / "mail-assistant" / "privacy.html",
