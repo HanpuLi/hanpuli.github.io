@@ -24,6 +24,7 @@ This file records semantic constraints distilled from the author's current annot
 - 乙二「歡猶未省」: `歡` carries the literary sense of the beloved; `未省` means still unaware.
 - 乙三「新痕舊鑰莫輕論」: the new trace is deliberately unspecific; do not concretise it into one factual event.
 - 乙四「對燈重展讀」: the speaker unfolds the letter and reads it again by lamplight. The revised text no longer refers to an unidentified small shadow.
+- 乙四「紙上香微」: a faint scent on the paper being read. Do not retain the superseded lightly sealed state or add another sealing and reopening action.
 - 乙四「轉覺是、別處温言」: “elsewhere” is unspecified; do not invent a former partner or a specific other relationship.
 - 乙四「一諾窮年」: B anticipates how the key will be read; this is not an authorial declaration that such a promise objectively exists.
 - 乙四／乙五「加餐／加飯」: practical care remains real without being forced to carry the entire meaning of the relationship.
