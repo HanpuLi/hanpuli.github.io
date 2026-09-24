@@ -72,6 +72,7 @@ for f in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
     # the Traditional/Japanese Shippori subset.
     if (
         "templates" in rel
+        or "node_modules" in rel
         or os.path.basename(f) == "card.html"
         or rel[0] in {"zh-hans", "mail-assistant"}
     ):

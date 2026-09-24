@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google" content="notranslate">
 <title>About this site · Hanpu Li</title>
-<meta name="description" content="Implementation notes for Hanpu Li’s website: static architecture, multilingual publishing, typography, accessibility, responsive media, testing and GitHub Pages deployment.">
+<meta name="description" content="Editorial notes on Hanpu Li’s multilingual publication: selection, visual form, translation, versions, reading, authorship and technical maintenance.">
 <link rel="canonical" href="https://hanpuli.github.io/about.html">
 <link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/about.html">
 <link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/about.html">
@@ -18,7 +18,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hanpu Li">
 <meta property="og:title" content="About this site · Hanpu Li">
-<meta property="og:description" content="Implementation notes for Hanpu Li’s website: static architecture, multilingual publishing, typography, accessibility, responsive media, testing and GitHub Pages deployment.">
+<meta property="og:description" content="Editorial notes on Hanpu Li’s multilingual publication: selection, visual form, translation, versions, reading, authorship and technical maintenance.">
 <meta property="og:image" content="https://hanpuli.github.io/assets/social/about.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -34,7 +34,7 @@
 <meta property="og:locale:alternate" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="About this site · Hanpu Li">
-<meta name="twitter:description" content="Implementation notes for Hanpu Li’s website: static architecture, multilingual publishing, typography, accessibility, responsive media, testing and GitHub Pages deployment.">
+<meta name="twitter:description" content="Editorial notes on Hanpu Li’s multilingual publication: selection, visual form, translation, versions, reading, authorship and technical maintenance.">
 <meta name="twitter:image" content="https://hanpuli.github.io/assets/social/about.png">
 <meta name="twitter:image:alt" content="About this site · Hanpu Li">
 <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
@@ -46,8 +46,9 @@
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <script src="assets/accessibility.js"></script>
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/editorial-notes.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"AboutPage","@id":"https://hanpuli.github.io/about.html#page","url":"https://hanpuli.github.io/about.html","name":"About this site · Hanpu Li","description":"Implementation notes for Hanpu Li’s website: static architecture, multilingual publishing, typography, accessibility, responsive media, testing and GitHub Pages deployment.","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"en-GB","about":{"@id":"https://hanpuli.github.io/#person"}}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"AboutPage","@id":"https://hanpuli.github.io/about.html#page","url":"https://hanpuli.github.io/about.html","name":"About this site · Hanpu Li","description":"Editorial notes on Hanpu Li’s multilingual publication: selection, visual form, translation, versions, reading, authorship and technical maintenance.","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"en-GB","about":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 </head>
 <body class="about-page locale-en">
@@ -98,141 +99,58 @@
 
   <main id="main" tabindex="-1">
     <header class="about-hero">
-      <p class="about-eyebrow">publishing notes · 2026</p>
+      <p class="about-eyebrow">Editorial notes · 2026</p>
       <h1>About this site</h1>
       <div class="about-intro">
-        <p class="about-lede">This site is published as a set of documents rather than an application. Each of the seven language editions is a complete static document with local type, no tracking and no runtime translation; the technical stack exists to keep those publication choices stable.</p>
-        <p class="about-principle">Source authority, translation relationships, legibility and privacy come first; build and QA details follow from those editorial constraints.</p>
+        <p class="about-lede">This is an authored place for writing, ci, photographs, research and experiments in publishing. It brings different kinds of work into relation without making them illustrations of a single practice or a complete account of a life.</p>
+        <p class="about-principle">The page participates in the encounter. These notes make its editorial choices inspectable; they are not instructions for what a reader must find in the work.</p>
       </div>
     </header>
 
 <nav class="about-toc" aria-label="On this page">
   <p>On this page</p>
   <ol>
-    <li><a href="#languages"><span>01</span> Content &amp; languages</a></li>
-    <li><a href="#architecture"><span>02</span> Architecture</a></li>
-    <li><a href="#layout"><span>03</span> Layout &amp; typography</a></li>
-    <li><a href="#accessibility"><span>04</span> Accessibility</a></li>
-    <li><a href="#media"><span>05</span> Images &amp; performance</a></li>
-    <li><a href="#quality"><span>06</span> Build, QA &amp; deployment</a></li>
-    <li><a href="#principles"><span>07</span> Principles</a></li>
+    <li><a href="#architecture"><span>01</span> A publication, not an inventory</a></li>
+    <li><a href="#layout"><span>02</span> The authority of a page</a></li>
+    <li><a href="#languages"><span>03</span> Seven editions</a></li>
+    <li><a href="#media"><span>04</span> Sequence and revision</a></li>
+    <li><a href="#accessibility"><span>05</span> A page the reader can change</a></li>
+    <li><a href="#quality"><span>06</span> Authorship and evidence</a></li>
+    <li><a href="#principles"><span>07</span> Making and maintaining</a></li>
   </ol>
 </nav>
 
-    <section class="about-section" id="languages">
-      <div class="about-section-head">
-        <p class="about-section-no">01</p>
-        <h2>Content &amp; languages</h2>
-        <p class="about-section-dek">Seven editions, no runtime translation.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>English, Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are built as separate static editions with canonical URLs, hreflang alternates and locale-specific metadata.</p>
-        <p>Literary source texts have stricter rules than ordinary interface copy. Traditional Chinese is canonical where specified; Simplified Chinese literary mirrors are script-converted and hash-checked, while translations preserve stanza and line structure through dedicated validation.</p>
-        <dl class="about-facts">
-          <div><dt>locales</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
-          <div><dt>literary conversion</dt><dd>OpenCC helper · source hashes · line-parity checks</dd></div>
-          <div><dt>metadata</dt><dd>canonical · hreflang · Open Graph</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="architecture">
-      <div class="about-section-head">
-        <p class="about-section-no">02</p>
-        <h2>Architecture</h2>
-        <p class="about-section-dek">Static by design.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>The portfolio is generated as complete HTML5 documents from small templates and structured JSON. A Python 3 standard-library builder emits each language edition ahead of time; the browser does not assemble the site at runtime.</p>
-        <p>The site is served by GitHub Pages from the main branch. There is no CMS, application framework, database or server-side application behind the portfolio.</p>
-        <dl class="about-facts">
-          <div><dt>runtime</dt><dd>HTML5 · CSS · vanilla JavaScript</dd></div>
-          <div><dt>build</dt><dd>Python 3 · JSON · HTML templates</dd></div>
-          <div><dt>hosting</dt><dd>GitHub Pages</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="layout">
-      <div class="about-section-head">
-        <p class="about-section-no">03</p>
-        <h2>Layout &amp; typography</h2>
-        <p class="about-section-dek">Editorial CSS rather than a component framework.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>The layout uses CSS Grid, subgrid, container queries, logical properties, custom properties and fluid clamp() sizing. Media queries remain conservative fallbacks; components reflow from their own available width where the browser supports container queries.</p>
-        <p>Typography is self-hosted as WOFF2. EB Garamond handles most Latin prose, Courier Prime and Cousine handle metadata, Shippori Mincho serves Traditional Chinese and Japanese, Noto Serif SC serves Simplified Chinese, and a tiny I.Ming subset fills the remaining Hong Kong glyph gaps. The CJK subsets are rebuilt with fontTools and Brotli; the Noto source is pinned by commit and SHA-256.</p>
-        <dl class="about-facts">
-          <div><dt>layout</dt><dd>Grid · subgrid · container queries · logical properties</dd></div>
-          <div><dt>type</dt><dd>EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming</dd></div>
-          <div><dt>colour</dt><dd>light/dark via prefers-color-scheme</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="accessibility">
-      <div class="about-section-head">
-        <p class="about-section-no">04</p>
-        <h2>Accessibility</h2>
-        <p class="about-section-dek">Adaptation without removing content.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>The portfolio uses semantic landmarks, one primary heading, skip links, visible keyboard focus, descriptive language controls and touch targets large enough to use reliably. Reduced-motion, higher-contrast and forced-colour system preferences are respected.</p>
-        <p>A persistent reading panel can switch to sans-serif text, increase type and spacing, narrow text columns, simplify the layout, reduce motion and increase contrast. These preferences are progressive enhancement and are stored locally in the browser.</p>
-        <dl class="about-facts">
-          <div><dt>preferences</dt><dd>sans · larger type · spacing · measure · simple layout · motion · contrast</dd></div>
-          <div><dt>storage</dt><dd>localStorage only</dd></div>
-          <div><dt>checks</dt><dd>custom structural audit · axe-core browser audit</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="media">
-      <div class="about-section-head">
-        <p class="about-section-no">05</p>
-        <h2>Images &amp; performance</h2>
-        <p class="about-section-dek">Responsive media, no gallery runtime.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>Photographs and research plates use picture/srcset with WebP and JPEG candidates, explicit dimensions and responsive sizes. The lead image is prioritised; images further down the page are lazy-loaded and decoded asynchronously.</p>
-        <p>Below-the-fold portfolio sections can use content-visibility, while View Transitions and scroll-linked motion are optional progressive enhancements. Reduced-motion preferences disable animation.</p>
-        <dl class="about-facts">
-          <div><dt>images</dt><dd>picture · srcset · WebP · JPEG</dd></div>
-          <div><dt>loading</dt><dd>explicit dimensions · lazy loading · async decoding</dd></div>
-          <div><dt>progressive CSS</dt><dd>content-visibility · View Transitions · scroll timelines</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="quality">
-      <div class="about-section-head">
-        <p class="about-section-no">06</p>
-        <h2>Build, QA &amp; deployment</h2>
-        <p class="about-section-dek">Generated pages are testable artefacts.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>The repository checks that generated pages are current, locale schemas match, literary structures have not drifted, accessibility landmarks and controls remain intact, local links and fragments resolve, images have alt text and JavaScript parses.</p>
-        <p>Browser QA adds geometry checks across languages and viewport widths, axe-core accessibility scans and HTML validation. In GitHub Actions, the dependency-light checks run first and the browser suite follows on pushes and pull requests; GitHub Pages independently publishes the static files from main.</p>
-        <dl class="about-facts">
-          <div><dt>repository checks</dt><dd>build freshness · i18n · accessibility · links/assets · JS syntax</dd></div>
-          <div><dt>browser QA</dt><dd>Playwright · axe-core · html-validate</dd></div>
-          <div><dt>delivery</dt><dd>GitHub Actions · GitHub Pages</dd></div>
-        </dl>
-      </div>
-    </section>
+<section class="about-section editorial-section" id="architecture" aria-labelledby="heading-architecture"><div class="about-section-head"><p class="about-section-no">01</p><h2 id="heading-architecture">A publication, not an inventory</h2><p class="about-section-dek">Selection is part of the work.</p></div><div class="about-section-copy"><p>An essay asks for sustained reading; a photograph asks for looking; a research project needs a way back to its methods and evidence. Their proximity here is deliberate, but it does not give them the same purpose or the same standard of completion. The site is both a publication and a selected portfolio. Neither role makes it an exhaustive archive.</p>
+<p>Work comes before professional context. Credits, earlier activities and public records are kept in separate back matter so that they can be checked without becoming the explanation for every poem or image. A link to evidence supports a specific claim, not the standing of the whole practice.</p></div></section>
+<section class="about-section editorial-section" id="layout" aria-labelledby="heading-layout"><div class="about-section-head"><p class="about-section-no">02</p><h2 id="heading-layout">The authority of a page</h2><p class="about-section-dek">A designed surface is not a neutral surface.</p></div><div class="about-section-copy"><p>The warm ground, dark type, fine rules and numbered margins borrow the organisation of an edited publication, not the simulation of an old sheet of paper. Prose and verse have room to develop; monospaced labels distinguish dates, sequence and other publishing information. Repeated alignments make different kinds of material legible without forcing every item into the same card.</p>
+<p>This restraint also produces authority. A careful grid can make an unfinished project appear more settled than it is. Status notes, sources and version dates therefore matter as much as the typeface: they keep visual coherence from standing in for proof. The same problem appears in Poetry Voucher, where an elegant storefront offers typography as an upgrade.</p>
+<p>Font families are assigned by writing system and reading role rather than as national costumes. Shared metrics do not make Chinese and Japanese glyph conventions identical. Coverage and fallback need checking whenever the copy changes; a consistent colour of type is not sufficient evidence that the right character form is present.</p></div></section>
+<section class="about-section editorial-section" id="languages" aria-labelledby="heading-languages"><div class="about-section-head"><p class="about-section-no">03</p><h2 id="heading-languages">Seven editions</h2><p class="about-section-dek">Translation is a reading, not an interchangeable skin.</p></div><div class="about-section-copy"><p>English, Hong Kong Traditional Chinese, Simplified Chinese, Japanese, German, French and Russian are separately maintained editions. English is the default entrance, not the original language of every work. An interface change does not silently turn a Chinese poem into an English original; some long-form texts remain in their stated publication language.</p>
+<p>The Chinese literary source, its Simplified script mirror and its translations have different editorial roles. Script conversion is not another translation. A translation may have to make a subject, tense or relation more explicit, and that choice can alter what the poem leaves open. Preserving line and stanza counts catches structural drift; it does not certify a literary reading.</p>
+<p>The editions retain common navigation and source relationships, but their line lengths and glyphs need not look identical. This is a shared publication across languages, not a promise that seven languages produce the same page, or that every translation has received independent native-language review.</p></div></section>
+<section class="about-section editorial-section" id="media" aria-labelledby="heading-media"><div class="about-section-head"><p class="about-section-no">04</p><h2 id="heading-media">Sequence and revision</h2><p class="about-section-dek">A date or an adjacency can change a reading.</p></div><div class="about-section-copy"><p>The A/B sequence, poems outside that sequence and the two dated drafts of The Roof Splits Open retain their distinctions. A later text is not automatically a replacement for every earlier one. Keeping drafts beside each other makes revision available for reading rather than hiding it behind a claim of finality.</p>
+<p>A selected photograph, a research diagram and a digital receipt specimen are different kinds of image. Their captions should identify what they show and what they cannot establish. A screen proof is not a photograph of a print; a map is not evidence that every proposed research phase has been completed. Sequence and captioning do this work without making the images carry a résumé.</p></div></section>
+<section class="about-section editorial-section" id="accessibility" aria-labelledby="heading-accessibility"><div class="about-section-head"><p class="about-section-no">05</p><h2 id="heading-accessibility">A page the reader can change</h2><p class="about-section-dek">Authored form does not require a fixed display.</p></div><div class="about-section-copy"><p>Drucker’s performative materiality directs attention to a system in use, not its structure alone. <sup class="editorial-citation"><a href="#ref-drucker" aria-label="Reading behind these notes 1: Johanna Drucker">[1]</a></sup> Here that question is practical: can someone return to a stanza, compare a version, follow a source or change the conditions of reading without losing the text? A decorative resemblance to a book cannot answer it.</p>
+<p>The reading controls change type, scale, spacing, measure, layout, motion and contrast. These are alternative ways of encountering the same material, not inferior versions of the design. Keyboard focus, headings and text alternatives remain part of publication, even when they are not the most conspicuous things on the screen.</p>
+<p>Automated checks can find some missing labels and layout failures. They cannot stand in for a person using a screen reader, or prove that an image description gives someone an equivalent encounter. Accessibility is a continuing editorial responsibility, not a badge awarded by a test suite.</p></div></section>
+<section class="about-section editorial-section" id="quality" aria-labelledby="heading-quality"><div class="about-section-head"><p class="about-section-no">06</p><h2 id="heading-quality">Authorship and evidence</h2><p class="about-section-dek">A traceable process is not a certificate of value.</p></div><div class="about-section-copy"><p>The work is published under Hanpu Li / 李函璞; selected earlier professional records also use Caitlyn Lye. The credits page keeps that relationship explicit. This site’s editorial and implementation work includes AI-assisted drafting, revision, coding and testing. That contribution is not a basis for assigning the same production history to every poem, translation or photograph.</p>
+<p>Source files, generation tools and version history help identify what has been changed and what is being shown. They do not by themselves establish literary quality, a successful physical print, an audience’s response or institutional endorsement. A project’s own account and an independently checkable record should remain distinguishable.</p>
+<p>The scholarly references on these pages are tools for examining decisions. They were not all starting points for the work. Comparison is useful where it reveals a difference or a limit; a list of recognised names cannot supply a missing experiment or make the reader’s response predictable.</p></div></section>
 
     <section class="about-coda" id="principles" aria-labelledby="about-scope-heading">
       <div>
         <p class="about-section-no">07</p>
-        <h2 id="about-scope-heading">Principles</h2>
+        <h2 id="about-scope-heading">Making and maintaining</h2>
       </div>
       <div class="about-coda-copy">
-        <p>The portfolio treats source content, generated output and browser behaviour as separate layers: edit structured content and templates, rebuild, then verify the emitted documents.</p>
-        <p>Progressive enhancement is optional by design. Unsupported CSS features, disabled JavaScript or unavailable local storage must not hide the work or block navigation.</p>
-        <h3>Runtime privacy</h3>
-        <p>The portfolio loads no analytics, advertising network, third-party web font or tracking script. It sets no cookies. The only persistent browser state used by the portfolio is the local reading-preference record.</p>
+        <p>A small Python builder turns structured content and templates into static HTML. Fonts and images are served with the site; the type system includes EB Garamond, Courier Prime, Cousine, Shippori Mincho, Noto Serif SC and I.Ming. Responsive layout and optional reading controls adapt the documents. The ordinary reading pages do not need JavaScript; the Poetry Voucher shop does, because it prepares an edition in the browser.</p>
+        <p>Build, language, link, font and browser checks support those publishing decisions. They are maintenance, not an aesthetic argument. The public repository is available for inspection; its availability is not a blanket licence over the creative work. Poetry Voucher separately permits personal saving, printing and giving printed copies to others.</p>
+        <h3>Local state and hosting</h3>
+        <p>The site adds no analytics, advertising scripts or tracking cookies. Reading preferences remain in the browser. Poetry Voucher also keeps a local catalogue bag and completed orders in the current tab; it takes no payment and contacts no printer. These limits describe the site’s own code, not a guarantee that the hosting provider keeps no access logs. Following an external source takes you to that provider’s site.</p>
       </div>
     </section>
+<p class="editorial-related"><a href="/poetry-voucher/">Poetry Voucher · Project overview</a></p>
+<section id="references" class="editorial-references" aria-labelledby="references-heading"><h2 id="references-heading">Reading behind these notes</h2><p>A reference used for a particular question, not a claim that the site implements a complete theory.</p><ol><li id="ref-drucker"><span lang="en">Johanna Drucker. <a href="https://www.digitalhumanities.org/dhq/vol/7/1/000143/000143.html"><cite>Performative Materiality and Theoretical Approaches to Interface</cite></a>. Digital Humanities Quarterly 7(1), 2013, especially paragraphs 8–12. <a class="reference-copy" href="https://scalar.usc.edu/works/autora-escritural-posthumana/media/Drucker,%20Johanna%20-%20Performative%20Materiality.pdf">PDF · USC Scalar</a></span></li></ol></section>
   </main>
 
   <footer class="page-footer about-footer">

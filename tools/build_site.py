@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any
 
 from first_love_public_pages import build as build_first_love_pages, path_for as first_love_page_path
+from editorial_notes import sections_html as editorial_sections, references_html as editorial_references, project_toc
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -715,36 +716,8 @@ def shi_drafts_html(locale_id: str) -> str:
 
 
 def about_sections_html(locale_id: str) -> str:
-    sections = ABOUT_SITE[locale_id]["sections"]
-    blocks = []
-    for section in sections:
-        body = "\n".join(
-            f'        <p>{html.escape(paragraph)}</p>'
-            for paragraph in section["body"]
-        )
-        facts = "\n".join(
-            '          <div>'
-            f'<dt>{html.escape(fact["label"])}</dt>'
-            f'<dd>{html.escape(fact["value"])}</dd>'
-            '</div>'
-            for fact in section["facts"]
-        )
-        blocks.append(
-            f'    <section class="about-section" id="{html.escape(section["id"], quote=True)}">\n'
-            '      <div class="about-section-head">\n'
-            f'        <p class="about-section-no">{html.escape(section["number"])}</p>\n'
-            f'        <h2>{html.escape(section["title"])}</h2>\n'
-            f'        <p class="about-section-dek">{html.escape(section["dek"])}</p>\n'
-            '      </div>\n'
-            '      <div class="about-section-copy">\n'
-            f'{body}\n'
-            '        <dl class="about-facts">\n'
-            f'{facts}\n'
-            '        </dl>\n'
-            '      </div>\n'
-            '    </section>'
-        )
-    return "\n\n".join(blocks)
+    copy = ABOUT_SITE[locale_id]
+    return editorial_sections(copy["sections"], copy)
 
 
 def about_scope_body_html(locale_id: str) -> str:
@@ -1074,11 +1047,14 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
     pv_receipt_width, pv_receipt_height = png_dimensions(ROOT / "poetry-voucher" / "sample-receipt.png")
     pv_voucher_width, pv_voucher_height = png_dimensions(ROOT / "poetry-voucher" / "sample-voucher.png")
     pv_full_path = ROOT / "poetry-voucher" / "sample-full.png"
-    pv_full_width, pv_full_height = png_dimensions(pv_full_path) if pv_full_path.exists() else (pv_receipt_width, pv_receipt_height + pv_voucher_height)
+    pv_full_width, pv_full_height = png_dimensions(pv_full_path)
     pv_editorial_width, pv_editorial_height = png_dimensions(ROOT / "assets" / "projects" / "poetry-voucher" / "poetry-voucher-paper-960.png")
     return {
-        **{"PV_" + key.upper(): html.escape(value, quote=True) for key, value in POETRY_VOUCHER[locale_id].items()},
+        **{"PV_" + key.upper(): html.escape(value, quote=True) for key, value in POETRY_VOUCHER[locale_id].items() if isinstance(value, str)},
         "PV_HREF": page_path(locale_id, "poetry-voucher"),
+        "PV_TOC": project_toc(POETRY_VOUCHER[locale_id]),
+        "PV_NOTES": editorial_sections(POETRY_VOUCHER[locale_id]["notes"], POETRY_VOUCHER[locale_id], project=True),
+        "PV_REFERENCES": editorial_references(POETRY_VOUCHER[locale_id]["notes"], POETRY_VOUCHER[locale_id]),
         "PV_SECTION_NUMBER": section_number("work"),
         "PV_PROJECT_NUMBER": project_number("poetry_voucher"),
         "MATERIAL_PROJECT_NUMBER": project_number("material"),
@@ -1132,6 +1108,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "ABOUT_PRINCIPLE": html.escape(about["principle"]),
         "ABOUT_TOC": about_toc_html(locale_id),
         "ABOUT_SECTIONS": about_sections_html(locale_id),
+        "ABOUT_REFERENCES": editorial_references(about["sections"], about),
         "ABOUT_SCOPE_TITLE": html.escape(about["scope_title"]),
         "ABOUT_SCOPE_BODY": about_scope_body_html(locale_id),
         "ABOUT_PRIVACY_TITLE": html.escape(about["privacy_title"]),

@@ -1,0 +1,219 @@
+/* The notes are reading pages. Keep the shop and the issued strip unchanged. */
+.about-page .editorial-section,
+.voucher-project .editorial-section {
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:0 var(--gap,2rem);
+  padding-block:clamp(2.5rem,5vw,4.75rem);
+  border-block-start:1px solid var(--line);
+  scroll-margin-block-start:8rem;
+}
+.about-page .editorial-section .about-section-head,
+.voucher-project .editorial-section .about-section-head {
+  grid-column:1 / 5;
+  min-inline-size:0;
+  padding-inline-end:clamp(.75rem,2vw,2rem);
+}
+.about-page .editorial-section .about-section-copy,
+.voucher-project .editorial-section .about-section-copy {
+  grid-column:5 / 12;
+  min-inline-size:0;
+  max-inline-size:66ch;
+}
+.about-page .editorial-section h2,
+.voucher-project .editorial-section h2 {
+  max-inline-size:18ch;
+  margin:0;
+  font-size:clamp(1.7rem,2.5vw,2.6rem);
+  font-weight:400;
+  line-height:1.16;
+  letter-spacing:-.018em;
+  text-wrap:balance;
+  overflow-wrap:normal;
+  hyphens:none;
+}
+.voucher-project .pv-notes.pv-essay {
+  display:block;
+  padding:0;
+  border:0;
+}
+.voucher-project .pv-essay .about-section-no {
+  margin:0 0 1rem;
+  color:var(--muted);
+  font:.8125rem/1.5 var(--mono);
+  letter-spacing:.06em;
+}
+.voucher-project .pv-essay .about-section-dek {
+  max-inline-size:30ch;
+  margin-block-start:1rem;
+  color:var(--muted);
+  font:.8125rem/1.65 var(--mono);
+}
+.about-page .editorial-section .about-section-copy > p,
+.voucher-project .pv-essay .about-section-copy > p {
+  margin:0;
+  color:var(--ink);
+  font-size:1.0625rem;
+  line-height:1.8;
+  text-wrap:pretty;
+}
+.about-page .editorial-section .about-section-copy > p + p,
+.voucher-project .pv-essay .about-section-copy > p + p {
+  margin-block-start:1.1em;
+}
+.editorial-citation {
+  font: .75em/1 var(--mono);
+  vertical-align:super;
+  white-space:nowrap;
+}
+.editorial-citation a {
+  padding-inline:.15em;
+  text-decoration:none;
+  color:var(--muted);
+}
+.editorial-citation a:hover,
+.editorial-citation a:focus-visible {color:var(--ink);text-decoration:underline}
+.editorial-references {
+  padding-block:2.5rem;
+  border-block-start:1px solid var(--line);
+  max-inline-size:72ch;
+  margin-inline-start:auto;
+  scroll-margin-block-start:8rem;
+}
+.editorial-references h2 {
+  margin:0 0 .75rem;
+  font-size:1.4rem;
+  font-weight:400;
+  line-height:1.3;
+}
+.editorial-references > p {margin:0 0 1.25rem;color:var(--muted);font-size:1rem;line-height:1.65}
+.editorial-references ol {margin:0;padding-inline-start:1.4rem}
+.editorial-references li {
+  padding-inline-start:.25rem;
+  font-size:.9375rem;
+  line-height:1.65;
+  overflow-wrap:anywhere;
+  scroll-margin-block-start:8rem;
+}
+.editorial-references li + li {margin-block-start:.9rem}
+.editorial-references li::marker {font-family:var(--mono);font-size:.8em;color:var(--muted)}
+.editorial-references a {text-underline-offset:.18em;text-decoration-thickness:1px}
+.editorial-references .reference-copy {display:inline-block;font:.8rem/1.6 var(--mono)}
+.pv-entry-links {display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-block-start:.75rem}
+.pv-entry-links .pv-text-link {margin-inline-start:0}
+.pv-entry {
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:clamp(1.75rem,4vw,4.5rem);
+  padding-block:2rem 3.5rem;
+  border-block-start:1px solid var(--line);
+}
+.pv-contents {min-inline-size:0}
+.pv-contents h2,.pv-specimen h2 {
+  margin:0 0 1.15rem;
+  font: .8125rem/1.6 var(--mono);
+  letter-spacing:.04em;
+}
+.pv-contents ol {list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.5rem}
+.pv-contents li {border-block-start:1px solid var(--line);min-inline-size:0}
+.pv-contents a {display:flex;align-items:baseline;gap:.7rem;padding-block:.8rem;min-block-size:44px;line-height:1.45;text-decoration:none}
+.pv-contents a span {flex:none;font:.75rem/1.5 var(--mono);color:var(--muted)}
+.pv-contents a:hover {text-decoration:underline;text-underline-offset:.2em}
+.pv-specimen {display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:1.25rem;margin:0;align-items:start;min-inline-size:0}
+.pv-specimen-image {display:block;padding:0;background:white;box-shadow:0 .6rem 1.6rem rgba(0,0,0,.08)}
+.pv-specimen-image img {display:block;inline-size:100%;block-size:auto}
+.pv-specimen figcaption {min-inline-size:0}
+.pv-specimen p {margin:0;color:var(--muted);font-size:.9375rem;line-height:1.65}
+.pv-specimen p + p {margin-block-start:1rem}
+.pv-specimen .specimen-date {font-size:.8125rem;line-height:1.6}
+.pv-specimen figcaption > a {display:inline-block;margin-block-start:1rem;min-block-size:44px;padding-block:.5rem;font:.8125rem/1.6 var(--mono);text-underline-offset:.2em}
+.editorial-tariff {margin-block-start:1.5rem;border-block:1px solid var(--line)}
+.editorial-tariff summary {padding-block:1rem;cursor:pointer;font:.8125rem/1.6 var(--mono);min-block-size:44px}
+.editorial-tariff .pv-tariff {font:.875rem/1.6 var(--mono);margin:0;border-block-start:1px solid var(--line)}
+.editorial-tariff .pv-tariff > div {padding-block:.65rem;grid-template-columns:minmax(0,1fr) max-content}
+.editorial-tariff .pv-tariff dd {text-align:end;white-space:nowrap}
+.editorial-tariff .pv-tariff .tariff-rounding {grid-template-columns:minmax(0,1fr);gap:.2rem}
+.editorial-tariff .tariff-rounding dd {text-align:start;white-space:normal;font-family:var(--serif,serif);font-size:1rem}
+.voucher-project .pv-essay .editorial-tariff > p {font-size:.9375rem;line-height:1.7;margin:1rem 0;color:var(--muted)}
+.pv-source-reading {display:flex;flex-wrap:wrap;gap:.25rem 1.75rem;padding-block:1.5rem 2.5rem;border-block-start:1px solid var(--line)}
+.pv-source-reading a {display:inline-block;min-block-size:44px;padding-block:.5rem;font:.8125rem/1.6 var(--mono)}
+.voucher-project .page-footer-context {display:flex;flex-wrap:wrap;align-items:baseline;gap:.15rem .6rem}
+.voucher-project .page-footer-context a {overflow-wrap:normal}
+html[data-reading-measure] .editorial-section .about-section-copy {max-inline-size:54ch}
+html[data-reading-simple] .editorial-section,
+html[data-reading-simple] .pv-entry {display:block}
+html[data-reading-simple] .editorial-section .about-section-head {margin-block-end:1.75rem}
+html[data-reading-simple] .pv-specimen {margin-block-start:2rem;max-inline-size:40rem}
+html[data-reading-simple] .editorial-references {margin-inline:0}
+html[data-reading-sans] .editorial-section :is(p,h2),
+html[data-reading-sans] .editorial-references {font-family:var(--readable-sans,sans-serif)}
+@media (max-width:900px) {
+  .pv-entry {grid-template-columns:minmax(0,1fr)}
+  .pv-specimen {max-inline-size:36rem}
+  .pv-contents ol {grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px) {
+  .about-page .editorial-section,
+  .voucher-project .editorial-section {display:block;padding-block:2.25rem 2.75rem}
+  .about-page .editorial-section .about-section-head,
+  .voucher-project .editorial-section .about-section-head {padding:0;margin-block-end:1.5rem}
+  .voucher-project .pv-notes.pv-essay section {max-inline-size:none}
+  .editorial-references {margin-inline:0}
+  .pv-contents ol {gap:0 1rem}
+}
+@media (max-width:420px) {
+  .pv-contents ol {grid-template-columns:minmax(0,1fr)}
+  .pv-specimen {grid-template-columns:4.75rem minmax(0,1fr);gap:1rem}
+}
+
+/* Give the seven editions one intentional line, rather than a stranded RU.
+   This header treatment is scoped to the two editorial page types. */
+body:is(.about-page,.voucher-project) .page-topbar {
+  grid-template-columns:minmax(0,1fr) max-content;
+  gap:.65rem 1.5rem;
+  align-items:center;
+  padding-block:1.25rem 1rem;
+}
+body:is(.about-page,.voucher-project) .page-topbar .page-wordmark {grid-column:1;grid-row:1}
+body:is(.about-page,.voucher-project) .page-topbar .page-utility {
+  grid-column:2;grid-row:1;margin:0;min-inline-size:0;
+}
+body:is(.about-page,.voucher-project) .page-topbar .page-languages {
+  display:grid;grid-template-columns:repeat(7,minmax(2.25rem,1fr));
+  gap:.35rem;inline-size:max-content;
+}
+body:is(.about-page,.voucher-project) .page-topbar .page-nav {
+  grid-column:1;grid-row:2;display:flex;flex-wrap:wrap;
+  justify-content:space-between;gap:.25rem 1.5rem;margin:0;
+}
+body:is(.about-page,.voucher-project) .page-topbar > .reading-tools {
+  grid-column:2;grid-row:2;justify-self:end;inline-size:auto;
+}
+body:is(.about-page,.voucher-project) .page-topbar a {margin-block:0}
+.voucher-project main {padding-block-start:0}
+.voucher-project .pv-intro {padding-block:clamp(2.5rem,5vw,4.5rem)}
+.about-page .about-hero {padding-block:clamp(2.5rem,5vw,4.75rem)}
+.editorial-related {padding-block:1.25rem;border-block-start:1px solid var(--line)}
+.editorial-related a {display:inline-flex;align-items:center;min-block-size:44px;font:.875rem/1.6 var(--mono)}
+@media(min-width:801px) {
+  body:is(.about-page,.voucher-project) .reading-tools-label {display:none}
+}
+@media(max-width:760px) {
+  body:is(.about-page,.voucher-project) .page-topbar .page-wordmark {grid-column:1;grid-row:1}
+  body:is(.about-page,.voucher-project) .page-topbar > .reading-tools {grid-column:2;grid-row:1}
+  body:is(.about-page,.voucher-project) .page-topbar .page-utility {grid-column:1/-1;grid-row:2;justify-content:flex-start}
+  body:is(.about-page,.voucher-project) .page-topbar .page-languages {inline-size:min(100%,21rem);grid-template-columns:repeat(7,minmax(0,1fr));gap:.15rem}
+  body:is(.about-page,.voucher-project) .page-topbar .page-languages a {min-inline-size:0}
+  body:is(.about-page,.voucher-project) .page-topbar .page-nav {grid-column:1/-1;grid-row:3;justify-content:flex-start;column-gap:1.25rem}
+  body:is(.about-page,.voucher-project) .reading-tools-label {display:none}
+}
+
+@media(max-width:760px) {
+  body:is(.about-page,.voucher-project) .page-topbar .page-nav {
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.25rem 1rem;
+  }
+}
+@media(max-width:520px) {
+  body:is(.about-page,.voucher-project) .page-topbar .page-nav {grid-template-columns:repeat(2,minmax(0,1fr))}
+  body:is(.about-page,.voucher-project):is(.locale-zh,.locale-zh-hans,.locale-ja) .page-topbar .page-nav {grid-template-columns:repeat(3,minmax(0,1fr))}
+}

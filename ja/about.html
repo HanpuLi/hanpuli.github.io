@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google" content="notranslate">
 <title>このサイトについて · Hanpu Li</title>
-<meta name="description" content="Hanpu Li のウェブサイトの実装ノート。静的構成、多言語配信、書体、アクセシビリティ、レスポンシブ画像、テスト、GitHub Pages での公開について。">
+<meta name="description" content="Hanpu Liの多言語出版についての編集ノート。選択、視覚形式、翻訳、版、読書、著作者としての責任と技術的な維持。">
 <link rel="canonical" href="https://hanpuli.github.io/ja/about.html">
 <link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/about.html">
 <link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/about.html">
@@ -18,7 +18,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hanpu Li">
 <meta property="og:title" content="このサイトについて · Hanpu Li">
-<meta property="og:description" content="Hanpu Li のウェブサイトの実装ノート。静的構成、多言語配信、書体、アクセシビリティ、レスポンシブ画像、テスト、GitHub Pages での公開について。">
+<meta property="og:description" content="Hanpu Liの多言語出版についての編集ノート。選択、視覚形式、翻訳、版、読書、著作者としての責任と技術的な維持。">
 <meta property="og:image" content="https://hanpuli.github.io/assets/social/about.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -34,7 +34,7 @@
 <meta property="og:locale:alternate" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="このサイトについて · Hanpu Li">
-<meta name="twitter:description" content="Hanpu Li のウェブサイトの実装ノート。静的構成、多言語配信、書体、アクセシビリティ、レスポンシブ画像、テスト、GitHub Pages での公開について。">
+<meta name="twitter:description" content="Hanpu Liの多言語出版についての編集ノート。選択、視覚形式、翻訳、版、読書、著作者としての責任と技術的な維持。">
 <meta name="twitter:image" content="https://hanpuli.github.io/assets/social/about.png">
 <meta name="twitter:image:alt" content="このサイトについて · Hanpu Li">
 <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
@@ -47,8 +47,9 @@
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-subset.woff2" crossorigin>
 <script src="../assets/accessibility.js"></script>
 <link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/editorial-notes.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"AboutPage","@id":"https://hanpuli.github.io/ja/about.html#page","url":"https://hanpuli.github.io/ja/about.html","name":"このサイトについて · Hanpu Li","description":"Hanpu Li のウェブサイトの実装ノート。静的構成、多言語配信、書体、アクセシビリティ、レスポンシブ画像、テスト、GitHub Pages での公開について。","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"ja","about":{"@id":"https://hanpuli.github.io/#person"}}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"AboutPage","@id":"https://hanpuli.github.io/ja/about.html#page","url":"https://hanpuli.github.io/ja/about.html","name":"このサイトについて · Hanpu Li","description":"Hanpu Liの多言語出版についての編集ノート。選択、視覚形式、翻訳、版、読書、著作者としての責任と技術的な維持。","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"ja","about":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 </head>
 <body class="about-page locale-ja">
@@ -99,141 +100,58 @@
 
   <main id="main" tabindex="-1">
     <header class="about-hero">
-      <p class="about-eyebrow">出版ノート · 2026</p>
+      <p class="about-eyebrow">編集ノート · 2026</p>
       <h1>このサイトについて</h1>
       <div class="about-intro">
-        <p class="about-lede">このサイトはまず出版物として作られており、アプリケーションではありません。七つの言語版はそれぞれ完全な静的文書で、ローカルの書体を用い、追跡を行わず、実行時翻訳にも依存しません。技術構成は、こうした出版上の選択を安定して保つためにあります。</p>
-        <p class="about-principle">原文の権威、翻訳の関係、可読性、プライバシーを先に置き、ビルドとQAの詳細はその編集上の制約から決まります。</p>
+        <p class="about-lede">ここには文章、詞、写真、研究、そして出版をめぐる実験を置いています。異なる仕事を関係づけますが、一つの実践の例に還元したり、一人の人生のすべてを記録したりする場所ではありません。</p>
+        <p class="about-principle">ページも作品との出会いに関与します。このノートは編集上の選択を確かめられるようにするもので、読者が作品に見いだすべき意味を指定するものではありません。</p>
       </div>
     </header>
 
 <nav class="about-toc" aria-label="このページ">
   <p>このページ</p>
   <ol>
-    <li><a href="#languages"><span>01</span> コンテンツと言語</a></li>
-    <li><a href="#architecture"><span>02</span> アーキテクチャ</a></li>
-    <li><a href="#layout"><span>03</span> レイアウトと書体</a></li>
-    <li><a href="#accessibility"><span>04</span> アクセシビリティ</a></li>
-    <li><a href="#media"><span>05</span> 画像とパフォーマンス</a></li>
-    <li><a href="#quality"><span>06</span> ビルド、QA、公開</a></li>
-    <li><a href="#principles"><span>07</span> 原則</a></li>
+    <li><a href="#architecture"><span>01</span> 一覧ではなく出版</a></li>
+    <li><a href="#layout"><span>02</span> ページが持つ権威</a></li>
+    <li><a href="#languages"><span>03</span> 七つの版</a></li>
+    <li><a href="#media"><span>04</span> 配列と改稿</a></li>
+    <li><a href="#accessibility"><span>05</span> 読者が変えられるページ</a></li>
+    <li><a href="#quality"><span>06</span> 作者と根拠</a></li>
+    <li><a href="#principles"><span>07</span> 制作と維持</a></li>
   </ol>
 </nav>
 
-    <section class="about-section" id="languages">
-      <div class="about-section-head">
-        <p class="about-section-no">01</p>
-        <h2>コンテンツと言語</h2>
-        <p class="about-section-dek">7言語版、実行時翻訳なし。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>英語、香港繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、ロシア語を別々の静的版として生成し、それぞれに canonical URL、hreflang の代替リンク、言語別メタデータを持たせる。</p>
-        <p>文学テキストは通常の UI 文言より厳格に扱う。指定された作品では繁体字中国語を正本とし、簡体字版は文字体系だけを変換してハッシュを照合する。翻訳は専用の検証で各行と連の構造が保たれているか確認する。</p>
-        <dl class="about-facts">
-          <div><dt>ロケール</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
-          <div><dt>文学テキスト</dt><dd>OpenCC 補助 · ソースハッシュ · 行構造の検査</dd></div>
-          <div><dt>メタデータ</dt><dd>canonical · hreflang · Open Graph</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="architecture">
-      <div class="about-section-head">
-        <p class="about-section-no">02</p>
-        <h2>アーキテクチャ</h2>
-        <p class="about-section-dek">静的であることを選ぶ。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>ポートフォリオは、小さなテンプレートと構造化 JSON から完全な HTML5 文書として生成される。Python 3 標準ライブラリだけのビルダーが各言語版を事前生成し、ブラウザ側でページを組み立てない。</p>
-        <p>main ブランチから GitHub Pages で配信する。ポートフォリオの背後に CMS、アプリケーションフレームワーク、データベース、サーバー側アプリはない。</p>
-        <dl class="about-facts">
-          <div><dt>実行時</dt><dd>HTML5 · CSS · 素の JavaScript</dd></div>
-          <div><dt>ビルド</dt><dd>Python 3 · JSON · HTML テンプレート</dd></div>
-          <div><dt>ホスティング</dt><dd>GitHub Pages</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="layout">
-      <div class="about-section-head">
-        <p class="about-section-no">03</p>
-        <h2>レイアウトと書体</h2>
-        <p class="about-section-dek">コンポーネントフレームワークではなく編集的な CSS。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>CSS Grid、subgrid、container queries、logical properties、custom properties、clamp() による流動的な寸法を使う。メディアクエリは保守的なフォールバックにとどめ、対応ブラウザでは各要素が自身の利用可能幅に応じて組み替わる。</p>
-        <p>書体は WOFF2 を自前配信する。欧文本文は主に EB Garamond、メタデータは Courier Prime／Cousine、繁体字中国語と日本語は Shippori Mincho、簡体字中国語は Noto Serif SC、香港字形のごく小さな欠落は I.Ming の小さなサブセットで補う。CJK サブセットは fontTools と Brotli で再構築し、Noto のソースはコミットと SHA-256 で固定している。</p>
-        <dl class="about-facts">
-          <div><dt>レイアウト</dt><dd>Grid · subgrid · コンテナクエリ · 論理プロパティ</dd></div>
-          <div><dt>書体</dt><dd>EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming</dd></div>
-          <div><dt>配色</dt><dd>明色／暗色 · prefers-color-scheme</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="accessibility">
-      <div class="about-section-head">
-        <p class="about-section-no">04</p>
-        <h2>アクセシビリティ</h2>
-        <p class="about-section-dek">内容を削らず、読み方を変えられる。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>意味的なランドマーク、単一の主要見出し、スキップリンク、見えるキーボードフォーカス、完全な言語名、十分な大きさのタッチターゲットを用意する。reduced-motion、higher-contrast、forced-colour といった OS／ブラウザ設定も尊重する。</p>
-        <p>読書設定ではサンセリフ、文字拡大、文字間隔、行長、簡略レイアウト、モーション低減、高コントラストを切り替えられる。すべてプログレッシブエンハンスメントで、設定はブラウザ内にだけ保存する。</p>
-        <dl class="about-facts">
-          <div><dt>読書設定</dt><dd>サンセリフ · 大きな文字 · 間隔 · 行幅 · 簡素化 · 動き · コントラスト</dd></div>
-          <div><dt>保存</dt><dd>localStorage のみ</dd></div>
-          <div><dt>検査</dt><dd>独自の構造監査 · axe-core ブラウザ監査</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="media">
-      <div class="about-section-head">
-        <p class="about-section-no">05</p>
-        <h2>画像とパフォーマンス</h2>
-        <p class="about-section-dek">レスポンシブ画像、ギャラリー用の実行時コードなし。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>写真と研究図版は picture/srcset で WebP と JPEG の候補を用意し、寸法と sizes 属性を明示する。先頭画像を優先し、それ以外のページ下部の画像は遅延読み込みと非同期デコードを使う。</p>
-        <p>ページ下部のセクションでは content-visibility を利用でき、View Transitions と scroll-linked motion は任意のプログレッシブエンハンスメントに限る。動きを減らす設定が指定されればアニメーションを止める。</p>
-        <dl class="about-facts">
-          <div><dt>画像</dt><dd>picture · srcset · WebP · JPEG</dd></div>
-          <div><dt>読み込み</dt><dd>寸法指定 · 遅延読み込み · 非同期デコード</dd></div>
-          <div><dt>段階的 CSS</dt><dd>content-visibility · View Transitions · スクロールタイムライン</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="quality">
-      <div class="about-section-head">
-        <p class="about-section-no">06</p>
-        <h2>ビルド、QA、公開</h2>
-        <p class="about-section-dek">生成物そのものをテスト対象にする。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>生成ページが最新か、ロケールのスキーマが一致するか、文学テキストの構造が保たれているか、アクセシビリティのランドマークと操作要素が揃っているか、ローカルリンクとページ内アンカーが正しく参照先に到達するか、画像に代替テキストがあるか、JavaScript の構文が正しいかをリポジトリ内で検査する。</p>
-        <p>ブラウザ QA では、複数言語・複数ビューポート幅でのレイアウト検査、axe-core によるアクセシビリティ監査、HTML 検証も行う。GitHub Actions では push と pull request のたびに軽量な検査を先に実行し、通過後にブラウザ検査を行う。GitHub Pages は main から同じ静的ファイルを独立して配信する。</p>
-        <dl class="about-facts">
-          <div><dt>リポジトリ検査</dt><dd>生成状態 · 多言語整合性 · アクセシビリティ · リンク／資源 · JS 構文</dd></div>
-          <div><dt>ブラウザ QA</dt><dd>Playwright · axe-core · html-validate</dd></div>
-          <div><dt>公開</dt><dd>GitHub Actions · GitHub Pages</dd></div>
-        </dl>
-      </div>
-    </section>
+<section class="about-section editorial-section" id="architecture" aria-labelledby="heading-architecture"><div class="about-section-head"><p class="about-section-no">01</p><h2 id="heading-architecture">一覧ではなく出版</h2><p class="about-section-dek">選ぶことも仕事の一部です。</p></div><div class="about-section-copy"><p>論考には読み続ける時間が、写真には見ることが、研究には方法と根拠へ戻る道が必要です。ここで隣り合うからといって、目的や完成の基準まで同じになるわけではありません。このサイトは出版物であり、作品を選んだポートフォリオでもあります。どちらも網羅的なアーカイブを意味しません。</p>
+<p>作品を先に、職業上の文脈を後に置いています。クレジット、以前の活動、公的な記録は後付けのような別ページにまとめ、詩や写真の意味を経歴に代弁させずに確認できるようにしています。資料へのリンクが裏づけるのは特定の事項であり、実践全体の評価ではありません。</p></div></section>
+<section class="about-section editorial-section" id="layout" aria-labelledby="heading-layout"><div class="about-section-head"><p class="about-section-no">02</p><h2 id="heading-layout">ページが持つ権威</h2><p class="about-section-dek">設計された表面は中立ではありません。</p></div><div class="about-section-copy"><p>暖かな地色、暗い文字、細い罫線、余白の番号は、編集された出版物の秩序を借りています。古い紙の再現ではありません。散文と詩行には展開する場所を与え、等幅のラベルで日付、順序、出版情報を分けます。反復する配置によって異なる素材を見分けられるようにし、すべてを同じカードに収めないようにしています。</p>
+<p>この抑制も権威を生みます。整ったグリッドは未完成の研究を、すでに結論の出たものに見せかねません。だから状態、出典、版の日付は書体と同じくらい重要です。視覚的な統一は証明の代わりになりません。洗練されたショップが組版を追加仕様として売るPoetry Voucherにも、同じ問題があります。</p>
+<p>書体は文字体系と読む上での役割によって使い分け、国ごとの衣装にはしません。同じメトリクスを使っても、中国語と日本語の字形規範が同一になるわけではありません。文章を更新するたびに字形の収録範囲と代替フォントを確かめる必要があり、均一な見た目だけでは正しい字形の証明になりません。</p></div></section>
+<section class="about-section editorial-section" id="languages" aria-labelledby="heading-languages"><div class="about-section-head"><p class="about-section-no">03</p><h2 id="heading-languages">七つの版</h2><p class="about-section-dek">翻訳は読解であり、交換可能な外装ではありません。</p></div><div class="about-section-copy"><p>英語、香港繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、ロシア語を別々の版として維持しています。英語は標準の入口であって、すべての作品の原語ではありません。画面言語の変更によって中国語の詩が英語の原作になることはなく、一部の長文は明記した出版言語を保ちます。</p>
+<p>中国語の文学原文、簡体字の表記版、翻訳にはそれぞれ別の編集上の役割があります。字体の変換は新たな翻訳ではありません。翻訳では主語、時制、関係をより明確に決める必要が生じ、詩が未決定のまま残すものを変える場合があります。行数と連の数を保つ検査は構造上のずれを見つけますが、文学的な読解を認証しません。</p>
+<p>共通のナビゲーションと原文への関係は保ちますが、行長や字形まで同じである必要はありません。これは言語をまたぐ共同の出版物であり、七言語が同じページになるという約束でも、すべての翻訳が独立した母語編集者の審査を受けたという意味でもありません。</p></div></section>
+<section class="about-section editorial-section" id="media" aria-labelledby="heading-media"><div class="about-section-head"><p class="about-section-no">04</p><h2 id="heading-media">配列と改稿</h2><p class="about-section-dek">日付と隣接関係は読みを変えます。</p></div><div class="about-section-copy"><p>甲乙の連作、連作外の詩、そしてThe Roof Splits Openの二つの日付付き稿本は、区別を保っています。後の文章が自動的にすべての早稿を置き換えるわけではありません。稿を並べることは、決定稿という主張の陰に改稿を隠さず、その過程を読めるようにします。</p>
+<p>選ばれた写真、研究図版、レシートのデジタル見本は異なる種類の画像です。キャプションは何が写っており、何は立証できないかを示すべきです。画面上の校正は印刷物の写真ではなく、地図は予定された全研究段階の完了を証明しません。配列と注記がその区別を支え、画像に履歴書の役割を負わせません。</p></div></section>
+<section class="about-section editorial-section" id="accessibility" aria-labelledby="heading-accessibility"><div class="about-section-head"><p class="about-section-no">05</p><h2 id="heading-accessibility">読者が変えられるページ</h2><p class="about-section-dek">作者による形式は、固定表示を意味しません。</p></div><div class="about-section-copy"><p>Druckerの遂行的な物質性は、構造だけでなく使用中のシステムに目を向けます。<sup class="editorial-citation"><a href="#ref-drucker" aria-label="このノートの参照文献 1: Johanna Drucker">[1]</a></sup> ここでは具体的な問いになります。ある連に戻れるか、版を比べられるか、出典をたどれるか、文章を失わずに読み方の条件を変えられるか。本のように見える装飾だけでは答えられません。</p>
+<p>読書設定では書体、大きさ、間隔、行幅、配置、動き、コントラストを変えられます。それらは同じ素材に出会う別の方法であり、設計の劣化版ではありません。キーボードのフォーカス、見出し、代替テキストは、画面で目立たなくても出版の一部です。</p>
+<p>自動検査はラベルの欠落や一部の配置の破綻を発見できます。しかしスクリーンリーダーを使う人の代わりにはならず、画像の説明が同等の経験を与えることも証明しません。アクセシビリティは続いていく編集責任であり、テストが授ける標章ではありません。</p></div></section>
+<section class="about-section editorial-section" id="quality" aria-labelledby="heading-quality"><div class="about-section-head"><p class="about-section-no">06</p><h2 id="heading-quality">作者と根拠</h2><p class="about-section-dek">追跡可能な過程は価値の証明書ではありません。</p></div><div class="about-section-copy"><p>作品の署名はHanpu Li／李函璞で、以前の職業上の記録にはCaitlyn Lyeという名前もあります。クレジットのページでその関係を明記しています。サイトの編集と実装には、AIを使った起草、修正、コード作成、検査が含まれます。そのことからすべての詩、翻訳、写真に同じ制作履歴を割り当てることはできません。</p>
+<p>原稿ファイル、生成ツール、版の履歴は、何が変更され何が展示されているかの特定に役立ちます。それだけで文学的な質、実際の印刷の成功、観客の反応、機関による評価を立証することはできません。プロジェクト自身の説明と、独立して確かめられる記録は区別されるべきです。</p>
+<p>これらのページの学術的な参照は、具体的な選択を検討する道具です。すべてが制作の出発点だったわけではありません。比較は差異や限界を示すときに役立ちます。著名な名前を並べても未実施の試みは埋まらず、読者の反応も予測可能にはなりません。</p></div></section>
 
     <section class="about-coda" id="principles" aria-labelledby="about-scope-heading">
       <div>
         <p class="about-section-no">07</p>
-        <h2 id="about-scope-heading">原則</h2>
+        <h2 id="about-scope-heading">制作と維持</h2>
       </div>
       <div class="about-coda-copy">
-        <p>元のコンテンツ、生成物、ブラウザ上の振る舞いを別の層として扱う。構造化データとテンプレートを編集し、再生成したうえで、出力された文書を検証する。</p>
-        <p>プログレッシブエンハンスメントは最初から任意の層として設計している。CSS の一部が未対応でも、JavaScript やローカルストレージが使えなくても、作品を読めず、または移動できない状態にはしない。</p>
-        <h3>実行時のプライバシー</h3>
-        <p>ポートフォリオはアクセス解析、広告ネットワーク、第三者配信の Web フォント、追跡スクリプトを読み込まず、Cookie も設定しない。永続化するブラウザ状態はローカルの読書設定だけである。</p>
+        <p>小さなPythonビルダーが構造化された内容とテンプレートから静的HTMLを作ります。画像とフォントはサイト側で配信し、書体にはEB Garamond、Courier Prime、Cousine、Shippori Mincho、Noto Serif SC、I.Mingを使います。レスポンシブな配置と任意の読書設定が文書を調整します。通常の読書ページにJavaScriptは不要ですが、Poetry Voucherではブラウザー内で版を作るために必要です。</p>
+        <p>ビルド、言語、リンク、字体、ブラウザーの検査はこれらの出版上の選択を支えます。維持の作業であって、美学の論証ではありません。公開リポジトリは検証のために読めますが、創作物すべてへの包括的な利用許諾ではありません。詩券では別途、個人の保存、印刷、印刷物の贈与を認めています。</p>
+        <h3>ローカルな状態とホスティング</h3>
+        <p>サイトは解析ツール、広告スクリプト、追跡cookieを追加しません。読書設定はブラウザーに残ります。Poetry Voucherは端末の買い物かごと現在のタブ内の完了注文も保持しますが、支払いもプリンターへの接続も行いません。これはサイト自身のコードの範囲であり、ホスティング事業者がアクセスログを持たないという保証ではありません。外部出典をたどると、その提供者のサイトへ移ります。</p>
       </div>
     </section>
+<p class="editorial-related"><a href="/ja/poetry-voucher/">詩の券 · 作品について</a></p>
+<section id="references" class="editorial-references" aria-labelledby="references-heading"><h2 id="references-heading">このノートの参照文献</h2><p>特定の問いのための参照であり、サイトが理論全体を実現したという主張ではありません。</p><ol><li id="ref-drucker"><span lang="en">Johanna Drucker. <a href="https://www.digitalhumanities.org/dhq/vol/7/1/000143/000143.html"><cite>Performative Materiality and Theoretical Approaches to Interface</cite></a>. Digital Humanities Quarterly 7(1), 2013, especially paragraphs 8–12. <a class="reference-copy" href="https://scalar.usc.edu/works/autora-escritural-posthumana/media/Drucker,%20Johanna%20-%20Performative%20Materiality.pdf">PDF · USC Scalar</a></span></li></ol></section>
   </main>
 
   <footer class="page-footer about-footer">

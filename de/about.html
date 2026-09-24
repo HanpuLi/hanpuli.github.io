@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google" content="notranslate">
 <title>Über diese Website · Hanpu Li</title>
-<meta name="description" content="Technische Notizen zu Hanpu Lis Website: statische Architektur, mehrsprachige Veröffentlichung, Typografie, Barrierefreiheit, responsive Medien, Tests und GitHub Pages.">
+<meta name="description" content="Redaktionelle Überlegungen zu Hanpu Lis mehrsprachiger Publikation: Auswahl, Gestaltung, Übersetzung, Fassungen, Lesen, Autorschaft und Pflege.">
 <link rel="canonical" href="https://hanpuli.github.io/de/about.html">
 <link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/about.html">
 <link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/about.html">
@@ -18,7 +18,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hanpu Li">
 <meta property="og:title" content="Über diese Website · Hanpu Li">
-<meta property="og:description" content="Technische Notizen zu Hanpu Lis Website: statische Architektur, mehrsprachige Veröffentlichung, Typografie, Barrierefreiheit, responsive Medien, Tests und GitHub Pages.">
+<meta property="og:description" content="Redaktionelle Überlegungen zu Hanpu Lis mehrsprachiger Publikation: Auswahl, Gestaltung, Übersetzung, Fassungen, Lesen, Autorschaft und Pflege.">
 <meta property="og:image" content="https://hanpuli.github.io/assets/social/about.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -34,7 +34,7 @@
 <meta property="og:locale:alternate" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Über diese Website · Hanpu Li">
-<meta name="twitter:description" content="Technische Notizen zu Hanpu Lis Website: statische Architektur, mehrsprachige Veröffentlichung, Typografie, Barrierefreiheit, responsive Medien, Tests und GitHub Pages.">
+<meta name="twitter:description" content="Redaktionelle Überlegungen zu Hanpu Lis mehrsprachiger Publikation: Auswahl, Gestaltung, Übersetzung, Fassungen, Lesen, Autorschaft und Pflege.">
 <meta name="twitter:image" content="https://hanpuli.github.io/assets/social/about.png">
 <meta name="twitter:image:alt" content="Über diese Website · Hanpu Li">
 <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
@@ -46,8 +46,9 @@
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <script src="../assets/accessibility.js"></script>
 <link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/editorial-notes.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"AboutPage","@id":"https://hanpuli.github.io/de/about.html#page","url":"https://hanpuli.github.io/de/about.html","name":"Über diese Website · Hanpu Li","description":"Technische Notizen zu Hanpu Lis Website: statische Architektur, mehrsprachige Veröffentlichung, Typografie, Barrierefreiheit, responsive Medien, Tests und GitHub Pages.","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"de","about":{"@id":"https://hanpuli.github.io/#person"}}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"AboutPage","@id":"https://hanpuli.github.io/de/about.html#page","url":"https://hanpuli.github.io/de/about.html","name":"Über diese Website · Hanpu Li","description":"Redaktionelle Überlegungen zu Hanpu Lis mehrsprachiger Publikation: Auswahl, Gestaltung, Übersetzung, Fassungen, Lesen, Autorschaft und Pflege.","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"de","about":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 </head>
 <body class="about-page locale-de">
@@ -98,141 +99,58 @@
 
   <main id="main" tabindex="-1">
     <header class="about-hero">
-      <p class="about-eyebrow">Publikationsnotizen · 2026</p>
+      <p class="about-eyebrow">Redaktionelle Notizen · 2026</p>
       <h1>Über diese Website</h1>
       <div class="about-intro">
-        <p class="about-lede">Diese Website ist zuerst eine Publikation, keine Anwendung. Jede der sieben Sprachfassungen ist ein vollständiges statisches Dokument mit lokal eingebundenen Schriften, ohne Tracking und ohne Übersetzung zur Laufzeit; die Technik dient dazu, diese editorischen Entscheidungen stabil zu halten.</p>
-        <p class="about-principle">Quellenautorität, Übersetzungsverhältnisse, Lesbarkeit und Privatsphäre stehen zuerst; Build- und QA-Details folgen aus diesen editorischen Vorgaben.</p>
+        <p class="about-lede">Hier werden Texte, Ci, Fotografien, Forschung und Experimente des Publizierens zusammengeführt. Verschiedene Arbeiten treten in Beziehung, ohne zu Beispielen einer einzigen Praxis oder zur vollständigen Darstellung eines Lebens zu werden.</p>
+        <p class="about-principle">Die Seite wirkt an der Begegnung mit. Diese Notizen machen redaktionelle Entscheidungen nachvollziehbar; sie schreiben nicht vor, was Lesende in den Arbeiten finden müssen.</p>
       </div>
     </header>
 
 <nav class="about-toc" aria-label="Auf dieser Seite">
   <p>Auf dieser Seite</p>
   <ol>
-    <li><a href="#languages"><span>01</span> Inhalt &amp; Sprachen</a></li>
-    <li><a href="#architecture"><span>02</span> Architektur</a></li>
-    <li><a href="#layout"><span>03</span> Layout &amp; Typografie</a></li>
-    <li><a href="#accessibility"><span>04</span> Barrierefreiheit</a></li>
-    <li><a href="#media"><span>05</span> Bilder &amp; Performance</a></li>
-    <li><a href="#quality"><span>06</span> Build, QA &amp; Deployment</a></li>
-    <li><a href="#principles"><span>07</span> Grundsätze</a></li>
+    <li><a href="#architecture"><span>01</span> Publikation statt Inventar</a></li>
+    <li><a href="#layout"><span>02</span> Die Autorität einer Seite</a></li>
+    <li><a href="#languages"><span>03</span> Sieben Ausgaben</a></li>
+    <li><a href="#media"><span>04</span> Reihenfolge und Revision</a></li>
+    <li><a href="#accessibility"><span>05</span> Eine veränderbare Seite</a></li>
+    <li><a href="#quality"><span>06</span> Autorschaft und Belege</a></li>
+    <li><a href="#principles"><span>07</span> Herstellung und Pflege</a></li>
   </ol>
 </nav>
 
-    <section class="about-section" id="languages">
-      <div class="about-section-head">
-        <p class="about-section-no">01</p>
-        <h2>Inhalt &amp; Sprachen</h2>
-        <p class="about-section-dek">Sieben Fassungen, keine Laufzeitübersetzung.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>Englisch, traditionelles Chinesisch (Hongkong), vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch und Russisch werden als getrennte statische Fassungen mit kanonischen URLs und hreflang-Verweisen und sprachspezifischen Metadaten gebaut.</p>
-        <p>Literarische Quelltexte unterliegen strengeren Regeln als gewöhnliche UI-Texte. Wo festgelegt, ist traditionelles Chinesisch kanonisch; vereinfachte literarische Fassungen werden nur schriftkonvertiert und per Quellhash geprüft, während eigene Tests die Zeilen- und Strophenstruktur der Übersetzungen prüfen.</p>
-        <dl class="about-facts">
-          <div><dt>Locales</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
-          <div><dt>Literatur</dt><dd>OpenCC-Helfer · Quell-Hashes · Zeilenstruktur</dd></div>
-          <div><dt>Metadaten</dt><dd>canonical · hreflang · Open Graph</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="architecture">
-      <div class="about-section-head">
-        <p class="about-section-no">02</p>
-        <h2>Architektur</h2>
-        <p class="about-section-dek">Absichtlich statisch.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>Das Portfolio wird aus kleinen Templates und strukturiertem JSON als vollständige HTML5-Dokumente erzeugt. Ein Builder mit der Python-3-Standardbibliothek schreibt jede Sprachfassung im Voraus; der Browser setzt die Website nicht erst zur Laufzeit zusammen.</p>
-        <p>Ausgeliefert wird der main-Branch über GitHub Pages. Hinter dem Portfolio stehen weder CMS noch Anwendungsframework, Datenbank oder serverseitige Anwendung.</p>
-        <dl class="about-facts">
-          <div><dt>Laufzeit</dt><dd>HTML5 · CSS · Vanilla JavaScript</dd></div>
-          <div><dt>Build</dt><dd>Python 3 · JSON · HTML-Vorlagen</dd></div>
-          <div><dt>Hosting</dt><dd>GitHub Pages</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="layout">
-      <div class="about-section-head">
-        <p class="about-section-no">03</p>
-        <h2>Layout &amp; Typografie</h2>
-        <p class="about-section-dek">Editoriales CSS statt Komponentenframework.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>Das Layout nutzt CSS Grid, subgrid, container queries, logical properties, custom properties und flüssige clamp()-Größen. Media queries bleiben konservative Fallbacks; wo container queries unterstützt werden, reagiert ein Modul auf seine eigene verfügbare Breite.</p>
-        <p>Die Schriften werden als WOFF2 selbst gehostet. EB Garamond trägt überwiegend den lateinischen Fließtext, Courier Prime und Cousine die Metadaten, Shippori Mincho traditionelles Chinesisch und Japanisch, Noto Serif SC vereinfachtes Chinesisch; eine winzige I.Ming-Teilmenge schließt verbliebene Hongkonger Glyphenlücken. Die CJK-Subsets werden mit fontTools und Brotli neu gebaut; die Noto-Quelle ist per Commit und SHA-256 fixiert.</p>
-        <dl class="about-facts">
-          <div><dt>Layout</dt><dd>Grid · subgrid · Container Queries · logische Eigenschaften</dd></div>
-          <div><dt>Schriften</dt><dd>EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming</dd></div>
-          <div><dt>Farbschema</dt><dd>hell/dunkel · prefers-color-scheme</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="accessibility">
-      <div class="about-section-head">
-        <p class="about-section-no">04</p>
-        <h2>Barrierefreiheit</h2>
-        <p class="about-section-dek">Anpassbar, ohne Inhalt zu entfernen.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>Semantische Bereiche, eine Hauptüberschrift, Sprunglinks, sichtbarer Tastaturfokus, ausgeschriebene Sprachnamen und verlässliche Touch-Ziele gehören zur Grundstruktur. Systemeinstellungen für reduzierte Bewegung, höheren Kontrast und erzwungene Farben werden berücksichtigt.</p>
-        <p>Ein dauerhaftes Lesemenü kann serifenlose Schrift, größere Schrift, mehr Abstände, kürzere Zeilen, ein vereinfachtes Layout, weniger Bewegung und höheren Kontrast aktivieren. Diese Optionen sind progressive Erweiterungen und bleiben lokal im Browser.</p>
-        <dl class="about-facts">
-          <div><dt>Leseoptionen</dt><dd>serifenlos · größere Schrift · Abstände · Zeilenbreite · einfaches Layout · Bewegung · Kontrast</dd></div>
-          <div><dt>Speicher</dt><dd>nur localStorage</dd></div>
-          <div><dt>Prüfung</dt><dd>eigener Strukturaudit · axe-core Browseraudit</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="media">
-      <div class="about-section-head">
-        <p class="about-section-no">05</p>
-        <h2>Bilder &amp; Performance</h2>
-        <p class="about-section-dek">Responsive Medien ohne Galerie-Code zur Laufzeit.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>Fotografien und Forschungsabbildungen verwenden picture/srcset mit WebP- und JPEG-Varianten, expliziten Abmessungen und responsiven Größenangaben. Das erste Bild wird priorisiert; weiter unten liegende Medien werden verzögert geladen und asynchron dekodiert.</p>
-        <p>Abschnitte unterhalb des ersten Viewports können content-visibility nutzen. View Transitions und scroll-linked motion bleiben optionale progressive Erweiterungen; bei reduzierter Bewegung werden Animationen abgeschaltet.</p>
-        <dl class="about-facts">
-          <div><dt>Bilder</dt><dd>picture · srcset · WebP · JPEG</dd></div>
-          <div><dt>Laden</dt><dd>feste Abmessungen · verzögertes Laden · asynchrones Dekodieren</dd></div>
-          <div><dt>progressives CSS</dt><dd>content-visibility · View Transitions · Scroll-Timelines</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="quality">
-      <div class="about-section-head">
-        <p class="about-section-no">06</p>
-        <h2>Build, QA &amp; Deployment</h2>
-        <p class="about-section-dek">Auch das generierte Ergebnis ist ein Prüfobjekt.</p>
-      </div>
-      <div class="about-section-copy">
-        <p>Im Repository wird geprüft, ob generierte Seiten aktuell sind, Locale-Schemata übereinstimmen, literarische Strukturen stabil bleiben, semantische Bereiche und Bedienelemente vollständig sind, lokale Links und Fragmente aufgelöst werden können, Bilder Alternativtext besitzen und JavaScript syntaktisch gültig ist.</p>
-        <p>Die Browser-QA ergänzt Geometrieprüfungen in mehreren Sprachen und bei verschiedenen Viewport-Breiten, axe-core-Audits und HTML-Validierung. In GitHub Actions laufen bei Pushes und Pull Requests zuerst die leichten Prüfungen und danach die Browser-Suite; GitHub Pages veröffentlicht die statischen Dateien unabhängig davon aus main.</p>
-        <dl class="about-facts">
-          <div><dt>Repository-Prüfungen</dt><dd>Build-Stand · Mehrsprachigkeit · Barrierefreiheit · Links/Assets · JS-Syntax</dd></div>
-          <div><dt>Browser-QA</dt><dd>Playwright · axe-core · html-validate</dd></div>
-          <div><dt>Auslieferung</dt><dd>GitHub Actions · GitHub Pages</dd></div>
-        </dl>
-      </div>
-    </section>
+<section class="about-section editorial-section" id="architecture" aria-labelledby="heading-architecture"><div class="about-section-head"><p class="about-section-no">01</p><h2 id="heading-architecture">Publikation statt Inventar</h2><p class="about-section-dek">Auswahl ist Teil der Arbeit.</p></div><div class="about-section-copy"><p>Ein Essay verlangt anhaltendes Lesen, eine Fotografie genaues Hinsehen, ein Forschungsprojekt einen Weg zurück zu Methoden und Belegen. Ihre Nachbarschaft hier ist gewählt; sie gibt ihnen weder denselben Zweck noch denselben Maßstab der Fertigstellung. Die Website ist Publikation und ausgewähltes Portfolio. Beides macht sie noch nicht zum vollständigen Archiv.</p>
+<p>Die Arbeiten stehen vor dem beruflichen Kontext. Credits, frühere Tätigkeiten und öffentliche Nachweise liegen in einem eigenen Anhang. So lassen sie sich prüfen, ohne jedes Gedicht oder Bild durch den Lebenslauf zu erklären. Ein Beleg stützt eine bestimmte Aussage, nicht den Rang der gesamten Praxis.</p></div></section>
+<section class="about-section editorial-section" id="layout" aria-labelledby="heading-layout"><div class="about-section-head"><p class="about-section-no">02</p><h2 id="heading-layout">Die Autorität einer Seite</h2><p class="about-section-dek">Gestaltung ist keine neutrale Oberfläche.</p></div><div class="about-section-copy"><p>Warmer Grund, dunkle Schrift, feine Linien und Randnummern übernehmen die Ordnung einer redigierten Publikation, nicht die Nachahmung eines alten Papierblatts. Prosa und Verse erhalten Raum; nichtproportionale Beschriftungen trennen Daten, Reihenfolgen und Publikationsangaben vom Text. Wiederkehrende Ausrichtungen machen Verschiedenes lesbar, ohne jede Arbeit in dieselbe Karte zu zwingen.</p>
+<p>Diese Zurückhaltung erzeugt auch Autorität. Ein sorgfältiges Raster kann ein unfertiges Projekt abgeschlossener erscheinen lassen, als es ist. Angaben zu Stand, Quellen und Fassungen sind deshalb ebenso wichtig wie die Schrift. Sie verhindern, dass visuelle Geschlossenheit als Beweis gilt. Poetry Voucher hat dasselbe Problem: Ein eleganter Shop verkauft Typografie als Zusatzoption.</p>
+<p>Schriftfamilien werden nach Schriftsystem und Lesefunktion eingesetzt, nicht als nationale Kostüme. Gemeinsame Metriken machen chinesische und japanische Zeichenkonventionen nicht identisch. Abdeckung und Ersatzschriften müssen bei Textänderungen geprüft werden; ein gleichmäßiges Schriftbild belegt noch nicht die richtige Zeichenform.</p></div></section>
+<section class="about-section editorial-section" id="languages" aria-labelledby="heading-languages"><div class="about-section-head"><p class="about-section-no">03</p><h2 id="heading-languages">Sieben Ausgaben</h2><p class="about-section-dek">Übersetzung ist eine Lesart, keine austauschbare Hülle.</p></div><div class="about-section-copy"><p>Englisch, traditionelles Chinesisch aus Hongkong, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch und Russisch werden als eigene Ausgaben gepflegt. Englisch ist der voreingestellte Eingang, nicht die Originalsprache jeder Arbeit. Ein Wechsel der Oberfläche macht aus einem chinesischen Gedicht kein englisches Original; manche längeren Texte bleiben in ihrer angegebenen Publikationssprache.</p>
+<p>Chinesische literarische Quelle, vereinfachte Schriftfassung und Übersetzungen haben verschiedene redaktionelle Aufgaben. Eine Schriftumwandlung ist keine weitere Übersetzung. Übersetzen kann verlangen, Subjekt, Zeitform oder Beziehung deutlicher festzulegen, und damit verändern, was ein Gedicht offenlässt. Gleiche Zeilen- und Strophenzahlen helfen gegen strukturelle Abweichungen; sie bestätigen keine literarische Auslegung.</p>
+<p>Navigation und Quellenbeziehungen bleiben gemeinsam, Zeilenlängen und Zeichenformen müssen nicht gleich aussehen. Dies ist eine gemeinsame Publikation in mehreren Sprachen, kein Versprechen identischer Seiten oder einer unabhängigen muttersprachlichen Prüfung jeder Übersetzung.</p></div></section>
+<section class="about-section editorial-section" id="media" aria-labelledby="heading-media"><div class="about-section-head"><p class="about-section-no">04</p><h2 id="heading-media">Reihenfolge und Revision</h2><p class="about-section-dek">Datum und Nachbarschaft können eine Lesart verändern.</p></div><div class="about-section-copy"><p>Die A/B-Folge, die Gedichte außerhalb dieser Folge und die beiden datierten Fassungen von The Roof Splits Open bleiben unterscheidbar. Ein späterer Text ersetzt nicht automatisch jeden früheren. Nebeneinanderstehende Entwürfe machen Überarbeitung lesbar, statt sie hinter einer behaupteten Endgültigkeit zu verbergen.</p>
+<p>Eine ausgewählte Fotografie, eine Forschungsgrafik und ein digitales Bonmuster sind unterschiedliche Bildarten. Die Beschriftung sollte sagen, was sie zeigen und was sie nicht belegen. Ein Bildschirmproof ist kein Foto eines Drucks; eine Karte beweist nicht die Fertigstellung aller geplanten Forschungsschritte. Reihenfolge und Bildtext leisten diese Einordnung, ohne die Bilder zum Lebenslauf zu machen.</p></div></section>
+<section class="about-section editorial-section" id="accessibility" aria-labelledby="heading-accessibility"><div class="about-section-head"><p class="about-section-no">05</p><h2 id="heading-accessibility">Eine veränderbare Seite</h2><p class="about-section-dek">Autorschaft verlangt keine starre Anzeige.</p></div><div class="about-section-copy"><p>Druckers performative Materialität lenkt den Blick auf Systeme im Gebrauch, nicht allein auf ihre Struktur. <sup class="editorial-citation"><a href="#ref-drucker" aria-label="Lektüre zu diesen Notizen 1: Johanna Drucker">[1]</a></sup> Hier wird daraus eine praktische Frage: Kann jemand zu einer Strophe zurückkehren, Fassungen vergleichen, einer Quelle folgen oder die Lesebedingungen ändern, ohne den Text zu verlieren? Die dekorative Ähnlichkeit mit einem Buch beantwortet das nicht.</p>
+<p>Die Leseoptionen verändern Schrift, Größe, Abstände, Zeilenlänge, Layout, Bewegung und Kontrast. Es sind andere Zugänge zu demselben Material, keine minderwertigen Designversionen. Tastaturfokus, Überschriften und Textalternativen gehören zur Publikation, auch wenn sie auf dem Bildschirm nicht am stärksten auffallen.</p>
+<p>Automatische Prüfungen finden manche fehlenden Beschriftungen und Layoutfehler. Sie ersetzen weder Menschen, die einen Screenreader nutzen, noch den Nachweis einer gleichwertigen Begegnung durch eine Bildbeschreibung. Barrierefreiheit bleibt redaktionelle Verantwortung, kein von einer Testsuite verliehenes Gütesiegel.</p></div></section>
+<section class="about-section editorial-section" id="quality" aria-labelledby="heading-quality"><div class="about-section-head"><p class="about-section-no">06</p><h2 id="heading-quality">Autorschaft und Belege</h2><p class="about-section-dek">Nachvollziehbarkeit ist kein Wertzertifikat.</p></div><div class="about-section-copy"><p>Die Arbeiten erscheinen unter Hanpu Li / 李函璞; ausgewählte frühere berufliche Nachweise verwenden auch Caitlyn Lye. Die Credits-Seite hält diese Verbindung ausdrücklich fest. Redaktion und Umsetzung der Website umfassen KI-unterstütztes Entwerfen, Überarbeiten, Programmieren und Testen. Daraus folgt nicht dieselbe Entstehungsgeschichte für jedes Gedicht, jede Übersetzung oder Fotografie.</p>
+<p>Quelldateien, Bauwerkzeuge und Versionsgeschichte helfen festzustellen, was geändert wurde und was zu sehen ist. Sie belegen für sich weder literarische Qualität noch einen gelungenen Druck, Publikumsreaktionen oder institutionelle Anerkennung. Der eigene Bericht eines Projekts und ein unabhängig prüfbarer Nachweis sollten unterscheidbar bleiben.</p>
+<p>Die wissenschaftlichen Verweise auf diesen Seiten dienen dazu, konkrete Entscheidungen zu untersuchen. Sie waren nicht sämtlich Ausgangspunkte der Arbeit. Ein Vergleich ist dort hilfreich, wo er einen Unterschied oder eine Grenze zeigt. Bekannte Namen ersetzen keinen fehlenden Versuch und machen Reaktionen nicht vorhersehbar.</p></div></section>
 
     <section class="about-coda" id="principles" aria-labelledby="about-scope-heading">
       <div>
         <p class="about-section-no">07</p>
-        <h2 id="about-scope-heading">Grundsätze</h2>
+        <h2 id="about-scope-heading">Herstellung und Pflege</h2>
       </div>
       <div class="about-coda-copy">
-        <p>Quellinhalte, generierte Ausgabe und Browserverhalten bleiben getrennte Schichten: strukturierte Inhalte und Templates bearbeiten, neu bauen und anschließend die ausgegebenen Dokumente prüfen.</p>
-        <p>Progressive Erweiterungen sind bewusst optional. Fehlende CSS-Unterstützung, deaktiviertes JavaScript oder nicht verfügbarer lokaler Speicher dürfen weder Inhalte verbergen noch die Navigation blockieren.</p>
-        <h3>Datenschutz zur Laufzeit</h3>
-        <p>Das Portfolio lädt weder Analytics noch Werbenetzwerke, Drittanbieter-Webfonts oder Tracking-Skripte und setzt keine Cookies. Der einzige dauerhaft gespeicherte Browserzustand des Portfolios sind die lokalen Leseeinstellungen.</p>
+        <p>Ein kleiner Python-Generator erzeugt aus strukturierten Inhalten und Vorlagen statisches HTML. Schriften und Bilder werden mit der Website ausgeliefert; das Schriftsystem umfasst EB Garamond, Courier Prime, Cousine, Shippori Mincho, Noto Serif SC und I.Ming. Responsives Layout und optionale Lesehilfen passen die Dokumente an. Die gewöhnlichen Leseseiten brauchen kein JavaScript; der Poetry-Voucher-Shop benötigt es zur Herstellung der Ausgabe im Browser.</p>
+        <p>Build-, Sprach-, Link-, Schrift- und Browserprüfungen stützen diese Publikationsentscheidungen. Das ist Pflege, kein ästhetisches Argument. Das öffentliche Repository ermöglicht Einsicht, gewährt aber keine pauschale Lizenz für die kreativen Arbeiten. Poetry Voucher erlaubt gesondert persönliches Speichern, Drucken und Verschenken gedruckter Exemplare.</p>
+        <h3>Lokaler Zustand und Hosting</h3>
+        <p>Die Website fügt keine Analysewerkzeuge, Werbeskripte oder Tracking-Cookies hinzu. Lesepräferenzen bleiben im Browser. Poetry Voucher speichert außerdem einen lokalen Warenkorb und abgeschlossene Bestellungen im aktuellen Tab; es nimmt keine Zahlung an und kontaktiert keinen Drucker. Das beschreibt den eigenen Code, garantiert aber nicht, dass der Hostinganbieter keine Zugriffsprotokolle führt. Externe Quellenlinks führen auf die Website des jeweiligen Anbieters.</p>
       </div>
     </section>
+<p class="editorial-related"><a href="/de/poetry-voucher/">Poetry Voucher · Projektübersicht</a></p>
+<section id="references" class="editorial-references" aria-labelledby="references-heading"><h2 id="references-heading">Lektüre zu diesen Notizen</h2><p>Ein Bezug für eine bestimmte Frage, nicht die Behauptung, eine vollständige Theorie sei hier umgesetzt.</p><ol><li id="ref-drucker"><span lang="en">Johanna Drucker. <a href="https://www.digitalhumanities.org/dhq/vol/7/1/000143/000143.html"><cite>Performative Materiality and Theoretical Approaches to Interface</cite></a>. Digital Humanities Quarterly 7(1), 2013, especially paragraphs 8–12. <a class="reference-copy" href="https://scalar.usc.edu/works/autora-escritural-posthumana/media/Drucker,%20Johanna%20-%20Performative%20Materiality.pdf">PDF · USC Scalar</a></span></li></ol></section>
   </main>
 
   <footer class="page-footer about-footer">

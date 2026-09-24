@@ -1,1150 +1,646 @@
 {
   "en": {
     "meta_title": "About this site · Hanpu Li",
-    "meta_description": "Implementation notes for Hanpu Li’s website: static architecture, multilingual publishing, typography, accessibility, responsive media, testing and GitHub Pages deployment.",
-    "eyebrow": "publishing notes · 2026",
+    "meta_description": "Editorial notes on Hanpu Li’s multilingual publication: selection, visual form, translation, versions, reading, authorship and technical maintenance.",
+    "eyebrow": "Editorial notes · 2026",
     "title": "About this site",
-    "lede": "This site is published as a set of documents rather than an application. Each of the seven language editions is a complete static document with local type, no tracking and no runtime translation; the technical stack exists to keep those publication choices stable.",
-    "principle": "Source authority, translation relationships, legibility and privacy come first; build and QA details follow from those editorial constraints.",
+    "lede": "This is an authored place for writing, ci, photographs, research and experiments in publishing. It brings different kinds of work into relation without making them illustrations of a single practice or a complete account of a life.",
+    "principle": "The page participates in the encounter. These notes make its editorial choices inspectable; they are not instructions for what a reader must find in the work.",
     "sections": [
       {
-        "id": "languages",
-        "number": "01",
-        "title": "Content & languages",
-        "dek": "Seven editions, no runtime translation.",
-        "body": [
-          "English, Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are built as separate static editions with canonical URLs, hreflang alternates and locale-specific metadata.",
-          "Literary source texts have stricter rules than ordinary interface copy. Traditional Chinese is canonical where specified; Simplified Chinese literary mirrors are script-converted and hash-checked, while translations preserve stanza and line structure through dedicated validation."
-        ],
-        "facts": [
-          {
-            "label": "locales",
-            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
-          },
-          {
-            "label": "literary conversion",
-            "value": "OpenCC helper · source hashes · line-parity checks"
-          },
-          {
-            "label": "metadata",
-            "value": "canonical · hreflang · Open Graph"
-          }
-        ]
-      },
-      {
         "id": "architecture",
-        "number": "02",
-        "title": "Architecture",
-        "dek": "Static by design.",
+        "number": "01",
+        "title": "A publication, not an inventory",
+        "dek": "Selection is part of the work.",
         "body": [
-          "The portfolio is generated as complete HTML5 documents from small templates and structured JSON. A Python 3 standard-library builder emits each language edition ahead of time; the browser does not assemble the site at runtime.",
-          "The site is served by GitHub Pages from the main branch. There is no CMS, application framework, database or server-side application behind the portfolio."
+          "An essay asks for sustained reading; a photograph asks for looking; a research project needs a way back to its methods and evidence. Their proximity here is deliberate, but it does not give them the same purpose or the same standard of completion. The site is both a publication and a selected portfolio. Neither role makes it an exhaustive archive.",
+          "Work comes before professional context. Credits, earlier activities and public records are kept in separate back matter so that they can be checked without becoming the explanation for every poem or image. A link to evidence supports a specific claim, not the standing of the whole practice."
         ],
-        "facts": [
-          {
-            "label": "runtime",
-            "value": "HTML5 · CSS · vanilla JavaScript"
-          },
-          {
-            "label": "build",
-            "value": "Python 3 · JSON · HTML templates"
-          },
-          {
-            "label": "hosting",
-            "value": "GitHub Pages"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "layout",
-        "number": "03",
-        "title": "Layout & typography",
-        "dek": "Editorial CSS rather than a component framework.",
+        "number": "02",
+        "title": "The authority of a page",
+        "dek": "A designed surface is not a neutral surface.",
         "body": [
-          "The layout uses CSS Grid, subgrid, container queries, logical properties, custom properties and fluid clamp() sizing. Media queries remain conservative fallbacks; components reflow from their own available width where the browser supports container queries.",
-          "Typography is self-hosted as WOFF2. EB Garamond handles most Latin prose, Courier Prime and Cousine handle metadata, Shippori Mincho serves Traditional Chinese and Japanese, Noto Serif SC serves Simplified Chinese, and a tiny I.Ming subset fills the remaining Hong Kong glyph gaps. The CJK subsets are rebuilt with fontTools and Brotli; the Noto source is pinned by commit and SHA-256."
+          "The warm ground, dark type, fine rules and numbered margins borrow the organisation of an edited publication, not the simulation of an old sheet of paper. Prose and verse have room to develop; monospaced labels distinguish dates, sequence and other publishing information. Repeated alignments make different kinds of material legible without forcing every item into the same card.",
+          "This restraint also produces authority. A careful grid can make an unfinished project appear more settled than it is. Status notes, sources and version dates therefore matter as much as the typeface: they keep visual coherence from standing in for proof. The same problem appears in Poetry Voucher, where an elegant storefront offers typography as an upgrade.",
+          "Font families are assigned by writing system and reading role rather than as national costumes. Shared metrics do not make Chinese and Japanese glyph conventions identical. Coverage and fallback need checking whenever the copy changes; a consistent colour of type is not sufficient evidence that the right character form is present."
         ],
-        "facts": [
-          {
-            "label": "layout",
-            "value": "Grid · subgrid · container queries · logical properties"
-          },
-          {
-            "label": "type",
-            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
-          },
-          {
-            "label": "colour",
-            "value": "light/dark via prefers-color-scheme"
-          }
-        ]
+        "facts": []
       },
       {
-        "id": "accessibility",
-        "number": "04",
-        "title": "Accessibility",
-        "dek": "Adaptation without removing content.",
+        "id": "languages",
+        "number": "03",
+        "title": "Seven editions",
+        "dek": "Translation is a reading, not an interchangeable skin.",
         "body": [
-          "The portfolio uses semantic landmarks, one primary heading, skip links, visible keyboard focus, descriptive language controls and touch targets large enough to use reliably. Reduced-motion, higher-contrast and forced-colour system preferences are respected.",
-          "A persistent reading panel can switch to sans-serif text, increase type and spacing, narrow text columns, simplify the layout, reduce motion and increase contrast. These preferences are progressive enhancement and are stored locally in the browser."
+          "English, Hong Kong Traditional Chinese, Simplified Chinese, Japanese, German, French and Russian are separately maintained editions. English is the default entrance, not the original language of every work. An interface change does not silently turn a Chinese poem into an English original; some long-form texts remain in their stated publication language.",
+          "The Chinese literary source, its Simplified script mirror and its translations have different editorial roles. Script conversion is not another translation. A translation may have to make a subject, tense or relation more explicit, and that choice can alter what the poem leaves open. Preserving line and stanza counts catches structural drift; it does not certify a literary reading.",
+          "The editions retain common navigation and source relationships, but their line lengths and glyphs need not look identical. This is a shared publication across languages, not a promise that seven languages produce the same page, or that every translation has received independent native-language review."
         ],
-        "facts": [
-          {
-            "label": "preferences",
-            "value": "sans · larger type · spacing · measure · simple layout · motion · contrast"
-          },
-          {
-            "label": "storage",
-            "value": "localStorage only"
-          },
-          {
-            "label": "checks",
-            "value": "custom structural audit · axe-core browser audit"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "media",
-        "number": "05",
-        "title": "Images & performance",
-        "dek": "Responsive media, no gallery runtime.",
+        "number": "04",
+        "title": "Sequence and revision",
+        "dek": "A date or an adjacency can change a reading.",
         "body": [
-          "Photographs and research plates use picture/srcset with WebP and JPEG candidates, explicit dimensions and responsive sizes. The lead image is prioritised; images further down the page are lazy-loaded and decoded asynchronously.",
-          "Below-the-fold portfolio sections can use content-visibility, while View Transitions and scroll-linked motion are optional progressive enhancements. Reduced-motion preferences disable animation."
+          "The A/B sequence, poems outside that sequence and the two dated drafts of The Roof Splits Open retain their distinctions. A later text is not automatically a replacement for every earlier one. Keeping drafts beside each other makes revision available for reading rather than hiding it behind a claim of finality.",
+          "A selected photograph, a research diagram and a digital receipt specimen are different kinds of image. Their captions should identify what they show and what they cannot establish. A screen proof is not a photograph of a print; a map is not evidence that every proposed research phase has been completed. Sequence and captioning do this work without making the images carry a résumé."
         ],
-        "facts": [
-          {
-            "label": "images",
-            "value": "picture · srcset · WebP · JPEG"
-          },
-          {
-            "label": "loading",
-            "value": "explicit dimensions · lazy loading · async decoding"
-          },
-          {
-            "label": "progressive CSS",
-            "value": "content-visibility · View Transitions · scroll timelines"
-          }
-        ]
+        "facts": []
+      },
+      {
+        "id": "accessibility",
+        "number": "05",
+        "title": "A page the reader can change",
+        "dek": "Authored form does not require a fixed display.",
+        "body": [
+          "Drucker’s performative materiality directs attention to a system in use, not its structure alone. [[drucker]] Here that question is practical: can someone return to a stanza, compare a version, follow a source or change the conditions of reading without losing the text? A decorative resemblance to a book cannot answer it.",
+          "The reading controls change type, scale, spacing, measure, layout, motion and contrast. These are alternative ways of encountering the same material, not inferior versions of the design. Keyboard focus, headings and text alternatives remain part of publication, even when they are not the most conspicuous things on the screen.",
+          "Automated checks can find some missing labels and layout failures. They cannot stand in for a person using a screen reader, or prove that an image description gives someone an equivalent encounter. Accessibility is a continuing editorial responsibility, not a badge awarded by a test suite."
+        ],
+        "facts": []
       },
       {
         "id": "quality",
         "number": "06",
-        "title": "Build, QA & deployment",
-        "dek": "Generated pages are testable artefacts.",
+        "title": "Authorship and evidence",
+        "dek": "A traceable process is not a certificate of value.",
         "body": [
-          "The repository checks that generated pages are current, locale schemas match, literary structures have not drifted, accessibility landmarks and controls remain intact, local links and fragments resolve, images have alt text and JavaScript parses.",
-          "Browser QA adds geometry checks across languages and viewport widths, axe-core accessibility scans and HTML validation. In GitHub Actions, the dependency-light checks run first and the browser suite follows on pushes and pull requests; GitHub Pages independently publishes the static files from main."
+          "The work is published under Hanpu Li / 李函璞; selected earlier professional records also use Caitlyn Lye. The credits page keeps that relationship explicit. This site’s editorial and implementation work includes AI-assisted drafting, revision, coding and testing. That contribution is not a basis for assigning the same production history to every poem, translation or photograph.",
+          "Source files, generation tools and version history help identify what has been changed and what is being shown. They do not by themselves establish literary quality, a successful physical print, an audience’s response or institutional endorsement. A project’s own account and an independently checkable record should remain distinguishable.",
+          "The scholarly references on these pages are tools for examining decisions. They were not all starting points for the work. Comparison is useful where it reveals a difference or a limit; a list of recognised names cannot supply a missing experiment or make the reader’s response predictable."
         ],
-        "facts": [
-          {
-            "label": "repository checks",
-            "value": "build freshness · i18n · accessibility · links/assets · JS syntax"
-          },
-          {
-            "label": "browser QA",
-            "value": "Playwright · axe-core · html-validate"
-          },
-          {
-            "label": "delivery",
-            "value": "GitHub Actions · GitHub Pages"
-          }
-        ]
+        "facts": []
       }
     ],
-    "scope_title": "Principles",
+    "scope_title": "Making and maintaining",
     "scope_body": [
-      "The portfolio treats source content, generated output and browser behaviour as separate layers: edit structured content and templates, rebuild, then verify the emitted documents.",
-      "Progressive enhancement is optional by design. Unsupported CSS features, disabled JavaScript or unavailable local storage must not hide the work or block navigation."
+      "A small Python builder turns structured content and templates into static HTML. Fonts and images are served with the site; the type system includes EB Garamond, Courier Prime, Cousine, Shippori Mincho, Noto Serif SC and I.Ming. Responsive layout and optional reading controls adapt the documents. The ordinary reading pages do not need JavaScript; the Poetry Voucher shop does, because it prepares an edition in the browser.",
+      "Build, language, link, font and browser checks support those publishing decisions. They are maintenance, not an aesthetic argument. The public repository is available for inspection; its availability is not a blanket licence over the creative work. Poetry Voucher separately permits personal saving, printing and giving printed copies to others."
     ],
-    "privacy_title": "Runtime privacy",
-    "privacy_body": "The portfolio loads no analytics, advertising network, third-party web font or tracking script. It sets no cookies. The only persistent browser state used by the portfolio is the local reading-preference record.",
+    "privacy_title": "Local state and hosting",
+    "privacy_body": "The site adds no analytics, advertising scripts or tracking cookies. Reading preferences remain in the browser. Poetry Voucher also keeps a local catalogue bag and completed orders in the current tab; it takes no payment and contacts no printer. These limits describe the site’s own code, not a guarantee that the hosting provider keeps no access logs. Following an external source takes you to that provider’s site.",
     "footer_link": "about this site",
     "source_link": "site source",
-    "toc_label": "On this page"
+    "toc_label": "On this page",
+    "references_title": "Reading behind these notes",
+    "references_intro": "A reference used for a particular question, not a claim that the site implements a complete theory."
   },
   "zh": {
     "meta_title": "關於本站 · Hanpu Li",
-    "meta_description": "Hanpu Li 個人網站的實作說明：靜態架構、多語發佈、字體、無障礙、響應式媒體、測試與 GitHub Pages 部署。",
-    "eyebrow": "出版札記 · 2026",
+    "meta_description": "關於 Hanpu Li 多語種出版物的編輯説明：選編、視覺形式、翻譯、版本、閲讀、作者責任與技術維護。",
+    "eyebrow": "編輯札記 · 2026",
     "title": "關於本站",
-    "lede": "本站首先是一份出版物，而不是一個應用程式。七個語言版本各自都是完整的靜態文件，使用本地字體，不設追蹤，也不在執行時翻譯；技術架構只用來讓這些出版選擇保持穩定。",
-    "principle": "原文權威、翻譯關係、可讀性與私隱優先；建置與測試細節由這些編輯約束派生。",
+    "lede": "這裏刊載寫作、詞、攝影、研究與出版實驗。不同工作在此相鄰，但不被歸結為同一種實踐的例證，也不構成一份完整的人生檔案。",
+    "principle": "頁面參與作品被閲讀的過程。這些札記讓編輯選擇可以被檢查，不替讀者規定作品必須意味着什麼。",
     "sections": [
       {
-        "id": "languages",
-        "number": "01",
-        "title": "內容與語言",
-        "dek": "七個版本，沒有執行時翻譯。",
-        "body": [
-          "英文、香港繁體中文、簡體中文、日文、德文、法文與俄文均生成為獨立靜態版本，各有 canonical 網址、hreflang 替代連結與語系中繼資料。",
-          "文學文本比一般介面文字有更嚴格的規則。指定情況下以繁體中文原文為正；簡體文學版本只做字形轉換並核對來源雜湊，譯文則由專門檢查維持分行與分闋結構。"
-        ],
-        "facts": [
-          {
-            "label": "語系",
-            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
-          },
-          {
-            "label": "文學轉換",
-            "value": "OpenCC 輔助 · 來源雜湊 · 行數一致性"
-          },
-          {
-            "label": "中繼資料",
-            "value": "canonical · hreflang · Open Graph"
-          }
-        ]
-      },
-      {
         "id": "architecture",
-        "number": "02",
-        "title": "架構",
-        "dek": "刻意保持靜態。",
+        "number": "01",
+        "title": "出版，而非羅列",
+        "dek": "選編本身就是一種工作。",
         "body": [
-          "作品站由小型模板與結構化 JSON 生成完整 HTML5 文件。Python 3 標準函式庫生成器會預先輸出每個語言版本，瀏覽器毋須在執行時拼裝頁面。",
-          "網站從 main 分支經 GitHub Pages 發佈。作品站背後沒有 CMS、應用框架、資料庫或伺服器端應用。"
+          "一篇文章需要持續閲讀，一張照片需要觀看，一個研究項目需要能夠返回方法與證據的路徑。它們在此相鄰，並不意味着具有相同目的，或應以相同標準判斷是否完成。本站既是一份出版物，也是一份作品選集；兩者都不是窮盡一切的檔案。",
+          "作品在前，職業資料在後。署名、早期活動與公開記錄另置於書後資料式的頁面，便於核查，而不讓履歷成為每首詩、每張照片的解釋。證據鏈接只能支持具體事項，不能替整項實踐背書。"
         ],
-        "facts": [
-          {
-            "label": "執行時",
-            "value": "HTML5 · CSS · 原生 JavaScript"
-          },
-          {
-            "label": "建置",
-            "value": "Python 3 · JSON · HTML 模板"
-          },
-          {
-            "label": "託管",
-            "value": "GitHub Pages"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "layout",
-        "number": "03",
-        "title": "版式與字體",
-        "dek": "編輯式 CSS，不用元件框架。",
+        "number": "02",
+        "title": "頁面怎樣獲得權威",
+        "dek": "經過設計的表面並不中立。",
         "body": [
-          "版式使用 CSS Grid、subgrid、容器查詢、邏輯屬性、自訂屬性與流動的 clamp() 尺寸。媒體查詢只作保守後備；支援容器查詢的瀏覽器會讓元件依自己的可用寬度重排。",
-          "字體全部以 WOFF2 自行託管。拉丁正文主要用 EB Garamond，中繼資料用 Courier Prime／Cousine，繁體中文與日文用 Shippori Mincho，簡體中文用 Noto Serif SC，少量香港字形缺口由極小的 I.Ming 子集補齊。CJK 子集以 fontTools 與 Brotli 重建；Noto 來源以提交版本與 SHA-256 固定。"
+          "暖色底、深色文字、細線與頁邊編號借用的是編輯出版物的組織方式，而不是仿造一張舊紙。散文與詩行有各自展開的空間，等寬標籤區分日期、序次與出版信息。重複的對齊關係讓不同材料可以辨認，但不把每件作品壓進同一種卡片。",
+          "這種剋制也會產生權威感。整齊的網格可能讓未完成的研究看上去已經定論。因此，狀態説明、來源與版本日期和字體同樣重要：視覺統一不能替代證明。詩券也面對這個問題，一間精緻的商店正在把排印作為升級項出售。",
+          "字體按書寫系統與閲讀用途分工，不充當各國的服裝。共用一個字體家族不等於中文與日文字形規範相同。每次改文案都要檢查覆蓋與回退；版面灰度一致，並不足以證明出現的是應有字形。"
         ],
-        "facts": [
-          {
-            "label": "版式",
-            "value": "Grid · subgrid · 容器查詢 · 邏輯屬性"
-          },
-          {
-            "label": "字體",
-            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
-          },
-          {
-            "label": "色彩",
-            "value": "明／暗色 · prefers-color-scheme"
-          }
-        ]
+        "facts": []
       },
       {
-        "id": "accessibility",
-        "number": "04",
-        "title": "無障礙",
-        "dek": "可以調整，但不刪內容。",
+        "id": "languages",
+        "number": "03",
+        "title": "七個版本",
+        "dek": "翻譯是一種閲讀，不是一層可互換的外觀。",
         "body": [
-          "作品站使用語義地標、單一主標題、跳至內容連結、清晰的鍵盤焦點、完整語言名稱與足夠大的觸控目標；亦尊重減少動態、提高對比與強制色彩等系統偏好。",
-          "閱讀面板可切換無襯線字體、放大文字、增加字距行距、縮窄欄寬、簡化版式、減少動態與提高對比。這些都是漸進增強，只在瀏覽器本地保存偏好。"
+          "英文、香港繁體中文、簡體中文、日文、德文、法文與俄文分別維護。英文是預設入口，不是每件作品的原作語言。切換界面不會把中文詩悄悄變成英文原作；部分長文仍保留其註明的出版語言。",
+          "中文文學原文、簡體字形鏡像與譯文承擔不同的編輯角色。字形轉換不是另一份翻譯。翻譯有時必須更明確地決定主語、時態或關係，這些決定會改變詩裏原本懸而未決的東西。行數與詩節檢查可以發現結構漂移，不能認證一次文學理解。",
+          "各語言保留共同導航與來源關係，不必產生完全相同的行長與字形。這是一份跨語言的共同出版物，不承諾七種語言看起來一樣，也不暗示每份譯文都經過獨立母語編輯審閲。"
         ],
-        "facts": [
-          {
-            "label": "閱讀偏好",
-            "value": "無襯線 · 大字 · 字距／行距 · 窄行 · 簡化版式 · 動態 · 對比"
-          },
-          {
-            "label": "儲存",
-            "value": "只用 localStorage"
-          },
-          {
-            "label": "檢查",
-            "value": "自製結構審計 · axe-core 瀏覽器審計"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "media",
-        "number": "05",
-        "title": "圖片與效能",
-        "dek": "響應式媒體，不靠圖庫程式。",
+        "number": "04",
+        "title": "編排與修訂",
+        "dek": "日期與相鄰關係會改變讀法。",
         "body": [
-          "攝影與研究圖版使用 picture/srcset，提供 WebP 與 JPEG 尺寸候選，並明確標示寬高與響應式 sizes。首張圖優先載入，頁面較下方的媒體則延遲載入並非同步解碼。",
-          "頁面下方區段可使用 content-visibility；View Transitions 與 scroll-linked motion 都只是可選的漸進增強。使用者要求減少動態時會停用動態。"
+          "甲乙序列、集外作品，以及《屋頂裂開》的兩份有日期的稿本，各自保留區別。較晚的文本並不自動取代所有早稿。兩稿並置，讓刪改成為可以閲讀的過程，而不以“定稿”遮蔽它。",
+          "選出的照片、研究圖版與數位小票樣本，是不同性質的圖像。圖注應當説明它們展示了什麼、不能證明什麼。屏幕校樣不是實物照片，地圖也不能證明所有擬議研究階段都已完成。編排與圖注負責交代這些關係，不讓圖像承擔一份履歷。"
         ],
-        "facts": [
-          {
-            "label": "圖片",
-            "value": "picture · srcset · WebP · JPEG"
-          },
-          {
-            "label": "載入",
-            "value": "明確尺寸 · 延遲載入 · 非同步解碼"
-          },
-          {
-            "label": "漸進 CSS",
-            "value": "content-visibility · View Transitions · 捲動時間軸"
-          }
-        ]
+        "facts": []
+      },
+      {
+        "id": "accessibility",
+        "number": "05",
+        "title": "讀者可以改變頁面",
+        "dek": "作者安排形式，不等於鎖定顯示。",
+        "body": [
+          "Drucker 把物質性放到系統的使用中考察，而不止於結構。[[drucker]] 在這裏，這個問題很具體：能否返回一闋詞、比較版本、追索來源，或者改變閲讀條件而不丟失文本？裝飾性地像一本書，並不能回答它。",
+          "閲讀控件允許調整字體、大小、間距、行寬、版式、動態與對比。這些是接觸同一材料的其他方式，不是設計的次等版本。鍵盤焦點、標題層級與文字替代仍然屬於出版工作，即使它們不是屏幕上最顯眼的部分。",
+          "自動檢查能找到部分標籤缺失與排版故障，不能代替真正使用屏幕閲讀器的人，也不能證明一段圖像描述帶來了相等的體驗。無障礙是持續的編輯責任，不是測試套件頒發的標章。"
+        ],
+        "facts": []
       },
       {
         "id": "quality",
         "number": "06",
-        "title": "建置、QA 與部署",
-        "dek": "生成結果本身就是可測試的產物。",
+        "title": "作者責任與證據",
+        "dek": "可追溯的過程不是價值證書。",
         "body": [
-          "儲存庫會檢查生成頁是否最新、各語系結構是否一致、文學結構有沒有漂移、無障礙地標與控制項是否完整、本地連結和頁內錨點是否有效、圖片是否有替代文字，以及 JavaScript 能否解析。",
-          "瀏覽器 QA 另做跨語言與窄／寬視窗幾何檢查、axe-core 無障礙掃描與 HTML 驗證。GitHub Actions 在推送與 pull request 時先跑輕依賴檢查，通過後再跑瀏覽器套件；GitHub Pages 則獨立從 main 發佈同一批靜態檔案。"
+          "作品以 Hanpu Li／李函璞署名，部分早期職業記錄使用 Caitlyn Lye；署名頁明確保留這層關係。本站的編輯與實現工作包括 AI 輔助起草、修改、編程與測試。這不意味着每首詩、每份譯文、每張照片都具有同一種製作歷史。",
+          "源文件、生成工具與版本歷史有助於辨認什麼被改過、當前展示的是什麼。它們本身不能證明文學質量、實際打印成功、讀者反應或機構認可。項目自身的敍述與可以獨立核查的記錄應當保持區別。",
+          "這些頁面中的學術參照用於檢查具體決定，並非全都是創作起點。比較應當揭示差異或限制；一串知名人物的名字不能補上未做的實驗，也不能讓讀者的反應變得可預測。"
         ],
-        "facts": [
-          {
-            "label": "儲存庫檢查",
-            "value": "生成狀態 · 多語一致性 · 無障礙 · 連結／資源 · JS 語法"
-          },
-          {
-            "label": "瀏覽器 QA",
-            "value": "Playwright · axe-core · html-validate"
-          },
-          {
-            "label": "交付",
-            "value": "GitHub Actions · GitHub Pages"
-          }
-        ]
+        "facts": []
       }
     ],
-    "scope_title": "原則",
+    "scope_title": "製作與維護",
     "scope_body": [
-      "本站把內容來源、生成結果與瀏覽器行為分成不同層次：修改結構化內容與模板，重新生成，再核對輸出的文件。",
-      "漸進增強從一開始就是可有可無的一層。即使瀏覽器不支援某些 CSS、JavaScript 被停用，或本地儲存不可用，作品仍須完整可讀，導覽亦不能失效。"
+      "小型 Python 構建器把結構化內容與模板生成靜態 HTML。字體和圖片隨站點託管；字體系統包括 EB Garamond、Courier Prime、Cousine、Shippori Mincho、Noto Serif SC 與 I.Ming。響應式版式及可選閲讀控件使文檔適應閲讀條件。普通閲讀頁不依賴 JavaScript；詩券商店需要它在瀏覽器中製作版本。",
+      "構建、多語、鏈接、字體與瀏覽器檢查為這些出版決定服務。這是維護，不是美學論證。公開倉庫供人檢查，並不向所有創作內容授予一攬子開放許可。詩券另行允許個人保存、打印，以及把打印件贈給他人。"
     ],
-    "privacy_title": "瀏覽器執行時的私隱",
-    "privacy_body": "作品站不載入 analytics、廣告網絡、第三方 web font 或追蹤 script，也不設 cookie。作品站唯一持久的瀏覽器狀態，是本地閱讀偏好記錄。",
+    "privacy_title": "本地狀態與託管",
+    "privacy_body": "本站不添加分析工具、廣告腳本或追蹤 cookie。閲讀偏好留在瀏覽器中。詩券也會保存本地目錄購物袋，並把完成的訂單留在當前分頁；它不扣款、不聯繫打印機。這些限制描述的是本站自己的代碼，不保證託管服務商沒有訪問日誌。點擊外部來源會進入相應提供方的網站。",
     "footer_link": "關於本站",
     "source_link": "網站原始碼",
-    "toc_label": "本頁內容"
+    "toc_label": "本頁內容",
+    "references_title": "札記的閲讀參照",
+    "references_intro": "參照只用於具體問題，不表示本站已經實現某套完整理論。"
   },
   "zh-hans": {
     "meta_title": "关于本站 · Hanpu Li",
-    "meta_description": "Hanpu Li 个人网站的实现说明：静态架构、多语言发布、字体、无障碍、响应式媒体、测试与 GitHub Pages 部署。",
-    "eyebrow": "出版札记 · 2026",
+    "meta_description": "关于 Hanpu Li 多语种出版物的编辑说明：选编、视觉形式、翻译、版本、阅读、作者责任与技术维护。",
+    "eyebrow": "编辑札记 · 2026",
     "title": "关于本站",
-    "lede": "本站首先是一份出版物，而不是一个应用程序。七个语言版本各自都是完整的静态文件，使用本地字体，不设追踪，也不在运行时翻译；技术架构只用来让这些出版选择保持稳定。",
-    "principle": "原文权威、翻译关系、可读性与隐私优先；构建与测试细节由这些编辑约束派生。",
+    "lede": "这里刊载写作、词、摄影、研究与出版实验。不同工作在此相邻，但不被归结为同一种实践的例证，也不构成一份完整的人生档案。",
+    "principle": "页面参与作品被阅读的过程。这些札记让编辑选择可以被检查，不替读者规定作品必须意味着什么。",
     "sections": [
       {
-        "id": "languages",
-        "number": "01",
-        "title": "内容与语言",
-        "dek": "七个版本，没有运行时翻译。",
-        "body": [
-          "英文、香港繁体中文、简体中文、日文、德文、法文与俄文均生成独立静态版本，各有 canonical 网址、hreflang 替代链接与语系元数据。",
-          "文学文本比一般界面文字有更严格的规则。指定情况下以繁体中文原文为准；简体文学版本只做字形转换并核对来源哈希，译文则由专门检查维持分行与分阕结构。"
-        ],
-        "facts": [
-          {
-            "label": "语系",
-            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
-          },
-          {
-            "label": "文学转换",
-            "value": "OpenCC 辅助 · 来源哈希 · 行数一致性"
-          },
-          {
-            "label": "元数据",
-            "value": "canonical · hreflang · Open Graph"
-          }
-        ]
-      },
-      {
         "id": "architecture",
-        "number": "02",
-        "title": "架构",
-        "dek": "刻意保持静态。",
+        "number": "01",
+        "title": "出版，而非罗列",
+        "dek": "选编本身就是一种工作。",
         "body": [
-          "作品站由小型模板与结构化 JSON 生成完整 HTML5 文档。Python 3 标准库生成器会预先输出每个语言版本，浏览器无需在运行时拼装页面。",
-          "网站从 main 分支经 GitHub Pages 发布。作品站背后没有 CMS、应用框架、数据库或服务端应用。"
+          "一篇文章需要持续阅读，一张照片需要观看，一个研究项目需要能够返回方法与证据的路径。它们在此相邻，并不意味着具有相同目的，或应以相同标准判断是否完成。本站既是一份出版物，也是一份作品选集；两者都不是穷尽一切的档案。",
+          "作品在前，职业资料在后。署名、早期活动与公开记录另置于书后资料式的页面，便于核查，而不让履历成为每首诗、每张照片的解释。证据链接只能支持具体事项，不能替整项实践背书。"
         ],
-        "facts": [
-          {
-            "label": "运行时",
-            "value": "HTML5 · CSS · 原生 JavaScript"
-          },
-          {
-            "label": "构建",
-            "value": "Python 3 · JSON · HTML 模板"
-          },
-          {
-            "label": "托管",
-            "value": "GitHub Pages"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "layout",
-        "number": "03",
-        "title": "版式与字体",
-        "dek": "编辑式 CSS，不用组件框架。",
+        "number": "02",
+        "title": "页面怎样获得权威",
+        "dek": "经过设计的表面并不中立。",
         "body": [
-          "版式使用 CSS Grid、subgrid、容器查询、逻辑属性、自定义属性与流动的 clamp() 尺寸。媒体查询只作保守后备；支持容器查询的浏览器会让组件按自己的可用宽度重排。",
-          "字体全部以 WOFF2 自行托管。拉丁正文主要用 EB Garamond，元数据用 Courier Prime／Cousine，繁体中文与日文用 Shippori Mincho，简体中文用 Noto Serif SC，少量香港字形缺口由极小的 I.Ming 子集补齐。CJK 子集以 fontTools 与 Brotli 重建；Noto 来源以提交版本与 SHA-256 固定。"
+          "暖色底、深色文字、细线与页边编号借用的是编辑出版物的组织方式，而不是仿造一张旧纸。散文与诗行有各自展开的空间，等宽标签区分日期、序次与出版信息。重复的对齐关系让不同材料可以辨认，但不把每件作品压进同一种卡片。",
+          "这种克制也会产生权威感。整齐的网格可能让未完成的研究看上去已经定论。因此，状态说明、来源与版本日期和字体同样重要：视觉统一不能替代证明。诗券也面对这个问题，一间精致的商店正在把排印作为升级项出售。",
+          "字体按书写系统与阅读用途分工，不充当各国的服装。共用一个字体家族不等于中文与日文字形规范相同。每次改文案都要检查覆盖与回退；版面灰度一致，并不足以证明出现的是应有字形。"
         ],
-        "facts": [
-          {
-            "label": "版式",
-            "value": "Grid · subgrid · 容器查询 · 逻辑属性"
-          },
-          {
-            "label": "字体",
-            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
-          },
-          {
-            "label": "色彩",
-            "value": "明／暗色 · prefers-color-scheme"
-          }
-        ]
+        "facts": []
       },
       {
-        "id": "accessibility",
-        "number": "04",
-        "title": "无障碍",
-        "dek": "可以调整，但不删内容。",
+        "id": "languages",
+        "number": "03",
+        "title": "七个版本",
+        "dek": "翻译是一种阅读，不是一层可互换的外观。",
         "body": [
-          "作品站使用语义地标、单一主标题、跳至内容链接、清晰的键盘焦点、完整语言名称与足够大的触控目标；同时尊重减少动态、提高对比与强制色彩等系统偏好。",
-          "阅读面板可切换无衬线字体、放大文字、增加字距行距、缩窄栏宽、简化版式、减少动态与提高对比。这些都是渐进增强，只在浏览器本地保存偏好。"
+          "英文、香港繁体中文、简体中文、日文、德文、法文与俄文分别维护。英文是默认入口，不是每件作品的原作语言。切换界面不会把中文诗悄悄变成英文原作；部分长文仍保留其注明的出版语言。",
+          "中文文学原文、简体字形镜像与译文承担不同的编辑角色。字形转换不是另一份翻译。翻译有时必须更明确地决定主语、时态或关系，这些决定会改变诗里原本悬而未决的东西。行数与诗节检查可以发现结构漂移，不能认证一次文学理解。",
+          "各语言保留共同导航与来源关系，不必产生完全相同的行长与字形。这是一份跨语言的共同出版物，不承诺七种语言看起来一样，也不暗示每份译文都经过独立母语编辑审阅。"
         ],
-        "facts": [
-          {
-            "label": "阅读偏好",
-            "value": "无衬线 · 大字 · 字距／行距 · 窄行 · 简化版式 · 动态 · 对比"
-          },
-          {
-            "label": "存储",
-            "value": "只用 localStorage"
-          },
-          {
-            "label": "检查",
-            "value": "自制结构审计 · axe-core 浏览器审计"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "media",
-        "number": "05",
-        "title": "图片与性能",
-        "dek": "响应式媒体，不靠图库程序。",
+        "number": "04",
+        "title": "编排与修订",
+        "dek": "日期与相邻关系会改变读法。",
         "body": [
-          "摄影与研究图版使用 picture/srcset，提供 WebP 与 JPEG 尺寸候选，并明确标注宽高与响应式 sizes。首张图优先加载，页面较下方的媒体则延迟加载并异步解码。",
-          "页面下方区段可使用 content-visibility；View Transitions 与 scroll-linked motion 都只是可选的渐进增强。用户要求减少动态时会停用动态。"
+          "甲乙序列、集外作品，以及《屋顶裂开》的两份有日期的稿本，各自保留区别。较晚的文本并不自动取代所有早稿。两稿并置，让删改成为可以阅读的过程，而不以“定稿”遮蔽它。",
+          "选出的照片、研究图版与数字小票样本，是不同性质的图像。图注应当说明它们展示了什么、不能证明什么。屏幕校样不是实物照片，地图也不能证明所有拟议研究阶段都已完成。编排与图注负责交代这些关系，不让图像承担一份履历。"
         ],
-        "facts": [
-          {
-            "label": "图片",
-            "value": "picture · srcset · WebP · JPEG"
-          },
-          {
-            "label": "加载",
-            "value": "明确尺寸 · 延迟加载 · 异步解码"
-          },
-          {
-            "label": "渐进 CSS",
-            "value": "content-visibility · View Transitions · 滚动时间轴"
-          }
-        ]
+        "facts": []
+      },
+      {
+        "id": "accessibility",
+        "number": "05",
+        "title": "读者可以改变页面",
+        "dek": "作者安排形式，不等于锁定显示。",
+        "body": [
+          "Drucker 把物质性放到系统的使用中考察，而不止于结构。[[drucker]] 在这里，这个问题很具体：能否返回一阕词、比较版本、追索来源，或者改变阅读条件而不丢失文本？装饰性地像一本书，并不能回答它。",
+          "阅读控件允许调整字体、大小、间距、行宽、版式、动态与对比度。这些是接触同一材料的其他方式，不是设计的次等版本。键盘焦点、标题层级与文字替代仍然属于出版工作，即使它们不是屏幕上最显眼的部分。",
+          "自动检查能找到部分标签缺失与排版故障，不能代替真正使用屏幕阅读器的人，也不能证明一段图像描述带来了相等的体验。无障碍是持续的编辑责任，不是测试套件颁发的标章。"
+        ],
+        "facts": []
       },
       {
         "id": "quality",
         "number": "06",
-        "title": "构建、QA 与部署",
-        "dek": "生成结果本身就是可测试的产物。",
+        "title": "作者责任与证据",
+        "dek": "可追溯的过程不是价值证书。",
         "body": [
-          "仓库会检查生成页是否最新、各语系结构是否一致、文学结构有没有漂移、无障碍地标与控件是否完整、本地链接和页内锚点是否有效、图片是否有替代文字，以及 JavaScript 能否解析。",
-          "浏览器 QA 另做跨语言与窄／宽视窗几何检查、axe-core 无障碍扫描与 HTML 验证。GitHub Actions 在推送与 pull request 时先跑轻依赖检查，通过后再跑浏览器套件；GitHub Pages 则独立从 main 发布同一批静态文件。"
+          "作品以 Hanpu Li／李函璞署名，部分早期职业记录使用 Caitlyn Lye；署名页明确保留这层关系。本站的编辑与实现工作包括 AI 辅助起草、修改、编程与测试。这不意味着每首诗、每份译文、每张照片都具有同一种制作历史。",
+          "源文件、生成工具与版本历史有助于辨认什么被改过、当前展示的是什么。它们本身不能证明文学质量、实际打印成功、读者反应或机构认可。项目自身的叙述与可以独立核查的记录应当保持区别。",
+          "这些页面中的学术参照用于检查具体决定，并非全都是创作起点。比较应当揭示差异或限制；一串知名人物的名字不能补上未做的实验，也不能让读者的反应变得可预测。"
         ],
-        "facts": [
-          {
-            "label": "仓库检查",
-            "value": "生成状态 · 多语言一致性 · 无障碍 · 链接／资源 · JS 语法"
-          },
-          {
-            "label": "浏览器 QA",
-            "value": "Playwright · axe-core · html-validate"
-          },
-          {
-            "label": "交付",
-            "value": "GitHub Actions · GitHub Pages"
-          }
-        ]
+        "facts": []
       }
     ],
-    "scope_title": "原则",
+    "scope_title": "制作与维护",
     "scope_body": [
-      "本站把内容来源、生成结果与浏览器行为分成不同层次：修改结构化内容与模板，重新生成，再核对输出的文档。",
-      "渐进增强从一开始就是可有可无的一层。即使浏览器不支持某些 CSS、JavaScript 被停用，或本地存储不可用，作品仍须完整可读，导航也不能失效。"
+      "小型 Python 构建器把结构化内容与模板生成静态 HTML。字体和图片随站点托管；字体系统包括 EB Garamond、Courier Prime、Cousine、Shippori Mincho、Noto Serif SC 与 I.Ming。响应式版式及可选阅读控件使文档适应阅读条件。普通阅读页不依赖 JavaScript；诗券商店需要它在浏览器中制作版本。",
+      "构建、多语、链接、字体与浏览器检查为这些出版决定服务。这是维护，不是美学论证。公开仓库供人检查，并不向所有创作内容授予一揽子开放许可。诗券另行允许个人保存、打印，以及把打印件赠给他人。"
     ],
-    "privacy_title": "浏览器运行时的隐私",
-    "privacy_body": "作品站不加载 analytics、广告网络、第三方 web font 或追踪 script，也不设置 cookie。作品站唯一持久的浏览器状态，是本地阅读偏好记录。",
+    "privacy_title": "本地状态与托管",
+    "privacy_body": "本站不添加分析工具、广告脚本或追踪 cookie。阅读偏好留在浏览器中。诗券也会保存本地目录购物袋，并把完成的订单留在当前标签页；它不扣款、不联系打印机。这些限制描述的是本站自己的代码，不保证托管服务商没有访问日志。点击外部来源会进入相应提供方的网站。",
     "footer_link": "关于本站",
     "source_link": "网站源代码",
-    "toc_label": "本页内容"
+    "toc_label": "本页内容",
+    "references_title": "札记的阅读参照",
+    "references_intro": "参照只用于具体问题，不表示本站已经实现某套完整理论。"
   },
   "ja": {
     "meta_title": "このサイトについて · Hanpu Li",
-    "meta_description": "Hanpu Li のウェブサイトの実装ノート。静的構成、多言語配信、書体、アクセシビリティ、レスポンシブ画像、テスト、GitHub Pages での公開について。",
-    "eyebrow": "出版ノート · 2026",
+    "meta_description": "Hanpu Liの多言語出版についての編集ノート。選択、視覚形式、翻訳、版、読書、著作者としての責任と技術的な維持。",
+    "eyebrow": "編集ノート · 2026",
     "title": "このサイトについて",
-    "lede": "このサイトはまず出版物として作られており、アプリケーションではありません。七つの言語版はそれぞれ完全な静的文書で、ローカルの書体を用い、追跡を行わず、実行時翻訳にも依存しません。技術構成は、こうした出版上の選択を安定して保つためにあります。",
-    "principle": "原文の権威、翻訳の関係、可読性、プライバシーを先に置き、ビルドとQAの詳細はその編集上の制約から決まります。",
+    "lede": "ここには文章、詞、写真、研究、そして出版をめぐる実験を置いています。異なる仕事を関係づけますが、一つの実践の例に還元したり、一人の人生のすべてを記録したりする場所ではありません。",
+    "principle": "ページも作品との出会いに関与します。このノートは編集上の選択を確かめられるようにするもので、読者が作品に見いだすべき意味を指定するものではありません。",
     "sections": [
       {
-        "id": "languages",
-        "number": "01",
-        "title": "コンテンツと言語",
-        "dek": "7言語版、実行時翻訳なし。",
-        "body": [
-          "英語、香港繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、ロシア語を別々の静的版として生成し、それぞれに canonical URL、hreflang の代替リンク、言語別メタデータを持たせる。",
-          "文学テキストは通常の UI 文言より厳格に扱う。指定された作品では繁体字中国語を正本とし、簡体字版は文字体系だけを変換してハッシュを照合する。翻訳は専用の検証で各行と連の構造が保たれているか確認する。"
-        ],
-        "facts": [
-          {
-            "label": "ロケール",
-            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
-          },
-          {
-            "label": "文学テキスト",
-            "value": "OpenCC 補助 · ソースハッシュ · 行構造の検査"
-          },
-          {
-            "label": "メタデータ",
-            "value": "canonical · hreflang · Open Graph"
-          }
-        ]
-      },
-      {
         "id": "architecture",
-        "number": "02",
-        "title": "アーキテクチャ",
-        "dek": "静的であることを選ぶ。",
+        "number": "01",
+        "title": "一覧ではなく出版",
+        "dek": "選ぶことも仕事の一部です。",
         "body": [
-          "ポートフォリオは、小さなテンプレートと構造化 JSON から完全な HTML5 文書として生成される。Python 3 標準ライブラリだけのビルダーが各言語版を事前生成し、ブラウザ側でページを組み立てない。",
-          "main ブランチから GitHub Pages で配信する。ポートフォリオの背後に CMS、アプリケーションフレームワーク、データベース、サーバー側アプリはない。"
+          "論考には読み続ける時間が、写真には見ることが、研究には方法と根拠へ戻る道が必要です。ここで隣り合うからといって、目的や完成の基準まで同じになるわけではありません。このサイトは出版物であり、作品を選んだポートフォリオでもあります。どちらも網羅的なアーカイブを意味しません。",
+          "作品を先に、職業上の文脈を後に置いています。クレジット、以前の活動、公的な記録は後付けのような別ページにまとめ、詩や写真の意味を経歴に代弁させずに確認できるようにしています。資料へのリンクが裏づけるのは特定の事項であり、実践全体の評価ではありません。"
         ],
-        "facts": [
-          {
-            "label": "実行時",
-            "value": "HTML5 · CSS · 素の JavaScript"
-          },
-          {
-            "label": "ビルド",
-            "value": "Python 3 · JSON · HTML テンプレート"
-          },
-          {
-            "label": "ホスティング",
-            "value": "GitHub Pages"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "layout",
-        "number": "03",
-        "title": "レイアウトと書体",
-        "dek": "コンポーネントフレームワークではなく編集的な CSS。",
+        "number": "02",
+        "title": "ページが持つ権威",
+        "dek": "設計された表面は中立ではありません。",
         "body": [
-          "CSS Grid、subgrid、container queries、logical properties、custom properties、clamp() による流動的な寸法を使う。メディアクエリは保守的なフォールバックにとどめ、対応ブラウザでは各要素が自身の利用可能幅に応じて組み替わる。",
-          "書体は WOFF2 を自前配信する。欧文本文は主に EB Garamond、メタデータは Courier Prime／Cousine、繁体字中国語と日本語は Shippori Mincho、簡体字中国語は Noto Serif SC、香港字形のごく小さな欠落は I.Ming の小さなサブセットで補う。CJK サブセットは fontTools と Brotli で再構築し、Noto のソースはコミットと SHA-256 で固定している。"
+          "暖かな地色、暗い文字、細い罫線、余白の番号は、編集された出版物の秩序を借りています。古い紙の再現ではありません。散文と詩行には展開する場所を与え、等幅のラベルで日付、順序、出版情報を分けます。反復する配置によって異なる素材を見分けられるようにし、すべてを同じカードに収めないようにしています。",
+          "この抑制も権威を生みます。整ったグリッドは未完成の研究を、すでに結論の出たものに見せかねません。だから状態、出典、版の日付は書体と同じくらい重要です。視覚的な統一は証明の代わりになりません。洗練されたショップが組版を追加仕様として売るPoetry Voucherにも、同じ問題があります。",
+          "書体は文字体系と読む上での役割によって使い分け、国ごとの衣装にはしません。同じメトリクスを使っても、中国語と日本語の字形規範が同一になるわけではありません。文章を更新するたびに字形の収録範囲と代替フォントを確かめる必要があり、均一な見た目だけでは正しい字形の証明になりません。"
         ],
-        "facts": [
-          {
-            "label": "レイアウト",
-            "value": "Grid · subgrid · コンテナクエリ · 論理プロパティ"
-          },
-          {
-            "label": "書体",
-            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
-          },
-          {
-            "label": "配色",
-            "value": "明色／暗色 · prefers-color-scheme"
-          }
-        ]
+        "facts": []
       },
       {
-        "id": "accessibility",
-        "number": "04",
-        "title": "アクセシビリティ",
-        "dek": "内容を削らず、読み方を変えられる。",
+        "id": "languages",
+        "number": "03",
+        "title": "七つの版",
+        "dek": "翻訳は読解であり、交換可能な外装ではありません。",
         "body": [
-          "意味的なランドマーク、単一の主要見出し、スキップリンク、見えるキーボードフォーカス、完全な言語名、十分な大きさのタッチターゲットを用意する。reduced-motion、higher-contrast、forced-colour といった OS／ブラウザ設定も尊重する。",
-          "読書設定ではサンセリフ、文字拡大、文字間隔、行長、簡略レイアウト、モーション低減、高コントラストを切り替えられる。すべてプログレッシブエンハンスメントで、設定はブラウザ内にだけ保存する。"
+          "英語、香港繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、ロシア語を別々の版として維持しています。英語は標準の入口であって、すべての作品の原語ではありません。画面言語の変更によって中国語の詩が英語の原作になることはなく、一部の長文は明記した出版言語を保ちます。",
+          "中国語の文学原文、簡体字の表記版、翻訳にはそれぞれ別の編集上の役割があります。字体の変換は新たな翻訳ではありません。翻訳では主語、時制、関係をより明確に決める必要が生じ、詩が未決定のまま残すものを変える場合があります。行数と連の数を保つ検査は構造上のずれを見つけますが、文学的な読解を認証しません。",
+          "共通のナビゲーションと原文への関係は保ちますが、行長や字形まで同じである必要はありません。これは言語をまたぐ共同の出版物であり、七言語が同じページになるという約束でも、すべての翻訳が独立した母語編集者の審査を受けたという意味でもありません。"
         ],
-        "facts": [
-          {
-            "label": "読書設定",
-            "value": "サンセリフ · 大きな文字 · 間隔 · 行幅 · 簡素化 · 動き · コントラスト"
-          },
-          {
-            "label": "保存",
-            "value": "localStorage のみ"
-          },
-          {
-            "label": "検査",
-            "value": "独自の構造監査 · axe-core ブラウザ監査"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "media",
-        "number": "05",
-        "title": "画像とパフォーマンス",
-        "dek": "レスポンシブ画像、ギャラリー用の実行時コードなし。",
+        "number": "04",
+        "title": "配列と改稿",
+        "dek": "日付と隣接関係は読みを変えます。",
         "body": [
-          "写真と研究図版は picture/srcset で WebP と JPEG の候補を用意し、寸法と sizes 属性を明示する。先頭画像を優先し、それ以外のページ下部の画像は遅延読み込みと非同期デコードを使う。",
-          "ページ下部のセクションでは content-visibility を利用でき、View Transitions と scroll-linked motion は任意のプログレッシブエンハンスメントに限る。動きを減らす設定が指定されればアニメーションを止める。"
+          "甲乙の連作、連作外の詩、そしてThe Roof Splits Openの二つの日付付き稿本は、区別を保っています。後の文章が自動的にすべての早稿を置き換えるわけではありません。稿を並べることは、決定稿という主張の陰に改稿を隠さず、その過程を読めるようにします。",
+          "選ばれた写真、研究図版、レシートのデジタル見本は異なる種類の画像です。キャプションは何が写っており、何は立証できないかを示すべきです。画面上の校正は印刷物の写真ではなく、地図は予定された全研究段階の完了を証明しません。配列と注記がその区別を支え、画像に履歴書の役割を負わせません。"
         ],
-        "facts": [
-          {
-            "label": "画像",
-            "value": "picture · srcset · WebP · JPEG"
-          },
-          {
-            "label": "読み込み",
-            "value": "寸法指定 · 遅延読み込み · 非同期デコード"
-          },
-          {
-            "label": "段階的 CSS",
-            "value": "content-visibility · View Transitions · スクロールタイムライン"
-          }
-        ]
+        "facts": []
+      },
+      {
+        "id": "accessibility",
+        "number": "05",
+        "title": "読者が変えられるページ",
+        "dek": "作者による形式は、固定表示を意味しません。",
+        "body": [
+          "Druckerの遂行的な物質性は、構造だけでなく使用中のシステムに目を向けます。[[drucker]] ここでは具体的な問いになります。ある連に戻れるか、版を比べられるか、出典をたどれるか、文章を失わずに読み方の条件を変えられるか。本のように見える装飾だけでは答えられません。",
+          "読書設定では書体、大きさ、間隔、行幅、配置、動き、コントラストを変えられます。それらは同じ素材に出会う別の方法であり、設計の劣化版ではありません。キーボードのフォーカス、見出し、代替テキストは、画面で目立たなくても出版の一部です。",
+          "自動検査はラベルの欠落や一部の配置の破綻を発見できます。しかしスクリーンリーダーを使う人の代わりにはならず、画像の説明が同等の経験を与えることも証明しません。アクセシビリティは続いていく編集責任であり、テストが授ける標章ではありません。"
+        ],
+        "facts": []
       },
       {
         "id": "quality",
         "number": "06",
-        "title": "ビルド、QA、公開",
-        "dek": "生成物そのものをテスト対象にする。",
+        "title": "作者と根拠",
+        "dek": "追跡可能な過程は価値の証明書ではありません。",
         "body": [
-          "生成ページが最新か、ロケールのスキーマが一致するか、文学テキストの構造が保たれているか、アクセシビリティのランドマークと操作要素が揃っているか、ローカルリンクとページ内アンカーが正しく参照先に到達するか、画像に代替テキストがあるか、JavaScript の構文が正しいかをリポジトリ内で検査する。",
-          "ブラウザ QA では、複数言語・複数ビューポート幅でのレイアウト検査、axe-core によるアクセシビリティ監査、HTML 検証も行う。GitHub Actions では push と pull request のたびに軽量な検査を先に実行し、通過後にブラウザ検査を行う。GitHub Pages は main から同じ静的ファイルを独立して配信する。"
+          "作品の署名はHanpu Li／李函璞で、以前の職業上の記録にはCaitlyn Lyeという名前もあります。クレジットのページでその関係を明記しています。サイトの編集と実装には、AIを使った起草、修正、コード作成、検査が含まれます。そのことからすべての詩、翻訳、写真に同じ制作履歴を割り当てることはできません。",
+          "原稿ファイル、生成ツール、版の履歴は、何が変更され何が展示されているかの特定に役立ちます。それだけで文学的な質、実際の印刷の成功、観客の反応、機関による評価を立証することはできません。プロジェクト自身の説明と、独立して確かめられる記録は区別されるべきです。",
+          "これらのページの学術的な参照は、具体的な選択を検討する道具です。すべてが制作の出発点だったわけではありません。比較は差異や限界を示すときに役立ちます。著名な名前を並べても未実施の試みは埋まらず、読者の反応も予測可能にはなりません。"
         ],
-        "facts": [
-          {
-            "label": "リポジトリ検査",
-            "value": "生成状態 · 多言語整合性 · アクセシビリティ · リンク／資源 · JS 構文"
-          },
-          {
-            "label": "ブラウザ QA",
-            "value": "Playwright · axe-core · html-validate"
-          },
-          {
-            "label": "公開",
-            "value": "GitHub Actions · GitHub Pages"
-          }
-        ]
+        "facts": []
       }
     ],
-    "scope_title": "原則",
+    "scope_title": "制作と維持",
     "scope_body": [
-      "元のコンテンツ、生成物、ブラウザ上の振る舞いを別の層として扱う。構造化データとテンプレートを編集し、再生成したうえで、出力された文書を検証する。",
-      "プログレッシブエンハンスメントは最初から任意の層として設計している。CSS の一部が未対応でも、JavaScript やローカルストレージが使えなくても、作品を読めず、または移動できない状態にはしない。"
+      "小さなPythonビルダーが構造化された内容とテンプレートから静的HTMLを作ります。画像とフォントはサイト側で配信し、書体にはEB Garamond、Courier Prime、Cousine、Shippori Mincho、Noto Serif SC、I.Mingを使います。レスポンシブな配置と任意の読書設定が文書を調整します。通常の読書ページにJavaScriptは不要ですが、Poetry Voucherではブラウザー内で版を作るために必要です。",
+      "ビルド、言語、リンク、字体、ブラウザーの検査はこれらの出版上の選択を支えます。維持の作業であって、美学の論証ではありません。公開リポジトリは検証のために読めますが、創作物すべてへの包括的な利用許諾ではありません。詩券では別途、個人の保存、印刷、印刷物の贈与を認めています。"
     ],
-    "privacy_title": "実行時のプライバシー",
-    "privacy_body": "ポートフォリオはアクセス解析、広告ネットワーク、第三者配信の Web フォント、追跡スクリプトを読み込まず、Cookie も設定しない。永続化するブラウザ状態はローカルの読書設定だけである。",
+    "privacy_title": "ローカルな状態とホスティング",
+    "privacy_body": "サイトは解析ツール、広告スクリプト、追跡cookieを追加しません。読書設定はブラウザーに残ります。Poetry Voucherは端末の買い物かごと現在のタブ内の完了注文も保持しますが、支払いもプリンターへの接続も行いません。これはサイト自身のコードの範囲であり、ホスティング事業者がアクセスログを持たないという保証ではありません。外部出典をたどると、その提供者のサイトへ移ります。",
     "footer_link": "このサイトについて",
     "source_link": "サイトのソース",
-    "toc_label": "このページ"
+    "toc_label": "このページ",
+    "references_title": "このノートの参照文献",
+    "references_intro": "特定の問いのための参照であり、サイトが理論全体を実現したという主張ではありません。"
   },
   "de": {
     "meta_title": "Über diese Website · Hanpu Li",
-    "meta_description": "Technische Notizen zu Hanpu Lis Website: statische Architektur, mehrsprachige Veröffentlichung, Typografie, Barrierefreiheit, responsive Medien, Tests und GitHub Pages.",
-    "eyebrow": "Publikationsnotizen · 2026",
+    "meta_description": "Redaktionelle Überlegungen zu Hanpu Lis mehrsprachiger Publikation: Auswahl, Gestaltung, Übersetzung, Fassungen, Lesen, Autorschaft und Pflege.",
+    "eyebrow": "Redaktionelle Notizen · 2026",
     "title": "Über diese Website",
-    "lede": "Diese Website ist zuerst eine Publikation, keine Anwendung. Jede der sieben Sprachfassungen ist ein vollständiges statisches Dokument mit lokal eingebundenen Schriften, ohne Tracking und ohne Übersetzung zur Laufzeit; die Technik dient dazu, diese editorischen Entscheidungen stabil zu halten.",
-    "principle": "Quellenautorität, Übersetzungsverhältnisse, Lesbarkeit und Privatsphäre stehen zuerst; Build- und QA-Details folgen aus diesen editorischen Vorgaben.",
+    "lede": "Hier werden Texte, Ci, Fotografien, Forschung und Experimente des Publizierens zusammengeführt. Verschiedene Arbeiten treten in Beziehung, ohne zu Beispielen einer einzigen Praxis oder zur vollständigen Darstellung eines Lebens zu werden.",
+    "principle": "Die Seite wirkt an der Begegnung mit. Diese Notizen machen redaktionelle Entscheidungen nachvollziehbar; sie schreiben nicht vor, was Lesende in den Arbeiten finden müssen.",
     "sections": [
       {
-        "id": "languages",
-        "number": "01",
-        "title": "Inhalt & Sprachen",
-        "dek": "Sieben Fassungen, keine Laufzeitübersetzung.",
-        "body": [
-          "Englisch, traditionelles Chinesisch (Hongkong), vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch und Russisch werden als getrennte statische Fassungen mit kanonischen URLs und hreflang-Verweisen und sprachspezifischen Metadaten gebaut.",
-          "Literarische Quelltexte unterliegen strengeren Regeln als gewöhnliche UI-Texte. Wo festgelegt, ist traditionelles Chinesisch kanonisch; vereinfachte literarische Fassungen werden nur schriftkonvertiert und per Quellhash geprüft, während eigene Tests die Zeilen- und Strophenstruktur der Übersetzungen prüfen."
-        ],
-        "facts": [
-          {
-            "label": "Locales",
-            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
-          },
-          {
-            "label": "Literatur",
-            "value": "OpenCC-Helfer · Quell-Hashes · Zeilenstruktur"
-          },
-          {
-            "label": "Metadaten",
-            "value": "canonical · hreflang · Open Graph"
-          }
-        ]
-      },
-      {
         "id": "architecture",
-        "number": "02",
-        "title": "Architektur",
-        "dek": "Absichtlich statisch.",
+        "number": "01",
+        "title": "Publikation statt Inventar",
+        "dek": "Auswahl ist Teil der Arbeit.",
         "body": [
-          "Das Portfolio wird aus kleinen Templates und strukturiertem JSON als vollständige HTML5-Dokumente erzeugt. Ein Builder mit der Python-3-Standardbibliothek schreibt jede Sprachfassung im Voraus; der Browser setzt die Website nicht erst zur Laufzeit zusammen.",
-          "Ausgeliefert wird der main-Branch über GitHub Pages. Hinter dem Portfolio stehen weder CMS noch Anwendungsframework, Datenbank oder serverseitige Anwendung."
+          "Ein Essay verlangt anhaltendes Lesen, eine Fotografie genaues Hinsehen, ein Forschungsprojekt einen Weg zurück zu Methoden und Belegen. Ihre Nachbarschaft hier ist gewählt; sie gibt ihnen weder denselben Zweck noch denselben Maßstab der Fertigstellung. Die Website ist Publikation und ausgewähltes Portfolio. Beides macht sie noch nicht zum vollständigen Archiv.",
+          "Die Arbeiten stehen vor dem beruflichen Kontext. Credits, frühere Tätigkeiten und öffentliche Nachweise liegen in einem eigenen Anhang. So lassen sie sich prüfen, ohne jedes Gedicht oder Bild durch den Lebenslauf zu erklären. Ein Beleg stützt eine bestimmte Aussage, nicht den Rang der gesamten Praxis."
         ],
-        "facts": [
-          {
-            "label": "Laufzeit",
-            "value": "HTML5 · CSS · Vanilla JavaScript"
-          },
-          {
-            "label": "Build",
-            "value": "Python 3 · JSON · HTML-Vorlagen"
-          },
-          {
-            "label": "Hosting",
-            "value": "GitHub Pages"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "layout",
-        "number": "03",
-        "title": "Layout & Typografie",
-        "dek": "Editoriales CSS statt Komponentenframework.",
+        "number": "02",
+        "title": "Die Autorität einer Seite",
+        "dek": "Gestaltung ist keine neutrale Oberfläche.",
         "body": [
-          "Das Layout nutzt CSS Grid, subgrid, container queries, logical properties, custom properties und flüssige clamp()-Größen. Media queries bleiben konservative Fallbacks; wo container queries unterstützt werden, reagiert ein Modul auf seine eigene verfügbare Breite.",
-          "Die Schriften werden als WOFF2 selbst gehostet. EB Garamond trägt überwiegend den lateinischen Fließtext, Courier Prime und Cousine die Metadaten, Shippori Mincho traditionelles Chinesisch und Japanisch, Noto Serif SC vereinfachtes Chinesisch; eine winzige I.Ming-Teilmenge schließt verbliebene Hongkonger Glyphenlücken. Die CJK-Subsets werden mit fontTools und Brotli neu gebaut; die Noto-Quelle ist per Commit und SHA-256 fixiert."
+          "Warmer Grund, dunkle Schrift, feine Linien und Randnummern übernehmen die Ordnung einer redigierten Publikation, nicht die Nachahmung eines alten Papierblatts. Prosa und Verse erhalten Raum; nichtproportionale Beschriftungen trennen Daten, Reihenfolgen und Publikationsangaben vom Text. Wiederkehrende Ausrichtungen machen Verschiedenes lesbar, ohne jede Arbeit in dieselbe Karte zu zwingen.",
+          "Diese Zurückhaltung erzeugt auch Autorität. Ein sorgfältiges Raster kann ein unfertiges Projekt abgeschlossener erscheinen lassen, als es ist. Angaben zu Stand, Quellen und Fassungen sind deshalb ebenso wichtig wie die Schrift. Sie verhindern, dass visuelle Geschlossenheit als Beweis gilt. Poetry Voucher hat dasselbe Problem: Ein eleganter Shop verkauft Typografie als Zusatzoption.",
+          "Schriftfamilien werden nach Schriftsystem und Lesefunktion eingesetzt, nicht als nationale Kostüme. Gemeinsame Metriken machen chinesische und japanische Zeichenkonventionen nicht identisch. Abdeckung und Ersatzschriften müssen bei Textänderungen geprüft werden; ein gleichmäßiges Schriftbild belegt noch nicht die richtige Zeichenform."
         ],
-        "facts": [
-          {
-            "label": "Layout",
-            "value": "Grid · subgrid · Container Queries · logische Eigenschaften"
-          },
-          {
-            "label": "Schriften",
-            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
-          },
-          {
-            "label": "Farbschema",
-            "value": "hell/dunkel · prefers-color-scheme"
-          }
-        ]
+        "facts": []
       },
       {
-        "id": "accessibility",
-        "number": "04",
-        "title": "Barrierefreiheit",
-        "dek": "Anpassbar, ohne Inhalt zu entfernen.",
+        "id": "languages",
+        "number": "03",
+        "title": "Sieben Ausgaben",
+        "dek": "Übersetzung ist eine Lesart, keine austauschbare Hülle.",
         "body": [
-          "Semantische Bereiche, eine Hauptüberschrift, Sprunglinks, sichtbarer Tastaturfokus, ausgeschriebene Sprachnamen und verlässliche Touch-Ziele gehören zur Grundstruktur. Systemeinstellungen für reduzierte Bewegung, höheren Kontrast und erzwungene Farben werden berücksichtigt.",
-          "Ein dauerhaftes Lesemenü kann serifenlose Schrift, größere Schrift, mehr Abstände, kürzere Zeilen, ein vereinfachtes Layout, weniger Bewegung und höheren Kontrast aktivieren. Diese Optionen sind progressive Erweiterungen und bleiben lokal im Browser."
+          "Englisch, traditionelles Chinesisch aus Hongkong, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch und Russisch werden als eigene Ausgaben gepflegt. Englisch ist der voreingestellte Eingang, nicht die Originalsprache jeder Arbeit. Ein Wechsel der Oberfläche macht aus einem chinesischen Gedicht kein englisches Original; manche längeren Texte bleiben in ihrer angegebenen Publikationssprache.",
+          "Chinesische literarische Quelle, vereinfachte Schriftfassung und Übersetzungen haben verschiedene redaktionelle Aufgaben. Eine Schriftumwandlung ist keine weitere Übersetzung. Übersetzen kann verlangen, Subjekt, Zeitform oder Beziehung deutlicher festzulegen, und damit verändern, was ein Gedicht offenlässt. Gleiche Zeilen- und Strophenzahlen helfen gegen strukturelle Abweichungen; sie bestätigen keine literarische Auslegung.",
+          "Navigation und Quellenbeziehungen bleiben gemeinsam, Zeilenlängen und Zeichenformen müssen nicht gleich aussehen. Dies ist eine gemeinsame Publikation in mehreren Sprachen, kein Versprechen identischer Seiten oder einer unabhängigen muttersprachlichen Prüfung jeder Übersetzung."
         ],
-        "facts": [
-          {
-            "label": "Leseoptionen",
-            "value": "serifenlos · größere Schrift · Abstände · Zeilenbreite · einfaches Layout · Bewegung · Kontrast"
-          },
-          {
-            "label": "Speicher",
-            "value": "nur localStorage"
-          },
-          {
-            "label": "Prüfung",
-            "value": "eigener Strukturaudit · axe-core Browseraudit"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "media",
-        "number": "05",
-        "title": "Bilder & Performance",
-        "dek": "Responsive Medien ohne Galerie-Code zur Laufzeit.",
+        "number": "04",
+        "title": "Reihenfolge und Revision",
+        "dek": "Datum und Nachbarschaft können eine Lesart verändern.",
         "body": [
-          "Fotografien und Forschungsabbildungen verwenden picture/srcset mit WebP- und JPEG-Varianten, expliziten Abmessungen und responsiven Größenangaben. Das erste Bild wird priorisiert; weiter unten liegende Medien werden verzögert geladen und asynchron dekodiert.",
-          "Abschnitte unterhalb des ersten Viewports können content-visibility nutzen. View Transitions und scroll-linked motion bleiben optionale progressive Erweiterungen; bei reduzierter Bewegung werden Animationen abgeschaltet."
+          "Die A/B-Folge, die Gedichte außerhalb dieser Folge und die beiden datierten Fassungen von The Roof Splits Open bleiben unterscheidbar. Ein späterer Text ersetzt nicht automatisch jeden früheren. Nebeneinanderstehende Entwürfe machen Überarbeitung lesbar, statt sie hinter einer behaupteten Endgültigkeit zu verbergen.",
+          "Eine ausgewählte Fotografie, eine Forschungsgrafik und ein digitales Bonmuster sind unterschiedliche Bildarten. Die Beschriftung sollte sagen, was sie zeigen und was sie nicht belegen. Ein Bildschirmproof ist kein Foto eines Drucks; eine Karte beweist nicht die Fertigstellung aller geplanten Forschungsschritte. Reihenfolge und Bildtext leisten diese Einordnung, ohne die Bilder zum Lebenslauf zu machen."
         ],
-        "facts": [
-          {
-            "label": "Bilder",
-            "value": "picture · srcset · WebP · JPEG"
-          },
-          {
-            "label": "Laden",
-            "value": "feste Abmessungen · verzögertes Laden · asynchrones Dekodieren"
-          },
-          {
-            "label": "progressives CSS",
-            "value": "content-visibility · View Transitions · Scroll-Timelines"
-          }
-        ]
+        "facts": []
+      },
+      {
+        "id": "accessibility",
+        "number": "05",
+        "title": "Eine veränderbare Seite",
+        "dek": "Autorschaft verlangt keine starre Anzeige.",
+        "body": [
+          "Druckers performative Materialität lenkt den Blick auf Systeme im Gebrauch, nicht allein auf ihre Struktur. [[drucker]] Hier wird daraus eine praktische Frage: Kann jemand zu einer Strophe zurückkehren, Fassungen vergleichen, einer Quelle folgen oder die Lesebedingungen ändern, ohne den Text zu verlieren? Die dekorative Ähnlichkeit mit einem Buch beantwortet das nicht.",
+          "Die Leseoptionen verändern Schrift, Größe, Abstände, Zeilenlänge, Layout, Bewegung und Kontrast. Es sind andere Zugänge zu demselben Material, keine minderwertigen Designversionen. Tastaturfokus, Überschriften und Textalternativen gehören zur Publikation, auch wenn sie auf dem Bildschirm nicht am stärksten auffallen.",
+          "Automatische Prüfungen finden manche fehlenden Beschriftungen und Layoutfehler. Sie ersetzen weder Menschen, die einen Screenreader nutzen, noch den Nachweis einer gleichwertigen Begegnung durch eine Bildbeschreibung. Barrierefreiheit bleibt redaktionelle Verantwortung, kein von einer Testsuite verliehenes Gütesiegel."
+        ],
+        "facts": []
       },
       {
         "id": "quality",
         "number": "06",
-        "title": "Build, QA & Deployment",
-        "dek": "Auch das generierte Ergebnis ist ein Prüfobjekt.",
+        "title": "Autorschaft und Belege",
+        "dek": "Nachvollziehbarkeit ist kein Wertzertifikat.",
         "body": [
-          "Im Repository wird geprüft, ob generierte Seiten aktuell sind, Locale-Schemata übereinstimmen, literarische Strukturen stabil bleiben, semantische Bereiche und Bedienelemente vollständig sind, lokale Links und Fragmente aufgelöst werden können, Bilder Alternativtext besitzen und JavaScript syntaktisch gültig ist.",
-          "Die Browser-QA ergänzt Geometrieprüfungen in mehreren Sprachen und bei verschiedenen Viewport-Breiten, axe-core-Audits und HTML-Validierung. In GitHub Actions laufen bei Pushes und Pull Requests zuerst die leichten Prüfungen und danach die Browser-Suite; GitHub Pages veröffentlicht die statischen Dateien unabhängig davon aus main."
+          "Die Arbeiten erscheinen unter Hanpu Li / 李函璞; ausgewählte frühere berufliche Nachweise verwenden auch Caitlyn Lye. Die Credits-Seite hält diese Verbindung ausdrücklich fest. Redaktion und Umsetzung der Website umfassen KI-unterstütztes Entwerfen, Überarbeiten, Programmieren und Testen. Daraus folgt nicht dieselbe Entstehungsgeschichte für jedes Gedicht, jede Übersetzung oder Fotografie.",
+          "Quelldateien, Bauwerkzeuge und Versionsgeschichte helfen festzustellen, was geändert wurde und was zu sehen ist. Sie belegen für sich weder literarische Qualität noch einen gelungenen Druck, Publikumsreaktionen oder institutionelle Anerkennung. Der eigene Bericht eines Projekts und ein unabhängig prüfbarer Nachweis sollten unterscheidbar bleiben.",
+          "Die wissenschaftlichen Verweise auf diesen Seiten dienen dazu, konkrete Entscheidungen zu untersuchen. Sie waren nicht sämtlich Ausgangspunkte der Arbeit. Ein Vergleich ist dort hilfreich, wo er einen Unterschied oder eine Grenze zeigt. Bekannte Namen ersetzen keinen fehlenden Versuch und machen Reaktionen nicht vorhersehbar."
         ],
-        "facts": [
-          {
-            "label": "Repository-Prüfungen",
-            "value": "Build-Stand · Mehrsprachigkeit · Barrierefreiheit · Links/Assets · JS-Syntax"
-          },
-          {
-            "label": "Browser-QA",
-            "value": "Playwright · axe-core · html-validate"
-          },
-          {
-            "label": "Auslieferung",
-            "value": "GitHub Actions · GitHub Pages"
-          }
-        ]
+        "facts": []
       }
     ],
-    "scope_title": "Grundsätze",
+    "scope_title": "Herstellung und Pflege",
     "scope_body": [
-      "Quellinhalte, generierte Ausgabe und Browserverhalten bleiben getrennte Schichten: strukturierte Inhalte und Templates bearbeiten, neu bauen und anschließend die ausgegebenen Dokumente prüfen.",
-      "Progressive Erweiterungen sind bewusst optional. Fehlende CSS-Unterstützung, deaktiviertes JavaScript oder nicht verfügbarer lokaler Speicher dürfen weder Inhalte verbergen noch die Navigation blockieren."
+      "Ein kleiner Python-Generator erzeugt aus strukturierten Inhalten und Vorlagen statisches HTML. Schriften und Bilder werden mit der Website ausgeliefert; das Schriftsystem umfasst EB Garamond, Courier Prime, Cousine, Shippori Mincho, Noto Serif SC und I.Ming. Responsives Layout und optionale Lesehilfen passen die Dokumente an. Die gewöhnlichen Leseseiten brauchen kein JavaScript; der Poetry-Voucher-Shop benötigt es zur Herstellung der Ausgabe im Browser.",
+      "Build-, Sprach-, Link-, Schrift- und Browserprüfungen stützen diese Publikationsentscheidungen. Das ist Pflege, kein ästhetisches Argument. Das öffentliche Repository ermöglicht Einsicht, gewährt aber keine pauschale Lizenz für die kreativen Arbeiten. Poetry Voucher erlaubt gesondert persönliches Speichern, Drucken und Verschenken gedruckter Exemplare."
     ],
-    "privacy_title": "Datenschutz zur Laufzeit",
-    "privacy_body": "Das Portfolio lädt weder Analytics noch Werbenetzwerke, Drittanbieter-Webfonts oder Tracking-Skripte und setzt keine Cookies. Der einzige dauerhaft gespeicherte Browserzustand des Portfolios sind die lokalen Leseeinstellungen.",
+    "privacy_title": "Lokaler Zustand und Hosting",
+    "privacy_body": "Die Website fügt keine Analysewerkzeuge, Werbeskripte oder Tracking-Cookies hinzu. Lesepräferenzen bleiben im Browser. Poetry Voucher speichert außerdem einen lokalen Warenkorb und abgeschlossene Bestellungen im aktuellen Tab; es nimmt keine Zahlung an und kontaktiert keinen Drucker. Das beschreibt den eigenen Code, garantiert aber nicht, dass der Hostinganbieter keine Zugriffsprotokolle führt. Externe Quellenlinks führen auf die Website des jeweiligen Anbieters.",
     "footer_link": "über diese Website",
     "source_link": "Quellcode der Website",
-    "toc_label": "Auf dieser Seite"
+    "toc_label": "Auf dieser Seite",
+    "references_title": "Lektüre zu diesen Notizen",
+    "references_intro": "Ein Bezug für eine bestimmte Frage, nicht die Behauptung, eine vollständige Theorie sei hier umgesetzt."
   },
   "fr": {
     "meta_title": "À propos du site · Hanpu Li",
-    "meta_description": "Notes d’implémentation du site de Hanpu Li : architecture statique, publication multilingue, typographie, accessibilité, médias responsives, tests et GitHub Pages.",
-    "eyebrow": "notes de publication · 2026",
+    "meta_description": "Notes éditoriales sur la publication multilingue de Hanpu Li : sélection, forme visuelle, traduction, versions, lecture, attribution et maintenance.",
+    "eyebrow": "Notes éditoriales · 2026",
     "title": "À propos du site",
-    "lede": "Ce site est d’abord une publication, non une application. Chacune des sept éditions linguistiques est un document statique complet, avec des polices locales, sans suivi ni traduction à l’exécution ; l’architecture technique sert à stabiliser ces choix éditoriaux.",
-    "principle": "L’autorité du texte source, la relation entre source et traduction, la lisibilité et la vie privée passent d’abord ; les détails de construction et de contrôle en découlent.",
+    "lede": "Ce lieu réunit des textes, des ci, des photographies, des recherches et des expériences de publication. Des travaux différents y entrent en relation sans devenir les illustrations d’une pratique unique ni le récit complet d’une vie.",
+    "principle": "La page participe à la rencontre. Ces notes rendent ses choix éditoriaux examinables ; elles ne dictent pas ce qu’il faut trouver dans les œuvres.",
     "sections": [
       {
-        "id": "languages",
-        "number": "01",
-        "title": "Contenu & langues",
-        "dek": "Sept éditions, aucune traduction à l’exécution.",
-        "body": [
-          "L’anglais, le chinois traditionnel de Hong Kong, le chinois simplifié, le japonais, l’allemand, le français et le russe sont générés comme éditions statiques distinctes, avec URL canoniques et liens alternatifs hreflang et métadonnées propres à chaque langue.",
-          "Les textes littéraires suivent des règles plus strictes que les libellés d’interface. Quand cela est défini, le chinois traditionnel fait foi ; les miroirs littéraires simplifiés ne changent que l’écriture et sont contrôlés par hachage de la source, tandis que des tests dédiés vérifient la structure des lignes et des strophes des traductions."
-        ],
-        "facts": [
-          {
-            "label": "locales",
-            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
-          },
-          {
-            "label": "textes littéraires",
-            "value": "OpenCC · hachages source · contrôle de la structure des lignes"
-          },
-          {
-            "label": "métadonnées",
-            "value": "canonical · hreflang · Open Graph"
-          }
-        ]
-      },
-      {
         "id": "architecture",
-        "number": "02",
-        "title": "Architecture",
-        "dek": "Statique par choix.",
+        "number": "01",
+        "title": "Publier, pas inventorier",
+        "dek": "La sélection fait partie du travail.",
         "body": [
-          "Le portfolio est généré sous forme de documents HTML5 complets à partir de petits gabarits et de JSON structuré. Un générateur fondé sur la bibliothèque standard de Python 3 produit chaque version linguistique à l’avance ; le navigateur n’assemble pas le site à l’exécution.",
-          "Le site est servi par GitHub Pages depuis la branche main. Le portfolio n’a derrière lui ni CMS, ni framework applicatif, ni base de données, ni application côté serveur."
+          "Un essai demande une lecture suivie ; une photographie, un regard ; un projet de recherche, un chemin vers ses méthodes et ses preuves. Leur voisinage est choisi, mais ne leur donne ni le même but ni le même critère d’achèvement. Le site est une publication et un portfolio sélectif. Aucun de ces rôles n’en fait une archive exhaustive.",
+          "Les travaux précèdent le contexte professionnel. Crédits, activités antérieures et documents publics sont réunis dans des pages de fin de volume, pour être vérifiables sans que le parcours explique chaque poème ou chaque image. Un lien documentaire étaye une affirmation particulière, pas la valeur de toute la pratique."
         ],
-        "facts": [
-          {
-            "label": "exécution",
-            "value": "HTML5 · CSS · JavaScript natif"
-          },
-          {
-            "label": "construction",
-            "value": "Python 3 · JSON · gabarits HTML"
-          },
-          {
-            "label": "hébergement",
-            "value": "GitHub Pages"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "layout",
-        "number": "03",
-        "title": "Mise en page & typographie",
-        "dek": "Du CSS éditorial plutôt qu’un framework de composants.",
+        "number": "02",
+        "title": "L’autorité d’une page",
+        "dek": "Une surface conçue n’est pas neutre.",
         "body": [
-          "La mise en page utilise CSS Grid, subgrid, container queries, logical properties, custom properties et des dimensions fluides via clamp(). Les media queries restent des solutions de repli prudentes ; quand les container queries sont disponibles, chaque module se réorganise selon sa propre largeur.",
-          "Les polices sont auto-hébergées en WOFF2. EB Garamond sert principalement au texte latin, Courier Prime et Cousine aux métadonnées, Shippori Mincho au chinois traditionnel et au japonais, Noto Serif SC au chinois simplifié ; un minuscule sous-ensemble I.Ming complète les rares glyphes hongkongais manquants. Les sous-ensembles CJK sont reconstruits avec fontTools et Brotli ; la source Noto est épinglée par commit et SHA-256."
+          "Fond chaud, caractères sombres, filets fins et numéros marginaux reprennent l’organisation d’une publication éditée, non l’imitation d’une vieille feuille de papier. Prose et vers disposent de leur espace ; les mentions à chasse fixe distinguent dates, ordre et données de publication. Des alignements récurrents rendent lisibles des matériaux différents sans les enfermer dans une même carte.",
+          "Cette retenue produit aussi de l’autorité. Une grille soignée peut faire paraître achevé un projet qui ne l’est pas. Indications d’état, sources et dates de version comptent donc autant que les caractères : la cohérence visuelle ne doit pas tenir lieu de preuve. Poetry Voucher rencontre le même problème lorsqu’une boutique élégante vend la typographie comme une option supérieure.",
+          "Les familles de caractères sont réparties selon les systèmes d’écriture et les fonctions de lecture, non comme des costumes nationaux. Des métriques communes ne rendent pas identiques les conventions graphiques chinoises et japonaises. Couverture et substitutions sont à vérifier lors des révisions ; une couleur typographique homogène ne prouve pas que la forme du caractère est juste."
         ],
-        "facts": [
-          {
-            "label": "mise en page",
-            "value": "Grid · subgrid · requêtes de conteneur · propriétés logiques"
-          },
-          {
-            "label": "polices",
-            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
-          },
-          {
-            "label": "couleurs",
-            "value": "clair/sombre · prefers-color-scheme"
-          }
-        ]
+        "facts": []
       },
       {
-        "id": "accessibility",
-        "number": "04",
-        "title": "Accessibilité",
-        "dek": "Adapter la lecture sans retirer de contenu.",
+        "id": "languages",
+        "number": "03",
+        "title": "Sept éditions",
+        "dek": "Une traduction est une lecture, pas une enveloppe interchangeable.",
         "body": [
-          "La structure repose sur des zones sémantiques, un titre principal, des liens d’évitement, un focus clavier clairement visible, des noms de langue complets et des cibles tactiles fiables. Les préférences système reduced motion, contraste renforcé et forced colours sont respectées.",
-          "Un panneau de lecture persistant peut activer une police sans sérif, agrandir le texte, augmenter les espacements, raccourcir les lignes, simplifier la mise en page, réduire le mouvement et augmenter le contraste. Tout cela relève de l’amélioration progressive et les réglages sont stockés uniquement dans le navigateur."
+          "L’anglais, le chinois traditionnel de Hong Kong, le chinois simplifié, le japonais, l’allemand, le français et le russe sont des éditions entretenues séparément. L’anglais est l’entrée par défaut, non la langue originale de chaque œuvre. Changer d’interface ne transforme pas discrètement un poème chinois en original anglais ; certains textes longs restent dans leur langue de publication indiquée.",
+          "Le texte littéraire chinois, sa version en caractères simplifiés et ses traductions ont des fonctions éditoriales différentes. Convertir une graphie n’est pas produire une nouvelle traduction. Traduire peut obliger à expliciter un sujet, un temps ou une relation et changer ainsi ce que le poème laisse ouvert. Vérifier lignes et strophes permet de repérer des écarts structurels, pas de certifier une interprétation littéraire.",
+          "Les éditions conservent une navigation et des relations aux sources communes, sans imposer des lignes ou des glyphes identiques. Il s’agit d’une publication partagée entre langues, non de sept pages visuellement équivalentes ni d’une promesse de révision indépendante de chaque traduction par un lectorat natif."
         ],
-        "facts": [
-          {
-            "label": "préférences",
-            "value": "sans sérif · texte agrandi · espacements · largeur de ligne · mise en page simple · mouvement · contraste"
-          },
-          {
-            "label": "stockage",
-            "value": "localStorage uniquement"
-          },
-          {
-            "label": "contrôles",
-            "value": "audit structurel maison · audit navigateur axe-core"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "media",
-        "number": "05",
-        "title": "Images et performances",
-        "dek": "Médias responsives, sans moteur de galerie à l’exécution.",
+        "number": "04",
+        "title": "Séquence et révision",
+        "dek": "Une date ou un voisinage change une lecture.",
         "body": [
-          "Les photographies et planches de recherche utilisent picture/srcset avec variantes WebP et JPEG, dimensions explicites et tailles responsives. L’image d’ouverture est prioritaire ; les médias plus bas dans la page sont chargés en différé et décodés de façon asynchrone.",
-          "Les sections sous la ligne de flottaison peuvent utiliser content-visibility. View Transitions et scroll-linked motion restent des améliorations progressives facultatives ; reduced motion désactive les animations."
+          "La séquence A/B, les poèmes hors séquence et les deux états datés de The Roof Splits Open restent distincts. Un texte plus récent ne remplace pas automatiquement tous les précédents. Le voisinage des versions donne à lire la révision, au lieu de la masquer derrière une finalité annoncée.",
+          "Une photographie choisie, une figure de recherche et un spécimen numérique de ticket ne sont pas le même type d’image. La légende doit préciser ce qu’ils montrent et ne peuvent établir. Une épreuve à l’écran n’est pas la photographie d’un tirage ; une carte ne prouve pas l’achèvement de toutes les phases de recherche proposées. Séquence et légende fournissent ce contexte sans transformer les images en curriculum vitæ."
         ],
-        "facts": [
-          {
-            "label": "images",
-            "value": "picture · srcset · WebP · JPEG"
-          },
-          {
-            "label": "chargement",
-            "value": "dimensions explicites · chargement différé · décodage asynchrone"
-          },
-          {
-            "label": "CSS progressif",
-            "value": "content-visibility · View Transitions · chronologies de défilement"
-          }
-        ]
+        "facts": []
+      },
+      {
+        "id": "accessibility",
+        "number": "05",
+        "title": "Une page modifiable",
+        "dek": "Une forme d’auteur n’impose pas un affichage fixe.",
+        "body": [
+          "La matérialité performative de Drucker porte l’attention sur le système en usage, pas seulement sur sa structure. [[drucker]] Ici, la question est pratique : peut-on revenir à une strophe, comparer une version, suivre une source ou modifier les conditions de lecture sans perdre le texte ? Une ressemblance décorative avec le livre ne suffit pas.",
+          "Les commandes de lecture modifient caractères, taille, espacement, longueur des lignes, disposition, mouvement et contraste. Ce sont d’autres rencontres avec le même matériau, non des versions inférieures du design. Le focus clavier, les titres et les équivalents textuels appartiennent à la publication même lorsqu’ils ne dominent pas l’écran.",
+          "Les tests automatiques détectent certaines étiquettes absentes et certains défauts de mise en page. Ils ne remplacent pas une personne utilisant un lecteur d’écran et ne prouvent pas qu’une description d’image offre une rencontre équivalente. L’accessibilité est une responsabilité éditoriale continue, pas un insigne délivré par une suite de tests."
+        ],
+        "facts": []
       },
       {
         "id": "quality",
         "number": "06",
-        "title": "Génération, QA et déploiement",
-        "dek": "Le résultat généré est lui-même testé.",
+        "title": "Attribution et preuves",
+        "dek": "Un processus traçable ne certifie pas la valeur.",
         "body": [
-          "Le dépôt vérifie que les pages générées sont à jour, que les schémas de locale concordent, que la structure des textes littéraires n’a pas dérivé, que les zones sémantiques et contrôles d’accessibilité restent intacts, que les liens locaux et leurs ancres se résolvent, que les images ont un texte alternatif et que la syntaxe JavaScript est valide.",
-          "La QA navigateur ajoute des contrôles géométriques dans plusieurs langues et à différentes largeurs de fenêtre, des audits axe-core et une validation HTML. Dans GitHub Actions, les contrôles légers passent d’abord, puis la suite navigateur s’exécute à chaque push et pull request ; GitHub Pages publie indépendamment les mêmes fichiers statiques depuis main."
+          "Les travaux sont publiés sous Hanpu Li / 李函璞 ; certains documents professionnels antérieurs emploient aussi Caitlyn Lye. La page des crédits explicite cette relation. L’édition et la réalisation du site comprennent de la rédaction, des révisions, du code et des tests assistés par IA. Cela n’attribue pas une histoire de production identique à chaque poème, traduction ou photographie.",
+          "Fichiers sources, outils de génération et historique des versions aident à identifier ce qui a changé et ce qui est présenté. Ils n’établissent pas à eux seuls la qualité littéraire, la réussite d’un tirage, la réaction d’un public ou une reconnaissance institutionnelle. Le récit propre au projet et un document vérifiable indépendamment doivent rester distincts.",
+          "Les références savantes servent ici à examiner des décisions concrètes. Elles n’ont pas toutes été des points de départ. Comparer est utile si cela révèle une différence ou une limite ; des noms reconnus ne remplacent pas une expérience manquante et ne rendent pas prévisibles les réactions des lecteurs."
         ],
-        "facts": [
-          {
-            "label": "contrôles du dépôt",
-            "value": "génération · langues · accessibilité · liens/ressources · syntaxe JS"
-          },
-          {
-            "label": "QA navigateur",
-            "value": "Playwright · axe-core · html-validate"
-          },
-          {
-            "label": "livraison",
-            "value": "GitHub Actions · GitHub Pages"
-          }
-        ]
+        "facts": []
       }
     ],
-    "scope_title": "Principes",
+    "scope_title": "Fabriquer et entretenir",
     "scope_body": [
-      "Le contenu source, les fichiers générés et le comportement du navigateur restent des couches distinctes : on modifie les données structurées et les gabarits, on reconstruit, puis on vérifie les documents produits.",
-      "L’amélioration progressive est volontairement facultative. Une fonction CSS non prise en charge, JavaScript désactivé ou un stockage local indisponible ne doivent ni masquer le travail ni empêcher la navigation."
+      "Un petit générateur Python transforme contenus structurés et modèles en HTML statique. Images et polices sont hébergées avec le site ; le système typographique comprend EB Garamond, Courier Prime, Cousine, Shippori Mincho, Noto Serif SC et I.Ming. La mise en page adaptative et les commandes facultatives ajustent les documents. Les pages ordinaires de lecture n’exigent pas JavaScript ; la boutique Poetry Voucher l’utilise pour produire une édition dans le navigateur.",
+      "Les vérifications de génération, de langues, de liens, de caractères et de navigateur soutiennent ces choix de publication. C’est de la maintenance, pas un argument esthétique. Le dépôt public permet l’inspection, sans accorder de licence générale sur les œuvres. Poetry Voucher autorise séparément la sauvegarde personnelle, l’impression et le don d’exemplaires imprimés."
     ],
-    "privacy_title": "Vie privée à l’exécution",
-    "privacy_body": "Le portfolio ne charge ni analytics, ni réseau publicitaire, ni web font tierce, ni script de suivi, et ne dépose aucun cookie. Le seul état persistant du navigateur est l’enregistrement local des préférences de lecture.",
+    "privacy_title": "État local et hébergement",
+    "privacy_body": "Le site n’ajoute ni outils d’analyse, ni scripts publicitaires, ni cookies de suivi. Les préférences de lecture restent dans le navigateur. Poetry Voucher conserve aussi un panier local et les commandes achevées dans l’onglet courant ; il ne reçoit aucun paiement et ne contacte aucune imprimante. Ces limites décrivent son code, sans garantir que l’hébergeur ne conserve pas de journaux d’accès. Un lien externe conduit au site de son fournisseur.",
     "footer_link": "à propos du site",
     "source_link": "source du site",
-    "toc_label": "Sur cette page"
+    "toc_label": "Sur cette page",
+    "references_title": "Lecture à l’appui de ces notes",
+    "references_intro": "Une référence pour une question précise, non l’affirmation que le site réalise une théorie complète."
   },
   "ru": {
     "meta_title": "О сайте · Hanpu Li",
-    "meta_description": "Технические заметки о сайте Hanpu Li: статическая архитектура, многоязычная публикация, типографика, доступность, адаптивные медиа, тестирование и GitHub Pages.",
-    "eyebrow": "заметки о публикации · 2026",
+    "meta_description": "Редакторские заметки о многоязычном издании Hanpu Li: отбор, визуальная форма, перевод, версии, чтение, авторство и техническое сопровождение.",
+    "eyebrow": "Редакторские заметки · 2026",
     "title": "О сайте",
-    "lede": "Этот сайт прежде всего публикация, а не приложение. Каждая из семи языковых версий представляет собой самостоятельный статический документ с локальными шрифтами, без отслеживания и перевода во время выполнения; техническая архитектура нужна, чтобы сохранять эти редакционные решения устойчивыми.",
-    "principle": "Сначала идут авторитет исходного текста, отношения между оригиналом и переводом, читаемость и приватность; детали сборки и проверки следуют из этих редакционных ограничений.",
+    "lede": "Здесь собраны тексты, цы, фотографии, исследования и издательские эксперименты. Разные работы вступают в отношения, не становясь иллюстрациями одной общей практики или исчерпывающим рассказом о жизни.",
+    "principle": "Страница участвует во встрече с работой. Эти заметки позволяют рассмотреть редакторские решения, но не предписывают читателю, какой смысл он обязан найти.",
     "sections": [
       {
-        "id": "languages",
-        "number": "01",
-        "title": "Контент и языки",
-        "dek": "Семь версий, без перевода во время выполнения.",
-        "body": [
-          "Английская, традиционная китайская (Гонконг), упрощённая китайская, японская, немецкая, французская и русская версии генерируются как отдельные статические издания с каноническими URL и hreflang-ссылками и метаданными для каждой языковой версии.",
-          "Для литературных текстов действуют более строгие правила, чем для обычного интерфейсного текста. Там, где это задано, каноничен традиционный китайский; упрощённые литературные зеркала меняют только письменность и проверяются по хешу источника, а отдельные тесты проверяют структуру строк и строф переводов."
-        ],
-        "facts": [
-          {
-            "label": "локали",
-            "value": "en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru"
-          },
-          {
-            "label": "литературные тексты",
-            "value": "OpenCC · хеши исходников · проверка структуры строк"
-          },
-          {
-            "label": "метаданные",
-            "value": "canonical · hreflang · Open Graph"
-          }
-        ]
-      },
-      {
         "id": "architecture",
-        "number": "02",
-        "title": "Архитектура",
-        "dek": "Статика как осознанный выбор.",
+        "number": "01",
+        "title": "Издание, не перечень",
+        "dek": "Отбор тоже является работой.",
         "body": [
-          "Портфолио генерируется как полноценные документы HTML5 из небольших шаблонов и структурированного JSON. Генератор на стандартной библиотеке Python 3 заранее выпускает каждую языковую версию; браузеру не приходится собирать сайт во время выполнения.",
-          "Сайт публикуется из ветки main через GitHub Pages. За портфолио не стоят CMS, прикладной фреймворк, база данных или серверное приложение."
+          "Эссе требует продолжительного чтения, фотография требует рассматривания, исследование требует пути к методам и свидетельствам. Их соседство выбрано намеренно, но не даёт им единой цели или общего критерия завершённости. Сайт одновременно является изданием и выборочным портфолио. Ни одна из этих ролей не делает его полным архивом.",
+          "Сначала идут работы, затем профессиональный контекст. Подписи, ранние занятия и публичные документы вынесены в отдельный справочный раздел, чтобы их можно было проверить, не объясняя каждое стихотворение или изображение биографией. Ссылка на свидетельство подтверждает конкретное утверждение, а не значение всей практики."
         ],
-        "facts": [
-          {
-            "label": "в браузере",
-            "value": "HTML5 · CSS · обычный JavaScript"
-          },
-          {
-            "label": "сборка",
-            "value": "Python 3 · JSON · HTML-шаблоны"
-          },
-          {
-            "label": "хостинг",
-            "value": "GitHub Pages"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "layout",
-        "number": "03",
-        "title": "Вёрстка и типографика",
-        "dek": "Редакционный CSS вместо компонентного фреймворка.",
+        "number": "02",
+        "title": "Авторитет страницы",
+        "dek": "Спроектированная поверхность не нейтральна.",
         "body": [
-          "Вёрстка использует CSS Grid, subgrid, container queries, logical properties, custom properties и плавные размеры через clamp(). Media queries остаются консервативным запасным вариантом; при поддержке container queries модуль перестраивается по собственной доступной ширине.",
-          "Шрифты размещены локально в WOFF2. Основной латинский текст набран преимущественно EB Garamond, метаданные — Courier Prime и Cousine, традиционный китайский и японский — Shippori Mincho, упрощённый китайский — Noto Serif SC; редкие отсутствующие гонконгские глифы дополняет крошечный subset I.Ming. CJK-подмножества пересобираются с fontTools и Brotli; источник Noto закреплён по commit и SHA-256."
+          "Тёплый фон, тёмный набор, тонкие линии и номера на полях заимствуют порядок подготовленного издания, а не имитируют старый лист бумаги. Проза и стих получают пространство для развёртывания; моноширинные подписи отделяют даты, последовательность и издательские сведения. Повторяющиеся выравнивания позволяют различать материалы, не помещая каждую работу в одинаковую карточку.",
+          "Эта сдержанность также создаёт авторитет. Аккуратная сетка может придать незавершённому проекту вид окончательного. Поэтому отметки о состоянии, источники и даты версий важны не меньше шрифта: визуальная цельность не должна заменять доказательство. Poetry Voucher сталкивается с той же проблемой, когда элегантная витрина продаёт типографику как улучшенную комплектацию.",
+          "Шрифты распределяются по системам письма и функциям чтения, а не служат национальными костюмами. Общие метрики не делают одинаковыми китайские и японские нормы начертания. При изменении текста нужно проверять покрытие и подстановки; ровная плотность набора ещё не доказывает, что выбран правильный глиф."
         ],
-        "facts": [
-          {
-            "label": "вёрстка",
-            "value": "Grid · subgrid · контейнерные запросы · логические свойства"
-          },
-          {
-            "label": "шрифты",
-            "value": "EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming"
-          },
-          {
-            "label": "цветовая схема",
-            "value": "светлая/тёмная · prefers-color-scheme"
-          }
-        ]
+        "facts": []
       },
       {
-        "id": "accessibility",
-        "number": "04",
-        "title": "Доступность",
-        "dek": "Настройка чтения без удаления содержания.",
+        "id": "languages",
+        "number": "03",
+        "title": "Семь изданий",
+        "dek": "Перевод является прочтением, не сменной оболочкой.",
         "body": [
-          "Используются семантические области, один главный заголовок, ссылки для пропуска блоков и заметный клавиатурный фокус, полные названия языков и надёжные размеры сенсорных целей. Учитываются системные настройки reduced motion, повышенного контраста и forced colours.",
-          "Постоянная панель чтения позволяет включить шрифт без засечек, увеличить текст и интервалы, сузить строки, упростить раскладку, уменьшить движение и повысить контраст. Это прогрессивные улучшения; настройки сохраняются только локально в браузере."
+          "Английская, гонконгская традиционная китайская, упрощённая китайская, японская, немецкая, французская и русская версии поддерживаются отдельно. Английский служит входом по умолчанию, а не исходным языком каждой работы. Смена интерфейса не превращает китайский стих в английский оригинал; некоторые длинные тексты остаются на указанном языке публикации.",
+          "Китайский литературный источник, его упрощённая графическая версия и переводы имеют разные редакторские функции. Преобразование письменности не является ещё одним переводом. Перевод иногда требует точнее определить субъект, время или отношение и тем самым меняет то, что стих оставляет открытым. Проверка строк и строф помогает обнаружить структурный сдвиг, но не удостоверяет литературное прочтение.",
+          "Издания сохраняют общую навигацию и связи с источниками, но не обязаны иметь одинаковые строки и глифы. Это общая публикация на нескольких языках, не обещание одинаковых страниц или независимой редакторской проверки каждого перевода носителем языка."
         ],
-        "facts": [
-          {
-            "label": "настройки чтения",
-            "value": "без засечек · крупный текст · интервалы · ширина строки · простой макет · движение · контраст"
-          },
-          {
-            "label": "хранение",
-            "value": "только localStorage"
-          },
-          {
-            "label": "проверки",
-            "value": "собственный структурный аудит · браузерный аудит axe-core"
-          }
-        ]
+        "facts": []
       },
       {
         "id": "media",
-        "number": "05",
-        "title": "Изображения и производительность",
-        "dek": "Адаптивные медиа без кода галереи во время выполнения.",
+        "number": "04",
+        "title": "Порядок и переработка",
+        "dek": "Дата и соседство могут изменить чтение.",
         "body": [
-          "Фотографии и исследовательские иллюстрации используют picture/srcset с вариантами WebP и JPEG, явно заданными размерами и атрибутом sizes. Главное изображение получает приоритет; медиа ниже по странице загружаются отложенно и декодируются асинхронно.",
-          "Нижние разделы могут использовать content-visibility. View Transitions и scroll-linked motion остаются необязательными прогрессивными улучшениями; при reduced motion анимация отключается."
+          "Цикл A/B, стихи за его пределами и два датированных варианта The Roof Splits Open сохраняют свои различия. Более поздний текст не заменяет автоматически все ранние. Соседство вариантов делает переработку доступной чтению, а не скрывает её за объявленной окончательностью.",
+          "Отобранная фотография, исследовательская схема и цифровой образец чека являются разными видами изображения. Подпись должна указывать, что они показывают и чего не подтверждают. Экранная проба не является фотографией отпечатка; карта не доказывает завершение всех предложенных этапов исследования. Порядок и подписи сообщают этот контекст, не превращая изображения в резюме."
         ],
-        "facts": [
-          {
-            "label": "изображения",
-            "value": "picture · srcset · WebP · JPEG"
-          },
-          {
-            "label": "загрузка",
-            "value": "явные размеры · отложенная загрузка · асинхронное декодирование"
-          },
-          {
-            "label": "прогрессивный CSS",
-            "value": "content-visibility · View Transitions · временные шкалы прокрутки"
-          }
-        ]
+        "facts": []
+      },
+      {
+        "id": "accessibility",
+        "number": "05",
+        "title": "Страница, которую можно менять",
+        "dek": "Авторская форма не требует неизменного экрана.",
+        "body": [
+          "Перформативная материальность у Drucker обращает внимание на систему в использовании, не только на её устройство. [[drucker]] Здесь вопрос конкретен: можно ли вернуться к строфе, сравнить версии, проследить источник или изменить условия чтения, не потеряв текст? Декоративное сходство с книгой этого не решает.",
+          "Настройки чтения меняют шрифт, размер, интервалы, длину строк, расположение, движение и контраст. Это другие способы встретиться с тем же материалом, а не худшие версии дизайна. Фокус клавиатуры, заголовки и текстовые альтернативы принадлежат публикации, даже когда не бросаются в глаза.",
+          "Автоматические проверки находят некоторые пропущенные подписи и ошибки вёрстки. Они не заменяют человека со скринридером и не доказывают, что описание изображения даёт равнозначную встречу. Доступность остаётся редакторской ответственностью, а не знаком качества, выданным набором тестов."
+        ],
+        "facts": []
       },
       {
         "id": "quality",
         "number": "06",
-        "title": "Сборка, QA и публикация",
-        "dek": "Сгенерированный результат тоже является объектом тестирования.",
+        "title": "Авторство и свидетельства",
+        "dek": "Прослеживаемость не удостоверяет ценность.",
         "body": [
-          "Репозиторий проверяет актуальность сгенерированных страниц, совпадение схем локалей, сохранность структуры литературных текстов, семантические области и элементы управления доступностью, корректность локальных ссылок и якорей, альтернативный текст у изображений и синтаксис JavaScript.",
-          "Браузерная проверка добавляет геометрические тесты для разных языков и при разных ширинах окна, аудиты axe-core и проверку HTML. В GitHub Actions при push и pull request сначала выполняются лёгкие проверки, а после них браузерный набор; GitHub Pages независимо публикует те же статические файлы из main."
+          "Работы публикуются под именем Hanpu Li / 李函璞; некоторые ранние профессиональные документы используют также Caitlyn Lye. Страница авторских сведений прямо сохраняет эту связь. Редактирование и реализация сайта включают подготовку черновиков, правки, программирование и тестирование с помощью ИИ. Это не основание приписывать одинаковую историю создания каждому стиху, переводу или снимку.",
+          "Исходные файлы, инструменты сборки и история версий помогают определить, что изменено и что показано. Сами по себе они не устанавливают литературного качества, успешной печати, реакции публики или институционального признания. Рассказ проекта о себе должен отличаться от независимо проверяемого документа.",
+          "Научные ссылки на этих страницах служат инструментами изучения конкретных решений. Не все они были отправными точками работы. Сравнение полезно там, где обнаруживает различие или предел. Перечень известных имён не заменяет отсутствующего эксперимента и не делает реакцию читателя предсказуемой."
         ],
-        "facts": [
-          {
-            "label": "проверки репозитория",
-            "value": "сборка · языки · доступность · ссылки/ресурсы · синтаксис JS"
-          },
-          {
-            "label": "проверки в браузере",
-            "value": "Playwright · axe-core · html-validate"
-          },
-          {
-            "label": "доставка",
-            "value": "GitHub Actions · GitHub Pages"
-          }
-        ]
+        "facts": []
       }
     ],
-    "scope_title": "Принципы",
+    "scope_title": "Создание и сопровождение",
     "scope_body": [
-      "Исходный контент, сгенерированные файлы и поведение браузера остаются отдельными слоями: сначала меняются структурированные данные и шаблоны, затем сайт пересобирается, а готовые документы проверяются.",
-      "Прогрессивные улучшения изначально необязательны. Отсутствие поддержки отдельных возможностей CSS, отключённый JavaScript или недоступное локальное хранилище не должны скрывать работы или ломать навигацию."
+      "Небольшой сборщик Python превращает структурированные материалы и шаблоны в статический HTML. Изображения и шрифты размещены вместе с сайтом; набор включает EB Garamond, Courier Prime, Cousine, Shippori Mincho, Noto Serif SC и I.Ming. Адаптивная вёрстка и необязательные настройки приспосабливают документы к чтению. Обычные страницы не требуют JavaScript; магазину Poetry Voucher он нужен для подготовки издания в браузере.",
+      "Проверки сборки, языков, ссылок, шрифтов и браузера поддерживают эти издательские решения. Это сопровождение, не эстетический аргумент. Открытый репозиторий позволяет изучать материалы, но не предоставляет общей лицензии на творческие работы. Poetry Voucher отдельно разрешает личное сохранение, печать и передачу отпечатанных экземпляров в подарок."
     ],
-    "privacy_title": "Приватность во время выполнения",
-    "privacy_body": "Портфолио не загружает системы аналитики, рекламные сети, сторонние веб-шрифты или скрипты отслеживания и не устанавливает файлы cookie. Единственное постоянное состояние браузера — локальная запись настроек чтения.",
+    "privacy_title": "Локальные данные и хостинг",
+    "privacy_body": "Сайт не добавляет аналитику, рекламные скрипты или отслеживающие cookie. Настройки чтения остаются в браузере. Poetry Voucher также хранит локальную корзину и завершённые заказы в текущей вкладке; деньги не принимает и к принтеру не обращается. Это описание собственного кода, не гарантия отсутствия журналов доступа у хостинг-провайдера. Переход по внешней ссылке ведёт на сайт соответствующего поставщика.",
     "footer_link": "о сайте",
     "source_link": "исходный код сайта",
-    "toc_label": "На этой странице"
+    "toc_label": "На этой странице",
+    "references_title": "Чтение к этим заметкам",
+    "references_intro": "Источник для конкретного вопроса, а не утверждение, что сайт воплощает целую теорию."
   }
 }

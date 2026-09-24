@@ -17,7 +17,7 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `shi-simplified.json` — script-only Simplified Chinese mirror of the canonical poem source; its source hash is checked in CI.
 - `essays/trainspotting.inc` — English source fragment for the public <em>Trainspotting</em> essay.
 - `essay-trainspotting.json` — per-locale metadata and the notice used by each language shell; the essay body itself remains English.
-- `about-site.json` — localised implementation notes for the public About-this-site page, including architecture, typography, accessibility, performance and QA.
+- `about-site.json` — the seven editorial essays for About this site: selection, visual authority, translation, versions, reader adaptation, authorship and maintenance.
 - `contexts.json` — localised catalogue back matter for credit-name mapping, selected professional contexts and clearly identified first-party public records.
 
 English is the default site at `/`. Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are emitted at
@@ -198,3 +198,24 @@ The retired Studio template is an internal optical-regression fixture only.
 `tools/studio-test-fixture.mjs` serves it only by intercepting local test requests;
 `make.html` in the public build is always the retirement redirect. Preserve the
 old renderer coverage without reintroducing a public custom-text interface.
+
+## Editorial About pages
+
+The site essay is in `about-site.json`; the Poetry Voucher essay is the `notes`
+array in `poetry-voucher.json`. Both are rendered by `tools/editorial_notes.py`,
+using `[[reference-id]]` citations from `editorial-references.json`. Copy remains
+plain text; unknown reference IDs fail the build. Reference scope notes distinguish
+the full Drucker text, the accessible Espeland/Stevens abstract and primary
+material/comparison descriptions. They do not establish prior artistic influence.
+
+The exact tariff disclosure reads `TARIFF` in the public renderer rather than
+maintaining separate numeric prices in HTML. `tools/aboutcheck.mjs` also exercises
+the real quote function for the published Roof and non-literary threshold examples.
+Run `npm run qa:about` for fourteen pages, responsive geometry, citation targets,
+axe, no-JavaScript reading and combined reading-style stress. These checks are not
+human-reader or physical-print research. The site retains its previous section
+fragment identifiers, with an editorial reading order rather than a technology list.
+
+`assets/editorial-notes.css` styles only these editorial surfaces. It must not
+change the shop's purchase journey, the literary sources or the historical digital
+specimen. After CJK copy changes, regenerate both font subsets and the site.
