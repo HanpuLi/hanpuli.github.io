@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>詩の券 · Hanpu Li</title>
-<meta name="description" content="このプロジェクト以前に書かれた詩を一篇ずつ並べ、基本仕様と追加の選択肢を設けます。個人の書く行為を、スーパーで買い物をする馴染みの手順に置きます。">
+<meta name="description" content="既存の詩を一篇ずつ並べます。版を選び、架空の購入を終えると、レシートと詩券が一続きになった版を取得できます。価格は実際に計算しますが、お金の支払いはありません。">
 <link rel="canonical" href="https://hanpuli.github.io/ja/poetry-voucher/">
 <link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/poetry-voucher/">
 <link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/poetry-voucher/">
@@ -17,12 +17,12 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Hanpu Li">
 <meta property="og:title" content="詩の券 · Hanpu Li">
-<meta property="og:description" content="このプロジェクト以前に書かれた詩を一篇ずつ並べ、基本仕様と追加の選択肢を設けます。個人の書く行為を、スーパーで買い物をする馴染みの手順に置きます。">
+<meta property="og:description" content="既存の詩を一篇ずつ並べます。版を選び、架空の購入を終えると、レシートと詩券が一続きになった版を取得できます。価格は実際に計算しますが、お金の支払いはありません。">
 <meta property="og:image" content="https://hanpuli.github.io/poetry-voucher/sample-voucher.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="384">
-<meta property="og:image:height" content="686">
-<meta property="og:image:alt" content="乙三の基本見本。現金レシートと原文の詩の券">
+<meta property="og:image:height" content="587">
+<meta property="og:image:alt" content="乙三の連続デジタル見本。同じ紙に架空の現金レシート、CUT HERE、中文の詩券が続きます。">
 <meta property="og:url" content="https://hanpuli.github.io/ja/poetry-voucher/">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_GB">
@@ -33,16 +33,17 @@
 <meta property="og:locale:alternate" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="詩の券 · Hanpu Li">
-<meta name="twitter:description" content="このプロジェクト以前に書かれた詩を一篇ずつ並べ、基本仕様と追加の選択肢を設けます。個人の書く行為を、スーパーで買い物をする馴染みの手順に置きます。">
+<meta name="twitter:description" content="既存の詩を一篇ずつ並べます。版を選び、架空の購入を終えると、レシートと詩券が一続きになった版を取得できます。価格は実際に計算しますが、お金の支払いはありません。">
 <meta name="twitter:image" content="https://hanpuli.github.io/poetry-voucher/sample-voucher.png">
-<meta name="twitter:image:alt" content="乙三の基本見本。現金レシートと原文の詩の券">
+<meta name="twitter:image:alt" content="乙三の連続デジタル見本。同じ紙に架空の現金レシート、CUT HERE、中文の詩券が続きます。">
 <link rel="icon" href="/assets/site-mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <script src="/assets/accessibility.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry-voucher.css">
+<link rel="stylesheet" href="/assets/editorial-notes.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CreativeWork","@id":"https://hanpuli.github.io/ja/poetry-voucher/#page","url":"https://hanpuli.github.io/ja/poetry-voucher/","name":"詩の券 · Hanpu Li","description":"このプロジェクト以前に書かれた詩を一篇ずつ並べ、基本仕様と追加の選択肢を設けます。個人の書く行為を、スーパーで買い物をする馴染みの手順に置きます。","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"ja","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CreativeWork","@id":"https://hanpuli.github.io/ja/poetry-voucher/#page","url":"https://hanpuli.github.io/ja/poetry-voucher/","name":"詩の券 · Hanpu Li","description":"既存の詩を一篇ずつ並べます。版を選び、架空の購入を終えると、レシートと詩券が一続きになった版を取得できます。価格は実際に計算しますが、お金の支払いはありません。","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"ja","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 </head>
 <body class="essay-page voucher-project locale-ja">
@@ -88,37 +89,56 @@
 <main id="main" tabindex="-1">
   <div class="pv-context"><a href="/ja/#work">03 / 研究</a><span>03.1 / 2026</span></div>
   <section class="pv-intro" aria-labelledby="pv-title">
-    <div class="pv-heading"><p class="eyebrow">詩 · 組版 · インタラクション</p><h1 id="pv-title"><span lang="en">Poetry<br><em>Voucher</em></span></h1><p class="pv-subtitle">レシート用紙に、一篇の詩を。</p></div>
-    <div class="pv-description"><p>このプロジェクト以前に書かれた詩を一篇ずつ並べ、基本仕様と追加の選択肢を設けます。個人の書く行為を、スーパーで買い物をする馴染みの手順に置きます。</p><a class="pv-cta" href="/poetry-voucher/shop.html?lang=ja">ショップへ</a><a class="pv-text-link" href="/ja/ci.html">原作を読む</a></div>
+    <div class="pv-heading"><p class="eyebrow">アーティスト出版 · 架空の詩のショップ</p><h1 id="pv-title"><span lang="en">Poetry<br><em>Voucher</em></span></h1><p class="pv-subtitle">レシート用紙に、一篇の詩を。</p></div>
+    <div class="pv-description"><p>既存の詩を一篇ずつ並べます。版を選び、架空の購入を終えると、レシートと詩券が一続きになった版を取得できます。価格は実際に計算しますが、お金の支払いはありません。</p><div class="pv-entry-links"><a class="pv-cta" href="/poetry-voucher/shop.html?lang=ja">ショップへ</a><a class="pv-text-link" href="/ja/ci.html">原作を読む</a></div></div>
   </section>
-  <figure class="pv-sample pv-continuous-sample" aria-label="乙三の基本見本。現金レシートと原文の詩の券">
-    <div class="pv-strip-sample"><p>01 / レシート + CUT HERE + 02 / 詩の券</p><img src="/poetry-voucher/sample-full.png" width="384" height="1828" alt="乙三の基本見本。現金レシートと原文の詩の券" decoding="async"></div>
-    <figcaption>乙三 · 基本 · 原文 · 現金 · 2026年9月22日のデジタル見本</figcaption>
-  </figure>
-  <div class="pv-notes">
-    <section><p class="eyebrow">01</p><h2>なぜショップなのか</h2><p>詩は、時間と注意、知識を要する個人的な書く行為であり、互いに交換可能なものではありません。ショップは逆の扱いをします。一篇ずつ棚の商品として置き、基本仕様を与え、レジに価格を計算させます。このプロジェクトは、拾ったレシートプリンターで自作の詩を印刷してみたことから始まりました。スーパーのレシートは、個人的な書く行為が日用品の購入手続きに入ると何が変わるのかを問う方法になりました。</p></section>
-    <section><p class="eyebrow">02</p><h2>価格の仕組み</h2><p>架空の料金体系は、執筆時間、難度、文学的価値を測りません。原文を文字数、空でない行、連という数えられる特徴に還元し、基本額を小売価格らしい .99 の価格帯まで切り上げます。ドット書体は基本仕様に含まれ、サイト書体はアップグレードとして扱います。翻訳の追加は紙と印刷を増やし、作品を別の言語・文化へ移す別形態でもあるため追加料金になります。実際の支払いはありません。</p><dl class="pv-tariff">
-      <div><dt>基本料金</dt><dd>£1.00</dd></div>
-      <div><dt>文字／数字</dt><dd>+£0.02</dd></div>
-      <div><dt>空でない原文行</dt><dd>+£0.05</dd></div>
-      <div><dt>連</dt><dd>+£0.10</dd></div>
-      <div><dt>基本価格</dt><dd>次の .99 価格まで切り上げ</dd></div>
-      <div><dt>サイト書体</dt><dd>+£1.99</dd></div>
-      <div><dt>追加翻訳</dt><dd>+£1.99</dd></div>
-    </dl></section>
-    <section><p class="eyebrow">03</p><h2>レシート、詩券、紙</h2><p>注文は一続きの58ミリ幅の紙として発行されます。最初にレシート、次に CUT HERE、その後に個別番号の詩券が続きます。レシートは設定された取引を記録し、詩券は書かれたものを取引から持ち出せる形にします。切り離すことはできますが、必須ではありません。感熱紙は日常のレシートの尺度と扱い方を保ち、ポケットに入り、誰かに手渡すことができ、やがて退色します。退色は素材の条件であり、現時点で時間実験によって実証した作品効果ではありません。 視覚面でも、レジのレシートが持つ情報密度、階層、即物性を残し、ブティックのタグのようなミニマルな造形には整えません。</p></section>
-    <section><p class="eyebrow">04</p><h2>デジタルの入口、物理的な形</h2><p>現在は展示会場がないため、ブラウザー上のショップが公開の配布経路です。支払いもサーバーへの詩の送信も行わず、一続きのPDFと、オフラインで読める完全なテキスト版を生成します。レシートプリンターによる実際の試し刷りも行っています。想定する物質的な出会いは細い感熱紙のままで、ブラウザーはそれを特定の会場の外から取得できるようにします。</p></section>
-    <section><p class="eyebrow">05</p><h2>批評的な枠組み</h2><p>この作品は、レシート印刷そのものが詩を新しくすると主張するものでも、料金体系が創作労働を公平に測ると主張するものでもありません。焦点はより具体的です。個人的で交換不能な書く行為が、一時的に在庫、仕様、価格として扱われること。小売システムは文字単位、紙、オプションを数えられても、その詩に費やされた時間、知識、愛着や関係までは計上できません。取引の後に保存するか、切るか、誰かに渡すか、捨てるかは読者に残されます。</p></section>
-    <section class="pv-context-note"><p class="eyebrow">06</p><h2>関連する実践</h2><p>本作はアーティスト出版、持ち帰ることのできるエディション、規則に基づく言語システムと接点を持ちますが、形の類似をそのまま系譜とはみなしません。比較対象として、Marcel Broodthaers の Pense-Bête、Felix Gonzalez-Torres の紙のスタック、Short Édition の文学ディスペンサー、Alison Knowles と James Tenney の The House of Dust があります。問いたいのは、レシート紙で文学を配ること自体の新規性ではなく、この具体的な小売ルールが、これらの具体的な詩に何をするかです。</p><ul class="pv-references">
-      <li><a href="https://www.moma.org/audio/playlist/25/455" rel="external">Marcel Broodthaers · <cite>Pense-Bête</cite></a></li>
-      <li><a href="https://www.felixgonzalez-torresfoundation.org/works/untitled-passport" rel="external">Felix Gonzalez-Torres · <cite>“Untitled” (Passport)</cite></a></li>
-      <li><a href="https://short-edition.com/en/p/short-story-dispenser" rel="external">Short Édition · Short Story Dispenser</a></li>
-      <li><a href="https://reframingthehouseofdust.com/about/" rel="external">Alison Knowles / James Tenney · <cite>The House of Dust</cite></a></li>
-    </ul></section>
+  <div class="pv-entry">
+    <nav class="pv-contents" aria-label="この作品について"><h2>この作品について</h2><ol><li><a href="#origin"><span>01</span> 棚に並ぶ一篇</a></li><li><a href="#pricing"><span>02</span> 価格が取りこぼすもの</a></li><li><a href="#configuration"><span>03</span> アップグレード</a></li><li><a href="#documents"><span>04</span> 一続き、二つの文書</a></li><li><a href="#reading"><span>05</span> 詩は機械の説明ではない</a></li><li><a href="#material"><span>06</span> 紙と画面</a></li><li><a href="#comparisons"><span>07</span> 二つの有効な比較</a></li><li><a href="#status"><span>08</span> 確認できていること</a></li></ol></nav>
+    <figure class="pv-specimen">
+      <a class="pv-specimen-image" href="/poetry-voucher/sample-full.png" aria-label="完全なデジタル見本を開く"><img src="/poetry-voucher/sample-full.png" width="384" height="1828" alt="乙三の連続デジタル見本。同じ紙に架空の現金レシート、CUT HERE、中文の詩券が続きます。" decoding="async"></a>
+      <figcaption><h2>一つの注文、一続きの紙</h2><p>レシートが先に来ます。切り取り線は分離を提案しますが、強制はしません。各詩には注文に結びついた個別番号があります。小さな画像は記録用見本であり、実寸で読むための校正ではありません。</p><p class="specimen-date">乙三 · 原文 · ドット書体 · 固定場面の日付は2026年9月22日 · 連続デジタル版の再描画は2026年9月24日。実物写真や現在の注文のプレビューではありません。</p><a href="/poetry-voucher/sample-full.png">完全なデジタル見本を開く</a></figcaption>
+    </figure>
   </div>
+  <figure class="pv-structure-diagram" aria-labelledby="pv-diagram-title">
+    <figcaption id="pv-diagram-title">紙片の構成</figcaption>
+    <div class="pv-diagram-flow">
+      <div class="pv-diagram-node"><span class="pv-diagram-code">01</span><strong>取引</strong><small>注文、数量、模擬支払いを記録</small></div>
+      <div class="pv-diagram-join" aria-hidden="true"><span>CUT HERE</span></div>
+      <div class="pv-diagram-node"><span class="pv-diagram-code">02</span><strong>詩</strong><small>本文、出典、各部の識別を保つ</small></div>
+    </div>
+    <p class="pv-diagram-cut"><span>分離</span> · 切る位置を示すが、要求はしない</p>
+  </figure>
+  <div class="pv-notes pv-essay">
+    <section class="about-section editorial-section" id="origin" aria-labelledby="heading-origin"><div class="about-section-head"><p class="about-section-no">01</p><h2 id="heading-origin">棚に並ぶ一篇</h2><p class="about-section-dek">プリンターが先にありました。</p></div><div class="about-section-copy"><p>拾ったレシートプリンターで自作の詩を印刷してみたことから、このプロジェクトは始まりました。詩はすでに書かれていました。問いはスーパーのレシートの身近さから生じました。個人的な文章を、品物を一つずつ処理する手順で手に入れると、どんな感じがするのか。</p>
+<p>書くことには、時間、注意、知識、愛着が一様ではなく積み重なります。ショップは別の記述を与えます。カタログの題名、数量、基本仕様、価格。純粋な詩と思考のない商品を分けるのではありません。日用品にも価格が明かさない労働や差異があります。この作品は一つの還元の動作を取り出すのであって、市場全体の理論を述べるものではありません。</p>
+<p>公開カタログは意図的に私の発表済みの文章だけに限定しています。以前の自由入力Studioは終了しました。ここでの誘いは、ある詩をどの版で発行するかを選ぶことです。任意の印刷物を組み立てることは別の活動です。この編集上の境界は、読者の解釈や取得後の行方を閉じません。</p></div></section>
+<section class="about-section editorial-section" id="pricing" aria-labelledby="heading-pricing"><div class="about-section-head"><p class="about-section-no">02</p><h2 id="heading-pricing">価格が取りこぼすもの</h2><p class="about-section-dek">PV3は原文を数え、労力は数えません。</p></div><div class="about-section-copy"><p>EspelandとStevensは、通約化を共通の尺度による比較として述べています。<sup class="editorial-citation"><a href="#ref-commensuration" aria-label="参照と比較 1: Wendy Nelson Espeland and Mitchell L. Stevens">[1]</a></sup> PV3は小さく検証可能な一例です。異なる詩が、選んだ文章の特徴を数えることで比較可能な金額になります。式は何を見ているかを示しますが、難しさ、改稿、愛着、文学的な強さの項目はありません。</p>
+<p>文字として数えるのはUnicodeの字母と数字だけです。空でない原文の行と連は基本額に加算され、狭い紙で自動的に折り返す行は加算されません。基本額を下回らない最小の .99 価格まで引き上げ、その後で追加項目を足します。合計が .99 で終わるとは限りません。</p>
+<p>The Roof Splits Openの第一部は第一稿で£6.99、第二稿で£4.99です。計測文字は185から109へ減りますが、19行と七連は変わりません。削除が詩に何をもたらしたかにかかわらず、値下げになります。この差は比較を促しますが、安い稿のほうが良いことを証明しません。</p>
+<p>段階式の価格は差異を隠す一方、境界を大きく見せます。文学作品ではない四十個のxの試験では、一行が£1.99、二行が£2.99です。他の改行では表示価格が変わらないこともあります。これは選んだ小売の慣例であって、書記体系間の公平な長さの尺度でも、すべての店舗の値付けモデルでもありません。</p><details class="editorial-tariff"><summary>正確な料金規則 · PV3</summary><dl class="pv-tariff"><div><dt>基本料金</dt><dd>£1.00</dd></div><div><dt>文字／数字</dt><dd>+£0.02</dd></div><div><dt>空でない原文行</dt><dd>+£0.05</dd></div><div><dt>連</dt><dd>+£0.10</dd></div><div class="tariff-rounding"><dt>基本価格</dt><dd>加重基本額を下回らない最小の .99 価格</dd></div><div><dt>サイト書体</dt><dd>+£1.99</dd></div><div><dt>追加翻訳</dt><dd>+£1.99</dd></div></dl><p>空でない原文一部ごとに計算します。NFC正規化後の字母と数字を数え、句読点と空白は文字数から除きます。句読点だけでも空でない行は一行として数え、連にもなります。</p></details></div></section>
+<section class="about-section editorial-section" id="configuration" aria-labelledby="heading-configuration"><div class="about-section-head"><p class="about-section-no">03</p><h2 id="heading-configuration">アップグレード</h2><p class="about-section-dek">見せ方も売り物の一部です。</p></div><div class="about-section-copy"><p>基本版にはドット書体を含み、サイト書体を追加仕様として扱います。広告どおりの外観にするには追加の構成が必要な商品に似ています。ただし基本版も全文が揃い、読めなければなりません。わざと質を落とせば、問いは結論を仕込んだ実演に変わってしまいます。</p>
+<p>ショップの画面もこの関係の外にはいません。セリフ体の大きな題字、余白、整列で魅力的な売り場を作りながら、組版を追加料金にしています。作品はその魅力を利用すると同時に見せています。レシートが素朴でも、周囲のサイトがデザインの与える威信と無関係になるわけではありません。</p>
+<p>翻訳は別の言語と文化による読解を加え、実際の印刷では紙も長くなります。しかし固定の追加料金は紙の長さ、エネルギー、翻訳者の労働時間を計算しません。原文と公開済みの翻訳はサイトで自由に読めます。追加料金は架空の出力仕様に属し、理解するための入場料ではありません。繁体字と簡体字は原文の表記の選択で、基本価格は同じです。</p></div></section>
+<section class="about-section editorial-section" id="documents" aria-labelledby="heading-documents"><div class="about-section-head"><p class="about-section-no">04</p><h2 id="heading-documents">一続き、二つの文書</h2><p class="about-section-dek">会計が終わっても、読書は終わりません。</p></div><div class="about-section-copy"><p>レシートは注文、数量、追加仕様、金額、模擬の支払いを記録します。詩券は本文、署名、出典、番号を載せ、価格は繰り返しません。一続きの紙に二種類の文書があり、必ず二枚の紙になるわけではありません。一件の注文に、別々の番号を持つ複数の詩のコピーを含められます。</p>
+<p>CUT HEREは、レシートと詩がまず一緒に現れた後で分離を可能にします。全体を残す、切る、折る、一部を渡す。そのどれも画面が強制すべき正解ではありません。番号は切り離した部分の帰属を保ちますが、購入の認証、所有権、希少性を作りません。</p>
+<p>英国のレジの言葉、欄、税額一覧、支払い情報は、馴染みある事務的なリズムを作ります。架空であるとの表示もその形式の一部で、実物らしさのために取り除くべき小字ではありません。支払いは処理しません。ここでvoucherが渡すのは詩であって、将来の現金引換の約束ではありません。</p></div></section>
+<section class="about-section editorial-section" id="reading" aria-labelledby="heading-reading"><div class="about-section-head"><p class="about-section-no">05</p><h2 id="heading-reading">詩は機械の説明ではない</h2><p class="about-section-dek">可能な読みは起源の説明とは違います。</p></div><div class="about-section-copy"><p>乙三では引き渡す動作が繰り返し遅れます。書く手が止まり、封じる前の紙をまた折り、主客は清算を終えた対等な交換相手にはなりません。レシートの後で読むと、その動作は完了した取引の確かさを足りないものに見せるかもしれません。並べることで可能になる読みです。詩はそれを実証するために書かれたものではなく、読者は採用しなくても構いません。</p>
+<p>他の関係は元の出版物に属します。乙六は甲乙の連作の中で応答し、The Roof Splits Openは日付のある稿本を保っています。一篇を発行することは全体の取得を強制すべきではありませんが、単独の一枚が文脈の不在を装う必要もありません。出典リンクからその関係に戻れます。</p>
+<p>Druckerは物質性を使用時に起こることへ向けます。<sup class="editorial-citation"><a href="#ref-drucker" aria-label="参照と比較 2: Johanna Drucker">[2]</a></sup> したがって選ぶ、待つ、読む、切る、贈ることは観察すべき問いであり、紙やコードが保証する効果ではありません。携帯できる詩は贈り物、冗談、記念品、不要物にもなります。レシートの各欄に別々の比喩を割り当てる必要はありません。</p></div></section>
+<section class="about-section editorial-section" id="material" aria-labelledby="heading-material"><div class="about-section-head"><p class="about-section-no">06</p><h2 id="heading-material">紙と画面</h2><p class="about-section-dek">同じ規則でも、出会いは同じではありません。</p></div><div class="about-section-copy"><p>出力モデルは58ミリの紙幅と384ドットの画像領域を使い、毎ミリ八ドットなら画像幅は48ミリです。一ビットの白黒画像はレシート印刷の制約を残します。密なラベルと狭い行は読む条件の一部ですが、読めないほど小さければ、小ささそのものに価値はありません。鮮明なデジタル画像だけでは、特定のプリンターで細い画線が残ると証明できません。</p>
+<p>直接感熱印刷はインクもリボンも使わず、熱、光、扱い方によって可読性が変わります。<sup class="editorial-citation"><a href="#ref-thermal" aria-label="参照と比較 3: Zebra Technologies">[3]</a></sup> 退色は詩に組み込まれた確かなカウントダウンではありません。素材の可能性であり、この試し刷りの観察済み寿命、環境への主張、あるいは喪失を表す必須の比喩ではありません。</p>
+<p>初期の実物出力はあります。展示会場のない現在、ブラウザーのショップが公開の入口です。将来の発行テーブルでは、ダウンロードにはない紙の扱いと居合わせる時間が加わります。しかし画面上での出会いも実際の経験です。PDFはレシートと詩を同じファイルに保ち、長い出力には接続表示を付けます。独立したHTML版は全文と関係をオフラインでも読めるようにしますが、画像PDF自体をアクセシブルな文字PDFへ変えるものではありません。</p></div></section>
+<section class="about-section editorial-section" id="comparisons" aria-labelledby="heading-comparisons"><div class="about-section-head"><p class="about-section-no">07</p><h2 id="heading-comparisons">二つの有効な比較</h2><p class="about-section-dek">規則が違えば、結果も違います。</p></div><div class="about-section-copy"><p>Short Éditionは読書時間で選ぶ無料の巻紙文学を提供します。<sup class="editorial-citation"><a href="#ref-short-edition" aria-label="参照と比較 4: Short Édition">[4]</a></sup> この比較は配布の媒体と作品固有の仕組みを切り分けます。Poetry Voucherでは詩と版の仕様を選び、架空の金額を割り当てます。意味を持つかどうかはその購入手順が読書に何を加えるかにかかり、文学を細い紙巻に初めて印刷したかどうかにはかかりません。</p>
+<p>BroodthaersのPense-Bêteでは石膏が埋め込まれた本への読書を妨げ、その近くには読める本も展示されました。<sup class="editorial-citation"><a href="#ref-broodthaers" aria-label="参照と比較 5: The Museum of Modern Art; Francesca Wilmott and Marcel Broodthaers">[5]</a></sup> ここでは関係を反転させ、印刷された文章が装置から離れることを目指します。ただし危険は共通しています。興味を引く物体が文章から注意をそらすこともある。詩にたどり着く人がいなければ、レシートが本物らしくなることは自動的な改善ではありません。</p></div></section>
+<section class="about-section editorial-section" id="status" aria-labelledby="heading-status"><div class="about-section-head"><p class="about-section-no">08</p><h2 id="heading-status">確認できていること</h2><p class="about-section-dek">使える版と、まだ開かれた受容の問い。</p></div><div class="about-section-copy"><p>カタログ、料金計算、デジタル発行は現在利用できます。初期印刷物は素材の試験であって、現在の全仕様が校正済みだという証拠ではありません。携帯して人に詩を贈るという考えは初期の読者から出て、作者へのインタビューで報告されました。それを観客一般への結論に広げてはいません。比較読者調査やギャラリー展示の実施も主張しません。</p>
+<p>次の素材試験は小さくできます。少数の版を発行し、理論を先に教えずに読んで扱ってもらい、変化や失敗を記録する。その結果はレシートの維持、順序の変更、考えていた解釈の放棄につながるかもしれません。機能を増やすだけでは答えられない問いです。</p>
+<p>個人での保存、印刷、印刷物の贈与を認めます。注文の文章と選択は端末内に固定し、元のダウンロードを残すことでその出力を保存できます。後のレンダラーが配置を変える場合は再描画と表示します。ビルド番号は入力を記述し、所有権や文学的な権威を保証しません。現在の編集説明と実装にはAI支援を用いていますが、作者の既存の詩をショップ生成の文章に置き換えません。</p></div></section>
+  </div>
+  <nav class="pv-source-reading" aria-label="原作を読む"><a href="/ja/ci.html">原作を読む</a><a href="/ja/shi.html">The Roof Splits Openの二稿を読む</a></nav>
+  <section id="references" class="editorial-references" aria-labelledby="references-heading"><h2 id="references-heading">参照と比較</h2><p>計測、読書、物質的な形式の具体的な問いを明らかにする資料です。プロジェクトの起源を後から理論で書き換えるものではありません。</p><ol><li id="ref-commensuration"><span lang="en">Wendy Nelson Espeland and Mitchell L. Stevens. <a href="https://www.annualreviews.org/content/journals/10.1146/annurev.soc.24.1.313"><cite>Commensuration as a Social Process</cite></a>. Annual Review of Sociology 24 (1998), 313–343; DOI 10.1146/annurev.soc.24.1.313. Definition in the publisher’s abstract..</span></li><li id="ref-drucker"><span lang="en">Johanna Drucker. <a href="https://www.digitalhumanities.org/dhq/vol/7/1/000143/000143.html"><cite>Performative Materiality and Theoretical Approaches to Interface</cite></a>. Digital Humanities Quarterly 7(1), 2013, especially paragraphs 8–12. <a class="reference-copy" href="https://scalar.usc.edu/works/autora-escritural-posthumana/media/Drucker,%20Johanna%20-%20Performative%20Materiality.pdf">PDF · USC Scalar</a></span></li><li id="ref-thermal"><span lang="en">Zebra Technologies. <a href="https://www.zebra.com/us/en/resource-library/faq/difference-between-direct-thermal-and-thermal-transfer-printing.html"><cite>What Is the Difference Between Direct Thermal and Thermal Transfer Printing?</cite></a>. Technical FAQ, direct-thermal sections; consulted 24 September 2026.</span></li><li id="ref-short-edition"><span lang="en">Short Édition. <a href="https://short-edition.com/en/p/short-story-dispenser"><cite>The Short Story Dispenser</cite></a>. Publisher’s description of duration selection and free scroll output; consulted 24 September 2026.</span></li><li id="ref-broodthaers"><span lang="en">The Museum of Modern Art; Francesca Wilmott and Marcel Broodthaers. <a href="https://www.moma.org/audio/playlist/25/455"><cite>Pense-Bête (Memory aid), 1964</cite></a>. Marcel Broodthaers: A Retrospective, audio-guide transcript, item 13/16.</span></li></ol></section>
   <div class="pv-end"><a class="pv-cta" href="/poetry-voucher/shop.html?lang=ja">作品を見る</a><p>58 mm / 384 dots / 1 bit</p></div>
 </main>
-<footer class="page-footer"><p><a href="/ja/#work">03 / 研究</a></p><p><a href="/ja/ci.html">原作を読む</a> · <a href="/ja/contexts.html">クレジットと活動歴</a> · <a href="/ja/about.html">このサイトについて</a></p></footer>
+<footer class="page-footer"><p><a href="/ja/#work">03 / 研究</a></p><p class="page-footer-context"><a href="/ja/ci.html">原作を読む</a><span aria-hidden="true"> · </span><a href="/ja/contexts.html">クレジットと活動歴</a><span aria-hidden="true"> · </span><a href="/ja/about.html">このサイトについて</a></p></footer>
 </div>
 </body>
 </html>

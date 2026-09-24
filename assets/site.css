@@ -98,7 +98,7 @@
   font-family: "IMing Gap";
   src: url("fonts/iming-gap.woff2") format("woff2");
   font-display: swap;
-  unicode-range: U+60E6, U+67E5, U+8E29;
+  unicode-range: U+5151, U+55BB, U+60E6, U+67E5, U+8E29;
 }
 
 :root {

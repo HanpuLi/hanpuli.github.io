@@ -120,7 +120,7 @@ def main() -> int:
             f"extra={sorted(set(about_site) - set(locales))}"
         )
     about_sig = signature(about_site["en"]) if "en" in about_site else {}
-    expected_about_ids = ["languages", "architecture", "layout", "accessibility", "media", "quality"]
+    expected_about_ids = ["architecture", "layout", "languages", "media", "accessibility", "quality"]
     expected_about_numbers = ["01", "02", "03", "04", "05", "06"]
     for locale in locales:
         if locale not in about_site:
@@ -577,8 +577,8 @@ def main() -> int:
                 about = about_site[locale]
                 if about["title"] not in text:
                     errors.append(f"{path.relative_to(ROOT)}: missing localized about title")
-                if text.count('class="about-section"') != 6:
-                    errors.append(f"{path.relative_to(ROOT)}: expected six technology sections")
+                if sum('about-section' in classes.split() for classes in re.findall(r'<section\b[^>]*class="([^"]*)"', text)) != 6:
+                    errors.append(f"{path.relative_to(ROOT)}: expected six editorial sections")
                 if 'class="about-toc"' not in text:
                     errors.append(f"{path.relative_to(ROOT)}: missing about table of contents")
                 if 'id="principles"' not in text or 'href="#principles"' not in text:

@@ -22,11 +22,13 @@ script, typeface, size, translations and quantity; they do not rewrite the poem.
 The former open-text Studio is retired. Its original renderer remains an internal
 production and regression fixture. That shared code is not a second public offer.
 
-A shop order has one receipt and one separately numbered voucher per copy. A
-receipt can itself run over several pages. The two document types need not be in
-a one-to-one relationship. Whether visitors should receive a continuous strip or
-already-separated sheets remains a physical presentation question, not a behaviour
-that the current separated PDFs can establish.
+A shop order has one receipt and one separately numbered voucher per copy. The
+later instruction of 24 September 2026 settled the output: one continuous edition,
+receipt first, CUT HERE, then the poem voucher or vouchers, in one downloadable PDF.
+Long outputs may have continuation pages within that file. The two document types
+need not be in a one-to-one relationship. Cutting is offered, not enforced. The
+previous uncertainty about whether the digital issue should be separate files is
+superseded; the consequences of handling or cutting physical paper remain untested.
 
 ## Prices and configurations
 
@@ -106,3 +108,19 @@ Fading is a possible material direction, not a demonstrated effect of these
 particular prints. It is not a mandatory extra project or a reason to delay
 completion indefinitely. A modest attended table can test the intended encounter
 without being represented as a gallery exhibition.
+
+## Editorial revision, 24 September 2026
+
+The site and project About pages now distinguish origin, current rules, later
+interpretation and untested reception. Espeland/Stevens supplies a definition of
+commensuration (publisher abstract only); Drucker supplies a question about use.
+The comparisons are not backdated as original influences. The storefront's own
+prestige, fixed rather than cost-measured translation surcharge, and labour within
+ordinary goods are retained as tensions, not explained away.
+
+The continuous B3 specimen is a digital re-render made on 24 September using a
+fixed scene dated 22 September. Its caption distinguishes scene, re-render and
+physical photograph. It is not a live preview of all current output configurations.
+The specimen bitmap and the literary source files were not regenerated in this
+editorial pass. Ordinary interface-font subset maintenance can change render-build
+inputs; it must not be described as a revision of the poems.

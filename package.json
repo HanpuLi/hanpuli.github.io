@@ -8,11 +8,12 @@
     "qa:first-love": "python3 tools/firstlovecheck.py",
     "qa:voucher": "node tools/vouchertypecheck.mjs",
     "qa:404": "node tools/notfoundcheck.mjs",
-    "qa": "npm run qa:html && npm run qa:first-love && npm run qa:voucher && npm run qa:shop && npm run qa:shop-locales && npm run qa:author-shop && npm run qa:browser && npm run qa:editorial && npm run qa:404",
+    "qa": "npm run qa:html && npm run qa:first-love && npm run qa:voucher && npm run qa:shop && npm run qa:shop-locales && npm run qa:author-shop && npm run qa:browser && npm run qa:editorial && npm run qa:404 && npm run qa:about",
     "qa:editorial": "node tools/editorialcheck.mjs",
     "qa:shop": "node tools/shopcheck.mjs",
     "qa:shop-locales": "node tools/shoplocalecheck.mjs",
-    "qa:author-shop": "node tools/author-shopcheck.mjs"
+    "qa:author-shop": "node tools/author-shopcheck.mjs",
+    "qa:about": "node tools/aboutcheck.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

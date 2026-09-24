@@ -12,6 +12,7 @@
 <script src="/assets/accessibility.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry-voucher.css">
+<link rel="stylesheet" href="/assets/editorial-notes.css">
 {{STRUCTURED_DATA}}
 </head>
 <body class="essay-page voucher-project locale-{{LOCALE}}">
@@ -29,36 +30,32 @@
   <div class="pv-context"><a href="{{HOME_HREF}}#work">{{PV_SECTION_NUMBER}} / {{common.nav.work}}</a><span>{{PV_PROJECT_NUMBER}} / 2026</span></div>
   <section class="pv-intro" aria-labelledby="pv-title">
     <div class="pv-heading"><p class="eyebrow">{{PV_TYPE}}</p><h1 id="pv-title"><span lang="en">Poetry<br><em>Voucher</em></span></h1><p class="pv-subtitle">{{PV_SUBTITLE}}</p></div>
-    <div class="pv-description"><p>{{PV_DESCRIPTION}}</p><a class="pv-cta" href="{{PV_MAKE_URL}}">{{PV_MAKE}}</a><a class="pv-text-link" href="{{CI_HREF}}">{{PV_READ}}</a></div>
+    <div class="pv-description"><p>{{PV_DESCRIPTION}}</p><div class="pv-entry-links"><a class="pv-cta" href="{{PV_MAKE_URL}}">{{PV_MAKE}}</a><a class="pv-text-link" href="{{CI_HREF}}">{{PV_READ}}</a></div></div>
   </section>
-  <figure class="pv-sample pv-continuous-sample" aria-label="{{PV_PREVIEW_ALT}}">
-    <div class="pv-strip-sample"><p>{{PV_RECEIPT}} + CUT HERE + {{PV_VOUCHER}}</p><img src="/poetry-voucher/sample-full.png" width="{{PV_FULL_WIDTH}}" height="{{PV_FULL_HEIGHT}}" alt="{{PV_PREVIEW_ALT}}" decoding="async"></div>
-    <figcaption>{{PV_SAMPLE}}</figcaption>
-  </figure>
-  <div class="pv-notes">
-    <section><p class="eyebrow">01</p><h2>{{PV_ABOUT_ORIGIN}}</h2><p>{{PV_ABOUT_ORIGIN_BODY}}</p></section>
-    <section><p class="eyebrow">02</p><h2>{{PV_ABOUT_PRICE}}</h2><p>{{PV_ABOUT_PRICE_BODY}}</p><dl class="pv-tariff">
-      <div><dt>{{PV_TARIFF_BASE}}</dt><dd>£1.00</dd></div>
-      <div><dt>{{PV_TARIFF_CHAR}}</dt><dd>+£0.02</dd></div>
-      <div><dt>{{PV_TARIFF_LINE}}</dt><dd>+£0.05</dd></div>
-      <div><dt>{{PV_TARIFF_STANZA}}</dt><dd>+£0.10</dd></div>
-      <div><dt>{{PV_TARIFF_PRICE}}</dt><dd>{{PV_TARIFF_ROUNDING}}</dd></div>
-      <div><dt>{{PV_TARIFF_FONT}}</dt><dd>+£1.99</dd></div>
-      <div><dt>{{PV_TARIFF_TRANSLATION}}</dt><dd>+£1.99</dd></div>
-    </dl></section>
-    <section><p class="eyebrow">03</p><h2>{{PV_ABOUT_OBJECT}}</h2><p>{{PV_ABOUT_OBJECT_BODY}}</p></section>
-    <section><p class="eyebrow">04</p><h2>{{PV_ABOUT_ACCESS}}</h2><p>{{PV_ABOUT_ACCESS_BODY}}</p></section>
-    <section><p class="eyebrow">05</p><h2>{{PV_ABOUT_POSITION}}</h2><p>{{PV_ABOUT_POSITION_BODY}}</p></section>
-    <section class="pv-context-note"><p class="eyebrow">06</p><h2>{{PV_ABOUT_CONTEXT}}</h2><p>{{PV_ABOUT_CONTEXT_BODY}}</p><ul class="pv-references">
-      <li><a href="https://www.moma.org/audio/playlist/25/455" rel="external">Marcel Broodthaers · <cite>Pense-Bête</cite></a></li>
-      <li><a href="https://www.felixgonzalez-torresfoundation.org/works/untitled-passport" rel="external">Felix Gonzalez-Torres · <cite>“Untitled” (Passport)</cite></a></li>
-      <li><a href="https://short-edition.com/en/p/short-story-dispenser" rel="external">Short Édition · Short Story Dispenser</a></li>
-      <li><a href="https://reframingthehouseofdust.com/about/" rel="external">Alison Knowles / James Tenney · <cite>The House of Dust</cite></a></li>
-    </ul></section>
+  <div class="pv-entry">
+    {{PV_TOC}}
+    <figure class="pv-specimen">
+      <a class="pv-specimen-image" href="/poetry-voucher/sample-full.png" aria-label="{{PV_SPECIMEN_OPEN}}"><img src="/poetry-voucher/sample-full.png" width="{{PV_FULL_WIDTH}}" height="{{PV_FULL_HEIGHT}}" alt="{{PV_PREVIEW_ALT}}" decoding="async"></a>
+      <figcaption><h2>{{PV_SPECIMEN_LABEL}}</h2><p>{{PV_SPECIMEN_BODY}}</p><p class="specimen-date">{{PV_SAMPLE}}</p><a href="/poetry-voucher/sample-full.png">{{PV_SPECIMEN_OPEN}}</a></figcaption>
+    </figure>
   </div>
+  <figure class="pv-structure-diagram" aria-labelledby="pv-diagram-title">
+    <figcaption id="pv-diagram-title">{{PV_DIAGRAM_TITLE}}</figcaption>
+    <div class="pv-diagram-flow">
+      <div class="pv-diagram-node"><span class="pv-diagram-code">01</span><strong>{{PV_DIAGRAM_RECEIPT}}</strong><small>{{PV_DIAGRAM_RECEIPT_NOTE}}</small></div>
+      <div class="pv-diagram-join" aria-hidden="true"><span>CUT HERE</span></div>
+      <div class="pv-diagram-node"><span class="pv-diagram-code">02</span><strong>{{PV_DIAGRAM_POEM}}</strong><small>{{PV_DIAGRAM_POEM_NOTE}}</small></div>
+    </div>
+    <p class="pv-diagram-cut"><span>{{PV_DIAGRAM_CUT}}</span> · {{PV_DIAGRAM_CUT_NOTE}}</p>
+  </figure>
+  <div class="pv-notes pv-essay">
+    {{PV_NOTES}}
+  </div>
+  <nav class="pv-source-reading" aria-label="{{PV_READ}}"><a href="{{CI_HREF}}">{{PV_READ}}</a><a href="{{SHI_HREF}}">{{PV_READ_SHI}}</a></nav>
+  {{PV_REFERENCES}}
   <div class="pv-end"><a class="pv-cta" href="{{PV_MAKE_URL}}">{{PV_EDIT}}</a><p>58 mm / 384 dots / 1 bit</p></div>
 </main>
-<footer class="page-footer"><p><a href="{{HOME_HREF}}#work">03 / {{common.nav.work}}</a></p><p><a href="{{CI_HREF}}">{{PV_READ}}</a> · <a href="{{CONTEXTS_HREF}}">{{CONTEXTS_LINK_LABEL}}</a> · <a href="{{ABOUT_HREF}}">{{ABOUT_LINK_LABEL}}</a></p></footer>
+<footer class="page-footer"><p><a href="{{HOME_HREF}}#work">{{PV_SECTION_NUMBER}} / {{common.nav.work}}</a></p><p class="page-footer-context"><a href="{{CI_HREF}}">{{PV_READ}}</a><span aria-hidden="true"> · </span><a href="{{CONTEXTS_HREF}}">{{CONTEXTS_LINK_LABEL}}</a><span aria-hidden="true"> · </span><a href="{{ABOUT_HREF}}">{{ABOUT_LINK_LABEL}}</a></p></footer>
 </div>
 </body>
 </html>

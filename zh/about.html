@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google" content="notranslate">
 <title>關於本站 · Hanpu Li</title>
-<meta name="description" content="Hanpu Li 個人網站的實作說明：靜態架構、多語發佈、字體、無障礙、響應式媒體、測試與 GitHub Pages 部署。">
+<meta name="description" content="關於 Hanpu Li 多語種出版物的編輯説明：選編、視覺形式、翻譯、版本、閲讀、作者責任與技術維護。">
 <link rel="canonical" href="https://hanpuli.github.io/zh/about.html">
 <link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/about.html">
 <link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/about.html">
@@ -18,7 +18,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hanpu Li">
 <meta property="og:title" content="關於本站 · Hanpu Li">
-<meta property="og:description" content="Hanpu Li 個人網站的實作說明：靜態架構、多語發佈、字體、無障礙、響應式媒體、測試與 GitHub Pages 部署。">
+<meta property="og:description" content="關於 Hanpu Li 多語種出版物的編輯説明：選編、視覺形式、翻譯、版本、閲讀、作者責任與技術維護。">
 <meta property="og:image" content="https://hanpuli.github.io/assets/social/about.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -34,7 +34,7 @@
 <meta property="og:locale:alternate" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="關於本站 · Hanpu Li">
-<meta name="twitter:description" content="Hanpu Li 個人網站的實作說明：靜態架構、多語發佈、字體、無障礙、響應式媒體、測試與 GitHub Pages 部署。">
+<meta name="twitter:description" content="關於 Hanpu Li 多語種出版物的編輯説明：選編、視覺形式、翻譯、版本、閲讀、作者責任與技術維護。">
 <meta name="twitter:image" content="https://hanpuli.github.io/assets/social/about.png">
 <meta name="twitter:image:alt" content="關於本站 · Hanpu Li">
 <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
@@ -47,8 +47,9 @@
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/shippori-mincho-subset.woff2" crossorigin>
 <script src="../assets/accessibility.js"></script>
 <link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/editorial-notes.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"AboutPage","@id":"https://hanpuli.github.io/zh/about.html#page","url":"https://hanpuli.github.io/zh/about.html","name":"關於本站 · Hanpu Li","description":"Hanpu Li 個人網站的實作說明：靜態架構、多語發佈、字體、無障礙、響應式媒體、測試與 GitHub Pages 部署。","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"zh-Hant-HK","about":{"@id":"https://hanpuli.github.io/#person"}}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞","Caitlyn Lye"],"url":"https://hanpuli.github.io/","sameAs":["https://github.com/HanpuLi"],"knowsAbout":["writing","film criticism","photography","remote sensing","software systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"AboutPage","@id":"https://hanpuli.github.io/zh/about.html#page","url":"https://hanpuli.github.io/zh/about.html","name":"關於本站 · Hanpu Li","description":"關於 Hanpu Li 多語種出版物的編輯説明：選編、視覺形式、翻譯、版本、閲讀、作者責任與技術維護。","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"zh-Hant-HK","about":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 </head>
 <body class="about-page locale-zh">
@@ -99,141 +100,58 @@
 
   <main id="main" tabindex="-1">
     <header class="about-hero">
-      <p class="about-eyebrow">出版札記 · 2026</p>
+      <p class="about-eyebrow">編輯札記 · 2026</p>
       <h1>關於本站</h1>
       <div class="about-intro">
-        <p class="about-lede">本站首先是一份出版物，而不是一個應用程式。七個語言版本各自都是完整的靜態文件，使用本地字體，不設追蹤，也不在執行時翻譯；技術架構只用來讓這些出版選擇保持穩定。</p>
-        <p class="about-principle">原文權威、翻譯關係、可讀性與私隱優先；建置與測試細節由這些編輯約束派生。</p>
+        <p class="about-lede">這裏刊載寫作、詞、攝影、研究與出版實驗。不同工作在此相鄰，但不被歸結為同一種實踐的例證，也不構成一份完整的人生檔案。</p>
+        <p class="about-principle">頁面參與作品被閲讀的過程。這些札記讓編輯選擇可以被檢查，不替讀者規定作品必須意味着什麼。</p>
       </div>
     </header>
 
 <nav class="about-toc" aria-label="本頁內容">
   <p>本頁內容</p>
   <ol>
-    <li><a href="#languages"><span>01</span> 內容與語言</a></li>
-    <li><a href="#architecture"><span>02</span> 架構</a></li>
-    <li><a href="#layout"><span>03</span> 版式與字體</a></li>
-    <li><a href="#accessibility"><span>04</span> 無障礙</a></li>
-    <li><a href="#media"><span>05</span> 圖片與效能</a></li>
-    <li><a href="#quality"><span>06</span> 建置、QA 與部署</a></li>
-    <li><a href="#principles"><span>07</span> 原則</a></li>
+    <li><a href="#architecture"><span>01</span> 出版，而非羅列</a></li>
+    <li><a href="#layout"><span>02</span> 頁面怎樣獲得權威</a></li>
+    <li><a href="#languages"><span>03</span> 七個版本</a></li>
+    <li><a href="#media"><span>04</span> 編排與修訂</a></li>
+    <li><a href="#accessibility"><span>05</span> 讀者可以改變頁面</a></li>
+    <li><a href="#quality"><span>06</span> 作者責任與證據</a></li>
+    <li><a href="#principles"><span>07</span> 製作與維護</a></li>
   </ol>
 </nav>
 
-    <section class="about-section" id="languages">
-      <div class="about-section-head">
-        <p class="about-section-no">01</p>
-        <h2>內容與語言</h2>
-        <p class="about-section-dek">七個版本，沒有執行時翻譯。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>英文、香港繁體中文、簡體中文、日文、德文、法文與俄文均生成為獨立靜態版本，各有 canonical 網址、hreflang 替代連結與語系中繼資料。</p>
-        <p>文學文本比一般介面文字有更嚴格的規則。指定情況下以繁體中文原文為正；簡體文學版本只做字形轉換並核對來源雜湊，譯文則由專門檢查維持分行與分闋結構。</p>
-        <dl class="about-facts">
-          <div><dt>語系</dt><dd>en-GB · zh-Hant-HK · zh-Hans · ja · de · fr · ru</dd></div>
-          <div><dt>文學轉換</dt><dd>OpenCC 輔助 · 來源雜湊 · 行數一致性</dd></div>
-          <div><dt>中繼資料</dt><dd>canonical · hreflang · Open Graph</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="architecture">
-      <div class="about-section-head">
-        <p class="about-section-no">02</p>
-        <h2>架構</h2>
-        <p class="about-section-dek">刻意保持靜態。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>作品站由小型模板與結構化 JSON 生成完整 HTML5 文件。Python 3 標準函式庫生成器會預先輸出每個語言版本，瀏覽器毋須在執行時拼裝頁面。</p>
-        <p>網站從 main 分支經 GitHub Pages 發佈。作品站背後沒有 CMS、應用框架、資料庫或伺服器端應用。</p>
-        <dl class="about-facts">
-          <div><dt>執行時</dt><dd>HTML5 · CSS · 原生 JavaScript</dd></div>
-          <div><dt>建置</dt><dd>Python 3 · JSON · HTML 模板</dd></div>
-          <div><dt>託管</dt><dd>GitHub Pages</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="layout">
-      <div class="about-section-head">
-        <p class="about-section-no">03</p>
-        <h2>版式與字體</h2>
-        <p class="about-section-dek">編輯式 CSS，不用元件框架。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>版式使用 CSS Grid、subgrid、容器查詢、邏輯屬性、自訂屬性與流動的 clamp() 尺寸。媒體查詢只作保守後備；支援容器查詢的瀏覽器會讓元件依自己的可用寬度重排。</p>
-        <p>字體全部以 WOFF2 自行託管。拉丁正文主要用 EB Garamond，中繼資料用 Courier Prime／Cousine，繁體中文與日文用 Shippori Mincho，簡體中文用 Noto Serif SC，少量香港字形缺口由極小的 I.Ming 子集補齊。CJK 子集以 fontTools 與 Brotli 重建；Noto 來源以提交版本與 SHA-256 固定。</p>
-        <dl class="about-facts">
-          <div><dt>版式</dt><dd>Grid · subgrid · 容器查詢 · 邏輯屬性</dd></div>
-          <div><dt>字體</dt><dd>EB Garamond · Courier Prime · Cousine · Shippori Mincho · Noto Serif SC · I.Ming</dd></div>
-          <div><dt>色彩</dt><dd>明／暗色 · prefers-color-scheme</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="accessibility">
-      <div class="about-section-head">
-        <p class="about-section-no">04</p>
-        <h2>無障礙</h2>
-        <p class="about-section-dek">可以調整，但不刪內容。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>作品站使用語義地標、單一主標題、跳至內容連結、清晰的鍵盤焦點、完整語言名稱與足夠大的觸控目標；亦尊重減少動態、提高對比與強制色彩等系統偏好。</p>
-        <p>閱讀面板可切換無襯線字體、放大文字、增加字距行距、縮窄欄寬、簡化版式、減少動態與提高對比。這些都是漸進增強，只在瀏覽器本地保存偏好。</p>
-        <dl class="about-facts">
-          <div><dt>閱讀偏好</dt><dd>無襯線 · 大字 · 字距／行距 · 窄行 · 簡化版式 · 動態 · 對比</dd></div>
-          <div><dt>儲存</dt><dd>只用 localStorage</dd></div>
-          <div><dt>檢查</dt><dd>自製結構審計 · axe-core 瀏覽器審計</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="media">
-      <div class="about-section-head">
-        <p class="about-section-no">05</p>
-        <h2>圖片與效能</h2>
-        <p class="about-section-dek">響應式媒體，不靠圖庫程式。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>攝影與研究圖版使用 picture/srcset，提供 WebP 與 JPEG 尺寸候選，並明確標示寬高與響應式 sizes。首張圖優先載入，頁面較下方的媒體則延遲載入並非同步解碼。</p>
-        <p>頁面下方區段可使用 content-visibility；View Transitions 與 scroll-linked motion 都只是可選的漸進增強。使用者要求減少動態時會停用動態。</p>
-        <dl class="about-facts">
-          <div><dt>圖片</dt><dd>picture · srcset · WebP · JPEG</dd></div>
-          <div><dt>載入</dt><dd>明確尺寸 · 延遲載入 · 非同步解碼</dd></div>
-          <div><dt>漸進 CSS</dt><dd>content-visibility · View Transitions · 捲動時間軸</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="about-section" id="quality">
-      <div class="about-section-head">
-        <p class="about-section-no">06</p>
-        <h2>建置、QA 與部署</h2>
-        <p class="about-section-dek">生成結果本身就是可測試的產物。</p>
-      </div>
-      <div class="about-section-copy">
-        <p>儲存庫會檢查生成頁是否最新、各語系結構是否一致、文學結構有沒有漂移、無障礙地標與控制項是否完整、本地連結和頁內錨點是否有效、圖片是否有替代文字，以及 JavaScript 能否解析。</p>
-        <p>瀏覽器 QA 另做跨語言與窄／寬視窗幾何檢查、axe-core 無障礙掃描與 HTML 驗證。GitHub Actions 在推送與 pull request 時先跑輕依賴檢查，通過後再跑瀏覽器套件；GitHub Pages 則獨立從 main 發佈同一批靜態檔案。</p>
-        <dl class="about-facts">
-          <div><dt>儲存庫檢查</dt><dd>生成狀態 · 多語一致性 · 無障礙 · 連結／資源 · JS 語法</dd></div>
-          <div><dt>瀏覽器 QA</dt><dd>Playwright · axe-core · html-validate</dd></div>
-          <div><dt>交付</dt><dd>GitHub Actions · GitHub Pages</dd></div>
-        </dl>
-      </div>
-    </section>
+<section class="about-section editorial-section" id="architecture" aria-labelledby="heading-architecture"><div class="about-section-head"><p class="about-section-no">01</p><h2 id="heading-architecture">出版，而非羅列</h2><p class="about-section-dek">選編本身就是一種工作。</p></div><div class="about-section-copy"><p>一篇文章需要持續閲讀，一張照片需要觀看，一個研究項目需要能夠返回方法與證據的路徑。它們在此相鄰，並不意味着具有相同目的，或應以相同標準判斷是否完成。本站既是一份出版物，也是一份作品選集；兩者都不是窮盡一切的檔案。</p>
+<p>作品在前，職業資料在後。署名、早期活動與公開記錄另置於書後資料式的頁面，便於核查，而不讓履歷成為每首詩、每張照片的解釋。證據鏈接只能支持具體事項，不能替整項實踐背書。</p></div></section>
+<section class="about-section editorial-section" id="layout" aria-labelledby="heading-layout"><div class="about-section-head"><p class="about-section-no">02</p><h2 id="heading-layout">頁面怎樣獲得權威</h2><p class="about-section-dek">經過設計的表面並不中立。</p></div><div class="about-section-copy"><p>暖色底、深色文字、細線與頁邊編號借用的是編輯出版物的組織方式，而不是仿造一張舊紙。散文與詩行有各自展開的空間，等寬標籤區分日期、序次與出版信息。重複的對齊關係讓不同材料可以辨認，但不把每件作品壓進同一種卡片。</p>
+<p>這種剋制也會產生權威感。整齊的網格可能讓未完成的研究看上去已經定論。因此，狀態説明、來源與版本日期和字體同樣重要：視覺統一不能替代證明。詩券也面對這個問題，一間精緻的商店正在把排印作為升級項出售。</p>
+<p>字體按書寫系統與閲讀用途分工，不充當各國的服裝。共用一個字體家族不等於中文與日文字形規範相同。每次改文案都要檢查覆蓋與回退；版面灰度一致，並不足以證明出現的是應有字形。</p></div></section>
+<section class="about-section editorial-section" id="languages" aria-labelledby="heading-languages"><div class="about-section-head"><p class="about-section-no">03</p><h2 id="heading-languages">七個版本</h2><p class="about-section-dek">翻譯是一種閲讀，不是一層可互換的外觀。</p></div><div class="about-section-copy"><p>英文、香港繁體中文、簡體中文、日文、德文、法文與俄文分別維護。英文是預設入口，不是每件作品的原作語言。切換界面不會把中文詩悄悄變成英文原作；部分長文仍保留其註明的出版語言。</p>
+<p>中文文學原文、簡體字形鏡像與譯文承擔不同的編輯角色。字形轉換不是另一份翻譯。翻譯有時必須更明確地決定主語、時態或關係，這些決定會改變詩裏原本懸而未決的東西。行數與詩節檢查可以發現結構漂移，不能認證一次文學理解。</p>
+<p>各語言保留共同導航與來源關係，不必產生完全相同的行長與字形。這是一份跨語言的共同出版物，不承諾七種語言看起來一樣，也不暗示每份譯文都經過獨立母語編輯審閲。</p></div></section>
+<section class="about-section editorial-section" id="media" aria-labelledby="heading-media"><div class="about-section-head"><p class="about-section-no">04</p><h2 id="heading-media">編排與修訂</h2><p class="about-section-dek">日期與相鄰關係會改變讀法。</p></div><div class="about-section-copy"><p>甲乙序列、集外作品，以及《屋頂裂開》的兩份有日期的稿本，各自保留區別。較晚的文本並不自動取代所有早稿。兩稿並置，讓刪改成為可以閲讀的過程，而不以“定稿”遮蔽它。</p>
+<p>選出的照片、研究圖版與數位小票樣本，是不同性質的圖像。圖注應當説明它們展示了什麼、不能證明什麼。屏幕校樣不是實物照片，地圖也不能證明所有擬議研究階段都已完成。編排與圖注負責交代這些關係，不讓圖像承擔一份履歷。</p></div></section>
+<section class="about-section editorial-section" id="accessibility" aria-labelledby="heading-accessibility"><div class="about-section-head"><p class="about-section-no">05</p><h2 id="heading-accessibility">讀者可以改變頁面</h2><p class="about-section-dek">作者安排形式，不等於鎖定顯示。</p></div><div class="about-section-copy"><p>Drucker 把物質性放到系統的使用中考察，而不止於結構。<sup class="editorial-citation"><a href="#ref-drucker" aria-label="札記的閲讀參照 1: Johanna Drucker">[1]</a></sup> 在這裏，這個問題很具體：能否返回一闋詞、比較版本、追索來源，或者改變閲讀條件而不丟失文本？裝飾性地像一本書，並不能回答它。</p>
+<p>閲讀控件允許調整字體、大小、間距、行寬、版式、動態與對比。這些是接觸同一材料的其他方式，不是設計的次等版本。鍵盤焦點、標題層級與文字替代仍然屬於出版工作，即使它們不是屏幕上最顯眼的部分。</p>
+<p>自動檢查能找到部分標籤缺失與排版故障，不能代替真正使用屏幕閲讀器的人，也不能證明一段圖像描述帶來了相等的體驗。無障礙是持續的編輯責任，不是測試套件頒發的標章。</p></div></section>
+<section class="about-section editorial-section" id="quality" aria-labelledby="heading-quality"><div class="about-section-head"><p class="about-section-no">06</p><h2 id="heading-quality">作者責任與證據</h2><p class="about-section-dek">可追溯的過程不是價值證書。</p></div><div class="about-section-copy"><p>作品以 Hanpu Li／李函璞署名，部分早期職業記錄使用 Caitlyn Lye；署名頁明確保留這層關係。本站的編輯與實現工作包括 AI 輔助起草、修改、編程與測試。這不意味着每首詩、每份譯文、每張照片都具有同一種製作歷史。</p>
+<p>源文件、生成工具與版本歷史有助於辨認什麼被改過、當前展示的是什麼。它們本身不能證明文學質量、實際打印成功、讀者反應或機構認可。項目自身的敍述與可以獨立核查的記錄應當保持區別。</p>
+<p>這些頁面中的學術參照用於檢查具體決定，並非全都是創作起點。比較應當揭示差異或限制；一串知名人物的名字不能補上未做的實驗，也不能讓讀者的反應變得可預測。</p></div></section>
 
     <section class="about-coda" id="principles" aria-labelledby="about-scope-heading">
       <div>
         <p class="about-section-no">07</p>
-        <h2 id="about-scope-heading">原則</h2>
+        <h2 id="about-scope-heading">製作與維護</h2>
       </div>
       <div class="about-coda-copy">
-        <p>本站把內容來源、生成結果與瀏覽器行為分成不同層次：修改結構化內容與模板，重新生成，再核對輸出的文件。</p>
-        <p>漸進增強從一開始就是可有可無的一層。即使瀏覽器不支援某些 CSS、JavaScript 被停用，或本地儲存不可用，作品仍須完整可讀，導覽亦不能失效。</p>
-        <h3>瀏覽器執行時的私隱</h3>
-        <p>作品站不載入 analytics、廣告網絡、第三方 web font 或追蹤 script，也不設 cookie。作品站唯一持久的瀏覽器狀態，是本地閱讀偏好記錄。</p>
+        <p>小型 Python 構建器把結構化內容與模板生成靜態 HTML。字體和圖片隨站點託管；字體系統包括 EB Garamond、Courier Prime、Cousine、Shippori Mincho、Noto Serif SC 與 I.Ming。響應式版式及可選閲讀控件使文檔適應閲讀條件。普通閲讀頁不依賴 JavaScript；詩券商店需要它在瀏覽器中製作版本。</p>
+        <p>構建、多語、鏈接、字體與瀏覽器檢查為這些出版決定服務。這是維護，不是美學論證。公開倉庫供人檢查，並不向所有創作內容授予一攬子開放許可。詩券另行允許個人保存、打印，以及把打印件贈給他人。</p>
+        <h3>本地狀態與託管</h3>
+        <p>本站不添加分析工具、廣告腳本或追蹤 cookie。閲讀偏好留在瀏覽器中。詩券也會保存本地目錄購物袋，並把完成的訂單留在當前分頁；它不扣款、不聯繫打印機。這些限制描述的是本站自己的代碼，不保證託管服務商沒有訪問日誌。點擊外部來源會進入相應提供方的網站。</p>
       </div>
     </section>
+<p class="editorial-related"><a href="/zh/poetry-voucher/">詩券 · 作品介紹</a></p>
+<section id="references" class="editorial-references" aria-labelledby="references-heading"><h2 id="references-heading">札記的閲讀參照</h2><p>參照只用於具體問題，不表示本站已經實現某套完整理論。</p><ol><li id="ref-drucker"><span lang="en">Johanna Drucker. <a href="https://www.digitalhumanities.org/dhq/vol/7/1/000143/000143.html"><cite>Performative Materiality and Theoretical Approaches to Interface</cite></a>. Digital Humanities Quarterly 7(1), 2013, especially paragraphs 8–12. <a class="reference-copy" href="https://scalar.usc.edu/works/autora-escritural-posthumana/media/Drucker,%20Johanna%20-%20Performative%20Materiality.pdf">PDF · USC Scalar</a></span></li></ol></section>
   </main>
 
   <footer class="page-footer about-footer">
