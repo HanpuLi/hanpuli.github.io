@@ -545,7 +545,8 @@ async function generate(event){
     const result=render(spec),png=await new Promise(resolve=>result.full.toBlob(resolve,'image/png'));
     if(revision!==currentRevision){message('排版時內容已改動，請再製作一次。');return;}
     objectURLs.forEach(URL.revokeObjectURL);objectURLs=[];
-    for(const kind of ['receipt','voucher','full']){$(kind+'-image').src=result[kind].toDataURL('image/png');$(kind+'-image').hidden=false;$(kind+'-pdf').href=blobURL(pdf(result[kind]));$(kind+'-pdf').hidden=false;}
+    for(const kind of ['receipt','voucher','full']){$(kind+'-image').src=result[kind].toDataURL('image/png');$(kind+'-image').hidden=false;}
+    $('full-pdf').href=blobURL(pdf(result.full));$('full-pdf').hidden=false;
     $('full-png').href=blobURL(png);$('full-png').hidden=false;
     $('reading-title').textContent=spec.title;$('reading-author').textContent=spec.author;$('reading-poem').textContent=spec.poem;$('reading-poem').lang=spec.locale;
     $('translation-section').hidden=!selected.length;$('translation-section').lang=selected[0]?.locale||'en';$('translation-title').textContent=selected.map(item=>item.title).join(' / ');$('translation').textContent=selected.map(item=>item.body).join('\n\n');

@@ -159,7 +159,7 @@ try{
       const work=works.find(w=>w.id===specimen.workId),translation=specimen.bilingual?work.translations.en.body:'',q=quotePoem(work.poem,translation,specimen.font);
       const sampleDate=new Date(specimen.created),sampleRef=receiptReference(sampleDate,Uint8Array.from(specimen.entropy));
       const r=render({work,original:true,font:specimen.font,size:specimen.size,locale:specimen.locale,title:work.title,author:work.author,poem:work.poem,translation,translationTitle:work.translations.en.title,translationLocale:'en',ref:sampleRef,created:sampleDate,...q,method:specimen.method});
-      return {receipt:r.receipt.toDataURL(),voucher:r.voucher.toDataURL()};
+      return {receipt:r.receipt.toDataURL(),voucher:r.voucher.toDataURL(),full:r.full.toDataURL()};
     },BASIC_SPECIMEN);
     for(const [kind,data] of Object.entries(samples))await writeFile(`poetry-voucher/sample-${kind}.png`,Buffer.from(data.split(',')[1],'base64'));
   }

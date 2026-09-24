@@ -71,7 +71,7 @@
       const heading=node('h3',title),excerpt=node('p',(edition?.body||work.poem).split('\n').filter(Boolean).slice(0,3).join('\n'),'product-excerpt');
       if(!edition){heading.lang='zh-Hant-HK';excerpt.lang='zh-Hant-HK';}
       const foot=node('div',undefined,'product-foot'),price=node('strong',uiMoney(quotePoem(work.poem).price),'product-price');
-      foot.append(price,node('span',t('original').replace('{size}',String(TYPE_CONFIG.defaultSize)),'product-spec'));
+      foot.append(price);
       const actions=node('div',undefined,'product-actions');
       actions.append(button(t('choose'),()=>openEditor(work.id),'text-button'),button(t('add'),()=>addDefault(work),'add-button'));
       card.append(head,heading,excerpt,foot,actions);grid.append(card);

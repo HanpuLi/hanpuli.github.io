@@ -31,16 +31,30 @@
     <div class="pv-heading"><p class="eyebrow">{{PV_TYPE}}</p><h1 id="pv-title"><span lang="en">Poetry<br><em>Voucher</em></span></h1><p class="pv-subtitle">{{PV_SUBTITLE}}</p></div>
     <div class="pv-description"><p>{{PV_DESCRIPTION}}</p><a class="pv-cta" href="{{PV_MAKE_URL}}">{{PV_MAKE}}</a><a class="pv-text-link" href="{{CI_HREF}}">{{PV_READ}}</a></div>
   </section>
-  <figure class="pv-sample" aria-label="{{PV_PREVIEW_ALT}}">
-    <div class="pv-papers"><div><p>{{PV_RECEIPT}}</p><img src="/poetry-voucher/sample-receipt.png" width="{{PV_RECEIPT_WIDTH}}" height="{{PV_RECEIPT_HEIGHT}}" alt="{{PV_RECEIPT}}" decoding="async"></div><div><p>{{PV_VOUCHER}}</p><img src="/poetry-voucher/sample-voucher.png" width="{{PV_VOUCHER_WIDTH}}" height="{{PV_VOUCHER_HEIGHT}}" alt="{{PV_VOUCHER}}" decoding="async"></div></div>
+  <figure class="pv-sample pv-continuous-sample" aria-label="{{PV_PREVIEW_ALT}}">
+    <div class="pv-strip-sample"><p>{{PV_RECEIPT}} + CUT HERE + {{PV_VOUCHER}}</p><img src="/poetry-voucher/sample-full.png" width="{{PV_FULL_WIDTH}}" height="{{PV_FULL_HEIGHT}}" alt="{{PV_PREVIEW_ALT}}" decoding="async"></div>
     <figcaption>{{PV_SAMPLE}}</figcaption>
   </figure>
   <div class="pv-notes">
     <section><p class="eyebrow">01</p><h2>{{PV_ABOUT_ORIGIN}}</h2><p>{{PV_ABOUT_ORIGIN_BODY}}</p></section>
-    <section><p class="eyebrow">02</p><h2>{{PV_ABOUT_PRICE}}</h2><p>{{PV_ABOUT_PRICE_BODY}}</p></section>
+    <section><p class="eyebrow">02</p><h2>{{PV_ABOUT_PRICE}}</h2><p>{{PV_ABOUT_PRICE_BODY}}</p><dl class="pv-tariff">
+      <div><dt>{{PV_TARIFF_BASE}}</dt><dd>£1.00</dd></div>
+      <div><dt>{{PV_TARIFF_CHAR}}</dt><dd>+£0.02</dd></div>
+      <div><dt>{{PV_TARIFF_LINE}}</dt><dd>+£0.05</dd></div>
+      <div><dt>{{PV_TARIFF_STANZA}}</dt><dd>+£0.10</dd></div>
+      <div><dt>{{PV_TARIFF_PRICE}}</dt><dd>{{PV_TARIFF_ROUNDING}}</dd></div>
+      <div><dt>{{PV_TARIFF_FONT}}</dt><dd>+£1.99</dd></div>
+      <div><dt>{{PV_TARIFF_TRANSLATION}}</dt><dd>+£1.99</dd></div>
+    </dl></section>
     <section><p class="eyebrow">03</p><h2>{{PV_ABOUT_OBJECT}}</h2><p>{{PV_ABOUT_OBJECT_BODY}}</p></section>
     <section><p class="eyebrow">04</p><h2>{{PV_ABOUT_ACCESS}}</h2><p>{{PV_ABOUT_ACCESS_BODY}}</p></section>
     <section><p class="eyebrow">05</p><h2>{{PV_ABOUT_POSITION}}</h2><p>{{PV_ABOUT_POSITION_BODY}}</p></section>
+    <section class="pv-context-note"><p class="eyebrow">06</p><h2>{{PV_ABOUT_CONTEXT}}</h2><p>{{PV_ABOUT_CONTEXT_BODY}}</p><ul class="pv-references">
+      <li><a href="https://www.moma.org/audio/playlist/25/455" rel="external">Marcel Broodthaers · <cite>Pense-Bête</cite></a></li>
+      <li><a href="https://www.felixgonzalez-torresfoundation.org/works/untitled-passport" rel="external">Felix Gonzalez-Torres · <cite>“Untitled” (Passport)</cite></a></li>
+      <li><a href="https://short-edition.com/en/p/short-story-dispenser" rel="external">Short Édition · Short Story Dispenser</a></li>
+      <li><a href="https://reframingthehouseofdust.com/about/" rel="external">Alison Knowles / James Tenney · <cite>The House of Dust</cite></a></li>
+    </ul></section>
   </div>
   <div class="pv-end"><a class="pv-cta" href="{{PV_MAKE_URL}}">{{PV_EDIT}}</a><p>58 mm / 384 dots / 1 bit</p></div>
 </main>

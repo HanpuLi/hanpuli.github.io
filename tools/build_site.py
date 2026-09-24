@@ -1073,6 +1073,8 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
     )
     pv_receipt_width, pv_receipt_height = png_dimensions(ROOT / "poetry-voucher" / "sample-receipt.png")
     pv_voucher_width, pv_voucher_height = png_dimensions(ROOT / "poetry-voucher" / "sample-voucher.png")
+    pv_full_path = ROOT / "poetry-voucher" / "sample-full.png"
+    pv_full_width, pv_full_height = png_dimensions(pv_full_path) if pv_full_path.exists() else (pv_receipt_width, pv_receipt_height + pv_voucher_height)
     pv_editorial_width, pv_editorial_height = png_dimensions(ROOT / "assets" / "projects" / "poetry-voucher" / "poetry-voucher-paper-960.png")
     return {
         **{"PV_" + key.upper(): html.escape(value, quote=True) for key, value in POETRY_VOUCHER[locale_id].items()},
@@ -1087,6 +1089,8 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "PV_RECEIPT_HEIGHT": str(pv_receipt_height),
         "PV_VOUCHER_WIDTH": str(pv_voucher_width),
         "PV_VOUCHER_HEIGHT": str(pv_voucher_height),
+        "PV_FULL_WIDTH": str(pv_full_width),
+        "PV_FULL_HEIGHT": str(pv_full_height),
         "PV_EDITORIAL_WIDTH": str(pv_editorial_width),
         "PV_EDITORIAL_HEIGHT": str(pv_editorial_height),
         "HTML_LANG": html.escape(lang["html_lang"], quote=True),

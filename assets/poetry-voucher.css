@@ -99,37 +99,89 @@ html[data-reading-sans] .pv-heading h1 em{
 .pv-papers>div:nth-child(2){
   padding-block-start:3rem
 }
+.pv-strip-sample{
+  display:flex;
+  flex-direction:column;
+  align-items:center
+}
+.pv-strip-sample>p{
+  align-self:stretch;
+  margin:0 0 1.5rem;
+  font:10px/1.5 var(--mono);
+  letter-spacing:.06em;
+  color:var(--muted);
+  text-align:center;
+  text-transform:uppercase
+}
+.pv-strip-sample img{
+  display:block;
+  width:min(384px,100%);
+  height:auto;
+  background:#fff;
+  box-shadow:0 18px 40px rgba(23,22,20,.08)
+}
 .pv-sample figcaption{
   margin-top:3rem;
   text-align:center
 }
 .pv-notes{
   display:grid;
-  grid-template-columns:minmax(0,1.7fr) repeat(2,minmax(0,1fr));
-  gap:clamp(1.5rem,4vw,4rem);
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(2rem,4vw,4rem);
   padding-block:clamp(3rem,6vw,6rem);
   border-bottom:1px solid var(--line)
 }
-.pv-notes section:first-child{
-  padding-inline-end:clamp(0rem,2vw,2rem)
+.pv-notes section{
+  min-width:0
 }
 .pv-notes h2{
   font-size:1.35rem;
   font-weight:400;
   line-height:1.35
 }
-.pv-notes section:first-child h2{
-  font-size:clamp(1.8rem,2.4vw,2.45rem);
-  line-height:1.08
-}
 .pv-notes p:not(.eyebrow){
-  line-height:1.9;
+  line-height:1.85;
   color:var(--muted)
 }
-.pv-notes section:first-child p:not(.eyebrow){
-  max-inline-size:42ch;
-  color:var(--ink);
-  font-size:1.08rem
+.pv-tariff{
+  margin:1.25rem 0 0;
+  border-top:1px solid var(--line);
+  font:10px/1.45 var(--mono);
+  color:var(--muted)
+}
+.pv-tariff>div{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:1rem;
+  padding:.42rem 0;
+  border-bottom:1px solid var(--line)
+}
+.pv-tariff dt,.pv-tariff dd{
+  margin:0
+}
+.pv-tariff dd{
+  text-align:right;
+  font-variant-numeric:tabular-nums
+}
+.pv-references{
+  list-style:none;
+  padding:0;
+  margin:1.25rem 0 0;
+  border-top:1px solid var(--line)
+}
+.pv-references li{
+  border-bottom:1px solid var(--line);
+  padding:.65rem 0;
+  font-size:.78rem;
+  line-height:1.45
+}
+.pv-references a{
+  color:var(--muted);
+  text-decoration-thickness:1px;
+  text-underline-offset:.18em
+}
+.pv-references a:hover,.pv-references a:focus-visible{
+  color:var(--ink)
 }
 .pv-end{
   display:flex;
@@ -172,7 +224,7 @@ html[data-reading-simple] .pv-intro,html[data-reading-simple] .pv-notes{
     grid-template-columns:1fr
   }
   .pv-notes section{
-    max-inline-size:50ch
+    max-inline-size:52ch
   }
   .pv-end{
     align-items:start;

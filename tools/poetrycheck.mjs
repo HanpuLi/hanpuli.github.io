@@ -285,7 +285,7 @@ const studioTemplate=read('templates/poetry-voucher-studio.html');
 assert.match(studioTemplate,/<html lang="zh-Hant-HK"[^>]+data-default-locale="zh-Hant"/);
 assert(!/maxlength="(?:160|100|1800)"|£1\.99|\bPV3\b|58 mm \/ 384 dots \/ 1 bit/.test(studioTemplate),'studio duplicated a renderer-owned numeric parameter');
 const overviewTemplate=read('templates/poetry-voucher.html'),homeTemplate=read('templates/index.html');
-assert(overviewTemplate.includes('height="{{PV_RECEIPT_HEIGHT}}"')&&overviewTemplate.includes('height="{{PV_VOUCHER_HEIGHT}}"'));
+assert(overviewTemplate.includes('width="{{PV_FULL_WIDTH}}"')&&overviewTemplate.includes('height="{{PV_FULL_HEIGHT}}"')&&overviewTemplate.includes('/poetry-voucher/sample-full.png'));
 assert(homeTemplate.includes('height="{{PV_EDITORIAL_HEIGHT}}"'));
 assert(!/height="566"/.test(overviewTemplate));
 console.log(`poetrycheck: ${scenes} payment cases, pricing, ${localeRows.length} translation rows, ${data.works.length} public works and privacy invariants OK`);
