@@ -63,10 +63,28 @@
 
 
 @font-face {
+  font-family: "Site Serif Symbols";
+  src: url("fonts/site-serif-symbols.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0394, U+2248;
+}
+
+@font-face {
+  font-family: "Site Mono Symbols";
+  src: url("fonts/site-mono-symbols.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0394, U+2248;
+}
+
+@font-face {
   font-family: "Shippori Common";
   src: url("fonts/shippori-mincho-common.woff2") format("woff2");
   font-display: swap;
-  unicode-range: U+4E2D, U+51FD, U+65E5, U+674E, U+749E, U+7559, U+8A5E, U+8B49;
+  unicode-range: U+51FD, U+65E5, U+674E, U+749E, U+7559, U+7E41, U+8A5E, U+8B49;
 }
 
 @font-face {
@@ -110,8 +128,8 @@
   --paper-soft: #ece8df;
   --line: #d7d2c8;
   --accent: #8a2f1d;
-  --serif: "EB Garamond", Georgia, "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", serif;
-  --mono: "Courier Prime", "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
+  --serif: "EB Garamond", "Site Serif Symbols", Georgia, "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", serif;
+  --mono: "Courier Prime", "Cousine RU", "Site Mono Symbols", "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
   --readable-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Arial, sans-serif;
   --max: 1920px;
   --gutter: clamp(18px, 1.55vw, 30px);
@@ -132,7 +150,7 @@
 .essay-page.locale-ru,
 .about-page.locale-ru,
 .notfound-page.locale-ru {
-  --mono: "Cousine RU", "Courier Prime", "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
+  --mono: "Cousine RU", "Courier Prime", "Site Mono Symbols", "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
 }
 
 .site-home.locale-zh-hans,
@@ -141,8 +159,8 @@
 .essay-page.locale-zh-hans,
 .about-page.locale-zh-hans,
 .notfound-page.locale-zh-hans {
-  --serif: "EB Garamond", Georgia, "Noto Serif SC Site", "Songti SC", "Noto Serif CJK SC", serif;
-  --mono: "Courier Prime", "Noto Serif SC Site", "Songti SC", "Courier New", monospace;
+  --serif: "EB Garamond", "Site Serif Symbols", Georgia, "Noto Serif SC Site", "Songti SC", "Noto Serif CJK SC", serif;
+  --mono: "Courier Prime", "Cousine RU", "Site Mono Symbols", "Noto Serif SC Site", "Songti SC", "Courier New", monospace;
 }
 
 .site-home:not(.locale-zh-hans) .language-nav [lang="zh-Hans"],

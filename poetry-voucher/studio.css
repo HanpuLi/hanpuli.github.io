@@ -56,6 +56,24 @@
   font-display:swap
 }
 @font-face{
+  font-family:CousineRU;
+  src:url('/assets/fonts/cousine-cyrillic-400.woff2');
+  font-display:swap;
+  unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116
+}
+@font-face{
+  font-family:SiteSerifSymbols;
+  src:url('/assets/fonts/site-serif-symbols.woff2');
+  font-display:swap;
+  unicode-range:U+0394,U+2248
+}
+@font-face{
+  font-family:SiteMonoSymbols;
+  src:url('/assets/fonts/site-mono-symbols.woff2');
+  font-display:swap;
+  unicode-range:U+0394,U+2248
+}
+@font-face{
   font-family:ShipCommon;
   src:url('/assets/fonts/shippori-mincho-common.woff2');
   font-display:swap
@@ -81,7 +99,7 @@
   font-display:swap
 }
 html[data-ui-locale="zh-Hans"]{
-  --serif:EB,Noto,ShipCommon,Ship,IMing,serif
+  --serif:EB,SiteSerifSymbols,Noto,ShipCommon,Ship,IMing,serif
 }
 :root{
   color-scheme:light dark;
@@ -92,9 +110,9 @@ html[data-ui-locale="zh-Hans"]{
   --panel:#ece8df;
   --field:#fcfaf6;
   --accent:#8a2f1d;
-  --serif:EB,ShipCommon,Ship,IMing,Noto,serif;
+  --serif:EB,SiteSerifSymbols,ShipCommon,Ship,IMing,Noto,serif;
   --ui:system-ui,-apple-system,'Segoe UI',sans-serif;
-  --mono:Courier,monospace
+  --mono:Courier,CousineRU,SiteMonoSymbols,ShipCommon,Ship,IMing,Noto,monospace
 }
 @media(prefers-color-scheme:dark){
   :root{

@@ -400,6 +400,7 @@ def main() -> int:
             json.dumps(about_site["zh-hans"], ensure_ascii=False),
             json.dumps(load(CONTENT / "poetry-voucher.json")["zh-hans"], ensure_ascii=False),
             json.dumps(load(CONTENT / "contexts.json")["zh-hans"], ensure_ascii=False),
+            json.dumps(load(CONTENT / "first-love-public.json")["zh-hans"], ensure_ascii=False),
             subprocess.check_output([
                 "node", "-e",
                 "const fs=require('node:fs'),vm=require('node:vm');"

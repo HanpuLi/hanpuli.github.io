@@ -102,6 +102,25 @@ subprocess.run([sys.executable, "-m", "fontTools.subset", SP,
 os.remove(common_txt)
 print(f"{len(common_chars)} 常用字 → {COMMON_OUT} ({os.path.getsize(COMMON_OUT)//1024} KB)")
 
+# The CSS unicode-range is part of the font contract. A glyph can be present in
+# the subset and still fall through to a system font if this range is stale.
+css_path = os.path.join(ROOT, "assets/site.css")
+css = open(css_path, encoding="utf-8").read()
+common_range = ", ".join(f"U+{ord(c):04X}" for c in common_chars)
+common_face = re.search(
+    r"@font-face\s*\{(?=[^}]*font-family:\s*[\"\']Shippori Common[\"\'])[^}]*unicode-range:\s*([^;]+);",
+    css,
+    flags=re.S,
+)
+actual_common_range = common_face.group(1).strip() if common_face else None
+if actual_common_range != common_range:
+    print(
+        f"Shippori Common unicode-range 不一致: CSS={actual_common_range!r}, 应为={common_range!r}",
+        file=sys.stderr,
+    )
+    raise SystemExit(1)
+print(f"Shippori Common unicode-range 已核对: {common_range}")
+
 txt = os.path.join(ROOT, "tools/.charset.txt")
 open(txt, "w", encoding="utf-8").write("".join(main_chars))
 subprocess.run([sys.executable, "-m", "fontTools.subset", SP,
@@ -117,8 +136,6 @@ if missing:
     rng = ", ".join(f"U+{ord(c):04X}" for c in missing)
     print(f"Shippori 缺字 {''.join(missing)} → I.MingCP 补丁已重建")
 
-    css_path = os.path.join(ROOT, "assets/site.css")
-    css = open(css_path, encoding="utf-8").read()
     face = re.search(
         r'@font-face\s*\{(?=[^}]*font-family:\s*["\']IMing Gap["\'])[^}]*unicode-range:\s*([^;]+);',
         css,
