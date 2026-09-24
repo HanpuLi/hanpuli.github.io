@@ -38,11 +38,16 @@ try{
       const counts=await page.evaluate(()=>({sections:document.querySelectorAll('.editorial-section').length,
         placeholders:document.body.innerText.includes('[[')||document.body.innerText.includes('{{'),
         citations:[...document.querySelectorAll('.editorial-citation a')].map(a=>({href:a.getAttribute('href'),exists:!!document.querySelector(a.getAttribute('href'))})),
-        texts:[...document.querySelectorAll('.editorial-section .about-section-copy')].map(n=>n.textContent.length)}));
+        texts:[...document.querySelectorAll('.editorial-section .about-section-copy')].map(n=>n.textContent.length),
+        siteVisual:document.querySelectorAll('.site-visual-grammar').length,
+        projectStructure:document.querySelectorAll('.pv-structure-diagram').length,
+        projectAesthetic:document.querySelectorAll('.pv-aesthetic-diagram').length}));
       assert.equal(counts.sections,kind==='site'?6:8,`${locale}/${kind}: section count`);
       assert(!counts.placeholders,`${locale}/${kind}: unexpanded copy`);
       assert(counts.texts.every(n=>n>120),`${locale}/${kind}: missing paragraphs`);
       assert(counts.citations.length>0&&counts.citations.every(x=>x.exists),`${locale}/${kind}: citation targets`);
+      if(kind==='site')assert.equal(counts.siteVisual,1,`${locale}/site: visual grammar`);
+      else{assert.equal(counts.projectStructure,1,`${locale}/project: structure diagram`);assert.equal(counts.projectAesthetic,1,`${locale}/project: aesthetic diagram`);}
       if(kind==='project'){
         await page.locator('.editorial-tariff summary').click();
         assert.equal(await page.locator('.pv-tariff > div').count(),7);
@@ -53,7 +58,7 @@ try{
         await page.setViewportSize({width,height:1000});
         const geometry=await page.evaluate(()=>{
           const overflow=document.documentElement.scrollWidth-document.documentElement.clientWidth;
-          const clipped=[...document.querySelectorAll('.page-nav a,.page-languages a,.pv-contents a,.editorial-section h2,.pv-tariff dd')]
+          const clipped=[...document.querySelectorAll('.page-nav a,.page-languages a,.pv-contents a,.editorial-section h2,.pv-tariff dd,.site-visual-cell strong,.pv-aesthetic-panel strong,.pv-aesthetic-kicker')]
             .filter(n=>n.getBoundingClientRect().width>0&&n.scrollWidth>n.clientWidth+1)
             .map(n=>({text:n.textContent.trim(),scroll:n.scrollWidth,client:n.clientWidth}));
           return {overflow,clipped};
@@ -79,6 +84,7 @@ try{
         await page.evaluate(()=>scrollTo(0,0));
         await page.screenshot({path:path.join(capture,`${locale}-${kind}-desktop.png`)});
         await page.locator(kind==='site'?'#layout':'#configuration').screenshot({path:path.join(capture,`${locale}-${kind}-body.png`)});
+        await page.locator(kind==='site'?'.site-visual-grammar':'.pv-aesthetic-diagram').screenshot({path:path.join(capture,`${locale}-${kind}-visual.png`)});
         await page.setViewportSize({width:390,height:844});
         await page.locator(kind==='site'?'#layout':'#pricing').screenshot({path:path.join(capture,`${locale}-${kind}-mobile.png`)});
       }
@@ -93,6 +99,8 @@ try{
     const page=await nojs.newPage();await page.goto(base+'/'+endpoint);
     assert(await page.locator('.editorial-section').count()>0);
     assert(await page.locator('.editorial-references a').count()>0);
+    if(endpoint==='about.html')assert.equal(await page.locator('.site-visual-grammar').count(),1);
+    else{assert.equal(await page.locator('.pv-structure-diagram').count(),1);assert.equal(await page.locator('.pv-aesthetic-diagram').count(),1);}
     if(endpoint.includes('voucher')){await page.locator('.editorial-tariff summary').click();assert(await page.locator('.pv-tariff').isVisible());}
   }
   await nojs.close();

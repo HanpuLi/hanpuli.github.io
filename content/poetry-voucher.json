@@ -141,7 +141,16 @@
     "diagram_poem": "POEM",
     "diagram_receipt_note": "records order, quantity and simulated payment",
     "diagram_cut_note": "offers a cut; does not require one",
-    "diagram_poem_note": "keeps text, source and copy identity"
+    "diagram_poem_note": "keeps text, source and copy identity",
+    "aesthetic_title": "Two visual registers",
+    "aesthetic_screen_label": "STOREFRONT",
+    "aesthetic_screen_heading": "selection / display",
+    "aesthetic_screen_note": "Serif display, warm ground and generous space make choosing feel deliberate.",
+    "aesthetic_output_label": "ISSUED STRIP",
+    "aesthetic_output_heading": "accounting / proof",
+    "aesthetic_output_note": "58 mm, one-bit output and mono/pixel hierarchy compress the transaction.",
+    "aesthetic_bridge_label": "TYPEFACE UPGRADE · +£1.99",
+    "aesthetic_bridge_note": "The optional site typeface carries the storefront’s visual authority into the issued poem."
   },
   "zh": {
     "title": "詩券",
@@ -285,7 +294,16 @@
     "diagram_poem": "詩",
     "diagram_receipt_note": "記錄訂單、數量與模擬付款",
     "diagram_cut_note": "提供切開的位置，不要求切開",
-    "diagram_poem_note": "保留文本、來源與每份身份"
+    "diagram_poem_note": "保留文本、來源與每份身份",
+    "aesthetic_title": "兩種視覺語域",
+    "aesthetic_screen_label": "商店頁面",
+    "aesthetic_screen_heading": "選擇 / 展示",
+    "aesthetic_screen_note": "襯線展示字、暖色底與較大的留白，讓選擇過程具有編輯出版物的秩序。",
+    "aesthetic_output_label": "發行紙條",
+    "aesthetic_output_heading": "記帳 / 憑據",
+    "aesthetic_output_note": "58 毫米、一位黑白輸出與等寬／點陣層級，把交易壓縮進小票尺度。",
+    "aesthetic_bridge_label": "字體升級 · +£1.99",
+    "aesthetic_bridge_note": "可選網站字體把商店頁面的視覺權威帶進實際發行的詩。"
   },
   "zh-hans": {
     "title": "诗券",
@@ -429,7 +447,16 @@
     "diagram_poem": "诗",
     "diagram_receipt_note": "记录订单、数量与模拟付款",
     "diagram_cut_note": "提供切开的位置，不要求切开",
-    "diagram_poem_note": "保留文本、来源与每份身份"
+    "diagram_poem_note": "保留文本、来源与每份身份",
+    "aesthetic_title": "两种视觉语域",
+    "aesthetic_screen_label": "商店页面",
+    "aesthetic_screen_heading": "选择 / 展示",
+    "aesthetic_screen_note": "衬线展示字、暖色底与较大的留白，让选择过程具有编辑出版物的秩序。",
+    "aesthetic_output_label": "发行纸条",
+    "aesthetic_output_heading": "记账 / 凭据",
+    "aesthetic_output_note": "58 毫米、一位黑白输出与等宽／点阵层级，把交易压缩进小票尺度。",
+    "aesthetic_bridge_label": "字体升级 · +£1.99",
+    "aesthetic_bridge_note": "可选网站字体把商店页面的视觉权威带进实际发行的诗。"
   },
   "ja": {
     "title": "詩の券",
@@ -573,7 +600,16 @@
     "diagram_poem": "詩",
     "diagram_receipt_note": "注文、数量、模擬支払いを記録",
     "diagram_cut_note": "切る位置を示すが、要求はしない",
-    "diagram_poem_note": "本文、出典、各部の識別を保つ"
+    "diagram_poem_note": "本文、出典、各部の識別を保つ",
+    "aesthetic_title": "二つの視覚体系",
+    "aesthetic_screen_label": "ストアフロント",
+    "aesthetic_screen_heading": "選択 / 展示",
+    "aesthetic_screen_note": "セリフの見出し、暖かな地色、広い余白が、選択を編集された出版物のように整えます。",
+    "aesthetic_output_label": "発行紙",
+    "aesthetic_output_heading": "会計 / 記録",
+    "aesthetic_output_note": "58 mm、一ビット出力、等幅／ドットの階層が取引をレシートの尺度に圧縮します。",
+    "aesthetic_bridge_label": "書体アップグレード · +£1.99",
+    "aesthetic_bridge_note": "任意のサイト書体は、ストアフロントの視覚的な権威を発行された詩へ持ち込みます。"
   },
   "de": {
     "title": "Poetry Voucher",
@@ -717,7 +753,16 @@
     "diagram_poem": "GEDICHT",
     "diagram_receipt_note": "zeichnet Bestellung, Menge und simulierte Zahlung auf",
     "diagram_cut_note": "bietet einen Schnitt an, verlangt ihn nicht",
-    "diagram_poem_note": "bewahrt Text, Quelle und Exemplarbezug"
+    "diagram_poem_note": "bewahrt Text, Quelle und Exemplarbezug",
+    "aesthetic_title": "Zwei visuelle Register",
+    "aesthetic_screen_label": "STOREFRONT",
+    "aesthetic_screen_heading": "Auswahl / Präsentation",
+    "aesthetic_screen_note": "Serifen, warmer Grund und großzügiger Raum inszenieren die Auswahl wie eine redigierte Publikation.",
+    "aesthetic_output_label": "AUSGEGEBENER STREIFEN",
+    "aesthetic_output_heading": "Abrechnung / Beleg",
+    "aesthetic_output_note": "58 mm, Einbit-Ausgabe und Mono-/Pixel-Hierarchie verdichten die Transaktion auf Bonmaß.",
+    "aesthetic_bridge_label": "SCHRIFT-UPGRADE · +£1.99",
+    "aesthetic_bridge_note": "Die optionale Website-Schrift trägt die visuelle Autorität des Storefronts in das ausgegebene Gedicht."
   },
   "fr": {
     "title": "Poetry Voucher",
@@ -861,7 +906,16 @@
     "diagram_poem": "POÈME",
     "diagram_receipt_note": "consigne commande, quantité et paiement simulé",
     "diagram_cut_note": "propose une coupe sans l’exiger",
-    "diagram_poem_note": "conserve texte, source et identité de l’exemplaire"
+    "diagram_poem_note": "conserve texte, source et identité de l’exemplaire",
+    "aesthetic_title": "Deux registres visuels",
+    "aesthetic_screen_label": "VITRINE",
+    "aesthetic_screen_heading": "sélection / présentation",
+    "aesthetic_screen_note": "Caractères à empattements, fond chaud et espace généreux donnent au choix l’ordre d’une publication éditée.",
+    "aesthetic_output_label": "BANDE ÉMISE",
+    "aesthetic_output_heading": "comptabilité / preuve",
+    "aesthetic_output_note": "58 mm, sortie un bit et hiérarchie mono/pixel condensent la transaction à l’échelle du ticket.",
+    "aesthetic_bridge_label": "OPTION TYPOGRAPHIQUE · +£1.99",
+    "aesthetic_bridge_note": "La police facultative du site transporte l’autorité visuelle de la vitrine dans le poème émis."
   },
   "ru": {
     "title": "Poetry Voucher",
@@ -1005,6 +1059,15 @@
     "diagram_poem": "СТИХ",
     "diagram_receipt_note": "фиксирует заказ, количество и симулированную оплату",
     "diagram_cut_note": "предлагает разрез, но не требует его",
-    "diagram_poem_note": "сохраняет текст, источник и идентичность экземпляра"
+    "diagram_poem_note": "сохраняет текст, источник и идентичность экземпляра",
+    "aesthetic_title": "Два визуальных регистра",
+    "aesthetic_screen_label": "ВИТРИНА",
+    "aesthetic_screen_heading": "выбор / показ",
+    "aesthetic_screen_note": "Шрифт с засечками, тёплый фон и свободное пространство придают выбору порядок редакционного издания.",
+    "aesthetic_output_label": "ВЫДАННАЯ ЛЕНТА",
+    "aesthetic_output_heading": "учёт / свидетельство",
+    "aesthetic_output_note": "58 мм, однобитный вывод и моно-/пиксельная иерархия сжимают транзакцию до масштаба чека.",
+    "aesthetic_bridge_label": "УЛУЧШЕНИЕ ШРИФТА · +£1.99",
+    "aesthetic_bridge_note": "Дополнительный шрифт сайта переносит визуальный авторитет витрины в выданное стихотворение."
   }
 }
