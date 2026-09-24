@@ -89,7 +89,18 @@
     "source_link": "site source",
     "toc_label": "On this page",
     "references_title": "Reading behind these notes",
-    "references_intro": "A reference used for a particular question, not a claim that the site implements a complete theory."
+    "references_intro": "A reference used for a particular question, not a claim that the site implements a complete theory.",
+    "design_title": "Visual grammar",
+    "design_reading_label": "Reading layer",
+    "design_reading_sample": "A page carries a voice.",
+    "design_reading_note": "Serif text carries poems, essays and descriptive prose.",
+    "design_meta_label": "Metadata layer",
+    "design_meta_sample": "03.1 / 2026 · SOURCE · VERSION",
+    "design_meta_note": "Monospaced text carries dates, sequence, source and status.",
+    "design_grid_label": "Alignment",
+    "design_grid_note": "A twelve-column grid provides shared anchors without forcing every work into the same card.",
+    "design_rule_label": "Separation",
+    "design_rule_note": "Hairlines divide states and sections without enclosing the work."
   },
   "zh": {
     "meta_title": "關於本站 · Hanpu Li",
@@ -181,7 +192,18 @@
     "source_link": "網站原始碼",
     "toc_label": "本頁內容",
     "references_title": "札記的閲讀參照",
-    "references_intro": "參照只用於具體問題，不表示本站已經實現某套完整理論。"
+    "references_intro": "參照只用於具體問題，不表示本站已經實現某套完整理論。",
+    "design_title": "視覺語法",
+    "design_reading_label": "閱讀層",
+    "design_reading_sample": "一頁有自己的聲音。",
+    "design_reading_note": "襯線字承載詩、文章與敘述性文字。",
+    "design_meta_label": "資料層",
+    "design_meta_sample": "03.1 / 2026 · 來源 · 版本",
+    "design_meta_note": "等寬字承載日期、序次、來源與狀態。",
+    "design_grid_label": "對齊",
+    "design_grid_note": "十二欄網格提供共同錨點，不把每件作品壓進同一張卡片。",
+    "design_rule_label": "分隔",
+    "design_rule_note": "細線區分狀態與章節，但不把作品框成盒子。"
   },
   "zh-hans": {
     "meta_title": "关于本站 · Hanpu Li",
@@ -273,7 +295,18 @@
     "source_link": "网站源代码",
     "toc_label": "本页内容",
     "references_title": "札记的阅读参照",
-    "references_intro": "参照只用于具体问题，不表示本站已经实现某套完整理论。"
+    "references_intro": "参照只用于具体问题，不表示本站已经实现某套完整理论。",
+    "design_title": "视觉语法",
+    "design_reading_label": "阅读层",
+    "design_reading_sample": "一页有自己的声音。",
+    "design_reading_note": "衬线字承载诗、文章与叙述性文字。",
+    "design_meta_label": "资料层",
+    "design_meta_sample": "03.1 / 2026 · 来源 · 版本",
+    "design_meta_note": "等宽字承载日期、序次、来源与状态。",
+    "design_grid_label": "对齐",
+    "design_grid_note": "十二栏网格提供共同锚点，不把每件作品压进同一张卡片。",
+    "design_rule_label": "分隔",
+    "design_rule_note": "细线区分状态与章节，但不把作品框成盒子。"
   },
   "ja": {
     "meta_title": "このサイトについて · Hanpu Li",
@@ -365,7 +398,18 @@
     "source_link": "サイトのソース",
     "toc_label": "このページ",
     "references_title": "このノートの参照文献",
-    "references_intro": "特定の問いのための参照であり、サイトが理論全体を実現したという主張ではありません。"
+    "references_intro": "特定の問いのための参照であり、サイトが理論全体を実現したという主張ではありません。",
+    "design_title": "視覚の文法",
+    "design_reading_label": "読解の層",
+    "design_reading_sample": "ページには声がある。",
+    "design_reading_note": "セリフ書体が詩、論考、説明文を担います。",
+    "design_meta_label": "メタデータの層",
+    "design_meta_sample": "03.1 / 2026 · 出典 · 版",
+    "design_meta_note": "等幅書体が日付、順序、出典、状態を担います。",
+    "design_grid_label": "配置",
+    "design_grid_note": "12列のグリッドは共通の基準線を与えますが、すべての作品を同じカードに押し込みません。",
+    "design_rule_label": "分離",
+    "design_rule_note": "細い罫線は状態や節を分けますが、作品を箱で囲いません。"
   },
   "de": {
     "meta_title": "Über diese Website · Hanpu Li",
@@ -457,7 +501,18 @@
     "source_link": "Quellcode der Website",
     "toc_label": "Auf dieser Seite",
     "references_title": "Lektüre zu diesen Notizen",
-    "references_intro": "Ein Bezug für eine bestimmte Frage, nicht die Behauptung, eine vollständige Theorie sei hier umgesetzt."
+    "references_intro": "Ein Bezug für eine bestimmte Frage, nicht die Behauptung, eine vollständige Theorie sei hier umgesetzt.",
+    "design_title": "Visuelle Grammatik",
+    "design_reading_label": "Leseschicht",
+    "design_reading_sample": "Eine Seite trägt eine Stimme.",
+    "design_reading_note": "Serifentext trägt Gedichte, Essays und beschreibende Prosa.",
+    "design_meta_label": "Metadatenschicht",
+    "design_meta_sample": "03.1 / 2026 · QUELLE · VERSION",
+    "design_meta_note": "Monospace trägt Datum, Reihenfolge, Quelle und Status.",
+    "design_grid_label": "Ausrichtung",
+    "design_grid_note": "Ein Zwölfspaltenraster gibt gemeinsame Anker, ohne jede Arbeit in dieselbe Karte zu zwingen.",
+    "design_rule_label": "Trennung",
+    "design_rule_note": "Feine Linien trennen Zustände und Abschnitte, ohne die Arbeit einzurahmen."
   },
   "fr": {
     "meta_title": "À propos du site · Hanpu Li",
@@ -549,7 +604,18 @@
     "source_link": "source du site",
     "toc_label": "Sur cette page",
     "references_title": "Lecture à l’appui de ces notes",
-    "references_intro": "Une référence pour une question précise, non l’affirmation que le site réalise une théorie complète."
+    "references_intro": "Une référence pour une question précise, non l’affirmation que le site réalise une théorie complète.",
+    "design_title": "Grammaire visuelle",
+    "design_reading_label": "Couche de lecture",
+    "design_reading_sample": "Une page porte une voix.",
+    "design_reading_note": "Le texte à empattements porte poèmes, essais et prose descriptive.",
+    "design_meta_label": "Couche de métadonnées",
+    "design_meta_sample": "03.1 / 2026 · SOURCE · VERSION",
+    "design_meta_note": "Le monospace porte dates, ordre, source et état.",
+    "design_grid_label": "Alignement",
+    "design_grid_note": "Une grille de douze colonnes fournit des repères communs sans forcer chaque œuvre dans la même carte.",
+    "design_rule_label": "Séparation",
+    "design_rule_note": "Des filets fins séparent états et sections sans enfermer l’œuvre."
   },
   "ru": {
     "meta_title": "О сайте · Hanpu Li",
@@ -641,6 +707,17 @@
     "source_link": "исходный код сайта",
     "toc_label": "На этой странице",
     "references_title": "Чтение к этим заметкам",
-    "references_intro": "Источник для конкретного вопроса, а не утверждение, что сайт воплощает целую теорию."
+    "references_intro": "Источник для конкретного вопроса, а не утверждение, что сайт воплощает целую теорию.",
+    "design_title": "Визуальная грамматика",
+    "design_reading_label": "Слой чтения",
+    "design_reading_sample": "У страницы есть голос.",
+    "design_reading_note": "Шрифт с засечками несёт стихи, эссе и описательную прозу.",
+    "design_meta_label": "Слой метаданных",
+    "design_meta_sample": "03.1 / 2026 · ИСТОЧНИК · ВЕРСИЯ",
+    "design_meta_note": "Моноширинный текст несёт даты, порядок, источник и статус.",
+    "design_grid_label": "Выравнивание",
+    "design_grid_note": "Двенадцатиколоночная сетка даёт общие опорные линии, не загоняя каждую работу в одну и ту же карточку.",
+    "design_rule_label": "Разделение",
+    "design_rule_note": "Тонкие линии разделяют состояния и разделы, не заключая работу в рамку."
   }
 }
