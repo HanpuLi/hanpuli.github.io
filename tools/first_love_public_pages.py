@@ -58,7 +58,7 @@ def _portfolio_nav(locale_id: str, locale: dict) -> str:
 
 def _reading_tools(locale: dict) -> str:
     reading = locale["common"]["reading"]
-    options = (("sans", "sans"), ("large", "large"), ("spacing", "spacing"),
+    options = (("sans", "sans"), ("dyslexia", "dyslexia"), ("large", "large"), ("spacing", "spacing"),
                ("measure", "measure"), ("simple", "simple"),
                ("motion", "motion"), ("contrast", "contrast"))
     controls = "\n".join(

@@ -209,8 +209,15 @@ html[data-reading-sans] .pv-heading h1 em{
 .voucher-project .page-nav{
   flex-wrap:wrap
 }
-html[data-reading-simple] .pv-intro,html[data-reading-simple] .pv-notes{
+html[data-reading-simple] .pv-intro,html[data-reading-simple] .pv-notes,html[data-reading-simple] .pv-papers{
   display:block
+}
+html[data-reading-simple] .pv-papers>div:nth-child(2){
+  padding-block-start:1.5rem
+}
+html[data-reading-simple] .pv-end{
+  align-items:flex-start;
+  flex-direction:column
 }
 @media(max-width:760px){
   .pv-intro{

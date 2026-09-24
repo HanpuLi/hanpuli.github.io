@@ -807,6 +807,7 @@ def reading_tools(locale: dict[str, Any], *, inert: bool = False) -> str:
     description = html.escape(reading["description"])
     options = (
         ("sans", "sans"),
+        ("dyslexia", "dyslexia"),
         ("large", "large"),
         ("spacing", "spacing"),
         ("measure", "measure"),

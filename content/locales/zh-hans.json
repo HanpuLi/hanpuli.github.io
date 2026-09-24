@@ -21,6 +21,7 @@
       "title": "阅读偏好",
       "description": "调整本站的阅读样式。设置仅保存在此设备。",
       "sans": "使用无衬线字体",
+      "dyslexia": "使用 OpenDyslexic 字体",
       "large": "放大文字",
       "spacing": "增加文字间距",
       "measure": "缩短行宽",

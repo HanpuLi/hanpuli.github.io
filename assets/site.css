@@ -8,6 +8,38 @@
 }
 
 @font-face {
+  font-family: "OpenDyslexic";
+  src: url("fonts/opendyslexic-regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("fonts/opendyslexic-italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("fonts/opendyslexic-bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("fonts/opendyslexic-bold-italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "EB Garamond";
   src: url("fonts/eb-garamond-cyrillic-italic-400.woff2") format("woff2");
   font-style: italic;
@@ -131,6 +163,7 @@
   --serif: "EB Garamond", "Site Serif Symbols", Georgia, "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", serif;
   --mono: "Courier Prime", "Cousine RU", "Site Mono Symbols", "Shippori Common", "Shippori Mincho", "IMing Gap", "Songti TC", "Songti SC", "Courier New", monospace;
   --readable-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Arial, sans-serif;
+  --readable-dyslexia: "OpenDyslexic", var(--readable-sans);
   --max: 1920px;
   --gutter: clamp(18px, 1.55vw, 30px);
   --gap: clamp(12px, 1.25vw, 24px);
@@ -320,6 +353,10 @@ main[tabindex="-1"]:focus {
   justify-items: end;
 }
 
+.reading-tools details[open] {
+  z-index: 2;
+}
+
 .reading-tools summary {
   display: inline-flex;
   min-width: 44px;
@@ -363,22 +400,27 @@ main[tabindex="-1"]:focus {
 }
 
 .reading-panel {
-  position: static;
+  position: absolute;
+  inset-block-start: calc(100% + 10px);
+  inset-inline-end: 0;
   width: min(360px, 100%);
   max-width: 100%;
   box-sizing: border-box;
   max-height: min(72vh, 640px);
   overflow: auto;
   overscroll-behavior: contain;
-  margin-top: 10px;
+  margin: 0;
   padding: 18px;
-  border: 1px solid var(--muted);
+  border: 1px solid var(--line);
   background: var(--paper);
   box-shadow: 0 8px 28px color-mix(in srgb, var(--ink) 14%, transparent);
   color: var(--ink);
 }
 
 .reading-panel fieldset {
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
   border: 0;
 }
 
@@ -401,7 +443,8 @@ main[tabindex="-1"]:focus {
   min-height: 44px;
   align-items: center;
   gap: 12px;
-  padding: 7px 0;
+  padding: 8px 2px;
+  border-top: 1px solid var(--line);
   cursor: pointer;
 }
 
@@ -414,10 +457,12 @@ main[tabindex="-1"]:focus {
 
 .reading-option span {
   flex: 1 1 auto;
+  line-height: 1.4;
 }
 
 .reading-reset {
-  min-width: 88px;
+  display: block;
+  width: 100%;
   min-height: 44px;
   margin-top: 12px;
   padding: 8px 14px;
@@ -434,6 +479,11 @@ main[tabindex="-1"]:focus {
   border-color: var(--accent);
 }
 
+.reading-tools details[open] > summary {
+  border-color: var(--accent);
+  background: var(--paper-soft);
+}
+
 /* Optional reading modes. They never remove content. */
 
 html[data-reading-sans] {
@@ -444,6 +494,17 @@ html[data-reading-sans] {
 html[data-reading-sans] body[class] {
   --serif: var(--readable-sans);
   --mono: var(--readable-sans);
+  font-variant-ligatures: none;
+}
+
+html[data-reading-dyslexia] {
+  --serif: var(--readable-dyslexia);
+  --mono: var(--readable-dyslexia);
+}
+
+html[data-reading-dyslexia] body[class] {
+  --serif: var(--readable-dyslexia);
+  --mono: var(--readable-dyslexia);
   font-variant-ligatures: none;
 }
 
@@ -4351,4 +4412,56 @@ body.locale-ru a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not
   .contexts-page .contexts-date {
     margin-bottom: .55em;
   }
+}
+
+/* Reading controls: apply the preferences directly to editorial text blocks,
+   after page-specific typography, so local line-height rules cannot mask them. */
+html[data-reading-spacing] body[class] main :is(
+  p, li, dd, dt, figcaption, blockquote, .body, .sub, .contexts-detail
+) {
+  line-height: 1.9;
+  letter-spacing: .035em;
+  word-spacing: .12em;
+}
+
+html[data-reading-spacing] body[class] main p + p {
+  margin-block-start: .9em;
+}
+
+html[data-reading-spacing] body:is(.locale-zh, .locale-zh-hans, .locale-ja) main :is(
+  p, li, dd, dt, figcaption, blockquote, .body, .sub, .contexts-detail
+) {
+  letter-spacing: .045em;
+  word-spacing: normal;
+}
+
+html[data-reading-measure] body[class] main :is(
+  p, li, dd, dt, figcaption, blockquote, .body, .sub, .contexts-detail
+) {
+  max-width: 50ch;
+}
+
+html[data-reading-measure] body:is(.locale-zh, .locale-zh-hans, .locale-ja) main :is(
+  p, li, dd, dt, figcaption, blockquote, .body, .sub, .contexts-detail
+) {
+  max-width: 32em;
+}
+
+html[data-reading-simple] .site-home main :is(
+  .hero, .section-head, .project, .poetry-preview, .writing-list,
+  .photo-sequence, .chronology, .credit
+),
+html[data-reading-simple] .literary-page main :is(.page-intro, .poem, .poem-pair),
+html[data-reading-simple] .shi-page main :is(.page-intro, .shi-content, .draft-pair, .draft),
+html[data-reading-simple] .about-page main :is(.about-hero, .about-section, .about-coda),
+html[data-reading-simple] .essay-page main :is(.essay, .essay-intro) {
+  display: block;
+}
+
+html[data-reading-simple] .contexts-page .contexts-record {
+  display: block;
+}
+
+html[data-reading-simple] .contexts-page .contexts-date {
+  margin-block-end: .55em;
 }

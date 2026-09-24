@@ -60,7 +60,7 @@
         "dek": "Authored form does not require a fixed display.",
         "body": [
           "Drucker’s performative materiality directs attention to a system in use, not its structure alone. [[drucker]] Here that question is practical: can someone return to a stanza, compare a version, follow a source or change the conditions of reading without losing the text? A decorative resemblance to a book cannot answer it.",
-          "The reading controls change type, scale, spacing, measure, layout, motion and contrast. These are alternative ways of encountering the same material, not inferior versions of the design. Keyboard focus, headings and text alternatives remain part of publication, even when they are not the most conspicuous things on the screen.",
+          "The reading controls can switch between the default typeface and OpenDyslexic, then change type size, spacing, measure, layout, motion and contrast. These are alternative ways of encountering the same material, not inferior versions of the design. Keyboard focus, headings and text alternatives remain part of publication, even when they are not the most conspicuous things on the screen.",
           "Automated checks can find some missing labels and layout failures. They cannot stand in for a person using a screen reader, or prove that an image description gives someone an equivalent encounter. Accessibility is a continuing editorial responsibility, not a badge awarded by a test suite."
         ],
         "facts": []
@@ -163,7 +163,7 @@
         "dek": "作者安排形式，不等於鎖定顯示。",
         "body": [
           "Drucker 把物質性放到系統的使用中考察，而不止於結構。[[drucker]] 在這裏，這個問題很具體：能否返回一闋詞、比較版本、追索來源，或者改變閲讀條件而不丟失文本？裝飾性地像一本書，並不能回答它。",
-          "閲讀控件允許調整字體、大小、間距、行寬、版式、動態與對比。這些是接觸同一材料的其他方式，不是設計的次等版本。鍵盤焦點、標題層級與文字替代仍然屬於出版工作，即使它們不是屏幕上最顯眼的部分。",
+          "閱讀設定可在預設字體與 OpenDyslexic 之間切換，亦可調整字級、間距、行寬、版式、動態與對比度。這些是接觸同一材料的其他方式，不是設計的次等版本。鍵盤焦點、標題層級與文字替代仍然屬於出版工作，即使它們不是屏幕上最顯眼的部分。",
           "自動檢查能找到部分標籤缺失與排版故障，不能代替真正使用屏幕閲讀器的人，也不能證明一段圖像描述帶來了相等的體驗。無障礙是持續的編輯責任，不是測試套件頒發的標章。"
         ],
         "facts": []
@@ -266,7 +266,7 @@
         "dek": "作者安排形式，不等于锁定显示。",
         "body": [
           "Drucker 把物质性放到系统的使用中考察，而不止于结构。[[drucker]] 在这里，这个问题很具体：能否返回一阕词、比较版本、追索来源，或者改变阅读条件而不丢失文本？装饰性地像一本书，并不能回答它。",
-          "阅读控件允许调整字体、大小、间距、行宽、版式、动态与对比度。这些是接触同一材料的其他方式，不是设计的次等版本。键盘焦点、标题层级与文字替代仍然属于出版工作，即使它们不是屏幕上最显眼的部分。",
+          "阅读设置可在默认字体与 OpenDyslexic 之间切换，也可调整字号、间距、行宽、版式、动态与对比度。这些是接触同一材料的其他方式，不是设计的次等版本。键盘焦点、标题层级与文字替代仍然属于出版工作，即使它们不是屏幕上最显眼的部分。",
           "自动检查能找到部分标签缺失与排版故障，不能代替真正使用屏幕阅读器的人，也不能证明一段图像描述带来了相等的体验。无障碍是持续的编辑责任，不是测试套件颁发的标章。"
         ],
         "facts": []
@@ -369,7 +369,7 @@
         "dek": "作者による形式は、固定表示を意味しません。",
         "body": [
           "Druckerの遂行的な物質性は、構造だけでなく使用中のシステムに目を向けます。[[drucker]] ここでは具体的な問いになります。ある連に戻れるか、版を比べられるか、出典をたどれるか、文章を失わずに読み方の条件を変えられるか。本のように見える装飾だけでは答えられません。",
-          "読書設定では書体、大きさ、間隔、行幅、配置、動き、コントラストを変えられます。それらは同じ素材に出会う別の方法であり、設計の劣化版ではありません。キーボードのフォーカス、見出し、代替テキストは、画面で目立たなくても出版の一部です。",
+          "読書設定では既定の書体と OpenDyslexic を切り替え、文字の大きさ、間隔、行幅、配置、動き、コントラストも変えられます。それらは同じ素材に出会う別の方法であり、設計の劣化版ではありません。キーボードのフォーカス、見出し、代替テキストは、画面で目立たなくても出版の一部です。",
           "自動検査はラベルの欠落や一部の配置の破綻を発見できます。しかしスクリーンリーダーを使う人の代わりにはならず、画像の説明が同等の経験を与えることも証明しません。アクセシビリティは続いていく編集責任であり、テストが授ける標章ではありません。"
         ],
         "facts": []
@@ -472,7 +472,7 @@
         "dek": "Autorschaft verlangt keine starre Anzeige.",
         "body": [
           "Druckers performative Materialität lenkt den Blick auf Systeme im Gebrauch, nicht allein auf ihre Struktur. [[drucker]] Hier wird daraus eine praktische Frage: Kann jemand zu einer Strophe zurückkehren, Fassungen vergleichen, einer Quelle folgen oder die Lesebedingungen ändern, ohne den Text zu verlieren? Die dekorative Ähnlichkeit mit einem Buch beantwortet das nicht.",
-          "Die Leseoptionen verändern Schrift, Größe, Abstände, Zeilenlänge, Layout, Bewegung und Kontrast. Es sind andere Zugänge zu demselben Material, keine minderwertigen Designversionen. Tastaturfokus, Überschriften und Textalternativen gehören zur Publikation, auch wenn sie auf dem Bildschirm nicht am stärksten auffallen.",
+          "Die Leseoptionen können zwischen der Standardschrift und OpenDyslexic wechseln und Schriftgröße, Abstände, Zeilenlänge, Layout, Bewegung und Kontrast ändern. Es sind andere Zugänge zu demselben Material, keine minderwertigen Designversionen. Tastaturfokus, Überschriften und Textalternativen gehören zur Publikation, auch wenn sie auf dem Bildschirm nicht am stärksten auffallen.",
           "Automatische Prüfungen finden manche fehlenden Beschriftungen und Layoutfehler. Sie ersetzen weder Menschen, die einen Screenreader nutzen, noch den Nachweis einer gleichwertigen Begegnung durch eine Bildbeschreibung. Barrierefreiheit bleibt redaktionelle Verantwortung, kein von einer Testsuite verliehenes Gütesiegel."
         ],
         "facts": []
@@ -575,7 +575,7 @@
         "dek": "Une forme d’auteur n’impose pas un affichage fixe.",
         "body": [
           "La matérialité performative de Drucker porte l’attention sur le système en usage, pas seulement sur sa structure. [[drucker]] Ici, la question est pratique : peut-on revenir à une strophe, comparer une version, suivre une source ou modifier les conditions de lecture sans perdre le texte ? Une ressemblance décorative avec le livre ne suffit pas.",
-          "Les commandes de lecture modifient caractères, taille, espacement, longueur des lignes, disposition, mouvement et contraste. Ce sont d’autres rencontres avec le même matériau, non des versions inférieures du design. Le focus clavier, les titres et les équivalents textuels appartiennent à la publication même lorsqu’ils ne dominent pas l’écran.",
+          "Les commandes de lecture peuvent passer de la police par défaut à OpenDyslexic et modifier la taille, l’espacement, la longueur des lignes, la disposition, le mouvement et le contraste. Ce sont d’autres rencontres avec le même matériau, non des versions inférieures du design. Le focus clavier, les titres et les équivalents textuels appartiennent à la publication même lorsqu’ils ne dominent pas l’écran.",
           "Les tests automatiques détectent certaines étiquettes absentes et certains défauts de mise en page. Ils ne remplacent pas une personne utilisant un lecteur d’écran et ne prouvent pas qu’une description d’image offre une rencontre équivalente. L’accessibilité est une responsabilité éditoriale continue, pas un insigne délivré par une suite de tests."
         ],
         "facts": []
@@ -678,7 +678,7 @@
         "dek": "Авторская форма не требует неизменного экрана.",
         "body": [
           "Перформативная материальность у Drucker обращает внимание на систему в использовании, не только на её устройство. [[drucker]] Здесь вопрос конкретен: можно ли вернуться к строфе, сравнить версии, проследить источник или изменить условия чтения, не потеряв текст? Декоративное сходство с книгой этого не решает.",
-          "Настройки чтения меняют шрифт, размер, интервалы, длину строк, расположение, движение и контраст. Это другие способы встретиться с тем же материалом, а не худшие версии дизайна. Фокус клавиатуры, заголовки и текстовые альтернативы принадлежат публикации, даже когда не бросаются в глаза.",
+          "Настройки чтения позволяют переключаться между шрифтом по умолчанию и OpenDyslexic, а также менять размер текста, интервалы, длину строк, расположение, движение и контраст. Это другие способы встретиться с тем же материалом, а не худшие версии дизайна. Фокус клавиатуры, заголовки и текстовые альтернативы принадлежат публикации, даже когда не бросаются в глаза.",
           "Автоматические проверки находят некоторые пропущенные подписи и ошибки вёрстки. Они не заменяют человека со скринридером и не доказывают, что описание изображения даёт равнозначную встречу. Доступность остаётся редакторской ответственностью, а не знаком качества, выданным набором тестов."
         ],
         "facts": []
