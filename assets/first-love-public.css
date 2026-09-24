@@ -59,6 +59,21 @@
   margin: clamp(3rem, 7vw, 6rem) 0;
 }
 
+.access-panel h2 {
+  margin: 0 0 1.2rem;
+  font-family: var(--mono);
+  font-size: .85rem;
+  font-weight: 400;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.abstract-copy {
+  max-width: var(--measure-copy);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.7;
+}
+
 .access-action {
   display: inline-block;
   max-width: 100%;

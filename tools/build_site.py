@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from first_love_public_pages import READER_URL as FIRST_LOVE_READER_URL, build as build_first_love_pages, path_for as first_love_page_path
+from first_love_public_pages import build as build_first_love_pages, path_for as first_love_page_path
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -1158,7 +1158,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
             SHARED["writing"]["first_love_verification_url"], quote=True
         ),
         "FIRST_LOVE_HREF": first_love_page_path(locale_id, "request"),
-        "FIRST_LOVE_READ_HREF": html.escape(FIRST_LOVE_READER_URL, quote=True),
+        "FIRST_LOVE_ABSTRACT_HREF": first_love_page_path(locale_id, "request"),
         "HOME_HREF": page_path(locale_id, "index"),
         "CI_HREF": page_path(locale_id, "ci"),
         "SHI_HREF": page_path(locale_id, "shi"),

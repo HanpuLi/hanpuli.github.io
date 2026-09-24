@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 import json
+import html
 import sys
 from html.parser import HTMLParser
 from pathlib import Path
 
-from first_love_public_pages import READER_URL
+from first_love_public_pages import RETIRED_READER_URL, path_for
 
 ROOT = Path(__file__).resolve().parents[1]
 LANGUAGES = json.loads((ROOT / "content/languages.json").read_text(encoding="utf-8"))
@@ -63,8 +64,8 @@ def main() -> int:
             errors.append(f"{rel}: expected one h1 and one main landmark")
         if parser.forms:
             errors.append(f"{rel}: access request form remains")
-        if parser.links.count(READER_URL) != 1:
-            errors.append(f"{rel}: expected one direct reader link")
+        if RETIRED_READER_URL in source:
+            errors.append(f"{rel}: retired full-reader link remains")
         if parser.scripts != ["/assets/accessibility.js"]:
             errors.append(f"{rel}: unexpected scripts {parser.scripts}")
         if "connect-src 'none'" not in parser.csp or "form-action 'none'" not in parser.csp:
@@ -72,8 +73,13 @@ def main() -> int:
         if page == "request":
             if "noindex" in parser.robots:
                 errors.append(f"{rel}: public overview is unexpectedly noindex")
+            copy = json.loads((ROOT / "content/first-love-public.json").read_text(encoding="utf-8"))[locale_id]
+            if html.escape(copy["abstract"]) not in source:
+                errors.append(f"{rel}: abstract missing")
         elif not {"noindex", "noarchive", "nosnippet"} <= set(parser.robots.split(",")):
             errors.append(f"{rel}: legacy route robots directive is incomplete")
+        elif parser.links.count(path_for(locale_id, "request")) != 1:
+            errors.append(f"{rel}: expected one abstract link")
         for marker in ("first-love-api", "v1/document", "Bearer ", "data-preserve-fragment"):
             if marker in source:
                 errors.append(f"{rel}: old controlled-access marker {marker!r}")
@@ -82,8 +88,10 @@ def main() -> int:
         lid = item["id"]
         homepage = ROOT / ("index.html" if lid == "en" else f"{lid}/index.html")
         source = homepage.read_text(encoding="utf-8")
-        if READER_URL not in source:
-            errors.append(f"{homepage.relative_to(ROOT)}: missing immediate reading link")
+        if path_for(lid, "request") not in source:
+            errors.append(f"{homepage.relative_to(ROOT)}: missing abstract link")
+        if RETIRED_READER_URL in source:
+            errors.append(f"{homepage.relative_to(ROOT)}: retired full-reader link remains")
         if "first-love-api" in source:
             errors.append(f"{homepage.relative_to(ROOT)}: old API reference remains")
 
@@ -119,7 +127,7 @@ def main() -> int:
     if errors:
         print("\n".join(errors), file=sys.stderr)
         return 1
-    print(f"firstlovecheck: {len(pages)} public/legacy pages, direct reader links, CSP, sitemap and public-file boundary OK")
+    print(f"firstlovecheck: {len(pages)} public/legacy pages, abstract links, CSP, sitemap and public-file boundary OK")
     return 0
 
 

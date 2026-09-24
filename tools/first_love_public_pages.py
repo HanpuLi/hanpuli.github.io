@@ -6,7 +6,7 @@ import html
 import json
 from pathlib import Path
 
-READER_URL = "https://node.tail95239f.ts.net:10000/first-love-reader/v/first-love-v113-2026-08-27/"
+RETIRED_READER_URL = "https://node.tail95239f.ts.net:10000/first-love-reader/v/first-love-v113-2026-08-27/"
 PAGES = ("request", "status", "read")
 NAV_ITEMS = (("01", "writing", "writing"), ("02", "ci", "ci"), ("03", "work", "work"),
              ("04", "photo", "photo"), ("05", "shi", "shi"), ("06", "profile", "profile"))
@@ -91,11 +91,20 @@ def render(site: str, languages: list[dict], locales: dict[str, dict], about: di
         for item in languages
     )
     alternates += f'\n<link rel="alternate" hreflang="x-default" href="{html.escape(site + path_for("en", page), quote=True)}">'
-    legacy_link = (
-        f'<p><a href="{html.escape(path_for(locale_id, "request"), quote=True)}">{html.escape(copy["about"])}</a></p>'
-        if legacy else f'<p class="access-companion"><a href="https://github.com/HanpuLi/first-love-verification">{html.escape(copy["verification"])}</a></p>'
-    )
-    note = "" if legacy else f'<p class="reader-notice">{html.escape(copy["note"])}</p>'
+    if legacy:
+        panel = (
+            f'<section class="access-panel"><p><a class="access-action" '
+            f'href="{html.escape(path_for(locale_id, "request"), quote=True)}">{html.escape(copy["read"])}</a></p></section>'
+        )
+    else:
+        panel = (
+            f'<section class="access-panel" aria-labelledby="abstract-heading">'
+            f'<h2 id="abstract-heading">{html.escape(copy["abstract_label"])}</h2>'
+            f'<p class="abstract-copy">{html.escape(copy["abstract"])}</p>'
+            f'<p class="reader-notice">{html.escape(copy["note"])}</p>'
+            f'<p class="access-companion"><a href="https://github.com/HanpuLi/first-love-verification">'
+            f'{html.escape(copy["verification"])}</a></p></section>'
+        )
     robots = '<meta name="robots" content="noindex,noarchive,nosnippet">' if legacy else ""
     home = _home(locale_id)
     about_href = _standard_page(locale_id, "about")
@@ -131,7 +140,7 @@ def render(site: str, languages: list[dict], locales: dict[str, dict], about: di
   </header>
   <main id="main" tabindex="-1">
     <header class="first-love-hero"><div><p class="first-love-eyebrow">{html.escape(copy["eyebrow"])}</p><h1>{html.escape(title)}</h1></div><div class="first-love-copy"><p>{html.escape(intro)}</p></div></header>
-    <section class="access-panel"><p><a class="access-action" href="{html.escape(READER_URL, quote=True)}">{html.escape(copy["read"])}</a></p>{note}{legacy_link}</section>
+    {panel}
   </main>
   <footer class="page-footer essay-footer"><p><a href="{html.escape(home, quote=True)}">Hanpu Li</a></p><p class="page-footer-context"><a href="{html.escape(home + "#writing", quote=True)}">{html.escape(locale["common"]["nav"]["writing"])}</a> <span aria-hidden="true">·</span> <a href="{html.escape(about_href, quote=True)}">{html.escape(about[locale_id]["footer_link"])}</a></p></footer>
 </div>
