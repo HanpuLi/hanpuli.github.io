@@ -1,8 +1,8 @@
 // Runs inside a browser. Compare adjacent lines' actual glyph ink bounds, not
 // only element boxes: an element can fit the viewport while its lines collide.
-export function inspectTypeInk(){
+export function inspectTypeInk(selector='.measured-type'){
  const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d'),failures=[],measurements=[];
- for(const el of document.querySelectorAll('.measured-type')){
+ for(const el of document.querySelectorAll(selector)){
   const style=getComputedStyle(el),size=parseFloat(style.fontSize),lines=[];
   const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);let node;
   while((node=walker.nextNode()))for(let i=0;i<node.length;i++){

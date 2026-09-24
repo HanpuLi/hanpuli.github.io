@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Capture real DOM geometry and current shop output; no production hooks are shipped.
 import {chromium} from '@playwright/test';
+import {inspectTypeInk} from './type-ink-check.mjs';
 import {createServer} from 'node:http';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -20,6 +21,7 @@ try{
   for(const width of [1440,390]){
    await page.setViewportSize({width,height:1100});const node=page.locator('.project-feature');await node.scrollIntoViewIfNeeded();
    const data=await node.evaluate(el=>{const r=el.getBoundingClientRect(),cs=getComputedStyle(el);const box=n=>{const q=n.getBoundingClientRect();return {x:q.x-r.x,y:q.y-r.y,w:q.width,h:q.height};};return {width:r.width,height:r.height,viewport:innerWidth,gap:parseFloat(cs.columnGap),columns:(cs.gridTemplateColumns.startsWith('subgrid')?getComputedStyle(el.parentElement).gridTemplateColumns:cs.gridTemplateColumns).split(' ').map(parseFloat).filter(Number.isFinite),paddingTop:cs.paddingTop,rule:cs.borderTopWidth,parts:['.project-index','.project-main','.project-proof','.project-evidence-disclosure'].map(s=>({selector:s,...box(el.querySelector(s)),column:getComputedStyle(el.querySelector(s)).gridColumn}))};});
+   if(['zh','zh-hans'].includes(locale)){const ink=await page.evaluate(inspectTypeInk,'.project-feature h3');if(ink.failures.length)throw Error(JSON.stringify({locale,width,ink}));}
    const filename=`site-${locale}-${width}.png`;await node.screenshot({path:path.join(dir,filename)});result.views[width]={...data,file:filename};
   }
   await page.setViewportSize({width:1440,height:1100});
