@@ -134,7 +134,14 @@
       }
     ],
     "tariff_detail": "The exact tariff",
-    "tariff_note": "Per copy, for a non-empty original. Letters and numbers are counted after NFC normalisation. Punctuation and spaces are excluded from the character count; a non-empty punctuation-only line still counts as a line and can form a stanza."
+    "tariff_note": "Per copy, for a non-empty original. Letters and numbers are counted after NFC normalisation. Punctuation and spaces are excluded from the character count; a non-empty punctuation-only line still counts as a line and can form a stanza.",
+    "diagram_title": "How the strip is organised",
+    "diagram_receipt": "TRANSACTION",
+    "diagram_cut": "SEPARATION",
+    "diagram_poem": "POEM",
+    "diagram_receipt_note": "records order, quantity and simulated payment",
+    "diagram_cut_note": "offers a cut; does not require one",
+    "diagram_poem_note": "keeps text, source and copy identity"
   },
   "zh": {
     "title": "詩券",
@@ -271,7 +278,14 @@
       }
     ],
     "tariff_detail": "完整計價規則",
-    "tariff_note": "以每份非空原文計價。先作 NFC 正規化，再數字母與數字。標點與空格不計入字符數；只有標點的非空行仍計為一行，也可形成一節。"
+    "tariff_note": "以每份非空原文計價。先作 NFC 正規化，再數字母與數字。標點與空格不計入字符數；只有標點的非空行仍計為一行，也可形成一節。",
+    "diagram_title": "紙條怎樣組織",
+    "diagram_receipt": "交易",
+    "diagram_cut": "分隔",
+    "diagram_poem": "詩",
+    "diagram_receipt_note": "記錄訂單、數量與模擬付款",
+    "diagram_cut_note": "提供切開的位置，不要求切開",
+    "diagram_poem_note": "保留文本、來源與每份身份"
   },
   "zh-hans": {
     "title": "诗券",
@@ -408,7 +422,14 @@
       }
     ],
     "tariff_detail": "完整计价规则",
-    "tariff_note": "以每份非空原文计价。先作 NFC 规范化，再数字母与数字。标点与空格不计入字符数；只有标点的非空行仍计为一行，也可形成一节。"
+    "tariff_note": "以每份非空原文计价。先作 NFC 规范化，再数字母与数字。标点与空格不计入字符数；只有标点的非空行仍计为一行，也可形成一节。",
+    "diagram_title": "纸条怎样组织",
+    "diagram_receipt": "交易",
+    "diagram_cut": "分隔",
+    "diagram_poem": "诗",
+    "diagram_receipt_note": "记录订单、数量与模拟付款",
+    "diagram_cut_note": "提供切开的位置，不要求切开",
+    "diagram_poem_note": "保留文本、来源与每份身份"
   },
   "ja": {
     "title": "詩の券",
@@ -545,7 +566,14 @@
       }
     ],
     "tariff_detail": "正確な料金規則",
-    "tariff_note": "空でない原文一部ごとに計算します。NFC正規化後の字母と数字を数え、句読点と空白は文字数から除きます。句読点だけでも空でない行は一行として数え、連にもなります。"
+    "tariff_note": "空でない原文一部ごとに計算します。NFC正規化後の字母と数字を数え、句読点と空白は文字数から除きます。句読点だけでも空でない行は一行として数え、連にもなります。",
+    "diagram_title": "紙片の構成",
+    "diagram_receipt": "取引",
+    "diagram_cut": "分離",
+    "diagram_poem": "詩",
+    "diagram_receipt_note": "注文、数量、模擬支払いを記録",
+    "diagram_cut_note": "切る位置を示すが、要求はしない",
+    "diagram_poem_note": "本文、出典、各部の識別を保つ"
   },
   "de": {
     "title": "Poetry Voucher",
@@ -682,7 +710,14 @@
       }
     ],
     "tariff_detail": "Der genaue Tarif",
-    "tariff_note": "Je Exemplar eines nicht leeren Originals. Buchstaben und Zahlen werden nach NFC-Normalisierung gezählt. Satzzeichen und Leerzeichen zählen nicht als Zeichen; eine nicht leere reine Satzzeichenzeile zählt jedoch als Zeile und kann eine Strophe bilden."
+    "tariff_note": "Je Exemplar eines nicht leeren Originals. Buchstaben und Zahlen werden nach NFC-Normalisierung gezählt. Satzzeichen und Leerzeichen zählen nicht als Zeichen; eine nicht leere reine Satzzeichenzeile zählt jedoch als Zeile und kann eine Strophe bilden.",
+    "diagram_title": "Wie der Streifen organisiert ist",
+    "diagram_receipt": "TRANSAKTION",
+    "diagram_cut": "TRENNUNG",
+    "diagram_poem": "GEDICHT",
+    "diagram_receipt_note": "zeichnet Bestellung, Menge und simulierte Zahlung auf",
+    "diagram_cut_note": "bietet einen Schnitt an, verlangt ihn nicht",
+    "diagram_poem_note": "bewahrt Text, Quelle und Exemplarbezug"
   },
   "fr": {
     "title": "Poetry Voucher",
@@ -819,7 +854,14 @@
       }
     ],
     "tariff_detail": "Le tarif exact",
-    "tariff_note": "Par exemplaire d’un original non vide. Les lettres et les nombres sont comptés après normalisation NFC. Ponctuation et espaces sont exclus du nombre de caractères ; une ligne non vide de ponctuation reste comptée et peut former une strophe."
+    "tariff_note": "Par exemplaire d’un original non vide. Les lettres et les nombres sont comptés après normalisation NFC. Ponctuation et espaces sont exclus du nombre de caractères ; une ligne non vide de ponctuation reste comptée et peut former une strophe.",
+    "diagram_title": "Organisation de la bande",
+    "diagram_receipt": "TRANSACTION",
+    "diagram_cut": "SÉPARATION",
+    "diagram_poem": "POÈME",
+    "diagram_receipt_note": "consigne commande, quantité et paiement simulé",
+    "diagram_cut_note": "propose une coupe sans l’exiger",
+    "diagram_poem_note": "conserve texte, source et identité de l’exemplaire"
   },
   "ru": {
     "title": "Poetry Voucher",
@@ -956,6 +998,13 @@
       }
     ],
     "tariff_detail": "Точный тариф",
-    "tariff_note": "За экземпляр непустого оригинала. Буквы и числа считаются после нормализации NFC. Пунктуация и пробелы исключены из числа символов; непустая строка из одной пунктуации всё равно считается строкой и может образовать строфу."
+    "tariff_note": "За экземпляр непустого оригинала. Буквы и числа считаются после нормализации NFC. Пунктуация и пробелы исключены из числа символов; непустая строка из одной пунктуации всё равно считается строкой и может образовать строфу.",
+    "diagram_title": "Как устроена лента",
+    "diagram_receipt": "ТРАНЗАКЦИЯ",
+    "diagram_cut": "РАЗДЕЛЕНИЕ",
+    "diagram_poem": "СТИХ",
+    "diagram_receipt_note": "фиксирует заказ, количество и симулированную оплату",
+    "diagram_cut_note": "предлагает разрез, но не требует его",
+    "diagram_poem_note": "сохраняет текст, источник и идентичность экземпляра"
   }
 }

@@ -230,3 +230,33 @@ body:is(.about-page,.voucher-project) .page-topbar > .reading-tools .reading-pan
   body:is(.about-page,.voucher-project) .page-topbar > .reading-tools summary {justify-self:end}
   body:is(.about-page,.voucher-project) .page-topbar > .reading-tools .reading-panel {width:100%}
 }
+
+/* Diagram as argument, not decoration: the same receipt vocabulary is used to
+   explain the edition's two documentary roles and optional cut. */
+.pv-structure-diagram {
+  margin:0;padding-block:2.5rem 3.25rem;border-block-start:1px solid var(--line);
+}
+.pv-structure-diagram > figcaption {
+  margin:0 0 1.5rem;font:.8125rem/1.6 var(--mono);letter-spacing:.04em;
+}
+.pv-diagram-flow {
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(7.5rem,.42fr) minmax(0,1fr);
+  align-items:stretch;max-inline-size:64rem;
+}
+.pv-diagram-node {
+  display:grid;grid-template-columns:max-content minmax(0,1fr);grid-template-rows:auto auto;
+  gap:.2rem 1rem;padding:1.15rem 1.25rem;border:1px solid var(--ink);background:var(--paper);
+}
+.pv-diagram-code {grid-row:1/-1;font:.75rem/1.5 var(--mono);color:var(--muted)}
+.pv-diagram-node strong {font:400 clamp(1.2rem,2vw,1.65rem)/1.2 var(--serif);letter-spacing:-.01em}
+.pv-diagram-node small {font:.8125rem/1.55 var(--mono);color:var(--muted)}
+.pv-diagram-join {display:grid;place-items:center;position:relative;min-block-size:6.75rem}
+.pv-diagram-join::before {content:"";position:absolute;inset-inline:0;inset-block-start:50%;border-block-start:1px dashed var(--muted)}
+.pv-diagram-join span {position:relative;padding:.3rem .65rem;background:var(--paper);font:.6875rem/1.4 var(--mono);letter-spacing:.06em;color:var(--muted)}
+.pv-diagram-cut {margin:1rem 0 0;max-inline-size:64rem;color:var(--muted);font:.8125rem/1.6 var(--mono)}
+.pv-diagram-cut span {color:var(--ink)}
+@media(max-width:620px) {
+  .pv-diagram-flow {grid-template-columns:minmax(0,1fr)}
+  .pv-diagram-join {min-block-size:4.25rem}
+  .pv-diagram-join::before {inset-inline:0;inset-block-start:50%}
+}

@@ -39,6 +39,15 @@
       <figcaption><h2>{{PV_SPECIMEN_LABEL}}</h2><p>{{PV_SPECIMEN_BODY}}</p><p class="specimen-date">{{PV_SAMPLE}}</p><a href="/poetry-voucher/sample-full.png">{{PV_SPECIMEN_OPEN}}</a></figcaption>
     </figure>
   </div>
+  <figure class="pv-structure-diagram" aria-labelledby="pv-diagram-title">
+    <figcaption id="pv-diagram-title">{{PV_DIAGRAM_TITLE}}</figcaption>
+    <div class="pv-diagram-flow">
+      <div class="pv-diagram-node"><span class="pv-diagram-code">01</span><strong>{{PV_DIAGRAM_RECEIPT}}</strong><small>{{PV_DIAGRAM_RECEIPT_NOTE}}</small></div>
+      <div class="pv-diagram-join" aria-hidden="true"><span>CUT HERE</span></div>
+      <div class="pv-diagram-node"><span class="pv-diagram-code">02</span><strong>{{PV_DIAGRAM_POEM}}</strong><small>{{PV_DIAGRAM_POEM_NOTE}}</small></div>
+    </div>
+    <p class="pv-diagram-cut"><span>{{PV_DIAGRAM_CUT}}</span> · {{PV_DIAGRAM_CUT_NOTE}}</p>
+  </figure>
   <div class="pv-notes pv-essay">
     {{PV_NOTES}}
   </div>
