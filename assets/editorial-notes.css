@@ -217,3 +217,16 @@ body:is(.about-page,.voucher-project) .page-topbar a {margin-block:0}
   body:is(.about-page,.voucher-project) .page-topbar .page-nav {grid-template-columns:repeat(2,minmax(0,1fr))}
   body:is(.about-page,.voucher-project):is(.locale-zh,.locale-zh-hans,.locale-ja) .page-topbar .page-nav {grid-template-columns:repeat(3,minmax(0,1fr))}
 }
+
+/* Keep the accessibility panel inside the editorial header when the second
+   header column is narrower than the panel itself. */
+body:is(.about-page,.voucher-project) .page-topbar > .reading-tools details {align-items:end}
+body:is(.about-page,.voucher-project) .page-topbar > .reading-tools .reading-panel {
+  width:min(360px,calc(100vw - (2 * var(--gutter))));
+}
+@media(max-width:760px) {
+  body:is(.about-page,.voucher-project) .page-topbar > .reading-tools {grid-column:1/-1;grid-row:4;inline-size:100%;justify-self:stretch}
+  body:is(.about-page,.voucher-project) .page-topbar > .reading-tools details {align-items:stretch}
+  body:is(.about-page,.voucher-project) .page-topbar > .reading-tools summary {justify-self:end}
+  body:is(.about-page,.voucher-project) .page-topbar > .reading-tools .reading-panel {width:100%}
+}

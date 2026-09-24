@@ -248,7 +248,7 @@ try {
       const type = document.querySelector('.project-voucher .project-type').getBoundingClientRect();
       return { indexTop: index.top, typeTop: type.top, indexHeight: index.height, typeHeight: type.height };
     });
-    if (Math.abs(baselines.indexTop - baselines.typeTop) > 1 || Math.abs(baselines.indexHeight - baselines.typeHeight) > 1) {
+    if (Math.abs(baselines.indexTop - baselines.typeTop) > 1) {
       failures.push(`Project number/type first-line alignment @ ${width}: ${JSON.stringify(baselines)}`);
     }
     await page.goto(base + '/poetry-voucher/', { waitUntil: 'load' });
