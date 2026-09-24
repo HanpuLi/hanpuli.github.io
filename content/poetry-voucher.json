@@ -19,7 +19,17 @@
     "edit": "Browse the editions",
     "preview_alt": "B3 basic Poetry Voucher specimen: cash receipt and separate original-text poem voucher",
     "editorial_sample": "B3 · website typefaces + English · digital specimen",
-    "editorial_preview_alt": "B3 editorial Poetry Voucher specimen: card receipt and poem voucher with the original Chinese and published English translation"
+    "editorial_preview_alt": "B3 editorial Poetry Voucher specimen: card receipt and poem voucher with the original Chinese and published English translation",
+    "about_origin": "Why a shop",
+    "about_origin_body": "Poems are slow, personal writing: they take time, attention and knowledge, and they are not interchangeable. The shop does the opposite. It treats each poem as a unit on a shelf, gives it a base specification and lets a till calculate a price. The project began after I found a receipt printer and tried printing my poems on it. The supermarket receipt became a way to ask what changes when private writing is issued through the routines of an ordinary commodity.",
+    "about_price": "How the price works",
+    "about_price_body": "The fictional tariff deliberately does not measure writing time, difficulty or literary value. It reduces a poem to countable features of its source text: characters, non-empty lines and stanzas. A base amount is rounded upward to a retail .99 price point. Website typefaces and each added translation are optional extras. The typeface works like a product upgrade from the included default specification; translations also use additional paper and printing, while carrying the work into another language and cultural context. No money is taken.",
+    "about_object": "Receipt, voucher, paper",
+    "about_object_body": "An order is issued as one continuous 58 mm strip: the receipt first, then CUT HERE, then the numbered poem voucher or vouchers. The receipt records the configured transaction; the voucher carries the writing away from it. Cutting is offered rather than required. Thermal paper keeps the scale and handling of an everyday receipt: something that can sit in a pocket, be passed to someone else, and, materially, can fade with time. Fading is a property of the medium, not yet a timed claim made by the work.",
+    "about_access": "Digital access and physical form",
+    "about_access_body": "The browser shop is the public access route while no exhibition space is available. It generates a continuous PDF and a complete offline-readable text counterpart without taking payment or sending the poem to a server. Physical prints have also been made on the receipt printer. The intended material encounter remains the narrow thermal strip; the digital shop makes that edition accessible beyond a physical venue.",
+    "about_position": "Position",
+    "about_position_body": "Poetry Voucher does not claim that receipt printing makes poetry new, nor that its tariff is a fair model of creative labour. Its tension is narrower: writing that is personal and non-interchangeable is temporarily handled as stock, configuration and price. The retail system can count textual units, paper and options, but it cannot account for the time, knowledge, attachment or relation that made the poem. The work leaves the reader to decide what happens after that transaction: keep the strip, cut it, give the poem away, or discard it."
   },
   "zh": {
     "title": "詩券",
@@ -41,7 +51,17 @@
     "edit": "瀏覽架上作品",
     "preview_alt": "乙三詩券基本樣本：現金小票及獨立的原文詩券",
     "editorial_sample": "乙三 · 網站字體＋英譯 · 數位樣本",
-    "editorial_preview_alt": "乙三詩券編輯樣本：刷卡小票，以及載有原文與站上英譯的詩券"
+    "editorial_preview_alt": "乙三詩券編輯樣本：刷卡小票，以及載有原文與站上英譯的詩券",
+    "about_origin": "為甚麼是一間商店",
+    "about_origin_body": "詩是緩慢而個人的寫作：它需要時間、注意力與知識，也不能彼此替換。商店採取相反的處理方式，把每首詩當成架上的一件貨品，給它基本配置，再讓收銀系統算出價格。這個項目起於我撿到一台小票打印機，試着把自己的詩打出來。超市小票於是成為一種方法：當私人寫作進入普通商品的購買程序，會發生甚麼？",
+    "about_price": "價格怎樣形成",
+    "about_price_body": "這套虛構計價故意不衡量寫作時間、難度或文學價值。它把詩的源文本化約成可計數的特徵：字符、非空行與詩節；基本金額再向上落到零售常見的 .99 價位。網站字體及每份附加譯文是可選配置。字體像從已包含的預設規格升級；譯文同時增加紙張與打印，也讓作品投射到另一種語言和文化之中。沒有實際扣款。",
+    "about_object": "小票、詩券與紙",
+    "about_object_body": "一張訂單以一整條 58 毫米紙帶發行：先是小票，然後 CUT HERE，再接有獨立編號的詩券。小票記錄配置後的交易，詩券則讓文字可以離開交易本身。可以切開，但不要求切開。熱敏紙保留日常小票的尺度和處理方式：可以放進口袋、遞給另一個人，也會因材料性質隨時間褪色。褪色是媒介的性質，目前不是作品已經以時間實驗證明的效果。",
+    "about_access": "數位入口與實體形式",
+    "about_access_body": "目前沒有展覽空間，因此瀏覽器商店是公共入口。它不扣款、不把詩上傳到伺服器，生成連續 PDF 及可離線閱讀的完整文字對應版。作品也已經在小票打印機上實際輸出。預期的物質遭遇仍然是狹窄的熱敏紙帶；數位商店讓這個發行方式可以在實體場地之外被取得。",
+    "about_position": "作品的位置",
+    "about_position_body": "Poetry Voucher 不主張把詩印在小票上本身就是新的，也不把這套價格說成創作勞動的公平模型。它處理的是一個更窄的矛盾：高度個人、不可互換的寫作，被暫時當作庫存、配置和價格來處理。零售系統可以計算文字單位、紙張和選項，卻不能計算寫成一首詩所需的時間、知識、依戀或關係。交易之後怎樣處理它留給讀者：保存、切開、送人，或丟掉。"
   },
   "zh-hans": {
     "title": "诗券",
@@ -63,7 +83,17 @@
     "edit": "浏览架上作品",
     "preview_alt": "乙三诗券基础样本：现金小票及独立的原文诗券",
     "editorial_sample": "乙三 · 网站字体＋英译 · 数字样本",
-    "editorial_preview_alt": "乙三诗券编辑样本：刷卡小票，以及载有原文与原站英译的诗券"
+    "editorial_preview_alt": "乙三诗券编辑样本：刷卡小票，以及载有原文与原站英译的诗券",
+    "about_origin": "为什么是一间商店",
+    "about_origin_body": "诗是缓慢而個人的寫作：它需要时间、注意力与知识，也不能彼此替换。商店採取相反的處理方式，把每首诗當成架上的一件货品，给它基本配置，再让收銀系统算出价格。这個项目起於我捡到一台小票打印機，試着把自己的诗打出來。超市小票於是成為一种方法：當私人寫作进入普通商品的購買程序，会发生甚么？",
+    "about_price": "价格怎樣形成",
+    "about_price_body": "这套虛構计价故意不衡量寫作时间、难度或文学价值。它把诗的源文本化約成可计数的特征：字符、非空行与诗节；基本金额再向上落到零售常见的 .99 价位。网站字体及每份附加译文是可选配置。字体像從已包含的预設規格升級；译文同时增加紙张与打印，也让作品投射到另一种语言和文化之中。沒有实際扣款。",
+    "about_object": "小票、诗券与紙",
+    "about_object_body": "一张訂單以一整條 58 毫米紙带发行：先是小票，然后 CUT HERE，再接有独立編號的诗券。小票記录配置后的交易，诗券則让文字可以離开交易本身。可以切开，但不要求切开。热敏紙保留日常小票的尺度和處理方式：可以放进口袋、递给另一個人，也会因材料性质随时间褪色。褪色是媒介的性质，目前不是作品已经以时间实验證明的效果。",
+    "about_access": "数位入口与实体形式",
+    "about_access_body": "目前沒有展览空间，因此瀏览器商店是公共入口。它不扣款、不把诗上傳到伺服器，生成连續 PDF 及可離線閱读的完整文字對应版。作品也已经在小票打印機上实際輸出。预期的物质遭遇仍然是狭窄的热敏紙带；数位商店让这個发行方式可以在实体场地之外被取得。",
+    "about_position": "作品的位置",
+    "about_position_body": "Poetry Voucher 不主张把诗印在小票上本身就是新的，也不把这套价格說成創作勞動的公平模型。它處理的是一個更窄的矛盾：高度個人、不可互换的寫作，被暂时當作库存、配置和价格來處理。零售系统可以计算文字單位、紙张和选项，却不能计算寫成一首诗所需的时间、知识、依戀或关係。交易之后怎樣處理它留给读者：保存、切开、送人，或丢掉。"
   },
   "ja": {
     "title": "詩の券",
@@ -85,7 +115,17 @@
     "edit": "作品を見る",
     "preview_alt": "乙三の基本見本。現金レシートと原文の詩の券",
     "editorial_sample": "乙三 · サイト書体＋英訳 · デジタル見本",
-    "editorial_preview_alt": "乙三の編集見本。カード決済レシートと、原文・公開済み英訳を収めた詩の券"
+    "editorial_preview_alt": "乙三の編集見本。カード決済レシートと、原文・公開済み英訳を収めた詩の券",
+    "about_origin": "会計から読書へ",
+    "about_origin_body": "詩、書体、翻訳を選び、支払いのない会計へ。一枚のレシートに注文を記録し、各券には個別の番号を付けます。画像の校正か、オフラインで読める全文テキスト版を保存できます。",
+    "about_price": "レシート用紙に、一篇の詩を。",
+    "about_price_body": "このプロジェクト以前に書かれた詩を一篇ずつ並べ、基本仕様と追加の選択肢を設けます。個人の書く行為を、スーパーで買い物をする馴染みの手順に置きます。",
+    "about_object": "紙という制約",
+    "about_object_body": "紙を手に取り読む作品を目指しています。初期の試し刷りはありますが、ここにあるのは固定のデジタル見本で、実物の写真ではありません。現在の58ミリ・384ドット出力は実機での校正が必要です。",
+    "about_access": "端末の中で完結",
+    "about_access_body": "ファイルはブラウザー内で作成します。作品の選択は端末に保存し、完了した注文は現在のタブに残ります。アップロード、課金、プリンターへの接続はありません。",
+    "about_position": "詩 · 組版 · インタラクション",
+    "about_position_body": "このプロジェクト以前に書かれた詩を一篇ずつ並べ、基本仕様と追加の選択肢を設けます。個人の書く行為を、スーパーで買い物をする馴染みの手順に置きます。"
   },
   "de": {
     "title": "Poetry Voucher",
@@ -107,7 +147,17 @@
     "edit": "Ausgaben ansehen",
     "preview_alt": "B3-Basismuster mit Barzahlungsbon und separatem Gedichtbon im Original",
     "editorial_sample": "B3 · Website-Schriften + Englisch · digitales Muster",
-    "editorial_preview_alt": "Redaktionelles B3-Muster mit Kartenbeleg und Gedicht im chinesischen Original und in veröffentlichter englischer Übersetzung"
+    "editorial_preview_alt": "Redaktionelles B3-Muster mit Kartenbeleg und Gedicht im chinesischen Original und in veröffentlichter englischer Übersetzung",
+    "about_origin": "Vom Kauf zum Lesen",
+    "about_origin_body": "Gedicht, Schrift und Übersetzungen wählen, dann ohne Zahlung zur Kasse gehen. Ein Beleg hält die Bestellung fest; jeder Gedichtbon erhält eine eigene Nummer. Bildproben oder eine vollständige, offline lesbare Textfassung herunterladen.",
+    "about_price": "Ein Gedicht auf Kassenpapier.",
+    "about_price_body": "Gedichte, die vor diesem Projekt entstanden sind, werden einzeln mit einer Grundausstattung und wählbaren Extras angeboten. Poetry Voucher versetzt persönliches Schreiben in die vertrauten Abläufe eines Supermarkteinkaufs.",
+    "about_object": "Papier als Rahmen",
+    "about_object_body": "Eine Arbeit für die Begegnung auf Papier. Erste Druckproben wurden angefertigt; hier sind feste digitale Muster zu sehen, keine Fotos dieser Proben. Die aktuelle Ausgabe mit 58 mm und 384 Punkten muss noch am Gerät kalibriert werden.",
+    "about_access": "Auf Ihrem Gerät",
+    "about_access_body": "Die Dateien entstehen im Browser. Die Katalogauswahl wird auf dem Gerät gespeichert; abgeschlossene Bestellungen bleiben im aktuellen Tab. Kein Upload, keine Abbuchung und keine Verbindung zu einem Drucker.",
+    "about_position": "Lyrik · Typografie · Interaktion",
+    "about_position_body": "Gedichte, die vor diesem Projekt entstanden sind, werden einzeln mit einer Grundausstattung und wählbaren Extras angeboten. Poetry Voucher versetzt persönliches Schreiben in die vertrauten Abläufe eines Supermarkteinkaufs."
   },
   "fr": {
     "title": "Poetry Voucher",
@@ -129,7 +179,17 @@
     "edit": "Voir les éditions",
     "preview_alt": "Épreuve de base B3 avec ticket payé en espèces et bon poétique en version originale",
     "editorial_sample": "B3 · polices du site + anglais · spécimen numérique",
-    "editorial_preview_alt": "Épreuve éditoriale B3 avec ticket de paiement par carte et bon poétique en chinois original et en traduction anglaise publiée"
+    "editorial_preview_alt": "Épreuve éditoriale B3 avec ticket de paiement par carte et bon poétique en chinois original et en traduction anglaise publiée",
+    "about_origin": "De la transaction à la lecture",
+    "about_origin_body": "Choisissez un poème, une police et des traductions, puis passez en caisse sans payer. Un reçu consigne la commande ; chaque bon porte son propre numéro. Téléchargez les épreuves en image ou une version textuelle intégrale lisible hors ligne.",
+    "about_price": "Un poème sur papier de caisse.",
+    "about_price_body": "Des poèmes écrits avant ce projet sont proposés à la pièce, avec une configuration de base et des options. Poetry Voucher place une écriture personnelle dans les gestes familiers d’un achat au supermarché.",
+    "about_object": "La contrainte du papier",
+    "about_object_body": "Une œuvre destinée à être rencontrée sur papier. Des premiers essais ont été imprimés ; les images présentées ici sont des spécimens numériques fixes, non des photographies de ces essais. La sortie actuelle de 58 mm et 384 points reste à calibrer sur l’appareil.",
+    "about_access": "Sur votre appareil",
+    "about_access_body": "Les fichiers sont préparés dans le navigateur. Les choix du catalogue sont enregistrés sur l’appareil ; les commandes terminées restent dans l’onglet courant. Aucun envoi, aucun débit et aucune connexion à une imprimante.",
+    "about_position": "poésie · typographie · interaction",
+    "about_position_body": "Des poèmes écrits avant ce projet sont proposés à la pièce, avec une configuration de base et des options. Poetry Voucher place une écriture personnelle dans les gestes familiers d’un achat au supermarché."
   },
   "ru": {
     "title": "Poetry Voucher",
@@ -151,6 +211,16 @@
     "edit": "Посмотреть издания",
     "preview_alt": "Базовый образец B3: чек с оплатой наличными и отдельный талон с оригиналом стихотворения",
     "editorial_sample": "B3 · шрифты сайта + английский · цифровой образец",
-    "editorial_preview_alt": "Редакционный образец B3: чек с оплатой картой и талон с китайским оригиналом и опубликованным английским переводом"
+    "editorial_preview_alt": "Редакционный образец B3: чек с оплатой картой и талон с китайским оригиналом и опубликованным английским переводом",
+    "about_origin": "От покупки к чтению",
+    "about_origin_body": "Выберите стихотворение, шрифт и переводы, затем оформите заказ без оплаты. Один чек фиксирует заказ; каждый талон получает отдельный номер. Скачайте изображения или полную текстовую версию для чтения без сети.",
+    "about_price": "Стихотворение на кассовой ленте.",
+    "about_price_body": "Стихи, написанные до этого проекта, предлагаются поштучно, с базовой комплектацией и дополнениями. Poetry Voucher помещает личное письмо в привычную процедуру покупки в супермаркете.",
+    "about_object": "В рамках бумаги",
+    "about_object_body": "Работа предназначена для встречи на бумаге. Первые пробные отпечатки уже сделаны; здесь показаны фиксированные цифровые образцы, а не фотографии этих отпечатков. Текущий вывод на 58 мм и 384 точки ещё требует калибровки на устройстве.",
+    "about_access": "На вашем устройстве",
+    "about_access_body": "Файлы создаются в браузере. Выбор из каталога сохраняется на устройстве; завершённые заказы остаются в текущей вкладке. Ничего не отправляется, деньги не списываются, соединения с принтером нет.",
+    "about_position": "поэзия · типографика · взаимодействие",
+    "about_position_body": "Стихи, написанные до этого проекта, предлагаются поштучно, с базовой комплектацией и дополнениями. Poetry Voucher помещает личное письмо в привычную процедуру покупки в супермаркете."
   }
 }
