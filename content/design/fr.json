@@ -18,14 +18,14 @@
   "source": "Ouvrir la page source",
   "enlarge": "Ouvrir à la résolution native",
   "type_title": "02 / Les fonctions des caractères",
-  "type_intro": "Les mots et réglages calculés proviennent de la notice ci-dessus. Les noms désignent les polices réellement dessinées par le navigateur. Les spécimens conservent le corps mesuré et se recomposent dans la largeur de cette page.",
+  "type_intro": "Les mots et réglages calculés proviennent de la notice ci-dessus. Les noms désignent les polices réellement dessinées par le navigateur. Les spécimens gardent la police, le corps et l’approche mesurés, avec un interligne adapté aux nouveaux retours à la ligne. Les hauteurs de ligne source et du spécimen sont distinguées lorsqu’elles diffèrent.",
   "roles": [
     "Métadonnées",
     "Titre du projet",
     "Texte descriptif"
   ],
   "size": "Corps",
-  "leading": "Hauteur de ligne",
+  "leading": "Hauteur de ligne source",
   "tracking": "Approche",
   "face": "Polices effectivement affichées",
   "site_end": "La grille commune ne rend pas toutes les pages identiques. Ces mesures concernent cette notice et cette fenêtre. Le filet sépare les projets, le numéro situe la notice et la petite colonne de preuves apporte ce que le titre seul ne peut établir.",
@@ -82,5 +82,6 @@
   "font_note": "La base emploie Fusion Pixel Zh HK sur sa grille de 12 points, avec un pas de ligne de 32 points ici. L’option du site utilise sa pile de caractères chinois à empattements, avec un pas de 31 points. Les deux extraits sont des images à un bit : contours et espacements restent visibles dans les pixels.",
   "detail_note": "Ouvrez une image pour voir ses pixels d’origine. Les agrandissements conservent les contours nets des pixels. Ces spécimens documentent la sortie numérique sans simuler texture du papier, diffusion thermique ni effacement.",
   "specimen": "B3 / 24 septembre 2026 / un exemplaire / sans traduction",
-  "original": "Le texte original reste disponible sur la page des poèmes."
+  "original": "Le texte original reste disponible sur la page des poèmes.",
+  "sample_leading": "Hauteur de ligne du spécimen"
 }

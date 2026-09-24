@@ -18,14 +18,14 @@
   "source": "Open the source page",
   "enlarge": "Open at native resolution",
   "type_title": "02 / Type performs different jobs",
-  "type_intro": "These are the actual words and computed settings from the desktop entry above. The font names report faces that the browser painted, not merely the first family named in the stylesheet. Samples below retain the measured type size and reflow within this page.",
+  "type_intro": "These are the actual words and computed settings from the desktop entry above. The font names report faces that the browser painted. The samples retain the measured typeface, size and tracking; their line spacing allows for reflow. Source and sample line heights are listed separately where they differ.",
   "roles": [
     "Metadata",
     "Project heading",
     "Descriptive text"
   ],
   "size": "Type size",
-  "leading": "Line height",
+  "leading": "Source line height",
   "tracking": "Letter spacing",
   "face": "Rendered faces",
   "site_end": "The shared grid does not make every page identical. These measurements belong to this entry and viewport. The line separates projects, the number locates the entry, and the smaller evidence column supplies information that the title alone cannot establish.",
@@ -82,5 +82,6 @@
   "font_note": "The base uses Fusion Pixel Zh HK on its 12-dot grid, with 32-dot line steps here. The website setting uses the project’s CJK serif stack with 31-dot line steps here. Both crops are one-bit output; the different silhouettes and spacing are visible in the pixels.",
   "detail_note": "Open an image for its original pixels. Enlargements preserve hard pixel edges. These specimens document digital output; paper texture, heat spread and fading are not simulated.",
   "specimen": "B3 / 24 September 2026 / one copy / no translation",
-  "original": "Original text remains available on the poem page."
+  "original": "Original text remains available on the poem page.",
+  "sample_leading": "Sample line height"
 }

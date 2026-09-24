@@ -230,3 +230,9 @@ body:is(.about-page,.voucher-project) .page-topbar > .reading-tools .reading-pan
   body:is(.about-page,.voucher-project) .page-topbar > .reading-tools summary {justify-self:end}
   body:is(.about-page,.voucher-project) .page-topbar > .reading-tools .reading-panel {width:100%}
 }
+
+/* Text links need clearance below CJK glyphs as well as Latin descenders. */
+body:is(.about-page,.voucher-project) :is(main,.page-footer) a[href]:not(.skip-link):not(.pv-cta):not(.pv-text-link):not(.shop-enter) {
+  text-underline-offset:.35em;
+  text-decoration-skip-ink:auto;
+}
