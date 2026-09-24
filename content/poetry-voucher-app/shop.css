@@ -58,3 +58,5 @@
 
 /* Complete non-image reading, also available as a standalone download. */
 .order-text-copy{margin-block:2rem;max-inline-size:48rem}.order-text-copy section{margin-block:2rem}.order-text-copy pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.85rem}.order-text-copy a,.order-text-copy .micro{overflow-wrap:anywhere}.order-text-copy .verse{white-space:pre-wrap}.publication-record{margin-block:1rem}.render-notice{margin-block:1.5rem}
+
+.order-strip-proof{max-width:460px;margin-inline:auto}.order-strip-proof>img{display:block;margin:0 auto;border:0}.order-strip-proof>img+img{margin-top:0}

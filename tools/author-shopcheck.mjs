@@ -76,7 +76,7 @@ try{
   results.push('Previously consented custom text is retained but not reissued; frozen historical reader orders remain readable and safely escaped.');
   await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=ci-b6');await loaded();await page.waitForFunction(()=>document.querySelector('#product-editor').open);
   await page.locator('#size').selectOption('36');for(const lang of ['en','ja','de','fr','ru'])await page.locator(`#translation-options input[value=${lang}]`).check();await page.locator('#save-line').click();await purchase();
-  const longOrder=await page.evaluate(()=>poetryShop.snapshot().orders[0]);assert.equal(longOrder.total,1694);const images=await page.locator('.voucher-proof img').evaluateAll(nodes=>nodes.map(n=>n.src));assert(images.length>=3);
+  const longOrder=await page.evaluate(()=>poetryShop.snapshot().orders[0]);assert.equal(longOrder.total,1694);const images=await page.locator('.order-strip-proof img').evaluateAll(nodes=>nodes.map(n=>n.src));assert(images.length>=4);
   for(let index=0;index<images.length;index++)await writeFile(join(artifacts,'long-voucher-'+(index+1)+'.png'),Buffer.from(images[index].split(',')[1],'base64'));
   await file('.order-record a[data-shop=orderPdf]','long-order.pdf');
   await file('.order-record a[data-shop=textDownload]','long-reading.html');

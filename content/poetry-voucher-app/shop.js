@@ -209,6 +209,15 @@
     }
     return {receipt,vouchers};
   }
+  function cutHerePage(){
+    const p=new Paper();p.space(22);p.till('-------- CUT HERE --------',null,true);p.space(22);return p.finish();
+  }
+  function continuousOrderPages(result){
+    const pages=[];
+    pages.push(...result.receipt);
+    for(const voucher of result.vouchers){pages.push(cutHerePage(),...voucher.pages);}
+    return pages;
+  }
   function download(label,blob,name,urls){const link=node('a',label,'download-link');link.href=URL.createObjectURL(blob);link.download=name;urls.push(link.href);return link;}
   async function outputOrder(order,result){
     // Build off-DOM first: an export failure cannot clear the bag or erase an earlier order.
@@ -216,18 +225,18 @@
     try{
       const title=node('h2'),meta=node('p'),payment=node('p',undefined,'micro'),hint=node('p',undefined,'micro');
       title.dataset.orderField='title';meta.dataset.orderField='meta';payment.dataset.orderField='payment';hint.dataset.shop='downloadHint';
-      const fullLink=download(t('orderPdf'),multipagePDF([...result.receipt,...result.vouchers.flatMap(v=>v.pages)]),`poetry-order-${order.ref}.pdf`,urls),receiptLink=download(t('receiptPdf'),multipagePDF(result.receipt),`receipt-${order.ref}.pdf`,urls);
-      fullLink.dataset.shop='orderPdf';receiptLink.dataset.shop='receiptPdf';
+      const fullLink=download(t('orderPdf'),multipagePDF(continuousOrderPages(result)),`poetry-order-${order.ref}.pdf`,urls);
+      fullLink.dataset.shop='orderPdf';
       const textLink=node('a',t('textDownload'),'download-link'),readLink=node('a',t('readOrder'),'download-link');textLink.dataset.shop='textDownload';readLink.dataset.shop='readOrder';readLink.href='#reading-'+order.ref;textLink.download='poetry-order-'+order.ref+'-reading.html';
-      heading.append(title,meta,payment,fullLink,receiptLink,textLink,readLink,hint);
+      heading.append(title,meta,payment,fullLink,textLink,readLink,hint);
       section.refreshReading=()=>{
         const reading=OrderReading.view(order,result,t,uiMoney);reading.id='reading-'+order.ref;
         section.querySelector('.order-text-copy')?.remove();section.append(reading);
         if(textLink.hasAttribute('href'))URL.revokeObjectURL(textLink.href);
         textLink.href=URL.createObjectURL(OrderReading.html(order,result,t,uiMoney,uiLocale));urls.push(textLink.href);
       };
-      const receipt=node('figure',undefined,'receipt-proof');receipt.append(node('figcaption',t('receipt')+' / '+order.ref));for(const page of result.receipt){const img=node('img');img.src=page.toDataURL('image/png');img.alt=t('receipt')+' '+order.ref;img.width=page.width;img.height=page.height;receipt.append(img);}proofs.append(receipt);
-      for(const voucher of result.vouchers){const figure=node('figure',undefined,'voucher-proof');figure.dataset.lineId=voucher.line.id;figure.append(node('figcaption',lineTitle(voucher.line)),node('p',voucher.id,'micro'));for(const [i,page] of voucher.pages.entries()){const img=node('img');img.src=page.toDataURL('image/png');img.alt=voucher.title+' / '+(i+1);img.width=page.width;img.height=page.height;img.loading='lazy';figure.append(img);const png=await new Promise(resolve=>page.toBlob(resolve,'image/png'));if(!png)throw Error('PNG encoding');figure.append(download('PNG'+(voucher.pages.length>1?' '+(i+1):''),png,`${voucher.id}-${i+1}.png`,urls));}figure.append(download('PDF',multipagePDF(voucher.pages),voucher.id+'.pdf',urls));proofs.append(figure);}
+      const strip=node('figure',undefined,'order-strip-proof');strip.append(node('figcaption',t('continuousEdition')+' / '+order.ref));
+      for(const [i,page] of continuousOrderPages(result).entries()){const img=node('img');img.src=page.toDataURL('image/png');img.alt=t('continuousEdition')+' '+order.ref+' / '+(i+1);img.width=page.width;img.height=page.height;img.loading='lazy';strip.append(img);}proofs.append(strip);
       // Complete receipt and poems remain readable without interpreting the proof images.
       section.prepend(heading,proofs);updateOrderUI(order,section);return {section,urls};
     }catch(error){urls.forEach(URL.revokeObjectURL);throw error;}
@@ -238,9 +247,8 @@
     section.querySelector('[data-order-field="title"]').textContent=t('order')+' '+order.ref;
     section.querySelector('[data-order-field="meta"]').textContent=new Intl.DateTimeFormat(document.documentElement.lang,{dateStyle:'medium',timeStyle:'short',timeZone:'Europe/London'}).format(order.created)+' · '+uiMoney(order.total);
     const payment=order.payment;section.querySelector('[data-order-field="payment"]').textContent=t(payment.method==='card'?'card':'cash')+(payment.method==='cash'?` · ${t('received')} ${uiMoney(payment.tender)} · ${t('change')} ${uiMoney(payment.change)}`:'');
-    section.querySelector('.receipt-proof figcaption').textContent=t('receipt')+' / '+order.ref;
-    section.querySelectorAll('.receipt-proof img').forEach(img=>img.alt=t('receipt')+' '+order.ref);
-    for(const line of order.lines)for(const part of section.querySelectorAll('[data-line-id]'))if(part.dataset.lineId===line.id){const label=part.querySelector('figcaption,summary');label.textContent=lineTitle(line);label.lang=displayLang(line);part.querySelectorAll('img').forEach((img,i)=>img.alt=lineTitle(line)+' / '+(i+1));}
+    section.querySelector('.order-strip-proof figcaption').textContent=t('continuousEdition')+' / '+order.ref;
+    section.querySelectorAll('.order-strip-proof img').forEach((img,i)=>img.alt=t('continuousEdition')+' '+order.ref+' / '+(i+1));
   }
   function rememberOrder(order){sessionStorage.setItem(ORDER_KEY+order.ref,JSON.stringify(order));sessionStorage.setItem(ORDER_KEY+'latest',order.ref);}
   async function openSavedOrder(){
