@@ -55,7 +55,7 @@
   color:var(--ink);
   font-size:1.0625rem;
   line-height:1.8;
-  text-wrap:pretty;
+  text-wrap:wrap;
 }
 .about-page .editorial-section .about-section-copy > p + p,
 .voucher-project .pv-essay .about-section-copy > p + p {
