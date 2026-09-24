@@ -232,7 +232,7 @@ body:is(.about-page,.voucher-project) .page-topbar > .reading-tools .reading-pan
 }
 
 /* Text links need clearance below CJK glyphs as well as Latin descenders. */
-body:is(.about-page,.voucher-project) :is(main,.page-footer) a[href] {
+body:is(.about-page,.voucher-project) :is(main,.page-footer) a[href]:not(.skip-link):not(.pv-cta):not(.pv-text-link):not(.shop-enter) {
   text-underline-offset:.35em;
   text-decoration-skip-ink:auto;
 }

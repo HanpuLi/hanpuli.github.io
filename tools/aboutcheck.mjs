@@ -65,6 +65,8 @@ try{
           return {overflow,clipped};
         });
         if(geometry.overflow>1||geometry.clipped.length)failures.push({locale,kind,width,...geometry});
+        const underlines=await page.locator('.plate-source').evaluateAll(links=>links.map(a=>{const s=getComputedStyle(a);return {text:a.textContent,offset:parseFloat(s.textUnderlineOffset)/parseFloat(s.fontSize)};}).filter(a=>a.offset<.349));
+        if(underlines.length)failures.push({locale,kind,width,underlines});
         const ink=await page.evaluate(inspectTypeInk);
         if(ink.failures.length)failures.push({locale,kind,width,ink:ink.failures});
         rows.push({locale,kind,width,...geometry,ink:ink.measurements});
