@@ -13,8 +13,9 @@
     "qa:shop": "node tools/shopcheck.mjs",
     "qa:shop-locales": "node tools/shoplocalecheck.mjs",
     "qa:author-shop": "node tools/author-shopcheck.mjs",
-    "qa:about": "node tools/aboutcheck.mjs",
-    "qa:fonts": "node tools/fontcheck.mjs"
+    "qa:about": "python3 tools/designcheck.py && node tools/aboutcheck.mjs",
+    "qa:fonts": "node tools/fontcheck.mjs",
+    "build:design": "node tools/build_design_specimens.mjs && python3 tools/build_site.py"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

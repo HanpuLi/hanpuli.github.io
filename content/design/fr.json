@@ -1,0 +1,86 @@
+{
+  "site_title": "Une page mesurée",
+  "site_intro": "Ces planches étudient la notice de recherche de la page d’accueil, à partir du HTML publié et de sa disposition mesurée pour deux largeurs de fenêtre précisées. Les traits colorés sont des annotations ; la page réelle apparaît dessous.",
+  "layout_title": "01 / Les colonnes créent des relations",
+  "desktop": "Ordinateur · fenêtre de 1440 CSS px",
+  "mobile": "Mobile · fenêtre de 390 CSS px",
+  "layout_note": "Les repères numérotés correspondent à la même notice. En largeur, numéro, description et preuves occupent des colonnes distinctes. Sur mobile, les preuves suivent la description dans l’ordre de lecture.",
+  "anchors": [
+    "Numéro du projet",
+    "Titre et description",
+    "Preuves et état",
+    "Planches de recherche dépliables"
+  ],
+  "grid_label": "Colonnes mesurées",
+  "gap_label": "Gouttière",
+  "rule_label": "Filet de séparation",
+  "padding_label": "Espace au-dessus du contenu",
+  "source": "Ouvrir la page source",
+  "enlarge": "Ouvrir à la résolution native",
+  "type_title": "02 / Les fonctions des caractères",
+  "type_intro": "Les mots et réglages calculés proviennent de la notice ci-dessus. Les noms désignent les polices réellement dessinées par le navigateur. Les spécimens conservent le corps mesuré et se recomposent dans la largeur de cette page.",
+  "roles": [
+    "Métadonnées",
+    "Titre du projet",
+    "Texte descriptif"
+  ],
+  "size": "Corps",
+  "leading": "Hauteur de ligne",
+  "tracking": "Approche",
+  "face": "Polices effectivement affichées",
+  "site_end": "La grille commune ne rend pas toutes les pages identiques. Ces mesures concernent cette notice et cette fenêtre. Le filet sépare les projets, le numéro situe la notice et la petite colonne de preuves apporte ce que le titre seul ne peut établir.",
+  "pv_title": "Une édition décomposée",
+  "pv_intro": "Nouveau spécimen B3 produit par le moteur actuel de la boutique : un exemplaire, chinois traditionnel, caractères pixel de base à 24 points, sans traduction, paiement comptant simulé. Les annotations suivent la sortie réelle. Le spécimen plus ancien au-dessus correspond à une scène datée séparément.",
+  "anatomy_title": "01 / Suivre la bande",
+  "anatomy_note": "La bande assemble le reçu, le segment CUT HERE et l’image du poème dans l’ordre de sortie de la boutique, à une échelle de largeur constante. Les repères visent des champs réellement imprimés. Il s’agit d’un spécimen numérique, non d’une photographie de papier thermique.",
+  "callouts": [
+    [
+      "Émetteur et scène",
+      "L’en-tête centré précède magasin, caisse, opérateur, date et commande. La référence de commande concerne toute la transaction."
+    ],
+    [
+      "Colonnes des articles",
+      "Quantité et description commencent à des positions fixes ; prix et montant sont alignés à droite. Une description longue continue à la ligne suivante."
+    ],
+    [
+      "Total et paiement",
+      "Le total double l’échelle verticale des points, sans changer l’avance horizontale. La scène comptant indique somme remise et monnaie rendue."
+    ],
+    [
+      "Trace et limite",
+      "Le code-barres et la référence identifient la scène générée. Le texte suivant indique qu’aucun paiement n’a été traité et qu’il ne s’agit pas d’une preuve d’achat."
+    ],
+    [
+      "Séparation facultative",
+      "CUT HERE occupe un segment entre reçu et poème. Une commande peut se poursuivre avec d’autres exemplaires numérotés séparément."
+    ],
+    [
+      "Poème et identité",
+      "Auteur, titre, texte, source et numéro d’exemplaire forment un autre document à lire. Son identifiant prolonge celui de la commande, sans répéter le prix."
+    ]
+  ],
+  "geometry_title": "02 / Papier, image, texte",
+  "geometry_intro": "Trois largeurs emboîtées règlent la sortie : papier du PDF, image matricielle, puis texte avec ses propres retraits. Le PDF centre l’image avec 5 mm de chaque côté. Une imprimante physique demande encore un étalonnage.",
+  "paper": "Largeur du papier PDF",
+  "image": "Zone d’image",
+  "receipt_width": "Ligne de caisse · 30 cases",
+  "poem_width": "Justification du poème",
+  "dots_note": "Les dimensions en millimètres sont calculées à 8 points/mm. La taille à l’écran dépend du zoom et de l’appareil : le dessin est proportionnel, ce n’est pas une règle à taille réelle.",
+  "columns_title": "03 / La grille fixe du reçu",
+  "columns_intro": "Voici le véritable en-tête des articles. Les quatre champs occupent 3, 11, 6 et 6 cases de caractères, avec une case de séparation et une dernière case libre. Chaque caractère avance de 12 points. Le reçu utilise les propres matrices de lettres du moteur.",
+  "columns": [
+    "Quantité",
+    "Description",
+    "Prix unitaire",
+    "Montant"
+  ],
+  "glyph_note": "La matrice réelle du A comporte 5 × 7 cases. Chaque case noire devient 2 × 2 points ; l’avance est de 12 points et le pas de ligne normal de 24. Pour le total, les cases font 2 × 4 points et le pas de ligne 48.",
+  "font_title": "04 / Un poème, deux compositions",
+  "font_intro": "Les mêmes premières lignes de B3, avec un corps de 24 points et une justification de 352 points. Les extraits viennent de deux configurations réelles sans traduction. L’option des caractères du site change le prix, pas le poème.",
+  "base": "Base · Fusion Pixel",
+  "upgrade": "Option · caractères du site",
+  "font_note": "La base emploie Fusion Pixel Zh HK sur sa grille de 12 points, avec un pas de ligne de 32 points ici. L’option du site utilise sa pile de caractères chinois à empattements, avec un pas de 31 points. Les deux extraits sont des images à un bit : contours et espacements restent visibles dans les pixels.",
+  "detail_note": "Ouvrez une image pour voir ses pixels d’origine. Les agrandissements conservent les contours nets des pixels. Ces spécimens documentent la sortie numérique sans simuler texture du papier, diffusion thermique ni effacement.",
+  "specimen": "B3 / 24 septembre 2026 / un exemplaire / sans traduction",
+  "original": "Le texte original reste disponible sur la page des poèmes."
+}

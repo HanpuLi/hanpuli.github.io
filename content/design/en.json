@@ -1,0 +1,86 @@
+{
+  "site_title": "A page, measured",
+  "site_intro": "The following plates examine the research entry on the home page. They use the published HTML and its computed layout, at two stated viewport widths. The tinted rules are annotations; the text beneath them is the actual page.",
+  "layout_title": "01 / Columns become relationships",
+  "desktop": "Desktop · 1440 CSS px viewport",
+  "mobile": "Mobile · 390 CSS px viewport",
+  "layout_note": "Read the numbered anchors against the same entry below. At the wider size, the index, description and evidence occupy different tracks. At the narrow size, the evidence follows the description; it is not squeezed into a miniature desktop column.",
+  "anchors": [
+    "Sequence number",
+    "Title and description",
+    "Evidence and status",
+    "Expandable research plates"
+  ],
+  "grid_label": "Measured tracks",
+  "gap_label": "Column gap",
+  "rule_label": "Section rule",
+  "padding_label": "Space above content",
+  "source": "Open the source page",
+  "enlarge": "Open at native resolution",
+  "type_title": "02 / Type performs different jobs",
+  "type_intro": "These are the actual words and computed settings from the desktop entry above. The font names report faces that the browser painted, not merely the first family named in the stylesheet. Samples below retain the measured type size and reflow within this page.",
+  "roles": [
+    "Metadata",
+    "Project heading",
+    "Descriptive text"
+  ],
+  "size": "Type size",
+  "leading": "Line height",
+  "tracking": "Letter spacing",
+  "face": "Rendered faces",
+  "site_end": "The shared grid does not make every page identical. These measurements belong to this entry and viewport. The line separates projects, the number locates the entry, and the smaller evidence column supplies information that the title alone cannot establish.",
+  "pv_title": "An edition, taken apart",
+  "pv_intro": "A new B3 specimen made by the current shop renderer: one copy, Traditional Chinese, base pixel type at 24 dots, no translation, simulated cash payment. The annotation follows the actual output from receipt to poem. The older specimen above remains a separately dated scene.",
+  "anatomy_title": "01 / Read along the strip",
+  "anatomy_note": "The strip below joins the shop’s receipt, CUT HERE segment and poem image in their output order. Widths retain the same scale throughout. Numbered leaders identify actual printed fields; this is a digital specimen, not a photograph of thermal paper.",
+  "callouts": [
+    [
+      "Issuer and scene",
+      "The centred masthead gives way to store, till, operator, date and order fields. The order reference belongs to the transaction as a whole."
+    ],
+    [
+      "Item columns",
+      "Quantity and description start at fixed character positions; unit price and amount align to the right. A long description continues on the following line."
+    ],
+    [
+      "Total and payment",
+      "The total doubles the vertical dot scale while retaining the same character advance. The cash scene records tender and change."
+    ],
+    [
+      "Record and limitation",
+      "The barcode and reference identify this generated scene. The following wording states that no payment was processed and the strip is not proof of purchase."
+    ],
+    [
+      "Optional separation",
+      "CUT HERE occupies its own segment between the receipt and the poem. One order can continue with more numbered poem copies."
+    ],
+    [
+      "Poem and identity",
+      "Author, title, poem, source and copy number form a separate reading document. Its identifier extends the order reference; its text does not repeat the price."
+    ]
+  ],
+  "geometry_title": "02 / Paper, image, text",
+  "geometry_intro": "Three nested widths govern this output. The outer width is the PDF paper model; the central width is the raster image; the text has its own insets. The PDF centres the image with 5 mm on each side. A physical printer still needs calibration.",
+  "paper": "PDF paper width",
+  "image": "Image area",
+  "receipt_width": "Till line · 30 cells",
+  "poem_width": "Poem text measure",
+  "dots_note": "Dimensions in millimetres are derived at 8 dots/mm. Screen size varies with zoom and device; this drawing is proportional, not an on-screen ruler.",
+  "columns_title": "03 / A receipt is a fixed grid",
+  "columns_intro": "This is the actual item-header crop. Four fields occupy 3, 11, 6 and 6 character cells, with one-cell separators and a final trailing cell. Every cell advances 12 dots. The receipt’s letters come from the renderer’s own bitmap patterns.",
+  "columns": [
+    "Quantity",
+    "Description",
+    "Unit price",
+    "Amount"
+  ],
+  "glyph_note": "The actual A pattern: 5 × 7 source cells. Each filled cell becomes 2 × 2 output dots; the advance is 12 dots and the normal line step is 24. For the total, the filled cells become 2 × 4 dots and the line step becomes 48.",
+  "font_title": "04 / One poem, two type settings",
+  "font_intro": "The same first lines of B3, at a 24-dot body setting and the same 352-dot text measure. These crops come from two real shop configurations with no translations. The website-typeface option changes the charge; it does not change the poem.",
+  "base": "Base · Fusion Pixel",
+  "upgrade": "Upgrade · website typefaces",
+  "font_note": "The base uses Fusion Pixel Zh HK on its 12-dot grid, with 32-dot line steps here. The website setting uses the project’s CJK serif stack with 31-dot line steps here. Both crops are one-bit output; the different silhouettes and spacing are visible in the pixels.",
+  "detail_note": "Open an image for its original pixels. Enlargements preserve hard pixel edges. These specimens document digital output; paper texture, heat spread and fading are not simulated.",
+  "specimen": "B3 / 24 September 2026 / one copy / no translation",
+  "original": "Original text remains available on the poem page."
+}

@@ -398,6 +398,7 @@ def main() -> int:
             (CONTENT / "shi-simplified.json").read_text(encoding="utf-8"),
             load(CONTENT / "essay-trainspotting.json")["zh-hans"]["language_note"],
             json.dumps(about_site["zh-hans"], ensure_ascii=False),
+            (CONTENT / "design" / "zh-hans.json").read_text(encoding="utf-8"),
             json.dumps(load(CONTENT / "poetry-voucher.json")["zh-hans"], ensure_ascii=False),
             json.dumps(load(CONTENT / "contexts.json")["zh-hans"], ensure_ascii=False),
             json.dumps(load(CONTENT / "first-love-public.json")["zh-hans"], ensure_ascii=False),

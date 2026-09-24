@@ -1,0 +1,1998 @@
+{
+  "schema": 1,
+  "site": {
+    "en": {
+      "route": "/",
+      "views": {
+        "390": {
+          "width": 335,
+          "height": 642.359375,
+          "viewport": 390,
+          "gap": 12,
+          "columns": [
+            32,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312
+          ],
+          "paddingTop": "21.6px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 22.59375,
+              "w": 29.515625,
+              "h": 17.828125,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 44,
+              "y": 22.59375,
+              "w": 291,
+              "h": 259.71875,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 44,
+              "y": 312.3125,
+              "w": 291,
+              "h": 193.703125,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 44,
+              "y": 526.015625,
+              "w": 291,
+              "h": 94.75,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-en-390.png"
+        },
+        "1440": {
+          "width": 1380.34375,
+          "height": 386.015625,
+          "viewport": 1440,
+          "gap": 17.2545,
+          "columns": [
+            103.516,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8281,
+            98.8281,
+            98.8125,
+            98.8125,
+            98.8125
+          ],
+          "paddingTop": "28.96px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 29.953125,
+              "w": 30.140625,
+              "h": 18.1875,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 120.765625,
+              "y": 29.953125,
+              "w": 790,
+              "h": 250.4375,
+              "column": "2 / 10"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 1049.375,
+              "y": 77.6875,
+              "w": 330.96875,
+              "h": 202.703125,
+              "column": "10 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 120.765625,
+              "y": 312.0625,
+              "w": 1259.578125,
+              "h": 45,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-en-1440.png"
+        }
+      },
+      "type": [
+        {
+          "text": "RESEARCH · REMOTE SENSING · POLITICAL ECONOMY",
+          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
+          "size": 13,
+          "leading": 18.2,
+          "tracking": "0.715px",
+          "weight": "400",
+          "transform": "uppercase",
+          "fonts": [
+            {
+              "family": "Courier Prime",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "The Material Footprint of Virtual Production",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "size": 54,
+          "leading": 52.92,
+          "tracking": "-1.62px",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "EB Garamond",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "The completed spatial phase of an ongoing study of the Shepperton Studios expansion, testing low-carbon discourse against land-cover change, thermal evidence and the planning record.",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "size": 16.56,
+          "leading": 27.4896,
+          "tracking": "normal",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "EB Garamond",
+              "custom": true
+            }
+          ]
+        }
+      ]
+    },
+    "zh": {
+      "route": "/zh/",
+      "views": {
+        "390": {
+          "width": 335,
+          "height": 561.25,
+          "viewport": 390,
+          "gap": 12,
+          "columns": [
+            32,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312
+          ],
+          "paddingTop": "21.6px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 22.59375,
+              "w": 29.515625,
+              "h": 17.828125,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 44,
+              "y": 22.59375,
+              "w": 291,
+              "h": 214.984375,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 44,
+              "y": 267.578125,
+              "w": 291,
+              "h": 193.703125,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 44,
+              "y": 481.28125,
+              "w": 291,
+              "h": 58.375,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-zh-390.png"
+        },
+        "1440": {
+          "width": 1380.34375,
+          "height": 338.28125,
+          "viewport": 1440,
+          "gap": 17.2545,
+          "columns": [
+            103.516,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8281,
+            98.8281,
+            98.8125,
+            98.8125,
+            98.8125
+          ],
+          "paddingTop": "28.96px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 29.953125,
+              "w": 30.140625,
+              "h": 18.1875,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 120.765625,
+              "y": 29.953125,
+              "w": 790,
+              "h": 202.703125,
+              "column": "2 / 10"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 1049.375,
+              "y": 29.953125,
+              "w": 330.96875,
+              "h": 202.703125,
+              "column": "10 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 120.765625,
+              "y": 264.328125,
+              "w": 1259.578125,
+              "h": 45,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-zh-1440.png"
+        }
+      },
+      "type": [
+        {
+          "text": "研究 · 遙感 · 政治經濟學",
+          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
+          "size": 13,
+          "leading": 18.2,
+          "tracking": "0.715px",
+          "weight": "400",
+          "transform": "uppercase",
+          "fonts": [
+            {
+              "family": "Shippori Mincho",
+              "custom": true
+            },
+            {
+              "family": "Courier Prime",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "虛擬製作的物質足跡",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "size": 54,
+          "leading": 52.92,
+          "tracking": "-1.62px",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "Shippori Mincho",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "一項持續研究已完成的空間階段：以 Shepperton Studios 擴建為對象，把低碳敘事與地表覆蓋變化、熱環境證據及規劃紀錄逐一對照。",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "size": 16.56,
+          "leading": 27.4896,
+          "tracking": "normal",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "Shippori Mincho",
+              "custom": true
+            },
+            {
+              "family": "EB Garamond",
+              "custom": true
+            }
+          ]
+        }
+      ]
+    },
+    "zh-hans": {
+      "route": "/zh-hans/",
+      "views": {
+        "390": {
+          "width": 335,
+          "height": 561.25,
+          "viewport": 390,
+          "gap": 12,
+          "columns": [
+            32,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312
+          ],
+          "paddingTop": "21.6px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 22.59375,
+              "w": 29.515625,
+              "h": 17.828125,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 44,
+              "y": 22.59375,
+              "w": 291,
+              "h": 214.984375,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 44,
+              "y": 267.578125,
+              "w": 291,
+              "h": 193.703125,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 44,
+              "y": 481.28125,
+              "w": 291,
+              "h": 58.375,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-zh-hans-390.png"
+        },
+        "1440": {
+          "width": 1380.34375,
+          "height": 338.28125,
+          "viewport": 1440,
+          "gap": 17.2545,
+          "columns": [
+            103.516,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8281,
+            98.8281,
+            98.8125,
+            98.8125,
+            98.8125
+          ],
+          "paddingTop": "28.96px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 29.953125,
+              "w": 30.140625,
+              "h": 18.1875,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 120.765625,
+              "y": 29.953125,
+              "w": 790,
+              "h": 202.703125,
+              "column": "2 / 10"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 1049.375,
+              "y": 29.953125,
+              "w": 330.96875,
+              "h": 202.703125,
+              "column": "10 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 120.765625,
+              "y": 264.328125,
+              "w": 1259.578125,
+              "h": 45,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-zh-hans-1440.png"
+        }
+      },
+      "type": [
+        {
+          "text": "研究 · 遥感 · 政治经济学",
+          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Noto Serif SC Site\", \"Songti SC\", \"Courier New\", monospace",
+          "size": 13,
+          "leading": 18.2,
+          "tracking": "0.715px",
+          "weight": "400",
+          "transform": "uppercase",
+          "fonts": [
+            {
+              "family": "Courier Prime",
+              "custom": true
+            },
+            {
+              "family": "Noto Serif SC ExtraLight",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "虚拟制作的物质足迹",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Noto Serif SC Site\", \"Songti SC\", \"Noto Serif CJK SC\", serif",
+          "size": 54,
+          "leading": 52.92,
+          "tracking": "-1.62px",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "Noto Serif SC ExtraLight",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "一项持续研究已完成的空间阶段：以 Shepperton Studios 扩建为对象，把低碳叙事与地表覆盖变化、热环境证据及规划记录逐一对照。",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Noto Serif SC Site\", \"Songti SC\", \"Noto Serif CJK SC\", serif",
+          "size": 16.56,
+          "leading": 27.4896,
+          "tracking": "normal",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "EB Garamond",
+              "custom": true
+            },
+            {
+              "family": "Noto Serif SC ExtraLight",
+              "custom": true
+            }
+          ]
+        }
+      ]
+    },
+    "ja": {
+      "route": "/ja/",
+      "views": {
+        "390": {
+          "width": 335,
+          "height": 568.3125,
+          "viewport": 390,
+          "gap": 12,
+          "columns": [
+            32,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312
+          ],
+          "paddingTop": "21.6px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 22.59375,
+              "w": 29.515625,
+              "h": 17.828125,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 44,
+              "y": 22.59375,
+              "w": 291,
+              "h": 235.421875,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 44,
+              "y": 288.015625,
+              "w": 291,
+              "h": 193.703125,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 44,
+              "y": 501.71875,
+              "w": 291,
+              "h": 45,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-ja-390.png"
+        },
+        "1440": {
+          "width": 1380.34375,
+          "height": 403.296875,
+          "viewport": 1440,
+          "gap": 17.2545,
+          "columns": [
+            103.516,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8281,
+            98.8281,
+            98.8125,
+            98.8125,
+            98.8125
+          ],
+          "paddingTop": "28.96px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 29.953125,
+              "w": 30.140625,
+              "h": 18.1875,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 120.765625,
+              "y": 29.953125,
+              "w": 790,
+              "h": 267.71875,
+              "column": "2 / 10"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 1049.375,
+              "y": 94.96875,
+              "w": 330.96875,
+              "h": 202.703125,
+              "column": "10 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 120.765625,
+              "y": 329.34375,
+              "w": 1259.578125,
+              "h": 45,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-ja-1440.png"
+        }
+      },
+      "type": [
+        {
+          "text": "研究 · リモートセンシング · 政治経済学",
+          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
+          "size": 13,
+          "leading": 18.2,
+          "tracking": "0.715px",
+          "weight": "400",
+          "transform": "uppercase",
+          "fonts": [
+            {
+              "family": "Shippori Mincho",
+              "custom": true
+            },
+            {
+              "family": "Courier Prime",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "バーチャルプロダクション​の物質的​フットプリント",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "size": 54,
+          "leading": 61.56,
+          "tracking": "-1.62px",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "Shippori Mincho",
+              "custom": true
+            },
+            {
+              "family": "EB Garamond",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "Shepperton Studios 拡張をめぐる継続研究のうち、完了した空間分析フェーズ。低炭素をめぐる言説を、土地被覆の変化、熱データ、計画記録と照合する。",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "size": 16.56,
+          "leading": 27.4896,
+          "tracking": "normal",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "Shippori Mincho",
+              "custom": true
+            },
+            {
+              "family": "EB Garamond",
+              "custom": true
+            }
+          ]
+        }
+      ]
+    },
+    "de": {
+      "route": "/de/",
+      "views": {
+        "390": {
+          "width": 335,
+          "height": 642.359375,
+          "viewport": 390,
+          "gap": 12,
+          "columns": [
+            32,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312
+          ],
+          "paddingTop": "21.6px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 22.59375,
+              "w": 29.515625,
+              "h": 17.828125,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 44,
+              "y": 22.59375,
+              "w": 291,
+              "h": 259.71875,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 44,
+              "y": 312.3125,
+              "w": 291,
+              "h": 193.703125,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 44,
+              "y": 526.015625,
+              "w": 291,
+              "h": 94.75,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-de-390.png"
+        },
+        "1440": {
+          "width": 1380.34375,
+          "height": 386.015625,
+          "viewport": 1440,
+          "gap": 17.2545,
+          "columns": [
+            103.516,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8281,
+            98.8281,
+            98.8125,
+            98.8125,
+            98.8125
+          ],
+          "paddingTop": "28.96px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 29.953125,
+              "w": 30.140625,
+              "h": 18.1875,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 120.765625,
+              "y": 29.953125,
+              "w": 790,
+              "h": 250.4375,
+              "column": "2 / 10"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 1049.375,
+              "y": 77.6875,
+              "w": 330.96875,
+              "h": 202.703125,
+              "column": "10 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 120.765625,
+              "y": 312.0625,
+              "w": 1259.578125,
+              "h": 45,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-de-1440.png"
+        }
+      },
+      "type": [
+        {
+          "text": "FORSCHUNG · FERNERKUNDUNG · POLITISCHE ÖKONOMIE",
+          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
+          "size": 13,
+          "leading": 18.2,
+          "tracking": "0.715px",
+          "weight": "400",
+          "transform": "uppercase",
+          "fonts": [
+            {
+              "family": "Courier Prime",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "Der materielle Fußabdruck virtueller Produktion",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "size": 54,
+          "leading": 52.92,
+          "tracking": "-1.62px",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "EB Garamond",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "Die abgeschlossene räumliche Phase einer laufenden Studie zur Erweiterung der Shepperton Studios; sie prüft den Low-Carbon-Diskurs an Landbedeckungsänderungen, thermischen Daten und Planungsakten.",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "size": 16.56,
+          "leading": 27.4896,
+          "tracking": "normal",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "EB Garamond",
+              "custom": true
+            }
+          ]
+        }
+      ]
+    },
+    "fr": {
+      "route": "/fr/",
+      "views": {
+        "390": {
+          "width": 335,
+          "height": 783.234375,
+          "viewport": 390,
+          "gap": 12,
+          "columns": [
+            32,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312
+          ],
+          "paddingTop": "21.6px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 22.59375,
+              "w": 29.515625,
+              "h": 17.828125,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 44,
+              "y": 22.59375,
+              "w": 291,
+              "h": 289.515625,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 44,
+              "y": 342.109375,
+              "w": 291,
+              "h": 213.84375,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 44,
+              "y": 575.953125,
+              "w": 291,
+              "h": 185.6875,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-fr-390.png"
+        },
+        "1440": {
+          "width": 1380.34375,
+          "height": 386.015625,
+          "viewport": 1440,
+          "gap": 17.2545,
+          "columns": [
+            103.516,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8281,
+            98.8281,
+            98.8125,
+            98.8125,
+            98.8125
+          ],
+          "paddingTop": "28.96px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 29.953125,
+              "w": 30.140625,
+              "h": 18.1875,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 120.765625,
+              "y": 29.953125,
+              "w": 790,
+              "h": 250.4375,
+              "column": "2 / 10"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 1049.375,
+              "y": 77.6875,
+              "w": 330.96875,
+              "h": 202.703125,
+              "column": "10 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 120.765625,
+              "y": 312.0625,
+              "w": 1259.578125,
+              "h": 45,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-fr-1440.png"
+        }
+      },
+      "type": [
+        {
+          "text": "RECHERCHE · TÉLÉDÉTECTION · ÉCONOMIE POLITIQUE",
+          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
+          "size": 13,
+          "leading": 18.2,
+          "tracking": "0.715px",
+          "weight": "400",
+          "transform": "uppercase",
+          "fonts": [
+            {
+              "family": "Courier Prime",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "L’empreinte matérielle de la production virtuelle",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "size": 54,
+          "leading": 52.92,
+          "tracking": "-1.62px",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "EB Garamond",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "La phase spatiale achevée d’une étude en cours sur l’agrandissement des Shepperton Studios, confrontant le discours bas carbone aux changements d’occupation des sols, aux données thermiques et au dossier d’urbanisme.",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "size": 16.56,
+          "leading": 27.4896,
+          "tracking": "normal",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "EB Garamond",
+              "custom": true
+            }
+          ]
+        }
+      ]
+    },
+    "ru": {
+      "route": "/ru/",
+      "views": {
+        "390": {
+          "width": 335,
+          "height": 1487.328125,
+          "viewport": 390,
+          "gap": 12,
+          "columns": [
+            32,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312,
+            15.5312
+          ],
+          "paddingTop": "21.6px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 22.59375,
+              "w": 29.546875,
+              "h": 17.828125,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 44,
+              "y": 22.59375,
+              "w": 291,
+              "h": 320.671875,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 44,
+              "y": 373.265625,
+              "w": 291,
+              "h": 213.84375,
+              "column": "2 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 44,
+              "y": 607.109375,
+              "w": 291,
+              "h": 858.625,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-ru-390.png"
+        },
+        "1440": {
+          "width": 1380.34375,
+          "height": 358.421875,
+          "viewport": 1440,
+          "gap": 17.2545,
+          "columns": [
+            103.516,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8125,
+            98.8281,
+            98.8281,
+            98.8125,
+            98.8125,
+            98.8125
+          ],
+          "paddingTop": "28.96px",
+          "rule": "1px",
+          "parts": [
+            {
+              "selector": ".project-index",
+              "x": 0,
+              "y": 29.953125,
+              "w": 30.171875,
+              "h": 18.1875,
+              "column": "1 / 2"
+            },
+            {
+              "selector": ".project-main",
+              "x": 120.765625,
+              "y": 29.953125,
+              "w": 790,
+              "h": 222.84375,
+              "column": "2 / 10"
+            },
+            {
+              "selector": ".project-proof",
+              "x": 1049.375,
+              "y": 29.953125,
+              "w": 330.96875,
+              "h": 222.84375,
+              "column": "10 / 13"
+            },
+            {
+              "selector": ".project-evidence-disclosure",
+              "x": 120.765625,
+              "y": 284.46875,
+              "w": 1259.578125,
+              "h": 45,
+              "column": "2 / 13"
+            }
+          ],
+          "file": "site-ru-1440.png"
+        }
+      },
+      "type": [
+        {
+          "text": "ИССЛЕДОВАНИЕ · ДИСТАНЦИОННОЕ ЗОНДИРОВАНИЕ · ПОЛИТИЧЕСКАЯ ЭКОНОМИЯ",
+          "family": "\"Cousine RU\", \"Courier Prime\", \"Site Mono Symbols\", \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
+          "size": 13,
+          "leading": 18.2,
+          "tracking": "0.715px",
+          "weight": "400",
+          "transform": "uppercase",
+          "fonts": [
+            {
+              "family": "Cousine",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "Материальный след виртуального производства",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "size": 41.76,
+          "leading": 40.9248,
+          "tracking": "-1.2528px",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "EB Garamond",
+              "custom": true
+            }
+          ]
+        },
+        {
+          "text": "Завершённый пространственный этап продолжающегося исследования расширения Shepperton Studios: низкоуглеродная риторика сопоставляется с изменениями земного покрова, тепловыми данными и материалами планирования.",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "size": 16.56,
+          "leading": 27.4896,
+          "tracking": "normal",
+          "weight": "400",
+          "transform": "none",
+          "fonts": [
+            {
+              "family": "EB Garamond",
+              "custom": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "voucher": {
+    "order": {
+      "ref": "260924120001",
+      "created": "2026-09-24T11:00:00.000Z",
+      "lines": [
+        {
+          "id": "7e666964-acad-40c7-bdb6-60edb237ec71",
+          "workId": "ci-b3",
+          "font": "bitmap",
+          "size": 24,
+          "locale": "zh-Hant",
+          "translations": [],
+          "quantity": 1,
+          "title": "乙三《無題 · 臨江仙》",
+          "author": "李函璞 / Hanpu Li",
+          "poem": "燭暗蛩寒簾影瘦，殘酲猶帶微温。\n筆停紙澀墨先吞。\n未緘還自疊，一折一重門。\n\n不是東風先折取，恐花為我辭根。\n新痕舊鑰莫輕論。\n相逢原是客，客受主家恩。",
+          "work": {
+            "id": "ci-b3",
+            "source_id": "B3",
+            "title": "乙三《無題 · 臨江仙》",
+            "poem": "燭暗蛩寒簾影瘦，殘酲猶帶微温。\n筆停紙澀墨先吞。\n未緘還自疊，一折一重門。\n\n不是東風先折取，恐花為我辭根。\n新痕舊鑰莫輕論。\n相逢原是客，客受主家恩。",
+            "author": "李函璞 / Hanpu Li",
+            "collection": "甲乙十六首",
+            "edition": "集作日期 2026-06-09",
+            "kind": "CI",
+            "source_url": "https://hanpuli.github.io/ci.html#b3",
+            "translations": {
+              "en": {
+                "title": "Untitled · To the tune of Linjiangxian",
+                "body": "Candle dim, crickets cold, the curtain’s shadow thin;\nthe wine’s last haze still holds a little warmth.\nThe brush stops. The paper resists. The ink swallows first.\nStill unsealed, I fold it up again;\nwith each fold, one more door.\n\nIt is not that the east wind broke it off first;\nI fear the flower may leave its roots for me.\nDo not speak lightly of new marks and an old key.\nWhen we met, I was only ever a guest;\nand a guest receives the kindness of the house."
+              },
+              "zh-Hans": {
+                "title": "乙三《无题 · 临江仙》",
+                "body": "烛暗蛩寒帘影瘦，残酲犹带微温。\n笔停纸涩墨先吞。\n未缄还自叠，一折一重门。\n\n不是东风先折取，恐花为我辞根。\n新痕旧钥莫轻论。\n相逢原是客，客受主家恩。"
+              },
+              "ja": {
+                "title": "無題 · 臨江仙の調べ",
+                "body": "蝋燭は暗く、こおろぎは冷え、簾の影は細い。\n酔いの名残にはまだわずかな温もり。\n筆が止まる。紙は渋る。墨が先に呑み込む。\nまだ封もせず、また折りたたむ。\nひと折りごとに、扉がひとつ増える。\n\n東風が先に折ったのではない。\n花が私のために根を離れるのが怖い。\n新しい痕と古い鍵を、軽々しく語らないで。\n出会ったときから、私はただの客だった。\n客は、その家の情けを受けるもの。"
+              },
+              "de": {
+                "title": "Ohne Titel · Nach der Melodie Linjiangxian",
+                "body": "Kerze dunkel, Grillen kalt, der Vorhangschatten dünn;\nder letzte Weindunst hält noch ein wenig Wärme.\nDer Pinsel stockt. Das Papier sperrt sich. Die Tinte schluckt zuerst.\nNoch unversiegelt falte ich es wieder zusammen;\nmit jeder Falte eine Tür mehr.\n\nNicht dass der Ostwind sie zuerst abgebrochen hätte;\nich fürchte, die Blüte könnte meinetwegen ihre Wurzel verlassen.\nSprich nicht leichtfertig von neuen Spuren und einem alten Schlüssel.\nAls wir uns trafen, war ich immer nur Gast;\nund ein Gast empfängt die Güte des Hauses."
+              },
+              "fr": {
+                "title": "Sans titre · Sur l’air de Linjiangxian",
+                "body": "Bougie sombre, grillons froids, l’ombre du rideau amaigrie ;\nle dernier trouble du vin garde encore un peu de chaleur.\nLe pinceau s’arrête. Le papier résiste. L’encre avale d’abord.\nToujours non scellée, je la replie encore ;\nà chaque pli, une porte de plus.\n\nCe n’est pas que le vent d’est l’ait brisée le premier ;\nje crains que la fleur ne quitte pour moi ses racines.\nNe parlons pas légèrement de traces nouvelles et d’une vieille clé.\nLors de notre rencontre, je n’étais jamais que de passage ;\net qui est de passage reçoit l’hospitalité de la maison."
+              },
+              "ru": {
+                "title": "Без названия · На мелодию Linjiangxian",
+                "body": "Свеча тускла, сверчки стынут, тень занавеси тонка;\nпоследний хмель ещё хранит немного тепла.\nКисть замирает. Бумага сопротивляется. Тушь первой проглатывает.\nЕщё не запечатано — снова складываю;\nкаждый сгиб — ещё одна дверь.\n\nНе восточный ветер первым сорвал цветок;\nбоюсь, цветок ради меня оставит корень.\nНе спеши судить о новом следе и старом ключе.\nПри встрече — всего лишь в гостях;\nа тот, кто в гостях, принимает доброту хозяев."
+              }
+            },
+            "shelf": "甲乙十六首"
+          },
+          "items": [
+            {
+              "id": "poem",
+              "label": "詩券",
+              "receipt": "POETRY VOUCHER",
+              "taxCode": "A",
+              "taxRate": 20,
+              "unitPrice": 299,
+              "quantity": 1,
+              "amount": 299
+            }
+          ],
+          "unitPrice": 299
+        }
+      ],
+      "items": [
+        {
+          "id": "poem",
+          "label": "詩券",
+          "receipt": "POETRY VOUCHER",
+          "taxCode": "A",
+          "taxRate": 20,
+          "unitPrice": 299,
+          "quantity": 1,
+          "amount": 299
+        }
+      ],
+      "total": 299,
+      "units": 1,
+      "tariff": "PV3",
+      "receiptMetadata": {
+        "store": "001",
+        "till": "001",
+        "operator": "08",
+        "transaction": "120001",
+        "terminal": "T001",
+        "paymentRef": "PV24120001",
+        "cardEnding": "7030",
+        "entry": "CHIP",
+        "auth": "1FOLZA"
+      },
+      "publication": {
+        "schema": 1,
+        "renderer": "pv-render-0da15e254d2b417b",
+        "renderer_sha256": "0da15e254d2b417b2d1c619da51c831d909736b48a6dea7608afc9a08e55ad44",
+        "catalogue_sha256": "ea70f9fe441e2152930148c721c54e6171c449e49295ce01e1637047d331df2f",
+        "files": {
+          "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
+          "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",
+          "assets/fonts/eb-garamond-cyrillic-400.woff2": "c88d58568eacd2b470514cec72a43f79f154cc79144acff7f7b4f17a5463fb1d",
+          "assets/fonts/eb-garamond-cyrillic-italic-400.woff2": "2471084322da28cd71b77972fe5261495bd923b41edbfe1c1b7220959e274185",
+          "assets/fonts/eb-garamond-latin-400.woff2": "a802a5187277702a314e9abc24aeadf9760a34657388a37d99499a438faa030f",
+          "assets/fonts/eb-garamond-latin-italic-400.woff2": "f8d5e562014c1752eedb76e382ebfc136cc05f7b2d88c04d8b190d73e212746c",
+          "assets/fonts/fusion-pixel-12px-ja.woff2": "1ddc7d7112d8deb626c1ab1714b180983d637c590a4c516dcb0277a100db573b",
+          "assets/fonts/fusion-pixel-12px-latin.woff2": "095cfda45b63eedc1e985da815ef73c1c910e698b5632098076af83738f109e1",
+          "assets/fonts/fusion-pixel-12px-zh-hans.woff2": "01559eceaa1bda8d59bf4a44ab95674c346ffd3a25582eea201947324e707a2a",
+          "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
+          "assets/fonts/iming-gap.woff2": "c7d09d76e39970b25958418800664ebb7b3af6fa8387f26cc59e13d55521d536",
+          "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
+          "assets/fonts/noto-serif-sc-subset.woff2": "8c1b7a8ee5347c4a184dda3802b323748748bbe300c7c51f650b8d31f522b2a4",
+          "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
+          "assets/fonts/shippori-mincho-subset.woff2": "9d82818968f6c178cae5bd62405106189333b3cb6dfb25b758973e0b38d95d4c",
+          "assets/fonts/site-mono-symbols.woff2": "3db44384d654fceb70d63b2f424ac6595bbb93dec9df3ced06be35c55e9c0805",
+          "assets/fonts/site-serif-symbols.woff2": "c7a950096538d4280d661a4a8b59d2749713cb0d23c501cdd547b101d6b589a6",
+          "content/poetry-voucher-app/accessibility.css": "a468ada2a53a9893bbfbae557958b821be2bca0ef7b9c6c36e18cf76e5fad7cb",
+          "content/poetry-voucher-app/gallery.js": "2a8cdf57a8404008de2926983dd499f00bf2daa447946ba228ac7d8a17fdc670",
+          "content/poetry-voucher-app/i18n.js": "4eb25404ced81c3eb4b61f9327db72a2ce9faf0f9dd7b9c975f0447087f8c7e8",
+          "content/poetry-voucher-app/order-reading.js": "ab0607f84cf3c0f05837a188add012d046b0cbcfc44b81ee340a5845fb4eb080",
+          "content/poetry-voucher-app/shop-copy.js": "df9183c29b864a253cee180ef59040cfcbc8f6de70156d2728a815de639fc99a",
+          "content/poetry-voucher-app/shop.css": "b225e5d1a3541febdd90f6b98765585cbf9c11396af04e56a3ad881432f51d20",
+          "content/poetry-voucher-app/shop.js": "060c636b6e4491d905b222bdc0a16648f8722b52497d9b0b1d1653d045cde261",
+          "content/poetry-voucher-app/studio.css": "75be96fd6dcdc85bbdbf16b8f1cb1eef93565b0512eebb069fd187ec63c8580f",
+          "templates/poetry-voucher-shop.html": "82ce5370bfe33a8aadb58d55acab913c8d010292fda55e9204c042b36da2d08d"
+        },
+        "textSnapshotSha256": "4e2f0b0031700e189848c9fb0852f993080eab30b8f84c6b7be29f38d3d3077f"
+      },
+      "payment": {
+        "method": "cash",
+        "tender": 500,
+        "change": 201
+      }
+    },
+    "paper": {
+      "paperMm": 58,
+      "printableDots": 384,
+      "dotsPerMm": 8,
+      "bodyInsetDots": 16,
+      "bodyWidthDots": 352,
+      "receiptInsetDots": 12,
+      "receiptCellDots": 12,
+      "canvasMaxDots": 5960,
+      "contentMaxDots": 5900,
+      "pdfSideMarginDots": 40,
+      "pdfVerticalMarginDots": 20,
+      "barcodeHeightDots": 38
+    },
+    "type": {
+      "bitmapSizes": [
+        24,
+        36
+      ],
+      "siteSizes": [
+        22,
+        24,
+        26
+      ],
+      "defaultSize": 24,
+      "threshold": {
+        "bitmap": 128,
+        "site": 160
+      },
+      "translation": 19,
+      "authorLatin": 42,
+      "authorCjk": 20,
+      "authorNameGapDots": 12,
+      "pixelGrid": 12,
+      "pixelSmallCutoff": 16,
+      "pixelMinBody": 24
+    },
+    "receipt": {
+      "currency": "GBP",
+      "locale": "en-GB",
+      "timeZone": "Europe/London",
+      "merchant": {
+        "name": "HANPU LI",
+        "project": "POETRY VOUCHER",
+        "city": "LONDON",
+        "site": "HANPULI.GITHUB.IO",
+        "store": "001",
+        "till": "001",
+        "terminal": "T001"
+      },
+      "operatorCount": 8,
+      "operatorDigits": 2,
+      "paymentRefPrefix": "PV",
+      "cardEntries": [
+        "CONTACTLESS",
+        "CHIP",
+        "MOBILE"
+      ],
+      "lineChars": 30,
+      "columns": {
+        "qty": 3,
+        "description": 11,
+        "rsp": 6,
+        "amount": 6
+      },
+      "defaultWork": "ci-b3",
+      "customWorkCode": "CUSTOM",
+      "referenceDigits": 6,
+      "paymentRefDigits": 8,
+      "cardEndingDigits": 4,
+      "authLength": 6
+    },
+    "calls": [
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 12,
+        "end": 36,
+        "args": [
+          "HANPU LI",
+          null,
+          true
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 36,
+        "end": 60,
+        "args": [
+          "POETRY VOUCHER",
+          null,
+          true
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 60,
+        "end": 84,
+        "args": [
+          "LONDON",
+          null,
+          true
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 84,
+        "end": 108,
+        "args": [
+          "HANPULI.GITHUB.IO",
+          null,
+          true
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 118,
+        "end": 142,
+        "args": [
+          "CUSTOMER COPY",
+          null,
+          true
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 142,
+        "end": 166,
+        "args": [
+          "STORE 001",
+          "TILL 001"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 166,
+        "end": 190,
+        "args": [
+          "OPERATOR 08",
+          "TRANS 120001"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 190,
+        "end": 214,
+        "args": [
+          "24/09/2026",
+          "12:00:00"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 214,
+        "end": 238,
+        "args": [
+          "ORDER",
+          "260924120001"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 238,
+        "end": 262,
+        "args": [
+          "------------------------------"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 262,
+        "end": 286,
+        "args": [
+          "QTY DESCRIPTION RSP(£) AMT(£) "
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 286,
+        "end": 310,
+        "args": [
+          "------------------------------"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 310,
+        "end": 334,
+        "args": [
+          "EDITION B3"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 334,
+        "end": 358,
+        "args": [
+          "1   POETRY        2.99  2.99A "
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 358,
+        "end": 382,
+        "args": [
+          "    VOUCHER B3                "
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 390,
+        "end": 414,
+        "args": [
+          "------------------------------"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 414,
+        "end": 438,
+        "args": [
+          "RSP/AMT INCLUDE VAT",
+          null,
+          true
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 438,
+        "end": 462,
+        "args": [
+          "SUBTOTAL",
+          "GBP 2.99"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 462,
+        "end": 510,
+        "args": [
+          "TOTAL TO PAY",
+          "GBP 2.99",
+          false,
+          true
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 510,
+        "end": 534,
+        "args": [
+          "NUMBER OF VOUCHERS",
+          "1"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 534,
+        "end": 558,
+        "args": [
+          "NUMBER OF ITEMS",
+          "1"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 568,
+        "end": 592,
+        "args": [
+          "VAT SUMMARY",
+          null,
+          true
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 592,
+        "end": 616,
+        "args": [
+          "RATE",
+          "NET VAT GROSS"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 616,
+        "end": 640,
+        "args": [
+          "A 20%",
+          "2.49 0.50 2.99"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 640,
+        "end": 664,
+        "args": [
+          "NOT A VAT INVOICE",
+          null,
+          true
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 676,
+        "end": 700,
+        "args": [
+          "CASH SALE"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 700,
+        "end": 724,
+        "args": [
+          "TENDERED",
+          "GBP 5.00"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 724,
+        "end": 748,
+        "args": [
+          "CHANGE",
+          "GBP 2.01"
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 760,
+        "end": 784,
+        "args": [
+          "THANK YOU",
+          null,
+          true
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 830,
+        "end": 854,
+        "args": [
+          "260924120001",
+          null,
+          true
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 862,
+        "end": 886,
+        "args": [
+          "ART EDITION",
+          null,
+          true
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 886,
+        "end": 910,
+        "args": [
+          "NO PAYMENT PROCESSED",
+          null,
+          true
+        ]
+      },
+      {
+        "kind": "RECEIPT",
+        "method": "till",
+        "y": 910,
+        "end": 934,
+        "args": [
+          "NOT PROOF OF PURCHASE",
+          null,
+          true
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 12,
+        "end": 68,
+        "args": [
+          "Hanpu Li",
+          42,
+          "FusionPixelZhHK, sans-serif",
+          true,
+          56
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 80,
+        "end": 112,
+        "args": [
+          "李函璞",
+          20,
+          "FusionPixelZhHK, sans-serif",
+          true,
+          29
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 122,
+        "end": 154,
+        "args": [
+          "POETRY VOUCHER",
+          24,
+          "FusionPixelLatin, sans-serif",
+          true,
+          32,
+          false,
+          400
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 154,
+        "end": 186,
+        "args": [
+          "NO. B3-260924120001-01",
+          24,
+          "FusionPixelLatin, sans-serif",
+          true,
+          32,
+          false,
+          400
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 210,
+        "end": 242,
+        "args": [
+          "乙三《無題 · 臨江仙》",
+          22,
+          "FusionPixelZhHK, sans-serif",
+          false,
+          29
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 258,
+        "end": 322,
+        "args": [
+          "燭暗蛩寒簾影瘦，殘酲猶帶微温。",
+          24,
+          "FusionPixelZhHK, sans-serif"
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 322,
+        "end": 354,
+        "args": [
+          "筆停紙澀墨先吞。",
+          24,
+          "FusionPixelZhHK, sans-serif"
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 354,
+        "end": 386,
+        "args": [
+          "未緘還自疊，一折一重門。",
+          24,
+          "FusionPixelZhHK, sans-serif"
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 404,
+        "end": 468,
+        "args": [
+          "不是東風先折取，恐花為我辭根。",
+          24,
+          "FusionPixelZhHK, sans-serif"
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 468,
+        "end": 500,
+        "args": [
+          "新痕舊鑰莫輕論。",
+          24,
+          "FusionPixelZhHK, sans-serif"
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 500,
+        "end": 532,
+        "args": [
+          "相逢原是客，客受主家恩。",
+          24,
+          "FusionPixelZhHK, sans-serif"
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 546,
+        "end": 578,
+        "args": [
+          "集作日期 2026-06-09",
+          24,
+          "FusionPixelZhHK, sans-serif",
+          true,
+          32,
+          false,
+          400
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 578,
+        "end": 610,
+        "args": [
+          "hanpuli.github.io/ci.html#b3",
+          24,
+          "FusionPixelLatin, sans-serif",
+          true,
+          32,
+          false,
+          400
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 622,
+        "end": 654,
+        "args": [
+          "ART EDITION",
+          24,
+          "FusionPixelLatin, sans-serif",
+          true,
+          32,
+          false,
+          400
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 654,
+        "end": 686,
+        "args": [
+          "NO CASH VALUE",
+          24,
+          "FusionPixelLatin, sans-serif",
+          true,
+          32,
+          false,
+          400
+        ]
+      }
+    ],
+    "body": {
+      "kind": "VOUCHER",
+      "method": "text",
+      "y": 258,
+      "end": 322,
+      "args": [
+        "燭暗蛩寒簾影瘦，殘酲猶帶微温。",
+        24,
+        "FusionPixelZhHK, sans-serif"
+      ]
+    },
+    "secondBody": {
+      "kind": "VOUCHER",
+      "method": "text",
+      "y": 252,
+      "end": 314,
+      "args": [
+        "燭暗蛩寒簾影瘦，殘酲猶帶微温。",
+        24,
+        "EB, ShipCommon, Ship, IMing, Noto, serif"
+      ]
+    },
+    "glyph": "01110 10001 10001 11111 10001 10001 10001",
+    "width": 384,
+    "height": 1736,
+    "receiptHeight": 946,
+    "cutHeight": 92,
+    "voucherHeight": 698,
+    "headerY": 262,
+    "totalY": 462
+  },
+  "inputs": {
+    "assets/site.css": "83b55b719d75dfd9aaae74020c50552731f1b461891263f8e8adbca91ca79ea0",
+    "content/poetry-voucher-app/gallery.js": "2a8cdf57a8404008de2926983dd499f00bf2daa447946ba228ac7d8a17fdc670",
+    "content/poetry-voucher-app/shop.js": "060c636b6e4491d905b222bdc0a16648f8722b52497d9b0b1d1653d045cde261",
+    "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
+    "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",
+    "assets/fonts/cousine-latin-400.woff2": "fb542bb367b20289e71b682dc45d8f01de5b0a0658464db9053801f30e7c13a8",
+    "assets/fonts/eb-garamond-cyrillic-400.woff2": "c88d58568eacd2b470514cec72a43f79f154cc79144acff7f7b4f17a5463fb1d",
+    "assets/fonts/eb-garamond-cyrillic-italic-400.woff2": "2471084322da28cd71b77972fe5261495bd923b41edbfe1c1b7220959e274185",
+    "assets/fonts/eb-garamond-latin-400.woff2": "a802a5187277702a314e9abc24aeadf9760a34657388a37d99499a438faa030f",
+    "assets/fonts/eb-garamond-latin-italic-400.woff2": "f8d5e562014c1752eedb76e382ebfc136cc05f7b2d88c04d8b190d73e212746c",
+    "assets/fonts/fusion-pixel-12px-ja.woff2": "1ddc7d7112d8deb626c1ab1714b180983d637c590a4c516dcb0277a100db573b",
+    "assets/fonts/fusion-pixel-12px-latin.woff2": "095cfda45b63eedc1e985da815ef73c1c910e698b5632098076af83738f109e1",
+    "assets/fonts/fusion-pixel-12px-zh-hans.woff2": "01559eceaa1bda8d59bf4a44ab95674c346ffd3a25582eea201947324e707a2a",
+    "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
+    "assets/fonts/iming-gap.woff2": "c7d09d76e39970b25958418800664ebb7b3af6fa8387f26cc59e13d55521d536",
+    "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
+    "assets/fonts/noto-serif-sc-subset.woff2": "8c1b7a8ee5347c4a184dda3802b323748748bbe300c7c51f650b8d31f522b2a4",
+    "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
+    "assets/fonts/shippori-mincho-subset.woff2": "9d82818968f6c178cae5bd62405106189333b3cb6dfb25b758973e0b38d95d4c",
+    "assets/fonts/site-mono-symbols.woff2": "3db44384d654fceb70d63b2f424ac6595bbb93dec9df3ced06be35c55e9c0805",
+    "assets/fonts/site-serif-symbols.woff2": "c7a950096538d4280d661a4a8b59d2749713cb0d23c501cdd547b101d6b589a6",
+    "index.html": "c2f67343a09079c71d8ffca5569e0d46cf2e010d131ae8a5b468be59ffd32498",
+    "zh/index.html": "baae90192268c7f3cc85115835ee52df194bf72bbae2409340ff0718946a3986",
+    "zh-hans/index.html": "785ded3ce38bedef6a3f8adf829406c6064eed032186815f0df88844e7e4bdb4",
+    "ja/index.html": "2d8e88e5f241db50e139b465b1e6bb3752ad91f8fb7656ce2497d073c0367592",
+    "de/index.html": "04ad868772f9f16228f0c852189491ac816d052c24d50deae3a9dc6a0a0352e8",
+    "fr/index.html": "146bbbae60b7e71256584b1ee2ddbec0b33b7d145bfe1bd22b96698fbd1f0875",
+    "ru/index.html": "4ebc725c1f1552c24ff23afaef196f400e39f76ee31948ffb8d1e1e01cff6c02"
+  }
+}

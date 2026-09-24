@@ -1,0 +1,86 @@
+{
+  "site_title": "Eine Seite vermessen",
+  "site_intro": "Diese Tafeln untersuchen den Forschungseintrag auf der Startseite anhand des veröffentlichten HTML und seiner gemessenen Anordnung bei zwei festgelegten Viewportbreiten. Die farbigen Linien sind Anmerkungen; darunter steht die tatsächliche Seite.",
+  "layout_title": "01 / Spalten schaffen Beziehungen",
+  "desktop": "Desktop · Viewport 1440 CSS px",
+  "mobile": "Mobil · Viewport 390 CSS px",
+  "layout_note": "Die nummerierten Bezugspunkte gehören zum selben Eintrag. In der breiten Ansicht belegen Nummer, Beschreibung und Belege verschiedene Spalten. In der schmalen Ansicht folgen die Belege auf die Beschreibung.",
+  "anchors": [
+    "Projektnummer",
+    "Titel und Beschreibung",
+    "Belege und Status",
+    "Aufklappbare Forschungstafeln"
+  ],
+  "grid_label": "Gemessene Spalten",
+  "gap_label": "Spaltenabstand",
+  "rule_label": "Trennlinie",
+  "padding_label": "Abstand über dem Inhalt",
+  "source": "Originalseite öffnen",
+  "enlarge": "Originalauflösung öffnen",
+  "type_title": "02 / Schrift übernimmt Aufgaben",
+  "type_intro": "Die Wörter und berechneten Einstellungen stammen aus dem Desktop-Eintrag oben. Die Schriftnamen geben die vom Browser tatsächlich gezeichneten Schriften an. Die Muster behalten den gemessenen Schriftgrad und brechen innerhalb dieser Seite neu um.",
+  "roles": [
+    "Metadaten",
+    "Projekttitel",
+    "Beschreibung"
+  ],
+  "size": "Schriftgrad",
+  "leading": "Zeilenhöhe",
+  "tracking": "Zeichenabstand",
+  "face": "Gerenderte Schriften",
+  "site_end": "Das gemeinsame Raster macht nicht alle Seiten gleich. Diese Maße gelten für diesen Eintrag und Viewport. Die Linie trennt Projekte, die Nummer verortet den Eintrag, und die kleinere Belegspalte ergänzt Informationen, die der Titel allein nicht nachweisen kann.",
+  "pv_title": "Eine Ausgabe zerlegt",
+  "pv_intro": "Ein neues B3-Muster aus dem aktuellen Shop-Renderer: ein Exemplar, traditionelles Chinesisch, Basispixelschrift mit 24 Punkten, ohne Übersetzung, simulierte Barzahlung. Die Anmerkungen folgen der tatsächlichen Ausgabe. Das ältere Muster oben zeigt eine separat datierte Szene.",
+  "anatomy_title": "01 / Dem Streifen folgen",
+  "anatomy_note": "Der Streifen verbindet Kassenbeleg, CUT-HERE-Abschnitt und Gedichtbild in der Ausgabereihenfolge des Shops. Die Breite bleibt im selben Maßstab. Nummerierte Linien zeigen auf tatsächlich gedruckte Felder. Dies ist ein digitales Muster, kein Foto von Thermopapier.",
+  "callouts": [
+    [
+      "Aussteller und Szene",
+      "Auf den zentrierten Kopf folgen Filiale, Kasse, Bedienung, Datum und Bestellung. Die Bestellnummer gilt für den gesamten Vorgang."
+    ],
+    [
+      "Artikelspalten",
+      "Menge und Beschreibung beginnen an festen Zeichenpositionen; Einzelpreis und Betrag sind rechtsbündig. Lange Beschreibungen laufen in der nächsten Zeile weiter."
+    ],
+    [
+      "Summe und Zahlung",
+      "Die Summe verdoppelt die vertikale Punktskala bei gleichem Zeichenvorschub. Die Barszene verzeichnet gegebenen Betrag und Wechselgeld."
+    ],
+    [
+      "Nachweis und Grenze",
+      "Barcode und Nummer identifizieren die erzeugte Szene. Danach steht ausdrücklich, dass keine Zahlung abgewickelt wurde und kein Kaufnachweis vorliegt."
+    ],
+    [
+      "Optionale Trennung",
+      "CUT HERE belegt einen eigenen Abschnitt zwischen Beleg und Gedicht. Weitere einzeln nummerierte Gedichtkopien können folgen."
+    ],
+    [
+      "Gedicht und Identität",
+      "Autor, Titel, Text, Quelle und Exemplarnummer bilden ein eigenes Lesedokument. Die Nummer erweitert die Bestellnummer; der Preis wird im Gedicht nicht wiederholt."
+    ]
+  ],
+  "geometry_title": "02 / Papier, Bild, Text",
+  "geometry_intro": "Drei verschachtelte Breiten bestimmen die Ausgabe: außen das PDF-Papiermodell, darin das Rasterbild, darin der Text mit eigenen Einzügen. Das PDF zentriert das Bild mit je 5 mm Seitenrand. Ein physischer Drucker muss weiterhin kalibriert werden.",
+  "paper": "PDF-Papierbreite",
+  "image": "Bildbereich",
+  "receipt_width": "Kassenzeile · 30 Zellen",
+  "poem_width": "Satzbreite des Gedichts",
+  "dots_note": "Die Millimetermaße sind mit 8 Punkten/mm umgerechnet. Die Bildschirmgröße hängt von Zoom und Gerät ab; die Zeichnung zeigt Proportionen und ist kein Bildschirmlineal.",
+  "columns_title": "03 / Ein Beleg im festen Raster",
+  "columns_intro": "Dies ist der tatsächliche Ausschnitt der Artikelkopfzeile. Vier Felder belegen 3, 11, 6 und 6 Zeichenzellen, getrennt durch je eine Leerzelle; eine weitere steht am Ende. Der Vorschub beträgt 12 Punkte je Zeichen. Die Buchstaben stammen aus eigenen Bitmapmustern des Renderers.",
+  "columns": [
+    "Menge",
+    "Beschreibung",
+    "Einzelpreis",
+    "Betrag"
+  ],
+  "glyph_note": "Das tatsächliche A-Muster: 5 × 7 Ausgangszellen. Jede schwarze Zelle wird mit 2 × 2 Punkten gezeichnet; Zeichenvorschub 12 Punkte, normaler Zeilenvorschub 24. Die Summe verwendet 2 × 4 Punkte und 48 Punkte Zeilenvorschub.",
+  "font_title": "04 / Ein Gedicht, zwei Satzweisen",
+  "font_intro": "Dieselben ersten Zeilen von B3 mit 24 Punkten Schriftgröße und 352 Punkten Satzbreite. Die Ausschnitte stammen aus zwei realen Shop-Konfigurationen ohne Übersetzung. Die Website-Schriftoption ändert den Preis, nicht das Gedicht.",
+  "base": "Basis · Fusion Pixel",
+  "upgrade": "Zusatz · Website-Schriften",
+  "font_note": "Die Basis verwendet Fusion Pixel Zh HK im 12-Punkte-Raster, hier mit 32 Punkten Zeilenvorschub. Die Website-Option verwendet den chinesischen Serifenschriftstapel des Projekts, hier mit 31 Punkten. Beide Ausschnitte sind 1-Bit-Ausgaben; Konturen und Abstände bleiben in den Pixeln sichtbar.",
+  "detail_note": "Öffnen Sie das Bild für seine Originalpixel. Vergrößerungen behalten harte Pixelkanten. Die Muster dokumentieren digitale Ausgabe; Papierstruktur, Wärmeausbreitung und Verblassen werden nicht simuliert.",
+  "specimen": "B3 / 24. September 2026 / ein Exemplar / ohne Übersetzung",
+  "original": "Der Originaltext bleibt auf der Gedichtseite lesbar."
+}

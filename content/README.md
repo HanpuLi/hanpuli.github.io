@@ -219,3 +219,29 @@ fragment identifiers, with an editorial reading order rather than a technology l
 `assets/editorial-notes.css` styles only these editorial surfaces. It must not
 change the shop's purchase journey, the literary sources or the historical digital
 specimen. After CJK copy changes, regenerate both font subsets and the site.
+
+## Measured About illustrations
+
+The two About essays use `design/<locale>.json` for explanatory copy and
+`tools/design_plates.py` for accessible HTML/SVG annotation. The type specimens
+are generated into `assets/design/specimen-type.css`; never hand-edit them.
+`assets/design/measurements.json` records DOM rectangles, computed styles, the
+font faces actually painted by Chromium, the real shop specimen and source
+fingerprints. The images are captured/generated output, not drawn substitutes.
+
+After changing home-page layout, relevant fonts, or the shop renderer, run
+`npm run build:design`. The capture helper serves the current build locally,
+measures the same research entry at 1440 and 390 CSS px in every language,
+and calls the current shop's production renderer through a local, temporary
+instrumentation route. No hook is added to the public shop. The B3 scene is
+fixed to 24 September 2026, one Traditional-Chinese base-font copy, no
+translation, cash £5.00 against £2.99. The comparison uses the same text with
+the website-font option. Image crops preserve the full raster width so glyph
+bearings are not clipped. The strip concatenates the actual output segments
+in order; it does not claim they are one PDF page or a physical print.
+
+Run `npm run qa:about` after rebuilding. Its provenance check rejects stale
+inputs and inconsistent measured geometry before testing browser layout.
+New CJK explanatory text needs the normal font-subset rebuild, followed by a
+site build and specimen refresh. The explanatory font CSS changes with the
+measurements; reading preferences can override it for accessibility.
