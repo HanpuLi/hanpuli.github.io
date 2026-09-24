@@ -966,7 +966,7 @@ html[data-reading-motion] .site-home::before {
   padding-inline-end: clamp(18px, 2vw, 34px);
   font-size: clamp(16px, 1.22vw, 20px);
   line-height: 1.52;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .site-home .hero-copy .zh-lede {
@@ -1156,7 +1156,7 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.66;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .site-home .project-voucher-deck {
@@ -1455,7 +1455,7 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.7;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .site-home .section-note [lang="en"] {
@@ -1525,7 +1525,7 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.65;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .site-home .writing-meta {
@@ -1534,7 +1534,7 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   font-family: var(--mono);
   font-size: .8125rem;
   line-height: 1.5;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .site-home .writing-footer {
@@ -1674,7 +1674,7 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
 .site-home .credit p {
   max-width: none;
   line-height: 1.58;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .site-home .credit p span[lang="en"] {
@@ -1973,7 +1973,7 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   color: var(--muted);
   font-size: .96rem;
   line-height: 1.78;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .literary-page .ci-group-copy > .source-title {
@@ -2041,7 +2041,7 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   white-space: pre-line;
   font-size: clamp(16px, 1.45vw, 18px);
   line-height: 2.22;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .literary-page .poem-version.translation {
@@ -2160,7 +2160,7 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   white-space: pre-line;
   font-size: clamp(16px, 1.28vw, 18px);
   line-height: 2.12;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .shi-page .body:last-child {
@@ -3274,11 +3274,11 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   .credit p
 ),
 .essay-page .essay-body :is(p, li) {
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .site-home #photo .section-note {
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .site-home #photo .section-note .keep-together {
@@ -3614,7 +3614,7 @@ html[data-reading-motion]::view-transition-new(root) {
 .about-page .about-lede {
   font-size: clamp(20px, 1.8vw, 28px);
   line-height: 1.35;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .about-page .about-principle {
@@ -3668,7 +3668,7 @@ html[data-reading-motion]::view-transition-new(root) {
   color: var(--ink);
   line-height: 1.35;
   text-decoration: none;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .about-page .about-toc a:hover {
@@ -3758,7 +3758,7 @@ html[data-reading-motion]::view-transition-new(root) {
 .about-page .about-section-copy > p,
 .about-page .about-coda-copy > p {
   line-height: 1.75;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .about-page .about-section-copy > p + p,
@@ -4305,7 +4305,7 @@ body.locale-ru a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not
   margin-top: .5em;
   color: var(--muted);
   line-height: 1.55;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .contexts-page .contexts-credit,
