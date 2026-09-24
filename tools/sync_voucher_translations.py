@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh the studio's originals and paired texts from the literary sources."""
+"""Refresh the studio's paired texts from the published literary sources."""
 
 import argparse
 import json
@@ -75,8 +75,6 @@ def main():
     for work in catalogue["works"]:
         # Literary collection metadata remains intact; shop shelves exclude appendices.
         key = work["id"].removeprefix("ci-")
-        if work["kind"] == "CI":
-            work["poem"] = ci[key]["source_body"]
         work["shelf"] = (
             shi_source["title"] if work["kind"] == "POEM" else
             "詞" if ci[key]["voice"] == "separate" or key in ci_source["outside_dates"] else
