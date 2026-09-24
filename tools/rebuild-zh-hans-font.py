@@ -46,6 +46,7 @@ SOURCE_URL = (
 SOURCE_SHA256 = "050080d9255a86808f2945bffac582b31ef32bc36411ce29563b4961670c66f9"
 CONTENT_FILES = (
     CONTENT / "locales" / "zh-hans.json",
+    CONTENT / "design" / "zh-hans.json",
     CONTENT / "ci-simplified.json",
     CONTENT / "shi-simplified.json",
 )

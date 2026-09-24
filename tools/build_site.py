@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any
 
 from first_love_public_pages import build as build_first_love_pages, path_for as first_love_page_path
+from design_plates import site_html as design_site, voucher_html as design_voucher, specimen_css
 from editorial_notes import sections_html as editorial_sections, references_html as editorial_references, project_toc
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -1051,6 +1052,8 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
     pv_editorial_width, pv_editorial_height = png_dimensions(ROOT / "assets" / "projects" / "poetry-voucher" / "poetry-voucher-paper-960.png")
     return {
         **{"PV_" + key.upper(): html.escape(value, quote=True) for key, value in POETRY_VOUCHER[locale_id].items() if isinstance(value, str)},
+        "DESIGN_SITE": design_site(locale_id),
+        "DESIGN_VOUCHER": design_voucher(locale_id),
         "PV_HREF": page_path(locale_id, "poetry-voucher"),
         "PV_TOC": project_toc(POETRY_VOUCHER[locale_id]),
         "PV_NOTES": editorial_sections(POETRY_VOUCHER[locale_id]["notes"], POETRY_VOUCHER[locale_id], project=True),
@@ -1370,6 +1373,12 @@ def build(check: bool = False) -> list[Path]:
             if not check:
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(data)
+    design_css_path = ROOT / "assets" / "design" / "specimen-type.css"
+    design_css = specimen_css()
+    if not design_css_path.exists() or design_css_path.read_text() != design_css:
+        changed.append(design_css_path)
+        if not check:
+            design_css_path.write_text(design_css)
     from voucher_publication import build_publication
     changed.extend(build_publication(ROOT, check=check))
     changed.extend(build_first_love_pages(ROOT, check=check))

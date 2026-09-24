@@ -58,7 +58,7 @@ try{
         await page.setViewportSize({width,height:1000});
         const geometry=await page.evaluate(()=>{
           const overflow=document.documentElement.scrollWidth-document.documentElement.clientWidth;
-          const clipped=[...document.querySelectorAll('.page-nav a,.page-languages a,.pv-contents a,.editorial-section h2,.pv-tariff dd,.site-visual-cell strong,.pv-aesthetic-panel strong,.pv-aesthetic-kicker')]
+          const clipped=[...document.querySelectorAll('.page-nav a,.page-languages a,.pv-contents a,.editorial-section h2,.pv-tariff dd,.design-atlas h3,.design-atlas h4,.plate-metrics dd,.plate-type-metrics dd')]
             .filter(n=>n.getBoundingClientRect().width>0&&n.scrollWidth>n.clientWidth+1)
             .map(n=>({text:n.textContent.trim(),scroll:n.scrollWidth,client:n.clientWidth}));
           return {overflow,clipped};
@@ -79,6 +79,7 @@ try{
       if(stress>1)failures.push({locale,kind,stressOverflow:stress});
       await page.evaluate(()=>{for(const option of ['sans','large','spacing','measure','simple','contrast'])document.documentElement.removeAttribute('data-reading-'+option);});
       await page.emulateMedia({colorScheme:'light'});
+      await page.evaluate(()=>document.activeElement?.blur());
       if(capture&&['en','zh-hans','de'].includes(locale)){
         await page.setViewportSize({width:1440,height:1000});
         await page.evaluate(()=>scrollTo(0,0));

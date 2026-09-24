@@ -16,6 +16,8 @@
 <script src="{{ASSET_PREFIX}}assets/accessibility.js"></script>
 <link rel="stylesheet" href="{{ASSET_PREFIX}}assets/site.css">
 <link rel="stylesheet" href="{{ASSET_PREFIX}}assets/editorial-notes.css">
+<link rel="stylesheet" href="{{ASSET_PREFIX}}assets/design-plates.css">
+<link rel="stylesheet" href="{{ASSET_PREFIX}}assets/design/specimen-type.css">
 {{STRUCTURED_DATA}}
 </head>
 <body class="about-page locale-{{LOCALE}}">
@@ -47,15 +49,7 @@
 
 {{ABOUT_TOC}}
 
-    <figure class="site-visual-grammar" aria-labelledby="site-design-title">
-      <figcaption id="site-design-title">{{ABOUT_DESIGN_TITLE}}</figcaption>
-      <div class="site-visual-grid">
-        <div class="site-visual-cell site-visual-reading"><span>{{ABOUT_DESIGN_READING_LABEL}}</span><strong>{{ABOUT_DESIGN_READING_SAMPLE}}</strong><small>{{ABOUT_DESIGN_READING_NOTE}}</small></div>
-        <div class="site-visual-cell site-visual-meta"><span>{{ABOUT_DESIGN_META_LABEL}}</span><strong>{{ABOUT_DESIGN_META_SAMPLE}}</strong><small>{{ABOUT_DESIGN_META_NOTE}}</small></div>
-        <div class="site-visual-cell site-visual-alignment"><span>{{ABOUT_DESIGN_GRID_LABEL}}</span><div class="site-grid-demo" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><small>{{ABOUT_DESIGN_GRID_NOTE}}</small></div>
-        <div class="site-visual-cell site-visual-rule"><span>{{ABOUT_DESIGN_RULE_LABEL}}</span><div class="site-rule-demo" aria-hidden="true"></div><small>{{ABOUT_DESIGN_RULE_NOTE}}</small></div>
-      </div>
-    </figure>
+    {{DESIGN_SITE}}
 
 {{ABOUT_SECTIONS}}
 
