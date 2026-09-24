@@ -56,6 +56,94 @@ def _portfolio_nav(locale_id: str, locale: dict) -> str:
     return "\n      ".join(rows)
 
 
+def _social_meta(
+    site: str,
+    languages: list[dict],
+    language: dict,
+    title: str,
+    description: str,
+    url: str,
+) -> str:
+    full_title = f"{title} · Hanpu Li"
+    image = f"{site}/assets/social/first-love.png"
+    alternate_locales = "\n".join(
+        f'<meta property="og:locale:alternate" content="{html.escape(item["og_locale"], quote=True)}">'
+        for item in languages
+        if item["id"] != language["id"]
+    )
+    return (
+        '<meta property="og:type" content="article">\n'
+        '<meta property="og:site_name" content="Hanpu Li">\n'
+        f'<meta property="og:title" content="{html.escape(full_title, quote=True)}">\n'
+        f'<meta property="og:description" content="{html.escape(description, quote=True)}">\n'
+        f'<meta property="og:image" content="{html.escape(image, quote=True)}">\n'
+        '<meta property="og:image:type" content="image/png">\n'
+        '<meta property="og:image:width" content="1200">\n'
+        '<meta property="og:image:height" content="630">\n'
+        f'<meta property="og:image:alt" content="{html.escape(full_title, quote=True)}">\n'
+        f'<meta property="og:url" content="{html.escape(url, quote=True)}">\n'
+        f'<meta property="og:locale" content="{html.escape(language["og_locale"], quote=True)}">\n'
+        f'{alternate_locales}\n'
+        '<meta name="twitter:card" content="summary_large_image">\n'
+        f'<meta name="twitter:title" content="{html.escape(full_title, quote=True)}">\n'
+        f'<meta name="twitter:description" content="{html.escape(description, quote=True)}">\n'
+        f'<meta name="twitter:image" content="{html.escape(image, quote=True)}">\n'
+        f'<meta name="twitter:image:alt" content="{html.escape(full_title, quote=True)}">'
+    )
+
+
+def _structured_data(
+    site: str,
+    languages: list[dict],
+    identity: dict,
+    language: dict,
+    title: str,
+    description: str,
+    url: str,
+) -> str:
+    person_id = f"{site}/#person"
+    website_id = f"{site}/#website"
+    payload = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": person_id,
+                "name": identity["primary_name"],
+                "alternateName": [identity["chinese_name"], *identity["alternate_names"]],
+                "url": identity["site_url"],
+                "sameAs": [identity["github_url"]],
+                "knowsAbout": identity["knows_about"],
+            },
+            {
+                "@type": "WebSite",
+                "@id": website_id,
+                "url": identity["site_url"],
+                "name": identity["primary_name"],
+                "publisher": {"@id": person_id},
+                "inLanguage": [item["html_lang"] for item in languages],
+            },
+            {
+                "@type": "Article",
+                "@id": f"{url}#article",
+                "url": url,
+                "name": f"{title} · Hanpu Li",
+                "headline": title,
+                "description": description,
+                "image": f"{site}/assets/social/first-love.png",
+                "isPartOf": {"@id": website_id},
+                "inLanguage": language["html_lang"],
+                "author": {"@id": person_id},
+            },
+        ],
+    }
+    return (
+        '<script type="application/ld+json">\n'
+        + json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+        + "\n</script>"
+    )
+
+
 def _reading_tools(locale: dict) -> str:
     reading = locale["common"]["reading"]
     options = (("sans", "sans"), ("dyslexia", "dyslexia"), ("large", "large"), ("spacing", "spacing"),
@@ -79,7 +167,16 @@ def _reading_tools(locale: dict) -> str:
     )
 
 
-def render(site: str, languages: list[dict], locales: dict[str, dict], about: dict[str, dict], locale_id: str, page: str, copy: dict) -> str:
+def render(
+    site: str,
+    languages: list[dict],
+    locales: dict[str, dict],
+    about: dict[str, dict],
+    identity: dict,
+    locale_id: str,
+    page: str,
+    copy: dict,
+) -> str:
     language = next(item for item in languages if item["id"] == locale_id)
     locale = locales[locale_id]
     legacy = page != "request"
@@ -106,6 +203,26 @@ def render(site: str, languages: list[dict], locales: dict[str, dict], about: di
             f'{html.escape(copy["verification"])}</a></p></section>'
         )
     robots = '<meta name="robots" content="noindex,noarchive,nosnippet">' if legacy else ""
+    seo_meta = ""
+    if not legacy:
+        social_meta = _social_meta(
+            site,
+            languages,
+            language,
+            title,
+            copy["description"],
+            url,
+        )
+        structured_data = _structured_data(
+            site,
+            languages,
+            identity,
+            language,
+            title,
+            copy["description"],
+            url,
+        )
+        seo_meta = "\n" + social_meta + "\n" + structured_data
     home = _home(locale_id)
     about_href = _standard_page(locale_id, "about")
     return f'''<!DOCTYPE html>
@@ -120,7 +237,7 @@ def render(site: str, languages: list[dict], locales: dict[str, dict], about: di
 <title>{html.escape(title)} · Hanpu Li</title>
 <meta name="description" content="{html.escape(copy["description"], quote=True)}">
 <link rel="canonical" href="{html.escape(url, quote=True)}">
-{alternates}
+{alternates}{seo_meta}
 <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/assets/site-mark.svg" type="image/svg+xml">
@@ -153,6 +270,7 @@ def build(root: Path, check: bool = False) -> list[Path]:
     languages = json.loads((root / "content/languages.json").read_text(encoding="utf-8"))
     copy = json.loads((root / "content/first-love-public.json").read_text(encoding="utf-8"))
     about = json.loads((root / "content/about-site.json").read_text(encoding="utf-8"))
+    identity = json.loads((root / "content/identity.json").read_text(encoding="utf-8"))
     locales = {item["id"]: json.loads((root / "content/locales" / f'{item["id"]}.json').read_text(encoding="utf-8")) for item in languages}
     expected = {item["id"] for item in languages}
     if set(copy) != expected:
@@ -165,7 +283,16 @@ def build(root: Path, check: bool = False) -> list[Path]:
         lid = language["id"]
         for page in PAGES:
             target = root / path_for(lid, page).lstrip("/") / "index.html"
-            rendered = render("https://hanpuli.github.io", languages, locales, about, lid, page, copy[lid])
+            rendered = render(
+                "https://hanpuli.github.io",
+                languages,
+                locales,
+                about,
+                identity,
+                lid,
+                page,
+                copy[lid],
+            )
             rendered = "\n".join(line.rstrip() for line in rendered.splitlines()) + "\n"
             old = target.read_text(encoding="utf-8") if target.exists() else None
             if old != rendered:

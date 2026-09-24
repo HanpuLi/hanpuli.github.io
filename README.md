@@ -112,6 +112,8 @@ uv run --with fonttools --with brotli --with pillow python tools/build_social_ca
 
 A separate scheduled workflow runs `tools/linkcheck_external.py` weekly against external links in the generated personal-site pages. It is intentionally independent of deployment: genuine 404/410 responses fail that audit, while rate limits, bot blocks, timeouts and 5xx responses are reported as indeterminate instead of breaking ordinary site publication.
 
+`tools/build_site.py` also generates `sitemap.xml` for every indexable canonical portfolio route. Each localized URL carries the complete reciprocal `hreflang` family plus `x-default`; `robots.txt` advertises the sitemap. `tools/sitecheck.py` verifies sitemap membership, reciprocal locale mappings, canonical URLs, the absence of `noindex` on sitemap entries, descriptions, social metadata and JSON-LD so discovery metadata cannot silently drift from generated pages.
+
 ## Content and rights
 
 The repository is public so the site can be served by GitHub Pages. Publication does **not** grant a blanket open-source licence over the photographs, poems, essays, translations or other creative work. Third-party reuse requires permission unless applicable law provides otherwise.

@@ -106,8 +106,9 @@ def main() -> None:
     save_card("shi.png", "05 / POEMS", "Poems in draft", glyph="詩")
     save_card("about.png", "IMPLEMENTATION NOTES / 2026", "ABOUT\nTHIS SITE")
     save_card("trainspotting.png", "ESSAY / TRAINSPOTTING", "FROM GEARS\nTO GASP")
+    save_card("first-love.png", "STUDY / FIRST LOVE", "ON FIRST LOVE")
     build_touch_icon()
-    print("social cards: ci, shi, about, trainspotting; apple touch icon")
+    print("social cards: ci, shi, about, trainspotting, first-love; apple touch icon")
 
 
 if __name__ == "__main__":

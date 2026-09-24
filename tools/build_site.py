@@ -348,6 +348,7 @@ def structured_data_html(
     title: str,
     description: str,
     url: str,
+    image_url: str = "",
 ) -> str:
     language = LANG_BY_ID[locale_id]["html_lang"]
     person = {
@@ -387,6 +388,8 @@ def structured_data_html(
             "isPartOf": {"@id": WEBSITE_ID},
             "inLanguage": "en-GB" if page_kind == "essay" else language,
         }
+        if image_url:
+            node["image"] = image_url
         if page_kind == "about":
             node["about"] = {"@id": PERSON_ID}
         elif page_kind == "essay":
@@ -1030,6 +1033,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
             title=meta_title,
             description=meta_description,
             url=canonical,
+            image_url=social_image,
         )
         if page != "404"
         else ""
@@ -1294,6 +1298,7 @@ def build(check: bool = False) -> list[Path]:
             title=essay_title,
             description=description,
             url=essay_url,
+            image_url=f"{BASE_URL}/{social_path}",
         )
         note = essay_copy["language_note"].strip()
         note_html = (
@@ -1343,13 +1348,61 @@ def build(check: bool = False) -> list[Path]:
             if not check:
                 essay_target.write_text(essay_rendered, encoding="utf-8")
 
-    sitemap_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
-                     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    def sitemap_entry(location: str, variants: dict[str, str], x_default: str) -> list[str]:
+        rows = ["  <url>", f"    <loc>{html.escape(location, quote=True)}</loc>"]
+        for language in LANGUAGES:
+            hreflang = html.escape(language["html_lang"], quote=True)
+            href = html.escape(variants[language["id"]], quote=True)
+            rows.append(
+                f'    <xhtml:link rel="alternate" hreflang="{hreflang}" href="{href}" />'
+            )
+        rows.append(
+            f'    <xhtml:link rel="alternate" hreflang="x-default" '
+            f'href="{html.escape(x_default, quote=True)}" />'
+        )
+        rows.append("  </url>")
+        return rows
+
+    standard_pages = ("index", "ci", "shi", "about", "contexts", "poetry-voucher")
+    standard_variants = {
+        page: {language["id"]: absolute_url(language["id"], page) for language in LANGUAGES}
+        for page in standard_pages
+    }
+    essay_variants = {
+        language["id"]: BASE_URL + essay_page_path(language["id"])
+        for language in LANGUAGES
+    }
+    first_love_variants = {
+        language["id"]: BASE_URL + first_love_page_path(language["id"], "request")
+        for language in LANGUAGES
+    }
+
+    sitemap_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+        '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    ]
     for language in LANGUAGES:
-        for page in ("index", "ci", "shi", "about", "contexts", "poetry-voucher"):
-            sitemap_lines.append(f'  <url><loc>{html.escape(absolute_url(language["id"], page))}</loc></url>')
-        sitemap_lines.append(f'  <url><loc>{html.escape(BASE_URL + essay_page_path(language["id"]))}</loc></url>')
-        sitemap_lines.append(f'  <url><loc>{html.escape(BASE_URL + first_love_page_path(language["id"], "request"))}</loc></url>')
+        lid = language["id"]
+        for page in standard_pages:
+            variants = standard_variants[page]
+            sitemap_lines.extend(
+                sitemap_entry(variants[lid], variants, variants[ROOT_LOCALE])
+            )
+        sitemap_lines.extend(
+            sitemap_entry(
+                essay_variants[lid],
+                essay_variants,
+                essay_variants[ROOT_LOCALE],
+            )
+        )
+        sitemap_lines.extend(
+            sitemap_entry(
+                first_love_variants[lid],
+                first_love_variants,
+                first_love_variants[ROOT_LOCALE],
+            )
+        )
     sitemap_lines.append("</urlset>")
     sitemap = "\n".join(sitemap_lines) + "\n"
     sitemap_path = ROOT / "sitemap.xml"

@@ -76,6 +76,17 @@ def main() -> int:
             copy = json.loads((ROOT / "content/first-love-public.json").read_text(encoding="utf-8"))[locale_id]
             if html.escape(copy["abstract"]) not in source:
                 errors.append(f"{rel}: abstract missing")
+            seo_markers = (
+                '<meta property="og:type" content="article">',
+                '<meta property="og:image" content="https://hanpuli.github.io/assets/social/first-love.png">',
+                '<meta name="twitter:card" content="summary_large_image">',
+                '<script type="application/ld+json">',
+                '"@type":"Article"',
+                '"author":{"@id":"https://hanpuli.github.io/#person"}',
+            )
+            for marker in seo_markers:
+                if marker not in source:
+                    errors.append(f"{rel}: missing public SEO marker {marker!r}")
         elif not {"noindex", "noarchive", "nosnippet"} <= set(parser.robots.split(",")):
             errors.append(f"{rel}: legacy route robots directive is incomplete")
         elif parser.links.count(path_for(locale_id, "request")) != 1:
@@ -94,6 +105,10 @@ def main() -> int:
             errors.append(f"{homepage.relative_to(ROOT)}: retired full-reader link remains")
         if "first-love-api" in source:
             errors.append(f"{homepage.relative_to(ROOT)}: old API reference remains")
+
+    social_card = ROOT / "assets/social/first-love.png"
+    if not social_card.is_file():
+        errors.append("missing First Love social preview card")
 
     for old in ("assets/first-love-access.js", "tools/first_love_pages.py", "content/first-love-access.json"):
         if (ROOT / old).exists():

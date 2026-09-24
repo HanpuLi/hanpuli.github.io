@@ -161,21 +161,44 @@ def check_css(errors: list[str]) -> None:
 
 
 def check_discovery(errors: list[str]) -> None:
-    """Keep the generated portfolio routes aligned with robots.txt and sitemap.xml."""
+    """Keep indexable routes, search metadata, robots.txt and sitemap.xml aligned."""
     languages = json.loads((ROOT / "content" / "languages.json").read_text(encoding="utf-8"))
     identity = json.loads((ROOT / "content" / "identity.json").read_text(encoding="utf-8"))
     base_url = identity["site_url"].rstrip("/")
-    expected: set[str] = set()
-    for language in languages:
-        locale_id = language["id"]
-        prefix = "" if locale_id == "en" else f"/{locale_id}"
-        expected.add(base_url + ("/" if not prefix else f"{prefix}/"))
-        for page in ("ci.html", "shi.html", "about.html", "contexts.html"):
-            expected.add(f"{base_url}{prefix}/{page}")
-        expected.add(f"{base_url}{prefix}/writing/trainspotting/")
-        expected.add(f"{base_url}{prefix}/writing/first-love/")
-        expected.add(f"{base_url}{prefix}/poetry-voucher/")
 
+    def standard_url(locale_id: str, page: str) -> str:
+        prefix = "" if locale_id == "en" else f"/{locale_id}"
+        if page == "index":
+            return base_url + ("/" if not prefix else f"{prefix}/")
+        if page == "poetry-voucher":
+            return f"{base_url}{prefix}/poetry-voucher/"
+        return f"{base_url}{prefix}/{page}.html"
+
+    def essay_url(locale_id: str) -> str:
+        prefix = "" if locale_id == "en" else f"/{locale_id}"
+        return f"{base_url}{prefix}/writing/trainspotting/"
+
+    def first_love_url(locale_id: str) -> str:
+        prefix = "" if locale_id == "en" else f"/{locale_id}"
+        return f"{base_url}{prefix}/writing/first-love/"
+
+    families: list[dict[str, str]] = []
+    for page in ("index", "ci", "shi", "about", "contexts", "poetry-voucher"):
+        families.append({language["id"]: standard_url(language["id"], page) for language in languages})
+    families.append({language["id"]: essay_url(language["id"]) for language in languages})
+    families.append({language["id"]: first_love_url(language["id"]) for language in languages})
+
+    expected_alternates: dict[str, dict[str, str]] = {}
+    for family in families:
+        alternates = {
+            language["html_lang"]: family[language["id"]]
+            for language in languages
+        }
+        alternates["x-default"] = family["en"]
+        for location in family.values():
+            expected_alternates[location] = alternates
+
+    expected = set(expected_alternates)
     sitemap = ROOT / "sitemap.xml"
     try:
         tree = ET.parse(sitemap)
@@ -183,11 +206,42 @@ def check_discovery(errors: list[str]) -> None:
         errors.append(f"sitemap.xml: cannot parse sitemap: {exc}")
         return
 
-    namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-    locations = [
-        (node.text or "").strip()
-        for node in tree.findall("sm:url/sm:loc", namespace)
-    ]
+    namespace = {
+        "sm": "http://www.sitemaps.org/schemas/sitemap/0.9",
+        "xhtml": "http://www.w3.org/1999/xhtml",
+    }
+    url_nodes = tree.findall("sm:url", namespace)
+    locations: list[str] = []
+    for url_node in url_nodes:
+        loc_node = url_node.find("sm:loc", namespace)
+        location = (loc_node.text or "").strip() if loc_node is not None else ""
+        if not location:
+            errors.append("sitemap.xml: url entry missing non-empty loc")
+            continue
+        locations.append(location)
+
+        links = url_node.findall("xhtml:link", namespace)
+        pairs = [
+            (link.attrib.get("hreflang", ""), link.attrib.get("href", ""))
+            for link in links
+            if link.attrib.get("rel") == "alternate"
+        ]
+        hreflangs = [lang for lang, _href in pairs]
+        duplicates = sorted({lang for lang in hreflangs if hreflangs.count(lang) > 1})
+        for hreflang in duplicates:
+            errors.append(
+                f"sitemap.xml: {location!r} has duplicate hreflang {hreflang!r}"
+            )
+
+        expected_for_url = expected_alternates.get(location)
+        if expected_for_url is not None:
+            actual_for_url = dict(pairs)
+            if actual_for_url != expected_for_url:
+                errors.append(
+                    f"sitemap.xml: hreflang set for {location!r} does not match "
+                    "the complete reciprocal locale family"
+                )
+
     duplicates = sorted({url for url in locations if locations.count(url) > 1})
     for url in duplicates:
         errors.append(f"sitemap.xml: duplicate URL {url!r}")
@@ -197,6 +251,71 @@ def check_discovery(errors: list[str]) -> None:
         errors.append(f"sitemap.xml: missing generated portfolio URL {url!r}")
     for url in sorted(actual - expected):
         errors.append(f"sitemap.xml: unexpected URL {url!r}")
+
+    def local_file(url: str) -> Path:
+        path = unquote(urlsplit(url).path)
+        relative = path.lstrip("/")
+        if not relative or path.endswith("/"):
+            return ROOT / relative / "index.html"
+        return ROOT / relative
+
+    for location in sorted(expected & actual):
+        target = local_file(location)
+        if not target.is_file():
+            errors.append(f"sitemap.xml: {location!r} maps to missing {target.relative_to(ROOT)}")
+            continue
+        source = target.read_text(encoding="utf-8")
+        rel = target.relative_to(ROOT)
+
+        canonicals = re.findall(
+            r'<link\s+rel="canonical"\s+href="([^"]+)"',
+            source,
+            flags=re.I,
+        )
+        if canonicals != [location]:
+            errors.append(
+                f"{rel}: canonical must be exactly {location!r}, got {canonicals!r}"
+            )
+        robots_matches = re.findall(
+            r'<meta\s+name="robots"\s+content="([^"]*)"',
+            source,
+            flags=re.I,
+        )
+        if any("noindex" in value.lower() for value in robots_matches):
+            errors.append(f"{rel}: sitemap URL is marked noindex")
+
+        description = re.search(
+            r'<meta\s+name="description"\s+content="([^"]+)"',
+            source,
+            flags=re.I,
+        )
+        if not description:
+            errors.append(f"{rel}: sitemap URL missing meta description")
+
+        required_markers = (
+            'property="og:title"',
+            'property="og:description"',
+            'property="og:image"',
+            f'property="og:url" content="{location}"',
+            'name="twitter:card" content="summary_large_image"',
+            'name="twitter:title"',
+            'name="twitter:description"',
+            'name="twitter:image"',
+            '<script type="application/ld+json">',
+        )
+        for marker in required_markers:
+            if marker not in source:
+                errors.append(f"{rel}: indexable page missing SEO marker {marker!r}")
+
+        html_alternates = dict(re.findall(
+            r'<link\s+rel="alternate"\s+hreflang="([^"]+)"\s+href="([^"]+)"',
+            source,
+            flags=re.I,
+        ))
+        if html_alternates != expected_alternates[location]:
+            errors.append(
+                f"{rel}: HTML hreflang set does not match sitemap locale family"
+            )
 
     robots = ROOT / "robots.txt"
     try:
