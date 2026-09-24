@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-// Rebuild the homepage Poetry Voucher editorial image from the public Studio renderer.
+// Rebuild the homepage Poetry Voucher editorial image from the internal Studio renderer fixture.
 // This is an authoring helper only; it does not print or contact a private device.
 import assert from 'node:assert/strict';
+import {installStudioFixture} from './studio-test-fixture.mjs';
 import {spawn} from 'node:child_process';
 import {writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
@@ -33,6 +34,7 @@ try{
   browser=process.env.PLAYWRIGHT_CDP_URL?await chromium.connectOverCDP(process.env.PLAYWRIGHT_CDP_URL):await chromium.launch();
   const context=browser.contexts()[0]||await browser.newContext();
   const page=await context.newPage();
+  await installStudioFixture(page,base);
   await page.goto(base+'/poetry-voucher/make.html?lang='+encodeURIComponent(EDITORIAL_SPECIMEN.locale));
   await page.locator('#full-pdf').waitFor({state:'visible'});
   const result=await page.evaluate(async specimen=>{

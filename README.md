@@ -43,30 +43,38 @@ The mirrors record the source SHA-256 and CI fails if they become stale. Editori
 
 ## Poetry Voucher
 
-The portfolio includes [Poetry Voucher](https://hanpuli.github.io/poetry-voucher/):
-a seven-language project overview, a [poetry shop](https://hanpuli.github.io/poetry-voucher/shop.html?lang=en),
-and the original [single-edition studio](https://hanpuli.github.io/poetry-voucher/make.html?lang=en).
-The shop offers all 23 catalogue works, a Traditional or Simplified Chinese
-original and independently selectable English, Japanese, German, French and
-Russian translation add-ons, a persistent local
-bag, fictional checkout and downloadable receipts and vouchers. Each order freezes
-its contents, prices and payment scene. A whole-order PDF contains one receipt
-(which can continue onto further pages) and separately numbered poetry vouchers.
-Custom text stays in the current tab unless the visitor explicitly enables local
-saving. There is no real payment, upload or remote printing.
+The portfolio includes [Poetry Voucher](https://hanpuli.github.io/poetry-voucher/),
+a seven-language project overview and an author-only poetry shop. The former
+open-text Studio is retired; its old URL redirects to the same-language shop.
+The shop offers all 23 catalogue works with Traditional or Simplified Chinese
+originals, optional published translations, typeface and size choices, quantities,
+a local bag, fictional checkout, image PDFs and a complete offline HTML reading copy.
+There is no real payment, upload, delivery or remote printing.
 
-The authoring map is in `content/README.md`. `npm run qa:shop` starts its own local
-server and checks cart merging, variant editing, quantities, local recovery,
-custom-text consent, language switching, duplicate checkout clicks, multipage
-PDF downloads, retained earlier orders, 28 viewport/locale cases and four axe
-surfaces. The existing single-edition checks continue to cover typography,
-91,456 tender/change combinations, pricing and published-text integrity.
+The work is intended to be encountered on paper. Early print trials exist, as
+reported by the author; current website samples are frozen digital specimens,
+not physical-print photographs. Current output still needs physical calibration.
+Production decisions and the boundary between the author's intention and untested
+audience interpretations are recorded in [the publication note](docs/poetry-voucher-publication.md).
+
+Orders freeze their contents, prices, payment scene and, for new orders, text and
+render-build identities. Long outputs retain continuation numbers. Reopening an
+old order with another renderer is disclosed as re-rendering; earlier orders with
+no recorded build are not assigned an invented one. Previously consented custom
+text is retained locally, but no new custom editions can be ordered. Frozen old
+reader-edition orders remain readable.
+
+The authoring map is in `content/README.md`. Run `npm run qa:shop`,
+`npm run qa:shop-locales` and `npm run qa:author-shop` for transaction, locale,
+offline-reading, author-boundary and historical-order checks. The older Studio
+renderer tests use a request-intercepted local fixture, not the public Studio URL.
+Ordinary checks do not overwrite historical specimens.
 
 ## Accessibility
 
 The portfolio, literary pages and mail-assistant policy pages provide persistent, local-only reading preferences for sans-serif text, larger type, increased text spacing, shorter line length, a simplified one-column layout, reduced motion and higher contrast. These controls are progressive enhancement: the content remains complete when JavaScript or storage is unavailable. System `prefers-reduced-motion`, `prefers-contrast` and forced-colours settings are respected independently of the manual controls.
 
-The default presentation retains the editorial design but is built to reflow without horizontal scrolling at narrow/zoomed viewports, preserve visible keyboard focus and real skip-link focus, avoid forced new windows, expose full language names to assistive technology, and keep standalone interactive targets comfortably sized. Do not remove these behaviours when changing the visual design. The Poetry Voucher shop and studio use the same seven local reading preferences, with labelled controls, keyboard operation and text readings alongside the voucher image proofs.
+The default presentation retains the editorial design but is built to reflow without horizontal scrolling at narrow/zoomed viewports, preserve visible keyboard focus and real skip-link focus, avoid forced new windows, expose full language names to assistive technology, and keep standalone interactive targets comfortably sized. Do not remove these behaviours when changing the visual design. The Poetry Voucher shop uses the same seven local reading preferences, with labelled controls, keyboard operation and text readings alongside the voucher image proofs.
 
 User-facing copy is maintained under `content/`; `templates/` contains layout only. Do not hand-edit generated language pages.
 

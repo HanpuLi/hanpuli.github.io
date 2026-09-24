@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Optical-size and tariff regression, no printing or private API calls.
 import assert from 'node:assert/strict';
+import {installStudioFixture} from './studio-test-fixture.mjs';
 import {spawn} from 'node:child_process';
 import {writeFile} from 'node:fs/promises';
 import {chromium} from '@playwright/test';
@@ -21,6 +22,7 @@ try{
   for(let i=0;i<50;i++){try{if((await fetch(base)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
   browser=process.env.PLAYWRIGHT_CDP_URL?await chromium.connectOverCDP(process.env.PLAYWRIGHT_CDP_URL):await chromium.launch();
   const context=browser.contexts()[0]||await browser.newContext();const page=await context.newPage();
+  await installStudioFixture(page,base);
   await page.goto(base+'/poetry-voucher/make.html?lang=en');
   await page.locator('#full-pdf').waitFor({state:'visible'});
   const runtime=await page.evaluate(()=>({

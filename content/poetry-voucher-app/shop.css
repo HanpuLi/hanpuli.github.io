@@ -55,3 +55,6 @@
 .paper-width{min-width:0;align-self:start}.colophon-number{display:block;white-space:nowrap;font-size:76px;line-height:1;letter-spacing:-.04em}.colophon-number small{font:18px/1 var(--mono);letter-spacing:0}.paper-width>.micro{display:block;margin-top:10px;font:12px/1.6 var(--mono);color:var(--muted)}
 [data-page="order"] .order-section{border-top:0;padding:48px 0}[data-page="order"] .order-heading{padding-bottom:12px}[data-page="order"] .order-heading h1{font-weight:400;margin:12px 0 20px}[data-page="order"] #open-bag{display:none}
 @media(max-width:560px){.shop-colophon{grid-template-columns:minmax(0,1fr);gap:24px}.shop-colophon>a{grid-column:auto}.paper-width{display:flex;align-items:baseline;gap:18px}.colophon-number{font-size:64px}.paper-width>.micro{margin:0}[data-page="order"] .order-section{padding-top:32px}.order-record h2{overflow-wrap:anywhere}.order-proof-grid{padding:20px 14px}}
+
+/* Complete non-image reading, also available as a standalone download. */
+.order-text-copy{margin-block:2rem;max-inline-size:48rem}.order-text-copy section{margin-block:2rem}.order-text-copy pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.85rem}.order-text-copy a,.order-text-copy .micro{overflow-wrap:anywhere}.order-text-copy .verse{white-space:pre-wrap}.publication-record{margin-block:1rem}.render-notice{margin-block:1.5rem}

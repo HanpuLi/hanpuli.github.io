@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {installStudioFixture} from './studio-test-fixture.mjs';
 import { spawn } from "node:child_process";
 import { readFile } from "node:fs/promises";
 import { setTimeout as sleep } from "node:timers/promises";
@@ -218,7 +219,8 @@ try {
     if (await page.locator('.pv-intro .pv-cta').getAttribute('href') !== expectedMaker) failures.push(`${projectPath}: Studio link is wrong`);
   }
 
-  // The maker is deliberately separate from the static project page.
+  // Historical renderer coverage runs in an intercepted fixture, not the retired public Studio.
+  await installStudioFixture(page,BASE);
   await page.goto(BASE + '/poetry-voucher/make.html?lang=en');
   await page.locator('#full-pdf').waitFor({ state: 'visible' });
   if(await page.locator('#font').inputValue()!=='bitmap'||await page.locator('#price').inputValue()!=='2.99')failures.push('studio: default bitmap/B3 base price is wrong');
@@ -257,6 +259,7 @@ try {
   }
   const fallbackContext = await browser.newContext({ javaScriptEnabled: false });
   const fallbackPage = await fallbackContext.newPage();
+  await installStudioFixture(fallbackPage,BASE);
   await fallbackPage.goto(BASE + '/poetry-voucher/make.html?lang=en');
   if (await fallbackPage.locator('html').getAttribute('lang') !== 'zh-Hant-HK') failures.push('studio no-JS: fallback html lang is wrong');
   if (await fallbackPage.locator('html').getAttribute('translate') !== 'no') failures.push('studio no-JS: translate=no is missing');

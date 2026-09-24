@@ -21,7 +21,7 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `contexts.json` — localised catalogue back matter for credit-name mapping, selected professional contexts and clearly identified first-party public records.
 
 English is the default site at `/`. Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are emitted at
-`/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Ordinary language switching is static navigation. Two interactive exceptions select already-authored copy at runtime: the root custom 404 router (preserving the 404 response), and the Poetry Voucher studio (preserving the visitor's unsaved text while changing interface language).
+`/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Ordinary language switching is static navigation. Two interactive exceptions select already-authored copy at runtime: the root custom 404 router (preserving the 404 response), and the Poetry Voucher shop (preserving the visitor's selection while changing interface language).
 
 ## Editing
 
@@ -66,15 +66,15 @@ Never add Garamond Premier Pro or another licensed local font to the repository.
 ## Poetry Voucher
 
 The public project has seven static `/poetry-voucher/` overview editions, a
-browser-only `/poetry-voucher/shop.html?lang=…` shop, and the original
-`/poetry-voucher/make.html?lang=…` single-edition studio.
-Edit overview copy in `poetry-voucher.json`, the studio template in
-`../templates/poetry-voucher-studio.html`, and its JavaScript, data and CSS in
+browser-only `/poetry-voucher/shop.html?lang=…` shop, and an order page. The former
+`/poetry-voucher/make.html?lang=…` Studio redirects to the same-language shop.
+Edit overview copy in `poetry-voucher.json`, the shop template in
+`../templates/poetry-voucher-shop.html`, and its JavaScript, data and CSS in
 `poetry-voucher-app/`. Run `python3 tools/build_site.py` to publish those sources
 to the generated routes. Do not edit the generated copies independently.
 
-The studio offers the five published literary translations (English, Japanese,
-German, French and Russian) and a Simplified Chinese script edition,
+The shop offers the five published literary translations (English, Japanese,
+German, French and Russian) and a choice of original Chinese script,
 independently of its interface language. The Simplified edition mirrors the
 canonical text rather than translating it. Their authoritative text is in
 `ci-source.json`, `ci-simplified.json`, `ci-translations/`, `shi-simplified.json`,
@@ -91,11 +91,11 @@ objects. The stable documentation fixtures are named separately as
 `tools/build_poetry_voucher_editorial.mjs`. The overview shows B3 as an
 original-text, cash-payment basic specimen; the homepage shows B3 with the
 published English translation and a simulated card-payment editorial specimen.
-Both are frozen documentation scenes, not two views of one transaction. Reader
-text and edited published works use the visible `CUSTOM` voucher prefix so the
-code is understandable without a private abbreviation.
+Both are frozen documentation scenes, not two views of one transaction. The
+CUSTOM prefix remains only for frozen historical reader editions and internal tests;
+the public shop cannot issue new custom or edited-author texts.
 
-The studio reuses `/assets/fonts/`; run both font-subsetting helpers after CJK
+The shop reuses `/assets/fonts/`; run both font-subsetting helpers after CJK
 copy changes. `node tools/poetrycheck.mjs` checks pricing, payment denominations,
 line breaking, translation completeness and the public-data boundary. The
 same check compares the voucher catalogue's original text and paired
@@ -113,20 +113,20 @@ by SHA-256 (see `assets/fonts/LICENSES.md`):
 `ja` for Japanese, and `latin` for English, German, French and Russian.
 Catalogue works keep their source language (Hong Kong Traditional Chinese)
 regardless of the studio UI locale; paired editions use their own language's
-pixel build. Custom text follows the studio UI locale. The 12-dot native grid
+pixel build. Historical custom text follows its recorded locale. The 12-dot native grid
 uses 24/36-dot body sizes; small metadata stays at 12 dots. The optional
 website typeface edition adds £1.99 regardless of script: EB Garamond for Latin
 and Cyrillic alongside the site's CJK fonts, with 22/24/26-dot body sizes. This
-is not a Mincho-only surcharge. The Latin author masthead is fixed identity
-typography, not a separately charged option. Switching fonts keeps a compatible
+is not a Mincho-only surcharge. The Latin author masthead follows the selected edition typeface; it is not a
+separately charged option. Switching fonts keeps a compatible
 size or resets to 24 and invalidates stale downloads. The generated pixel
 webfonts and their upstream OFL notices are bundled under assets/fonts; catalogue
 works do not depend on system fonts.
 
 There is no payment service, text upload or physical printer API in this public
-app. The shop persists validated catalogue selections locally. Custom text is
-transient unless the visitor explicitly enables device storage; disabling that
-option removes custom text from saved storage without removing the in-tab bag. Do not copy private device configuration,
+app. The shop persists validated catalogue selections locally. Previously consented
+custom selections are moved to the retained `retiredCustom` storage field, not
+deleted or added to new orders. Do not copy private device configuration,
 identifiers, credentials or print-service code into it. The receipt deliberately
 uses a plausible UK POS information hierarchy (store/till/transaction fields,
 item tax codes, subtotal/total, VAT analysis and cash/card detail), but every
@@ -159,7 +159,7 @@ translations in `poetry-voucher-app/shop-copy.js`, and behaviour/styles in
 The shop reuses the studio's catalogue, tariff, receipt math, type policy and
 `renderVoucherBody()`; it does not maintain a second literary corpus.
 
-A cart line holds a work or custom-text snapshot, original-script locale, any
+A new cart line holds an unchanged catalogue work, original-script locale, any
 selected published translations, font, size and quantity. Catalogue originals
 can use Traditional or Simplified Chinese at the same base price; English,
 Japanese, German, French and Russian translations are independent add-ons and
@@ -176,3 +176,25 @@ same 58 mm paper geometry and lossless one-bit PDF encoding. There is no claim
 of stock scarcity, fulfilment by post, live merchant authorization or actual
 payment. The catalogue, editor, bag and checkout retain seven-language keyboard
 and screen-reader support. Run `npm run qa:shop` for the complete browser flow.
+
+### Publication completeness and historic compatibility
+
+`order-reading.js` builds the complete on-screen and offline HTML counterpart from
+the frozen order. Its receipt transcription is captured from the same receipt
+rendering calls, not a second pricing calculation. The HTML includes all issued
+poems, translations, quantities, identities and fictional transaction fields. It
+uses no external resources or scripts. The PDF remains a one-bit image document.
+
+`tools/voucher_publication.py` generates `publication-build.js` from an explicit
+list of public renderer sources and their referenced fonts. New orders record this
+build and a text-snapshot hash. Old orders without this metadata remain readable;
+never backfill a supposed original renderer. Changed renderers are disclosed. A
+build fingerprint does not promise identical rasterisation across browsers.
+
+`PagedPaper` adds document identity on continuation pages and page counts to all
+pages of a multipage document. Single-page objects remain unchanged in this respect.
+
+The retired Studio template is an internal optical-regression fixture only.
+`tools/studio-test-fixture.mjs` serves it only by intercepting local test requests;
+`make.html` in the public build is always the retirement redirect. Preserve the
+old renderer coverage without reintroducing a public custom-text interface.

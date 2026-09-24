@@ -1363,12 +1363,12 @@ def build(check: bool = False) -> list[Path]:
         if not check:
             sitemap_path.write_text(sitemap, encoding="utf-8")
 
-    app_sources = [(TEMPLATES / 'poetry-voucher-studio.html', ROOT / 'poetry-voucher' / 'make.html'),
+    app_sources = [(TEMPLATES / 'poetry-voucher-retired.html', ROOT / 'poetry-voucher' / 'make.html'),
                    (TEMPLATES / 'poetry-voucher-shop.html', ROOT / 'poetry-voucher' / 'shop.html'),
                    (TEMPLATES / 'poetry-voucher-shop.html', ROOT / 'poetry-voucher' / 'order.html')]
     # Explicit public bundle: never sweep private printer files into the output.
     app_sources += [(CONTENT / 'poetry-voucher-app' / name, ROOT / 'poetry-voucher' / name)
-                    for name in ('gallery.js', 'i18n.js', 'editions.json', 'studio.css', 'shop.js', 'shop-copy.js', 'shop.css', 'accessibility.css')]
+                    for name in ('gallery.js', 'i18n.js', 'editions.json', 'studio.css', 'shop.js', 'shop-copy.js', 'shop.css', 'accessibility.css', 'order-reading.js', 'retired-studio.js')]
     for source, target in app_sources:
         data = source.read_bytes()
         if target.name == 'order.html':
@@ -1378,6 +1378,8 @@ def build(check: bool = False) -> list[Path]:
             if not check:
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(data)
+    from voucher_publication import build_publication
+    changed.extend(build_publication(ROOT, check=check))
     changed.extend(build_first_love_pages(ROOT, check=check))
     return changed
 

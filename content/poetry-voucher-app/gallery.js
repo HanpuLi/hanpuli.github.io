@@ -309,7 +309,7 @@ function updateSource(){
 function updateLocale(){
   const selected=$('work').value;
   if(works.length){
-    $('work').replaceChildren();const custom=document.createElement('option');custom.value='custom';custom.textContent=tr('＋ 寫自己的詩');$('work').append(custom);
+    $('work').replaceChildren();if(!document.body.classList.contains('shop-page')){const custom=document.createElement('option');custom.value='custom';custom.textContent=tr('＋ 寫自己的詩');$('work').append(custom);}
     for(const w of works){const option=document.createElement('option');option.value=w.id;
       // Work titles are authored content. Use an existing published title where available.
       const title=w.translations?.[uiLocale]?.title||w.title;
@@ -520,6 +520,7 @@ async function generate(event){
   try{
     message('在此裝置排版中…');
     const work=currentWork(),original=unchanged(work),size=Number($('size').value),selected=selectedTranslations(work),shop=document.body.classList.contains('shop-page');
+    if(shop&&!original)throw Error('Choose an unchanged catalogue edition.');
     const quote=updatePrice(true);
     const script=shop&&original?$('original-script').value:'zh-Hant',scriptText=script==='zh-Hans'?work.translations['zh-Hans']:null;
     const spec={title:scriptText?.title||$('title').value.trim(),author:$('author').value,poem:scriptText?.body||$('poem').value.replace(/\r\n?/g,'\n'),size,work,original,locale:original?script:uiLocale,
@@ -581,5 +582,5 @@ $('work').addEventListener('change',loadWork);$('generate').addEventListener('cl
   for(const [id,maxLength] of Object.entries(INPUT_LIMITS))$(id).maxLength=maxLength;
   syncTypeSize();updateLocale();
   const requested=new URL(location.href).searchParams.get('work');
-  $('work').value=works.some(w=>w.id===requested)?requested:requested==='custom'?'custom':RECEIPT_CONFIG.defaultWork;$('work').disabled=false;loadWork();if(document.body.classList.contains('shop-page'))document.dispatchEvent(new Event('catalogueready'));else if(currentWork())await generate();
+  $('work').value=works.some(w=>w.id===requested)?requested:requested==='custom'&&!document.body.classList.contains('shop-page')?'custom':RECEIPT_CONFIG.defaultWork;$('work').disabled=false;loadWork();if(document.body.classList.contains('shop-page'))document.dispatchEvent(new Event('catalogueready'));else if(currentWork())await generate();
 }catch(error){message(error.message);document.dispatchEvent(new CustomEvent('catalogueerror',{detail:error.message}));}})();

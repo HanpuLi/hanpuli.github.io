@@ -36,7 +36,7 @@ try{
   for(const width of [320,390,768,1440]){await page.setViewportSize({width,height:900});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),lang+' completed order overflow '+width);}
   await page.reload();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1);assert.equal((await page.evaluate(()=>poetryShop.snapshot().orders[0])).ref,snapshot.ref);
   await page.locator('#keep-shopping').click();await page.waitForFunction(()=>document.querySelectorAll('.product-card').length===23);
-  await page.locator('#custom-work').click();await page.locator('#save-line').click();assert.equal(await page.locator('#editor-status').textContent(),copy.SHOP_COPY.required[index]);await page.locator('[data-close="product-editor"]').click();
+  assert.equal(await page.locator('#custom-work').count(),0);await page.locator('.product-card .text-button').first().click();assert(await page.locator('#poem').evaluate(n=>n.readOnly));assert.equal(await page.locator('#work option[value=custom]').count(),0);await page.locator('[data-close="product-editor"]').click();
   console.log(lang+': full reading, original script and translation selection, bag, checkout, real PDF download, order language switch and validation passed');await context.close();
  }
  const context=await browser.newContext({locale:'fr-FR'});const page=await context.newPage();await page.goto(base+'/poetry-voucher/shop.html');await page.waitForFunction(()=>document.querySelectorAll('.product-card').length===23);assert.equal(await page.locator('html').getAttribute('data-ui-locale'),'fr');await context.close();
