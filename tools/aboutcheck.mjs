@@ -4,6 +4,7 @@ import {readFile, mkdir, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {chromium} from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
+import {inspectTypeInk} from './type-ink-check.mjs';
 
 // A real browser audit of both essays, not a count of strings in templates.
 const root=process.cwd(), capture=process.env.ABOUT_CAPTURE_DIR;
@@ -64,7 +65,9 @@ try{
           return {overflow,clipped};
         });
         if(geometry.overflow>1||geometry.clipped.length)failures.push({locale,kind,width,...geometry});
-        rows.push({locale,kind,width,...geometry});
+        const ink=await page.evaluate(inspectTypeInk);
+        if(ink.failures.length)failures.push({locale,kind,width,ink:ink.failures});
+        rows.push({locale,kind,width,...geometry,ink:ink.measurements});
       }
       for(const width of [390,1440]){
         await page.setViewportSize({width,height:1000});

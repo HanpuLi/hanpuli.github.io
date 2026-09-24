@@ -18,14 +18,14 @@
   "source": "Originalseite öffnen",
   "enlarge": "Originalauflösung öffnen",
   "type_title": "02 / Schrift übernimmt Aufgaben",
-  "type_intro": "Die Wörter und berechneten Einstellungen stammen aus dem Desktop-Eintrag oben. Die Schriftnamen geben die vom Browser tatsächlich gezeichneten Schriften an. Die Muster behalten den gemessenen Schriftgrad und brechen innerhalb dieser Seite neu um.",
+  "type_intro": "Wörter und berechnete Einstellungen stammen aus dem Desktop-Eintrag oben. Die Schriftnamen bezeichnen tatsächlich vom Browser gezeichnete Schriften. Die Muster behalten Schrift, Schriftgrad und Zeichenabstand; ihr Zeilenabstand lässt Platz für neue Umbrüche. Abweichende Zeilenhöhen von Quelle und Muster sind getrennt angegeben.",
   "roles": [
     "Metadaten",
     "Projekttitel",
     "Beschreibung"
   ],
   "size": "Schriftgrad",
-  "leading": "Zeilenhöhe",
+  "leading": "Zeilenhöhe der Quelle",
   "tracking": "Zeichenabstand",
   "face": "Gerenderte Schriften",
   "site_end": "Das gemeinsame Raster macht nicht alle Seiten gleich. Diese Maße gelten für diesen Eintrag und Viewport. Die Linie trennt Projekte, die Nummer verortet den Eintrag, und die kleinere Belegspalte ergänzt Informationen, die der Titel allein nicht nachweisen kann.",
@@ -82,5 +82,6 @@
   "font_note": "Die Basis verwendet Fusion Pixel Zh HK im 12-Punkte-Raster, hier mit 32 Punkten Zeilenvorschub. Die Website-Option verwendet den chinesischen Serifenschriftstapel des Projekts, hier mit 31 Punkten. Beide Ausschnitte sind 1-Bit-Ausgaben; Konturen und Abstände bleiben in den Pixeln sichtbar.",
   "detail_note": "Öffnen Sie das Bild für seine Originalpixel. Vergrößerungen behalten harte Pixelkanten. Die Muster dokumentieren digitale Ausgabe; Papierstruktur, Wärmeausbreitung und Verblassen werden nicht simuliert.",
   "specimen": "B3 / 24. September 2026 / ein Exemplar / ohne Übersetzung",
-  "original": "Der Originaltext bleibt auf der Gedichtseite lesbar."
+  "original": "Der Originaltext bleibt auf der Gedichtseite lesbar.",
+  "sample_leading": "Zeilenhöhe des Musters"
 }

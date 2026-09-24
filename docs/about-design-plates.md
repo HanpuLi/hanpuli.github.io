@@ -8,7 +8,9 @@ specimen at the top of its essay remains separately dated and unchanged.
   390 CSS px. The parent grid supplies inherited subgrid track sizes; they
   are not twelve equal tracks. Overlay positions use measured DOM rectangles.
 - Typography: real text, computed size/leading/tracking, and Chromium's painted
-  font faces. The lower samples retain these type settings but reflow locally.
+  font faces. The lower samples retain the typeface, size and tracking but reflow locally.
+  Their unitless leading has a 1.3 minimum; source and sample leading are
+  labelled separately when different, to avoid cramped CJK lines after reflow.
 - Voucher: one B3 order rendered with the real shop, including its current
   order header, item columns, cash details, limitations and copy identifier.
 - Dimensions: 58 mm PDF paper; 384-dot / 48 mm image; 360-dot till line with

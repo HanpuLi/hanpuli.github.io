@@ -26,6 +26,8 @@ def site_view(v,c):
   lines.append(f'<circle class="plate-dot" cx="{n(cx)}" cy="{n(cy)}" r="10"/><text class="plate-number" x="{n(cx)}" y="{n(cy+3.5)}">{i}</text>')
  title=c['desktop'] if v['viewport']==1440 else c['mobile']
  return f'<div class="plate-view"><h4>{e(title)}</h4><div class="plate-overlay">{image(v["file"],title,w,h)}{svg_start(w,h)}'+''.join(lines)+'</svg></div>'+f'<a class="plate-source" href="{ASSET}{v["file"]}">{e(c["enlarge"])}</a></div>'
+def sample_leading(t):return max(t["leading"] / t["size"], 1.3)
+
 def site_html(locale):
  c=load(locale);s=measurement()['site'][locale];d=s['views']['1440'];m=s['views']['390'];out=[]
  out.append(f'<figure class="site-visual-grammar design-atlas" aria-labelledby="site-design-title"><figcaption id="site-design-title"><h2>{e(c["site_title"])}</h2></figcaption>{para(c["site_intro"])}')
@@ -36,7 +38,7 @@ def site_html(locale):
  out.append('<section class="design-plate">'+heading(c['type_title'])+para(c['type_intro'])+'<div class="plate-type-list">')
  for i,t in enumerate(s['type']):
 
-  out.append(f'<div class="plate-type-row"><div class="plate-type-reading"><h4>{e(c["roles"][i])}</h4><p class="measured-type measured-{locale}-{i}">{e(t["text"])}</p></div><dl class="plate-type-metrics">'+metric(c['size'],n(t['size'])+' CSS px')+metric(c['leading'],n(t['leading'])+' CSS px')+metric(c['tracking'],t['tracking'])+metric(c['face'],' / '.join(f['family'] for f in t['fonts']))+'</dl></div>')
+  out.append(f'<div class="plate-type-row"><div class="plate-type-reading"><h4>{e(c["roles"][i])}</h4><p class="measured-type measured-{locale}-{i}">{e(t["text"])}</p></div><dl class="plate-type-metrics">'+metric(c['size'],n(t['size'])+' CSS px')+metric(c['leading'],n(t['leading'])+' CSS px')+(metric(c['sample_leading'],n(t['size']*sample_leading(t))+' CSS px') if sample_leading(t)>t['leading']/t['size'] else '')+metric(c['tracking'],t['tracking'])+metric(c['face'],' / '.join(f['family'] for f in t['fonts']))+'</dl></div>')
  out.append('</div></section></figure>');return ''.join(out)
 def anatomy(v,c):
  h=v['height'];rh=v['receiptHeight'];ch=v['cutHeight'];ys=[150,v['headerY']+12,v['totalY']+24,rh-36,rh+ch/2,rh+ch+v['body']['y']+20]
@@ -74,7 +76,7 @@ def specimen_css():
  out=['/* Generated from measured browser styles by tools/build_site.py. */']
  for locale,s in measurement()['site'].items():
   for i,t in enumerate(s['type']):
-   out.append(f'.design-atlas .measured-{locale}-{i}'+'{'+f'font-family:{t["family"]};font-size:{t["size"]}px;line-height:{t["leading"]}px;letter-spacing:{t["tracking"]};font-weight:{t["weight"]};text-transform:{t["transform"]}'+'}')
+   out.append(f'.design-atlas .measured-{locale}-{i}'+'{'+f'font-family:{t["family"]};font-size:{t["size"]}px;line-height:{n(sample_leading(t))};letter-spacing:{t["tracking"]};font-weight:{t["weight"]};text-transform:{t["transform"]}'+'}')
  return '\n'.join(out)+'\n'
 
 def column_ruler():

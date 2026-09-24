@@ -244,4 +244,6 @@ Run `npm run qa:about` after rebuilding. Its provenance check rejects stale
 inputs and inconsistent measured geometry before testing browser layout.
 New CJK explanatory text needs the normal font-subset rebuild, followed by a
 site build and specimen refresh. The explanatory font CSS changes with the
-measurements; reading preferences can override it for accessibility.
+measurements. Reflowed samples use unitless leading of at least 1.3; when this
+differs from the source, both source and sample line heights are listed.
+Reading preferences can override the samples for accessibility.
