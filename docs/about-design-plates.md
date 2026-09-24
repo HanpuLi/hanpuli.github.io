@@ -23,3 +23,10 @@ specimen at the top of its essay remains separately dated and unchanged.
 
 No literary text, pricing rule, purchase flow, or real printing behavior changes.
 There is no simulated paper grain or invented physical-print measurement.
+
+The Chinese source feature title now uses 1.3 leading before capture, not only
+in the explanatory sample. Capture and About QA check its glyph clearance.
+Chinese prose in both About essays uses ordinary wrapping and strict CJK
+punctuation rules: WebKit pretty wrapping was verified to reshape the three
+origin paragraphs differently, including sentence-like short lines. The same
+393 px specimen now has identical line text in Chromium and WebKit.

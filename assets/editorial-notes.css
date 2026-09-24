@@ -236,3 +236,13 @@ body:is(.about-page,.voucher-project) :is(main,.page-footer) a[href]:not(.skip-l
   text-underline-offset:.35em;
   text-decoration-skip-ink:auto;
 }
+
+/* Chinese prose fills its column in reading order. Paragraph-wide pretty
+   wrapping can create sentence-shaped lines in WebKit on narrow screens. */
+body:is(.about-page,.voucher-project):is(.locale-zh,.locale-zh-hans) :is(.editorial-section .about-section-copy > p,.design-atlas .plate-copy) {
+  text-wrap:wrap;
+  word-break:normal;
+  line-break:strict;
+  overflow-wrap:break-word;
+  hyphens:none;
+}

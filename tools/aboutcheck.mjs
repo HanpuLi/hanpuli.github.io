@@ -65,6 +65,10 @@ try{
           return {overflow,clipped};
         });
         if(geometry.overflow>1||geometry.clipped.length)failures.push({locale,kind,width,...geometry});
+        if(['zh','zh-hans'].includes(locale)){
+          const flow=await page.locator('.editorial-section .about-section-copy > p,.design-atlas .plate-copy').evaluateAll(ps=>ps.filter(p=>{const s=getComputedStyle(p);return s.textWrap!=='wrap'||s.lineBreak!=='strict';}).map(p=>p.textContent.slice(0,50)));
+          if(flow.length)failures.push({locale,kind,width,flow});
+        }
         const underlines=await page.locator('.plate-source').evaluateAll(links=>links.map(a=>{const s=getComputedStyle(a);return {text:a.textContent,offset:parseFloat(s.textUnderlineOffset)/parseFloat(s.fontSize)};}).filter(a=>a.offset<.349));
         if(underlines.length)failures.push({locale,kind,width,underlines});
         const ink=await page.evaluate(inspectTypeInk);
@@ -99,6 +103,15 @@ try{
       await page.close();
       console.log(`${locale}/${kind}: complete copy, citations, 7 widths, 2 axe scans, dark + reading-style stress`);
     }
+  }
+  for(const locale of ['zh','zh-hans']){
+    const page=await context.newPage();await page.goto(base+'/'+locale+'/');await page.evaluate(()=>document.fonts.ready);
+    for(const width of [320,390,520,768,1440]){
+      await page.setViewportSize({width,height:1000});await page.locator('.project-feature h3').scrollIntoViewIfNeeded();
+      const ink=await page.evaluate(inspectTypeInk,'.project-feature h3');
+      if(ink.failures.length)failures.push({locale,kind:'source-title',width,ink:ink.failures});
+    }
+    await page.close();
   }
   const nojs=await browser.newContext({javaScriptEnabled:false});
   for(const endpoint of ['about.html','poetry-voucher/']){
