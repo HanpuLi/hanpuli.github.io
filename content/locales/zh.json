@@ -21,6 +21,7 @@
       "title": "閱讀偏好",
       "description": "調整本站的閱讀顯示。設定只會儲存在此裝置。",
       "sans": "使用無襯線字體",
+      "dyslexia": "使用 OpenDyslexic 字體",
       "large": "放大文字",
       "spacing": "增加文字間距",
       "measure": "縮短行寬",

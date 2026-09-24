@@ -21,6 +21,7 @@
       "title": "Leseeinstellungen",
       "description": "Darstellung für leichteres Lesen anpassen. Einstellungen werden nur auf diesem Gerät gespeichert.",
       "sans": "Serifenlose Schrift",
+      "dyslexia": "OpenDyslexic-Schrift verwenden",
       "large": "Größere Schrift",
       "spacing": "Mehr Textabstand",
       "measure": "Schmalere Textspalten",

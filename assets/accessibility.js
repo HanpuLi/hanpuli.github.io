@@ -2,14 +2,16 @@
   "use strict";
 
   const STORAGE_KEY = "hanpuli.readingPreferences.v1";
-  const PREFERENCES = ["sans", "large", "spacing", "measure", "simple", "motion", "contrast"];
+  const PREFERENCES = ["sans", "dyslexia", "large", "spacing", "measure", "simple", "motion", "contrast"];
   const root = document.documentElement;
   root.classList.add("reading-js");
 
   function readPreferences() {
     try {
       const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-      return parsed && typeof parsed === "object" ? parsed : {};
+      if (!parsed || typeof parsed !== "object") return {};
+      if (parsed.dyslexia === true) parsed.sans = false;
+      return parsed;
     } catch {
       return {};
     }
@@ -157,6 +159,10 @@
 
       control.addEventListener("change", () => {
         preferences[name] = control.checked;
+        if (control.checked && (name === "sans" || name === "dyslexia")) {
+          preferences[name === "sans" ? "dyslexia" : "sans"] = false;
+          syncControls();
+        }
         applyPreferences(preferences);
         savePreferences(preferences);
       });
@@ -179,6 +185,11 @@
     const disclosure = document.querySelector(".reading-tools details");
     const summary = disclosure?.querySelector("summary");
     if (disclosure && summary) {
+      document.addEventListener("click", (event) => {
+        if (disclosure.open && !disclosure.contains(event.target)) {
+          disclosure.open = false;
+        }
+      });
       disclosure.addEventListener("keydown", (event) => {
         if (event.key !== "Escape" || !disclosure.open) return;
         disclosure.open = false;

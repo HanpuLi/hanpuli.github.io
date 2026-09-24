@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LANGUAGES = json.loads((ROOT / "content" / "languages.json").read_text(encoding="utf-8"))
 LOCALES = tuple("" if item["id"] == "en" else item["id"] for item in LANGUAGES)
 PAGES = ("index.html", "ci.html", "shi.html", "about.html", "contexts.html", "404.html")
-READING_PREFS = {"sans", "large", "spacing", "measure", "simple", "motion", "contrast"}
+READING_PREFS = {"sans", "dyslexia", "large", "spacing", "measure", "simple", "motion", "contrast"}
 
 
 def portfolio_paths() -> list[Path]:

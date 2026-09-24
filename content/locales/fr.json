@@ -21,6 +21,7 @@
       "title": "Préférences de lecture",
       "description": "Ajustez l’affichage pour faciliter la lecture. Les réglages restent sur cet appareil.",
       "sans": "Police sans empattement",
+      "dyslexia": "Utiliser la police OpenDyslexic",
       "large": "Texte plus grand",
       "spacing": "Espacement du texte accru",
       "measure": "Colonnes de texte plus étroites",

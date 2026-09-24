@@ -21,6 +21,7 @@
       "title": "Reading preferences",
       "description": "Adjust this site for easier reading. Settings stay on this device.",
       "sans": "Use sans-serif text",
+      "dyslexia": "Use OpenDyslexic font",
       "large": "Larger text",
       "spacing": "More text spacing",
       "measure": "Narrower text columns",
