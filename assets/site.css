@@ -4465,3 +4465,12 @@ html[data-reading-simple] .contexts-page .contexts-record {
 html[data-reading-simple] .contexts-page .contexts-date {
   margin-block-end: .55em;
 }
+
+@media (max-width: 760px) {
+  .reading-tools .reading-panel {
+    position: static;
+    inset: auto;
+    width: min(360px, 100%);
+    margin-block-start: 10px;
+  }
+}

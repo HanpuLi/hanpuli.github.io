@@ -38,7 +38,7 @@ html[data-reading-simple] .shop-page .product-card:nth-child(n){border-inline-st
 @font-face{font-family:OpenDyslexic;src:url('/assets/fonts/opendyslexic-bold.woff2') format('woff2');font-style:normal;font-weight:700;font-display:swap}
 @font-face{font-family:OpenDyslexic;src:url('/assets/fonts/opendyslexic-bold-italic.woff2') format('woff2');font-style:italic;font-weight:700;font-display:swap}
 
-/* Keep the disclosure attached to its trigger without pushing the page down. */
+/* Keep the disclosure attached to its trigger on wide screens. */
 .reading-tools details[open]{z-index:2}
 .reading-panel{position:absolute;inset-block-start:calc(100% + 10px);inset-inline-end:0;width:min(360px,100%);margin:0;border-color:var(--line);z-index:2}
 .reading-panel fieldset{min-inline-size:0;margin:0;padding:0}
@@ -46,6 +46,10 @@ html[data-reading-simple] .shop-page .product-card:nth-child(n){border-inline-st
 .reading-option span{line-height:1.4}
 .reading-tools details[open]>summary{border-color:var(--accent);background:var(--panel)}
 .reading-reset{display:block;width:100%}
+
+@media(max-width:760px){
+  .reading-tools .reading-panel{position:static;inset:auto;width:min(360px,100%);margin-block-start:10px}
+}
 
 html[data-reading-dyslexia] body:is(.shop-page,.studio-page){--serif:'OpenDyslexic',var(--ui),sans-serif;--mono:'OpenDyslexic',var(--ui),sans-serif;font-variant-ligatures:none}
 
