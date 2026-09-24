@@ -19,15 +19,17 @@ This file records semantic constraints distilled from the author's current annot
 - 甲二「沈醉曾扶相並倚」: preserve reciprocal/underdetermined physical action. Do not decide who supported whom.
 - 甲二／甲五 titles with 「扶靨」: retain the cheek/dimple image without assigning an unsupported actor.
 - 甲二「當筵曾許心期」: a remembered promise/expectation of the heart, with unspecified content; do not translate as an explicit lifetime vow.
+- 乙二「隔簾猶是舊時聲」: a familiar voice heard across the curtain. Do not restore the superseded cold-lamplight image or invent what is being said.
 - 乙二「欲喚還休」: an impulse to call out that is withdrawn. The reason is unspecified.
 - 乙二「歡猶未省」: `歡` carries the literary sense of the beloved; `未省` means still unaware.
 - 乙三「新痕舊鑰莫輕論」: the new trace is deliberately unspecific; do not concretise it into one factual event.
-- 乙四「忽燈前小影」: the identity of the small shadow is unspecified.
+- 乙四「對燈重展讀」: the speaker unfolds the letter and reads it again by lamplight. The revised text no longer refers to an unidentified small shadow.
 - 乙四「轉覺是、別處温言」: “elsewhere” is unspecified; do not invent a former partner or a specific other relationship.
 - 乙四「一諾窮年」: B anticipates how the key will be read; this is not an authorial declaration that such a promise objectively exists.
 - 乙四／乙五「加餐／加飯」: practical care remains real without being forced to carry the entire meaning of the relationship.
 - 甲三「拆來只有三行字」: the note is what is opened/unfolded and read, not the key.
 - 甲三／甲六「畫裏」「真真」: a depicted/painted figure context; avoid wording that accidentally means “painting as a medium” when “in the picture” is intended.
+- 甲五「還欲寄君看」: A still wants to send the lyric for the addressee to read; no actual sending or reply is asserted.
 - 甲七「也應灌溉朝昏」: conjecture (`應`), not verified fact.
 - 乙六「幾度誤春痕」: deliberately open. Preserve both the `痕` (trace/mark) and the sense of spring timing/events going awry; do not reduce it to simple poor plant care.
 - 乙六「窗虛留寸土」: an empty/bare window-space with an inch of earth; do not move the earth “beneath” the window without textual basis.
@@ -38,12 +40,15 @@ This file records semantic constraints distilled from the author's current annot
 - 乙六「素心終不移」: B's self-description of an unchanged plain/original heart. Do not specify exactly what remains unchanged.
 - 乙六「我亦有天涯」: B also has a horizon/life not exhausted by A's story; it does not assert “I have forgotten you”.
 - 乙七「當時渾不異」: the comparison is unstated; do not over-fix it as one explicit proposition.
+- 乙七「小兒催我睡」: the child urges the speaker to go to sleep. Retain the explicit first-person object without adding a shared bedtime or dreams.
 - 乙七「忘川人自渡」: descriptive/reflexive “each crosses for themselves/alone”; do not add modal obligation (“must”).
 - 甲九「當時燈影共成篇」: the texts now form a work together. The textual/archival fact does not retroactively prove shared consent to one interpretation.
 - 甲九「指點卿行在我邊」: the lines are physically beside A's lines in the bound volume; this is true evidence, but limited evidence.
 - 集外甲十「中呂 · 山坡羊」: retain `Zhonglü` as the modal designation; do not omit it.
 - 集外《鷓鴣天》「硯」: translate specifically as inkstone / Tuschstein / pierre à encre where the object matters.
 - 集外《鷓鴣天》「獨餘一語」: `語` is an utterance/phrase, not necessarily a typographic line.
+
+- Separate 9 September 《臨江仙》「留燈還怕擾人眠」: keeping the lamp lit coexists with concern about disturbing someone’s sleep. Do not identify the sleeper beyond the Chinese or import the superseded circling-hand gesture.
 
 ## Editorial principle
 
