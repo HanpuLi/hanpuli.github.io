@@ -357,7 +357,7 @@ def structured_data_html(
         "name": IDENTITY["primary_name"],
         "alternateName": [IDENTITY["chinese_name"], *IDENTITY["alternate_names"]],
         "url": IDENTITY["site_url"],
-        "sameAs": [IDENTITY["github_url"]],
+        "sameAs": IDENTITY["same_as"],
         "knowsAbout": IDENTITY["knows_about"],
     }
     website = {

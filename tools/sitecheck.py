@@ -323,6 +323,31 @@ def check_discovery(errors: list[str]) -> None:
             if marker not in source:
                 errors.append(f"{rel}: indexable page missing SEO marker {marker!r}")
 
+        json_ld_blocks = re.findall(
+            r'<script type="application/ld\+json">\s*(.*?)\s*</script>',
+            source,
+            flags=re.I | re.S,
+        )
+        person_nodes: list[dict] = []
+        for block in json_ld_blocks:
+            try:
+                payload = json.loads(block)
+            except json.JSONDecodeError as exc:
+                errors.append(f"{rel}: invalid JSON-LD: {exc}")
+                continue
+            graph = payload.get("@graph", []) if isinstance(payload, dict) else []
+            for node in graph:
+                if isinstance(node, dict) and node.get("@type") == "Person":
+                    person_nodes.append(node)
+        if len(person_nodes) != 1:
+            errors.append(
+                f"{rel}: expected exactly one Person node in JSON-LD, got {len(person_nodes)}"
+            )
+        elif person_nodes[0].get("sameAs") != identity.get("same_as"):
+            errors.append(
+                f"{rel}: Person sameAs must match content/identity.json exactly"
+            )
+
         html_alternates = dict(re.findall(
             r'<link\s+rel="alternate"\s+hreflang="([^"]+)"\s+href="([^"]+)"',
             source,

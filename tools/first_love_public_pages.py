@@ -112,7 +112,7 @@ def _structured_data(
                 "name": identity["primary_name"],
                 "alternateName": [identity["chinese_name"], *identity["alternate_names"]],
                 "url": identity["site_url"],
-                "sameAs": [identity["github_url"]],
+                "sameAs": identity["same_as"],
                 "knowsAbout": identity["knows_about"],
             },
             {
