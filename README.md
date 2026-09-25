@@ -112,7 +112,7 @@ uv run --with fonttools --with brotli --with pillow python tools/build_social_ca
 
 A separate scheduled workflow runs `tools/linkcheck_external.py` weekly against external links in the generated personal-site pages. It is intentionally independent of deployment: genuine 404/410 responses fail that audit, while rate limits, bot blocks, timeouts and 5xx responses are reported as indeterminate instead of breaking ordinary site publication.
 
-`tools/build_site.py` also generates `sitemap.xml` for every indexable canonical portfolio route. Each localized URL carries the complete reciprocal `hreflang` family plus `x-default`; `robots.txt` advertises the sitemap. `tools/sitecheck.py` verifies sitemap membership, reciprocal locale mappings, canonical URLs, the absence of `noindex` on sitemap entries, descriptions, social metadata and JSON-LD so discovery metadata cannot silently drift from generated pages.
+`tools/build_site.py` also generates `sitemap.xml` for every indexable canonical portfolio route. Each localized URL carries the complete reciprocal `hreflang` family plus `x-default`; `robots.txt` advertises the sitemap. `tools/sitecheck.py` verifies sitemap membership, reciprocal locale mappings, canonical URLs, the absence of `noindex` on sitemap entries, descriptions, social metadata and JSON-LD so discovery metadata cannot silently drift from generated pages. GitHub Pages is configured through `_config.yml` to exclude the source-only `content/`, `docs/`, `templates/`, `tools/`, package metadata and repository documentation from the deployed site; those files remain available in the repository but are not part of the public web tree.
 
 ## Content and rights
 

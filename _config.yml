@@ -1,0 +1,12 @@
+# GitHub Pages publishes only the generated public site, not its source toolchain.
+exclude:
+  - .github/
+  - AGENTS.md
+  - README.md
+  - SECURITY.md
+  - content/
+  - docs/
+  - templates/
+  - tools/
+  - package.json
+  - package-lock.json

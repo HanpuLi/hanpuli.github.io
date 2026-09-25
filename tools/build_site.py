@@ -393,6 +393,7 @@ def structured_data_html(
         if page_kind == "about":
             node["about"] = {"@id": PERSON_ID}
         elif page_kind == "essay":
+            node["headline"] = title.removesuffix(f" · {IDENTITY['primary_name']}")
             node["author"] = {"@id": PERSON_ID}
         else:
             node["creator"] = {"@id": PERSON_ID}

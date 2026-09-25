@@ -329,6 +329,34 @@ def check_discovery(errors: list[str]) -> None:
             f"robots.txt: expected exact discovery line {expected_sitemap_line!r}"
         )
 
+    pages_config = ROOT / "_config.yml"
+    try:
+        config_lines = {
+            line.strip()[2:].strip()
+            for line in pages_config.read_text(encoding="utf-8").splitlines()
+            if line.strip().startswith("- ")
+        }
+    except OSError as exc:
+        errors.append(f"_config.yml: cannot read GitHub Pages config: {exc}")
+        return
+
+    expected_excludes = {
+        ".github/",
+        "AGENTS.md",
+        "README.md",
+        "SECURITY.md",
+        "content/",
+        "docs/",
+        "templates/",
+        "tools/",
+        "package.json",
+        "package-lock.json",
+    }
+    for entry in sorted(expected_excludes - config_lines):
+        errors.append(
+            f"_config.yml: development/source path is not excluded from Pages: {entry!r}"
+        )
+
 
 def main() -> int:
     errors: list[str] = []
