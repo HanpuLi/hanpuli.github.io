@@ -8,11 +8,11 @@
   "email": "caitlye@gmail.com",
   "github_label": "GitHub",
   "github_url": "https://github.com/HanpuLi",
-  "linkedin_url": "https://www.linkedin.com/in/hanpu-li-124627173/",
+  "linkedin_url": "https://www.linkedin.com/in/hanpuli/",
   "academia_url": "https://independent.academia.edu/LiHanpu",
   "same_as": [
     "https://github.com/HanpuLi",
-    "https://www.linkedin.com/in/hanpu-li-124627173/",
+    "https://www.linkedin.com/in/hanpuli/",
     "https://independent.academia.edu/LiHanpu"
   ],
   "site_url": "https://hanpuli.github.io/",
@@ -20,8 +20,10 @@
   "knows_about": [
     "writing",
     "film criticism",
+    "digital publishing",
     "photography",
+    "spatial research",
     "remote sensing",
-    "software systems"
+    "open-source systems"
   ]
 }
