@@ -166,6 +166,22 @@ def check_discovery(errors: list[str]) -> None:
     identity = json.loads((ROOT / "content" / "identity.json").read_text(encoding="utf-8"))
     base_url = identity["site_url"].rstrip("/")
 
+    verification = str(identity.get("google_site_verification", "")).strip()
+    if not verification:
+        errors.append("content/identity.json: missing google_site_verification")
+    else:
+        root_source = (ROOT / "index.html").read_text(encoding="utf-8")
+        verification_values = re.findall(
+            r'<meta\s+name="google-site-verification"\s+content="([^"]+)"',
+            root_source,
+            flags=re.I,
+        )
+        if verification_values != [verification]:
+            errors.append(
+                "index.html: Google Search Console verification meta must occur exactly once "
+                "and match content/identity.json"
+            )
+
     def standard_url(locale_id: str, page: str) -> str:
         prefix = "" if locale_id == "en" else f"/{locale_id}"
         if page == "index":

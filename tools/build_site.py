@@ -1079,6 +1079,11 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "PV_EDITORIAL_WIDTH": str(pv_editorial_width),
         "PV_EDITORIAL_HEIGHT": str(pv_editorial_height),
         "HTML_LANG": html.escape(lang["html_lang"], quote=True),
+        "GOOGLE_SITE_VERIFICATION": (
+            f'\n<meta name="google-site-verification" content="{html.escape(IDENTITY["google_site_verification"], quote=True)}">'
+            if page == "index" and locale_id == ROOT_LOCALE and IDENTITY.get("google_site_verification")
+            else ""
+        ),
         "SOURCE_LANG": "zh-Hans" if locale_id == "zh-hans" else "zh-Hant-HK",
         "CI_GLYPH": "词" if locale_id == "zh-hans" else "詞",
         "SHI_GLYPH": "诗" if locale_id == "zh-hans" else "詩",
