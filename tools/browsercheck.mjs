@@ -62,6 +62,20 @@ try {
   const context = await browser.newContext({ reducedMotion: "reduce" });
   const page = await context.newPage();
 
+  await page.goto(
+    `${BASE}/?source=chatgpt&source=portfolio&utm_source=chatgpt.com&utm_source=newsletter&v=keep#work`,
+    { waitUntil: "load" },
+  );
+  const cleanedUrl = new URL(page.url());
+  if (
+    cleanedUrl.searchParams.getAll("source").join(",") !== "portfolio" ||
+    cleanedUrl.searchParams.getAll("utm_source").join(",") !== "newsletter" ||
+    cleanedUrl.searchParams.get("v") !== "keep" ||
+    cleanedUrl.hash !== "#work"
+  ) {
+    failures.push(`tracking cleanup failed: ${page.url()}`);
+  }
+
   for (const locale of locales) {
     for (const suffix of pageSuffixes) {
       const path = pagePath(locale, suffix);

@@ -3,8 +3,29 @@
 
   const STORAGE_KEY = "hanpuli.readingPreferences.v1";
   const PREFERENCES = ["sans", "dyslexia", "large", "spacing", "measure", "simple", "motion", "contrast"];
+  const CHATGPT_SOURCE_KEYS = new Set(["source", "utm_source"]);
+  const CHATGPT_SOURCE_VALUE = /^chatgpt(?:\.com)?$/i;
   const root = document.documentElement;
   root.classList.add("reading-js");
+
+  function stripChatGPTSource() {
+    try {
+      const url = new URL(window.location.href);
+      const entries = [...url.searchParams];
+      const kept = entries.filter(([key, value]) => {
+        return !(CHATGPT_SOURCE_KEYS.has(key.toLowerCase()) && CHATGPT_SOURCE_VALUE.test(value.trim()));
+      });
+      if (kept.length === entries.length) return;
+
+      url.search = "";
+      for (const [key, value] of kept) url.searchParams.append(key, value);
+      window.history.replaceState(window.history.state, "", `${url.pathname}${url.search}${url.hash}`);
+    } catch {
+      // URL cleanup is best-effort and must never block the page.
+    }
+  }
+
+  stripChatGPTSource();
 
   function readPreferences() {
     try {
