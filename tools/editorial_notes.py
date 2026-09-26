@@ -11,7 +11,11 @@ import json
 import re
 from pathlib import Path
 
+from voucher_publication import publication_data
+
 ROOT = Path(__file__).resolve().parents[1]
+IMPLEMENTATION_SOURCE_URL = "https://github.com/HanpuLi/hanpuli.github.io/tree/main/content/poetry-voucher-app/"
+IMPLEMENTATION_MANIFEST_URL = "/poetry-voucher/publication-build.js"
 REFERENCES = json.loads((ROOT / "content/editorial-references.json").read_text(encoding="utf-8"))
 CITATION = re.compile(r"\[\[([a-z][a-z-]*)\]\]")
 
@@ -84,6 +88,60 @@ def tariff_html(copy: dict) -> str:
             + html.escape(copy["tariff_note"]) + '</p></details>')
 
 
+def paper_values() -> dict[str, int]:
+    source = (ROOT / "content/poetry-voucher-app/gallery.js").read_text(encoding="utf-8")
+    match = re.search(r"const PAPER_CONFIG=Object\.freeze\(\{(.*?)\}\);", source, re.S)
+    if not match:
+        raise ValueError("The public paper declaration could not be read")
+    values: dict[str, int] = {}
+    for key in ("paperMm", "printableDots", "dotsPerMm"):
+        field = re.search(rf"\b{key}:([0-9]+)\b", match.group(1))
+        if not field:
+            raise ValueError(f"Missing numeric public paper field: {key}")
+        values[key] = int(field.group(1))
+    if values["printableDots"] > values["paperMm"] * values["dotsPerMm"]:
+        raise ValueError("The printable image is wider than the declared paper")
+    if "/BitsPerComponent 1" not in source:
+        raise ValueError("The public PDF is no longer one-bit")
+    return values
+
+
+def implementation_html(copy: dict) -> str:
+    build = publication_data(ROOT)
+    paper = paper_values()
+    steps = (
+        ("catalogue", "catalogue_note"),
+        ("configure", "configure_note"),
+        ("freeze", "freeze_note"),
+        ("render", "render_note"),
+        ("keep", "keep_note"),
+        ("print", "print_note"),
+    )
+    items = "".join(
+        '<li><span class="pv-implementation-no">' + f'{number:02d}' + '</span><div><strong>'
+        + html.escape(copy[f"implementation_{label}"]) + '</strong><span>'
+        + html.escape(copy[f"implementation_{note}"]) + '</span></div></li>'
+        for number, (label, note) in enumerate(steps, 1)
+    )
+    spec = f'{paper["paperMm"]} mm · {paper["printableDots"]} dots · 1 bit'
+    return (
+        '<figure class="pv-implementation"><figcaption>'
+        + html.escape(copy["implementation_flow_label"]) + '</figcaption>'
+        '<ol>' + items + '</ol></figure>'
+        '<dl class="pv-implementation-meta"><div><dt>'
+        + html.escape(copy["implementation_build_label"]) + '</dt><dd><code>'
+        + html.escape(build["renderer"]) + '</code></dd></div><div><dt>'
+        + html.escape(copy["implementation_paper_label"]) + '</dt><dd>'
+        + html.escape(spec) + '</dd></div></dl>'
+        '<nav class="pv-implementation-links" aria-label="'
+        + html.escape(copy["implementation_links_label"], quote=True) + '">'
+        '<a href="' + html.escape(IMPLEMENTATION_SOURCE_URL, quote=True) + '">'
+        + html.escape(copy["implementation_source"]) + '</a>'
+        '<a href="' + html.escape(IMPLEMENTATION_MANIFEST_URL, quote=True) + '">'
+        + html.escape(copy["implementation_manifest"]) + '</a></nav>'
+    )
+
+
 def sections_html(sections: list[dict], copy: dict, project: bool = False) -> str:
     used = reference_ids(sections)
     blocks: list[str] = []
@@ -91,7 +149,13 @@ def sections_html(sections: list[dict], copy: dict, project: bool = False) -> st
         sid = html.escape(section["id"], quote=True)
         body = "\n".join('<p>' + paragraph_html(p, used, copy["references_title"]) + '</p>'
                          for p in section["body"])
-        feature = tariff_html(copy) if section.get("feature") == "tariff" else ""
+        feature_kind = section.get("feature")
+        if feature_kind == "tariff":
+            feature = tariff_html(copy)
+        elif feature_kind == "implementation":
+            feature = implementation_html(copy)
+        else:
+            feature = ""
         facts = section.get("facts", [])
         if facts:
             feature += '<dl class="about-facts">' + ''.join(

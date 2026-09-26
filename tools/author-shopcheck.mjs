@@ -19,7 +19,10 @@ try{
   browser=await chromium.launch();
   const context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage(),errors=[];
   page.on('pageerror',error=>errors.push(error.message));
-  const loaded=()=>page.waitForFunction(()=>window.poetryShop&&document.querySelectorAll('.product-card').length===23);
+  const loaded=async()=>{
+    await page.waitForURL(url=>url.pathname.endsWith('/shop.html'));
+    await page.waitForFunction(()=>window.poetryShop&&document.querySelectorAll('.product-card').length===23);
+  };
   const purchase=async()=>{await page.locator('#open-bag').click();await page.locator('#to-checkout').click();await page.locator('#place-order').click();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1,{},{timeout:60000});};
   const file=async(selector,name)=>{const pending=page.waitForEvent('download');await page.locator(selector).click();const downloaded=await pending;const path=join(artifacts,name);await downloaded.saveAs(path);return readFile(path);};
   for(const lang of ['en','zh-Hant','zh-Hans','ja','de','fr','ru']){

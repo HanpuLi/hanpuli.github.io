@@ -8,7 +8,7 @@ import json
 import re
 
 
-def build_publication(root, *, check=False):
+def publication_data(root):
     app = root / "content" / "poetry-voucher-app"
     paths = [app / name for name in (
         "gallery.js", "shop.js", "order-core.js", "h10-print.js", "order-reading.js", "shop-copy.js", "i18n.js",
@@ -28,6 +28,11 @@ def build_publication(root, *, check=False):
         "catalogue_sha256": hashlib.sha256((app / "editions.json").read_bytes()).hexdigest(),
         "files": hashes,
     }
+    return data
+
+
+def build_publication(root, *, check=False):
+    data = publication_data(root)
     content = "'use strict';\nconst PUBLICATION_BUILD = Object.freeze(" + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ");\n"
     target = root / "poetry-voucher" / "publication-build.js"
     if target.exists() and target.read_text(encoding="utf-8") == content:
