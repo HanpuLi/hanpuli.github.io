@@ -33,6 +33,7 @@ try{
   await page.locator(`[data-locale="${lang}"]`).click();
   assert(new URL(page.url()).pathname.endsWith('/order.html'));assert.equal(await page.locator('#shop-front').isVisible(),false);
   const orderAudit=await new AxeBuilder({page}).analyze();assert.deepEqual(orderAudit.violations.map(v=>({id:v.id,target:v.nodes.map(n=>n.target)})),[],lang+' order axe');
+  assert((await page.locator('.order-text-copy').textContent()).includes(copy.SHOP_COPY.personalUse[index]),lang+' personal-use notice');
   for(const width of [320,390,768,1440]){await page.setViewportSize({width,height:900});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),lang+' completed order overflow '+width);}
   await page.reload();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1);assert.equal((await page.evaluate(()=>poetryShop.snapshot().orders[0])).ref,snapshot.ref);
   await page.locator('#keep-shopping').click();await page.waitForFunction(()=>document.querySelectorAll('.product-card').length===23);
