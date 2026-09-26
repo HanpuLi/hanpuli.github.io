@@ -293,6 +293,6 @@
   translateUI();renderBag();if(works.length)initialise();
   // Read-only inspection surface for regression tests; no mutable cart or order state exposed.
   window.poetryShop={snapshot:()=>clone({bag,orders:orders.map(x=>x.order),busy}),quote:raw=>quote(validateLine(raw)),multipagePDF,
-    pagesForH10:(ref,result)=>{const saved=orders.find(entry=>entry.order.ref===ref)?.order;if(!saved||!result||!Array.isArray(result.vouchers)||!result.vouchers.length)return null;const copy=clone(saved);copy.receiptMetadata={...copy.receiptMetadata,till:'002'};return continuousOrderPages({receipt:receiptPages(copy),vouchers:result.vouchers});}
+    pagesForH10:(ref,result)=>{const saved=orders.find(entry=>entry.order.ref===ref)?.order;if(!saved||!result||!Array.isArray(result.vouchers)||!result.vouchers.length)return null;const copy=clone(saved);copy.created=new Date(saved.created);copy.receiptMetadata={...copy.receiptMetadata,till:'002'};return continuousOrderPages({receipt:receiptPages(copy),vouchers:result.vouchers});}
   };
 })();
