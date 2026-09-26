@@ -150,7 +150,17 @@
     "aesthetic_output_heading": "accounting / proof",
     "aesthetic_output_note": "58 mm, one-bit output and mono/pixel hierarchy compress the transaction.",
     "aesthetic_bridge_label": "TYPEFACE UPGRADE · +£1.99",
-    "aesthetic_bridge_note": "The optional site typeface carries the storefront’s visual authority into the issued poem."
+    "aesthetic_bridge_note": "The optional site typeface carries the storefront’s visual authority into the issued poem.",
+    "physical_label": "On paper",
+    "physical_heading": "The receipt ends.\nThe poem continues.",
+    "physical_body": "Two printed editions, B3 and B4. The transaction and the poem share one strip; a cut line offers a place to separate them.",
+    "physical_material": "Thermal paper · 26 September 2026",
+    "physical_configuration": "Original Chinese · website typefaces",
+    "physical_open": "View full-size scan",
+    "physical_read": "Read the poem",
+    "physical_provenance": "Scans of the actual prints. Straightened and cropped; the printed marks are preserved.",
+    "physical_b3_alt": "Physical B3 edition: a receipt, cut line and complete Chinese poem on one strip of thermal paper",
+    "physical_b4_alt": "Physical B4 edition: a receipt, cut line and complete Chinese poem on one strip of thermal paper"
   },
   "zh": {
     "title": "詩券",
@@ -303,7 +313,17 @@
     "aesthetic_output_heading": "記帳 / 憑據",
     "aesthetic_output_note": "58 毫米、一位黑白輸出與等寬／點陣層級，把交易壓縮進小票尺度。",
     "aesthetic_bridge_label": "字體升級 · +£1.99",
-    "aesthetic_bridge_note": "可選網站字體把商店頁面的視覺權威帶進實際發行的詩。"
+    "aesthetic_bridge_note": "可選網站字體把商店頁面的視覺權威帶進實際發行的詩。",
+    "physical_label": "紙上版本",
+    "physical_heading": "收據結束。\n詩繼續。",
+    "physical_body": "乙三與乙四的兩份實體印本。交易與詩共處一張紙條；裁切線留下一個可以將它們分開的位置。",
+    "physical_material": "熱敏紙 · 2026 年 9 月 26 日",
+    "physical_configuration": "中文原文 · 網站字體",
+    "physical_open": "放大查看印本",
+    "physical_read": "閱讀原詩",
+    "physical_provenance": "實體印本影像。校正角度並裁邊，保留原有印跡。",
+    "physical_b3_alt": "乙三實體印本：同一張熱敏紙上的收據、裁切線與完整中文詩作",
+    "physical_b4_alt": "乙四實體印本：同一張熱敏紙上的收據、裁切線與完整中文詩作"
   },
   "zh-hans": {
     "title": "诗券",
@@ -456,7 +476,17 @@
     "aesthetic_output_heading": "记账 / 凭据",
     "aesthetic_output_note": "58 毫米、一位黑白输出与等宽／点阵层级，把交易压缩进小票尺度。",
     "aesthetic_bridge_label": "字体升级 · +£1.99",
-    "aesthetic_bridge_note": "可选网站字体把商店页面的视觉权威带进实际发行的诗。"
+    "aesthetic_bridge_note": "可选网站字体把商店页面的视觉权威带进实际发行的诗。",
+    "physical_label": "纸上版本",
+    "physical_heading": "收据结束。\n诗继续。",
+    "physical_body": "乙三与乙四的两份实体印本。交易与诗共处一张纸条；裁切线留下一个可以将它们分开的位置。",
+    "physical_material": "热敏纸 · 2026 年 9 月 26 日",
+    "physical_configuration": "中文原文 · 网站字体",
+    "physical_open": "放大查看印本",
+    "physical_read": "阅读原诗",
+    "physical_provenance": "实体印本图像。校正角度并裁边，保留原有印迹。",
+    "physical_b3_alt": "乙三实体印本：同一张热敏纸上的收据、裁切线与完整中文诗作",
+    "physical_b4_alt": "乙四实体印本：同一张热敏纸上的收据、裁切线与完整中文诗作"
   },
   "ja": {
     "title": "詩の券",
@@ -609,7 +639,17 @@
     "aesthetic_output_heading": "会計 / 記録",
     "aesthetic_output_note": "58 mm、一ビット出力、等幅／ドットの階層が取引をレシートの尺度に圧縮します。",
     "aesthetic_bridge_label": "書体アップグレード · +£1.99",
-    "aesthetic_bridge_note": "任意のサイト書体は、ストアフロントの視覚的な権威を発行された詩へ持ち込みます。"
+    "aesthetic_bridge_note": "任意のサイト書体は、ストアフロントの視覚的な権威を発行された詩へ持ち込みます。",
+    "physical_label": "紙の版",
+    "physical_heading": "レシートは終わる。\n詩は続く。",
+    "physical_body": "乙三と乙四の二つの印刷物。取引と詩は一本の紙を共有し、切り取り線が両者を分ける場所を示す。",
+    "physical_material": "感熱紙 · 2026年9月26日",
+    "physical_configuration": "中国語原文 · ウェブサイトの書体",
+    "physical_open": "スキャンを拡大表示",
+    "physical_read": "詩を読む",
+    "physical_provenance": "実物のスキャン。傾きと余白を調整し、印刷された跡を保持。",
+    "physical_b3_alt": "乙三の実物：一本の感熱紙にレシート、切り取り線、中国語の詩全文を印刷",
+    "physical_b4_alt": "乙四の実物：一本の感熱紙にレシート、切り取り線、中国語の詩全文を印刷"
   },
   "de": {
     "title": "Poetry Voucher",
@@ -762,7 +802,17 @@
     "aesthetic_output_heading": "Abrechnung / Beleg",
     "aesthetic_output_note": "58 mm, Einbit-Ausgabe und Mono-/Pixel-Hierarchie verdichten die Transaktion auf Bonmaß.",
     "aesthetic_bridge_label": "SCHRIFT-UPGRADE · +£1.99",
-    "aesthetic_bridge_note": "Die optionale Website-Schrift trägt die visuelle Autorität des Storefronts in das ausgegebene Gedicht."
+    "aesthetic_bridge_note": "Die optionale Website-Schrift trägt die visuelle Autorität des Storefronts in das ausgegebene Gedicht.",
+    "physical_label": "Auf Papier",
+    "physical_heading": "Der Beleg endet.\nDas Gedicht geht weiter.",
+    "physical_body": "Zwei gedruckte Ausgaben, B3 und B4. Transaktion und Gedicht teilen einen Papierstreifen; eine Schnittlinie bietet eine Stelle, sie zu trennen.",
+    "physical_material": "Thermopapier · 26. September 2026",
+    "physical_configuration": "Chinesisches Original · Website-Schriften",
+    "physical_open": "Scan in voller Größe ansehen",
+    "physical_read": "Gedicht lesen",
+    "physical_provenance": "Scans der tatsächlichen Drucke. Begradigt und beschnitten; die Druckspuren bleiben erhalten.",
+    "physical_b3_alt": "Gedruckte Ausgabe B3: Beleg, Schnittlinie und vollständiges chinesisches Gedicht auf einem Thermopapierstreifen",
+    "physical_b4_alt": "Gedruckte Ausgabe B4: Beleg, Schnittlinie und vollständiges chinesisches Gedicht auf einem Thermopapierstreifen"
   },
   "fr": {
     "title": "Poetry Voucher",
@@ -915,7 +965,17 @@
     "aesthetic_output_heading": "comptabilité / preuve",
     "aesthetic_output_note": "58 mm, sortie un bit et hiérarchie mono/pixel condensent la transaction à l’échelle du ticket.",
     "aesthetic_bridge_label": "OPTION TYPOGRAPHIQUE · +£1.99",
-    "aesthetic_bridge_note": "La police facultative du site transporte l’autorité visuelle de la vitrine dans le poème émis."
+    "aesthetic_bridge_note": "La police facultative du site transporte l’autorité visuelle de la vitrine dans le poème émis.",
+    "physical_label": "Sur papier",
+    "physical_heading": "Le ticket se termine.\nLe poème continue.",
+    "physical_body": "Deux éditions imprimées, B3 et B4. La transaction et le poème partagent une même bande ; une ligne de coupe propose un endroit pour les séparer.",
+    "physical_material": "Papier thermique · 26 septembre 2026",
+    "physical_configuration": "Original chinois · caractères du site",
+    "physical_open": "Voir le scan en pleine taille",
+    "physical_read": "Lire le poème",
+    "physical_provenance": "Scans des tirages réels. Redressés et recadrés ; les traces imprimées sont conservées.",
+    "physical_b3_alt": "Édition B3 imprimée : ticket, ligne de coupe et poème chinois intégral sur une bande de papier thermique",
+    "physical_b4_alt": "Édition B4 imprimée : ticket, ligne de coupe et poème chinois intégral sur une bande de papier thermique"
   },
   "ru": {
     "title": "Poetry Voucher",
@@ -1068,6 +1128,16 @@
     "aesthetic_output_heading": "учёт / свидетельство",
     "aesthetic_output_note": "58 мм, однобитный вывод и моно-/пиксельная иерархия сжимают транзакцию до масштаба чека.",
     "aesthetic_bridge_label": "УЛУЧШЕНИЕ ШРИФТА · +£1.99",
-    "aesthetic_bridge_note": "Дополнительный шрифт сайта переносит визуальный авторитет витрины в выданное стихотворение."
+    "aesthetic_bridge_note": "Дополнительный шрифт сайта переносит визуальный авторитет витрины в выданное стихотворение.",
+    "physical_label": "На бумаге",
+    "physical_heading": "Чек заканчивается.\nСтихотворение продолжается.",
+    "physical_body": "Два печатных выпуска, B3 и B4. Сделка и стихотворение занимают одну бумажную полосу; линия отреза предлагает место, где их можно разделить.",
+    "physical_material": "Термобумага · 26 сентября 2026",
+    "physical_configuration": "Китайский оригинал · шрифты сайта",
+    "physical_open": "Открыть скан в полном размере",
+    "physical_read": "Читать стихотворение",
+    "physical_provenance": "Сканы настоящих отпечатков. Наклон исправлен, поля обрезаны; следы печати сохранены.",
+    "physical_b3_alt": "Печатный выпуск B3: чек, линия отреза и полный китайский текст стихотворения на одной полосе термобумаги",
+    "physical_b4_alt": "Печатный выпуск B4: чек, линия отреза и полный китайский текст стихотворения на одной полосе термобумаги"
   }
 }
