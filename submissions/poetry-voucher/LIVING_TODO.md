@@ -9,7 +9,7 @@ Status checked 26 September 2026. External deadlines are recorded in the case de
 - [ ] Center for Book Arts 2027 Chapbook Contest: review anonymous manuscript and clarify the online cycle's effect. [Official rules](https://centerforbookarts.submittable.com/submit/362913/2027-chapbook-contest) @dl(pv-cba-chapbook-2026 due=2026-12-15 imp=high kind=hard lead=30)
 - [ ] Poetry Business fee-waiver request, only if eligible and seeking it. @dl(pv-poetry-business-waiver-2026 due=2026-10-14 imp=med kind=hard lead=7)
 - [ ] CBA Chapbook fee-waiver window, 1–15 October 2026. @dl(pv-cba-fee-waiver-2026 due=2026-10-15 imp=med kind=hard lead=7)
-- [ ] Mslexia 2026 Pamphlet, only if personal and publication eligibility are confirmed. @dl(pv-mslexia-pamphlet-2026 due=2026-12-07 imp=low kind=hard lead=14)
+- [ ] Mslexia 2026 Pamphlet, only if personal and publication eligibility are confirmed and a genuine 18–20-poem, 20–24-page manuscript exists; the current A/B draft has 16 poems. @dl(pv-mslexia-pamphlet-2026 due=2026-12-07 imp=low kind=hard lead=14)
 
 ## UPCOMING / ROLLING
 
