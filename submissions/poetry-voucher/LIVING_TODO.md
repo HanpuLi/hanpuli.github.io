@@ -5,7 +5,6 @@ Status checked 26 September 2026. External deadlines are recorded in the case de
 ## CURRENT
 
 - [ ] Poetry London Pamphlet Prize 2026: review private English manuscript and resolve prior-publication and translation rules before a £20 entry. [Official call](https://poetrylondon.submittable.com/submit) @dl(pv-poetry-london-2026 due=2026-10-01 imp=high kind=hard lead=3)
-- [ ] Eric Gregory Awards: review the private anonymous manuscript and verify all personal eligibility and form fields before the free entry. [Official call](https://societyofauthors.org/prizes/the-soa-awards/eric-gregory-awards/) @dl(pv-eric-gregory-2026 due=2026-10-31 imp=high kind=hard lead=14)
 - [ ] Poetry Business 2027 Pamphlet Competition: resolve online A/B collection status and review its 12-month first-UK-publication right before any entry. [Official rules](https://poetrybusiness.co.uk/competitions/the-poetry-business-pamphlet-competition/) @dl(pv-poetry-business-2026 due=2026-11-04 imp=med kind=hard lead=14)
 - [ ] Center for Book Arts 2027 Chapbook Contest: review anonymous manuscript and clarify the online cycle's effect. [Official rules](https://centerforbookarts.submittable.com/submit/362913/2027-chapbook-contest) @dl(pv-cba-chapbook-2026 due=2026-12-15 imp=high kind=hard lead=30)
 - [ ] Poetry Business fee-waiver request, only if eligible and seeking it. @dl(pv-poetry-business-waiver-2026 due=2026-10-14 imp=med kind=hard lead=7)
