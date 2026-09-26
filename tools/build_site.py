@@ -1423,7 +1423,7 @@ def build(check: bool = False) -> list[Path]:
                    (TEMPLATES / 'poetry-voucher-shop.html', ROOT / 'poetry-voucher' / 'order.html')]
     # Explicit public bundle: never sweep private printer files into the output.
     app_sources += [(CONTENT / 'poetry-voucher-app' / name, ROOT / 'poetry-voucher' / name)
-                    for name in ('gallery.js', 'i18n.js', 'editions.json', 'studio.css', 'shop.js', 'shop-copy.js', 'shop.css', 'accessibility.css', 'order-reading.js', 'h10-print.js', 'retired-studio.js')]
+                    for name in ('gallery.js', 'i18n.js', 'editions.json', 'studio.css', 'shop.js', 'shop-copy.js', 'shop.css', 'accessibility.css', 'order-reading.js', 'order-core.js', 'h10-print.js', 'retired-studio.js')]
     for source, target in app_sources:
         data = source.read_bytes()
         if target.name == 'order.html':

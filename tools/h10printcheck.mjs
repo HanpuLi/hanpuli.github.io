@@ -15,7 +15,7 @@ const parent=createServer((request,response)=>{
     <script>
       window.received=[];
       const frame=document.getElementById('shop'),origin='${shopOrigin}',nonce='12345678-1234-4123-8123-123456789abc';
-      frame.addEventListener('load',()=>frame.contentWindow.postMessage({channel:'poetry-voucher-h10s',type:'ready',nonce},origin));
+      frame.addEventListener('load',()=>frame.contentWindow.postMessage({channel:'poetry-voucher-h10s',type:'ready',nonce,protocol:2},origin));
       addEventListener('message',event=>{
         if(event.origin===origin&&event.source===frame.contentWindow&&event.data?.type==='print-order')received.push(event.data);
       });

@@ -53,14 +53,14 @@ try{
   const reopened=await file('.order-record a[data-shop=orderPdf]','b3-reopened.pdf');assert.equal(createHash('sha256').update(pdf).digest('hex'),createHash('sha256').update(reopened).digest('hex'));
   results.push('B3 site type + English remains GBP 6.97; complete offline HTML and same-build PDF recovery pass.');
   // A changed manifest must be visible; the saved content and charges remain frozen.
-  await page.evaluate(ref=>{const key='poetry-voucher-order-v1-'+ref,order=JSON.parse(sessionStorage.getItem(key));order.publication.renderer='pv-render-test-older';sessionStorage.setItem(key,JSON.stringify(order));},order.ref);
+  await page.evaluate(ref=>{const key='poetry-voucher-order-v1-'+ref,order=JSON.parse(sessionStorage.getItem(key));order.publication.renderer='pv-render-test-older';sessionStorage.setItem(key,JSON.stringify(order));},order.id||order.ref);
   await page.reload();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1);
   assert.match(await page.locator('.render-notice').textContent(),/Re-rendered/);
   const rerendered=await page.evaluate(()=>poetryShop.snapshot().orders[0]);assert.deepEqual(rerendered.lines,order.lines);assert.equal(rerendered.total,order.total);
   results.push('Renderer change is disclosed without changing the saved poem, translation or price.');
   // Synthetic historical reader order: no claim that an actual visitor created it.
   const historical=await page.evaluate(original=>{
-    const old=structuredClone(original);delete old.publication;delete old.receiptMetadata;old.ref='260924123456';old.created='2026-09-24T10:00:00.000Z';
+    const old=structuredClone(original);delete old.publication;delete old.receiptMetadata;delete old.id;delete old.schema;old.ref='260924123456';old.created='2026-09-24T10:00:00.000Z';
     const poem='A <script>literal tag</script>\nA second line';const q=quotePoem(poem,[],'bitmap',true);
     const line={id:'historical-test-line',workId:null,work:null,title:'Reader <test>',author:'Test reader',poem,locale:'en',translations:[],font:'bitmap',size:24,quantity:1,unitPrice:q.price,items:q.items};
     old.lines=[line];old.items=q.items;old.total=q.price;old.units=1;old.payment=automaticPayment(old.total,0,0);

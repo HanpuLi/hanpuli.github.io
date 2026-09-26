@@ -57,6 +57,8 @@ not physical-print photographs. Current output still needs physical calibration.
 Production decisions and the boundary between the author's intention and untested
 audience interpretations are recorded in [the publication note](docs/poetry-voucher-publication.md).
 
+New orders have a UUID distinct from the displayed receipt number, so a number collision cannot replace another order or share its print identity. Legacy order URLs and H10 identities are preserved. Frozen snapshots are validated before rendering; recovery never reprices their contents from the current catalogue.
+
 Orders freeze their contents, prices, payment scene and, for new orders, text and
 render-build identities. Long outputs retain continuation numbers. Reopening an
 old order with another renderer is disclosed as re-rendering; earlier orders with
