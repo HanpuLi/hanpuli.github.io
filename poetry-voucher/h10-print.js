@@ -5,9 +5,9 @@
   let bridge=null;
   const attached=new Set();
   const statusCopy={
-    sending:['正在傳送小票至已配對的 H10S…','Sending this receipt to the paired H10S…','正在发送小票至已配对的 H10S…','ペアリング済み H10S にレシートを送信中…','Beleg wird an den gekoppelten H10S gesendet…','Envoi du reçu au H10S associé…','Отправка чека на сопряжённый H10S…'],
-    accepted:['已交給 H10S 本機服務；請查看狀態並檢查小票。','Handed to the local H10S service. Check its status and the receipt.','已交给 H10S 本地服务；请查看状态并检查小票。','H10S のローカルサービスに登録しました。状態とレシートを確認してください。','Beim lokalen H10S-Dienst eingereiht. Status und Beleg prüfen.','Transmis au service local H10S. Vérifiez son état et le reçu.','Передано локальной службе H10S. Проверьте состояние и чек.'],
-    recorded:['這張小票已登記，沒有再次打印。','This receipt is already recorded and was not sent again.','这张小票已登记，没有再次打印。','このレシートは記録済みで、再送していません。','Dieser Beleg ist bereits erfasst und wurde nicht erneut gesendet.','Ce reçu est déjà enregistré et n’a pas été renvoyé.','Этот чек уже записан и не отправлялся повторно.'],
+    sending:['正在傳送小票和全部詩券至已配對的 H10S…','Sending the receipt and all poem vouchers to the paired H10S…','正在发送小票和全部诗券至已配对的 H10S…','ペアリング済み H10S にレシートと全詩券を送信中…','Beleg und alle Gedichtbons werden an den gekoppelten H10S gesendet…','Envoi du reçu et de tous les bons-poèmes au H10S associé…','Отправка чека и всех поэтических талонов на сопряжённый H10S…'],
+    accepted:['小票和全部詩券已交給 H10S 本機服務；請查看狀態並檢查紙條。','The receipt and all poem vouchers were handed to the local H10S service. Check its status and the printout.','小票和全部诗券已交给 H10S 本地服务；请查看状态并检查纸条。','レシートと全詩券を H10S のローカルサービスに登録しました。状態と印字を確認してください。','Beleg und alle Gedichtbons wurden beim lokalen H10S-Dienst eingereiht. Status und Ausdruck prüfen.','Le reçu et tous les bons-poèmes ont été transmis au service local H10S. Vérifiez son état et l’impression.','Чек и все поэтические талоны переданы локальной службе H10S. Проверьте состояние и распечатку.'],
+    recorded:['這份小票和詩券已登記，沒有再次打印。','This receipt and its poem vouchers are already recorded and were not sent again.','这份小票和诗券已登记，没有再次打印。','このレシートと詩券は記録済みで、再送していません。','Dieser Beleg und seine Gedichtbons sind bereits erfasst und wurden nicht erneut gesendet.','Ce reçu et ses bons-poèmes sont déjà enregistrés et n’ont pas été renvoyés.','Этот чек и его поэтические талоны уже записаны и не отправлялись повторно.'],
     interrupted:['連線中斷。再次操作前請先查看 H10S 訂單列表。','Connection interrupted. Check the H10S order list before trying again.','连接中断。再次操作前请先查看 H10S 订单列表。','接続が中断しました。再操作の前に H10S の注文一覧を確認してください。','Verbindung unterbrochen. Vor erneutem Versuch die H10S-Auftragsliste prüfen.','Connexion interrompue. Vérifiez la liste des commandes H10S avant de réessayer.','Связь прервана. Перед повторной попыткой проверьте список заказов H10S.']
   };
   function languageIndex(){
@@ -53,22 +53,23 @@
   document.addEventListener('presslocalechange',()=>queueMicrotask(()=>{
     for(const button of attached)if(button.dataset.printStatus)update(button,button.dataset.printStatus);
   }));
-  window.h10ReceiptPrinter={
-    add(button,order,pages){
-      button.className='download-link h10-print-receipt';
+  window.h10OrderPrinter={
+    add(button,order,result){
+      button.className='download-link h10-print-order';
       button.type='button';
-      button.dataset.shop='Print receipt on H10S';
+      button.dataset.shop='Print receipt and vouchers on H10S';
       button.dataset.reference=order.ref;
       button.hidden=!bridge;
       update(button,'');
       button.addEventListener('click',()=>{
         if(!bridge||window.parent===window)return;
         try{
-          const h10Receipt=window.poetryShop?.receiptPagesForH10?.(order.ref)||pages;
-          const packed=h10Receipt.map(encode);
-          if(packed.reduce((total,page)=>total+page.height,0)>120000)throw Error('receipt too long');
+          const orderPages=window.poetryShop?.pagesForH10?.(order.ref,result);
+          if(!Array.isArray(orderPages)||orderPages.length<2)throw Error('order pages unavailable');
+          const packed=orderPages.map(encode);
+          if(packed.reduce((total,page)=>total+page.height,0)>120000)throw Error('order too long');
           update(button,'sending');
-          window.parent.postMessage({channel:CHANNEL,type:'print-receipt',nonce:bridge.nonce,reference:order.ref,pages:packed},bridge.origin);
+          window.parent.postMessage({channel:CHANNEL,type:'print-order',nonce:bridge.nonce,reference:order.ref,pages:packed},bridge.origin);
         }catch{
           update(button,'interrupted');
         }

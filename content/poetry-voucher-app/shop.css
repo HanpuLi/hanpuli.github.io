@@ -61,7 +61,7 @@
 
 .order-strip-proof{max-width:460px;margin-inline:auto}.order-strip-proof>img{display:block;margin:0 auto;border:0}.order-strip-proof>img+img{margin-top:0}
 
-.h10-print-receipt{border:0;background:none;text-align:start;text-decoration:underline;cursor:pointer}.h10-print-receipt[hidden]{display:none}.h10-print-status{display:inline-block;margin:0 16px 0 0}
+.h10-print-order{border:0;background:none;text-align:start;text-decoration:underline;cursor:pointer}.h10-print-order[hidden]{display:none}.h10-print-status{display:inline-block;margin:0 16px 0 0}
 /* One typographic system for the numbered shop sequence. */
 #product-editor .controls>fieldset>legend,#product-editor .proof-toolbar h2{font:12px/1.5 var(--mono);letter-spacing:.07em;color:var(--muted);font-weight:400;text-transform:uppercase}
 #product-editor .controls>fieldset>legend>span[aria-hidden],#product-editor .proof-toolbar h2>span[aria-hidden]{font:inherit;color:inherit;margin:0 .55em 0 0}

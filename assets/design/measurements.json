@@ -1968,7 +1968,7 @@
   "inputs": {
     "assets/site.css": "e8c835d8f5b6b44a62ccddf14b284deaa0795ca2063f6d7521431316b7d7116d",
     "content/poetry-voucher-app/gallery.js": "2a8cdf57a8404008de2926983dd499f00bf2daa447946ba228ac7d8a17fdc670",
-    "content/poetry-voucher-app/shop.js": "060c636b6e4491d905b222bdc0a16648f8722b52497d9b0b1d1653d045cde261",
+    "content/poetry-voucher-app/shop.js": "034bab7080261ffabbf1d5b6476da14e1d890f741aef6ffe3811f5c5e08ff612",
     "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
     "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",
     "assets/fonts/cousine-latin-400.woff2": "fb542bb367b20289e71b682dc45d8f01de5b0a0658464db9053801f30e7c13a8",

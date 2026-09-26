@@ -227,9 +227,9 @@
       title.dataset.orderField='title';meta.dataset.orderField='meta';payment.dataset.orderField='payment';hint.dataset.shop='downloadHint';
       const fullLink=download(t('orderPdf'),multipagePDF(continuousOrderPages(result)),`poetry-order-${order.ref}.pdf`,urls);
       fullLink.dataset.shop='orderPdf';
-      const h10Print=node('button',t('Print receipt on H10S'),'download-link h10-print-receipt');
+      const h10Print=node('button',t('Print receipt and vouchers on H10S'),'download-link h10-print-order');
       const printStatus=node('span',undefined,'h10-print-status micro');printStatus.setAttribute('role','status');
-      window.h10ReceiptPrinter?.add(h10Print,order,result.receipt);
+      window.h10OrderPrinter?.add(h10Print,order,result);
       const textLink=node('a',t('textDownload'),'download-link'),readLink=node('a',t('readOrder'),'download-link');textLink.dataset.shop='textDownload';readLink.dataset.shop='readOrder';readLink.href='#reading-'+order.ref;textLink.download='poetry-order-'+order.ref+'-reading.html';
       heading.append(title,meta,payment,fullLink,h10Print,printStatus,textLink,readLink,hint);
       section.refreshReading=()=>{
@@ -293,6 +293,6 @@
   translateUI();renderBag();if(works.length)initialise();
   // Read-only inspection surface for regression tests; no mutable cart or order state exposed.
   window.poetryShop={snapshot:()=>clone({bag,orders:orders.map(x=>x.order),busy}),quote:raw=>quote(validateLine(raw)),multipagePDF,
-    receiptPagesForH10:ref=>{const saved=orders.find(entry=>entry.order.ref===ref)?.order;if(!saved)return null;const copy=clone(saved);copy.receiptMetadata={...copy.receiptMetadata,till:'002'};return receiptPages(copy);}
+    pagesForH10:(ref,result)=>{const saved=orders.find(entry=>entry.order.ref===ref)?.order;if(!saved||!result||!Array.isArray(result.vouchers)||!result.vouchers.length)return null;const copy=clone(saved);copy.receiptMetadata={...copy.receiptMetadata,till:'002'};return continuousOrderPages({receipt:receiptPages(copy),vouchers:result.vouchers});}
   };
 })();
