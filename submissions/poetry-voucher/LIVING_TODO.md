@@ -28,6 +28,7 @@ Status checked 26 September 2026. External deadlines are recorded in the case de
 - The CBA NYC residency requires a New York base; the project records London.
 - ELO Directory does not accept self-authored creator entries.
 - Dublin Art Book Fair 2026 [limits its individual artist call to residents of the Republic of Ireland or Northern Ireland](https://www.templebargallery.com/content/files/Dublin-Art-Book-Fair-2026-Application-Overview.pdf); its books must also be saleable, so this London-based project does not qualify this year.
+- [Ecomic Digital Art Award 2026](https://media.cultura.gov.it/mibac/files/boards/b5cbaa9a159fe1ce793b5eaebb9c3081/2026/M1C3_1.1.11_Public_Notice_Ecomic_Digital_Art_Award_2026_EN.pdf) is a digital-cultural-heritage selection, not a cash-prize contest. Later artwork purchase is optional and would require separate terms for source files and economic rights; the current work has no documented heritage-specific thesis. No application is planned for this cycle.
 
 ## CLOSED / REJECTED
 
