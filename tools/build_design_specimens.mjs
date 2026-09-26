@@ -37,7 +37,7 @@ try{
  await page.route('**/poetry-voucher/shop.js',r=>r.fulfill({contentType:'text/javascript',body:shop.replace('window.poetryShop=','window.__design={prepare,freezeOrder,continuousOrderPages,PagedPaper};window.poetryShop=')}));
  await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=ci-b3');await page.waitForFunction(()=>document.querySelector('#product-editor')?.open);await page.locator('#font').selectOption('bitmap');await page.locator('#size').selectOption('24');await page.locator('#save-line').click();
  const output=await page.evaluate(async()=>{
-  const order=await __design.freezeOrder();order.ref='260924120001';order.created=new Date('2026-09-24T11:00:00Z');order.receiptMetadata=receiptMeta(order.ref);order.payment={method:'cash',tender:500,change:500-order.total};
+  const order=await __design.freezeOrder();order.id='00000000-0000-4000-8000-000000000024';order.ref='260924120001';order.created=new Date('2026-09-24T11:00:00Z');order.receiptMetadata=receiptMeta(order.ref);order.payment={method:'cash',tender:500,change:500-order.total};
   const log=[];const proto=__design.PagedPaper.prototype;
   for(const method of ['till','text']){const old=proto[method];proto[method]=function(...args){const y=this.y;const v=old.apply(this,args);log.push({kind:this.identity.kind,method,y,end:this.y,args});return v;};}
   const first=await __design.prepare(order);const calls=log.slice();const pages=__design.continuousOrderPages(first);const full=canvas(384,pages.reduce((n,c)=>n+c.height,0));let y=0;for(const c of pages){full.getContext('2d').drawImage(c,0,y);y+=c.height;}
@@ -51,6 +51,6 @@ try{
  });
  for(const [name,url]of Object.entries(output.images))await writeImage(name,url);delete output.images;manifest.voucher=output;
  await page.close();
- for(const file of ['assets/site.css','content/poetry-voucher-app/gallery.js','content/poetry-voucher-app/shop.js',...(await (await import('node:fs/promises')).readdir(path.join(root,'assets/fonts'))).filter(f=>f.endsWith('.woff2')).map(f=>'assets/fonts/'+f),...['en','zh','zh-hans','ja','de','fr','ru'].map(l=>(l==='en'?'':l+'/')+'index.html')])manifest.inputs[file]=createHash('sha256').update(await readFile(path.join(root,file))).digest('hex');
+ for(const file of ['assets/site.css','content/poetry-voucher-app/gallery.js','content/poetry-voucher-app/shop.js','content/poetry-voucher-app/order-core.js',...(await (await import('node:fs/promises')).readdir(path.join(root,'assets/fonts'))).filter(f=>f.endsWith('.woff2')).map(f=>'assets/fonts/'+f),...['en','zh','zh-hans','ja','de','fr','ru'].map(l=>(l==='en'?'':l+'/')+'index.html')])manifest.inputs[file]=createHash('sha256').update(await readFile(path.join(root,file))).digest('hex');
  await writeFile(path.join(dir,'measurements.json'),JSON.stringify(manifest,null,2)+'\n');console.log('Captured actual shop B3 output and geometry.');
 }finally{await browser.close();await new Promise(r=>server.close(r));}

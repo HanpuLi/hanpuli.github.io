@@ -2,6 +2,8 @@
 // Authored interface copy; literary text always comes from the published catalogue.
 const SHOP_LANGS=['en','zh-Hant','zh-Hans','ja','de','fr','ru'];
 const SHOP_COPY={
+  h10LegacyCopy:['Legacy H10 paper copy · till 002','舊訂單 H10 紙本校樣 · till 002','旧订单 H10 纸本校样 · till 002','旧注文の H10 校正 · till 002','H10-Druckfassung der alten Bestellung · Kasse 002','Épreuve H10 de l’ancienne commande · caisse 002','Бумажная версия старого заказа для H10 · касса 002'],
+
 orders:['Orders','訂單','订单','注文','Bestellungen','Commandes','Заказы'],
 paperWidth:['Paper width','紙張寬度','纸张宽度','用紙幅','Papierbreite','Largeur du papier','Ширина бумаги'],
 orderStorage:['Keep this tab to revisit your order. Download your files before closing it.','保留此分頁即可再次查看訂單。關閉前請下載檔案。','保留此标签页即可再次查看订单。关闭前请下载文件。','このタブを残すと注文を再表示できます。閉じる前にファイルを保存してください。','In diesem Tab können Sie Ihre Bestellung erneut öffnen. Laden Sie die Dateien vor dem Schließen herunter.','Gardez cet onglet pour retrouver votre commande. Téléchargez les fichiers avant de le fermer.','Сохраните эту вкладку, чтобы вернуться к заказу. Скачайте файлы перед её закрытием.'],

@@ -11,7 +11,7 @@ import re
 def build_publication(root, *, check=False):
     app = root / "content" / "poetry-voucher-app"
     paths = [app / name for name in (
-        "gallery.js", "shop.js", "order-reading.js", "shop-copy.js", "i18n.js",
+        "gallery.js", "shop.js", "order-core.js", "h10-print.js", "order-reading.js", "shop-copy.js", "i18n.js",
         "studio.css", "shop.css", "accessibility.css",
     )]
     paths.append(root / "templates" / "poetry-voucher-shop.html")

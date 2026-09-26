@@ -7,7 +7,7 @@
   const t=key=>SHOP_COPY[key]?.[SHOP_LANGS.indexOf(uiLocale)]||SHOP_COPY[key]?.[0]||key;
   const node=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
   const button=(text,action,className='text-button')=>{const n=node('button',text,className);n.type='button';n.addEventListener('click',action);return n;};
-  let retainedCustom=[],bag=[],editingId=null,editingLocale='en',busy=false,ready=false,storageOK=true,toastTimer,toastKey=null,editorStatusKey=null,checkoutStatusKey=null,orders=[],pendingOrder=null;
+  let retainedCustom=[],bag=[],editingId=null,editingLocale='en',busy=false,ready=false,storageOK=true,toastTimer,toastKey=null,editorStatusKey=null,checkoutStatusKey=null,orders=[],pendingOrder=null,pendingPlan=null;
   const clone=value=>JSON.parse(JSON.stringify(value));
   const units=()=>bag.reduce((sum,line)=>sum+line.quantity,0);
   const keyOf=line=>JSON.stringify([line.workId,line.title,line.author,line.poem,line.locale,line.translations,line.font,line.size]);
@@ -88,7 +88,7 @@
     if(units()-(previous?.quantity||0)+quantity>MAX_UNITS){notify('limit');return false;}
     bag=bag.filter(x=>x.id!==editingId);line.quantity=quantity;
     const match=bag.find(x=>keyOf(x)===keyOf(line));if(match)match.quantity+=quantity;else bag.push(line);
-    const edited=!!editingId;editingId=null;pendingOrder=null;persist();renderBag();notify(edited?'updated':'added');return true;
+    const edited=!!editingId;editingId=null;pendingOrder=null;pendingPlan=null;persist();renderBag();notify(edited?'updated':'added');return true;
   }
   function openEditor(workId,line=null){
     if(!works.some(work=>work.id===workId)){notify('authorOnly');return;}
@@ -115,8 +115,8 @@
       heading.lang=displayLang(line);
       const charges=node('div',undefined,'bag-charges');for(const item of q.items)charges.append(node('span',`${tr(item.label)} ${uiMoney(itemAmount(item))}`));
       const actions=node('div',undefined,'bag-actions'),label=node('label',t('quantity')),input=node('input');input.type='number';input.min='1';input.max=String(MAX_UNITS);input.step='1';input.value=line.quantity;input.id='qty-'+line.id;input.setAttribute('aria-label',t('quantity')+' · '+lineTitle(line));
-      input.addEventListener('change',()=>{const quantity=Number(input.value);if(!Number.isInteger(quantity)||quantity<1||units()-line.quantity+quantity>MAX_UNITS){input.value=line.quantity;notify('limit');return;}line.quantity=quantity;pendingOrder=null;persist();renderBag(input.id);});label.append(input);
-      actions.append(label,button(t('edit'),()=>openEditor(line.workId,line)),button(t('remove'),()=>{bag=bag.filter(x=>x.id!==line.id);pendingOrder=null;persist();renderBag();notify('updated');el('to-checkout').focus();}),node('strong',uiMoney(q.price*line.quantity),'line-total'));
+      input.addEventListener('change',()=>{const quantity=Number(input.value);if(!Number.isInteger(quantity)||quantity<1||units()-line.quantity+quantity>MAX_UNITS){input.value=line.quantity;notify('limit');return;}line.quantity=quantity;pendingOrder=null;pendingPlan=null;persist();renderBag(input.id);});label.append(input);
+      actions.append(label,button(t('edit'),()=>openEditor(line.workId,line)),button(t('remove'),()=>{bag=bag.filter(x=>x.id!==line.id);pendingOrder=null;pendingPlan=null;persist();renderBag();notify('updated');el('to-checkout').focus();}),node('strong',uiMoney(q.price*line.quantity),'line-total'));
       row.append(heading,details,charges,actions);container.append(row);
     }
     el('bag-total').textContent=uiMoney(bag.reduce((sum,line)=>sum+quote(line).price*line.quantity,0));el('to-checkout').disabled=!bag.length||busy;
@@ -127,7 +127,25 @@
     for(const line of bag){const row=node('div',undefined,'checkout-line');row.append(node('span',`${lineTitle(line)} × ${line.quantity}`),node('strong',uiMoney(quote(line).price*line.quantity)));summary.append(row);}
     el('checkout-total').textContent=el('bag-total').textContent;
   }
-  function checkout(){if(!bag.length)return;renderCheckout();checkoutStatusKey=null;el('checkout-status').textContent='';close('bag-dialog');show('checkout-dialog');
+  const adapter=()=>window.poetryCheckoutAdapter;
+  async function checkout(){
+    if(!bag.length||busy)return;
+    renderCheckout();checkoutStatusKey=null;el('checkout-status').textContent='';close('bag-dialog');show('checkout-dialog');
+    if(!adapter())return;
+    busy=true;el('place-order').disabled=true;el('back-to-bag').disabled=true;
+    try{await preparedCheckout();el('place-order').disabled=false;}
+    catch(error){console.error('Checkout review failed',error);checkoutStatusKey='failed';el('checkout-status').textContent=t(checkoutStatusKey);}
+    finally{busy=false;el('back-to-bag').disabled=false;}
+  }
+  async function preparedCheckout(){
+    if(!pendingOrder)pendingOrder=await freezeOrder();
+    if(!pendingPlan){
+      if(adapter())await adapter().reserve(pendingOrder);
+      PoetryOrder.validate(pendingOrder);
+      pendingPlan=await prepare(pendingOrder);
+    }
+    if(adapter()&&!pendingPlan.reviewed){await adapter().review(pendingPlan);pendingPlan.reviewed=true;}
+    return {order:pendingOrder,result:pendingPlan};
   }
   class PagedPaper extends Paper{
     constructor(identity){super();this.pages=[];this.identity=identity;this.transcript=[];}
@@ -175,7 +193,7 @@
     p.till('VAT SUMMARY',null,true);p.till('RATE','NET VAT GROSS');for(const row of vatSummary(order.items))p.till(row.code+' '+row.rate+'%',[row.net,row.vat,row.gross].map(priceText).join(' '));p.till('NOT A VAT INVOICE',null,true);p.space(12);
     if(pay.method==='card'){p.till('PAYMENT SALE');p.till('TERMINAL',meta.terminal);p.till('PAYMENT REF',meta.paymentRef);p.till('CARD ENDING',meta.cardEnding);p.till('ENTRY',meta.entry);p.till('AMOUNT','GBP '+priceText(order.total));p.till('AUTH CODE',meta.auth);}
     else {p.till('CASH SALE');p.till('TENDERED','GBP '+priceText(pay.tender));p.till('CHANGE','GBP '+priceText(pay.change));}
-    p.space(12);p.till('THANK YOU',null,true);p.ensure(100);const bits=barcodeBits(order.ref),module=2;let x=(PAPER_CONFIG.printableDots-bits.length*module)/2;for(const bit of bits){if(bit==='1')p.x.fillRect(Math.floor(x),p.y,module,PAPER_CONFIG.barcodeHeightDots);x+=module;}p.space(PAPER_CONFIG.barcodeHeightDots+8);p.till(order.ref,null,true);p.space(8);
+    p.space(12);p.till('THANK YOU',null,true);p.ensure(100);const bits=barcodeBits(order.ref),module=Math.min(2,Math.floor((PAPER_CONFIG.printableDots-40)/bits.length));let x=(PAPER_CONFIG.printableDots-bits.length*module)/2;for(const bit of bits){if(bit==='1')p.x.fillRect(Math.floor(x),p.y,module,PAPER_CONFIG.barcodeHeightDots);x+=module;}p.space(PAPER_CONFIG.barcodeHeightDots+8);p.till(order.ref,null,true);p.space(8);
     p.till('ART EDITION',null,true);p.till('NO PAYMENT PROCESSED',null,true);p.till('NOT PROOF OF PURCHASE',null,true);const pages=p.finishPages();pages.transcript=p.transcript.join('\n');return pages;
   }
   function multipagePDF(pages){
@@ -191,23 +209,30 @@
     const random=new Uint32Array(2);crypto.getRandomValues(random);const created=new Date(),ref=receiptReference(created,crypto.getRandomValues(new Uint8Array(4)));
     const lines=bag.map(line=>{const copy=clone(line),q=quote(line);copy.work=clone(workFor(line)||null);copy.items=q.items.map(item=>({...item,quantity:line.quantity,amount:item.unitPrice*line.quantity}));copy.unitPrice=q.price;return copy;});
     const items=lines.flatMap(line=>line.items),total=items.reduce((sum,item)=>sum+itemAmount(item),0);
-    return {ref,created,lines,items,total,units:units(),tariff:TARIFF.version,receiptMetadata:clone(receiptMeta(ref)),publication:{...clone(PUBLICATION_BUILD),textSnapshotSha256:await OrderReading.textHash(lines)},payment:automaticPayment(total,random[0]/4294967296,random[1]/4294967296)};
+    return {schema:2,id:crypto.randomUUID(),ref,created,lines,items,total,units:units(),tariff:TARIFF.version,receiptMetadata:clone(receiptMeta(ref)),publication:{...clone(PUBLICATION_BUILD),textSnapshotSha256:await OrderReading.textHash(lines)},payment:automaticPayment(total,random[0]/4294967296,random[1]/4294967296)};
   }
   async function prepare(order){
+    PoetryOrder.validate(order);
+    if(order.publication?.textSnapshotSha256&&await OrderReading.textHash(order.lines)!==order.publication.textSnapshotSha256)throw Error('Saved text fingerprint does not match.');
     const sample=order.lines.map(line=>line.poem+line.title+line.author+line.translations.map(locale=>line.work?.translations?.[locale]?.body||'').join('')).join('')+'李函璞';
     await Promise.all(['EB','Courier','ShipCommon','Ship','IMing','Noto',...new Set(SHOP_LANGS.map(bitmapFace))].map(font=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px ${font}`,sample)));
     await document.fonts.load(`italic ${TYPE_CONFIG.translation}px EB`);
-    const receipt=receiptPages(order),vouchers=[];let index=0;
+    const receipt=receiptPages(order),vouchers=[];let index=0,rows=receipt.reduce((n,page)=>n+page.height,0),count=receipt.length;
+    const cutHeight=cutHerePage().height;
     for(const line of order.lines){const translations=line.translations.map(locale=>({locale,...line.work.translations[locale]}));
       for(let unit=0;unit<line.quantity;unit++){
         index++;const voucherId=(line.work?.source_id||'CUSTOM')+'-'+order.ref+'-'+String(index).padStart(2,'0'),paper=new PagedPaper({kind:'VOUCHER',ref:voucherId});paper.threshold=TYPE_CONFIG.threshold[line.font];
         const spec={...line,original:!!line.work,translations};
         renderVoucherBody(paper,spec,voucherId,line.font==='site'?serif:bitmapFamily(line.locale),locale=>line.font==='site'?serif:bitmapFamily(locale));
-        const pages=paper.finishPages();vouchers.push({id:voucherId,title:line.title,line,pages});
+        const pages=paper.finishPages();rows+=cutHeight+pages.reduce((n,page)=>n+page.height,0);count+=1+pages.length;
+        if(rows>120000||count>128)throw Error('Order exceeds page budget; reduce quantities or translations.');
+        vouchers.push({id:voucherId,title:line.title,line,pages});
         await new Promise(resolve=>setTimeout(resolve,0));
       }
     }
-    return {receipt,vouchers};
+    const result={receipt,vouchers};
+    result.pages=continuousOrderPages(result);
+    return result;
   }
   function cutHerePage(){
     const p=new Paper();p.space(22);p.till('-------- CUT HERE --------',null,true);p.space(22);return p.finish();
@@ -218,6 +243,7 @@
     for(const voucher of result.vouchers){pages.push(cutHerePage(),...voucher.pages);}
     return pages;
   }
+  function orderPages(result){return result.pages||(result.pages=continuousOrderPages(result));}
   function download(label,blob,name,urls){const link=node('a',label,'download-link');link.href=URL.createObjectURL(blob);link.download=name;urls.push(link.href);return link;}
   async function outputOrder(order,result){
     // Build off-DOM first: an export failure cannot clear the bag or erase an earlier order.
@@ -225,7 +251,7 @@
     try{
       const title=node('h2'),meta=node('p'),payment=node('p',undefined,'micro'),hint=node('p',undefined,'micro');
       title.dataset.orderField='title';meta.dataset.orderField='meta';payment.dataset.orderField='payment';hint.dataset.shop='downloadHint';
-      const fullLink=download(t('orderPdf'),multipagePDF(continuousOrderPages(result)),`poetry-order-${order.ref}.pdf`,urls);
+      const fullLink=download(t('orderPdf'),multipagePDF(orderPages(result)),`poetry-order-${order.ref}.pdf`,urls);
       fullLink.dataset.shop='orderPdf';
       const h10Print=node('button',t('Print receipt and vouchers on H10S'),'download-link h10-print-order');
       const printStatus=node('span',undefined,'h10-print-status micro');printStatus.setAttribute('role','status');
@@ -238,8 +264,15 @@
         if(textLink.hasAttribute('href'))URL.revokeObjectURL(textLink.href);
         textLink.href=URL.createObjectURL(OrderReading.html(order,result,t,uiMoney,uiLocale));urls.push(textLink.href);
       };
+      if(!order.id&&!order.terminalId){
+        const copy=clone(order);copy.created=new Date(order.created);copy.receiptMetadata={...(copy.receiptMetadata||receiptMeta(copy.ref)),till:'002'};
+        result.legacyH10Pages=continuousOrderPages({receipt:receiptPages(copy),vouchers:result.vouchers});
+        const legacy=node('details',undefined,'h10-legacy-proof');legacy.append(node('summary',t('h10LegacyCopy')));
+        legacy.append(download(t('h10LegacyCopy'),multipagePDF(result.legacyH10Pages),`poetry-order-${order.ref}-h10.pdf`,urls));
+        for(const page of result.legacyH10Pages){const img=node('img');img.src=page.toDataURL('image/png');img.alt=t('h10LegacyCopy');img.width=page.width;img.height=page.height;img.loading='lazy';legacy.append(img);}proofs.append(legacy);
+      }
       const strip=node('figure',undefined,'order-strip-proof');strip.append(node('figcaption',t('continuousEdition')+' / '+order.ref));
-      for(const [i,page] of continuousOrderPages(result).entries()){const img=node('img');img.src=page.toDataURL('image/png');img.alt=t('continuousEdition')+' '+order.ref+' / '+(i+1);img.width=page.width;img.height=page.height;img.loading='lazy';strip.append(img);}proofs.append(strip);
+      for(const [i,page] of orderPages(result).entries()){const img=node('img');img.src=page.toDataURL('image/png');img.alt=t('continuousEdition')+' '+order.ref+' / '+(i+1);img.width=page.width;img.height=page.height;img.loading='lazy';strip.append(img);}proofs.append(strip);
       // Complete receipt and poems remain readable without interpreting the proof images.
       section.prepend(heading,proofs);updateOrderUI(order,section);return {section,urls};
     }catch(error){urls.forEach(URL.revokeObjectURL);throw error;}
@@ -253,26 +286,25 @@
     section.querySelector('.order-strip-proof figcaption').textContent=t('continuousEdition')+' / '+order.ref;
     section.querySelectorAll('.order-strip-proof img').forEach((img,i)=>img.alt=t('continuousEdition')+' '+order.ref+' / '+(i+1));
   }
-  function rememberOrder(order){sessionStorage.setItem(ORDER_KEY+order.ref,JSON.stringify(order));sessionStorage.setItem(ORDER_KEY+'latest',order.ref);}
+  function rememberOrder(order){const key=PoetryOrder.identity(order);sessionStorage.setItem(ORDER_KEY+key,JSON.stringify(order));sessionStorage.setItem(ORDER_KEY+'latest',key);}
   async function openSavedOrder(){
     let ref=new URL(location.href).searchParams.get('order');try{ref ||= sessionStorage.getItem(ORDER_KEY+'latest');}catch{}
     orderPageStatus='orderLoading';el('order-page-status').textContent=t(orderPageStatus);
     let saved;
-    try{saved=ref&&/^\d{12,14}$/.test(ref)?sessionStorage.getItem(ORDER_KEY+ref):null;}catch{}
+    try{saved=ref&&(/^\d{12,14}$/.test(ref)||PoetryOrder.isUUID(ref))?sessionStorage.getItem(ORDER_KEY+ref):null;}catch{}
     if(!saved){orderPageStatus='orderMissing';el('order-heading').textContent=t('order');el('order-page-status').textContent=t(orderPageStatus);return;}
     try{
-      const order=JSON.parse(saved);if(order.ref!==ref||!Array.isArray(order.lines)||order.lines.length>MAX_UNITS)throw Error('saved order');
-      for(const line of order.lines)if(!Array.isArray(line.translations))line.translations=line.language&&line.language!=='receipt'?[line.language]:[];
-      order.created=new Date(order.created);const result=await prepare(order),output=await outputOrder(order,result);
+      const order=PoetryOrder.restore(saved);if(PoetryOrder.identity(order)!==ref)throw Error('saved order identity');
+      const result=await prepare(order),output=await outputOrder(order,result);
       orders.push({order,...output});el('order-proofs').replaceChildren(output.section);orderPageStatus=null;el('order-page-status').textContent='';el('order-heading').focus({preventScroll:true});
     }catch(error){console.error('Saved order could not be opened',error);orderPageStatus='orderUnavailable';el('order-heading').textContent=t('order');el('order-page-status').textContent=t(orderPageStatus);}
   }
   async function placeOrder(){
     if(busy||!bag.length)return;busy=true;el('place-order').disabled=true;el('back-to-bag').disabled=true;checkoutStatusKey='preparing';el('checkout-status').textContent=t(checkoutStatusKey);
     try{
-      const order=pendingOrder||(pendingOrder=await freezeOrder()),result=await prepare(order),output=await outputOrder(order,result);
-      try{rememberOrder(order);}catch(error){output.urls.forEach(URL.revokeObjectURL);throw error;}
-      bag=[];pendingOrder=null;persist();renderBag();close('checkout-dialog');output.urls.forEach(URL.revokeObjectURL);location.assign('order.html?lang='+encodeURIComponent(uiLocale)+'&order='+order.ref);
+      const {order,result}=await preparedCheckout(),output=await outputOrder(order,result);
+      try{rememberOrder(order);if(adapter())await adapter().submit(order,result);}catch(error){output.urls.forEach(URL.revokeObjectURL);throw error;}
+      bag=[];pendingOrder=null;pendingPlan=null;persist();adapter()?.complete();renderBag();close('checkout-dialog');output.urls.forEach(URL.revokeObjectURL);location.assign('order.html?lang='+encodeURIComponent(uiLocale)+'&order='+PoetryOrder.identity(order));
     }catch(error){console.error('Order preparation failed',error);checkoutStatusKey='failed';el('checkout-status').textContent=t(checkoutStatusKey);}
     finally{busy=false;el('place-order').disabled=false;el('back-to-bag').disabled=false;renderBag();}
   }
@@ -291,8 +323,29 @@
   document.addEventListener('catalogueready',initialise);
   document.addEventListener('catalogueerror',()=>{notify('loadError');el('no-results').hidden=false;el('no-results').textContent=t('loadError');});
   translateUI();renderBag();if(works.length)initialise();
+  function recoverBasket(purchased){
+    if(busy||!Array.isArray(purchased)||purchased.length>24)return false;
+    let selections;
+    try{selections=purchased.map(saved=>{
+      if(!Array.isArray(saved)||saved.length!==9)throw Error('saved basket');
+      const raw={workId:saved[0],title:saved[1],author:saved[2],poem:saved[3],locale:saved[4],font:saved[6],size:saved[7],quantity:saved[8]};
+      if(Array.isArray(saved[5]))raw.translations=saved[5];else raw.language=saved[5];
+      const validated=validateLine(raw);return {key:keyOf(validated),remaining:validated.quantity};
+    });}catch{return false;}
+    for(const selected of selections)for(const line of bag)if(keyOf(line)===selected.key){const count=Math.min(line.quantity,selected.remaining);line.quantity-=count;selected.remaining-=count;}
+    bag=bag.filter(line=>line.quantity>0);pendingOrder=null;pendingPlan=null;persist();renderBag();return true;
+  }
   // Read-only inspection surface for regression tests; no mutable cart or order state exposed.
-  window.poetryShop={snapshot:()=>clone({bag,orders:orders.map(x=>x.order),busy}),quote:raw=>quote(validateLine(raw)),multipagePDF,
-    pagesForH10:(ref,result)=>{const saved=orders.find(entry=>entry.order.ref===ref)?.order;if(!saved||!result||!Array.isArray(result.vouchers)||!result.vouchers.length)return null;const copy=clone(saved);copy.created=new Date(saved.created);copy.receiptMetadata={...copy.receiptMetadata,till:'002'};return continuousOrderPages({receipt:receiptPages(copy),vouchers:result.vouchers});}
+  window.poetryShop={orderPages,recoverBasket,resetCheckout:()=>{if(!busy){pendingOrder=null;pendingPlan=null;}},snapshot:()=>clone({bag,orders:orders.map(x=>x.order),busy}),quote:raw=>quote(validateLine(raw)),multipagePDF,
+    pagesForH10:(identity,result)=>{
+      const saved=orders.find(entry=>PoetryOrder.identity(entry.order)===identity)?.order;
+      if(!saved||!result?.vouchers?.length)return null;
+      // New orders print their exact frozen preview. Legacy keys must retain their
+      // old till-002 pixels so a software upgrade cannot create a new print intent.
+      if(saved.id)return orderPages(result);
+      if(!result.legacyH10Pages){const copy=clone(saved);copy.created=new Date(saved.created);copy.receiptMetadata={...(copy.receiptMetadata||receiptMeta(copy.ref)),till:'002'};result.legacyH10Pages=continuousOrderPages({receipt:receiptPages(copy),vouchers:result.vouchers});}
+      return result.legacyH10Pages;
+    }
+
   };
 })();

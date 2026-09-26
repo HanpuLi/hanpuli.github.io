@@ -1194,11 +1194,13 @@
   },
   "voucher": {
     "order": {
+      "schema": 2,
+      "id": "00000000-0000-4000-8000-000000000024",
       "ref": "260924120001",
       "created": "2026-09-24T11:00:00.000Z",
       "lines": [
         {
-          "id": "cbeb1c02-b3d6-4a67-b13e-cccf17fafb7a",
+          "id": "a9133d9c-6b52-4a70-b9ab-e70af7c17291",
           "workId": "ci-b3",
           "font": "bitmap",
           "size": 24,
@@ -1289,8 +1291,8 @@
       },
       "publication": {
         "schema": 1,
-        "renderer": "pv-render-b6cfbb089e0f1d4e",
-        "renderer_sha256": "b6cfbb089e0f1d4e5b1873c5ed87a14028bf97681b9a58e0b4fdeec68ce36906",
+        "renderer": "pv-render-9119bc3acf5a7f04",
+        "renderer_sha256": "9119bc3acf5a7f047170fcfbace06c716d879358e7686f738c2c4b3226319d8c",
         "catalogue_sha256": "ea70f9fe441e2152930148c721c54e6171c449e49295ce01e1637047d331df2f",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
@@ -1312,13 +1314,15 @@
           "assets/fonts/site-serif-symbols.woff2": "c7a950096538d4280d661a4a8b59d2749713cb0d23c501cdd547b101d6b589a6",
           "content/poetry-voucher-app/accessibility.css": "70f3da8ceff863234e7564d094f5f94e39675d0655dc477482aadd05e076f3e0",
           "content/poetry-voucher-app/gallery.js": "2a8cdf57a8404008de2926983dd499f00bf2daa447946ba228ac7d8a17fdc670",
+          "content/poetry-voucher-app/h10-print.js": "0608cb1d261f9444b5e19b4f397477ee4a15c8bdc3644cd249f7d47acde94f79",
           "content/poetry-voucher-app/i18n.js": "7734e8ae35742d1d366d5e062498d90298225e9b9640bac88a4340d732d0700a",
+          "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
           "content/poetry-voucher-app/order-reading.js": "ab0607f84cf3c0f05837a188add012d046b0cbcfc44b81ee340a5845fb4eb080",
-          "content/poetry-voucher-app/shop-copy.js": "33b49d23e1b367b015942fb9e50e9436c6d00696c4bc66c171c833b2a55d252f",
+          "content/poetry-voucher-app/shop-copy.js": "69bac01d9ccac7544e91e75d9a5b2f7eeec5202a05ebd5adb3e6b3980a68a9a3",
           "content/poetry-voucher-app/shop.css": "06425c91c0e69c7b84d41f34b61bfae82fbfa82ca88c0a2d8a6d7134fb3c82ae",
-          "content/poetry-voucher-app/shop.js": "5924181f47a6b0441d5f1538d6225637ebd91b6df20b573352ffe29dc0f7ef0e",
+          "content/poetry-voucher-app/shop.js": "3e24fbad590d8d8d714d4dbc7ef98332850425e8a92e8ad9294e09cead001b82",
           "content/poetry-voucher-app/studio.css": "75be96fd6dcdc85bbdbf16b8f1cb1eef93565b0512eebb069fd187ec63c8580f",
-          "templates/poetry-voucher-shop.html": "b5b34b130f3fdac97f84b675072fe08c3ab718d80c8717ffb40ae17ddf624467"
+          "templates/poetry-voucher-shop.html": "c2b95b3ed4e711d6c5c0e987f193b1dc43f5ea88de0fdfed84037aa54bfaf927"
         },
         "textSnapshotSha256": "4e2f0b0031700e189848c9fb0852f993080eab30b8f84c6b7be29f38d3d3077f"
       },
@@ -1968,7 +1972,8 @@
   "inputs": {
     "assets/site.css": "e8c835d8f5b6b44a62ccddf14b284deaa0795ca2063f6d7521431316b7d7116d",
     "content/poetry-voucher-app/gallery.js": "2a8cdf57a8404008de2926983dd499f00bf2daa447946ba228ac7d8a17fdc670",
-    "content/poetry-voucher-app/shop.js": "5924181f47a6b0441d5f1538d6225637ebd91b6df20b573352ffe29dc0f7ef0e",
+    "content/poetry-voucher-app/shop.js": "3e24fbad590d8d8d714d4dbc7ef98332850425e8a92e8ad9294e09cead001b82",
+    "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
     "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
     "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",
     "assets/fonts/cousine-latin-400.woff2": "fb542bb367b20289e71b682dc45d8f01de5b0a0658464db9053801f30e7c13a8",
