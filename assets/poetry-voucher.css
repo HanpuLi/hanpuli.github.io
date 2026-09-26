@@ -249,3 +249,23 @@ html[data-reading-simple] .pv-end{
     transition:background .15s
   }
 }
+
+/* Actual paper editions: the scan carries the image; the page supplies no fake paper effects. */
+.pv-physical{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.5fr);gap:2rem clamp(2rem,5vw,6rem);padding-block:clamp(2.5rem,5vw,5rem);border-block:1px solid var(--line)}
+.pv-physical-intro{align-self:start;max-inline-size:30rem}
+.pv-physical h2{white-space:pre-line;font-size:clamp(2rem,3.5vw,3.8rem);font-weight:400;line-height:1.12;letter-spacing:-.025em;margin:1.4rem 0 2rem;text-wrap:balance}
+.pv-physical-body{max-inline-size:32ch;font-size:1.05rem;line-height:1.85}
+.pv-physical-material,.pv-physical-provenance{font:.75rem/1.8 var(--mono);color:var(--muted)}
+.pv-physical-material{margin-block-start:2rem}
+.pv-physical-prints{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,3vw,3rem);align-items:start;max-inline-size:38rem;justify-self:center}
+.pv-physical-prints figure{margin:0;min-inline-size:0}
+.pv-physical-prints figure:nth-child(2){padding-block-start:4rem}
+.pv-physical-image{display:block;background:white;outline-offset:6px}
+.pv-physical-image img{display:block;width:100%;height:auto}
+.pv-physical-prints figcaption{display:flex;flex-direction:column;align-items:start;border-top:1px solid var(--line);margin-top:1.25rem;padding-top:.6rem;font:.72rem/1.6 var(--mono)}
+.pv-physical-number{display:block;color:var(--muted);margin-block:.25rem .5rem}
+.pv-physical-prints figcaption a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);text-underline-offset:.25em}
+.pv-physical-provenance{grid-column:2;margin:0;max-inline-size:55ch}
+html[data-reading-simple] .pv-physical{display:block}
+html[data-reading-simple] .pv-physical-prints{margin-block:2rem}
+@media(max-width:760px){.pv-physical{grid-template-columns:1fr}.pv-physical-intro{max-inline-size:none}.pv-physical-body{max-inline-size:46ch}.pv-physical-provenance{grid-column:1}.pv-physical-prints{width:100%;max-inline-size:32rem}.pv-physical-prints figure:nth-child(2){padding-block-start:2.5rem}}

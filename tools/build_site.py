@@ -1055,9 +1055,14 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
     pv_voucher_width, pv_voucher_height = png_dimensions(ROOT / "poetry-voucher" / "sample-voucher.png")
     pv_full_path = ROOT / "poetry-voucher" / "sample-full.png"
     pv_full_width, pv_full_height = png_dimensions(pv_full_path)
+    physical_dimensions = {}
+    for edition in ("b3", "b4"):
+        width, height = png_dimensions(ROOT / "assets/projects/poetry-voucher" / f"physical-{edition}.png")
+        physical_dimensions.update({f"PV_PHYSICAL_{edition.upper()}_WIDTH": str(width), f"PV_PHYSICAL_{edition.upper()}_HEIGHT": str(height)})
     pv_editorial_width, pv_editorial_height = png_dimensions(ROOT / "assets" / "projects" / "poetry-voucher" / "poetry-voucher-paper-960.png")
     return {
         **{"PV_" + key.upper(): html.escape(value, quote=True) for key, value in POETRY_VOUCHER[locale_id].items() if isinstance(value, str)},
+        **physical_dimensions,
         "DESIGN_SITE": design_site(locale_id),
         "DESIGN_VOUCHER": design_voucher(locale_id),
         "PV_HREF": page_path(locale_id, "poetry-voucher"),

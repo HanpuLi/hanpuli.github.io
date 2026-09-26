@@ -124,3 +124,17 @@ physical photograph. It is not a live preview of all current output configuratio
 The specimen bitmap and the literary source files were not regenerated in this
 editorial pass. Ordinary interface-font subset maintenance can change render-build
 inputs; it must not be described as a revision of the poems.
+
+## Physical scans, 26 September 2026
+
+The author supplied one scan containing two actual thermal-paper editions, B3
+and B4, and requested their inclusion in the project overview. These are original
+Chinese, website-typeface editions. The complete receipt, CUT HERE and poem
+remain visible. The physical scan section is distinct from the historical pixel
+type digital specimen; neither is substituted for the other.
+
+The original supplied PDF remains unchanged and private. Public derivatives are
+limited to the two strips, with geometric straightening and surrounding scanner
+space cropped. Printed characters, fictional payment fields and disclaimers are
+not reconstructed. These images record particular objects, not an exhibition,
+reader study or validation of every current software configuration.

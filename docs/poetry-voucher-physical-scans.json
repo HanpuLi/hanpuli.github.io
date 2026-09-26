@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "source_pdf_sha256": "eb5785a9bf668964612dab6d8f0c360ddce58ae8dad8a80acb90bb8ade0c9e86",
+  "source_image_sha256": "eb939d41d1ec3b4486c8d9e5c308e1f948e6fbcf196691fe5709368e73e259bd",
+  "source_dimensions": [
+    3305,
+    4676
+  ],
+  "method": "Single affine rotation/crop with bicubic sampling; no generative edits, sharpening, thresholding or reconstructed text. Lossless PNG master and resized lossless WebP display copies.",
+  "editions": {
+    "b3": {
+      "rotation_ccw_degrees": 2.93,
+      "source_origin": [
+        325,
+        65
+      ],
+      "output_size": [
+        925,
+        4215
+      ],
+      "png_sha256": "cbbef260059a905d6e7bd3de5ca61bd496db1203d4f8b24e83f9bcdf1b962871",
+      "webp_size": [
+        620,
+        2825
+      ]
+    },
+    "b4": {
+      "rotation_ccw_degrees": 3.71,
+      "source_origin": [
+        2305,
+        30
+      ],
+      "output_size": [
+        930,
+        4420
+      ],
+      "png_sha256": "0d8d8f597dd7ac85a8430ab696970a420331d52444691c34978a48af115631ab",
+      "webp_size": [
+        620,
+        2947
+      ]
+    }
+  }
+}

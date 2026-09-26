@@ -51,9 +51,11 @@ originals, optional published translations, typeface and size choices, quantitie
 a local bag, fictional checkout, image PDFs and a complete offline HTML reading copy.
 There is no real payment, upload or delivery. The order page can hand its receipt and all poem vouchers to an H10S only when it is open inside that device's paired local wrapper and the user taps the print button; the public site has no remote print endpoint.
 
-The work is intended to be encountered on paper. Early print trials exist, as
-reported by the author; current website samples are frozen digital specimens,
-not physical-print photographs. Current output still needs physical calibration.
+The work is intended to be encountered on paper. The project overview now shows
+scans of two actual B3 and B4 thermal-paper editions printed on 26 September 2026,
+alongside the separately labelled, historical digital specimen. Scan geometry is
+corrected without reconstructing printed text. These two objects do not establish
+physical calibration of every output configuration.
 Production decisions and the boundary between the author's intention and untested
 audience interpretations are recorded in [the publication note](docs/poetry-voucher-publication.md).
 
