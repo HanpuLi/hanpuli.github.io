@@ -1,11 +1,11 @@
 # Poetry Voucher — live submission work
 
-Status checked 26 September 2026. External deadlines are recorded in the case deadline register under `Poetry Voucher`. Dates below are sourced from official calls; unresolved eligibility is not an assertion of eligibility.
+Status checked 27 September 2026. External deadlines are recorded in the case deadline register under `Poetry Voucher`. Dates below are sourced from official calls; unresolved eligibility is not an assertion of eligibility.
 
 ## CURRENT
 
 - [x] The New River Journal electronic-literature/digital-art category: submitted free entry 2026-09-27 00:26 BST; Submittable record 0060 shows Received. The cover letter disclosed that the complete browser work is already public and gave the corrected AI process note. Public rules and final form did not state a prior-publication restriction or publication/archival licence; await any editorial ruling and review later terms. [Official live call](https://thenewriver.submittable.com/submit) @dl(pv-new-river-elit-2026 due=2026-10-15 imp=med kind=hard lead=7)
-- [ ] Poetry London Pamphlet Prize 2026: review private English manuscript and resolve prior-publication, translation, page-count and rights rules before a £20 entry. [Official call](https://poetrylondon.submittable.com/submit) @dl(pv-poetry-london-2026 due=2026-10-01 imp=high kind=hard lead=3)
+- [ ] Poetry London Pamphlet Prize 2026: await rule enquiry; logged-in form requires £20/£10 and a paid-fee declaration, with no visible free option, so fee-gated entry is on hold. [Official call](https://poetrylondon.submittable.com/submit) @dl(pv-poetry-london-2026 due=2026-10-01 imp=high kind=hard lead=3)
 - [ ] Poetry Business 2027 Pamphlet Competition: resolve online A/B collection status and review its 12-month first-UK-publication right before any entry. [Official rules](https://poetrybusiness.co.uk/competitions/the-poetry-business-pamphlet-competition/) @dl(pv-poetry-business-2026 due=2026-11-04 imp=med kind=hard lead=14)
 - [ ] Center for Book Arts 2027 Chapbook Contest: review anonymous manuscript and clarify the online cycle's effect. [Official rules](https://centerforbookarts.submittable.com/submit/362913/2027-chapbook-contest) @dl(pv-cba-chapbook-2026 due=2026-12-15 imp=high kind=hard lead=30)
 - [ ] Poetry Business fee-waiver request, only if eligible and seeking it. @dl(pv-poetry-business-waiver-2026 due=2026-10-14 imp=med kind=hard lead=7)
