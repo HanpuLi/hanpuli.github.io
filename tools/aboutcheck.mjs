@@ -8,6 +8,15 @@ import {inspectTypeInk} from './type-ink-check.mjs';
 
 // A real browser audit of both essays, not a count of strings in templates.
 const root=process.cwd(), capture=process.env.ABOUT_CAPTURE_DIR;
+const manifestSource=await readFile(path.join(root,'poetry-voucher/publication-build.js'),'utf8');
+const renderer=JSON.parse(manifestSource.match(/Object\.freeze\((\{.*\})\);/s)?.[1]||'{}').renderer;
+assert.match(renderer||'',/^pv-render-[0-9a-f]{16}$/);
+const gallerySource=await readFile(path.join(root,'content/poetry-voucher-app/gallery.js'),'utf8');
+const paperBody=gallerySource.match(/const PAPER_CONFIG=Object\.freeze\(\{(.*?)\}\);/s)?.[1];
+assert(paperBody,'real PAPER_CONFIG');
+const paperValue=key=>Number(paperBody.match(new RegExp('\\b'+key+':([0-9]+)\\b'))?.[1]);
+const paperSpec=`${paperValue('paperMm')} mm · ${paperValue('printableDots')} dots · 1 bit`;
+assert(paperValue('dotsPerMm')>0,'real paper scale');
 const mime={'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.json':'application/json','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.svg':'image/svg+xml','.ico':'image/x-icon','.woff2':'font/woff2'};
 const server=createServer(async(req,res)=>{
   try{
@@ -43,13 +52,25 @@ try{
         siteVisual:document.querySelectorAll('.site-visual-grammar').length,
         projectStructure:document.querySelectorAll('.pv-structure-diagram').length,
         projectAesthetic:document.querySelectorAll('.pv-aesthetic-diagram').length}));
-      assert.equal(counts.sections,kind==='site'?6:8,`${locale}/${kind}: section count`);
+      assert.equal(counts.sections,kind==='site'?6:9,`${locale}/${kind}: section count`);
       assert(!counts.placeholders,`${locale}/${kind}: unexpanded copy`);
       assert(counts.texts.every(n=>n>120),`${locale}/${kind}: missing paragraphs`);
       assert(counts.citations.length>0&&counts.citations.every(x=>x.exists),`${locale}/${kind}: citation targets`);
       if(kind==='site')assert.equal(counts.siteVisual,1,`${locale}/site: visual grammar`);
       else{assert.equal(counts.projectStructure,1,`${locale}/project: structure diagram`);assert.equal(counts.projectAesthetic,1,`${locale}/project: aesthetic diagram`);}
       if(kind==='project'){
+        assert.equal(await page.locator('#implementation').count(),1,`${locale}: implementation anchor`);
+        assert.equal(await page.locator('.pv-implementation').count(),1,`${locale}: implementation figure`);
+        assert.equal(await page.locator('.pv-implementation ol > li').count(),6,`${locale}: six steps`);
+        assert((await page.locator('.pv-implementation li strong,.pv-implementation li div span').allTextContents()).every(s=>s.trim().length>0));
+        assert.deepEqual(await page.locator('.pv-implementation-no').allTextContents(),['01','02','03','04','05','06']);
+        assert.equal(await page.locator('.pv-implementation-meta dd').first().innerText(),renderer);
+        assert.equal(await page.locator('.pv-implementation-meta dd').nth(1).innerText(),paperSpec);
+        assert.equal(await page.locator('.pv-implementation-links a').first().getAttribute('href'),'https://github.com/HanpuLi/hanpuli.github.io/tree/main/content/poetry-voucher-app/');
+        assert.equal(await page.locator('.pv-implementation-links a').nth(1).getAttribute('href'),'/poetry-voucher/publication-build.js');
+        assert.equal((await context.request.get(base+'/poetry-voucher/publication-build.js')).status(),200);
+        for(const anchor of ['origin','pricing','configuration','documents','reading','material','comparisons','status'])
+          assert.equal(await page.locator('#'+anchor).count(),1,`${locale}: legacy anchor ${anchor}`);
         await page.locator('.editorial-tariff summary').click();
         assert.equal(await page.locator('.pv-tariff > div').count(),7);
         assert.match(await page.locator('.pv-tariff').innerText(),/£1\.00/);
@@ -59,7 +80,7 @@ try{
         await page.setViewportSize({width,height:1000});
         const geometry=await page.evaluate(()=>{
           const overflow=document.documentElement.scrollWidth-document.documentElement.clientWidth;
-          const clipped=[...document.querySelectorAll('.page-nav a,.page-languages a,.pv-contents a,.editorial-section h2,.pv-tariff dd,.design-atlas h3,.design-atlas h4,.plate-metrics dd,.plate-type-metrics dd')]
+          const clipped=[...document.querySelectorAll('.page-nav a,.page-languages a,.pv-contents a,.editorial-section h2,.pv-tariff dd,.pv-implementation li strong,.pv-implementation-meta dd,.pv-implementation-links a,.design-atlas h3,.design-atlas h4,.plate-metrics dd,.plate-type-metrics dd')]
             .filter(n=>n.getBoundingClientRect().width>0&&n.scrollWidth>n.clientWidth+1)
             .map(n=>({text:n.textContent.trim(),scroll:n.scrollWidth,client:n.clientWidth}));
           return {overflow,clipped};
@@ -114,13 +135,17 @@ try{
     await page.close();
   }
   const nojs=await browser.newContext({javaScriptEnabled:false});
-  for(const endpoint of ['about.html','poetry-voucher/']){
+  for(const endpoint of ['about.html',...['en','zh','zh-hans','ja','de','fr','ru'].map(loc=>(loc==='en'?'':loc+'/')+'poetry-voucher/')]){
     const page=await nojs.newPage();await page.goto(base+'/'+endpoint);
     assert(await page.locator('.editorial-section').count()>0);
     assert(await page.locator('.editorial-references a').count()>0);
     if(endpoint==='about.html')assert.equal(await page.locator('.site-visual-grammar').count(),1);
     else{assert.equal(await page.locator('.pv-structure-diagram').count(),1);assert.equal(await page.locator('.pv-aesthetic-diagram').count(),1);}
-    if(endpoint.includes('voucher')){await page.locator('.editorial-tariff summary').click();assert(await page.locator('.pv-tariff').isVisible());}
+    if(endpoint.includes('voucher')){
+      assert.equal(await page.locator('#implementation .about-section-copy > p').count(),3);
+      assert.equal(await page.locator('.pv-implementation ol > li').count(),6);
+      await page.locator('.editorial-tariff summary').click();assert(await page.locator('.pv-tariff').isVisible());
+    }
   }
   await nojs.close();
   const shop=await browser.newPage();await shop.goto(base+'/poetry-voucher/shop.html?lang=en');await shop.waitForSelector('.product-card');

@@ -12,9 +12,9 @@
     "process": "From transaction to reading",
     "process_body": "Choose a poem, typeface and translations, then check out without paying. One receipt records the order; separately numbered vouchers carry the poems. Download the image proofs or a complete, offline-readable text copy.",
     "privacy": "Made on your device",
-    "privacy_body": "Files are prepared in your browser. Catalogue selections are saved on this device; completed orders stay in the current tab. Nothing is uploaded, no money is taken and no printer is contacted.",
+    "privacy_body": "Files are prepared in your browser. Catalogue selections are saved on this device; completed orders stay in the current tab. Nothing is uploaded and no money is taken. Ordinary browser use does not contact a printer. On the paired H10S terminal, printing starts only after an explicit local action.",
     "hardware": "A physical constraint",
-    "hardware_body": "A work intended to be encountered on paper. Early print trials have been made; the images here are fixed digital specimens, not photographs of those trials. The current 58 mm / 384-dot output still needs physical calibration.",
+    "hardware_body": "This work is intended to be encountered on paper. The page now shows scans of two actual thermal-paper editions, B3 and B4. The earlier digital specimen remains a separate re-render, not a photograph of either print. Two prints do not establish calibration for every configuration.",
     "back": "Project overview",
     "edit": "Browse the editions",
     "preview_alt": "Continuous B3 digital specimen: a fictional cash receipt, CUT HERE separator and Chinese poem voucher on the same strip.",
@@ -104,14 +104,26 @@
         "dek": "The same rule does not make the same encounter.",
         "feature": "",
         "body": [
-          "The output model uses 58 mm paper and a 384-dot image area, corresponding to 48 mm at eight dots per millimetre. The one-bit image retains the constraints of receipt printing. Dense labels and narrow lines are part of the encounter, but smallness is not a virtue if the poem becomes unreadable. A sharp digital image does not establish the survival of fine strokes on a particular printer.",
+          "The output model uses narrow thermal paper. The one-bit image retains the constraints of receipt printing. Dense labels and narrow lines are part of the encounter, but smallness is not a virtue if the poem becomes unreadable. A sharp digital image does not establish the survival of fine strokes on a particular printer.",
           "Direct thermal printing uses no ink or ribbon; heat, light and handling can change its legibility. [[thermal]] Fading is not a reliable countdown built into the poem. It remains a material possibility, not an observed life span of these particular prints, an environmental claim or a required metaphor for loss.",
           "Early physical prints exist. The browser shop is the present public route while no exhibition venue is available; a future issuing table would add the handling and shared time that a download does not provide. The screen encounter is nevertheless real. The PDF keeps receipt and poems in one file, with continuations for long outputs. A self-contained HTML counterpart preserves their full text and relationship for offline reading; it does not turn the image PDF into an accessible text PDF."
         ]
       },
       {
-        "id": "comparisons",
+        "id": "implementation",
         "number": "07",
+        "title": "Implementation",
+        "dek": "The mechanism is inspectable.",
+        "body": [
+          "Poetry Voucher is a static browser application built around a fixed catalogue of my published poems. The former public Studio is retired: a reader configures an edition rather than supplying arbitrary text. Catalogue choice, script, published translations, typeface, size and quantity enter the same pricing and issuing process. Ordinary use does not upload the poem or contact a payment service.",
+          "Checkout freezes the contents of the order before output is produced: texts, quantities, charges, the fictional payment scene and the public renderer identity belong to that issued order. Reopening it later does not silently reprice the poems from the current catalogue. If a different renderer is used, the result is identified as a re-render. The renderer identifier describes build inputs, not a promise of identical pixels.",
+          "The frozen order is rendered into the narrow-paper image PDF and a separate self-contained HTML reading copy. The public website has no remote printer endpoint. On the paired H10S terminal only, an explicit print action can hand the already prepared order to its local print service."
+        ],
+        "feature": "implementation"
+      },
+      {
+        "id": "comparisons",
+        "number": "08",
         "title": "Two useful comparisons",
         "dek": "Different rules, different consequences.",
         "feature": "",
@@ -122,14 +134,14 @@
       },
       {
         "id": "status",
-        "number": "08",
+        "number": "09",
         "title": "What is established",
         "dek": "A working edition; an open question of reception.",
         "feature": "",
         "body": [
           "The catalogue, pricing and digital issuing process can be used now. The early prints are material trials, not evidence that every current configuration is calibrated. The suggestion of carrying a poem to give away came from an early reader and was reported in the author interview. It has not been turned into a claim about audiences in general. No comparative reader study or gallery presentation is claimed here.",
           "The next material test is modest: issue a few chosen editions, let people read and handle them without a preliminary theory lesson, and record what changes or fails. That may justify a decision to retain the receipt, alter an order of presentation or relinquish a proposed interpretation. More features cannot answer that question.",
-          "Personal saving, printing and giving printed copies are permitted. The order’s text and choices are frozen locally; keeping the original download preserves that output. A later renderer may produce a different layout and is identified as re-rendering. Build identifiers describe inputs, not ownership or literary authority. The current editorial explanation and implementation include AI assistance; they do not replace the author’s existing poems with generated shop content."
+          "Personal saving, printing and giving printed copies are permitted. The current editorial explanation and implementation include AI assistance; they do not replace the author’s existing poems with generated shop content."
         ]
       }
     ],
@@ -148,7 +160,7 @@
     "aesthetic_screen_note": "Serif display, warm ground and generous space make choosing feel deliberate.",
     "aesthetic_output_label": "ISSUED STRIP",
     "aesthetic_output_heading": "accounting / proof",
-    "aesthetic_output_note": "58 mm, one-bit output and mono/pixel hierarchy compress the transaction.",
+    "aesthetic_output_note": "Narrow paper, one-bit output and mono/pixel hierarchy compress the transaction.",
     "aesthetic_bridge_label": "TYPEFACE UPGRADE · +£1.99",
     "aesthetic_bridge_note": "The optional site typeface carries the storefront’s visual authority into the issued poem.",
     "physical_label": "On paper",
@@ -160,7 +172,25 @@
     "physical_read": "Read the poem",
     "physical_provenance": "Scans of the actual prints. Straightened and cropped; the printed marks are preserved.",
     "physical_b3_alt": "Physical B3 edition: a receipt, cut line and complete Chinese poem on one strip of thermal paper",
-    "physical_b4_alt": "Physical B4 edition: a receipt, cut line and complete Chinese poem on one strip of thermal paper"
+    "physical_b4_alt": "Physical B4 edition: a receipt, cut line and complete Chinese poem on one strip of thermal paper",
+    "implementation_flow_label": "The route from poem to issue",
+    "implementation_build_label": "Current public renderer",
+    "implementation_paper_label": "Paper model",
+    "implementation_links_label": "Implementation links",
+    "implementation_source": "Inspect implementation",
+    "implementation_manifest": "Build manifest",
+    "implementation_catalogue": "Catalogue",
+    "implementation_catalogue_note": "authored poems",
+    "implementation_configure": "Configure",
+    "implementation_configure_note": "script · translations · type · size · quantity",
+    "implementation_freeze": "Freeze",
+    "implementation_freeze_note": "text · prices · payment scene · order identity",
+    "implementation_render": "Render",
+    "implementation_render_note": "continuous receipt + vouchers",
+    "implementation_keep": "Read / keep",
+    "implementation_keep_note": "image PDF · offline HTML",
+    "implementation_print": "Print",
+    "implementation_print_note": "paired local H10S only"
   },
   "zh": {
     "title": "詩券",
@@ -175,9 +205,9 @@
     "process": "從交易到閱讀",
     "process_body": "選詩、字體及譯文，再作不扣款的結賬。一張小票記錄整單，各份詩券獨立編號。可下載圖像校樣，或可離線閲讀的完整文字版。",
     "privacy": "在你的裝置完成",
-    "privacy_body": "檔案在瀏覽器內生成。目錄選購儲存在此裝置，已完成訂單留在當前分頁。不上傳、不扣款、不連接打印機。",
+    "privacy_body": "檔案在瀏覽器內生成。目錄選購儲存在此裝置，已完成訂單留在當前分頁。不會上傳詩文，也不會扣款。一般瀏覽器使用不會連接打印機；只有在已配對的 H10S 終端上，明確執行本地打印操作後才會開始打印。",
     "hardware": "以紙面為尺度",
-    "hardware_body": "作品以紙上的取得與閱讀為方向。已有早期試印；這裏展示的是固定數位樣本，並非那些實物的照片。現行 58 毫米／384 點輸出仍待實體校準。",
+    "hardware_body": "這件作品以紙上的取得與閱讀為方向。頁面現展示乙三、乙四兩份真實熱敏紙印本的掃描。較早的數位樣本仍是獨立的重新渲染，並非任何一份印本的照片。兩份實物不能證明所有配置都已校準。",
     "back": "作品介紹",
     "edit": "瀏覽架上作品",
     "preview_alt": "乙三連續數位樣本：同一條紙上依次為虛構現金小票、CUT HERE 分隔線與中文詩券。",
@@ -267,14 +297,26 @@
         "dek": "規則相同，不等於遭遇相同。",
         "feature": "",
         "body": [
-          "輸出模型使用58毫米紙寬與384點圖像區，按每毫米八點換算，圖像區為48毫米。一位黑白圖像保留小票打印的限制。密集標籤與窄行屬於閲讀條件，但小到讀不清時，小本身沒有價值。清晰的數位圖像不能證明某台機器能夠保住細筆畫。",
+          "輸出模型使用窄幅熱敏紙。 一位黑白圖像保留小票打印的限制。密集標籤與窄行屬於閲讀條件，但小到讀不清時，小本身沒有價值。清晰的數位圖像不能證明某台機器能夠保住細筆畫。",
           "直接熱敏打印不用墨或色帶；熱、光和日常處理可能改變可讀性。[[thermal]] 褪色不是內置於詩的可靠倒計時。它仍是一種材料可能，不是這些票樣已經觀察到的壽命，不是環保主張，也不是必須採用的失落隱喻。",
           "已有早期實物試印。沒有展覽場地的當下，瀏覽器商店是公共入口；未來的發行桌可以增加下載所沒有的紙張處理與共同停留時間。屏幕上的遭遇同樣真實。PDF 把小票與詩保存在同一文件中，過長時保留接續；獨立 HTML 對應版讓全文與兩種文書的關係可離線閲讀，但不會使圖像 PDF 本身變成無障礙文字 PDF。"
         ]
       },
       {
-        "id": "comparisons",
+        "id": "implementation",
         "number": "07",
+        "title": "實現方式",
+        "dek": "作品的運作機制可以查核。",
+        "body": [
+          "Poetry Voucher 是圍繞作者已發表詩作的固定目錄而建的靜態瀏覽器應用。先前公開的 Studio 已退役：讀者配置的是某一版詩券，而非上傳任意文字。目錄選擇、字形、已發表譯文、字體、大小與數量進入同一套計價與發行流程。一般使用不會上傳詩文，也不會聯繫支付服務。",
+          "結帳會在產生輸出前凍結訂單內容：文字、數量、費用、虛構的付款場景與公開渲染器識別碼，都屬於那份已發行訂單。日後重新打開時，不會暗中按現行目錄重新計價；若使用了不同渲染器，結果會標明為重新渲染。識別碼描述構建輸入，不保證像素完全相同。",
+          "凍結的訂單會被渲染成窄紙幅圖像 PDF，另有一份可獨立保存的 HTML 閲讀版。公開網站沒有遠程打印端點。只有在已配對的 H10S 終端上，明確執行打印操作後，已備妥的訂單才可交給其本地打印服務。"
+        ],
+        "feature": "implementation"
+      },
+      {
+        "id": "comparisons",
+        "number": "08",
         "title": "兩個有用的比較",
         "dek": "不同規則，產生不同後果。",
         "feature": "",
@@ -285,14 +327,14 @@
       },
       {
         "id": "status",
-        "number": "08",
+        "number": "09",
         "title": "已經成立的部分",
         "dek": "可以使用的版本，仍待檢驗的接受。",
         "feature": "",
         "body": [
           "目錄、計價與數位發行流程目前可以使用。早期打印件屬於材料試驗，不證明現行每種配置都已校準。“帶着一首詩，隨手送人”的建議來自早期讀者，並在作者訪談中提到，沒有被擴寫成對一般觀眾的結論。這裏不聲稱做過比較性讀者研究或畫廊呈現。",
           "下一次材料測試可以很小：發行少量選定版本，讓人先閲讀和處理，不先上理論課，再記錄發生了什麼、哪裏失敗。這些結果可能支持保留小票、調整呈現順序，或放棄一種擬議解釋。更多功能不能代答這個問題。",
-          "允許個人保存、打印與贈送打印件。訂單文字與選擇在本地凍結；保留原始下載，才能保留那次輸出。較新的渲染器可能改變排版，會註明重新渲染。構建編號描述輸入，不代表所有權或文學權威。當前編輯説明與實現包含 AI 輔助，並不把作者原有的詩替換成商店生成的內容。"
+          "允許個人保存、打印與贈送打印件。當前編輯説明與實現包含 AI 輔助，並不把作者原有的詩替換成商店生成的內容。"
         ]
       }
     ],
@@ -311,7 +353,7 @@
     "aesthetic_screen_note": "襯線展示字、暖色底與較大的留白，讓選擇過程具有編輯出版物的秩序。",
     "aesthetic_output_label": "發行紙條",
     "aesthetic_output_heading": "記帳 / 憑據",
-    "aesthetic_output_note": "58 毫米、一位黑白輸出與等寬／點陣層級，把交易壓縮進小票尺度。",
+    "aesthetic_output_note": "窄幅紙張、一位黑白輸出與等寬／點陣層級，把交易壓縮進小票尺度。",
     "aesthetic_bridge_label": "字體升級 · +£1.99",
     "aesthetic_bridge_note": "可選網站字體把商店頁面的視覺權威帶進實際發行的詩。",
     "physical_label": "紙上版本",
@@ -323,7 +365,25 @@
     "physical_read": "閱讀原詩",
     "physical_provenance": "實體印本影像。校正角度並裁邊，保留原有印跡。",
     "physical_b3_alt": "乙三實體印本：同一張熱敏紙上的收據、裁切線與完整中文詩作",
-    "physical_b4_alt": "乙四實體印本：同一張熱敏紙上的收據、裁切線與完整中文詩作"
+    "physical_b4_alt": "乙四實體印本：同一張熱敏紙上的收據、裁切線與完整中文詩作",
+    "implementation_flow_label": "從詩作到發行",
+    "implementation_build_label": "現行公開渲染器",
+    "implementation_paper_label": "紙張模型",
+    "implementation_links_label": "實現連結",
+    "implementation_source": "查核實現",
+    "implementation_manifest": "構建清單",
+    "implementation_catalogue": "目錄",
+    "implementation_catalogue_note": "作者已發表詩作",
+    "implementation_configure": "配置",
+    "implementation_configure_note": "字形 · 譯文 · 字體 · 大小 · 數量",
+    "implementation_freeze": "凍結",
+    "implementation_freeze_note": "文字 · 價格 · 付款場景 · 訂單識別",
+    "implementation_render": "渲染",
+    "implementation_render_note": "連續的收據與詩券",
+    "implementation_keep": "閲讀／保存",
+    "implementation_keep_note": "圖像 PDF · 離線 HTML",
+    "implementation_print": "打印",
+    "implementation_print_note": "僅限已配對的本地 H10S"
   },
   "zh-hans": {
     "title": "诗券",
@@ -338,9 +398,9 @@
     "process": "从交易到阅读",
     "process_body": "选诗、字体及译文，再作不扣款的结账。一张小票记录整单，各份诗券独立编号。可下载图像校样，或可离线阅读的完整文字版。",
     "privacy": "在你的设备完成",
-    "privacy_body": "文件在浏览器内生成。目录选购保存在此设备，已完成订单留在当前标签页。不上传、不扣款、不连接打印机。",
+    "privacy_body": "文件在浏览器内生成。目录选购保存在此设备，已完成订单留在当前标签页。不会上传诗文，也不会扣款。一般浏览器使用不会连接打印机；只有在已配对的 H10S 终端上，明确执行本地打印操作后才会开始打印。",
     "hardware": "以纸面为尺度",
-    "hardware_body": "作品以纸上的取得与阅读为方向。已有早期试印；这里展示的是固定数字样本，并非那些实物的照片。现行 58 毫米／384 点输出仍待实体校准。",
+    "hardware_body": "这件作品以纸上的取得与阅读为方向。页面现展示乙三、乙四两份真实热敏纸印本的扫描。较早的数字样本仍是独立的重新渲染，并非任何一份印本的照片。两份实物不能证明所有配置都已校准。",
     "back": "作品介绍",
     "edit": "浏览架上作品",
     "preview_alt": "乙三连续数字样本：同一条纸上依次为虚构现金小票、CUT HERE 分隔线与中文诗券。",
@@ -430,14 +490,26 @@
         "dek": "规则相同，不等于遭遇相同。",
         "feature": "",
         "body": [
-          "输出模型使用58毫米纸宽与384点图像区，按每毫米八点换算，图像区为48毫米。一位黑白图像保留小票打印的限制。密集标签与窄行属于阅读条件，但小到读不清时，小本身没有价值。清晰的数字图像不能证明某台机器能够保住细笔画。",
+          "输出模型使用窄幅热敏纸。 一位黑白图像保留小票打印的限制。密集标签与窄行属于阅读条件，但小到读不清时，小本身没有价值。清晰的数字图像不能证明某台机器能够保住细笔画。",
           "直接热敏打印不用墨或色带；热、光和日常处理可能改变可读性。[[thermal]] 褪色不是内置于诗的可靠倒计时。它仍是一种材料可能，不是这些票样已经观察到的寿命，不是环保主张，也不是必须采用的失落隐喻。",
           "已有早期实物试印。没有展览场地的当下，浏览器商店是公共入口；未来的发行桌可以增加下载所没有的纸张处理与共同停留时间。屏幕上的遭遇同样真实。PDF 把小票与诗保存在同一文件中，过长时保留接续；独立 HTML 对应版让全文与两种文书的关系可离线阅读，但不会使图像 PDF 本身变成无障碍文字 PDF。"
         ]
       },
       {
-        "id": "comparisons",
+        "id": "implementation",
         "number": "07",
+        "title": "实现方式",
+        "dek": "作品的运行机制可以核查。",
+        "body": [
+          "Poetry Voucher 是围绕作者已发表诗作的固定目录而建的静态浏览器应用。先前公开的 Studio 已退役：读者配置的是某一版诗券，而非上传任意文字。目录选择、字形、已发表译文、字体、大小与数量进入同一套计价与发行流程。一般使用不会上传诗文，也不会联系支付服务。",
+          "结账会在产生输出前冻结订单内容：文字、数量、费用、虚构的付款场景与公开渲染器标识，都属于那份已发行订单。日后重新打开时，不会暗中按现行目录重新计价；若使用了不同渲染器，结果会标明为重新渲染。标识描述构建输入，不保证像素完全相同。",
+          "冻结的订单会被渲染成窄纸幅图像 PDF，另有一份可独立保存的 HTML 阅读版。公开网站没有远程打印端点。只有在已配对的 H10S 终端上，明确执行打印操作后，已备妥的订单才可交给其本地打印服务。"
+        ],
+        "feature": "implementation"
+      },
+      {
+        "id": "comparisons",
+        "number": "08",
         "title": "两个有用的比较",
         "dek": "不同规则，产生不同后果。",
         "feature": "",
@@ -448,14 +520,14 @@
       },
       {
         "id": "status",
-        "number": "08",
+        "number": "09",
         "title": "已经成立的部分",
         "dek": "可以使用的版本，仍待检验的接受。",
         "feature": "",
         "body": [
           "目录、计价与数字发行流程目前可以使用。早期打印件属于材料试验，不证明现行每种配置都已校准。“带着一首诗，随手送人”的建议来自早期读者，并在作者访谈中提到，没有被扩写成对一般观众的结论。这里不声称做过比较性读者研究或画廊呈现。",
           "下一次材料测试可以很小：发行少量选定版本，让人先阅读和处理，不先上理论课，再记录发生了什么、哪里失败。这些结果可能支持保留小票、调整呈现顺序，或放弃一种拟议解释。更多功能不能代答这个问题。",
-          "允许个人保存、打印与赠送打印件。订单文字与选择在本地冻结；保留原始下载，才能保留那次输出。较新的渲染器可能改变排版，会注明重新渲染。构建编号描述输入，不代表所有权或文学权威。当前编辑说明与实现包含 AI 辅助，并不把作者原有的诗替换成商店生成的内容。"
+          "允许个人保存、打印与赠送打印件。当前编辑说明与实现包含 AI 辅助，并不把作者原有的诗替换成商店生成的内容。"
         ]
       }
     ],
@@ -474,7 +546,7 @@
     "aesthetic_screen_note": "衬线展示字、暖色底与较大的留白，让选择过程具有编辑出版物的秩序。",
     "aesthetic_output_label": "发行纸条",
     "aesthetic_output_heading": "记账 / 凭据",
-    "aesthetic_output_note": "58 毫米、一位黑白输出与等宽／点阵层级，把交易压缩进小票尺度。",
+    "aesthetic_output_note": "窄幅纸张、一位黑白输出与等宽／点阵层级，把交易压缩进小票尺度。",
     "aesthetic_bridge_label": "字体升级 · +£1.99",
     "aesthetic_bridge_note": "可选网站字体把商店页面的视觉权威带进实际发行的诗。",
     "physical_label": "纸上版本",
@@ -486,7 +558,25 @@
     "physical_read": "阅读原诗",
     "physical_provenance": "实体印本图像。校正角度并裁边，保留原有印迹。",
     "physical_b3_alt": "乙三实体印本：同一张热敏纸上的收据、裁切线与完整中文诗作",
-    "physical_b4_alt": "乙四实体印本：同一张热敏纸上的收据、裁切线与完整中文诗作"
+    "physical_b4_alt": "乙四实体印本：同一张热敏纸上的收据、裁切线与完整中文诗作",
+    "implementation_flow_label": "从诗作到发行",
+    "implementation_build_label": "当前公开渲染器",
+    "implementation_paper_label": "纸张模型",
+    "implementation_links_label": "实现链接",
+    "implementation_source": "核查实现",
+    "implementation_manifest": "构建清单",
+    "implementation_catalogue": "目录",
+    "implementation_catalogue_note": "作者已发表诗作",
+    "implementation_configure": "配置",
+    "implementation_configure_note": "字形 · 译文 · 字体 · 大小 · 数量",
+    "implementation_freeze": "冻结",
+    "implementation_freeze_note": "文字 · 价格 · 付款场景 · 订单标识",
+    "implementation_render": "渲染",
+    "implementation_render_note": "连续的收据与诗券",
+    "implementation_keep": "阅读／保存",
+    "implementation_keep_note": "图像 PDF · 离线 HTML",
+    "implementation_print": "打印",
+    "implementation_print_note": "仅限已配对的本地 H10S"
   },
   "ja": {
     "title": "詩の券",
@@ -501,9 +591,9 @@
     "process": "会計から読書へ",
     "process_body": "詩、書体、翻訳を選び、支払いのない会計へ。一枚のレシートに注文を記録し、各券には個別の番号を付けます。画像の校正か、オフラインで読める全文テキスト版を保存できます。",
     "privacy": "端末の中で完結",
-    "privacy_body": "ファイルはブラウザー内で作成します。作品の選択は端末に保存し、完了した注文は現在のタブに残ります。アップロード、課金、プリンターへの接続はありません。",
+    "privacy_body": "ファイルはブラウザー内で作成します。カタログの選択は端末に保存され、完了した注文は現在のタブに残ります。詩のアップロードも課金もありません。通常のブラウザー利用ではプリンターに接続しません。ペアリング済みの H10S 端末では、明示的なローカル印刷操作の後にだけ印刷が始まります。",
     "hardware": "紙という制約",
-    "hardware_body": "紙を手に取り読む作品を目指しています。初期の試し刷りはありますが、ここにあるのは固定のデジタル見本で、実物の写真ではありません。現在の58ミリ・384ドット出力は実機での校正が必要です。",
+    "hardware_body": "この作品は紙を手に取り読むことを想定しています。ページには実際に感熱紙へ印刷した乙三と乙四の二点のスキャンを掲載しています。以前のデジタル見本は別個の再描画であり、印刷物の写真ではありません。二点の実物だけでは、すべての設定が校正済みとは言えません。",
     "back": "作品について",
     "edit": "作品を見る",
     "preview_alt": "乙三の連続デジタル見本。同じ紙に架空の現金レシート、CUT HERE、中文の詩券が続きます。",
@@ -593,14 +683,26 @@
         "dek": "同じ規則でも、出会いは同じではありません。",
         "feature": "",
         "body": [
-          "出力モデルは58ミリの紙幅と384ドットの画像領域を使い、毎ミリ八ドットなら画像幅は48ミリです。一ビットの白黒画像はレシート印刷の制約を残します。密なラベルと狭い行は読む条件の一部ですが、読めないほど小さければ、小ささそのものに価値はありません。鮮明なデジタル画像だけでは、特定のプリンターで細い画線が残ると証明できません。",
+          "出力モデルは幅の狭い感熱紙を用います。 一ビットの白黒画像はレシート印刷の制約を残します。密なラベルと狭い行は読む条件の一部ですが、読めないほど小さければ、小ささそのものに価値はありません。鮮明なデジタル画像だけでは、特定のプリンターで細い画線が残ると証明できません。",
           "直接感熱印刷はインクもリボンも使わず、熱、光、扱い方によって可読性が変わります。[[thermal]] 退色は詩に組み込まれた確かなカウントダウンではありません。素材の可能性であり、この試し刷りの観察済み寿命、環境への主張、あるいは喪失を表す必須の比喩ではありません。",
           "初期の実物出力はあります。展示会場のない現在、ブラウザーのショップが公開の入口です。将来の発行テーブルでは、ダウンロードにはない紙の扱いと居合わせる時間が加わります。しかし画面上での出会いも実際の経験です。PDFはレシートと詩を同じファイルに保ち、長い出力には接続表示を付けます。独立したHTML版は全文と関係をオフラインでも読めるようにしますが、画像PDF自体をアクセシブルな文字PDFへ変えるものではありません。"
         ]
       },
       {
-        "id": "comparisons",
+        "id": "implementation",
         "number": "07",
+        "title": "実装",
+        "dek": "仕組みは確かめられます。",
+        "body": [
+          "Poetry Voucher は、作者が発表済みの詩による固定カタログを中心にした静的なブラウザーアプリです。以前公開していた Studio は終了しました。読者は任意の文章をアップロードするのではなく、一つの版を設定します。作品、漢字字体、既発表の翻訳、書体、サイズ、部数の選択は、同じ価格計算と発行の過程に入ります。通常の利用では詩をアップロードせず、決済サービスにも接続しません。",
+          "チェックアウトでは出力前に注文内容を固定します。本文、部数、金額、架空の決済場面、公開レンダラーの識別子は、その発行済み注文に属します。後で開き直しても、現在のカタログで詩を黙って再計算しません。別のレンダラーを使った場合は再描画と明示します。識別子が示すのはビルドの入力であり、画素の完全な一致を保証するものではありません。",
+          "固定された注文から、幅の狭い紙に合わせた画像 PDF と、単独で保存できる HTML の読書用複製を生成します。公開サイトに遠隔印刷のエンドポイントはありません。ペアリング済みの H10S 端末でのみ、明示的な印刷操作により、準備済みの注文を端末のローカル印刷サービスへ渡せます。"
+        ],
+        "feature": "implementation"
+      },
+      {
+        "id": "comparisons",
+        "number": "08",
         "title": "二つの有効な比較",
         "dek": "規則が違えば、結果も違います。",
         "feature": "",
@@ -611,14 +713,14 @@
       },
       {
         "id": "status",
-        "number": "08",
+        "number": "09",
         "title": "確認できていること",
         "dek": "使える版と、まだ開かれた受容の問い。",
         "feature": "",
         "body": [
           "カタログ、料金計算、デジタル発行は現在利用できます。初期印刷物は素材の試験であって、現在の全仕様が校正済みだという証拠ではありません。携帯して人に詩を贈るという考えは初期の読者から出て、作者へのインタビューで報告されました。それを観客一般への結論に広げてはいません。比較読者調査やギャラリー展示の実施も主張しません。",
           "次の素材試験は小さくできます。少数の版を発行し、理論を先に教えずに読んで扱ってもらい、変化や失敗を記録する。その結果はレシートの維持、順序の変更、考えていた解釈の放棄につながるかもしれません。機能を増やすだけでは答えられない問いです。",
-          "個人での保存、印刷、印刷物の贈与を認めます。注文の文章と選択は端末内に固定し、元のダウンロードを残すことでその出力を保存できます。後のレンダラーが配置を変える場合は再描画と表示します。ビルド番号は入力を記述し、所有権や文学的な権威を保証しません。現在の編集説明と実装にはAI支援を用いていますが、作者の既存の詩をショップ生成の文章に置き換えません。"
+          "個人での保存、印刷、印刷物の贈与を認めます。現在の編集説明と実装には AI 支援を用いていますが、作者の既存の詩をショップ生成の文章に置き換えません。"
         ]
       }
     ],
@@ -637,7 +739,7 @@
     "aesthetic_screen_note": "セリフの見出し、暖かな地色、広い余白が、選択を編集された出版物のように整えます。",
     "aesthetic_output_label": "発行紙",
     "aesthetic_output_heading": "会計 / 記録",
-    "aesthetic_output_note": "58 mm、一ビット出力、等幅／ドットの階層が取引をレシートの尺度に圧縮します。",
+    "aesthetic_output_note": "幅の狭い紙、一ビット出力、等幅／ドットの階層が取引をレシートの尺度に圧縮します。",
     "aesthetic_bridge_label": "書体アップグレード · +£1.99",
     "aesthetic_bridge_note": "任意のサイト書体は、ストアフロントの視覚的な権威を発行された詩へ持ち込みます。",
     "physical_label": "紙の版",
@@ -649,7 +751,25 @@
     "physical_read": "詩を読む",
     "physical_provenance": "実物のスキャン。傾きと余白を調整し、印刷された跡を保持。",
     "physical_b3_alt": "乙三の実物：一本の感熱紙にレシート、切り取り線、中国語の詩全文を印刷",
-    "physical_b4_alt": "乙四の実物：一本の感熱紙にレシート、切り取り線、中国語の詩全文を印刷"
+    "physical_b4_alt": "乙四の実物：一本の感熱紙にレシート、切り取り線、中国語の詩全文を印刷",
+    "implementation_flow_label": "詩から発行まで",
+    "implementation_build_label": "現在の公開レンダラー",
+    "implementation_paper_label": "用紙モデル",
+    "implementation_links_label": "実装へのリンク",
+    "implementation_source": "実装を確認",
+    "implementation_manifest": "ビルドの記録",
+    "implementation_catalogue": "カタログ",
+    "implementation_catalogue_note": "作者の発表済みの詩",
+    "implementation_configure": "設定",
+    "implementation_configure_note": "漢字字体 · 翻訳 · 書体 · サイズ · 部数",
+    "implementation_freeze": "固定",
+    "implementation_freeze_note": "本文 · 価格 · 決済場面 · 注文の識別",
+    "implementation_render": "描画",
+    "implementation_render_note": "連続するレシートと詩券",
+    "implementation_keep": "読む／保管する",
+    "implementation_keep_note": "画像 PDF · オフライン HTML",
+    "implementation_print": "印刷",
+    "implementation_print_note": "ペアリング済みのローカル H10S のみ"
   },
   "de": {
     "title": "Poetry Voucher",
@@ -664,9 +784,9 @@
     "process": "Vom Kauf zum Lesen",
     "process_body": "Gedicht, Schrift und Übersetzungen wählen, dann ohne Zahlung zur Kasse gehen. Ein Beleg hält die Bestellung fest; jeder Gedichtbon erhält eine eigene Nummer. Bildproben oder eine vollständige, offline lesbare Textfassung herunterladen.",
     "privacy": "Auf Ihrem Gerät",
-    "privacy_body": "Die Dateien entstehen im Browser. Die Katalogauswahl wird auf dem Gerät gespeichert; abgeschlossene Bestellungen bleiben im aktuellen Tab. Kein Upload, keine Abbuchung und keine Verbindung zu einem Drucker.",
+    "privacy_body": "Die Dateien entstehen im Browser. Die Katalogauswahl wird auf diesem Gerät gespeichert; abgeschlossene Bestellungen bleiben im aktuellen Tab. Gedichte werden nicht hochgeladen und Geld wird nicht abgebucht. Bei gewöhnlicher Browsernutzung wird kein Drucker kontaktiert. Am gekoppelten H10S-Terminal beginnt der Druck erst nach einer ausdrücklichen lokalen Handlung.",
     "hardware": "Papier als Rahmen",
-    "hardware_body": "Eine Arbeit für die Begegnung auf Papier. Erste Druckproben wurden angefertigt; hier sind feste digitale Muster zu sehen, keine Fotos dieser Proben. Die aktuelle Ausgabe mit 58 mm und 384 Punkten muss noch am Gerät kalibriert werden.",
+    "hardware_body": "Die Arbeit ist für die Begegnung auf Papier gedacht. Die Seite zeigt jetzt Scans zweier tatsächlich auf Thermopapier gedruckter Ausgaben, B3 und B4. Das frühere digitale Muster bleibt ein eigenständiger Neurender und ist kein Foto dieser Drucke. Zwei Drucke belegen keine Kalibrierung sämtlicher Konfigurationen.",
     "back": "Projektübersicht",
     "edit": "Ausgaben ansehen",
     "preview_alt": "Durchgehendes digitales B3-Muster: fiktiver Barzahlungsbon, CUT HERE und chinesischer Gedichtbon auf demselben Streifen.",
@@ -756,14 +876,26 @@
         "dek": "Gleiche Regeln sind nicht dieselbe Begegnung.",
         "feature": "",
         "body": [
-          "Das Ausgabemodell verwendet 58 mm Papierbreite und einen Bildbereich von 384 Punkten, also 48 mm bei acht Punkten pro Millimeter. Das Einbitbild behält Beschränkungen des Bondrucks bei. Dichte Beschriftung und schmale Zeilen gehören dazu; Kleinheit ist jedoch kein Vorzug, wenn das Gedicht unlesbar wird. Ein scharfes digitales Bild belegt nicht, dass feine Striche auf einem bestimmten Drucker erhalten bleiben.",
+          "Das Ausgabemodell verwendet schmales Thermopapier. Das Einbitbild behält Beschränkungen des Bondrucks bei. Dichte Beschriftung und schmale Zeilen gehören dazu; Kleinheit ist jedoch kein Vorzug, wenn das Gedicht unlesbar wird. Ein scharfes digitales Bild belegt nicht, dass feine Striche auf einem bestimmten Drucker erhalten bleiben.",
           "Thermodirektdruck braucht weder Tinte noch Farbband; Wärme, Licht und Handhabung können die Lesbarkeit verändern. [[thermal]] Verblassen ist kein verlässlicher Countdown des Gedichts. Es bleibt eine Materialmöglichkeit, keine beobachtete Lebensdauer dieser Drucke, keine Umweltbehauptung und keine vorgeschriebene Verlustmetapher.",
           "Frühe physische Drucke existieren. Ohne Ausstellungsort ist der Browser-Shop der gegenwärtige öffentliche Zugang. Ein künftiger Ausgabetisch würde Papierhandhabung und gemeinsam verbrachte Zeit hinzufügen, die ein Download nicht bietet. Die Bildschirmbegegnung ist trotzdem real. Das PDF bewahrt Bon und Gedichte in einer Datei, bei langen Ausgaben mit Fortsetzungen. Eine eigenständige HTML-Fassung hält alle Texte und Beziehungen offline lesbar; sie verwandelt das Bild-PDF nicht in ein barrierefreies Text-PDF."
         ]
       },
       {
-        "id": "comparisons",
+        "id": "implementation",
         "number": "07",
+        "title": "Implementierung",
+        "dek": "Der Mechanismus lässt sich prüfen.",
+        "body": [
+          "Poetry Voucher ist eine statische Browseranwendung mit einem festen Katalog meiner veröffentlichten Gedichte. Das früher öffentliche Studio ist eingestellt: Lesende konfigurieren eine Ausgabe, statt beliebigen Text hochzuladen. Werkwahl, Schriftvariante, veröffentlichte Übersetzungen, Schriftart, Größe und Anzahl durchlaufen dieselbe Berechnung und Ausgabe. Bei gewöhnlicher Nutzung werden weder Gedichte hochgeladen noch ein Zahlungsdienst kontaktiert.",
+          "Beim Checkout wird der Inhalt der Bestellung vor der Ausgabe fixiert: Texte, Mengen, Beträge, die fiktive Zahlungsszene und die Kennung des öffentlichen Renderers gehören zu dieser ausgegebenen Bestellung. Beim späteren Öffnen werden die Gedichte nicht unbemerkt nach dem aktuellen Katalog neu berechnet. Wird ein anderer Renderer benutzt, ist das Ergebnis als Neurender gekennzeichnet. Die Kennung beschreibt Build-Eingaben und verspricht keine identischen Pixel.",
+          "Aus der fixierten Bestellung entstehen ein Bild-PDF für schmales Papier und eine separate, eigenständig speicherbare HTML-Lesefassung. Die öffentliche Website hat keinen Endpunkt für Ferndruck. Nur am gekoppelten H10S-Terminal kann eine ausdrückliche Druckhandlung die bereits vorbereitete Bestellung an dessen lokalen Druckdienst übergeben."
+        ],
+        "feature": "implementation"
+      },
+      {
+        "id": "comparisons",
+        "number": "08",
         "title": "Zwei hilfreiche Vergleiche",
         "dek": "Andere Regeln, andere Folgen.",
         "feature": "",
@@ -774,14 +906,14 @@
       },
       {
         "id": "status",
-        "number": "08",
+        "number": "09",
         "title": "Was feststeht",
         "dek": "Eine benutzbare Ausgabe; eine offene Rezeptionsfrage.",
         "feature": "",
         "body": [
           "Katalog, Berechnung und digitale Ausgabe sind heute benutzbar. Frühe Drucke sind Materialversuche, kein Beleg für die Kalibrierung jeder heutigen Konfiguration. Der Gedanke, ein Gedicht zum Verschenken bei sich zu tragen, kam von einer frühen lesenden Person und wurde im Interview berichtet. Daraus wurde keine Aussage über ein allgemeines Publikum gemacht. Eine vergleichende Lesestudie oder Galeriepräsentation wird hier nicht behauptet.",
           "Der nächste Materialversuch kann klein sein: wenige ausgewählte Ausgaben herstellen, Menschen ohne vorausgehende Theorieeinführung lesen und handeln lassen und festhalten, was sich verändert oder scheitert. Das kann für den Bon, eine andere Reihenfolge oder den Verzicht auf eine angenommene Deutung sprechen. Zusätzliche Funktionen beantworten diese Frage nicht.",
-          "Persönliches Speichern, Drucken und Verschenken gedruckter Exemplare sind erlaubt. Texte und Auswahl einer Bestellung werden lokal eingefroren; der ursprüngliche Download bewahrt diese Ausgabe. Ein späterer Renderer kann das Layout ändern und wird als Neurender ausgewiesen. Build-Kennungen beschreiben Eingaben, nicht Eigentum oder literarische Autorität. Redaktionelle Erläuterung und Umsetzung umfassen KI-Unterstützung; sie ersetzen die vorhandenen Gedichte nicht durch generierte Shoptexte."
+          "Persönliches Speichern, Drucken und Verschenken gedruckter Exemplare sind erlaubt. Redaktionelle Erläuterung und Umsetzung umfassen KI-Unterstützung; sie ersetzen die vorhandenen Gedichte nicht durch generierte Shoptexte."
         ]
       }
     ],
@@ -800,7 +932,7 @@
     "aesthetic_screen_note": "Serifen, warmer Grund und großzügiger Raum inszenieren die Auswahl wie eine redigierte Publikation.",
     "aesthetic_output_label": "AUSGEGEBENER STREIFEN",
     "aesthetic_output_heading": "Abrechnung / Beleg",
-    "aesthetic_output_note": "58 mm, Einbit-Ausgabe und Mono-/Pixel-Hierarchie verdichten die Transaktion auf Bonmaß.",
+    "aesthetic_output_note": "Schmales Papier, Einbit-Ausgabe und Mono-/Pixel-Hierarchie verdichten die Transaktion auf Bonmaß.",
     "aesthetic_bridge_label": "SCHRIFT-UPGRADE · +£1.99",
     "aesthetic_bridge_note": "Die optionale Website-Schrift trägt die visuelle Autorität des Storefronts in das ausgegebene Gedicht.",
     "physical_label": "Auf Papier",
@@ -812,7 +944,25 @@
     "physical_read": "Gedicht lesen",
     "physical_provenance": "Scans der tatsächlichen Drucke. Begradigt und beschnitten; die Druckspuren bleiben erhalten.",
     "physical_b3_alt": "Gedruckte Ausgabe B3: Beleg, Schnittlinie und vollständiges chinesisches Gedicht auf einem Thermopapierstreifen",
-    "physical_b4_alt": "Gedruckte Ausgabe B4: Beleg, Schnittlinie und vollständiges chinesisches Gedicht auf einem Thermopapierstreifen"
+    "physical_b4_alt": "Gedruckte Ausgabe B4: Beleg, Schnittlinie und vollständiges chinesisches Gedicht auf einem Thermopapierstreifen",
+    "implementation_flow_label": "Vom Gedicht zur Ausgabe",
+    "implementation_build_label": "Aktueller öffentlicher Renderer",
+    "implementation_paper_label": "Papiermodell",
+    "implementation_links_label": "Links zur Implementierung",
+    "implementation_source": "Implementierung prüfen",
+    "implementation_manifest": "Build-Manifest",
+    "implementation_catalogue": "Katalog",
+    "implementation_catalogue_note": "veröffentlichte Gedichte des Autors",
+    "implementation_configure": "Konfigurieren",
+    "implementation_configure_note": "Schriftvariante · Übersetzungen · Schriftart · Größe · Anzahl",
+    "implementation_freeze": "Fixieren",
+    "implementation_freeze_note": "Text · Preise · Zahlungsszene · Bestellkennung",
+    "implementation_render": "Rendern",
+    "implementation_render_note": "durchgehender Bon + Gedichtgutscheine",
+    "implementation_keep": "Lesen / aufbewahren",
+    "implementation_keep_note": "Bild-PDF · Offline-HTML",
+    "implementation_print": "Drucken",
+    "implementation_print_note": "nur am gekoppelten lokalen H10S"
   },
   "fr": {
     "title": "Poetry Voucher",
@@ -827,9 +977,9 @@
     "process": "De la transaction à la lecture",
     "process_body": "Choisissez un poème, une police et des traductions, puis passez en caisse sans payer. Un reçu consigne la commande ; chaque bon porte son propre numéro. Téléchargez les épreuves en image ou une version textuelle intégrale lisible hors ligne.",
     "privacy": "Sur votre appareil",
-    "privacy_body": "Les fichiers sont préparés dans le navigateur. Les choix du catalogue sont enregistrés sur l’appareil ; les commandes terminées restent dans l’onglet courant. Aucun envoi, aucun débit et aucune connexion à une imprimante.",
+    "privacy_body": "Les fichiers sont préparés dans le navigateur. Les choix du catalogue sont enregistrés sur cet appareil ; les commandes achevées restent dans l’onglet courant. Les poèmes ne sont pas téléversés et aucun paiement n’est prélevé. L’usage ordinaire du navigateur ne contacte aucune imprimante. Sur le terminal H10S appairé, l’impression ne commence qu’après une action locale explicite.",
     "hardware": "La contrainte du papier",
-    "hardware_body": "Une œuvre destinée à être rencontrée sur papier. Des premiers essais ont été imprimés ; les images présentées ici sont des spécimens numériques fixes, non des photographies de ces essais. La sortie actuelle de 58 mm et 384 points reste à calibrer sur l’appareil.",
+    "hardware_body": "Cette œuvre est destinée à être rencontrée sur papier. La page montre désormais les scans de deux éditions réellement imprimées sur papier thermique, B3 et B4. L’ancien spécimen numérique reste un nouveau rendu distinct, pas une photographie de ces tirages. Deux tirages ne prouvent pas que toutes les configurations sont calibrées.",
     "back": "Présentation du projet",
     "edit": "Voir les éditions",
     "preview_alt": "Spécimen numérique continu B3 : ticket fictif en espèces, séparation CUT HERE et bon poétique chinois sur la même bande.",
@@ -919,14 +1069,26 @@
         "dek": "Une même règle ne produit pas la même rencontre.",
         "feature": "",
         "body": [
-          "Le modèle de sortie emploie un papier de 58 mm et une zone d’image de 384 points, soit 48 mm à huit points par millimètre. L’image à un bit garde les contraintes du ticket. Mentions denses et lignes étroites participent à la rencontre ; la petitesse n’est toutefois pas une qualité si le poème devient illisible. Une image numérique nette ne prouve pas qu’une imprimante donnée conserve les traits fins.",
+          "Le modèle de sortie emploie du papier thermique étroit. L’image à un bit garde les contraintes du ticket. Mentions denses et lignes étroites participent à la rencontre ; la petitesse n’est toutefois pas une qualité si le poème devient illisible. Une image numérique nette ne prouve pas qu’une imprimante donnée conserve les traits fins.",
           "L’impression thermique directe n’utilise ni encre ni ruban ; chaleur, lumière et manipulation peuvent affecter la lisibilité. [[thermal]] L’effacement n’est pas un compte à rebours fiable intégré au poème. Il reste une possibilité matérielle, non une durée de vie observée de ces tirages, une affirmation écologique ou une métaphore obligatoire de la perte.",
           "Des premiers tirages physiques existent. Sans lieu d’exposition, la boutique est le passage public actuel ; une future table d’édition ajouterait la manipulation et le temps partagé qu’un téléchargement ne donne pas. La rencontre à l’écran est néanmoins réelle. Le PDF conserve ticket et poèmes dans un fichier unique, avec des continuations pour les longues sorties. Un équivalent HTML autonome garde tous les textes et leur relation lisibles hors ligne ; il ne transforme pas le PDF d’images en PDF textuel accessible."
         ]
       },
       {
-        "id": "comparisons",
+        "id": "implementation",
         "number": "07",
+        "title": "Réalisation",
+        "dek": "Le mécanisme peut être vérifié.",
+        "body": [
+          "Poetry Voucher est une application statique dans le navigateur, fondée sur un catalogue fixe de mes poèmes publiés. L’ancien Studio public est retiré : le lecteur configure une édition au lieu de téléverser un texte arbitraire. Choix du poème, écriture, traductions publiées, police, taille et quantité passent par le même processus de calcul du prix et d’émission. L’usage ordinaire ne téléverse pas le poème et ne contacte aucun service de paiement.",
+          "Lors de la validation, le contenu de la commande est figé avant la production : textes, quantités, montants, scène de paiement fictive et identité du moteur de rendu public appartiennent à cette commande émise. Sa réouverture ne recalcule pas discrètement les prix à partir du catalogue actuel. Si un autre moteur est employé, le résultat est signalé comme un nouveau rendu. Son identifiant décrit les entrées de la construction, sans garantir des pixels identiques.",
+          "La commande figée produit un PDF d’images pour papier étroit et une copie de lecture HTML autonome et distincte. Le site public n’a aucun point d’accès pour l’impression distante. Sur le seul terminal H10S appairé, une action d’impression explicite peut transmettre la commande déjà préparée à son service d’impression local."
+        ],
+        "feature": "implementation"
+      },
+      {
+        "id": "comparisons",
+        "number": "08",
         "title": "Deux comparaisons utiles",
         "dek": "D’autres règles, d’autres conséquences.",
         "feature": "",
@@ -937,14 +1099,14 @@
       },
       {
         "id": "status",
-        "number": "08",
+        "number": "09",
         "title": "Ce qui est établi",
         "dek": "Une édition utilisable ; une réception encore ouverte.",
         "feature": "",
         "body": [
           "Catalogue, calcul et émission numérique sont utilisables aujourd’hui. Les premiers tirages sont des essais matériels, pas la preuve que toutes les configurations actuelles sont calibrées. L’idée de porter un poème pour le donner est venue d’un premier lecteur et a été rapportée dans l’entretien avec l’artiste. Elle ne devient pas une conclusion générale sur les publics. Aucune étude comparative de lecteurs ni présentation en galerie n’est revendiquée ici.",
           "Le prochain essai matériel peut rester modeste : émettre quelques éditions choisies, laisser les gens lire et manipuler sans cours théorique préalable, puis noter ce qui change ou échoue. Cela peut justifier de garder le ticket, de déplacer l’ordre de présentation ou d’abandonner une interprétation envisagée. Davantage de fonctions ne répondent pas à cette question.",
-          "Sauvegarde personnelle, impression et don des exemplaires imprimés sont permis. Textes et choix de commande sont figés localement ; conserver le téléchargement initial préserve cette sortie. Un moteur ultérieur peut changer la composition et est signalé comme nouveau rendu. Les identifiants de construction décrivent des entrées, non une propriété ou une autorité littéraire. L’explication éditoriale et la réalisation comprennent une assistance par IA ; elles ne remplacent pas les poèmes existants par des textes générés par la boutique."
+          "Sauvegarde personnelle, impression et don des exemplaires imprimés sont permis. L’explication éditoriale et la réalisation comprennent une assistance par IA ; elles ne remplacent pas les poèmes existants par des textes générés par la boutique."
         ]
       }
     ],
@@ -963,7 +1125,7 @@
     "aesthetic_screen_note": "Caractères à empattements, fond chaud et espace généreux donnent au choix l’ordre d’une publication éditée.",
     "aesthetic_output_label": "BANDE ÉMISE",
     "aesthetic_output_heading": "comptabilité / preuve",
-    "aesthetic_output_note": "58 mm, sortie un bit et hiérarchie mono/pixel condensent la transaction à l’échelle du ticket.",
+    "aesthetic_output_note": "Papier étroit, sortie un bit et hiérarchie mono/pixel condensent la transaction à l’échelle du ticket.",
     "aesthetic_bridge_label": "OPTION TYPOGRAPHIQUE · +£1.99",
     "aesthetic_bridge_note": "La police facultative du site transporte l’autorité visuelle de la vitrine dans le poème émis.",
     "physical_label": "Sur papier",
@@ -975,7 +1137,25 @@
     "physical_read": "Lire le poème",
     "physical_provenance": "Scans des tirages réels. Redressés et recadrés ; les traces imprimées sont conservées.",
     "physical_b3_alt": "Édition B3 imprimée : ticket, ligne de coupe et poème chinois intégral sur une bande de papier thermique",
-    "physical_b4_alt": "Édition B4 imprimée : ticket, ligne de coupe et poème chinois intégral sur une bande de papier thermique"
+    "physical_b4_alt": "Édition B4 imprimée : ticket, ligne de coupe et poème chinois intégral sur une bande de papier thermique",
+    "implementation_flow_label": "Du poème à l’édition",
+    "implementation_build_label": "Moteur public actuel",
+    "implementation_paper_label": "Modèle de papier",
+    "implementation_links_label": "Liens de réalisation",
+    "implementation_source": "Examiner la réalisation",
+    "implementation_manifest": "Manifeste de construction",
+    "implementation_catalogue": "Catalogue",
+    "implementation_catalogue_note": "poèmes publiés de l’auteur",
+    "implementation_configure": "Configurer",
+    "implementation_configure_note": "écriture · traductions · police · taille · quantité",
+    "implementation_freeze": "Figer",
+    "implementation_freeze_note": "texte · prix · scène de paiement · identité de commande",
+    "implementation_render": "Rendre",
+    "implementation_render_note": "ticket continu + bons poétiques",
+    "implementation_keep": "Lire / conserver",
+    "implementation_keep_note": "PDF d’images · HTML hors ligne",
+    "implementation_print": "Imprimer",
+    "implementation_print_note": "uniquement sur le H10S local appairé"
   },
   "ru": {
     "title": "Poetry Voucher",
@@ -990,9 +1170,9 @@
     "process": "От покупки к чтению",
     "process_body": "Выберите стихотворение, шрифт и переводы, затем оформите заказ без оплаты. Один чек фиксирует заказ; каждый талон получает отдельный номер. Скачайте изображения или полную текстовую версию для чтения без сети.",
     "privacy": "На вашем устройстве",
-    "privacy_body": "Файлы создаются в браузере. Выбор из каталога сохраняется на устройстве; завершённые заказы остаются в текущей вкладке. Ничего не отправляется, деньги не списываются, соединения с принтером нет.",
+    "privacy_body": "Файлы готовятся в браузере. Выбор из каталога сохраняется на этом устройстве; завершённые заказы остаются в текущей вкладке. Стихи не загружаются на сервер, деньги не списываются. При обычном использовании браузер не обращается к принтеру. На сопряжённом терминале H10S печать начинается только после явного локального действия.",
     "hardware": "В рамках бумаги",
-    "hardware_body": "Работа предназначена для встречи на бумаге. Первые пробные отпечатки уже сделаны; здесь показаны фиксированные цифровые образцы, а не фотографии этих отпечатков. Текущий вывод на 58 мм и 384 точки ещё требует калибровки на устройстве.",
+    "hardware_body": "Работа рассчитана на встречу с бумажным экземпляром. Теперь на странице показаны сканы двух действительно напечатанных на термобумаге выпусков, B3 и B4. Более ранний цифровой образец остаётся отдельным повторным рендером, а не фотографией этих отпечатков. Два отпечатка не доказывают, что все настройки откалиброваны.",
     "back": "О проекте",
     "edit": "Посмотреть издания",
     "preview_alt": "Непрерывный цифровой образец B3: вымышленный кассовый чек, разделитель CUT HERE и китайский поэтический талон на одной ленте.",
@@ -1082,14 +1262,26 @@
         "dek": "Одинаковые правила не создают одинаковую встречу.",
         "feature": "",
         "body": [
-          "Модель вывода использует бумагу шириной 58 мм и изображение в 384 точки, то есть 48 мм при восьми точках на миллиметр. Однобитное изображение сохраняет ограничения чековой печати. Плотные подписи и узкие строки входят в условия чтения, но малый размер не достоинство, если стих перестаёт читаться. Резкость цифрового изображения не доказывает сохранность тонких штрихов на конкретном принтере.",
+          "Модель вывода использует узкую термобумагу. Однобитное изображение сохраняет ограничения чековой печати. Плотные подписи и узкие строки входят в условия чтения, но малый размер не достоинство, если стих перестаёт читаться. Резкость цифрового изображения не доказывает сохранность тонких штрихов на конкретном принтере.",
           "Прямая термопечать не использует чернил или красящей ленты; тепло, свет и обращение могут менять читаемость. [[thermal]] Выцветание не является надёжным обратным отсчётом внутри стихотворения. Оно остаётся свойством с возможными последствиями, а не наблюдённым сроком жизни этих отпечатков, экологическим утверждением или обязательной метафорой утраты.",
           "Ранние физические отпечатки существуют. Пока нет выставочной площадки, публичным входом служит браузерный магазин. Будущий стол выдачи добавил бы обращение с бумагой и совместное время, которых не даёт скачивание. Однако экранная встреча тоже реальна. PDF сохраняет чек и стихи в одном файле с продолжениями для длинных выпусков. Самостоятельная HTML-версия оставляет весь текст и отношения документов доступными офлайн; она не превращает PDF с изображениями в доступный текстовый PDF."
         ]
       },
       {
-        "id": "comparisons",
+        "id": "implementation",
         "number": "07",
+        "title": "Реализация",
+        "dek": "Механизм можно проверить.",
+        "body": [
+          "Poetry Voucher — статическое браузерное приложение с фиксированным каталогом моих опубликованных стихов. Прежняя публичная Studio выведена из использования: читатель настраивает выпуск, а не загружает произвольный текст. Выбор произведения, письменности, опубликованных переводов, шрифта, размера и количества входит в единый процесс расчёта цены и выпуска. При обычном использовании стихи не загружаются на сервер и не вызывается платёжный сервис.",
+          "При оформлении содержимое заказа фиксируется до создания вывода: тексты, количества, суммы, вымышленная сцена оплаты и идентификатор публичного рендерера относятся к конкретному выпущенному заказу. Позднее открытие не пересчитывает цену незаметно по текущему каталогу. Если применяется другой рендерер, результат помечается как повторный рендер. Идентификатор описывает входные данные сборки, а не гарантирует совпадение пикселей.",
+          "Из зафиксированного заказа создаются графический PDF для узкой бумаги и отдельная автономная HTML-копия для чтения. У публичного сайта нет удалённого узла печати. Только на сопряжённом терминале H10S явное действие печати может передать уже подготовленный заказ его локальной службе печати."
+        ],
+        "feature": "implementation"
+      },
+      {
+        "id": "comparisons",
+        "number": "08",
         "title": "Два полезных сопоставления",
         "dek": "Другие правила, другие последствия.",
         "feature": "",
@@ -1100,14 +1292,14 @@
       },
       {
         "id": "status",
-        "number": "08",
+        "number": "09",
         "title": "Что уже установлено",
         "dek": "Действующее издание и открытый вопрос восприятия.",
         "feature": "",
         "body": [
           "Каталогом, расчётом и цифровой выдачей можно пользоваться сейчас. Ранние отпечатки являются материальными пробами, не доказательством калибровки всех нынешних настроек. Предложение носить стих с собой и дарить его поступило от раннего читателя и было передано в авторском интервью. Оно не превращено в общий вывод о публике. Сравнительное читательское исследование или галерейный показ здесь не заявлены.",
           "Следующая материальная проверка может быть небольшой: выдать несколько выбранных версий, дать людям читать и обращаться с ними без предварительной лекции и записать изменения или неудачи. Это может обосновать сохранение чека, смену порядка подачи или отказ от предполагаемой интерпретации. Новые функции сами по себе на этот вопрос не ответят.",
-          "Личное сохранение, печать и дарение отпечатков разрешены. Текст и выбор заказа фиксируются локально; первоначально скачанный файл сохраняет данный выпуск. Поздний рендерер может изменить вёрстку и обозначается как повторный рендер. Идентификаторы сборки описывают входные материалы, не собственность и не литературный авторитет. Текущее редакторское объяснение и реализация включают помощь ИИ, но не заменяют существующие авторские стихи сгенерированными текстами магазина."
+          "Личное сохранение, печать и дарение отпечатков разрешены. Текущее редакторское объяснение и реализация включают помощь ИИ, но не заменяют существующие авторские стихи сгенерированными текстами магазина."
         ]
       }
     ],
@@ -1126,7 +1318,7 @@
     "aesthetic_screen_note": "Шрифт с засечками, тёплый фон и свободное пространство придают выбору порядок редакционного издания.",
     "aesthetic_output_label": "ВЫДАННАЯ ЛЕНТА",
     "aesthetic_output_heading": "учёт / свидетельство",
-    "aesthetic_output_note": "58 мм, однобитный вывод и моно-/пиксельная иерархия сжимают транзакцию до масштаба чека.",
+    "aesthetic_output_note": "Узкая бумага, однобитный вывод и моно-/пиксельная иерархия сжимают транзакцию до масштаба чека.",
     "aesthetic_bridge_label": "УЛУЧШЕНИЕ ШРИФТА · +£1.99",
     "aesthetic_bridge_note": "Дополнительный шрифт сайта переносит визуальный авторитет витрины в выданное стихотворение.",
     "physical_label": "На бумаге",
@@ -1138,6 +1330,24 @@
     "physical_read": "Читать стихотворение",
     "physical_provenance": "Сканы настоящих отпечатков. Наклон исправлен, поля обрезаны; следы печати сохранены.",
     "physical_b3_alt": "Печатный выпуск B3: чек, линия отреза и полный китайский текст стихотворения на одной полосе термобумаги",
-    "physical_b4_alt": "Печатный выпуск B4: чек, линия отреза и полный китайский текст стихотворения на одной полосе термобумаги"
+    "physical_b4_alt": "Печатный выпуск B4: чек, линия отреза и полный китайский текст стихотворения на одной полосе термобумаги",
+    "implementation_flow_label": "От стихотворения к выпуску",
+    "implementation_build_label": "Текущий публичный рендерер",
+    "implementation_paper_label": "Модель бумаги",
+    "implementation_links_label": "Ссылки на реализацию",
+    "implementation_source": "Проверить реализацию",
+    "implementation_manifest": "Манифест сборки",
+    "implementation_catalogue": "Каталог",
+    "implementation_catalogue_note": "опубликованные стихи автора",
+    "implementation_configure": "Настроить",
+    "implementation_configure_note": "письменность · переводы · шрифт · размер · количество",
+    "implementation_freeze": "Зафиксировать",
+    "implementation_freeze_note": "текст · цены · сцена оплаты · идентификатор заказа",
+    "implementation_render": "Сформировать",
+    "implementation_render_note": "непрерывный чек и поэтические ваучеры",
+    "implementation_keep": "Читать / хранить",
+    "implementation_keep_note": "графический PDF · автономный HTML",
+    "implementation_print": "Напечатать",
+    "implementation_print_note": "только на сопряжённом локальном H10S"
   }
 }

@@ -135,6 +135,21 @@
 .editorial-tariff .pv-tariff .tariff-rounding {grid-template-columns:minmax(0,1fr);gap:.2rem}
 .editorial-tariff .tariff-rounding dd {text-align:start;white-space:normal;font-family:var(--serif,serif);font-size:1rem}
 .voucher-project .pv-essay .editorial-tariff > p {font-size:.9375rem;line-height:1.7;margin:1rem 0;color:var(--muted)}
+.pv-implementation {margin:2rem 0 0;min-inline-size:0;border-block:1px solid var(--line)}
+.pv-implementation figcaption {padding-block:1rem;font:.75rem/1.5 var(--mono);letter-spacing:.04em;color:var(--muted)}
+.pv-implementation ol {list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.5rem}
+.pv-implementation li {display:grid;grid-template-columns:2rem minmax(0,1fr);gap:.7rem;min-inline-size:0;padding-block:.85rem;border-block-start:1px solid var(--line)}
+.pv-implementation li > div {min-inline-size:0}
+.pv-implementation li strong {display:block;font:.8125rem/1.5 var(--mono);font-weight:400;letter-spacing:.04em;text-transform:uppercase;overflow-wrap:anywhere}
+.pv-implementation li div span {display:block;margin-block-start:.25rem;font-size:.9375rem;line-height:1.6;color:var(--muted)}
+.pv-implementation-no {font:.75rem/1.5 var(--mono);color:var(--muted)}
+.pv-implementation-meta {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:0;padding-block:1.25rem;border-block-end:1px solid var(--line)}
+.pv-implementation-meta > div {min-inline-size:0}
+.pv-implementation-meta dt {font:.75rem/1.5 var(--mono);color:var(--muted)}
+.pv-implementation-meta dd {margin:.35rem 0 0;font:.875rem/1.6 var(--mono);overflow-wrap:anywhere}
+.pv-implementation-meta code {font:inherit}
+.pv-implementation-links {display:flex;flex-wrap:wrap;gap:.25rem 1.5rem;padding-block:1rem 0}
+.pv-implementation-links a {display:inline-block;min-block-size:44px;padding-block:.5rem;font:.8125rem/1.6 var(--mono);text-underline-offset:.2em}
 .pv-source-reading {display:flex;flex-wrap:wrap;gap:.25rem 1.75rem;padding-block:1.5rem 2.5rem;border-block-start:1px solid var(--line)}
 .pv-source-reading a {display:inline-block;min-block-size:44px;padding-block:.5rem;font:.8125rem/1.6 var(--mono)}
 .voucher-project .page-footer-context {display:flex;flex-wrap:wrap;align-items:baseline;gap:.15rem .6rem}
@@ -153,6 +168,7 @@ html[data-reading-sans] .editorial-references {font-family:var(--readable-sans,s
   .pv-contents ol {grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:760px) {
+  .pv-implementation ol,.pv-implementation-meta {grid-template-columns:minmax(0,1fr)}
   .about-page .editorial-section,
   .voucher-project .editorial-section {display:block;padding-block:2.25rem 2.75rem}
   .about-page .editorial-section .about-section-head,
