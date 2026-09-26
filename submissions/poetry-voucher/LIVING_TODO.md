@@ -4,6 +4,7 @@ Status checked 26 September 2026. External deadlines are recorded in the case de
 
 ## CURRENT
 
+- [ ] The New River Journal electronic-literature/digital-art category: confirm whether the already-public complete browser work is eligible and read the final hosting/rights terms behind Submittable login; free entry, no contributor pay. [Official live call](https://thenewriver.submittable.com/submit) @dl(pv-new-river-elit-2026 due=2026-10-15 imp=med kind=hard lead=7)
 - [ ] Poetry London Pamphlet Prize 2026: review private English manuscript and resolve prior-publication and translation rules before a £20 entry. [Official call](https://poetrylondon.submittable.com/submit) @dl(pv-poetry-london-2026 due=2026-10-01 imp=high kind=hard lead=3)
 - [ ] Poetry Business 2027 Pamphlet Competition: resolve online A/B collection status and review its 12-month first-UK-publication right before any entry. [Official rules](https://poetrybusiness.co.uk/competitions/the-poetry-business-pamphlet-competition/) @dl(pv-poetry-business-2026 due=2026-11-04 imp=med kind=hard lead=14)
 - [ ] Center for Book Arts 2027 Chapbook Contest: review anonymous manuscript and clarify the online cycle's effect. [Official rules](https://centerforbookarts.submittable.com/submit/362913/2027-chapbook-contest) @dl(pv-cba-chapbook-2026 due=2026-12-15 imp=high kind=hard lead=30)
@@ -13,6 +14,7 @@ Status checked 26 September 2026. External deadlines are recorded in the case de
 
 ## UPCOMING / ROLLING
 
+- [ ] Async Museum open call: review the form's public fields and four prepared screenshots, authorise private contact-email entry and uploads, then approve the final free submission separately. It accepts a live browser-native artwork URL and grants a non-exclusive website/social/newsletter feature licence if submitted. [Official form](https://www.asyncmuseum.com/submit)
 - [ ] Center for Book Arts solo project exhibition (rolling): review the prepared email dossier and labelled ten-image set (two physical trials, six interface screenshots, two digital specimens of one work); decide whether to add separate recent works and price travel/installation before committing to delivery. The official page accepts proposals at `programs@centerforbookarts.org`; its old “Apply Now” link currently redirects to a general Submittable list. [Official call](https://centerforbookarts.org/opportunities/single-artist-exhibition)
 - [ ] Assemble a physically specified, priced first edition before sending a retail pitch to Presse Books or ICA Bookshop; currently only B3 and B4 trial prints are documented.
 - [ ] Measure the exact H10S paper stock, receipt/voucher lengths, failure rate, packing and fulfilment time; replace the scenario values in the private cost model.
