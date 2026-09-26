@@ -30,4 +30,4 @@ Status checked 26 September 2026. External deadlines are recorded in the case de
 
 ## CLOSED / REJECTED
 
-- No Poetry Voucher application has been submitted or rejected. Closed prior cycles are recorded in `opportunities.csv` for monitoring only.
+- Individual entry and result states are kept in the ignored private submission log during anonymous judging. Closed prior cycles are recorded in `opportunities.csv` for monitoring only.
