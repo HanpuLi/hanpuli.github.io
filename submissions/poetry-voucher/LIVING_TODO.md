@@ -13,7 +13,7 @@ Status checked 26 September 2026. External deadlines are recorded in the case de
 
 ## UPCOMING / ROLLING
 
-- [ ] Center for Book Arts solo project exhibition (rolling): review the labelled ten-image set (two physical trials, six interface screenshots, two digital specimens of one work); decide whether to add separate recent works and price travel/installation before committing to delivery. [Official call](https://centerforbookarts.org/opportunities/single-artist-exhibition)
+- [ ] Center for Book Arts solo project exhibition (rolling): review the prepared email dossier and labelled ten-image set (two physical trials, six interface screenshots, two digital specimens of one work); decide whether to add separate recent works and price travel/installation before committing to delivery. The official page accepts proposals at `programs@centerforbookarts.org`; its old “Apply Now” link currently redirects to a general Submittable list. [Official call](https://centerforbookarts.org/opportunities/single-artist-exhibition)
 - [ ] Assemble a physically specified, priced first edition before sending a retail pitch to Presse Books or ICA Bookshop; currently only B3 and B4 trial prints are documented.
 - [ ] Measure the exact H10S paper stock, receipt/voucher lengths, failure rate, packing and fulfilment time; replace the scenario values in the private cost model.
 
