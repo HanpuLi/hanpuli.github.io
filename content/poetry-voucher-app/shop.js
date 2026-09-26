@@ -227,8 +227,11 @@
       title.dataset.orderField='title';meta.dataset.orderField='meta';payment.dataset.orderField='payment';hint.dataset.shop='downloadHint';
       const fullLink=download(t('orderPdf'),multipagePDF(continuousOrderPages(result)),`poetry-order-${order.ref}.pdf`,urls);
       fullLink.dataset.shop='orderPdf';
+      const h10Print=node('button',t('Print receipt on H10S'),'download-link h10-print-receipt');
+      const printStatus=node('span',undefined,'h10-print-status micro');printStatus.setAttribute('role','status');
+      window.h10ReceiptPrinter?.add(h10Print,order,result.receipt);
       const textLink=node('a',t('textDownload'),'download-link'),readLink=node('a',t('readOrder'),'download-link');textLink.dataset.shop='textDownload';readLink.dataset.shop='readOrder';readLink.href='#reading-'+order.ref;textLink.download='poetry-order-'+order.ref+'-reading.html';
-      heading.append(title,meta,payment,fullLink,textLink,readLink,hint);
+      heading.append(title,meta,payment,fullLink,h10Print,printStatus,textLink,readLink,hint);
       section.refreshReading=()=>{
         const reading=OrderReading.view(order,result,t,uiMoney);reading.id='reading-'+order.ref;
         section.querySelector('.order-text-copy')?.remove();section.append(reading);
@@ -289,5 +292,7 @@
   document.addEventListener('catalogueerror',()=>{notify('loadError');el('no-results').hidden=false;el('no-results').textContent=t('loadError');});
   translateUI();renderBag();if(works.length)initialise();
   // Read-only inspection surface for regression tests; no mutable cart or order state exposed.
-  window.poetryShop={snapshot:()=>clone({bag,orders:orders.map(x=>x.order),busy}),quote:raw=>quote(validateLine(raw)),multipagePDF};
+  window.poetryShop={snapshot:()=>clone({bag,orders:orders.map(x=>x.order),busy}),quote:raw=>quote(validateLine(raw)),multipagePDF,
+    receiptPagesForH10:ref=>{const saved=orders.find(entry=>entry.order.ref===ref)?.order;if(!saved)return null;const copy=clone(saved);copy.receiptMetadata={...copy.receiptMetadata,till:'002'};return receiptPages(copy);}
+  };
 })();

@@ -98,7 +98,7 @@ const localeRows=[
 ['DIGITAL PROOF','DIGITAL PROOF','数字校样','デジタル校正','DIGITALE DRUCKVORSCHAU','ÉPREUVE NUMÉRIQUE','ЦИФРОВАЯ ПРОБА'],
 ['約','Approx.','约','約','Ca.','Env.','Около'],
 ['原站作品','Original publication','原站作品','原掲載ページ','Originalveröffentlichung','Publication originale','Оригинальная публикация'],
-['MADE IN YOUR BROWSER · NO REMOTE PRINTING','MADE IN YOUR BROWSER · NO REMOTE PRINTING','浏览器本地生成 · 不远程打印','ブラウザー内で作成 · 遠隔印刷なし','LOKAL IM BROWSER · KEIN FERNDRUCK','CRÉATION LOCALE · AUCUNE IMPRESSION À DISTANCE','СОЗДАНИЕ В БРАУЗЕРЕ · БЕЗ УДАЛЁННОЙ ПЕЧАТИ'],
+['BROWSER GENERATED · H10S PRINT ONLY FROM PAIRED TERMINAL','BROWSER GENERATED · H10S PRINT ONLY FROM PAIRED TERMINAL','浏览器本地制作 · 仅可从已配对终端打印到 H10S','ブラウザーで作成 · H10S 印刷はペアリング済み端末のみ','Im Browser erstellt · H10S-Druck nur am gekoppelten Terminal','Créé dans le navigateur · impression H10S depuis le terminal associé','Создано в браузере · печать на H10S только с сопряжённого терминала'],
 ["閱讀選項","Reading options","阅读选项","読みやすさ","Lesen","Lecture","Чтение"],
 ["閱讀偏好","Reading preferences","阅读偏好","読みやすさの設定","Leseeinstellungen","Préférences de lecture","Настройки чтения"],
 ["調整本站的閱讀顯示。設定只會儲存在此裝置。","Adjust this site for easier reading. Settings stay on this device.","调整本站的阅读样式。设置仅保存在此设备。","読みやすい表示に調整できます。設定はこの端末にだけ保存されます。","Darstellung für leichteres Lesen anpassen. Einstellungen werden nur auf diesem Gerät gespeichert.","Ajustez l’affichage pour faciliter la lecture. Les réglages restent sur cet appareil.","Настройте отображение для более удобного чтения. Параметры сохраняются только на этом устройстве."],
@@ -117,7 +117,7 @@ const traditionalOverrides={
   'AUTHOR EDITION':'作者版本',
   'READER EDITION':'訪客版本',
   'DIGITAL PROOF':'數位校樣',
-  'MADE IN YOUR BROWSER · NO REMOTE PRINTING':'瀏覽器本地生成 · 不遠程打印',
+  'BROWSER GENERATED · H10S PRINT ONLY FROM PAIRED TERMINAL':'瀏覽器本地製作 · 僅可從已配對終端列印到 H10S',
   'TYPEFACE_NOTE_TEMPLATE':'各語言的點陣字體均預設包含，使用 {bitmapSizes} 點整倍字形。網站字體 +{addOn}，包含 EB Garamond 與網站的中日文字體，提供 {siteSizes} 點。附加已發表譯文或簡體字版本 +{addOn}，僅提供已有對應版本的作品。',
   'TARIFF_NOTE_TEMPLATE':'{version}：原文按字數、非空行和分節加權，向上調至最近的 {ending} 結尾價格。標點、空格、題名及署名不計字數。網站字體、已發表譯文或簡體字版本及自選內容各加 {addOn}；自寫或修改原作即屬自選內容。附加版本不重複計字費，各商品相加為總價。',
   'PAYMENT_NOTE_TEMPLATE':'每次生成隨機安排刷卡、紙幣、硬幣或混合現金；超過 {coinLimit} 不安排純硬幣。現金足額，找零使用流通面額。切換語言不重抽；全部為虛構交易。'
@@ -159,7 +159,7 @@ function applyLocale(){
   staticBindings.forEach(({node,key,prefix,suffix})=>node.nodeValue=prefix+tr(key)+suffix);
   attributeBindings.forEach(({node,attr,key})=>node.setAttribute(attr,tr(key)));
   document.title=tr('製作室')+' · Poetry Voucher · Hanpu Li';
-  document.querySelector('meta[name="description"]').content=tr('製作詩券')+' · Hanpu Li · '+tr('MADE IN YOUR BROWSER · NO REMOTE PRINTING');
+  document.querySelector('meta[name="description"]').content=tr('製作詩券')+' · Hanpu Li · '+tr('BROWSER GENERATED · H10S PRINT ONLY FROM PAIRED TERMINAL');
   const route={'en':'','zh-Hant':'zh/','zh-Hans':'zh-hans/','ja':'ja/','de':'de/','fr':'fr/','ru':'ru/'}[uiLocale];
   portfolioLinks.forEach(link=>link.href='https://hanpuli.github.io/'+route);
   portfolioWorkLinks.forEach(link=>link.href='https://hanpuli.github.io/'+route+'#work');

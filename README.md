@@ -49,7 +49,7 @@ open-text Studio is retired; its old URL redirects to the same-language shop.
 The shop offers all 23 catalogue works with Traditional or Simplified Chinese
 originals, optional published translations, typeface and size choices, quantities,
 a local bag, fictional checkout, image PDFs and a complete offline HTML reading copy.
-There is no real payment, upload, delivery or remote printing.
+There is no real payment, upload or delivery. The order page can hand a receipt to an H10S only when it is open inside that device's paired local wrapper and the user taps the receipt-print button; the public site has no remote print endpoint.
 
 The work is intended to be encountered on paper. Early print trials exist, as
 reported by the author; current website samples are frozen digital specimens,
