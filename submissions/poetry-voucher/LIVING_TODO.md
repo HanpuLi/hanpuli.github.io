@@ -20,13 +20,14 @@ Status checked 26 September 2026. External deadlines are recorded in the case de
 ## RECURRING
 
 - [ ] Watch the next official New Media Writing Prize and Electronic Literature Organization calls; no confirmed next-cycle deadline is recorded.
-- [ ] Watch future artist-book fairs after a saleable physical edition exists.
+- [ ] Watch future artist-book fairs after a saleable physical edition exists. Brighton Art Book Fair's [2026 call](https://www.brightonartbookfair.org/opencall) is open until 30 September, but requires a £10 application fee, a £35/£70 table if selected and two days of staffed sales; the present B3/B4 trials are not stocked goods. Do not carry that deadline over to future years.
 
 ## NOT ELIGIBLE / LOW FIT UNTIL FACTS CHANGE
 
 - Spike Island Lingua Franca requires studio-holder or Associate membership, which has not been established.
 - The CBA NYC residency requires a New York base; the project records London.
 - ELO Directory does not accept self-authored creator entries.
+- Dublin Art Book Fair 2026 [limits its individual artist call to residents of the Republic of Ireland or Northern Ireland](https://www.templebargallery.com/content/files/Dublin-Art-Book-Fair-2026-Application-Overview.pdf); its books must also be saleable, so this London-based project does not qualify this year.
 
 ## CLOSED / REJECTED
 
