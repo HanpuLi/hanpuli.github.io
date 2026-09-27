@@ -92,12 +92,17 @@ def save_card(name: str, eyebrow: str, title: str, *, glyph: str | None = None) 
 
 
 def build_touch_icon() -> None:
-    image = Image.new("RGB", (180, 180), PAPER)
+    # Match the favicon's EB Garamond H and full stop at 180 px. Draw at 4x
+    # so the hairlines survive downsampling on a home-screen icon.
+    scale = 4
+    unit = 180 / 64 * scale
+    image = Image.new("RGB", (180 * scale, 180 * scale), PAPER)
     draw = ImageDraw.Draw(image)
-    draw.line((49, 34, 49, 146), fill=INK, width=14)
-    draw.line((131, 34, 131, 146), fill=INK, width=14)
-    draw.line((49, 90, 131, 90), fill=INK, width=14)
-    draw.ellipse((120, 79, 142, 101), fill=ACCENT)
+    letter = font_from_woff2(FONTS / "eb-garamond-latin-400.woff2", round(60 * unit))
+    draw.text((6.28 * unit, 50.2 * unit), "H", font=letter, fill=INK, anchor="ls")
+    x, y, radius = 57.2 * unit, 48.5 * unit, 3.2 * unit
+    draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=ACCENT)
+    image = image.resize((180, 180), Image.Resampling.LANCZOS)
     image.save(ROOT / "assets" / "apple-touch-icon.png", "PNG", optimize=True)
 
 
