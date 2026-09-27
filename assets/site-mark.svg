@@ -1,19 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <title>Hanpu Li — the receipt ends; the poem continues</title>
+  <title>Hanpu Li — 函</title>
+  <desc>The middle character of 李函璞, set from Shippori Mincho with a vermilion printer's mark.</desc>
   <style>
-    .ink { fill: none; stroke: #171614; stroke-linecap: round; stroke-linejoin: round; }
-    .poem { fill: none; stroke: #8a2f1d; stroke-linecap: round; stroke-linejoin: round; }
-    .curl { fill: #171614; }
+    .ink { fill: #171614; }
+    .mark { fill: #8a2f1d; }
     @media (prefers-color-scheme: dark) {
-      .ink { stroke: #f5f2eb; }
-      .poem { stroke: #c7765e; }
-      .curl { fill: #f5f2eb; }
+      .ink { fill: #f5f2eb; }
+      .mark { fill: #c7765e; }
     }
   </style>
-  <!-- One imperfect paper strip: a curl, a few printed marks, then a loose line. -->
-  <path class="ink" stroke-width="3.7" d="M13 12 C20 9 29 8 36 9 C43 11 44 17 44 25 C44 31 44 37 47 41"/>
-  <path class="curl" d="M13 10 C10 11 9 15 11 18 C13 20 16 17 19 16 C20 13 18 10 16 10 Z"/>
-  <path class="ink" stroke-width="4.1" d="M19 16 C19 25 19 35 21 43 C23 48 27 47 31 46 C37 44 39 51 46 49"/>
-  <path class="ink" stroke-width="3.3" d="M27 29 C30 28 32 28 35 28 M28 36 C30 35 32 35 34 35"/>
-  <path class="poem" stroke-width="4.1" d="M46 49 C50 47 52 42 55 44 C58 47 58 50 61 45"/>
+  <!-- Shippori Mincho glyph uni51FD; SIL Open Font License 1.1. -->
+  <path class="ink" d="M505 618Q508 622 515.0 631.5Q522 641 528 641Q537 641 566.5 613.0Q596 585 596 574Q586 562 559 558Q557 326 547.5 227.0Q538 128 514 100Q499 82 477.0 72.5Q455 63 430 63Q430 98 417 110Q410 117 393.0 122.5Q376 128 357 131L358 148L381 146Q427 142 443 142Q455 142 460.5 144.0Q466 146 471 153Q485 170 491.5 263.0Q498 356 500 566H412L400 527Q390 520 372 520Q355 520 337 526Q350 557 366.5 618.5Q383 680 393 731H229Q158 730 79 717L54 769Q109 763 187 761H800L823 792Q826 796 833.0 805.5Q840 815 844.5 819.5Q849 824 853 824Q859 824 880.5 807.5Q902 791 920.5 772.5Q939 754 939 747Q936 731 915 731H455Q440 664 420 595H490ZM814 409Q814 535 801 614Q857 597 879.0 587.5Q901 578 901 571Q901 566 892 561L875 551V195Q877 71 883 -40Q877 -51 860.0 -60.0Q843 -69 826 -69Q810 -69 810 -49Q810 -49 814 -23V1H185V-17Q186 -27 186.5 -35.0Q187 -43 188 -46Q186 -57 170.0 -66.5Q154 -76 137 -76Q128 -76 121.0 -70.0Q114 -64 114 -56Q118 3 121.0 58.5Q124 114 125 204V408Q125 534 112 613Q168 596 190.0 586.5Q212 577 212 570Q212 565 203 560L185 550V30H814ZM735 543Q770 525 770 516Q770 512 759 510L743 509Q690 459 592 378L582 389L588 398Q616 440 643.5 491.0Q671 542 686 580ZM258 530Q333 503 368.0 466.0Q403 429 403 396Q403 380 395.0 369.5Q387 359 374 359Q361 359 348 369Q340 405 311.0 447.5Q282 490 248 522ZM575 340Q645 315 690.0 283.5Q735 252 754.5 221.5Q774 191 774 167Q774 151 767.0 142.0Q760 133 748 133Q736 133 725 140Q710 186 662.5 239.5Q615 293 564 330ZM208 208Q263 233 442 338L449 326Q442 320 432.5 310.5Q423 301 408 288Q318 203 274 164Q272 144 260 135L234 171Z" transform="translate(29 31) scale(0.0477777778 -0.0477777778) translate(-496.5 -374.0)"/>
+  <path class="mark" d="M53 45h3v11h-3z"/>
 </svg>
