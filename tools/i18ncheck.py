@@ -467,7 +467,7 @@ def main() -> int:
                 '<meta property="og:image"',
                 '<meta name="twitter:card" content="summary_large_image">',
                 '<script type="application/ld+json">',
-                'assets/site-mark.svg',
+                'assets/site-icon-64.png',
                 'assets/apple-touch-icon.png',
             ):
                 if contract not in essay_text:
@@ -550,7 +550,7 @@ def main() -> int:
                         errors.append(
                             f"{path.relative_to(ROOT)}: missing head contract {contract}"
                         )
-            for icon in ("assets/site-mark.svg", "assets/apple-touch-icon.png"):
+            for icon in ("assets/site-icon-64.png", "assets/apple-touch-icon.png"):
                 if icon not in text:
                     errors.append(f"{path.relative_to(ROOT)}: missing shared icon {icon}")
             visible_text = re.sub(
