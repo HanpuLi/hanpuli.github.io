@@ -108,7 +108,7 @@ Then open http://127.0.0.1:8000/.
 
 ## Social previews and link health
 
-The non-home portfolio pages use repository-local 1200×630 Open Graph cards. All generated portfolio pages share a small SVG mark: an open frame can suggest a page, an image or a record; one line begins within it and continues beyond its edge. The browser icon is drawn for legibility at 16 px and follows the light/dark color scheme. The Apple touch icon renders the same vector mark on the site's paper color. Rebuild it with the pinned browser dependencies after `npm ci`:
+The non-home portfolio pages use repository-local 1200×630 Open Graph cards. All generated portfolio pages share a small SVG mark: a curling paper strip carries two lines of type before its lower edge becomes a free red line. It draws on the Poetry Voucher print's own movement from receipt to poem. The browser icon is drawn for legibility at 16 px and follows the light/dark color scheme. The Apple touch icon renders the same vector mark on the site's paper color. Rebuild it with the pinned browser dependencies after `npm ci`:
 
 ```sh
 node tools/build_site_icon.mjs
