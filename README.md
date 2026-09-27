@@ -108,7 +108,7 @@ Then open http://127.0.0.1:8000/.
 
 ## Social previews and link health
 
-The non-home portfolio pages use repository-local 1200×630 Open Graph cards. All generated portfolio pages share an SVG favicon with an outlined EB Garamond `H`, a red full stop and light/dark color variants. The Apple touch icon uses the same letterform on the site's paper color. Rebuild the social cards and Apple touch icon from the self-hosted fonts with:
+The non-home portfolio pages use repository-local 1200×630 Open Graph cards. All generated portfolio pages share an SVG favicon made from the self-hosted EB Garamond italic `hl` letterforms, with light and dark color variants. The Apple touch icon uses the same small signature on the site's paper color. Rebuild both icons and the social cards from the self-hosted fonts with:
 
 ```sh
 uv run --with fonttools --with brotli --with pillow python tools/build_social_cards.py
