@@ -7,8 +7,6 @@ import tempfile
 from pathlib import Path
 
 from fontTools.ttLib import TTFont
-from fontTools.pens.svgPathPen import SVGPathPen
-from fontTools.pens.transformPen import TransformPen
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -93,56 +91,13 @@ def save_card(name: str, eyebrow: str, title: str, *, glyph: str | None = None) 
     image.save(OUT / name, "PNG", optimize=True)
 
 
-def build_site_icons() -> None:
-    # A small author signature, drawn from the same italic face as the site's
-    # literary typography. Generate the vector and touch icon together.
-    source = FONTS / "eb-garamond-latin-italic-400.woff2"
-    font = TTFont(source)
-    try:
-        glyphs = font.getGlyphSet()
-        cmap = font.getBestCmap()
-        h = glyphs[cmap[ord("h")]]
-        l = glyphs[cmap[ord("l")]]
-        h_pen = SVGPathPen(glyphs)
-        l_pen = SVGPathPen(glyphs)
-        h.draw(h_pen)
-        l.draw(l_pen)
-        advance = h.width
-    finally:
-        font.close()
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <title>Hanpu Li</title>
-  <style>
-    .ink {{ fill: #171614; }}
-    @media (prefers-color-scheme: dark) {{ .ink {{ fill: #f5f2eb; }} }}
-  </style>
-  <g class="ink" transform="translate(3.75 55.7) scale(.068 -.068)">
-    <path d="{h_pen.getCommands()}"/>
-    <path transform="translate({advance} 0)" d="{l_pen.getCommands()}"/>
-  </g>
-</svg>
-'''
-    (ROOT / "assets" / "site-mark.svg").write_text(svg, encoding="utf-8")
-
-    # Draw at 4x so the italic hairlines survive downsampling.
-    scale = 4
-    unit = 180 / 64 * scale
-    image = Image.new("RGB", (180 * scale, 180 * scale), PAPER)
-    draw = ImageDraw.Draw(image)
-    letter = font_from_woff2(source, round(68 * unit))
-    draw.text((3.75 * unit, 55.7 * unit), "hl", font=letter, fill=INK, anchor="ls")
-    image = image.resize((180, 180), Image.Resampling.LANCZOS)
-    image.save(ROOT / "assets" / "apple-touch-icon.png", "PNG", optimize=True)
-
-
 def main() -> None:
     save_card("ci.png", "04 / CI", "Sixteen-poem cycle · appendix · later pair", glyph="詞")
     save_card("shi.png", "05 / POEMS", "Poems in draft", glyph="詩")
     save_card("about.png", "IMPLEMENTATION NOTES / 2026", "ABOUT\nTHIS SITE")
     save_card("trainspotting.png", "ESSAY / TRAINSPOTTING", "FROM GEARS\nTO GASP")
     save_card("first-love.png", "STUDY / FIRST LOVE", "ON FIRST LOVE")
-    build_site_icons()
-    print("social cards: ci, shi, about, trainspotting, first-love; site icons")
+    print("social cards: ci, shi, about, trainspotting, first-love")
 
 
 if __name__ == "__main__":
