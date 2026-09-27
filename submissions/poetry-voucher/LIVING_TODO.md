@@ -23,6 +23,7 @@ Status checked 27 September 2026. External deadlines are recorded in the case de
 ## RECURRING
 
 - [ ] Watch the next official New Media Writing Prize and Electronic Literature Organization calls; no confirmed next-cycle deadline is recorded.
+- [ ] Watch [Welcome to my Homepage](https://welcometomyhomepage.net/apply) for its next worldwide online-residency call, which the organiser says is planned for early 2027. The October 2026 Oulu round excludes applicants outside Oulu and surrounding areas; do not apply to that round. The current FAQ says applications are free and projects can be hosted on an artist's own site, but next-round dates, terms and any exhibition-travel expectations need fresh verification. No deadline is recorded yet.
 - [ ] Watch future artist-book fairs after a saleable physical edition exists. Brighton Art Book Fair's [2026 call](https://www.brightonartbookfair.org/opencall) is open until 30 September, but requires a £10 application fee, a £35/£70 table if selected and two days of staffed sales; the present B3/B4 trials are not stocked goods. Do not carry that deadline over to future years.
 
 ## NOT ELIGIBLE / LOW FIT UNTIL FACTS CHANGE
