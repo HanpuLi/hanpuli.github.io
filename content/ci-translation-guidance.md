@@ -39,8 +39,9 @@ This file records semantic constraints distilled from the author's current annot
 - 乙六「我亦有天涯」: B also has a horizon/life not exhausted by A's story; it does not assert “I have forgotten you”.
 - 乙七「當時渾不異」: the comparison is unstated; do not over-fix it as one explicit proposition.
 - 乙七「忘川人自渡」: descriptive/reflexive “each crosses for themselves/alone”; do not add modal obligation (“must”).
-- 甲九「當時燈影共成篇」: the texts now form a work together. The textual/archival fact does not retroactively prove shared consent to one interpretation.
-- 甲九「指點卿行在我邊」: the lines are physically beside A's lines in the bound volume; this is true evidence, but limited evidence.
+- 甲九「舊時燈影各成篇」: `各` keeps the two textual voices distinct before A physically binds them together in the next line; do not translate it as mutual agreement or a shared retrospective account.
+- 甲九「賓一哂，語猶慳」: keep the challenge implicit. The guest only smiles; do not invent an explicit objection, and do not force 「語猶慳」 to belong unambiguously to the guest or to A.
+- 甲九「箋中淺字只加餐／深言怕誤重重掩／欲喚還休欲喚難」: this is A's interpretive reordering of B's own language. It draws on B4's 「深言怕誤，淺字偏安」 and 「丁寧只是加餐」 and B2's 「欲喚還休」, turning restraint into evidence of deeper feeling. Preserve that slippage as A's reading; do not upgrade it into an objective claim that B reciprocated A's love. Preserve the lexical repetition in 「欲喚…欲喚」 rather than paraphrasing the second occurrence away, and reuse the established B2/B4 wording in each target language wherever possible so the quotation-like echo remains audible.
 - 集外甲十「中呂 · 山坡羊」: retain `Zhonglü` as the modal designation; do not omit it.
 - 集外《鷓鴣天》「硯」: translate specifically as inkstone / Tuschstein / pierre à encre where the object matters.
 - 集外《鷓鴣天》「獨餘一語」: `語` is an utterance/phrase, not necessarily a typographic line.
