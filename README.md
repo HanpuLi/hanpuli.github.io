@@ -108,7 +108,7 @@ Then open http://127.0.0.1:8000/.
 
 ## Social previews and link health
 
-The non-home portfolio pages use repository-local 1200×630 Open Graph cards. The site mark is an italic `H` from the site's licensed EB Garamond font followed by a vermilion comma. It takes the initial of Hanpu's name into a line of text that remains open, using type and punctuation rather than a drawn object. The browser icon is checked at 16 px and follows the light/dark color scheme. The Apple touch icon renders the same vector mark on the site's paper color. Rebuild it with the pinned browser dependencies after `npm ci`:
+The non-home portfolio pages use repository-local 1200×630 Open Graph cards. The site mark is an italic `H` from the site's licensed EB Garamond font, with a small cut through its crossbar to suggest a line revised on the page. It uses one ink colour and the site's paper colour, with no separate illustration. The browser icon is checked at 16 px and follows the light/dark color scheme. The Apple touch icon renders the same vector mark on the site's paper color. Rebuild it with the pinned browser dependencies after `npm ci`:
 
 ```sh
 node tools/build_site_icon.mjs

@@ -1200,7 +1200,7 @@
       "created": "2026-09-24T11:00:00.000Z",
       "lines": [
         {
-          "id": "8016d101-a019-4df4-83ba-230d6d634f86",
+          "id": "2fc960ee-736e-430d-8fbe-741d875ff877",
           "workId": "ci-b3",
           "font": "bitmap",
           "size": 24,
@@ -1996,12 +1996,12 @@
     "assets/fonts/shippori-mincho-subset.woff2": "2bc4d221b1e045ac1042cb7445f4d10aef426a42ac6ddca9fa8b7ff4f63d4bee",
     "assets/fonts/site-mono-symbols.woff2": "3db44384d654fceb70d63b2f424ac6595bbb93dec9df3ced06be35c55e9c0805",
     "assets/fonts/site-serif-symbols.woff2": "c7a950096538d4280d661a4a8b59d2749713cb0d23c501cdd547b101d6b589a6",
-    "index.html": "e0ef61e7188b8141a28ac62aca2aa0c3703e796e6734a50889acb9e74f9cdba1",
-    "zh/index.html": "c83b5283cd5622313bd50b415b8f46b01c595c2278b9be10ea1f3736fff14f36",
-    "zh-hans/index.html": "224d60ff0db5698f0901b2726205babae17897a37af461e190b0052e1800b03d",
-    "ja/index.html": "dea028dcfd368f52dd1cb3c21a34bb3d3177efb245e06d7a1f776fe4cb54b3f5",
-    "de/index.html": "c12a2cc3e6c62f158f5136f8e53ced852b538d4de6ea21a242ca000558e20164",
-    "fr/index.html": "405f6d52f1b945237acfd1730ac3dfeeed3cdcf443e63b31d597ced2ce22e8a6",
-    "ru/index.html": "6d02721fc802f6d60bd3ec38d9f8e94196ff41f291506765bbd74907b6cacb15"
+    "index.html": "d38f167b2d9e43d89b0b0d501db71d69e8f41501c360d1cccf1a867268874369",
+    "zh/index.html": "41119858e458f78ec9651bdfad55ceaa48bc4cc574a4ae91737426944c9927d7",
+    "zh-hans/index.html": "6655a05d320cf80eb3fac728a0f18c41b1c29f29cefe409046f61e002ebfcee6",
+    "ja/index.html": "5d013030536ff865b7a71e8bf4dfa7c084bf1b1910dfc6b0045f3753701b4347",
+    "de/index.html": "68b7a86daf63cdcec0fd4eb226be292914ac75df2c6f7a59988fdafcb219f9a2",
+    "fr/index.html": "9ca904121a74b0bda48e106754663953587116ec768f2ef926cac66a3f2adca6",
+    "ru/index.html": "90767a11ceace8cf32468b03856ba1017223d7fe7186b4544f07c66ce69a3ae1"
   }
 }
