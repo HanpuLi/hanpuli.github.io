@@ -240,8 +240,8 @@ def render(
 {alternates}{seo_meta}
 <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="/assets/site-mark.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="icon" href="/assets/site-mark.svg?v=20260927" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260927">
 <script src="/assets/accessibility.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/first-love-public.css">
