@@ -108,7 +108,7 @@ Then open http://127.0.0.1:8000/.
 
 ## Social previews and link health
 
-The non-home portfolio pages use repository-local 1200×630 Open Graph cards. The site icon is a crop of the actual B3 thermal-paper trial at the junction between its fictional receipt and poem, including the genuine printed cut line. `assets/site-mark.svg` embeds the existing scan without redrawing or altering its words; the 64 px browser and 180 px Apple PNGs are rendered from that source. The crop is a representation of one documented trial, not another printed edition. Rebuild the icons with the pinned browser dependencies after `npm ci`:
+The non-home portfolio pages use repository-local 1200×630 Open Graph cards. The site icon sets a red ink stroke across two dark editorial rules, echoing the home page’s question of whether evidence supports a claim. `assets/site-mark.svg` embeds the cropped high-resolution artwork; the 64 px browser and 180 px Apple PNGs are rendered from it. Rebuild the icons with the pinned browser dependencies after `npm ci`:
 
 ```sh
 node tools/build_site_icon.mjs

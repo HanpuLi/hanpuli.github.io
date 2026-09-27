@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Render the source scan crop into compact browser and Apple icons.
-// The SVG embeds the unaltered B3 trial scan and positions its real cut line.
+// Render the high-resolution source mark into browser and Apple icons.
+// The SVG embeds the cropped high-resolution artwork.
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';

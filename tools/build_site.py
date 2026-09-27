@@ -289,8 +289,8 @@ def essay_hreflang_links() -> str:
 
 def icon_links(prefix: str) -> str:
     return (
-        f'<link rel="icon" href="{prefix}assets/site-icon-64.png?v=20260927c" type="image/png">\n'
-        f'<link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png?v=20260927c">'
+        f'<link rel="icon" href="{prefix}assets/site-icon-64.png?v=20260927e" type="image/png">\n'
+        f'<link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png?v=20260927e">'
     )
 
 
