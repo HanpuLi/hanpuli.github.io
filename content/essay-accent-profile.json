@@ -1,29 +1,36 @@
 {
   "en": {
+    "display_title": "The Listener Inside the Accent Score",
     "meta_description": "An applied-linguistics essay on why an accent score also measures its listeners—and why every recommendation must say who is being asked to change.",
     "language_note": ""
   },
   "zh": {
+    "display_title": "口音評分中的聽者",
     "meta_description": "一篇應用語言學文章，討論口音評分為何也在測量聽者，以及每項建議為何都必須說明要求誰改變。正文為英文。",
     "language_note": "正文為英文；此頁保留繁體中文站內導覽。"
   },
   "zh-hans": {
+    "display_title": "口音评分中的听者",
     "meta_description": "一篇应用语言学文章，讨论口音评分为何也在测量听者，以及每项建议为何都必须说明要求谁改变。正文为英文。",
     "language_note": "正文为英文；此页保留简体中文站内导航。"
   },
   "ja": {
+    "display_title": "アクセント評定の内側にいる聞き手",
     "meta_description": "アクセント評定が話者だけでなく聞き手も測る理由と、提言ごとに誰に変化を求めるのかを明示すべき理由を論じる応用言語学のエッセイ。本文は英語。",
     "language_note": "本文は英語です。このページでは日本語版サイトのナビゲーションを表示しています。"
   },
   "de": {
+    "display_title": "Die Zuhörenden in der Akzentbewertung",
     "meta_description": "Ein angewandt-linguistischer Essay darüber, warum eine Akzentbewertung auch die Zuhörenden misst und jede Empfehlung benennen muss, wer sich ändern soll. Der Text ist auf Englisch.",
     "language_note": "Der Essay selbst ist auf Englisch; diese Seite verwendet die deutsche Navigation der Website."
   },
   "fr": {
+    "display_title": "L’auditeur au cœur de l’évaluation de l’accent",
     "meta_description": "Un essai de linguistique appliquée sur la manière dont une note d’accent mesure aussi les auditeurs, et sur l’obligation de préciser à qui chaque recommandation demande de changer. Le texte est en anglais.",
     "language_note": "Le texte de l’essai est en anglais ; cette page conserve la navigation française du site."
   },
   "ru": {
+    "display_title": "Слушатель внутри оценки акцента",
     "meta_description": "Эссе о том, почему оценка акцента измеряет также слушателей и почему каждая рекомендация должна прямо называть, от кого требуется изменение. Основной текст на английском.",
     "language_note": "Основной текст эссе — на английском; на этой странице сохранена русская навигация сайта."
   }

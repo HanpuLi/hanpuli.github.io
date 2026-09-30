@@ -12,12 +12,12 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[1]
 FONTS = ROOT / "assets" / "fonts"
 OUT = ROOT / "assets" / "social"
+SITE_ICON = ROOT / "assets" / "apple-touch-icon.png"
 
 PAPER = "#f5f2eb"
 INK = "#171614"
 MUTED = "#625e57"
 LINE = "#d7d2c8"
-ACCENT = "#8a2f1d"
 SIZE = (1200, 630)
 
 
@@ -63,7 +63,8 @@ def base_card() -> tuple[Image.Image, ImageDraw.ImageDraw]:
     draw = ImageDraw.Draw(image)
     draw.line((72, 72, 1128, 72), fill=INK, width=2)
     draw.line((72, 558, 1128, 558), fill=LINE, width=2)
-    draw.ellipse((1098, 42, 1128, 72), fill=ACCENT)
+    mark = Image.open(SITE_ICON).convert("RGB").resize((72, 72), Image.Resampling.LANCZOS)
+    image.paste(mark, (1056, 36))
     return image, draw
 
 
@@ -92,16 +93,19 @@ def save_card(name: str, eyebrow: str, title: str, *, glyph: str | None = None) 
 
 
 def main() -> None:
+    save_card("site.png", "HANPU LI / PORTFOLIO", "WRITING · FILM\nPHOTOGRAPHY\nSYSTEMS")
     save_card("ci.png", "04 / CI", "Sixteen-poem cycle · appendix · later pair", glyph="詞")
     save_card("shi.png", "05 / POEMS", "Poems in draft", glyph="詩")
     save_card("about.png", "IMPLEMENTATION NOTES / 2026", "ABOUT\nTHIS SITE")
+    save_card("contexts.png", "RESEARCH / PRACTICE", "SELECTED\nCONTEXTS")
+    save_card("poetry-voucher.png", "ART EDITION / 58 MM", "POETRY\nVOUCHER")
     save_card("trainspotting.png", "ESSAY / TRAINSPOTTING", "FROM GEARS\nTO GASP")
     save_card("hogg-auteur.png", "FILM CRITICISM / JOANNA HOGG", "HOW PRAISE ASSIGNS\nA FILM TO\nONE AUTHOR")
     save_card("film-carbon-boundaries.png", "SCREEN INDUSTRIES / CARBON", "ONE CARBON NUMBER\nCANNOT DO TWO JOBS")
     save_card("final-e-history.png", "HISTORY OF ENGLISH / SPELLING", "HOW FINAL E MADE\nDIFFERENT HISTORIES\nLOOK ALIKE")
     save_card("accent-profile.png", "APPLIED LINGUISTICS / LISTENING", "THE LISTENER INSIDE\nTHE ACCENT SCORE")
     save_card("first-love.png", "STUDY / FIRST LOVE", "ON FIRST LOVE")
-    print("social cards: ci, shi, about, trainspotting, hogg-auteur, film-carbon-boundaries, accent-profile, final-e-history, first-love")
+    print("social cards: site, ci, shi, about, contexts, poetry-voucher, trainspotting, hogg-auteur, film-carbon-boundaries, accent-profile, final-e-history, first-love")
 
 
 if __name__ == "__main__":

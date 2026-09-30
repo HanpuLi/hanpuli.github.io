@@ -17,7 +17,7 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `shi-simplified.json` — script-only Simplified Chinese mirror of the canonical poem source; its source hash is checked in CI.
 - `essays.json` — registry of public essays, their source fragments, metadata files and social images.
 - `essays/<slug>.inc` — English source fragments for the public essays.
-- `essay-<name>.json` — per-locale metadata and the notice used by each language shell; the essay bodies themselves remain English.
+- `essay-<name>.json` — per-locale discovery titles, metadata and the notice used by each language shell; the essay bodies and their canonical publication titles remain English. `display_title` may contain unnested `<em>` only and is used on locale home cards, never as the essay's citation title.
 - `about-site.json` — the seven editorial essays for About this site: selection, visual authority, translation, versions, reader adaptation, authorship and maintenance.
 - `contexts.json` — localised catalogue back matter for credit-name mapping, selected professional contexts and clearly identified first-party public records.
 
@@ -38,9 +38,18 @@ python3 tools/sitecheck.py
 `tools/build_site.py --check` fails if generated HTML or the sitemap is stale. CI runs this
 check on every push. The generated head contract also includes locale alternates, Open Graph/Twitter metadata, shared icons and JSON-LD; the localisation and site checks guard those outputs.
 
-For browser-level geometry, HTML and accessibility QA, install the pinned development dependencies with `npm ci` and run `npm run qa`. Social preview cards and the Apple touch icon are rebuilt separately with:
+Public essays developed from assessed or earlier research identify that provenance in the
+article header. Evidence-bearing notes use numbered `doc-noteref` links, stable endnote IDs
+and return links, while the reference list retains the full bibliographic record. Appendices are
+subject-led rather than a house requirement: add one when a corpus, dataset or method needs
+an inspectable map, but do not give every essay matching apparatus merely for visual symmetry.
+The Hogg essay therefore carries a six-text corpus appendix; the other essays keep the
+evidence structures their arguments actually require.
+
+For browser-level geometry, HTML and accessibility QA, install the pinned development dependencies with `npm ci` and run `npm run qa`. Social preview cards and the browser, Apple and installable-web-app icons are rebuilt separately with:
 
 ```sh
+node tools/build_site_icon.mjs
 uv run --with fonttools --with brotli --with pillow python tools/build_social_cards.py
 ```
 

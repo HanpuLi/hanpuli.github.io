@@ -108,7 +108,9 @@ Then open http://127.0.0.1:8000/.
 
 ## Social previews and link health
 
-The non-home portfolio pages use repository-local 1200×630 Open Graph cards. The site icon sets a red ink stroke across two dark editorial rules, echoing the home page’s question of whether evidence supports a claim. `assets/site-mark.svg` embeds the cropped high-resolution artwork; the 64 px browser and 180 px Apple PNGs are rendered from it. Rebuild the icons with the pinned browser dependencies after `npm ci`:
+The index and portfolio pages use repository-local 1200×630 Open Graph cards carrying the shared site mark. Social platforms use these cards rather than the favicon, so the mark is composed into the card artwork itself. The site icon sets a red ink stroke across two dark editorial rules, echoing the home page’s question of whether evidence supports a claim.
+
+`assets/site-mark.svg` embeds the cropped high-resolution artwork. The icon build produces 32/64 px browser PNGs, the root `favicon.ico` fallback, a 180 px Apple touch icon, 192/512 px web-app icons and a padded 512 px maskable icon. `site.webmanifest` supplies the installable-web-app identity. Rebuild the icons with the pinned browser dependencies after `npm ci`:
 
 ```sh
 node tools/build_site_icon.mjs
@@ -122,7 +124,7 @@ uv run --with fonttools --with brotli --with pillow python tools/build_social_ca
 
 A separate scheduled workflow runs `tools/linkcheck_external.py` weekly against external links in the generated personal-site pages. It is intentionally independent of deployment: genuine 404/410 responses fail that audit, while rate limits, bot blocks, timeouts and 5xx responses are reported as indeterminate instead of breaking ordinary site publication.
 
-`tools/build_site.py` also generates `sitemap.xml` for every indexable canonical portfolio route. Each localized URL carries the complete reciprocal `hreflang` family plus `x-default`; `robots.txt` advertises the sitemap. `tools/sitecheck.py` verifies sitemap membership, reciprocal locale mappings, canonical URLs, the absence of `noindex` on sitemap entries, descriptions, social metadata and JSON-LD so discovery metadata cannot silently drift from generated pages. GitHub Pages is configured through `_config.yml` to exclude the source-only `content/`, `docs/`, `templates/`, `tools/`, package metadata and repository documentation from the deployed site; those files remain available in the repository but are not part of the public web tree.
+`tools/build_site.py` also generates `sitemap.xml` for every indexable canonical portfolio route. Each localized URL carries the complete reciprocal `hreflang` family plus `x-default`; `robots.txt` advertises the sitemap. `tools/sitecheck.py` verifies sitemap membership, reciprocal locale mappings, canonical URLs, the absence of `noindex` on sitemap entries, descriptions, social metadata, JSON-LD, manifest fields and install-icon dimensions so discovery and app identity cannot silently drift from generated pages. GitHub Pages is configured through `_config.yml` to exclude the source-only `content/`, `docs/`, `templates/`, `tools/`, package metadata and repository documentation from the deployed site; those files remain available in the repository but are not part of the public web tree.
 
 ## Content and rights
 

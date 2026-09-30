@@ -100,7 +100,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  unicode-range: U+0394, U+2248;
+  unicode-range: U+0394, U+2082, U+2248;
 }
 
 @font-face {
@@ -4085,6 +4085,28 @@ html[data-reading-simple] .about-page .about-facts > div + div {
   margin-top: 1.2em;
 }
 
+.essay-page .essay-noteref {
+  position: relative;
+  top: -.15em;
+  margin-inline-start: .12em;
+  font-family: var(--mono);
+  font-size: .62em;
+  font-variant-numeric: tabular-nums;
+  line-height: 0;
+}
+
+.essay-page .essay-noteref a {
+  color: var(--accent);
+  text-decoration: none;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .16em;
+}
+
+.essay-page .essay-noteref a:hover,
+.essay-page .essay-noteref a:focus-visible {
+  text-decoration: underline;
+}
+
 .essay-page .essay-body section {
   margin-top: clamp(64px, 7vw, 94px);
 }
@@ -4103,6 +4125,105 @@ html[data-reading-simple] .about-page .about-facts > div + div {
   padding-top: 14px;
   border-top: 1px solid var(--line);
   font-size: .88em;
+}
+
+.essay-page :is(.essay-appendix, .essay-notes) {
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.essay-page .essay-notes {
+  font-size: .84em;
+  line-height: 1.62;
+}
+
+.essay-page .essay-notes ol {
+  max-width: 68ch;
+  margin: 0;
+  padding-inline-start: 1.5em;
+}
+
+.essay-page .essay-notes li {
+  padding-inline-start: .25em;
+}
+
+.essay-page .essay-notes li + li {
+  margin-top: .82em;
+}
+
+.essay-page .essay-note-back {
+  margin-inline-start: .28em;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: .82em;
+  text-decoration: none;
+}
+
+.essay-page .essay-note-back:hover,
+.essay-page .essay-note-back:focus-visible {
+  color: var(--accent);
+}
+
+.essay-page .essay-notes li:target,
+.essay-page .essay-noteref a:target {
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+  outline: 4px solid color-mix(in srgb, var(--accent) 9%, transparent);
+}
+
+.essay-page .essay-table-wrap {
+  width: 100%;
+  margin-top: 1.7em;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.essay-page .essay-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-size: .78em;
+  line-height: 1.48;
+}
+
+.essay-page .essay-table caption {
+  padding-bottom: .7em;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: .88em;
+  letter-spacing: .04em;
+  text-align: start;
+  text-transform: uppercase;
+}
+
+.essay-page .essay-table :is(th, td) {
+  padding: .78em .72em .78em 0;
+  border-top: 1px solid var(--line);
+  text-align: start;
+  vertical-align: top;
+}
+
+.essay-page .essay-table thead th {
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: .88em;
+  font-weight: 400;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+.essay-page .essay-table tbody th {
+  min-width: 7.5em;
+  font-weight: 400;
+}
+
+.essay-page .essay-table td:nth-child(2) {
+  min-width: 9em;
+}
+
+.essay-page .essay-table td:nth-child(3) {
+  min-width: 15em;
+  color: var(--muted);
 }
 
 .essay-page .essay-references ul {

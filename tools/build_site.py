@@ -52,15 +52,41 @@ CHINESE_LOCALES = {"zh", "zh-hans"}
 BASE_URL = IDENTITY["site_url"].rstrip("/")
 PERSON_ID = f"{BASE_URL}/#person"
 WEBSITE_ID = f"{BASE_URL}/#website"
+ICON_VERSION = "20260930a"
 SOCIAL_IMAGES = {
+    "site": ("assets/social/site.png", 1200, 630, "image/png"),
     "ci": ("assets/social/ci.png", 1200, 630, "image/png"),
     "shi": ("assets/social/shi.png", 1200, 630, "image/png"),
     "about": ("assets/social/about.png", 1200, 630, "image/png"),
+    "contexts": ("assets/social/contexts.png", 1200, 630, "image/png"),
+    "poetry-voucher": ("assets/social/poetry-voucher.png", 1200, 630, "image/png"),
 }
 
 
 class BuildError(RuntimeError):
     pass
+
+
+def essay_display_title_html(value: str, *, slug: str, locale_id: str) -> str:
+    """Escape a localized discovery title while permitting unnested <em> only."""
+    output: list[str] = []
+    depth = 0
+    for part in re.split(r"(</?em>)", value):
+        if part == "<em>":
+            if depth:
+                raise BuildError(f"{slug} {locale_id}: nested <em> in display_title")
+            depth = 1
+            output.append(part)
+        elif part == "</em>":
+            if not depth:
+                raise BuildError(f"{slug} {locale_id}: unmatched </em> in display_title")
+            depth = 0
+            output.append(part)
+        else:
+            output.append(html.escape(part))
+    if depth:
+        raise BuildError(f"{slug} {locale_id}: unclosed <em> in display_title")
+    return "".join(output)
 
 
 def png_dimensions(path: Path) -> tuple[int, int]:
@@ -295,12 +321,11 @@ def essay_cards_html(locale_id: str, locale: dict[str, Any]) -> str:
     for index, essay in enumerate(ESSAY_REGISTRY, start=2):
         slug = essay["slug"]
         href = html.escape(essay_page_path(locale_id, slug), quote=True)
-        if slug == "trainspotting":
-            title = locale["home"]["writing"]["film_essays_title"]
-            description = locale["home"]["writing"]["film_essays_description"]
-        else:
-            title = f'<span lang="en-GB">{html.escape(essay["title"])}</span>'
-            description = html.escape(ESSAY_METADATA[slug][locale_id]["meta_description"])
+        essay_copy = ESSAY_METADATA[slug][locale_id]
+        title = essay_display_title_html(
+            essay_copy["display_title"], slug=slug, locale_id=locale_id
+        )
+        description = html.escape(essay_copy["meta_description"])
         link_label = html.escape(locale["home"]["writing"]["film_essays_meta"])
         cards.append(
             "\n".join(
@@ -319,10 +344,18 @@ def essay_cards_html(locale_id: str, locale: dict[str, Any]) -> str:
     return "\n".join(cards)
 
 
-def icon_links(prefix: str) -> str:
+def icon_links() -> str:
     return (
-        f'<link rel="icon" href="{prefix}assets/site-icon-64.png?v=20260927e" type="image/png">\n'
-        f'<link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png?v=20260927e">'
+        '<link rel="icon" href="/favicon.ico">\n'
+        f'<link rel="icon" href="/assets/site-icon-32.png?v={ICON_VERSION}" type="image/png" sizes="32x32">\n'
+        f'<link rel="icon" href="/assets/site-icon-64.png?v={ICON_VERSION}" type="image/png" sizes="64x64">\n'
+        f'<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v={ICON_VERSION}" sizes="180x180">\n'
+        '<link rel="manifest" href="/site.webmanifest">\n'
+        '<meta name="application-name" content="Hanpu Li">\n'
+        '<meta name="apple-mobile-web-app-title" content="Hanpu Li">\n'
+        '<meta name="apple-mobile-web-app-capable" content="yes">\n'
+        '<meta name="mobile-web-app-capable" content="yes">\n'
+        '<meta name="apple-mobile-web-app-status-bar-style" content="default">'
     )
 
 
@@ -389,6 +422,7 @@ def structured_data_html(
         "name": IDENTITY["primary_name"],
         "alternateName": [IDENTITY["chinese_name"], *IDENTITY["alternate_names"]],
         "url": IDENTITY["site_url"],
+        "image": f"{BASE_URL}/assets/site-icon-512.png",
         "sameAs": IDENTITY["same_as"],
         "knowsAbout": IDENTITY["knows_about"],
     }
@@ -397,6 +431,7 @@ def structured_data_html(
         "@id": WEBSITE_ID,
         "url": IDENTITY["site_url"],
         "name": IDENTITY["primary_name"],
+        "image": f"{BASE_URL}/assets/site-icon-512.png",
         "publisher": {"@id": PERSON_ID},
         "inLanguage": [item["html_lang"] for item in LANGUAGES],
     }
@@ -996,9 +1031,9 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
     if page == "index":
         meta_title = locale["home"]["meta_title"]
         meta_description = locale["home"]["meta_description"]
-        social_image = f"{BASE_URL}/assets/photos/03.jpg"
-        social_alt = locale["home"]["photos"]["alt"]["03"]
-        social_width, social_height, social_type = 1200, 800, "image/jpeg"
+        social_path, social_width, social_height, social_type = SOCIAL_IMAGES["site"]
+        social_image = f"{BASE_URL}/{social_path}"
+        social_alt = meta_title
         og_type = "website"
         page_kind = "index"
     elif page in {"ci", "shi"}:
@@ -1012,10 +1047,9 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
     elif page == "poetry-voucher":
         meta_title = POETRY_VOUCHER[locale_id]["title"] + " · Hanpu Li"
         meta_description = POETRY_VOUCHER[locale_id]["description"]
-        social_image = f"{BASE_URL}/poetry-voucher/sample-voucher.png"
-        social_alt = POETRY_VOUCHER[locale_id]["preview_alt"]
-        social_width, social_height = png_dimensions(ROOT / "poetry-voucher" / "sample-voucher.png")
-        social_type = "image/png"
+        social_path, social_width, social_height, social_type = SOCIAL_IMAGES["poetry-voucher"]
+        social_image = f"{BASE_URL}/{social_path}"
+        social_alt = meta_title
         og_type, page_kind = "article", "poetry-voucher"
     elif page == "about":
         meta_title = about["meta_title"]
@@ -1028,9 +1062,9 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
     elif page == "contexts":
         meta_title = CONTEXTS[locale_id]["meta_title"]
         meta_description = CONTEXTS[locale_id]["meta_description"]
-        social_image = f"{BASE_URL}/assets/photos/03.jpg"
-        social_alt = locale["home"]["photos"]["alt"]["03"]
-        social_width, social_height, social_type = 1200, 800, "image/jpeg"
+        social_path, social_width, social_height, social_type = SOCIAL_IMAGES["contexts"]
+        social_image = f"{BASE_URL}/{social_path}"
+        social_alt = meta_title
         og_type = "website"
         page_kind = "contexts"
     else:
@@ -1131,7 +1165,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "OG_LOCALE": html.escape(lang["og_locale"], quote=True),
         "SOCIAL_META": social_meta,
         "STRUCTURED_DATA": structured_data,
-        "ICON_LINKS": icon_links("/" if page in {"404", "poetry-voucher"} else asset_prefix(locale_id)),
+        "ICON_LINKS": icon_links(),
         "FONT_PRELOADS": font_preloads(locale_id, page),
         "NOTFOUND_RUNTIME": notfound_runtime() if page == "404" and locale_id == ROOT_LOCALE else "",
         "READING_TOOLS": reading_tools(locale),
@@ -1290,9 +1324,12 @@ def build(check: bool = False) -> list[Path]:
                 f"{slug} essay locale mismatch missing={missing} extra={extra}"
             )
         for lid, copy in metadata.items():
-            for key in ("meta_description", "language_note"):
+            for key in ("display_title", "meta_description", "language_note"):
                 if not isinstance(copy.get(key), str):
                     raise BuildError(f"{slug} {lid}: {key} must be a string")
+            if not copy["display_title"].strip():
+                raise BuildError(f"{slug} {lid}: display_title must not be empty")
+            essay_display_title_html(copy["display_title"], slug=slug, locale_id=lid)
             if lid != ROOT_LOCALE and not copy["language_note"].strip():
                 raise BuildError(f"{slug} {lid}: missing English-body notice")
 
@@ -1404,7 +1441,7 @@ def build(check: bool = False) -> list[Path]:
                     "ESSAY_HREFLANG_LINKS": essay_hreflang_links(slug),
                     "SOCIAL_META": essay_social,
                     "STRUCTURED_DATA": essay_structured_data,
-                    "ICON_LINKS": icon_links(essay_asset_prefix(lid)),
+                    "ICON_LINKS": icon_links(),
                     "READING_TOOLS": reading_tools(locale),
                     "PRIMARY_NAME": html.escape(IDENTITY["primary_name"]),
                     "CHINESE_NAME": html.escape(IDENTITY["chinese_name"]),

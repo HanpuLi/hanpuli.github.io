@@ -64,6 +64,15 @@ def main() -> int:
             errors.append(f"{rel}: expected one h1 and one main landmark")
         if parser.forms:
             errors.append(f"{rel}: access request form remains")
+        for marker in (
+            '<link rel="icon" href="/favicon.ico">',
+            'assets/site-icon-32.png?v=20260930a',
+            'assets/site-icon-64.png?v=20260930a',
+            'assets/apple-touch-icon.png?v=20260930a',
+            '<link rel="manifest" href="/site.webmanifest">',
+        ):
+            if marker not in source:
+                errors.append(f"{rel}: missing shared app/icon marker {marker!r}")
         if RETIRED_READER_URL in source:
             errors.append(f"{rel}: retired full-reader link remains")
         if parser.scripts != ["/assets/accessibility.js"]:

@@ -112,6 +112,7 @@ def _structured_data(
                 "name": identity["primary_name"],
                 "alternateName": [identity["chinese_name"], *identity["alternate_names"]],
                 "url": identity["site_url"],
+                "image": f"{site}/assets/site-icon-512.png",
                 "sameAs": identity["same_as"],
                 "knowsAbout": identity["knows_about"],
             },
@@ -120,6 +121,7 @@ def _structured_data(
                 "@id": website_id,
                 "url": identity["site_url"],
                 "name": identity["primary_name"],
+                "image": f"{site}/assets/site-icon-512.png",
                 "publisher": {"@id": person_id},
                 "inLanguage": [item["html_lang"] for item in languages],
             },
@@ -240,8 +242,16 @@ def render(
 {alternates}{seo_meta}
 <meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="/assets/site-icon-64.png?v=20260927e" type="image/png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260927e">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" href="/assets/site-icon-32.png?v=20260930a" type="image/png" sizes="32x32">
+<link rel="icon" href="/assets/site-icon-64.png?v=20260930a" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260930a" sizes="180x180">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="application-name" content="Hanpu Li">
+<meta name="apple-mobile-web-app-title" content="Hanpu Li">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <script src="/assets/accessibility.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/first-love-public.css">

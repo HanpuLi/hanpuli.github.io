@@ -468,13 +468,65 @@ def main() -> int:
                 '<meta property="og:image"',
                 '<meta name="twitter:card" content="summary_large_image">',
                 '<script type="application/ld+json">',
+                'rel="manifest" href="/site.webmanifest"',
+                'assets/site-icon-32.png',
                 'assets/site-icon-64.png',
                 'assets/apple-touch-icon.png',
+                '<meta name="application-name" content="Hanpu Li">',
             ):
                 if contract not in essay_text:
                     errors.append(
                         f"{essay_path.relative_to(ROOT)}: missing head contract {contract}"
                     )
+            scholarly_note_slugs = {
+                "hogg-auteur",
+                "film-carbon-boundaries",
+                "accent-profile",
+                "final-e-history",
+            }
+            if slug in scholarly_note_slugs:
+                for contract in (
+                    'class="essay-note essay-provenance"',
+                    'role="doc-noteref"',
+                    'role="doc-endnotes"',
+                ):
+                    if contract not in essay_text:
+                        errors.append(
+                            f"{essay_path.relative_to(ROOT)}: missing scholarly note contract {contract}"
+                        )
+            note_refs = re.findall(
+                r'<a\b(?=[^>]*\bid="([^"]+)")(?=[^>]*\bhref="#([^"]+)")'
+                r'(?=[^>]*\brole="doc-noteref")[^>]*>(\d+)</a>',
+                essay_text,
+            )
+            note_ids = set(
+                re.findall(
+                    r'<li\b(?=[^>]*\bid="([^"]+)")[^>]*>',
+                    essay_text,
+                )
+            )
+            for index, (ref_id, note_id, label) in enumerate(note_refs, 1):
+                if label != str(index):
+                    errors.append(
+                        f"{essay_path.relative_to(ROOT)}: note label {label} is out of sequence at position {index}"
+                    )
+                if note_id not in note_ids:
+                    errors.append(
+                        f"{essay_path.relative_to(ROOT)}: note reference {ref_id} targets missing #{note_id}"
+                    )
+                if f'href="#{ref_id}"' not in essay_text:
+                    errors.append(
+                        f"{essay_path.relative_to(ROOT)}: note #{note_id} has no backlink to #{ref_id}"
+                    )
+            if note_ids and len(note_refs) != len(note_ids):
+                errors.append(
+                    f"{essay_path.relative_to(ROOT)}: {len(note_refs)} note references for {len(note_ids)} endnotes"
+                )
+            if slug == "hogg-auteur":
+                if 'class="essay-appendix"' not in essay_text:
+                    errors.append(f"{essay_path.relative_to(ROOT)}: missing Hogg corpus appendix")
+                if '<caption>Texts analysed and their role in the argument</caption>' not in essay_text:
+                    errors.append(f"{essay_path.relative_to(ROOT)}: missing Hogg corpus caption")
             essay_home_href = "/" if locale == "en" else f"/{locale}/"
             if '<footer class="page-footer essay-footer">' not in essay_text:
                 errors.append(f"{essay_path.relative_to(ROOT)}: missing shared page footer")
@@ -551,7 +603,13 @@ def main() -> int:
                         errors.append(
                             f"{path.relative_to(ROOT)}: missing head contract {contract}"
                         )
-            for icon in ("assets/site-icon-64.png", "assets/apple-touch-icon.png"):
+            for icon in (
+                "assets/site-icon-32.png",
+                "assets/site-icon-64.png",
+                "assets/apple-touch-icon.png",
+                'rel="manifest" href="/site.webmanifest"',
+                '<meta name="application-name" content="Hanpu Li">',
+            ):
                 if icon not in text:
                     errors.append(f"{path.relative_to(ROOT)}: missing shared icon {icon}")
             visible_text = re.sub(

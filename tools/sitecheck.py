@@ -160,6 +160,79 @@ def check_css(errors: list[str]) -> None:
                 errors.append(f"{css.relative_to(ROOT)}:{line}: missing CSS asset {ref!r}")
 
 
+def png_dimensions(path: Path) -> tuple[int, int] | None:
+    data = path.read_bytes()[:24]
+    if len(data) < 24 or data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR":
+        return None
+    return int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big")
+
+
+def check_web_app(errors: list[str]) -> None:
+    manifest_path = ROOT / "site.webmanifest"
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        errors.append(f"site.webmanifest: cannot read valid JSON: {exc}")
+        return
+
+    expected_values = {
+        "id": "/",
+        "start_url": "/",
+        "scope": "/",
+        "display": "standalone",
+        "background_color": "#f5f2eb",
+        "theme_color": "#f5f2eb",
+    }
+    for key, expected in expected_values.items():
+        if manifest.get(key) != expected:
+            errors.append(f"site.webmanifest: {key} must be {expected!r}")
+
+    expected_icons = {
+        ("192x192", "any"): (ROOT / "assets/site-icon-192.png", (192, 192)),
+        ("512x512", "any"): (ROOT / "assets/site-icon-512.png", (512, 512)),
+        ("512x512", "maskable"): (ROOT / "assets/site-icon-maskable-512.png", (512, 512)),
+    }
+    actual_icons: dict[tuple[str, str], Path] = {}
+    for icon in manifest.get("icons", []):
+        if not isinstance(icon, dict):
+            continue
+        src = str(icon.get("src", ""))
+        target_info = local_target(manifest_path, src)
+        if target_info is None:
+            errors.append(f"site.webmanifest: icon must be local: {src!r}")
+            continue
+        actual_icons[(str(icon.get("sizes", "")), str(icon.get("purpose", "")))] = target_info[0]
+    if set(actual_icons) != set(expected_icons):
+        errors.append(
+            "site.webmanifest: icon size/purpose set does not match the 192, 512 and maskable contract"
+        )
+    for key, (expected_path, expected_size) in expected_icons.items():
+        path = actual_icons.get(key)
+        if path != expected_path.resolve():
+            errors.append(f"site.webmanifest: {key} points to {path}, expected {expected_path}")
+            continue
+        if not path.is_file() or png_dimensions(path) != expected_size:
+            errors.append(f"site.webmanifest: {path.relative_to(ROOT)} is not a {expected_size[0]} px PNG")
+
+    favicon = ROOT / "favicon.ico"
+    if not favicon.is_file() or favicon.read_bytes()[:4] != b"\x00\x00\x01\x00":
+        errors.append("favicon.ico: missing or invalid ICO header")
+
+    required_head = (
+        '<link rel="icon" href="/favicon.ico">',
+        'assets/site-icon-32.png?v=20260930a',
+        'assets/site-icon-64.png?v=20260930a',
+        'assets/apple-touch-icon.png?v=20260930a',
+        '<link rel="manifest" href="/site.webmanifest">',
+        '<meta name="application-name" content="Hanpu Li">',
+    )
+    for path in HTML_FILES:
+        source = path.read_text(encoding="utf-8")
+        for marker in required_head:
+            if marker not in source:
+                errors.append(f"{path.relative_to(ROOT)}: missing shared app/icon marker {marker!r}")
+
+
 def check_discovery(errors: list[str]) -> None:
     """Keep indexable routes, search metadata, robots.txt and sitemap.xml aligned."""
     languages = json.loads((ROOT / "content" / "languages.json").read_text(encoding="utf-8"))
@@ -323,6 +396,9 @@ def check_discovery(errors: list[str]) -> None:
             'name="twitter:description"',
             'name="twitter:image"',
             '<script type="application/ld+json">',
+            '<link rel="manifest" href="/site.webmanifest">',
+            'assets/site-icon-32.png?v=20260930a',
+            'assets/apple-touch-icon.png?v=20260930a',
         )
         for marker in required_markers:
             if marker not in source:
@@ -451,11 +527,12 @@ def main() -> int:
                     errors.append(f"{source.relative_to(ROOT)}:{line}: missing fragment {ref!r}")
 
     check_css(errors)
+    check_web_app(errors)
     check_discovery(errors)
     if errors:
         print("\n".join(errors), file=sys.stderr)
         return 1
-    print(f"sitecheck: {len(HTML_FILES)} HTML documents, local refs, fragments, images, CSS assets and discovery files OK")
+    print(f"sitecheck: {len(HTML_FILES)} HTML documents, local refs, fragments, images, CSS assets, web-app identity and discovery files OK")
     return 0
 
 

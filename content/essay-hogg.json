@@ -1,29 +1,36 @@
 {
   "en": {
+    "display_title": "How Praise Assigns a Film to One Author",
     "meta_description": "A six-text study of how Joanna Hogg's reception assigns cinematic form to the director while acknowledging collaborative film labour.",
     "language_note": ""
   },
   "zh": {
+    "display_title": "讚譽如何把一部電影歸於一位作者",
     "meta_description": "一項六篇文本研究，分析 Joanna Hogg 的評論如何在承認電影協作勞動的同時，把形式歸於導演。正文為英文。",
     "language_note": "正文為英文；此頁保留繁體中文站內導覽。"
   },
   "zh-hans": {
+    "display_title": "赞誉如何把一部电影归于一位作者",
     "meta_description": "一项六篇文本研究，分析 Joanna Hogg 的评论如何在承认电影协作劳动的同时，把形式归于导演。正文为英文。",
     "language_note": "正文为英文；此页保留简体中文站内导航。"
   },
   "ja": {
+    "display_title": "称賛はいかに一本の映画を一人の作者に帰属させるか",
     "meta_description": "ジョアンナ・ホッグをめぐる6本の批評が、共同制作を認めながら映画の形式を監督へ帰属させる仕組みを分析する研究。本文は英語。",
     "language_note": "本文は英語です。このページでは日本語版サイトのナビゲーションを表示しています。"
   },
   "de": {
+    "display_title": "Wie Lob einen Film einer einzigen Autorin zuschreibt",
     "meta_description": "Eine Studie zu sechs Texten darüber, wie die Rezeption Joanna Hoggs filmische Form der Regisseurin zuschreibt und zugleich kollaborative Filmarbeit anerkennt. Der Essay ist auf Englisch.",
     "language_note": "Der Essay selbst ist auf Englisch; diese Seite verwendet die deutsche Navigation der Website."
   },
   "fr": {
+    "display_title": "Comment l’éloge attribue un film à une seule autrice",
     "meta_description": "Une étude de six textes sur la manière dont la réception de Joanna Hogg attribue la forme filmique à la réalisatrice tout en reconnaissant le travail collectif. Le texte est en anglais.",
     "language_note": "Le texte de l’essai est en anglais ; cette page conserve la navigation française du site."
   },
   "ru": {
+    "display_title": "Как похвала приписывает фильм одному автору",
     "meta_description": "Исследование шести текстов о том, как критика Джоанны Хогг приписывает форму фильма режиссёру, признавая коллективный труд. Основной текст — на английском.",
     "language_note": "Основной текст эссе — на английском; на этой странице сохранена русская навигация сайта."
   }
