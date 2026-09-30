@@ -7,28 +7,37 @@
   const chronology = document.querySelector(".chronology");
   if (!chronology) return;
 
-  function ensureSimplifiedChineseProfileFont() {
+  async function ensureSimplifiedChineseProfileFont() {
     if (locale !== "zh-hans") return;
-    if (document.querySelector("style[data-profile-credit-font]")) return;
 
-    const style = document.createElement("style");
-    style.dataset.profileCreditFont = "";
-    style.textContent = `
-      @font-face {
-        font-family: "Noto Serif SC Profile";
-        src: url("${fontEndpoint}") format("woff2");
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        unicode-range: U+4EAC,U+534F,U+6025,U+613F,U+6B66,U+6C49;
-      }
-      .locale-zh-hans [data-conditional-profile-credit] p {
-        font-family: "EB Garamond", "Site Serif Symbols", Georgia,
-          "Noto Serif SC Profile", "Noto Serif SC Site",
-          "Songti SC", "Noto Serif CJK SC", serif;
-      }
-    `;
-    document.head.append(style);
+    if (!document.querySelector("style[data-profile-credit-font]")) {
+      const style = document.createElement("style");
+      style.dataset.profileCreditFont = "";
+      style.textContent = `
+        @font-face {
+          font-family: "Noto Serif SC Profile";
+          src: url("${fontEndpoint}") format("woff2");
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          unicode-range: U+4EAC,U+534F,U+6025,U+613F,U+6B66,U+6C49;
+        }
+        .locale-zh-hans [data-conditional-profile-credit] p {
+          font-family: "EB Garamond", "Site Serif Symbols", Georgia,
+            "Noto Serif SC Profile", "Noto Serif SC Site",
+            "Songti SC", "Noto Serif CJK SC", serif;
+        }
+      `;
+      document.head.append(style);
+    }
+
+    if (document.fonts?.load) {
+      const faces = await document.fonts.load(
+        '16px "Noto Serif SC Profile"',
+        "\u4eac\u534f\u6025\u613f\u6b66\u6c49",
+      );
+      if (!faces.length) throw new Error("profile font did not load");
+    }
   }
 
   const controller = new AbortController();
@@ -47,11 +56,11 @@
       if (!response.ok) throw new Error(`profile credit request failed: ${response.status}`);
       return response.json();
     })
-    .then((credit) => {
+    .then(async (credit) => {
       if (!credit || typeof credit.time !== "string" || typeof credit.text !== "string") return;
       if (chronology.querySelector('[data-conditional-profile-credit]')) return;
 
-      ensureSimplifiedChineseProfileFont();
+      await ensureSimplifiedChineseProfileFont();
 
       const row = document.createElement("div");
       row.className = "credit";
