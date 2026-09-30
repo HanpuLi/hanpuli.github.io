@@ -4070,6 +4070,12 @@ html[data-reading-simple] .about-page .about-facts > div + div {
   line-height: 1.72;
 }
 
+.essay-page .essay-body code {
+  font-family: var(--mono);
+  font-size: .86em;
+  font-variant-ligatures: none;
+}
+
 .essay-page .essay-body > p,
 .essay-page .essay-body section > p {
   max-width: 68ch;

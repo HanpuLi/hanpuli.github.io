@@ -9,28 +9,28 @@
     },
     {
       "slug": "hogg-auteur",
-      "title": "Who Gets to Discover an Auteur?",
+      "title": "How Praise Assigns a Film to One Author",
       "source": "essays/hogg-auteur.inc",
       "metadata": "essay-hogg.json",
       "social_image": "assets/social/hogg-auteur.png"
     },
     {
       "slug": "film-carbon-boundaries",
-      "title": "Counting the Carbon a Film Leaves Elsewhere",
+      "title": "One Carbon Number Cannot Do Two Jobs",
       "source": "essays/film-carbon-boundaries.inc",
       "metadata": "essay-film-carbon.json",
       "social_image": "assets/social/film-carbon-boundaries.png"
     },
     {
       "slug": "accent-profile",
-      "title": "What an Accent Profile Cannot Keep Outside the Frame",
+      "title": "The Listener Inside the Accent Score",
       "source": "essays/accent-profile.inc",
       "metadata": "essay-accent-profile.json",
       "social_image": "assets/social/accent-profile.png"
     },
     {
       "slug": "final-e-history",
-      "title": "The Letter That Outlived Its Sound",
+      "title": "How Final e Made Different Histories Look Alike",
       "source": "essays/final-e-history.inc",
       "metadata": "essay-final-e.json",
       "social_image": "assets/social/final-e-history.png"

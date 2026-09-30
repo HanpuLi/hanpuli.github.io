@@ -1,106 +1,84 @@
 <article class="essay">
   <header class="essay-intro">
     <p class="essay-kicker">applied linguistics · September 2026</p>
-    <h1>What an Accent Profile Cannot Keep Outside the Frame</h1>
-    <p class="essay-deck">A record of one voice also records the task, the listener and the standard doing the listening</p>
+    <h1>The Listener Inside the Accent Score</h1>
+    <p class="essay-deck">Why a score of one voice also measures who is listening—and what they are allowed to demand</p>
     <p class="essay-byline">Hanpu Li</p>
-    <p class="essay-note">This essay was rebuilt from a 2022 learner-profile exercise. No recording, transcription or biographical detail from that exercise is reproduced here.</p>
   </header>
 
   <div class="essay-body">
-    <p>A page of phonetic transcription has the look of hard evidence. There is the word a speaker was asked to say, then the string of symbols showing what came out instead. Put the two lines together and every difference seems to belong to the speaker.</p>
+    <p>Two groups hear the same recording. Both recover the words. One rates the speech easy to understand; the other reports effort and a strong accent. If the groups repeat their judgements consistently, the difference is not necessarily noise. It may be the object the score has captured: not a property sealed inside the speaker, but a relation between this speech and these listeners.</p>
 
-    <p>But the comparison began before the speaker opened their mouth. The analyst chose the passage, a model pronunciation and the level of transcriptional detail. The analyst also decided which differences counted as errors and which listener would be treated as the measure of success. One precise-looking line can therefore hide a chain of decisions.</p>
+    <p>That answer solves one measurement error and exposes a harder one. Once the listener is inside the construct, a score can be reliable and practically predictive while preserving the listener’s prejudice. It may accurately forecast that employers, examiners or strangers will penalise a voice. Accuracy does not turn the penalty into a speech defect. Yet refusing to help a speaker who has chosen accent modification can leave that person to bear the penalty unaided.</p>
 
-    <p>I made that mistake in a learner profile. I treated the transcription as a window onto an accent and the target form as neutral glass. Re-reading the work, I found a more useful object of study: the frame itself. An accent profile can support teaching, but only if it stops pretending that the listener, task and standard are outside the measurement.</p>
+    <p>An accent profile therefore cannot become ethical simply by separating its columns. Accentedness, comprehensibility and intelligibility must be distinguished; the task, comparison variety and listener population must be named. The recommendation must then expose its direction: change the speaker, change the listening conditions, change the listeners, or distribute the work among them. Otherwise a decision about who should adapt disappears into the word “need”.</p>
 
-    <section aria-labelledby="accent-not-diagnosis-heading">
-      <h2 id="accent-not-diagnosis-heading">1. Difference is not a diagnosis</h2>
+    <section aria-labelledby="accent-construct-heading">
+      <h2 id="accent-construct-heading">Three scores can describe the same voice</h2>
 
-      <p>Every speaker has an accent. An accent may mark region, class, age, language history or movement between communities. It is not, by itself, a speech disorder. The American Speech-Language-Hearing Association makes that distinction explicit: accent modification is an elective service, and an assessment of accent must not be confused with diagnosing a communication disorder.</p>
+      <p>Munro and Derwing’s 1995 experiment established a distinction that pronunciation work still has to defend. <em>Accentedness</em> was listeners’ rating of difference from a target variety. <em>Comprehensibility</em> was rated ease or difficulty of understanding. <em>Intelligibility</em> was operationalised as the words listeners transcribed correctly. Other studies use other tasks, so the operation has to travel with the label.</p>
 
-      <p>The distinction matters because an error list carries a clinical shadow even when no clinician is involved. If one column is labelled “target” and the other “production”, the second can begin to look like a collection of deficits. A perfectly intelligible regional vowel becomes something to repair merely because the target column contains a prestige form.</p>
+      <p>The measures correlate, but not enough to stand in for one another. Some strongly accented speech in the experiment remained highly intelligible. A listener can recover every word while noticing distance from a familiar prestige form, or while working harder than the transcript score reveals. Conversely, vocabulary, syntax and context can impede understanding even when pronunciation attracts little comment.</p>
 
-      <p>That does not make pronunciation teaching illegitimate. A speaker may want to be understood more easily in a particular workplace, pass an examination, perform a role, or acquire another variety for reasons of their own. The ethical difference lies in who defines the problem and what consequence is being addressed. “This consonant is repeatedly misheard in telephone calls” is a teachable problem. “This does not sound native” is a social judgement pretending to be the same kind of evidence.</p>
+      <p>Kazuya Saito’s 2021 meta-analyses make the practical difference sharper. Across 37 listener studies, comprehensibility judgements related to segmental, prosodic and temporal features, while accentedness was especially tied to segmental accuracy. Across 17 instructional studies, gains were larger for comprehensibility than for nativelikeness. Training directed at “reducing accent” may therefore spend effort on the most noticeable distance rather than the feature most consequential for understanding.</p>
+
+      <p>A phonetic transcription cannot decide the consequence in advance. It records an analyst’s account of a token relative to a comparison system. It does not show that a listener missed a word, used more effort or assigned a social identity. Those are separate observations. The familiar profile becomes misleading at the moment a difference on the page is allowed to inherit all three.</p>
     </section>
 
-    <section aria-labelledby="accent-three-questions-heading">
-      <h2 id="accent-three-questions-heading">2. Three measurements of the same voice</h2>
+    <section aria-labelledby="accent-bias-heading">
+      <h2 id="accent-bias-heading">Reliability can preserve the wrong thing</h2>
 
-      <p>Pronunciation research separates measures that ordinary conversation often collapses. In Munro and Derwing's experiment, <em>intelligibility</em> was measured through the words listeners transcribed, while <em>comprehensibility</em> and <em>accentedness</em> were ratings: how difficult the speech seemed to understand and how strong the foreign accent seemed. Other studies can operationalise the terms differently, so a profile must say how each result was produced.</p>
+      <p>Rater agreement matters. A result that changes randomly between listeners cannot support much inference. But agreement answers only whether listeners behave consistently. It does not establish what their consistency represents.</p>
 
-      <p>The three results were related but not interchangeable. Listeners heard short stretches of extemporaneous English; some speech judged strongly accented was nevertheless highly intelligible. A rating of perceived foreignness is therefore not a direct measurement of the words a listener receives.</p>
+      <p>Stephanie Lindemann and Nicholas Subtirelu review evidence that listeners can be “reliably biased”. Shared expectations about a speaker’s linguistic or social group may produce stable judgements not reducible to the acoustic signal. In that situation a highly reliable instrument has not overcome listener variation. It has measured a common listening norm with precision.</p>
 
-      <p>This changes what an accent profile has to ask. A substitution noticed in an IPA transcript may be perceptually striking without causing a misunderstanding. A slower speech rate may create effort without changing a single word in the listener's transcript. A grammatical or lexical choice may affect comprehension while escaping a profile restricted to consonants and vowels.</p>
+      <p>The reverse conclusion would be too easy. Listener effects do not make every rating infinitely subjective. Talia Isaacs and Ron Thomson compared 20 experienced and 20 novice raters, assigned to five- or nine-point scales, judging 38 speakers for comprehensibility, accentedness and fluency. They found high internal consistency and no group differences in mean ratings by experience or scale length, although rating strategy and use of the nine-point scale’s middle differed. Professional and novice listeners do not have to disagree for the listener to remain part of the measure.</p>
 
-      <p>If the purpose is communication, an inventory of departures from a model is not yet an order of priorities. The profile must show which departures matter, to whom, in which task and by which outcome measure. Without that second step, it rewards what is easy to mark rather than what is costly in use.</p>
+      <p>This counterexample changes the claim. An accent score is not relational because listener groups will always yield different means. It is relational because the procedure defines whose perception counts, even when another sampled group happens to agree. A score produced by unfamiliar monolingual listeners and one produced by multilingual colleagues may converge. They still answer questions about different populations.</p>
+
+      <p>The distinction becomes uncomfortable when the intended population is discriminatory. If a study samples the actual gatekeepers a speaker must face, their ratings may have strong predictive validity for a job interview or oral examination. The score can then be socially accurate and linguistically unjust at the same time. Construct validity cannot tell the speaker which fact matters more.</p>
     </section>
 
-    <section aria-labelledby="accent-transcription-heading">
-      <h2 id="accent-transcription-heading">3. Transcription is an argument made in small type</h2>
+    <section aria-labelledby="accent-accommodation-heading">
+      <h2 id="accent-accommodation-heading">Accommodation has a direction</h2>
 
-      <p>A recording contains more detail than a transcription can hold. The transcriber chooses a level of detail, segments a continuous signal into units and decides which symbol best represents an ambiguous event. Even a careful transcript is therefore not the sound itself. It is a repeatable claim about selected aspects of the sound.</p>
+      <p>Gass and Varonis showed that comprehension of non-native speech can improve with familiarity—with the topic, non-native speech generally, a particular accent or an individual speaker. Topic familiarity was especially influential in their study. The same recording can therefore support different performance without any change in its acoustic content.</p>
 
-      <p>The sample is selective too. Reading a prepared passage supplies vocabulary and syntax, suppresses some planning problems and may encourage a monitored style. A picture description changes the burden. Conversation introduces turn-taking, repair and an actual partner. Word lists isolate contrasts but remove the prosody and prediction that listeners use in connected speech.</p>
+      <p>That is not automatically a measurement failure. A workplace may need to know what happens on a first call with an unfamiliar client and what happens after regular colleagues have learned one another’s speech. The mistake is to average those encounters into a speaker property. Familiarity belongs to the causal account: it identifies a route to easier communication that does not require the speaker to approximate a prestige variety.</p>
 
-      <p>A profile based on one task can be internally accurate and externally misleading. It might document how a person reads those sentences on that day, under observation. It cannot quietly expand into a description of how that person speaks English.</p>
+      <p>Speaker-side intervention remains one route among others. Pacing, emphasis, prosody and repair can matter for comprehensibility. A person may also want a less socially marked accent for reasons that have nothing to do with word recovery. John Levis’s distinction between nativeness and intelligibility principles clarifies the choice but cannot purify it. The actor preparing a role, the candidate facing a gatekeeping assessment and the worker anticipating discrimination may all rationally choose different targets.</p>
 
-      <p>Reliability checks can narrow the claim. A second transcriber may expose uncertain tokens; repeated tasks may show whether a feature recurs; several listeners may reveal whether the alleged problem survives changes of ear. Yet agreement is not neutrality. Two trained listeners who share the same prestige target can agree completely on a judgement whose relevance to the speaker's life has never been established.</p>
+      <p>The American Speech-Language-Hearing Association treats accent modification as elective and distinguishes an accent from a communication disorder. That distinction prevents one ethical wrong: medicalising linguistic difference. It does not make every “choice” equally free. A service can be voluntary while employment, assessment or repeated social penalty makes refusal costly.</p>
+
+      <p>Respect for agency therefore pulls in two directions. Declining a requested goal because it responds to prejudice can deny the speaker a useful strategy. Accepting the goal without naming the prejudice can convert a social penalty into a personal deficit. “The learner wants it” and “the listener requires it” describe different sources of demand, even when they lead to the same exercise.</p>
     </section>
 
-    <section aria-labelledby="accent-listener-heading">
-      <h2 id="accent-listener-heading">4. The listener is part of the instrument</h2>
+    <section aria-labelledby="accent-task-heading">
+      <h2 id="accent-task-heading">The person cannot be recovered from the sample</h2>
 
-      <p>When understanding fails, the speaker's pronunciation is visible and the listener's history is not. Familiarity with an accent, linguistic training, expectations about a speaker and the conditions of listening can all alter a judgement. The same recording does not meet every listener as the same stimulus.</p>
+      <p>Reading, word lists, picture description and conversation distribute demands differently. A passage fixes vocabulary and syntax, encourages monitoring and removes lexical choice. A word list isolates contrasts while stripping away prediction and interaction. Spontaneous speech adds planning, hesitation and repair. Conversation adds another person who can infer, interrupt and accommodate.</p>
 
-      <p>This is the asymmetry hidden by a conventional learner profile. The speaker is described in detail; the listener appears as an unmarked ear. If the listener struggles, the resulting score returns to the speaker as a property of the voice.</p>
+      <p>A meticulous transcript can establish how someone read those items on that occasion. It cannot silently expand into a portrait of how that person speaks English. Repeating a practised list after instruction is not strong evidence of transfer; performance can improve through familiarity with the items. If the practical concern is a telephone call, face-to-face speech with visual cues is a different condition. If the concern is workplace repair, isolated word transcription observes only one part of the event.</p>
 
-      <p>A better profile makes the listening conditions legible. Who listened? What varieties were familiar to them? Did they hear the item once, in noise, with visual information, or inside a conversation where repair was possible? Was intelligibility measured by exact word transcription, a content question, task completion or a rating of effort? Those methods answer different questions.</p>
+      <p>A defensible profile can state its goal, task, comparison variety, listener population and outcome. It can keep word recovery apart from perceived effort and perceived accent. It can sample controlled items, connected speech and interaction where the intended use demands them. More than one rater and transcriber can reveal disagreement; a new, related task can test whether practice transferred.</p>
 
-      <p>There is a practical consequence for teaching. Speakers can learn strategies for emphasis, pacing and repair. Listeners can also learn to accommodate variation instead of treating their first difficulty as proof that the speaker has failed. An accent profile that measures only one side of the exchange should not present its score as a complete account of communication.</p>
-    </section>
+      <p>Those improvements replace “the accent” with conditional claims: these listeners recovered these words from these samples; these listeners reported this effort; this feature increased distance from this declared variety. They also allow interventions on more than one side—speaker strategies, clearer task design, listener exposure, opportunities for repair. A report becomes more useful as it stops pretending that one person contains the whole problem.</p>
 
-    <section aria-labelledby="accent-target-heading">
-      <h2 id="accent-target-heading">5. A target becomes dangerous when it disappears</h2>
+      <p>But the columns can still conflict. A feature may leave intelligibility intact, increase perceived accent and predict a real social penalty. The analyst can describe all three honestly. No validity coefficient determines whether the priority should be resisting the penalty, helping the speaker evade it, or doing both under conditions that cannot make the burden equal.</p>
 
-      <p>Pronunciation work needs comparison, but the comparison variety must be named. If it passes as language itself, socially marked differences can be recoded as technical defects.</p>
-
-      <p>John Levis describes a long tension between a nativeness principle and an intelligibility principle in pronunciation teaching. The first treats a native-like accent as the proper destination. The second gives priority to speech that listeners can understand. Neither principle determines a lesson on its own: an actor, an interpreter and a multilingual engineering team may choose different targets. The destination should follow from the speaker's purpose, not from the analyst's unspoken preference.</p>
-
-      <p>“Learner need” can obscure the same distinction. A person may genuinely want to modify an accent because employers or strangers penalise it. That aim does not prove that the accent is communicatively defective. A teacher can respect the choice, explain the likely consequences of a change and still identify the social penalty as a feature of the setting rather than of the speaker.</p>
-    </section>
-
-    <section aria-labelledby="accent-privacy-heading">
-      <h2 id="accent-privacy-heading">6. A pseudonym does not silence a voice</h2>
-
-      <p>An audio recording can identify a person even after a name has been removed. So can the combination of language history, education, occupation, location and a detailed transcript. The British Association for Applied Linguistics treats recordings of people speaking as personal data and asks researchers to anticipate indirect identification, not merely delete names.</p>
-
-      <p>Consent has a destination. Agreement to make a recording for a class does not automatically authorise publication on a website years later. The audience, retention period and possibility of reuse have changed. “The participant once agreed” is incomplete unless it also states what they agreed to, for whom and for how long.</p>
-
-      <p>That is why this essay contains no specimen from the profile that prompted it. Inventing a composite learner would only conceal the source of the argument behind a plausible fiction. Publishing the original material with a pseudonym would preserve more evidence by transferring more risk to somebody who did not ask to become a case study. The absence is not a hole to fill. It is part of the method.</p>
-    </section>
-
-    <section aria-labelledby="accent-protocol-heading">
-      <h2 id="accent-protocol-heading">7. What a useful profile would record</h2>
-
-      <p>The protocol below is a design proposal drawn from the methodological and ethical problems above; it is not a validated assessment scale. I would begin with a compact contract rather than a word list. It would state the speaker's goal, the settings that matter, the people allowed to hear the recording, the period of retention and the uses for which consent has not been given.</p>
-
-      <p>The speech sample would include more than one condition: controlled items for a contrast, connected speech for rhythm and planning, and an interaction in which misunderstanding can be repaired. The profile would separate accentedness, listener effort and actual understanding. More than one listener would be used where the decision mattered, and their relevant experience would be reported rather than erased.</p>
-
-      <p>Priorities would follow consequences. A recurrent feature that changes words for the intended listeners may deserve focused work. A feature that only marks distance from one prestige accent may not. Any intervention would be agreed with the speaker, then tested in a related but new task. Improvement on the original list could otherwise be memory wearing the costume of learning.</p>
-
-      <p>The final document would name its boundary: these patterns occurred in these samples, with these listeners, under these conditions. The qualification makes the profile more useful because it prevents a local observation from hardening into a portrait of a person.</p>
-
-      <p>A phonetic profile cannot keep the analyst outside the frame. Once the task, target and listener are reported, the symbols make a narrower and more useful claim: not what the speaker <em>is</em>, but what occurred in a specified sample and how specified listeners responded.</p>
+      <p>The listener inside the score is therefore more than a methodological nuisance to be controlled. The listener may be a communication partner, a source of accommodation, a gatekeeper or all three at once. If the analyst removes that person from the account, prejudice reappears as a defect in the speaker. If the analyst simply treats the listener’s response as the target outcome, prejudice acquires the authority of data. A responsible profile must name the listener population, the purpose of the score and the bearer of every recommended change. Speaker-side work may be offered as a strategy under pressure; it must not be recorded as proof that the pressure originated in the speaker.</p>
     </section>
 
     <section class="essay-references" aria-labelledby="accent-references-heading">
       <h2 id="accent-references-heading">References</h2>
       <ul>
         <li>American Speech-Language-Hearing Association (n.d.), <a href="https://www.asha.org/practice-portal/professional-issues/accent-modification/">“Accent Modification”</a>, <em>ASHA Practice Portal</em>.</li>
-        <li>British Association for Applied Linguistics (2021), <a href="https://www.baal.org.uk/wp-content/uploads/2021/03/BAAL-Good-Practice-Guidelines-2021.pdf"><em>Recommendations on Good Practice in Applied Linguistics</em></a>, 4th ed.</li>
+        <li>Gass, S. and Varonis, E. M. (1984), <a href="https://doi.org/10.1111/j.1467-1770.1984.tb00996.x">“The Effect of Familiarity on the Comprehensibility of Nonnative Speech”</a>, <em>Language Learning</em> 34(1), pp. 65–89.</li>
+        <li>Isaacs, T. and Thomson, R. I. (2013), <a href="https://doi.org/10.1080/15434303.2013.769545">“Rater Experience, Rating Scale Length, and Judgments of L2 Pronunciation: Revisiting Research Conventions”</a>, <em>Language Assessment Quarterly</em> 10(2), pp. 135–159.</li>
         <li>Levis, J. M. (2005), <a href="https://doi.org/10.2307/3588485">“Changing Contexts and Shifting Paradigms in Pronunciation Teaching”</a>, <em>TESOL Quarterly</em> 39(3), pp. 369–377.</li>
+        <li>Lindemann, S. and Subtirelu, N. (2013), <a href="https://doi.org/10.1111/lang.12014">“Reliably Biased: The Role of Listener Expectation in the Perception of Second Language Speech”</a>, <em>Language Learning</em> 63(3), pp. 567–594.</li>
         <li>Munro, M. J. and Derwing, T. M. (1995), <a href="https://doi.org/10.1111/j.1467-1770.1995.tb00963.x">“Foreign Accent, Comprehensibility, and Intelligibility in the Speech of Second Language Learners”</a>, <em>Language Learning</em> 45(1), pp. 73–97.</li>
+        <li>Saito, K. (2021), <a href="https://doi.org/10.1002/tesq.3027">“What Characterizes Comprehensible and Native-like Pronunciation Among English-as-a-Second-Language Speakers? Meta-Analyses of Phonological, Rater, and Instructional Factors”</a>, <em>TESOL Quarterly</em> 55(3), pp. 866–900.</li>
       </ul>
     </section>
   </div>
