@@ -164,6 +164,23 @@
     paragraph.textContent = data.aboutQualityFirst;
   }
 
+  function restoreEmailSlots(data) {
+    for (const slot of document.querySelectorAll("[data-regional-email]")) {
+      const kind = slot.dataset.regionalEmail;
+      const address = kind === "mail-assistant" ? data.mailAssistantEmail : data.email;
+      if (typeof address !== "string" || !address) continue;
+
+      const link = document.createElement("a");
+      link.href = "mailto:" + address;
+      link.textContent = slot.dataset.label || address;
+
+      const fragment = document.createDocumentFragment();
+      if (slot.dataset.prefix) fragment.append(document.createTextNode(slot.dataset.prefix));
+      fragment.append(link);
+      slot.replaceWith(fragment);
+    }
+  }
+
   const controller = new AbortController();
   const timeout = window.setTimeout(() => controller.abort(), 2500);
 
@@ -188,6 +205,7 @@
       restoreChronology(data);
       restoreContexts(data);
       restoreAbout(data);
+      restoreEmailSlots(data);
     })
     .catch(() => {
       // Fail closed: CN, unknown geolocation, an unreachable Worker, or a font failure
