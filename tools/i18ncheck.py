@@ -173,8 +173,6 @@ def main() -> int:
             leaked_english = (
                 "Young Presenter Competition",
                 "Script Supervisor",
-                "Beijing LGBT Center",
-                "Wuhan LGBT Center",
                 "University of York",
                 "Macao International Microfilm Festival",
                 "Golden Rooster",

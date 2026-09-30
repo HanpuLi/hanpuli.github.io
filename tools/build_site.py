@@ -2,8 +2,8 @@
 """Build the multilingual static portfolio from structured content.
 
 English is emitted at the site root. Other locales are emitted under /<locale>/.
-There is no runtime i18n JavaScript: every page is a complete static document,
-and all user-facing copy lives in content/, not in the renderer.
+The generated documents contain the core multilingual reading content. Runtime
+progressive enhancements are isolated from the static i18n renderer.
 """
 from __future__ import annotations
 
