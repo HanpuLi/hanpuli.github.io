@@ -114,7 +114,9 @@ try {
           failures.push(path + ": dynamically localised reading controls are not wired up");
         }
         await page.locator("[data-reading-reset]").click();
-        const reset = await page.evaluate(() => !document.documentElement.hasAttribute("data-reading-large"));
+        const reset = await page
+          .waitForFunction(() => !document.documentElement.hasAttribute("data-reading-large"), undefined, { timeout: 2000 })
+          .then(() => true, () => false);
         if (!reset) {
           failures.push(path + ": reading preference reset did not clear the dynamic 404 state");
         }
