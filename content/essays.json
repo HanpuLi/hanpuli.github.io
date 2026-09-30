@@ -1,0 +1,39 @@
+{
+  "essays": [
+    {
+      "slug": "trainspotting",
+      "title": "From Gears to Gasp",
+      "source": "essays/trainspotting.inc",
+      "metadata": "essay-trainspotting.json",
+      "social_image": "assets/social/trainspotting.png"
+    },
+    {
+      "slug": "hogg-auteur",
+      "title": "Who Gets to Discover an Auteur?",
+      "source": "essays/hogg-auteur.inc",
+      "metadata": "essay-hogg.json",
+      "social_image": "assets/social/hogg-auteur.png"
+    },
+    {
+      "slug": "film-carbon-boundaries",
+      "title": "Counting the Carbon a Film Leaves Elsewhere",
+      "source": "essays/film-carbon-boundaries.inc",
+      "metadata": "essay-film-carbon.json",
+      "social_image": "assets/social/film-carbon-boundaries.png"
+    },
+    {
+      "slug": "accent-profile",
+      "title": "What an Accent Profile Cannot Keep Outside the Frame",
+      "source": "essays/accent-profile.inc",
+      "metadata": "essay-accent-profile.json",
+      "social_image": "assets/social/accent-profile.png"
+    },
+    {
+      "slug": "final-e-history",
+      "title": "The Letter That Outlived Its Sound",
+      "source": "essays/final-e-history.inc",
+      "metadata": "essay-final-e.json",
+      "social_image": "assets/social/final-e-history.png"
+    }
+  ]
+}

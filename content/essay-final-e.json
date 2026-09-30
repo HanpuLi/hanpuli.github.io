@@ -1,0 +1,30 @@
+{
+  "en": {
+    "meta_description": "A history-of-English essay on final e, sound loss, vowel length, scribal practice and the grammatical competition hidden by modern spelling.",
+    "language_note": ""
+  },
+  "zh": {
+    "meta_description": "一篇從詞尾 e 談語音消失、元音長度、抄寫習慣與現代拼寫所遮蔽之語法競爭的英語史文章。正文為英文。",
+    "language_note": "正文為英文；此頁保留繁體中文站內導覽。"
+  },
+  "zh-hans": {
+    "meta_description": "一篇从词尾 e 谈语音消失、元音长度、抄写习惯与现代拼写所遮蔽之语法竞争的英语史文章。正文为英文。",
+    "language_note": "正文为英文；此页保留简体中文站内导航。"
+  },
+  "ja": {
+    "meta_description": "語末の e から、音の消失、母音長、写本習慣、現代綴字が覆い隠す文法的競合を読む英語史のエッセイ。本文は英語。",
+    "language_note": "本文は英語です。このページでは日本語版サイトのナビゲーションを表示しています。"
+  },
+  "de": {
+    "meta_description": "Ein sprachhistorischer Essay über finales e, Lautverlust, Vokallänge, Schreibpraxis und die grammatische Konkurrenz hinter moderner Orthografie. Der Text ist auf Englisch.",
+    "language_note": "Der Essay selbst ist auf Englisch; diese Seite verwendet die deutsche Navigation der Website."
+  },
+  "fr": {
+    "meta_description": "Un essai d’histoire de l’anglais sur le e final, la perte phonétique, la longueur vocalique, les pratiques scribales et la concurrence grammaticale. Le texte est en anglais.",
+    "language_note": "Le texte de l’essai est en anglais ; cette page conserve la navigation française du site."
+  },
+  "ru": {
+    "meta_description": "Эссе по истории английского о конечной e, утрате звуков, долготе гласных, писцовой практике и грамматической конкуренции в орфографии. Основной текст на английском.",
+    "language_note": "Основной текст эссе — на английском; на этой странице сохранена русская навигация сайта."
+  }
+}

@@ -17,6 +17,7 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 LANGUAGES = json.loads((ROOT / "content" / "languages.json").read_text(encoding="utf-8"))
 LOCALES = tuple("" if item["id"] == "en" else item["id"] for item in LANGUAGES)
+ESSAYS = json.loads((ROOT / "content" / "essays.json").read_text(encoding="utf-8"))["essays"]
 PAGES = ("index.html", "ci.html", "shi.html", "about.html", "contexts.html", "404.html")
 READING_PREFS = {"sans", "dyslexia", "large", "spacing", "measure", "simple", "motion", "contrast"}
 
@@ -31,10 +32,11 @@ def portfolio_paths() -> list[Path]:
 
 def essay_paths() -> list[Path]:
     return [
-        ROOT / locale / "writing" / "trainspotting" / "index.html"
+        ROOT / locale / "writing" / essay["slug"] / "index.html"
         if locale
-        else ROOT / "writing" / "trainspotting" / "index.html"
+        else ROOT / "writing" / essay["slug"] / "index.html"
         for locale in LOCALES
+        for essay in ESSAYS
     ]
 
 

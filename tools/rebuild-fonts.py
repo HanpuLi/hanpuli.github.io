@@ -89,6 +89,20 @@ chars.update(c for c in shop_text if ord(c) >= 0x2E80)
 chars.discard("简")
 
 from fontTools.ttLib import TTFont
+
+# Some public text is inserted at runtime by the regional profile endpoint and
+# therefore is not present in the static HTML scanned above. Preserve CJK
+# glyphs already carried by the checked-in subset when adding new page text;
+# otherwise a rebuild can silently fix one page while removing coverage from
+# the conditional profile copy.
+if os.path.exists(OUT):
+    current_font = TTFont(OUT)
+    try:
+        current_cmap = current_font.getBestCmap()
+        chars.update(chr(codepoint) for codepoint in current_cmap if codepoint >= 0x2E80)
+    finally:
+        current_font.close()
+
 cmap = TTFont(SP).getBestCmap()
 missing = sorted(c for c in chars if ord(c) not in cmap)
 common_chars = sorted(c for c in chars & COMMON_CHARS if ord(c) in cmap)

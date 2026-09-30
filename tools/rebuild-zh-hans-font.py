@@ -64,8 +64,10 @@ def wanted_character(char: str) -> bool:
 
 def collect_text() -> str:
     text = "".join(path.read_text(encoding="utf-8") for path in CONTENT_FILES)
-    essay = json.loads((CONTENT / "essay-trainspotting.json").read_text(encoding="utf-8"))
-    text += essay["zh-hans"]["language_note"]
+    essay_registry = json.loads((CONTENT / "essays.json").read_text(encoding="utf-8"))["essays"]
+    for item in essay_registry:
+        metadata = json.loads((CONTENT / item["metadata"]).read_text(encoding="utf-8"))
+        text += json.dumps(metadata["zh-hans"], ensure_ascii=False)
     about = json.loads((CONTENT / "about-site.json").read_text(encoding="utf-8"))
     text += json.dumps(about["zh-hans"], ensure_ascii=False)
     voucher = json.loads((CONTENT / "poetry-voucher.json").read_text(encoding="utf-8"))

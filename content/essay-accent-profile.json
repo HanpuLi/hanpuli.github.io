@@ -1,0 +1,30 @@
+{
+  "en": {
+    "meta_description": "An applied-linguistics essay on accent profiling, intelligibility, listener responsibility, transcription and the privacy of recorded voices.",
+    "language_note": ""
+  },
+  "zh": {
+    "meta_description": "一篇討論口音檔案、可理解度、聽者責任、語音轉寫與錄音私隱的應用語言學文章。正文為英文。",
+    "language_note": "正文為英文；此頁保留繁體中文站內導覽。"
+  },
+  "zh-hans": {
+    "meta_description": "一篇讨论口音档案、可理解度、听者责任、语音转写与录音隐私的应用语言学文章。正文为英文。",
+    "language_note": "正文为英文；此页保留简体中文站内导航。"
+  },
+  "ja": {
+    "meta_description": "アクセント・プロファイル、明瞭性、聞き手の責任、音声転写、録音音声のプライバシーを論じる応用言語学のエッセイ。本文は英語。",
+    "language_note": "本文は英語です。このページでは日本語版サイトのナビゲーションを表示しています。"
+  },
+  "de": {
+    "meta_description": "Ein angewandt-linguistischer Essay über Akzentprofile, Verständlichkeit, die Verantwortung Zuhörender, Transkription und den Schutz aufgenommener Stimmen. Der Text ist auf Englisch.",
+    "language_note": "Der Essay selbst ist auf Englisch; diese Seite verwendet die deutsche Navigation der Website."
+  },
+  "fr": {
+    "meta_description": "Un essai de linguistique appliquée sur les profils d’accent, l’intelligibilité, la responsabilité des auditeurs, la transcription et la vie privée des voix enregistrées. Le texte est en anglais.",
+    "language_note": "Le texte de l’essai est en anglais ; cette page conserve la navigation française du site."
+  },
+  "ru": {
+    "meta_description": "Эссе по прикладной лингвистике об акцентном профилировании, разборчивости, ответственности слушателя, транскрипции и приватности записанного голоса. Основной текст на английском.",
+    "language_note": "Основной текст эссе — на английском; на этой странице сохранена русская навигация сайта."
+  }
+}

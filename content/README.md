@@ -15,8 +15,9 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `shi-source.json` — canonical Chinese text of the poem and its two drafts.
 - `shi-translations/<locale>.json` — non-Chinese translations.
 - `shi-simplified.json` — script-only Simplified Chinese mirror of the canonical poem source; its source hash is checked in CI.
-- `essays/trainspotting.inc` — English source fragment for the public <em>Trainspotting</em> essay.
-- `essay-trainspotting.json` — per-locale metadata and the notice used by each language shell; the essay body itself remains English.
+- `essays.json` — registry of public essays, their source fragments, metadata files and social images.
+- `essays/<slug>.inc` — English source fragments for the public essays.
+- `essay-<name>.json` — per-locale metadata and the notice used by each language shell; the essay bodies themselves remain English.
 - `about-site.json` — the seven editorial essays for About this site: selection, visual authority, translation, versions, reader adaptation, authorship and maintenance.
 - `contexts.json` — localised catalogue back matter for credit-name mapping, selected professional contexts and clearly identified first-party public records.
 

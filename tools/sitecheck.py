@@ -163,6 +163,7 @@ def check_css(errors: list[str]) -> None:
 def check_discovery(errors: list[str]) -> None:
     """Keep indexable routes, search metadata, robots.txt and sitemap.xml aligned."""
     languages = json.loads((ROOT / "content" / "languages.json").read_text(encoding="utf-8"))
+    essays = json.loads((ROOT / "content" / "essays.json").read_text(encoding="utf-8"))["essays"]
     identity = json.loads((ROOT / "content" / "identity.json").read_text(encoding="utf-8"))
     base_url = identity["site_url"].rstrip("/")
 
@@ -190,9 +191,9 @@ def check_discovery(errors: list[str]) -> None:
             return f"{base_url}{prefix}/poetry-voucher/"
         return f"{base_url}{prefix}/{page}.html"
 
-    def essay_url(locale_id: str) -> str:
+    def essay_url(locale_id: str, slug: str) -> str:
         prefix = "" if locale_id == "en" else f"/{locale_id}"
-        return f"{base_url}{prefix}/writing/trainspotting/"
+        return f"{base_url}{prefix}/writing/{slug}/"
 
     def first_love_url(locale_id: str) -> str:
         prefix = "" if locale_id == "en" else f"/{locale_id}"
@@ -201,7 +202,11 @@ def check_discovery(errors: list[str]) -> None:
     families: list[dict[str, str]] = []
     for page in ("index", "ci", "shi", "about", "contexts", "poetry-voucher"):
         families.append({language["id"]: standard_url(language["id"], page) for language in languages})
-    families.append({language["id"]: essay_url(language["id"]) for language in languages})
+    for essay in essays:
+        families.append({
+            language["id"]: essay_url(language["id"], essay["slug"])
+            for language in languages
+        })
     families.append({language["id"]: first_love_url(language["id"]) for language in languages})
 
     expected_alternates: dict[str, dict[str, str]] = {}

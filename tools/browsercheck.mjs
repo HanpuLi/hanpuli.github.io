@@ -9,13 +9,16 @@ import { chromium } from "@playwright/test";
 const PORT = Number(process.env.PORT || (18000 + (process.pid % 10000)));
 const BASE = `http://127.0.0.1:${PORT}`;
 const locales = ["", "zh", "zh-hans", "ja", "de", "fr", "ru"];
+const essayRegistry = JSON.parse(
+  await readFile(new URL("../content/essays.json", import.meta.url), "utf8"),
+).essays;
 const pageSuffixes = [
   "",
   "ci.html",
   "shi.html",
   "about.html",
   "contexts.html",
-  "writing/trainspotting/",
+  ...essayRegistry.map(({slug}) => `writing/${slug}/`),
   "writing/first-love/",
   "writing/first-love/status/",
   "writing/first-love/read/",

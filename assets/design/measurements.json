@@ -1200,7 +1200,7 @@
       "created": "2026-09-24T11:00:00.000Z",
       "lines": [
         {
-          "id": "98b19924-ad9e-42f7-8eb8-c28357e3b703",
+          "id": "805fab15-d29c-40df-860d-59a10f06b0ab",
           "workId": "ci-b3",
           "font": "bitmap",
           "size": 24,
@@ -1291,8 +1291,8 @@
       },
       "publication": {
         "schema": 1,
-        "renderer": "pv-render-23f4945eb46763f5",
-        "renderer_sha256": "23f4945eb46763f52eaadd76299ca30f3295f4d32c0789e6a45d068b8b5699da",
+        "renderer": "pv-render-ea69757b6a674f99",
+        "renderer_sha256": "ea69757b6a674f9987559f6d4f3ff17d34e5314b01f2cbe8db2ecee33dd2fcf9",
         "catalogue_sha256": "7e497e829ceb59c5a0fd1ea9c8b92d560470c76f55b2b1526d8b5aa7fa8d25e0",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
@@ -1307,9 +1307,9 @@
           "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
           "assets/fonts/iming-gap.woff2": "c7d09d76e39970b25958418800664ebb7b3af6fa8387f26cc59e13d55521d536",
           "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
-          "assets/fonts/noto-serif-sc-subset.woff2": "1921f60a62ecd43e26c56c8cb83cd85017af0a5691da92486d04ba7347c0913a",
+          "assets/fonts/noto-serif-sc-subset.woff2": "7e4b6c0f17c95c039bf7212ae4812b1c6a105fd2ef1abf64fae804cf34dd4de8",
           "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
-          "assets/fonts/shippori-mincho-subset.woff2": "34161053b0a702d04558f2afb7900054de6d1dc3ba9a3fa1719e0dcd145a3235",
+          "assets/fonts/shippori-mincho-subset.woff2": "16347ab3d085ebedd4eaf89b3ef6f02e7b52f7533a970d3f80db43275ea04826",
           "assets/fonts/site-mono-symbols.woff2": "3db44384d654fceb70d63b2f424ac6595bbb93dec9df3ced06be35c55e9c0805",
           "assets/fonts/site-serif-symbols.woff2": "c7a950096538d4280d661a4a8b59d2749713cb0d23c501cdd547b101d6b589a6",
           "content/poetry-voucher-app/accessibility.css": "70f3da8ceff863234e7564d094f5f94e39675d0655dc477482aadd05e076f3e0",
@@ -1987,21 +1987,21 @@
     "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
     "assets/fonts/iming-gap.woff2": "c7d09d76e39970b25958418800664ebb7b3af6fa8387f26cc59e13d55521d536",
     "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
-    "assets/fonts/noto-serif-sc-subset.woff2": "1921f60a62ecd43e26c56c8cb83cd85017af0a5691da92486d04ba7347c0913a",
+    "assets/fonts/noto-serif-sc-subset.woff2": "7e4b6c0f17c95c039bf7212ae4812b1c6a105fd2ef1abf64fae804cf34dd4de8",
     "assets/fonts/opendyslexic-bold-italic.woff2": "1aadc8fa9656c92c09c8194790d0671bcd2b4bd961ba41fb8f7e605e5c493be0",
     "assets/fonts/opendyslexic-bold.woff2": "b534a0b84ef3cca941ebdb506ce3f4e0010aa4ef881271bac8b6959dbf694fbf",
     "assets/fonts/opendyslexic-italic.woff2": "b18685dcb99b4ba903549d215c0ae2ab39a5087097614fd4100ae6d387332b47",
     "assets/fonts/opendyslexic-regular.woff2": "0441bc21071e42db57c217f93fbc48d3b55a2987c02814c94dc93621c42e8695",
     "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
-    "assets/fonts/shippori-mincho-subset.woff2": "34161053b0a702d04558f2afb7900054de6d1dc3ba9a3fa1719e0dcd145a3235",
+    "assets/fonts/shippori-mincho-subset.woff2": "117a72754c4e5ff4e0a402ccdd52905067fbf2e71c566f1fd5c1f66cc0e24691",
     "assets/fonts/site-mono-symbols.woff2": "3db44384d654fceb70d63b2f424ac6595bbb93dec9df3ced06be35c55e9c0805",
     "assets/fonts/site-serif-symbols.woff2": "c7a950096538d4280d661a4a8b59d2749713cb0d23c501cdd547b101d6b589a6",
-    "index.html": "fd78e8ca295739fb359b9877239a370b414421a67292487a0c6e432ed6e6f15e",
-    "zh/index.html": "57bf0ecd1977be06757eb7c33756876bbb11c0206e95564b5fb649a462c7b04f",
-    "zh-hans/index.html": "57b5da35d7df1142e05cb23095ebef449d8f10e78bce417e4ea62e5a2fe7aa9c",
-    "ja/index.html": "50f71117b81c89c535088743c4cc0d79caf3409997b01b2406d5b0698ffd5961",
-    "de/index.html": "caf715b342bbba2f6791bf6492443242bd59ba470454d99de0534f41f6c302f9",
-    "fr/index.html": "6409015ed3e046f670ac681d6f14b0306329f0ea968c951fea9f0219ef1adf46",
-    "ru/index.html": "bc34d89afdd6ba5e7e4028aaade01d78cd4c312aa3297e87603f47e7fa651767"
+    "index.html": "c7ee503fdde199b452bba0ac7d7083d5ca7c04bb7e3b3994169be35cdc835ff9",
+    "zh/index.html": "3b4f0e5f01d4e370448378ba1814b701349609a04473d79dc5da38af48e8be6e",
+    "zh-hans/index.html": "cdd3dd32b770b2dffb6653392648f37a334a30f1f3cd950a07112098046ae530",
+    "ja/index.html": "e6ba46ba7a619afebb26bad341fd526a20e7ecd5c156e8e5b1ef5c6d4a5a1275",
+    "de/index.html": "96187f480e6aa68ff43cf541f25e8f462c124f6e5ddedf9d587eb2d34068e17f",
+    "fr/index.html": "7fa055c39c94fe31ec83fd4d10ff077a9cd46bd45a4e06dfb07804914e71b76e",
+    "ru/index.html": "629b02b4239a6c2949373686c70181725f66204d1693a76961c9239ed53ebc55"
   }
 }

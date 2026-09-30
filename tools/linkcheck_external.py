@@ -8,6 +8,7 @@ without being mistaken for a broken editorial link.
 from __future__ import annotations
 
 import os
+import json
 import socket
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from html.parser import HTMLParser
@@ -16,6 +17,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
+ESSAYS = json.loads((ROOT / "content" / "essays.json").read_text(encoding="utf-8"))["essays"]
 LOCALES = ("", "zh", "zh-hans", "ja", "de", "fr", "ru")
 USER_AGENT = "HanpuLi-site-link-audit/1.0 (+https://hanpuli.github.io/)"
 TIMEOUT = 15
@@ -44,7 +46,7 @@ def portfolio_pages() -> list[Path]:
             base / "ci.html",
             base / "shi.html",
             base / "about.html",
-            base / "writing" / "trainspotting" / "index.html",
+            *(base / "writing" / essay["slug"] / "index.html" for essay in ESSAYS),
         ])
     return pages
 

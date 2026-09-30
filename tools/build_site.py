@@ -40,7 +40,11 @@ CI_SOURCE = load_json(CONTENT / "ci-source.json")
 CI_SIMPLIFIED = load_json(CONTENT / "ci-simplified.json")
 SHI_SOURCE = load_json(CONTENT / "shi-source.json")
 SHI_SIMPLIFIED = load_json(CONTENT / "shi-simplified.json")
-TRAINSPOTTING_ESSAY = load_json(CONTENT / "essay-trainspotting.json")
+ESSAY_REGISTRY = load_json(CONTENT / "essays.json")["essays"]
+ESSAY_METADATA = {
+    item["slug"]: load_json(CONTENT / item["metadata"])
+    for item in ESSAY_REGISTRY
+}
 ABOUT_SITE = load_json(CONTENT / "about-site.json")
 CONTEXTS = load_json(CONTENT / "contexts.json")
 POETRY_VOUCHER = load_json(CONTENT / "poetry-voucher.json")
@@ -52,7 +56,6 @@ SOCIAL_IMAGES = {
     "ci": ("assets/social/ci.png", 1200, 630, "image/png"),
     "shi": ("assets/social/shi.png", 1200, 630, "image/png"),
     "about": ("assets/social/about.png", 1200, 630, "image/png"),
-    "essay": ("assets/social/trainspotting.png", 1200, 630, "image/png"),
 }
 
 
@@ -111,26 +114,26 @@ def absolute_url(locale_id: str, page: str) -> str:
     return BASE_URL + page_path(locale_id, page)
 
 
-def essay_page_path(locale_id: str) -> str:
+def essay_page_path(locale_id: str, slug: str) -> str:
     if locale_id == ROOT_LOCALE:
-        return "/writing/trainspotting/"
-    return f"/{locale_id}/writing/trainspotting/"
+        return f"/writing/{slug}/"
+    return f"/{locale_id}/writing/{slug}/"
 
 
-def essay_absolute_url(locale_id: str) -> str:
-    return BASE_URL + essay_page_path(locale_id)
+def essay_absolute_url(locale_id: str, slug: str) -> str:
+    return BASE_URL + essay_page_path(locale_id, slug)
 
 
-def essay_output_path(locale_id: str) -> Path:
+def essay_output_path(locale_id: str, slug: str) -> Path:
     folder = ROOT if locale_id == ROOT_LOCALE else ROOT / locale_id
-    return folder / "writing" / "trainspotting" / "index.html"
+    return folder / "writing" / slug / "index.html"
 
 
 def essay_asset_prefix(locale_id: str) -> str:
     return "../../" if locale_id == ROOT_LOCALE else "../../../"
 
 
-def essay_language_switcher(locale_id: str) -> str:
+def essay_language_switcher(locale_id: str, slug: str) -> str:
     bits = []
     for language in LANGUAGES:
         lid = language["id"]
@@ -144,7 +147,7 @@ def essay_language_switcher(locale_id: str) -> str:
                 f'<span class="visually-hidden">{title}</span></span>'
             )
         else:
-            href = html.escape(essay_page_path(lid), quote=True)
+            href = html.escape(essay_page_path(lid, slug), quote=True)
             bits.append(
                 f'<a href="{href}" hreflang="{lang_attr}" lang="{lang_attr}" '
                 f'aria-label="{title}" title="{title}">'
@@ -274,17 +277,46 @@ def hreflang_links(page: str) -> str:
     return "\n".join(bits)
 
 
-def essay_hreflang_links() -> str:
+def essay_hreflang_links(slug: str) -> str:
     bits = []
     for language in LANGUAGES:
-        href = html.escape(essay_absolute_url(language["id"]), quote=True)
+        href = html.escape(essay_absolute_url(language["id"], slug), quote=True)
         hreflang = html.escape(language["html_lang"], quote=True)
         bits.append(f'<link rel="alternate" hreflang="{hreflang}" href="{href}">')
     bits.append(
         f'<link rel="alternate" hreflang="x-default" '
-        f'href="{html.escape(essay_absolute_url(ROOT_LOCALE), quote=True)}">'
+        f'href="{html.escape(essay_absolute_url(ROOT_LOCALE, slug), quote=True)}">'
     )
     return "\n".join(bits)
+
+
+def essay_cards_html(locale_id: str, locale: dict[str, Any]) -> str:
+    cards = []
+    for index, essay in enumerate(ESSAY_REGISTRY, start=2):
+        slug = essay["slug"]
+        href = html.escape(essay_page_path(locale_id, slug), quote=True)
+        if slug == "trainspotting":
+            title = locale["home"]["writing"]["film_essays_title"]
+            description = locale["home"]["writing"]["film_essays_description"]
+        else:
+            title = f'<span lang="en-GB">{html.escape(essay["title"])}</span>'
+            description = html.escape(ESSAY_METADATA[slug][locale_id]["meta_description"])
+        link_label = html.escape(locale["home"]["writing"]["film_essays_meta"])
+        cards.append(
+            "\n".join(
+                [
+                    "<article>",
+                    f'  <p class="writing-no">01.{index}</p>',
+                    f'  <h3><a href="{href}">{title}</a></h3>',
+                    f"  <p>{description}</p>",
+                    '  <div class="writing-footer">',
+                    f'    <p class="writing-meta"><a href="{href}">{link_label}</a></p>',
+                    "  </div>",
+                    "</article>",
+                ]
+            )
+        )
+    return "\n".join(cards)
 
 
 def icon_links(prefix: str) -> str:
@@ -1183,7 +1215,8 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "HOME_HREF": page_path(locale_id, "index"),
         "CI_HREF": page_path(locale_id, "ci"),
         "SHI_HREF": page_path(locale_id, "shi"),
-        "TRAINSPOTTING_HREF": essay_page_path(locale_id),
+        "TRAINSPOTTING_HREF": essay_page_path(locale_id, "trainspotting"),
+        "ESSAY_CARDS": essay_cards_html(locale_id, locale),
         "LANG_SWITCHER": language_switcher(locale_id, page),
         "PORTFOLIO_NAV": portfolio_nav_html(
             locale_id,
@@ -1230,11 +1263,38 @@ def build(check: bool = False) -> list[Path]:
         locales[lid] = locale
 
     expected_essay_locales = set(LANG_BY_ID)
-    actual_essay_locales = set(TRAINSPOTTING_ESSAY)
-    if actual_essay_locales != expected_essay_locales:
-        missing = sorted(expected_essay_locales - actual_essay_locales)
-        extra = sorted(actual_essay_locales - expected_essay_locales)
-        raise BuildError(f"Trainspotting essay locale mismatch missing={missing} extra={extra}")
+    essay_slugs = [item.get("slug") for item in ESSAY_REGISTRY]
+    if len(essay_slugs) != len(set(essay_slugs)):
+        raise BuildError("essay registry contains duplicate slugs")
+    if "trainspotting" not in essay_slugs:
+        raise BuildError("essay registry must retain the trainspotting route")
+    for item in ESSAY_REGISTRY:
+        missing_fields = [
+            field for field in ("slug", "title", "source", "metadata", "social_image")
+            if not isinstance(item.get(field), str) or not item[field].strip()
+        ]
+        if missing_fields:
+            raise BuildError(f"essay registry entry missing fields: {missing_fields}")
+        slug = item["slug"]
+        if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug):
+            raise BuildError(f"invalid essay slug: {slug}")
+        source_path = CONTENT / item["source"]
+        if not source_path.is_file():
+            raise BuildError(f"missing essay source: {source_path}")
+        metadata = ESSAY_METADATA[slug]
+        actual_essay_locales = set(metadata)
+        if actual_essay_locales != expected_essay_locales:
+            missing = sorted(expected_essay_locales - actual_essay_locales)
+            extra = sorted(actual_essay_locales - expected_essay_locales)
+            raise BuildError(
+                f"{slug} essay locale mismatch missing={missing} extra={extra}"
+            )
+        for lid, copy in metadata.items():
+            for key in ("meta_description", "language_note"):
+                if not isinstance(copy.get(key), str):
+                    raise BuildError(f"{slug} {lid}: {key} must be a string")
+            if lid != ROOT_LOCALE and not copy["language_note"].strip():
+                raise BuildError(f"{slug} {lid}: missing English-body notice")
 
     actual_about_locales = set(ABOUT_SITE)
     if actual_about_locales != expected_essay_locales:
@@ -1293,81 +1353,85 @@ def build(check: bool = False) -> list[Path]:
                     target.write_text(rendered, encoding="utf-8")
 
     essay_template = (TEMPLATES / "essay.html").read_text(encoding="utf-8")
-    essay_body = (CONTENT / "essays" / "trainspotting.inc").read_text(encoding="utf-8")
-    for lid, locale in locales.items():
-        lang = LANG_BY_ID[lid]
-        essay_copy = TRAINSPOTTING_ESSAY[lid]
-        description = essay_copy["meta_description"]
-        essay_title = "From Gears to Gasp · Hanpu Li"
-        essay_url = essay_absolute_url(lid)
-        social_path, social_width, social_height, social_type = SOCIAL_IMAGES["essay"]
-        essay_social = social_meta_html(
-            locale_id=lid,
-            title=essay_title,
-            description=description,
-            url=essay_url,
-            image_url=f"{BASE_URL}/{social_path}",
-            image_alt=essay_title,
-            width=social_width,
-            height=social_height,
-            image_type=social_type,
-            og_type="article",
-        )
-        essay_structured_data = structured_data_html(
-            locale_id=lid,
-            page_kind="essay",
-            title=essay_title,
-            description=description,
-            url=essay_url,
-            image_url=f"{BASE_URL}/{social_path}",
-        )
-        note = essay_copy["language_note"].strip()
-        note_html = (
-            f'<p class="essay-note" role="note">{html.escape(note)}</p>'
-            if note
-            else "<!-- English body; no language notice needed. -->"
-        )
-        essay_target = essay_output_path(lid)
-        essay_target.parent.mkdir(parents=True, exist_ok=True)
-        essay_rendered = render_template(
-            essay_template,
-            locale,
-            {
-                "HTML_LANG": html.escape(lang["html_lang"], quote=True),
-                "LOCALE": lid,
-                "OG_LOCALE": html.escape(lang["og_locale"], quote=True),
-                "ESSAY_ASSET_PREFIX": essay_asset_prefix(lid),
-                "ESSAY_HREFLANG_LINKS": essay_hreflang_links(),
-                "SOCIAL_META": essay_social,
-                "STRUCTURED_DATA": essay_structured_data,
-                "ICON_LINKS": icon_links(essay_asset_prefix(lid)),
-                "READING_TOOLS": reading_tools(locale),
-                "PRIMARY_NAME": html.escape(IDENTITY["primary_name"]),
-                "CHINESE_NAME": html.escape(IDENTITY["chinese_name"]),
-                "HOME_HREF": page_path(lid, "index"),
-                "WRITING_HREF": page_path(lid, "index") + "#writing",
-                "ABOUT_HREF": page_path(lid, "about"),
-                "ABOUT_LINK_LABEL": html.escape(ABOUT_SITE[lid]["footer_link"]),
-                "ESSAY_LANG_SWITCHER": essay_language_switcher(lid),
-                "PORTFOLIO_NAV": portfolio_nav_html(
-                    lid,
-                    locale,
-                    current="writing",
-                    home_page=False,
-                ),
-                "ESSAY_META_DESCRIPTION_ATTR": html.escape(description, quote=True),
-                "ESSAY_LANGUAGE_NOTE": note_html,
-                "ESSAY_BODY": essay_body,
-                "ESSAY_CANONICAL": html.escape(essay_url, quote=True),
-            },
-        )
-        if not essay_rendered.endswith("\n"):
-            essay_rendered += "\n"
-        old_essay = essay_target.read_text(encoding="utf-8") if essay_target.exists() else None
-        if old_essay != essay_rendered:
-            changed.append(essay_target)
-            if not check:
-                essay_target.write_text(essay_rendered, encoding="utf-8")
+    for essay in ESSAY_REGISTRY:
+        slug = essay["slug"]
+        essay_body = (CONTENT / essay["source"]).read_text(encoding="utf-8")
+        social_path = essay["social_image"]
+        social_width, social_height = png_dimensions(ROOT / social_path)
+        for lid, locale in locales.items():
+            lang = LANG_BY_ID[lid]
+            essay_copy = ESSAY_METADATA[slug][lid]
+            description = essay_copy["meta_description"]
+            essay_title = f"{essay['title']} · {IDENTITY['primary_name']}"
+            essay_url = essay_absolute_url(lid, slug)
+            essay_social = social_meta_html(
+                locale_id=lid,
+                title=essay_title,
+                description=description,
+                url=essay_url,
+                image_url=f"{BASE_URL}/{social_path}",
+                image_alt=essay_title,
+                width=social_width,
+                height=social_height,
+                image_type="image/png",
+                og_type="article",
+            )
+            essay_structured_data = structured_data_html(
+                locale_id=lid,
+                page_kind="essay",
+                title=essay_title,
+                description=description,
+                url=essay_url,
+                image_url=f"{BASE_URL}/{social_path}",
+            )
+            note = essay_copy["language_note"].strip()
+            note_html = (
+                f'<p class="essay-note" role="note">{html.escape(note)}</p>'
+                if note
+                else "<!-- English body; no language notice needed. -->"
+            )
+            essay_target = essay_output_path(lid, slug)
+            essay_target.parent.mkdir(parents=True, exist_ok=True)
+            essay_rendered = render_template(
+                essay_template,
+                locale,
+                {
+                    "HTML_LANG": html.escape(lang["html_lang"], quote=True),
+                    "LOCALE": lid,
+                    "OG_LOCALE": html.escape(lang["og_locale"], quote=True),
+                    "ESSAY_PAGE_TITLE": html.escape(essay_title),
+                    "ESSAY_ASSET_PREFIX": essay_asset_prefix(lid),
+                    "ESSAY_HREFLANG_LINKS": essay_hreflang_links(slug),
+                    "SOCIAL_META": essay_social,
+                    "STRUCTURED_DATA": essay_structured_data,
+                    "ICON_LINKS": icon_links(essay_asset_prefix(lid)),
+                    "READING_TOOLS": reading_tools(locale),
+                    "PRIMARY_NAME": html.escape(IDENTITY["primary_name"]),
+                    "CHINESE_NAME": html.escape(IDENTITY["chinese_name"]),
+                    "HOME_HREF": page_path(lid, "index"),
+                    "WRITING_HREF": page_path(lid, "index") + "#writing",
+                    "ABOUT_HREF": page_path(lid, "about"),
+                    "ABOUT_LINK_LABEL": html.escape(ABOUT_SITE[lid]["footer_link"]),
+                    "ESSAY_LANG_SWITCHER": essay_language_switcher(lid, slug),
+                    "PORTFOLIO_NAV": portfolio_nav_html(
+                        lid,
+                        locale,
+                        current="writing",
+                        home_page=False,
+                    ),
+                    "ESSAY_META_DESCRIPTION_ATTR": html.escape(description, quote=True),
+                    "ESSAY_LANGUAGE_NOTE": note_html,
+                    "ESSAY_BODY": essay_body,
+                    "ESSAY_CANONICAL": html.escape(essay_url, quote=True),
+                },
+            )
+            if not essay_rendered.endswith("\n"):
+                essay_rendered += "\n"
+            old_essay = essay_target.read_text(encoding="utf-8") if essay_target.exists() else None
+            if old_essay != essay_rendered:
+                changed.append(essay_target)
+                if not check:
+                    essay_target.write_text(essay_rendered, encoding="utf-8")
 
     def sitemap_entry(location: str, variants: dict[str, str], x_default: str) -> list[str]:
         rows = ["  <url>", f"    <loc>{html.escape(location, quote=True)}</loc>"]
@@ -1390,8 +1454,11 @@ def build(check: bool = False) -> list[Path]:
         for page in standard_pages
     }
     essay_variants = {
-        language["id"]: BASE_URL + essay_page_path(language["id"])
-        for language in LANGUAGES
+        essay["slug"]: {
+            language["id"]: BASE_URL + essay_page_path(language["id"], essay["slug"])
+            for language in LANGUAGES
+        }
+        for essay in ESSAY_REGISTRY
     }
     first_love_variants = {
         language["id"]: BASE_URL + first_love_page_path(language["id"], "request")
@@ -1410,13 +1477,14 @@ def build(check: bool = False) -> list[Path]:
             sitemap_lines.extend(
                 sitemap_entry(variants[lid], variants, variants[ROOT_LOCALE])
             )
-        sitemap_lines.extend(
-            sitemap_entry(
-                essay_variants[lid],
-                essay_variants,
-                essay_variants[ROOT_LOCALE],
+        for variants in essay_variants.values():
+            sitemap_lines.extend(
+                sitemap_entry(
+                    variants[lid],
+                    variants,
+                    variants[ROOT_LOCALE],
+                )
             )
-        )
         sitemap_lines.extend(
             sitemap_entry(
                 first_love_variants[lid],

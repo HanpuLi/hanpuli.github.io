@@ -96,8 +96,12 @@ def main() -> None:
     save_card("shi.png", "05 / POEMS", "Poems in draft", glyph="詩")
     save_card("about.png", "IMPLEMENTATION NOTES / 2026", "ABOUT\nTHIS SITE")
     save_card("trainspotting.png", "ESSAY / TRAINSPOTTING", "FROM GEARS\nTO GASP")
+    save_card("hogg-auteur.png", "FILM CRITICISM / JOANNA HOGG", "WHO GETS TO\nDISCOVER AN AUTEUR?")
+    save_card("film-carbon-boundaries.png", "SCREEN INDUSTRIES / CARBON", "COUNTING THE CARBON\nA FILM LEAVES ELSEWHERE")
+    save_card("final-e-history.png", "HISTORY OF ENGLISH / SPELLING", "THE LETTER THAT\nOUTLIVED ITS SOUND")
+    save_card("accent-profile.png", "APPLIED LINGUISTICS / LISTENING", "WHAT AN ACCENT PROFILE\nCANNOT KEEP OUTSIDE")
     save_card("first-love.png", "STUDY / FIRST LOVE", "ON FIRST LOVE")
-    print("social cards: ci, shi, about, trainspotting, first-love")
+    print("social cards: ci, shi, about, trainspotting, hogg-auteur, film-carbon-boundaries, accent-profile, final-e-history, first-love")
 
 
 if __name__ == "__main__":

@@ -179,21 +179,33 @@ def main() -> int:
                     f"{locale} chronology must mark the retained University Radio York brand as English"
                 )
 
-    essay_locales = load(CONTENT / "essay-trainspotting.json")
-    if set(essay_locales) != set(locales):
-        errors.append(
-            "Trainspotting essay locale mismatch: "
-            f"missing={sorted(set(locales) - set(essay_locales))} "
-            f"extra={sorted(set(essay_locales) - set(locales))}"
-        )
-    else:
+    essay_registry = load(CONTENT / "essays.json").get("essays", [])
+    essay_slugs = [item.get("slug") for item in essay_registry]
+    if len(essay_slugs) != len(set(essay_slugs)):
+        errors.append("essay registry contains duplicate slugs")
+    essay_metadata = {}
+    for essay in essay_registry:
+        slug = essay.get("slug", "<missing>")
+        metadata_path = CONTENT / essay.get("metadata", "")
+        if not metadata_path.is_file():
+            errors.append(f"{slug} essay metadata is missing: {metadata_path.relative_to(ROOT)}")
+            continue
+        essay_locales = load(metadata_path)
+        essay_metadata[slug] = essay_locales
+        if set(essay_locales) != set(locales):
+            errors.append(
+                f"{slug} essay locale mismatch: "
+                f"missing={sorted(set(locales) - set(essay_locales))} "
+                f"extra={sorted(set(essay_locales) - set(locales))}"
+            )
+            continue
         for locale in locales:
             item = essay_locales[locale]
             for key in ("meta_description", "language_note"):
                 if not isinstance(item.get(key), str):
-                    errors.append(f"{locale} Trainspotting essay: {key} must be a string")
+                    errors.append(f"{locale} {slug} essay: {key} must be a string")
             if locale != "en" and not item.get("language_note", "").strip():
-                errors.append(f"{locale} Trainspotting essay: missing English-body notice")
+                errors.append(f"{locale} {slug} essay: missing English-body notice")
 
     ja_literary_text = (
         (CONTENT / "locales" / "ja.json").read_text(encoding="utf-8")
@@ -383,7 +395,7 @@ def main() -> int:
             (CONTENT / "locales" / "zh-hans.json").read_text(encoding="utf-8"),
             (CONTENT / "ci-simplified.json").read_text(encoding="utf-8"),
             (CONTENT / "shi-simplified.json").read_text(encoding="utf-8"),
-            load(CONTENT / "essay-trainspotting.json")["zh-hans"]["language_note"],
+            *(json.dumps(metadata["zh-hans"], ensure_ascii=False) for metadata in essay_metadata.values()),
             json.dumps(about_site["zh-hans"], ensure_ascii=False),
             (CONTENT / "design" / "zh-hans.json").read_text(encoding="utf-8"),
             json.dumps(load(CONTENT / "poetry-voucher.json")["zh-hans"], ensure_ascii=False),
@@ -432,10 +444,12 @@ def main() -> int:
         folder = ROOT if locale == "en" else ROOT / locale
         locale_data = load(CONTENT / "locales" / f"{locale}.json")
         expected_lang = next(item["html_lang"] for item in languages if item["id"] == locale)
-        essay_path = folder / "writing" / "trainspotting" / "index.html"
-        if not essay_path.exists():
-            errors.append(f"missing generated {essay_path.relative_to(ROOT)}")
-        else:
+        for essay in essay_registry:
+            slug = essay["slug"]
+            essay_path = folder / "writing" / slug / "index.html"
+            if not essay_path.exists():
+                errors.append(f"missing generated {essay_path.relative_to(ROOT)}")
+                continue
             essay_text = essay_path.read_text(encoding="utf-8")
             if re.search(r"{{[A-Za-z0-9_.]+}}", essay_text):
                 errors.append(f"{essay_path.relative_to(ROOT)}: unresolved template token")
@@ -494,13 +508,13 @@ def main() -> int:
                 essay_text,
             ):
                 errors.append(
-                    f"{essay_path.relative_to(ROOT)}: Trainspotting must mark 01 writing as current"
+                    f"{essay_path.relative_to(ROOT)}: essay must mark 01 writing as current"
                 )
             for language in languages:
                 lid = language["id"]
                 if lid == locale:
                     continue
-                href = "/writing/trainspotting/" if lid == "en" else f"/{lid}/writing/trainspotting/"
+                href = f"/writing/{slug}/" if lid == "en" else f"/{lid}/writing/{slug}/"
                 if f'href="{href}"' not in essay_text:
                     errors.append(
                         f"{essay_path.relative_to(ROOT)}: missing essay language link {href}"
