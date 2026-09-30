@@ -15,17 +15,6 @@ CI_CYCLE_IDS = ("a1","b1","a2","b2","b3","b4","b5","a3","a4","a5","a6","a7","b6"
 CI_OUTSIDE_IDS = ("a10",)
 CI_SEPARATE_IDS = ("w2","w3")
 CI_IDS = CI_CYCLE_IDS + CI_OUTSIDE_IDS + CI_SEPARATE_IDS
-EXPECTED_EDUCATION = {
-    "en": "York · English Language and Linguistics · film · QMUL",
-    "zh": "約克 · 英語語言與語言學 · 電影 · QMUL",
-    "zh-hans": "约克 · 英语语言与语言学 · 电影 · QMUL",
-    "ja": "York · 英語・言語学 · 映画 · QMUL",
-    "de": "York · Englische Sprache und Linguistik · Film · QMUL",
-    "fr": "York · langue anglaise et linguistique · cinéma · QMUL",
-    "ru": "York · английский язык и лингвистика · кино · QMUL",
-}
-
-
 def load(path: Path):
     with path.open(encoding="utf-8") as fh:
         return json.load(fh)
@@ -155,9 +144,9 @@ def main() -> int:
         wrong = sorted(k for k in set(sig) & set(current) if sig[k] != current[k])
         if missing or extra or wrong:
             errors.append(f"{locale} locale schema mismatch: missing={missing} extra={extra} type={wrong}")
-        if data.get("home", {}).get("education") != EXPECTED_EDUCATION[locale]:
+        if data.get("home", {}).get("education") != "":
             errors.append(
-                f"{locale} home.education no longer matches the approved factual trajectory: "
+                f"{locale} home.education must remain empty in the fail-closed public source: "
                 f"{data.get('home', {}).get('education')!r}"
             )
         if locale in chinese_locales:

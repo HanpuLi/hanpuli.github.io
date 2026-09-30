@@ -66,6 +66,14 @@
       else heroId.prepend(alias);
     }
 
+    const educationSlot = heroId?.querySelector("template[data-regional-education]");
+    if (educationSlot && typeof data.education === "string" && data.education) {
+      const education = document.createElement("p");
+      education.dataset.regionalEducation = "";
+      education.textContent = data.education;
+      educationSlot.replaceWith(education);
+    }
+
     if (data.ledeNote) {
       const lede = document.querySelector(".hero-copy .zh-lede");
       if (lede && !lede.querySelector("[data-regional-footnote-mark]")) {
@@ -181,6 +189,18 @@
     }
   }
 
+  function restoreEducationalContext(data) {
+    const trainspottingNote = document.querySelector("[data-regional-trainspotting-note]");
+    if (
+      trainspottingNote &&
+      typeof data.trainspottingNote === "string" &&
+      data.trainspottingNote
+    ) {
+      trainspottingNote.textContent = data.trainspottingNote;
+      trainspottingNote.dataset.regionalEducation = "";
+    }
+  }
+
   const controller = new AbortController();
   const timeout = window.setTimeout(() => controller.abort(), 2500);
 
@@ -206,6 +226,7 @@
       restoreContexts(data);
       restoreAbout(data);
       restoreEmailSlots(data);
+      restoreEducationalContext(data);
     })
     .catch(() => {
       // Fail closed: CN, unknown geolocation, an unreachable Worker, or a font failure

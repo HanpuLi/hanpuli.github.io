@@ -1996,12 +1996,12 @@
     "assets/fonts/shippori-mincho-subset.woff2": "34161053b0a702d04558f2afb7900054de6d1dc3ba9a3fa1719e0dcd145a3235",
     "assets/fonts/site-mono-symbols.woff2": "3db44384d654fceb70d63b2f424ac6595bbb93dec9df3ced06be35c55e9c0805",
     "assets/fonts/site-serif-symbols.woff2": "c7a950096538d4280d661a4a8b59d2749713cb0d23c501cdd547b101d6b589a6",
-    "index.html": "b181c71c57e6c1c4796a79f7d5a6612e8bb27c3016a9987ff987d850d62ef2bc",
-    "zh/index.html": "cbf8a57b0e938501bc5f4e12fd37f703d871e51faf3d481b64a9e91241f11feb",
-    "zh-hans/index.html": "9b52cd932f9c1ef7227bbd0b34f5e8318117d10476fcfb9295829705f5af77a2",
-    "ja/index.html": "ea78e27fcb25f43c8822957b39db245438cc05cff1a5471ec5c3d324d67561c8",
-    "de/index.html": "eebf06d66e7a476c676d518f6bce85e0ba366c0dbdb7cd8f8c66ef1bdd1a853a",
-    "fr/index.html": "63394379d7ed8d77a4b52e7e9f29879b852ac2c14c6437857e58a06a4ed56755",
-    "ru/index.html": "90ffbea3d3258ace53f4cc15e1fcd203b81fa7532a0285b3cf2865f04e508435"
+    "index.html": "fd78e8ca295739fb359b9877239a370b414421a67292487a0c6e432ed6e6f15e",
+    "zh/index.html": "57bf0ecd1977be06757eb7c33756876bbb11c0206e95564b5fb649a462c7b04f",
+    "zh-hans/index.html": "57b5da35d7df1142e05cb23095ebef449d8f10e78bce417e4ea62e5a2fe7aa9c",
+    "ja/index.html": "50f71117b81c89c535088743c4cc0d79caf3409997b01b2406d5b0698ffd5961",
+    "de/index.html": "caf715b342bbba2f6791bf6492443242bd59ba470454d99de0534f41f6c302f9",
+    "fr/index.html": "6409015ed3e046f670ac681d6f14b0306329f0ea968c951fea9f0219ef1adf46",
+    "ru/index.html": "bc34d89afdd6ba5e7e4028aaade01d78cd4c312aa3297e87603f47e7fa651767"
   }
 }
