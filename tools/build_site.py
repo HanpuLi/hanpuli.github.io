@@ -960,7 +960,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
     contexts = CONTEXTS[locale_id]
     primary = IDENTITY["primary_name"]
     hero_name = html.escape(primary).replace(" ", "<br>", 1)
-    alt_name = IDENTITY["alternate_names"][0]
+    alt_name = IDENTITY["alternate_names"][0] if IDENTITY["alternate_names"] else ""
     if page == "index":
         meta_title = locale["home"]["meta_title"]
         meta_description = locale["home"]["meta_description"]
@@ -1105,12 +1105,22 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "READING_TOOLS": reading_tools(locale),
         "HERO_FOOTNOTE_MARK": hero_footnote_mark,
         "HERO_FOOTNOTE": hero_footnote,
+        "HERO_ALIAS": (
+            f'        <p>{html.escape(locale["home"]["alias"])}</p>'
+            if locale["home"]["alias"]
+            else ""
+        ),
         "SOCIAL_IMAGE_ALT": html.escape(locale["home"]["photos"]["alt"]["03"], quote=True),
         "PRIMARY_NAME": html.escape(primary),
         "PRIMARY_NAME_HERO": hero_name,
         "CHINESE_NAME": html.escape(IDENTITY["chinese_name"]),
         "ALT_NAME": html.escape(alt_name),
         "LOCATION": html.escape(locale["home"]["location"]),
+        "FOOTER_ALT_LINE": (
+            f'      <p>{html.escape(alt_name)} · {html.escape(locale["home"]["location"])}</p>'
+            if alt_name
+            else ""
+        ),
         "EMAIL": html.escape(IDENTITY["email"], quote=True),
         "GITHUB_URL": html.escape(IDENTITY["github_url"], quote=True),
         "GITHUB_LABEL": html.escape(IDENTITY["github_label"]),

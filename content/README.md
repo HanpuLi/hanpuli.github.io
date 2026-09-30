@@ -4,7 +4,7 @@ This directory is the source of truth for all user-facing portfolio copy.
 
 ## Files
 
-- `identity.json` — canonical identity data. `Hanpu Li` is the primary name; `李函璞` and `Caitlyn Lye` are alternate names.
+- `identity.json` — canonical public identity data. `Hanpu Li` is the primary public name; `李函璞` is the Chinese name.
 - `shared.json` — language-independent project URLs, evidence values, technical stacks and site metadata.
 - `languages.json` — supported locales and standards metadata.
 - `locales/<locale>.json` — navigation, metadata, project copy, captions, accessibility text and profile copy.
