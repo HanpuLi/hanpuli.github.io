@@ -159,7 +159,7 @@
   },
   "ci": {
     "meta_title": "Ci · Hanpu Li",
-    "meta_description": "Ci von Hanpu Li: Sechzehn Gedichte von A und B mit Anhang, ein separates Paar vom September 2026 und ein überarbeitetes früheres Gedicht.",
+    "meta_description": "Ci von Hanpu Li: Sechzehn Gedichte von A und B mit Anhang, zwei Gedichte vom September 2026 sowie sieben frühere Gedichte und Antworten, mit chinesischem Text und Übersetzungen.",
     "heading": "Sechzehn Gedichte von A und B",
     "subtitle": "Ein Zyklus aus sechzehn Gedichten, von einer Person in zwei Stimmen geschrieben, A (甲) und B (乙). A gibt meist eine ausführliche Vorbemerkung; die ersten fünf Gedichte von B sind unbetitelt. Der Zyklus ist auf den 9. Juni 2026 datiert. Ein Gedicht außerhalb des Zyklus vom 1. Juli folgt als Anhang. Die zugehörigen Anmerkungen sind auf Anfrage erhältlich.",
     "outside": "außerhalb des Zyklus",
@@ -169,9 +169,9 @@
     "separate_heading": "9. September 2026 · zwei Gedichte",
     "separate_note": "Ein separates Paar; nicht Teil von Sechzehn Gedichte von A und B.",
     "separate_toc": "9. Sep.",
-    "revised_heading": "Ein früheres Gedicht, überarbeitet",
-    "revised_note": "Mantingfang · Gedanken an Chutan aus der Ferne. Verfasst am 19. Dezember 2019; überarbeitet im Oktober 2026.",
-    "revised_toc": "Früheres Gedicht"
+    "revised_heading": "Frühere Gedichte und eine spätere Antwort",
+    "revised_note": "Sechs Überarbeitungen früherer Gedichte und eine eigenständige, Jahre später verfasste Antwort. Entstehung und Überarbeitung sind getrennt datiert.",
+    "revised_toc": "Frühere Gedichte"
   },
   "shi": {
     "meta_title": "Das Dach reißt auf · Hanpu Li",

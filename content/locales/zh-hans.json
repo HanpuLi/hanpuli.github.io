@@ -159,7 +159,7 @@
   },
   "ci": {
     "meta_title": "词 · Hanpu Li 李函璞",
-    "meta_description": "李函璞词作：《甲乙十六首》及其集外附录、二〇二六年九月九日二首，另收旧作修订。",
+    "meta_description": "李函璞词作：《甲乙十六首》及其集外附录、二〇二六年九月九日二首，另收旧作与重读七首。",
     "heading": "甲乙十六首",
     "subtitle": "一人分作两声的唱和集：甲多详序，乙前五首无题。十六首并系于二〇二六年六月九日；另附七月一日集外一首。附自撰笺注，备索。此版采用简体字。",
     "outside": "集外",
@@ -169,9 +169,9 @@
     "separate_heading": "二〇二六年九月九日 · 二首",
     "separate_note": "另成一组，不属《甲乙十六首》。",
     "separate_toc": "九月九日",
-    "revised_heading": "旧作修订",
-    "revised_note": "《满庭芳·遥思楚潭》，二〇一九年十二月十九日作，二〇二六年十月修订。",
-    "revised_toc": "旧作修订"
+    "revised_heading": "旧作与重读",
+    "revised_note": "收旧作修订六首，以及多年后另作的《重读旧作》；原作与本次修订的日期分别标注。",
+    "revised_toc": "旧作与重读"
   },
   "shi": {
     "meta_title": "屋顶裂开 · Hanpu Li 李函璞",

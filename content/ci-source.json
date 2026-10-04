@@ -215,6 +215,39 @@
       }
     },
     {
+      "id": "w5",
+      "voice": "separate",
+      "source_title": "《臨江仙》",
+      "source_body": "麴櫱鹽梅無舊譜，塵來未皺芳流。\n簾前欲去影先留。\n緣愁都不守，只道別家秋。\n\n閬苑蓬萊身已遠，青驄且繫書樓。\n別期未至不題愁。\n炭冰摧過後，吟捻憶君眸。",
+      "date": "二〇一八年一月八日至十四日作；二〇二六年十月修訂",
+      "en": {
+        "title": "To the tune of Linjiangxian",
+        "body": "Ferment and malt, salt and plum: no old recipe; dust comes, but has not rippled the fragrant stream.\nBefore the curtain, about to leave, the shadow stays first.\nI hold neither ties nor sorrow, speak only of your autumn.\n\nFar now from Langyuan and Penglai, tether the blue-grey horse awhile beside the study.\nThe time for parting has not come; do not write sorrow yet.\nAfter coal and ice have torn through, I murmur, twist a whisker, remember your eyes."
+      }
+    },
+    {
+      "id": "w6",
+      "voice": "separate",
+      "source_title": "《臨江仙引》",
+      "source_body": "塢裂，宴散，鐘垂晚、暫偷安。\n星師不復嘉年。\n任舊牆吞影，剩歸夢盤桓。\n空庭雪柳，折處尚溫，偏倚爛柯山。\n\n三山別來無去處，苔階不認人還。\n度鐵城橋路，更麻雨潺潺。\n拋殘血縷滿指，待來世兩相憐。",
+      "date": "二〇一九年十月二十八日作；二〇二六年十月修訂",
+      "en": {
+        "title": "To the tune of Linjiangxian Yin",
+        "body": "The enclosure cracks; the feast disperses; the bell hangs into evening—a moment’s stolen peace.\nStar City no longer holds those good years.\nLet the old wall swallow the shadow; only the homeward dream circles on.\nSnow-willow in the empty courtyard, still warm at the break, leaning against Mount Lanke.\n\nSince leaving the Three Mountains, nowhere to go; the mossy steps do not recognise the one returning.\nAcross the road by Iron City Bridge, and hemp-rain murmurs on.\nCast-off blood-threads still fill the fingers; may we cherish each other in another life."
+      }
+    },
+    {
+      "id": "w7",
+      "voice": "separate",
+      "source_title": "《朝中措》",
+      "source_body": "鷦金梳作暗香英，香到鏡中停。\n偶影欄前欲並，一絲朱髮先縈。\n\n唇邊鳳語，挹來猶作，銀磬微鳴。\n字底微生芒刺，唇間猶護餘聲。",
+      "date": "二〇一八年十月二十三日作；二〇二六年十月修訂",
+      "en": {
+        "title": "To the tune of Chaozhongcuo",
+        "body": "Feather-gold combed into a blossom of hidden scent; the scent reaches the mirror and stops.\nPaired with a shadow at the railing, longing to join; one strand of red hair tangles first.\n\nPhoenix words at the lips: drawn in, they still ring faintly, a silver chime-stone.\nBeneath the words, a slight prickle grows; between the lips, the lingering sound is sheltered still."
+      }
+    },
+    {
       "id": "w4",
       "voice": "separate",
       "source_title": "《滿庭芳 · 遙思楚潭》",
@@ -223,6 +256,39 @@
       "en": {
         "title": "To the tune of Mantingfang · Thinking of Chutan from afar",
         "body": "The wind’s pendants have just stilled; rain combs the morning hibiscus; letters knew the arch of the brows first.\nOne low call scatters the dream’s strings.\nFresh breath enters the ink-traces; faintly trembling, they are about to emerge from between the lines.\nAt our meeting, the lingering warmth has yet to settle; with you near, the sky of Chu grows wide.\n\nCiyan. A familiar name, yet slow upon the lips; waves rise beneath the tongue.\nA thousand li of mountains and passes, all gathered at the breast.\nMonths of time grow suddenly thin; in a backward glance, a finger passes over the mountain of a brow.\nTo know you again, from the beginning; the poem still half-written, two shadows press on the edge of the page."
+      }
+    },
+    {
+      "id": "w8",
+      "voice": "separate",
+      "source_title": "《滿江紅 · 望沮攔約當應是》",
+      "source_body": "舊隙才縫，春風又、殷勤留客。\n門欲掩、卻翻簾影，放春偷入。\n拆了還縫衣漸窄，袖中風雨隨針密。\n算歸來、猶有舊針留，縫新隙。\n\n燈未冷，人已易。門不閉，風偏急。\n更何須揀擇，過門皆璧。\n初景寒柯違業識，豐城元禮宜同席。\n看收場、針腳又周全，無痕跡。",
+      "date": "二〇二二年原作；二〇二六年十月重寫（縫補稿）",
+      "en": {
+        "title": "To the tune of Manjianghong · Hoping to hold you back, knowing how it must go — I",
+        "body": "The old split barely sewn, spring wind again presses a guest to stay.\nThe door would close; the curtain’s shadow turns instead, letting spring slip in.\nUnpick and sew again: the garment narrows; wind and rain within the sleeve thicken with the stitches.\nWhen I return, the old needle will still be there, to sew the new split.\n\nThe lamp has not cooled; the person has changed. The door stays open; the wind grows urgent.\nWhy bother choosing? Everyone through the door is jade.\nFirst light and the cold branch run counter in karmic consciousness; Fengcheng and Yuanli ought to share a seat.\nSee how it ends: the stitching whole again, no trace."
+      }
+    },
+    {
+      "id": "w9",
+      "voice": "separate",
+      "source_title": "《滿江紅 · 望沮攔約當應是 · 又稿》",
+      "source_body": "漏盡鐘回，催曉處、餘聲仍塞。\n門欲掩、劣衿將去，又迎嘉客。\n舊事還從新曆出，階前風雨猶成笛。\n算韶光、只在一聲中，塵先積。\n\n空空雪，留故色。光易轉，痕難拭。\n縱衣冠屢換，總稱圭璧。\n初景寒柯違業識，豐城元禮宜同席。\n曉山塗，晝影祭寒華，猶無息。",
+      "date": "二〇二二年原作；二〇二六年十月重寫（又稿）",
+      "en": {
+        "title": "To the tune of Manjianghong · Hoping to hold you back, knowing how it must go — another version",
+        "body": "The water-clock runs out; the bell returns. Where it urges dawn, its lingering sound is still obstructed.\nThe door would close; the shabby collar is about to leave, yet another fine guest is welcomed.\nOld events come out of the new calendar again; before the steps, wind and rain still become a flute.\nAll that fair time, within a single sound—and dust has gathered first.\n\nEmpty, empty snow keeps the old colour. Light turns easily; the trace is hard to wipe away.\nHowever often robes and caps are changed, all are called precious jade.\nFirst light and the cold branch run counter in karmic consciousness; Fengcheng and Yuanli ought to share a seat.\nDawn’s mountain is clogged; daylight’s shadow makes offerings to cold bloom, still without cease."
+      }
+    },
+    {
+      "id": "w10",
+      "voice": "separate",
+      "source_title": "《滿江紅 · 重讀舊作，憶經年復通音問事》",
+      "source_body": "舊闋重翻，先認得、當年心力。\n曾細剖、片言千轉，氣微聲澀。\n鎖盡諸門身作鎖，翻來私語都成棘。\n縱丁寧、舌底已春深，花時隔。\n\n名復見，箋乍濕。言可續，時難逆。\n任音書又杳，不催消息。\n字入年輪方有響，痕藏木理猶能識。\n聽鐘回、晝影過寒柯，尋常日。",
+      "date": "二〇二六年十月另作",
+      "en": {
+        "title": "To the tune of Manjianghong · Rereading an old poem, remembering contact renewed after years",
+        "body": "Turning the old verses again, I first recognise the strength I spent then.\nI once took it all apart so finely: a few words turned a thousand times, breath faint and voice rough.\nLocking every door, I made my body a lock; private words, turned over, all became thorns.\nFor all my earnest urging, spring was deep beneath my tongue, yet the flowering time lay apart.\n\nThe name appears again; the page is suddenly wet. Words can continue; time cannot turn back.\nLet letters fade from reach again; I do not press for news.\nOnly in the growth-rings do the words acquire resonance; the mark hidden in the grain can still be read.\nI hear the bell return; daylight’s shadow crosses the cold branch. An ordinary day."
       }
     }
   ],
@@ -236,11 +302,16 @@
       ]
     },
     {
-      "id": "sep-2019-12-19",
-      "date": "2019-12-19",
+      "id": "revisions-2026-10",
       "revision_date": "2026-10-04",
       "poem_ids": [
-        "w4"
+        "w5",
+        "w6",
+        "w7",
+        "w4",
+        "w8",
+        "w9",
+        "w10"
       ],
       "copy_key": "revised"
     }
