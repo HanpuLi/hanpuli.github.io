@@ -1200,7 +1200,7 @@
       "created": "2026-09-24T11:00:00.000Z",
       "lines": [
         {
-          "id": "e74a13dd-efb8-4d22-af86-e308174ce461",
+          "id": "9100c4f4-ff7e-480e-b33f-61a5c141f099",
           "workId": "ci-b3",
           "font": "bitmap",
           "size": 24,
@@ -1293,7 +1293,7 @@
         "schema": 1,
         "renderer": "pv-render-fa94223927fb8733",
         "renderer_sha256": "fa94223927fb87330fe68f59d31489b1bfb2f1ec23d24e92aace8ec905fcc4a1",
-        "catalogue_sha256": "7e497e829ceb59c5a0fd1ea9c8b92d560470c76f55b2b1526d8b5aa7fa8d25e0",
+        "catalogue_sha256": "25d84bbd4adf93d657e85c797b810a803752ff69562c62b8b1d579f92bb6ef7e",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
           "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",
@@ -1987,13 +1987,13 @@
     "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
     "assets/fonts/iming-gap.woff2": "c7d09d76e39970b25958418800664ebb7b3af6fa8387f26cc59e13d55521d536",
     "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
-    "assets/fonts/noto-serif-sc-subset.woff2": "2a10c45c56d3af83c7d070ea8ce9e866363315fd6ff9db7fc6f0ba06748a4903",
+    "assets/fonts/noto-serif-sc-subset.woff2": "18638fb9ae572cd913831aee1a2055c03ad7831104d617193f45b308e2762545",
     "assets/fonts/opendyslexic-bold-italic.woff2": "1aadc8fa9656c92c09c8194790d0671bcd2b4bd961ba41fb8f7e605e5c493be0",
     "assets/fonts/opendyslexic-bold.woff2": "b534a0b84ef3cca941ebdb506ce3f4e0010aa4ef881271bac8b6959dbf694fbf",
     "assets/fonts/opendyslexic-italic.woff2": "b18685dcb99b4ba903549d215c0ae2ab39a5087097614fd4100ae6d387332b47",
     "assets/fonts/opendyslexic-regular.woff2": "0441bc21071e42db57c217f93fbc48d3b55a2987c02814c94dc93621c42e8695",
     "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
-    "assets/fonts/shippori-mincho-subset.woff2": "ea82912df9a668940c4067b0108766c97729303bd467958691a35662872565ea",
+    "assets/fonts/shippori-mincho-subset.woff2": "d03c410cbd0bc03c59d94681cc3c32312aca4344028a6bed272da8d9f7e8cea1",
     "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
     "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
     "index.html": "525f476887ebf12863c77bf3f87fa183f7f0790810eb4389bf31355c945a53cb",

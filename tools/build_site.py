@@ -570,31 +570,36 @@ def ci_translation(locale_id: str) -> dict[str, dict[str, str]]:
     return poems
 
 
-def ci_separate_group() -> dict[str, Any]:
+def ci_separate_groups() -> list[dict[str, Any]]:
     groups = CI_SOURCE.get("separate_groups", [])
-    if len(groups) != 1:
-        raise BuildError(f"ci-source.json: expected exactly one separate group, got {len(groups)}")
-    group = groups[0]
-    poem_ids = group.get("poem_ids", [])
-    if poem_ids != ["w2", "w3"]:
-        raise BuildError(f"ci-source.json: unexpected separate-group ids {poem_ids!r}")
-    return group
+    expected = [p["id"] for p in CI_SOURCE["poems"] if p["voice"] == "separate"]
+    grouped = [pid for group in groups for pid in group.get("poem_ids", [])]
+    if grouped != expected or any(not group.get("poem_ids") for group in groups):
+        raise BuildError(f"ci-source.json: separate groups must contain each separate poem once in source order: {grouped!r}")
+    if len({group["id"] for group in groups}) != len(groups):
+        raise BuildError("ci-source.json: duplicate separate-group id")
+    return groups
 
 
 def ci_toc(locale_id: str, locale: dict[str, Any]) -> str:
     cn_numbers = {1: "一", 2: "二", 3: "三", 4: "四", 5: "五", 6: "六", 7: "七", 8: "八", 9: "九", 10: "十"}
-    separate_ids = ci_separate_group()["poem_ids"]
+    separate_groups = {
+        pid: group for group in ci_separate_groups() for pid in group["poem_ids"]
+    }
     out = []
     for poem in CI_SOURCE["poems"]:
         pid = poem["id"]
         if pid == "a10":
             label = locale["ci"]["outside"]
             klass = ' class="waibian"'
-        elif pid in separate_ids:
+        elif pid in separate_groups:
+            group = separate_groups[pid]
+            separate_ids = group["poem_ids"]
+            copy_key = group.get("copy_key", "separate")
             index = separate_ids.index(pid) + 1
             if index == 1:
                 out.append(
-                    f'<span class="toc-group">{html.escape(locale["ci"]["separate_toc"])}</span>'
+                    f'<span class="toc-group">{html.escape(locale["ci"][f"{copy_key}_toc"])}</span>'
                 )
             label = cn_numbers[index] if locale_id in CHINESE_LOCALES else str(index)
             klass = ' class="separate"'
@@ -674,10 +679,11 @@ def ci_poems_html(locale_id: str, locale: dict[str, Any]) -> str:
     target_lang = LANG_BY_ID[locale_id]["html_lang"]
     source_data = ci_source(locale_id)
     source_lang = "zh-Hans" if locale_id == "zh-hans" else "zh-Hant-HK"
-    separate_ids = set(ci_separate_group()["poem_ids"])
+    groups = ci_separate_groups()
+    separate_ids = {pid for group in groups for pid in group["poem_ids"]}
 
     cycle_poems = [p for p in source_data["poems"] if p["id"] not in separate_ids]
-    separate_poems = [p for p in source_data["poems"] if p["id"] in separate_ids]
+    poems_by_id = {p["id"]: p for p in source_data["poems"]}
 
     cycle_source_title = html.escape(source_data["title"])
     cycle = [
@@ -703,27 +709,32 @@ def ci_poems_html(locale_id: str, locale: dict[str, Any]) -> str:
     )
     cycle.append("</section>")
 
-    separate = [
-        '<section class="ci-group ci-separate" aria-labelledby="ci-separate-heading">',
-        '  <header class="ci-group-head">',
-        '    <p class="ci-group-no">02</p>',
-        '    <div class="ci-group-copy">',
-        f'      <h2 id="ci-separate-heading">{locale["ci"]["separate_heading"]}</h2>',
-        f'      <p>{locale["ci"]["separate_note"]}</p>',
-        '    </div>',
-        '  </header>',
-    ]
-    separate.extend(
-        ci_poem_html(
-            poem,
-            locale_id=locale_id,
-            target_lang=target_lang,
-            source_lang=source_lang,
-            translations=translations,
+    separate = []
+    for index, group in enumerate(groups, 2):
+        copy_key = group.get("copy_key", "separate")
+        # Preserve the published September section's fragment identifier.
+        heading_id = "ci-separate-heading" if index == 2 else f'ci-{group["id"]}-heading'
+        separate.extend([
+            f'<section class="ci-group ci-separate" aria-labelledby="{heading_id}">',
+            '  <header class="ci-group-head">',
+            f'    <p class="ci-group-no">{index:02d}</p>',
+            '    <div class="ci-group-copy">',
+            f'      <h2 id="{heading_id}">{locale["ci"][f"{copy_key}_heading"]}</h2>',
+            f'      <p>{locale["ci"][f"{copy_key}_note"]}</p>',
+            '    </div>',
+            '  </header>',
+        ])
+        separate.extend(
+            ci_poem_html(
+                poems_by_id[pid],
+                locale_id=locale_id,
+                target_lang=target_lang,
+                source_lang=source_lang,
+                translations=translations,
+            )
+            for pid in group["poem_ids"]
         )
-        for poem in separate_poems
-    )
-    separate.append("</section>")
+        separate.append("</section>")
 
     return "\n\n".join(cycle + separate)
 

@@ -8,6 +8,7 @@ import {createHash} from 'node:crypto';
 import {chromium} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+const catalogueSize=JSON.parse(await readFile(new URL('../content/poetry-voucher-app/editions.json',import.meta.url),'utf8')).works.length;
 const base=process.env.SHOP_BASE||'http://127.0.0.1:19853';
 const artifacts=process.env.PV_ARTIFACT_DIR||'/tmp/poetry-voucher-author-check';
 await mkdir(artifacts,{recursive:true});
@@ -21,7 +22,7 @@ try{
   page.on('pageerror',error=>errors.push(error.message));
   const loaded=async()=>{
     await page.waitForURL(url=>url.pathname.endsWith('/shop.html'));
-    await page.waitForFunction(()=>window.poetryShop&&document.querySelectorAll('.product-card').length===23);
+    await page.waitForFunction(count=>window.poetryShop&&document.querySelectorAll('.product-card').length===count,catalogueSize);
   };
   const purchase=async()=>{await page.locator('#open-bag').click();await page.locator('#to-checkout').click();await page.locator('#place-order').click();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1,{},{timeout:60000});};
   const file=async(selector,name)=>{const pending=page.waitForEvent('download');await page.locator(selector).click();const downloaded=await pending;const path=join(artifacts,name);await downloaded.saveAs(path);return readFile(path);};

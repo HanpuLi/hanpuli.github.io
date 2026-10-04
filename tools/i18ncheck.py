@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
 CI_CYCLE_IDS = ("a1","b1","a2","b2","b3","b4","b5","a3","a4","a5","a6","a7","b6","a8","b7","a9")
 CI_OUTSIDE_IDS = ("a10",)
-CI_SEPARATE_IDS = ("w2","w3")
+CI_SEPARATE_IDS = ("w2","w3","w4")
 CI_IDS = CI_CYCLE_IDS + CI_OUTSIDE_IDS + CI_SEPARATE_IDS
 def load(path: Path):
     with path.open(encoding="utf-8") as fh:
@@ -226,17 +226,18 @@ def main() -> int:
     if ci.get("outside_dates") != {"a10": "2026-07-01"}:
         errors.append("ci-source outside_dates must contain only the 1 July A10 appendix")
     expected_separate_groups = [
-        {"id": "sep-2026-09-09", "date": "2026-09-09", "poem_ids": ["w2", "w3"]}
+        {"id": "sep-2026-09-09", "date": "2026-09-09", "poem_ids": ["w2", "w3"]},
+        {"id": "sep-2019-12-19", "date": "2019-12-19", "revision_date": "2026-10-04", "poem_ids": ["w4"], "copy_key": "revised"},
     ]
     if ci.get("separate_groups") != expected_separate_groups:
-        errors.append("ci-source separate_groups must keep w2/w3 as the distinct 9 September group")
+        errors.append("ci-source separate_groups must keep the September pair and the revised 2019 poem distinct")
     if len(CI_CYCLE_IDS) != 16:
         errors.append("internal error: the A/B cycle must contain exactly sixteen poems")
     for pid in CI_SEPARATE_IDS:
         if poems[pid]["source_title"].startswith("集外"):
-            errors.append(f"ci-source {pid}: separate September poem must not be labelled 集外")
+            errors.append(f"ci-source {pid}: separate poem must not be labelled 集外")
         if poems[pid]["en"]["title"].startswith("Outside the cycle"):
-            errors.append(f"ci-source {pid}: separate September translation must not be labelled outside the cycle")
+            errors.append(f"ci-source {pid}: separate translation must not be labelled outside the cycle")
 
     ci_simplified = load(CONTENT / "ci-simplified.json")
     ci_source_hash = hashlib.sha256((CONTENT / "ci-source.json").read_bytes()).hexdigest()
@@ -287,7 +288,7 @@ def main() -> int:
                 }
                 if item.get("title", "").startswith(false_prefixes[locale]):
                     errors.append(
-                        f"{locale} ci {pid}: September group must not be labelled outside the cycle"
+                        f"{locale} ci {pid}: separate poem must not be labelled outside the cycle"
                     )
             if not isinstance(item.get("title"), str) or not item["title"].strip():
                 errors.append(f"{locale} ci {pid}: missing title")
@@ -721,12 +722,14 @@ def main() -> int:
             if name == "ci.html":
                 if text.count('class="ci-group ci-cycle"') != 1:
                     errors.append(f"{path.relative_to(ROOT)}: expected one A/B cycle group")
-                if text.count('class="ci-group ci-separate"') != 1:
-                    errors.append(f"{path.relative_to(ROOT)}: expected one separate September ci group")
+                if text.count('class="ci-group ci-separate"') != len(expected_separate_groups):
+                    errors.append(f"{path.relative_to(ROOT)}: expected distinct September and revised earlier ci groups")
                 if locale_data["ci"]["separate_note"] not in text:
                     errors.append(
                         f"{path.relative_to(ROOT)}: missing explicit note that September pair is separate"
                     )
+                if locale_data["ci"]["revised_note"] not in text:
+                    errors.append(f"{path.relative_to(ROOT)}: missing the earlier poem's composition and revision dates")
                 source_versions = text.count('class="poem-version source"')
                 translated_versions = text.count('class="poem-version translation"')
                 if source_versions != len(CI_IDS):

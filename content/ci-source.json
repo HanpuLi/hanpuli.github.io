@@ -213,6 +213,17 @@
         "title": "To the tune of Linjiangxian",
         "body": "Shadow of the curtain, several nights of long talk;\nthe first dew wetting the rail.\nThe words not finished — the breathing settled first.\nDeep in dream, knowing nothing;\nthe moon up, the night nearly gone.\n\nSome other day the heavy curtain will fall to the floor,\nfall exactly as it did before.\nA hand beside the lamp, turning a few times.\nTomorrow the wind may blow hard;\nfor now, shut the window well."
       }
+    },
+    {
+      "id": "w4",
+      "voice": "separate",
+      "source_title": "《滿庭芳 · 遙思楚潭》",
+      "source_body": "風佩初停，雨梳朝蕣，尺書先識眉彎。\n一聲低喚，驚散夢中弦。\n墨跡新添氣息，微微顫、欲出行間。\n相逢處，餘溫未定，人近楚天寬。\n\n辭顏。名已熟，臨唇卻緩，舌底生瀾。\n把千里關山，盡斂襟前。\n幾月光陰忽薄，回眸際、指過眉山。\n從頭認，詩還半闋，雙影壓箋邊。",
+      "date": "二〇一九年十二月十九日作；二〇二六年十月修訂",
+      "en": {
+        "title": "To the tune of Mantingfang · Thinking of Chutan from afar",
+        "body": "The wind’s pendants have just stilled; rain combs the morning hibiscus; letters knew the arch of the brows first.\nOne low call scatters the dream’s strings.\nFresh breath enters the ink-traces; faintly trembling, they are about to emerge from between the lines.\nAt our meeting, the lingering warmth has yet to settle; with you near, the sky of Chu grows wide.\n\nCiyan. A familiar name, yet slow upon the lips; waves rise beneath the tongue.\nA thousand li of mountains and passes, all gathered at the breast.\nMonths of time grow suddenly thin; in a backward glance, a finger passes over the mountain of a brow.\nTo know you again, from the beginning; the poem still half-written, two shadows press on the edge of the page."
+      }
     }
   ],
   "separate_groups": [
@@ -223,6 +234,15 @@
         "w2",
         "w3"
       ]
+    },
+    {
+      "id": "sep-2019-12-19",
+      "date": "2019-12-19",
+      "revision_date": "2026-10-04",
+      "poem_ids": [
+        "w4"
+      ],
+      "copy_key": "revised"
     }
   ]
 }

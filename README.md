@@ -46,7 +46,7 @@ The mirrors record the source SHA-256 and CI fails if they become stale. Editori
 The portfolio includes [Poetry Voucher](https://hanpuli.github.io/poetry-voucher/),
 a seven-language project overview and an author-only poetry shop. The former
 open-text Studio is retired; its old URL redirects to the same-language shop.
-The shop offers all 23 catalogue works with Traditional or Simplified Chinese
+The shop offers all 24 catalogue works with Traditional or Simplified Chinese
 originals, optional published translations, typeface and size choices, quantities,
 a local bag, fictional checkout, image PDFs and a complete offline HTML reading copy.
 There is no real payment, upload or delivery. The order page can hand its receipt and all poem vouchers to an H10S only when it is open inside that device's paired local wrapper and the user taps the print button; the public site has no remote print endpoint.

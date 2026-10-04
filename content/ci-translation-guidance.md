@@ -49,3 +49,15 @@ This file records semantic constraints distilled from the author's current annot
 ## Editorial principle
 
 The cycle becomes weaker if translation decides the dispute between its two voices. Preserve the distance between what happened, what A later makes of it, what B later makes of it, and what the material archive can actually prove.
+
+## Separate earlier work: W4, 《滿庭芳 · 遙思楚潭》
+
+- Composition and revision are distinct: 19 December 2019; revised in October 2026. This poem is neither an A/B-cycle appendix nor one of the September 2026 pair.
+- 辭顏 is a personal name (Ciyan), not a phrase about departing or a fading face. The speaker is not named in this published version; do not insert a name into a translation.
+- 風佩 and 雨梳 retain their transfers between weather, adornment and bodily action. 朝蕣 is the morning hibiscus; do not supply a later withering scene.
+- 尺書先識／名已熟／從頭認 make prior familiarity and renewed recognition coexist. Do not turn prior correspondence into false or worthless knowledge.
+- 驚散夢中弦 disperses the dream's strings at a low call. It does not say that a real instrument broke or that the relationship ended. Do not reintroduce the superseded 香動舊湘弦.
+- 墨跡 is the subject of the breath and trembling passage. Preserve 欲 as incipient or intended emergence; do not translate it as a completed escape from the page.
+- 余溫未定 does not say the warmth has gone cold. 人近楚天寬 connects proximity with a widening sky.
+- 千里關山 and 眉山 retain the mountain image at different scales. 指過 is a finger passing across the brow, not a gesture pointing towards a town named Meishan. The precise owner of the finger is not named.
+- 半闋 leaves the poem unfinished. 雙影 are two shadows, not mirror images; 壓 retains their pressure or weight against the page's edge.
