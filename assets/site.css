@@ -1954,18 +1954,87 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
 }
 
 .literary-page .toc {
-  grid-column: 7 / 13;
-  display: flex;
-  flex-wrap: wrap;
-  gap: .25em 1.1em;
-  margin-top: 32px;
-  font-family: var(--mono);
-  font-size: .8125rem;
-  line-height: 1.8;
-  letter-spacing: .025em;
+  grid-column: 1 / -1;
+  margin-top: 40px;
 }
 
-.literary-page .toc a {
+.literary-page :is(.ci-contents, .ci-cycle-links, .ci-title-links) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.literary-page .ci-contents {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+  gap: 0 clamp(24px, 4vw, 64px);
+}
+
+.literary-page .ci-contents a {
+  display: grid;
+  grid-template-columns: 2.5em minmax(0, 1fr);
+  gap: .25em .5em;
+  min-height: 44px;
+  padding-block: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.literary-page :is(.ci-contents-number, .ci-contents-period, .ci-appendix-link time) {
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: .8125rem;
+  line-height: 1.6;
+}
+
+.literary-page .ci-contents-number {
+  padding-top: .25em;
+}
+
+.literary-page .ci-contents-title {
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
+
+.literary-page .ci-contents-period {
+  grid-column: 2;
+}
+
+.literary-page :is(.toc, .ci-poem-toc) a:hover {
+  color: var(--accent);
+}
+
+.literary-page .ci-poem-toc {
+  grid-column: 2 / -1;
+  min-width: 0;
+  margin-top: 30px;
+}
+
+.literary-page .ci-title-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  column-gap: clamp(24px, 4vw, 64px);
+}
+
+.literary-page .ci-title-links a {
+  display: block;
+  min-height: 44px;
+  padding-block: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.55;
+  text-decoration: none;
+}
+
+.literary-page .ci-cycle-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.literary-page :is(.ci-cycle-links a, .ci-appendix-link a) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1973,25 +2042,23 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   min-height: 44px;
   padding: 6px 4px;
   color: var(--muted);
-  text-decoration: none;
+  font-family: var(--mono);
+  font-size: .875rem;
+  line-height: 1.6;
 }
 
-.literary-page .toc a:hover {
-  color: var(--accent);
-}
-
-.literary-page .toc .waibian {
-  color: var(--faint);
-}
-
-.literary-page .toc .toc-group {
-  display: inline-flex;
+.literary-page .ci-appendix-link {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  min-height: 44px;
-  margin-inline-start: .35em;
-  padding: 6px 4px 6px 14px;
-  border-inline-start: 1px solid var(--line);
-  color: var(--faint);
+  gap: 4px 20px;
+  margin: 16px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.literary-page .ci-group h2 {
+  scroll-margin-top: var(--page-anchor-offset, 84px);
 }
 
 .literary-page .ci-group-head {

@@ -165,13 +165,14 @@
     "outside": "集外",
     "footer": "《甲乙十六首》箋註全文備索",
     "page_heading": "詞",
-    "page_subtitle": "詞作分組收錄；非中文版本並列原文與譯文。",
+    "page_subtitle": "按初作年代編排，組詩保留原有次序；非中文版本並列原文與譯文。",
     "separate_heading": "二〇二六年九月九日 · 二首",
     "separate_note": "另成一組，不屬《甲乙十六首》。",
-    "separate_toc": "九月九日",
-    "revised_heading": "舊作與重讀",
-    "revised_note": "收舊作修訂六首，以及多年後另作的《重讀舊作》；原作與本次修訂的日期分別標注。",
-    "revised_toc": "舊作與重讀"
+    "revised_heading": "舊作",
+    "revised_note": "二〇一八至二〇二二年舊作六首，於二〇二六年十月修訂或重寫。依初作日期排列；《滿江紅》的兩個重寫版本分別保留。",
+    "contents_label": "目錄",
+    "response_heading": "重讀舊作",
+    "response_note": "二〇二六年十月另作，回看二〇二二年的舊詞。"
   },
   "shi": {
     "meta_title": "屋頂裂開 · Hanpu Li 李函璞",

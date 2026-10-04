@@ -226,11 +226,15 @@ def main() -> int:
     if ci.get("outside_dates") != {"a10": "2026-07-01"}:
         errors.append("ci-source outside_dates must contain only the 1 July A10 appendix")
     expected_separate_groups = [
-        {"id": "sep-2026-09-09", "date": "2026-09-09", "poem_ids": ["w2", "w3"]},
-        {"id": "revisions-2026-10", "revision_date": "2026-10-04", "poem_ids": ["w5", "w6", "w7", "w4", "w8", "w9", "w10"], "copy_key": "revised"},
+        {"id": "revisions-2026-10", "revision_date": "2026-10-04", "period": "2018–2022", "poem_ids": ["w5", "w7", "w6", "w4", "w8", "w9"], "copy_key": "revised"},
+        {"id": "sep-2026-09-09", "date": "2026-09-09", "period": "2026.09.09", "poem_ids": ["w2", "w3"]},
+        {"id": "response-2026-10", "period": "2026.10", "poem_ids": ["w10"], "copy_key": "response"},
     ]
     if ci.get("separate_groups") != expected_separate_groups:
-        errors.append("ci-source separate_groups must keep the September pair and the seven revised/response poems distinct")
+        errors.append("ci-source separate_groups must distinguish earlier poems, the September pair and the later response")
+    expected_reading_order = ["revisions-2026-10", "cycle", "sep-2026-09-09", "response-2026-10"]
+    if ci.get("reading_order") != expected_reading_order:
+        errors.append("ci-source reading_order must follow the author-approved original chronology")
     if len(CI_CYCLE_IDS) != 16:
         errors.append("internal error: the A/B cycle must contain exactly sixteen poems")
     for pid in CI_SEPARATE_IDS:
@@ -247,6 +251,8 @@ def main() -> int:
         errors.append("ci-simplified outside_dates drifted from canonical grouping")
     if ci_simplified.get("separate_groups") != ci.get("separate_groups"):
         errors.append("ci-simplified separate_groups drifted from canonical grouping")
+    if ci_simplified.get("reading_order") != ci.get("reading_order"):
+        errors.append("ci-simplified reading_order drifted from canonical grouping")
     simplified_poems = {item["id"]: item for item in ci_simplified.get("poems", [])}
     if tuple(simplified_poems) != CI_IDS:
         errors.append(f"ci-simplified ids/order changed: {tuple(simplified_poems)}")
@@ -723,13 +729,27 @@ def main() -> int:
                 if text.count('class="ci-group ci-cycle"') != 1:
                     errors.append(f"{path.relative_to(ROOT)}: expected one A/B cycle group")
                 if text.count('class="ci-group ci-separate"') != len(expected_separate_groups):
-                    errors.append(f"{path.relative_to(ROOT)}: expected distinct September and revised/response ci groups")
+                    errors.append(f"{path.relative_to(ROOT)}: expected distinct earlier, September and response ci groups")
+                reading_ids = tuple(re.findall(r'class="poem(?: jia| yi)?" id="([^"]+)"', text))
+                expected_reading_ids = ("w5", "w7", "w6", "w4", "w8", "w9") + CI_CYCLE_IDS + CI_OUTSIDE_IDS + ("w2", "w3", "w10")
+                if reading_ids != expected_reading_ids:
+                    errors.append(f"{path.relative_to(ROOT)}: rendered poem order must follow chronology while preserving the A/B cycle")
+                toc = re.search(r'<nav class="toc"[^>]*>(.*?)</nav>', text, flags=re.S)
+                expected_targets = ["ci-revisions-2026-10-heading", "ci-cycle-heading", "ci-separate-heading", "ci-response-2026-10-heading"]
+                if not toc or re.findall(r'href="#([^"]+)"', toc[1]) != expected_targets:
+                    errors.append(f"{path.relative_to(ROOT)}: contents must link to all four groups in reading order")
+                group_tocs = re.findall(r'<nav class="ci-poem-toc"[^>]*>(.*?)</nav>', text, flags=re.S)
+                toc_poems = tuple(pid for toc in group_tocs for pid in re.findall(r'href="#([^"]+)"', toc))
+                if toc_poems != expected_reading_ids:
+                    errors.append(f"{path.relative_to(ROOT)}: group contents must match the complete poem order")
                 if locale_data["ci"]["separate_note"] not in text:
                     errors.append(
                         f"{path.relative_to(ROOT)}: missing explicit note that September pair is separate"
                     )
                 if locale_data["ci"]["revised_note"] not in text:
                     errors.append(f"{path.relative_to(ROOT)}: missing the revised/response group's dating note")
+                if locale_data["ci"]["response_note"] not in text:
+                    errors.append(f"{path.relative_to(ROOT)}: missing the independent response's dating note")
                 source_versions = text.count('class="poem-version source"')
                 translated_versions = text.count('class="poem-version translation"')
                 if source_versions != len(CI_IDS):

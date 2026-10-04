@@ -45,6 +45,7 @@ def convert_ci() -> None:
         "title": CC.convert(source["title"]),
         "outside_dates": source.get("outside_dates", {}),
         "separate_groups": source.get("separate_groups", []),
+        "reading_order": source.get("reading_order", []),
         "poems": [],
         "source_sha256": sha256(source_path),
     }

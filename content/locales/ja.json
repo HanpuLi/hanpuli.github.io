@@ -165,13 +165,14 @@
     "outside": "集外",
     "footer": "『甲乙十六首』の注釈はご希望に応じて提供",
     "page_heading": "詞",
-    "page_subtitle": "詞作品をそれぞれのまとまりごとに収録。中国語原文と翻訳を併載。",
+    "page_subtitle": "初作の年代順に収録。甲乙連作は本来の配列を保ち、中国語原文と訳文を併記する。",
     "separate_heading": "2026年9月9日 · 二首",
     "separate_note": "別の一組で、『甲乙十六首』には含まれない。",
-    "separate_toc": "9月9日",
-    "revised_heading": "旧作と再読",
-    "revised_note": "旧作の改稿六首と、年月を経て新たに書かれた応答一首。初作と今回の改稿の年月を分けて記す。",
-    "revised_toc": "旧作と再読"
+    "revised_heading": "旧作",
+    "revised_note": "2018–2022年の旧作六篇を、2026年10月に改訂・改作した。初作の日付順に収録し、「満江紅」の二つの改作は別々に残す。",
+    "contents_label": "目次",
+    "response_heading": "旧作を読み返して",
+    "response_note": "2022年の詞を振り返り、2026年10月に独立した一篇として書いた。"
   },
   "shi": {
     "meta_title": "屋根が裂ける · Hanpu Li",
