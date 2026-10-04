@@ -18,6 +18,7 @@ This file records semantic constraints distilled from the author's current annot
 - 乙一「客散非因誰獨在」: negates an explanation of the guests' dispersal; do not turn it into proof that the pair had no special relation.
 - 甲二「沈醉曾扶相並倚」: preserve reciprocal/underdetermined physical action. Do not decide who supported whom.
 - 甲二／甲五 titles with 「扶靨」: retain the cheek/dimple image without assigning an unsupported actor.
+- 甲五「那夜誰分賓主」: retain the retrospective question about distinguishing guest from host. It does not establish that both people understood their relationship identically, or that this was the same occasion as 乙三. Do not reinsert wine or moonlight into the revised opening; 「醉時顏」 retains the wine-associated face later in the poem.
 - 甲二「當筵曾許心期」: a remembered promise/expectation of the heart, with unspecified content; do not translate as an explicit lifetime vow.
 - 乙二「欲喚還休」: an impulse to call out that is withdrawn. The reason is unspecified.
 - 乙二「歡猶未省」: `歡` carries the literary sense of the beloved; `未省` means still unaware.
@@ -32,7 +33,7 @@ This file records semantic constraints distilled from the author's current annot
 - 乙六「幾度誤春痕」: deliberately open. Preserve both the `痕` (trace/mark) and the sense of spring timing/events going awry; do not reduce it to simple poor plant care.
 - 乙六「窗虛留寸土」: an empty/bare window-space with an inch of earth; do not move the earth “beneath” the window without textual basis.
 - 乙六「稚女描新帖」: the child copies/practises from a new writing or calligraphy model; it is not a generic notebook.
-- 乙六「深意眼中收」: deep meaning is gathered/held in the eyes; do not convert it into “what was deeply wanted”.
+- 乙六「啟緘留指印」: opening the letter leaves a finger-mark. Do not add deliberate staining, rejection of the letter, or a forensic fingerprint. The spring mud remains in the following line. 「君書千里至」 stays later in the poem; the four lines from 「窗前蕙草綠」 through 「深意眼中收」 were removed, so their translations must also be removed.
 - 乙六「擱筆無可酬」: no adequate reciprocal answer, not “nothing to say”.
 - 乙六「風過落花休」: `休` carries cessation/rest. Do not add “and that is all”; preserve the way landscape also ends the speech.
 - 乙六「素心終不移」: B's self-description of an unchanged plain/original heart. Do not specify exactly what remains unchanged.
@@ -64,13 +65,13 @@ The cycle becomes weaker if translation decides the dispute between its two voic
 
 ## Earlier poems and response: W5–W10
 
-- The page orders these as W5, W6, W7, W4, W8, W9, W10. Stable IDs do not encode composition order. W8 and W9 are distinct rewritings of one 2022 source; W10 is an independent later response, not a replacement for either.
+- The earlier-work group orders these as W5, W7, W6, W4, W8, W9. W10 follows the cycle and September pair in its own October group. Stable IDs do not encode composition order. W8 and W9 are distinct rewritings of one 2022 source; W10 is an independent later response, not a replacement for either.
 - W5: 曲蘖鹽梅 invokes essential ingredients. 只道別家秋 directs attention towards the addressee; it is not a declaration of indifference. 炭冰 draws on Han Yu's poem on hearing Master Ying play the qin, while 吟捻 brings in the work of composing and the whisker-twisting gesture from Lu Yanrang. Do not replace these with a single continuous music metaphor. 青驄 is a grey horse; 繫 means tethering.
 - W6: 星師 names Star City. Keep 雪柳 and 麻雨 without inventing botanical identifications or substituting generic rain. The original 鐵城礄路 (simplified 铁城硚路) has been restored after the author flagged the character; 橋 first appeared in an AI proposal. The author recalls 鐵 and 礄 as qualifying 城 and 路 respectively, creating an austere, difficult atmosphere. Translate that relationship as “iron city, stony road” or its equivalent; neither a named bridge nor a transliterated place name is established. “Stony” is a contextual rendering of the author's usage, not a claim that a dictionary defines 礄 as stony or steep. No specific geographical location or recovered allusion is asserted. The final gesture combines casting off with threads remaining on the fingers; the wish belongs to another life.
-- W7: 鷦金 and 朱髮 keep contrasting hair colours. Do not turn the gold into falseness or identify a confirmed kiss. 挹 takes up the utterance; the faint silver chime continues into the guarded aftersound. Desire to join remains desire, not proof of mutual love.
-- W8: unpicking and sewing narrow the garment; the final absence of a trace must remain in tension with that narrowing. Do not translate the end as successful emotional healing. Everyone entering being called jade carries the irony without an explanatory gloss.
+- W7: 鷦金 and 朱髮 keep contrasting hair colours. Do not turn the gold into falseness or identify a confirmed kiss. 挹 takes up the utterance; 便 makes that uptake lead into the faint silver chime, without the former 猶's continuation. 字底分明芒刺 makes the thorns clear, rather than only just emerging. The aftersound is still sheltered despite that recognition. Desire to join remains desire, not proof of mutual love.
+- W8: the waist has grown thinner, yet the garment remains tight; hidden marks accumulate on the skin. Keep the body/garment distinction and the contrast between 暗痕 and the final 無痕跡. Do not restore the removed unpicking-and-sewing couplet, translate the end as successful emotional healing, or present bodily imagery as a verified biographical injury. Everyone entering being called jade carries the irony without an explanatory gloss.
 - W8/W9: 初景 and 寒柯 remain opposed; 違業識 is incompatibility, not failure to recognise someone. 豐城 and 元禮 are retained without inventing a historical meeting between them. Their separate existence in classical texts would not establish such a meeting.
-- W9: new time does not displace old events. Preserve the calendar, snow and moving daylight shadow. 塗 is obstruction here, not a painted mountain. 晝影祭寒華 leaves both the offering shadow and the cold bloom free of a fixed human identity; do not turn the speaker into a mourner at a former relationship's grave.
+- W9: new time does not displace old events. Preserve the calendar, snow and moving daylight shadow. 階前風雨渾成笛 uses 渾 in the sense of wholly/all, not the former 猶's still. 塗 is obstruction here, not a painted mountain. 晝影祭寒華 leaves both the offering shadow and the cold bloom free of a fixed human identity; do not turn the speaker into a mourner at a former relationship's grave.
 - W10: the speaker's expenditure of effort and self-imprisoning control coexist. The paper becomes wet without identifying a person crying. Words may resume while time resists reversal; the grain keeps the mark. 不催消息 is the poem's utterance, not grounds for reporting an external fact about its author. The last ordinary day keeps the changed verb 過 in relation to W9's 祭, without declaring forgiveness or vindication.
 
 ## Line-level translation review, 4 October 2026

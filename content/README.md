@@ -64,12 +64,18 @@ uv run --with opencc-python-reimplemented python tools/update_simplified_literar
 Editorial Simplified Chinese in `locales/zh-hans.json` is maintained independently; the helper
 never overwrites it.
 
-After changing CJK copy, rebuild the Traditional/Japanese and Simplified-Chinese subsets with:
+After changing CJK copy, first run `python3 tools/build_site.py`: the
+Traditional/Japanese subset helper reads generated HTML. Then rebuild the
+Traditional/Japanese and Simplified-Chinese subsets with:
 
 ```sh
 uv run --with fonttools --with brotli python tools/rebuild-fonts.py
 uv run --with fonttools --with brotli python tools/rebuild-zh-hans-font.py
 ```
+
+Run `python3 tools/build_site.py` again after the fonts change to refresh the
+public render identity. If `tools/designcheck.py` reports stale specimen font
+hashes, run `node tools/build_design_specimens.mjs`, then build the site again.
 
 Never add Garamond Premier Pro or another licensed local font to the repository.
 
