@@ -248,6 +248,17 @@
       }
     },
     {
+      "id": "w11",
+      "voice": "separate",
+      "source_title": "《風入松》",
+      "source_body": "丘亭欲雪已凝霜，依舊頑陽。\n斜暉落甓猶難去，然金爐、待子宵長。\n千里行來至此，雁丘今可成堂。\n\n舊山橫影亂爐光，燼處餘香。\n筆枯化紙容人念，料經年、應易遷忘。\n芍藥更添紅雨，玉筋暗觸龍章。",
+      "date": "二〇一八年十一月二日作；二〇二六年十月修訂",
+      "en": {
+        "title": "To the tune of Fengrusong",
+        "body": "At the hill pavilion, snow threatens; frost has already formed, yet the stubborn sun remains.\nSlanting light falls on the bricks and still will not leave; the golden brazier is lit, waiting for you through the long night.\nA thousand li travelled to arrive here: now the Wild Goose Mound may become a hall.\n\nThe old mountain’s crossing shadow disorders the brazier light; from the ashes, lingering fragrance.\nThe brush is dry; the paper is given to the flames, yet still holds a person’s thoughts. I suppose that after years they should be easily carried into forgetting.\nThe peony adds still more red rain; jade fingers secretly touch the dragon-splendoured man."
+      }
+    },
+    {
       "id": "w4",
       "voice": "separate",
       "source_title": "《滿庭芳 · 遙思楚潭》",
@@ -295,11 +306,12 @@
   "separate_groups": [
     {
       "id": "revisions-2026-10",
-      "revision_date": "2026-10-04",
+      "revision_date": "2026-10-07",
       "period": "2018–2022",
       "poem_ids": [
         "w5",
         "w7",
+        "w11",
         "w6",
         "w4",
         "w8",
