@@ -1200,7 +1200,7 @@
       "created": "2026-09-24T11:00:00.000Z",
       "lines": [
         {
-          "id": "2bfc35ed-e371-404e-a537-58718456743e",
+          "id": "18b68cae-6c58-4074-8445-c4e620402cc2",
           "workId": "ci-b3",
           "font": "bitmap",
           "size": 24,
@@ -1291,8 +1291,8 @@
       },
       "publication": {
         "schema": 1,
-        "renderer": "pv-render-71bc677f6d6034a3",
-        "renderer_sha256": "71bc677f6d6034a36aa11eb85619d037255b9af6c04ee34dd2ad3da24b6b0f6b",
+        "renderer": "pv-render-797a24d6eafa0365",
+        "renderer_sha256": "797a24d6eafa0365ea03a0241d5aae42fe0034554053bbd2c3eef12f1f0f6072",
         "catalogue_sha256": "759d65a71eba028ba55949258288b3516627ff23f108f36f23689ac0a914810e",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
@@ -1307,9 +1307,9 @@
           "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
           "assets/fonts/iming-gap.woff2": "b1d165797b6456a0cdfeb5e4429d902168ff8ecc99776c49a419b8a0eaa20137",
           "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
-          "assets/fonts/noto-serif-sc-subset.woff2": "d083114a8811c8be1c58b2507eb25cb4b89e467fc6de055cbc4f363f03b26db1",
+          "assets/fonts/noto-serif-sc-subset.woff2": "2ee0f9667418b7581835a166048fce5a8b98daeae71c58841673cbc383e02135",
           "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
-          "assets/fonts/shippori-mincho-subset.woff2": "6ee2d1ab36efc3c5d7e383cfccae908ea36887f7024a559150c36a2dc577c7f7",
+          "assets/fonts/shippori-mincho-subset.woff2": "11a0bd0c6bd9a662b78f23b6a773ade32a8d9fd75e738663c8711bb8191ff8de",
           "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
           "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
           "content/poetry-voucher-app/accessibility.css": "70f3da8ceff863234e7564d094f5f94e39675d0655dc477482aadd05e076f3e0",
@@ -1970,7 +1970,7 @@
     "totalY": 462
   },
   "inputs": {
-    "assets/site.css": "932cc5612ca0bc564091d78b0b0d88e4b1422a35a58b4c24a0ec6c7726c123e5",
+    "assets/site.css": "1922ae32f0be609dc669b3bbfeedd9a3967b269f7401b8ac82f582fb98961644",
     "content/poetry-voucher-app/gallery.js": "2a8cdf57a8404008de2926983dd499f00bf2daa447946ba228ac7d8a17fdc670",
     "content/poetry-voucher-app/shop.js": "3e24fbad590d8d8d714d4dbc7ef98332850425e8a92e8ad9294e09cead001b82",
     "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
@@ -1987,21 +1987,21 @@
     "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
     "assets/fonts/iming-gap.woff2": "b1d165797b6456a0cdfeb5e4429d902168ff8ecc99776c49a419b8a0eaa20137",
     "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
-    "assets/fonts/noto-serif-sc-subset.woff2": "d083114a8811c8be1c58b2507eb25cb4b89e467fc6de055cbc4f363f03b26db1",
+    "assets/fonts/noto-serif-sc-subset.woff2": "2ee0f9667418b7581835a166048fce5a8b98daeae71c58841673cbc383e02135",
     "assets/fonts/opendyslexic-bold-italic.woff2": "1aadc8fa9656c92c09c8194790d0671bcd2b4bd961ba41fb8f7e605e5c493be0",
     "assets/fonts/opendyslexic-bold.woff2": "b534a0b84ef3cca941ebdb506ce3f4e0010aa4ef881271bac8b6959dbf694fbf",
     "assets/fonts/opendyslexic-italic.woff2": "b18685dcb99b4ba903549d215c0ae2ab39a5087097614fd4100ae6d387332b47",
     "assets/fonts/opendyslexic-regular.woff2": "0441bc21071e42db57c217f93fbc48d3b55a2987c02814c94dc93621c42e8695",
     "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
-    "assets/fonts/shippori-mincho-subset.woff2": "6ee2d1ab36efc3c5d7e383cfccae908ea36887f7024a559150c36a2dc577c7f7",
+    "assets/fonts/shippori-mincho-subset.woff2": "11a0bd0c6bd9a662b78f23b6a773ade32a8d9fd75e738663c8711bb8191ff8de",
     "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
     "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
-    "index.html": "525f476887ebf12863c77bf3f87fa183f7f0790810eb4389bf31355c945a53cb",
-    "zh/index.html": "853c49132305b0aae7d6e7ceacc35fe46451fd8c0ac996fae00a4ac30d2a42c3",
-    "zh-hans/index.html": "caafdba434c91bc17450438991f7094158c51e845d7d363402a9e2d0aef329c9",
-    "ja/index.html": "54deb606ac6a5ebb9e335f0dc816b8a52a65a9142513f4ceb68c0742cfe0bce0",
-    "de/index.html": "2cef2f7f77fc12c2e523bdd7f605b0259fd220b748d94a8055d25d07c57607b2",
-    "fr/index.html": "044ba05252042b97d31aefb997187d412e68e541e35e0ad91a3d38ffe076adec",
-    "ru/index.html": "4bb835deba4f959984bccc8c94f809c9e7d649a959e379c8a33c08310b5791bb"
+    "index.html": "ac3e37563f5abc06c807d60825e85fd9c07b3e54c3f7b5bfdc14d04c7318ca98",
+    "zh/index.html": "cf681fddc852f19e338dd3569f47b7cd665d279b25358d59ed54cb7fe01b4b47",
+    "zh-hans/index.html": "222a242ea2a00472d63f718fa8b1cc430db072bb81c07116c85b598691ea0f2d",
+    "ja/index.html": "9b4f796655bbe0a564f2c6cfac53b9bc026d25b4f50f70df06edf10aad2dfdc8",
+    "de/index.html": "2c4f4dca11a836379ac432def9cc339fe1983b785f32eb2de51452c9a878af0b",
+    "fr/index.html": "6c8840a30094657bb04cf1b4b60380b8858c1cea9fbb2a6da6a5ac6e4c44e96b",
+    "ru/index.html": "15ce49db59d825509ec360b815ee2a965624c6527e56bc08df3653c5b960d508"
   }
 }

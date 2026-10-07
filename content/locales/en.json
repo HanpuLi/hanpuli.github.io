@@ -49,7 +49,7 @@
       },
       "photo": {
         "title": "Photographs",
-        "kicker": "production / 35 mm / instant"
+        "kicker": "production / streets / 35 mm / instant"
       },
       "writing": {
         "title": "Writing",
@@ -100,7 +100,7 @@
         "film": "film",
         "instant": "instant"
       },
-      "note": "Digital photographs, 35 mm film and instant film — mostly the hour before a take.",
+      "note": "Digital photographs, 35 mm film and instant film — production, streets and interiors.",
       "alt": {
         "01": "museum roof lattice, figure on the parapet",
         "02": "alone in the rows, bouquet beside her",
@@ -155,7 +155,43 @@
         "time": "2024",
         "text": "Script supervision, translation and research on University of York productions."
       }
-    ]
+    ],
+    "phonetics": {
+      "kicker": "phonetics / phonology · process",
+      "title": "Acoustic analysis, beyond the brief",
+      "note": "A phonetics / phonology exercise extended beyond the required task: recording, inspecting the waveform and spectrogram, and making the analysis harder than it needed to be.",
+      "caption": "phonetics / phonology exercise · acoustic analysis",
+      "alt": "laptop showing a waveform and spectrogram beside a camera"
+    },
+    "york": {
+      "title": "York / streets",
+      "note": "A short architectural and street sequence made with a Canon EOS 5D Mark IV and an adapted vintage Sigma 80–200mm f/3.5–4 manual-focus zoom.",
+      "alt": {
+        "high": "York Minster seen between the buildings of High Petergate",
+        "clock": "a large street clock above a York shopping street in late light",
+        "rose": "close view of the rose window and stone tracery of York Minster"
+      },
+      "caption": {
+        "high": "High Petergate / York",
+        "clock": "street clock / York",
+        "rose": "York Minster / rose window"
+      }
+    },
+    "other": {
+      "eyebrow": "aside",
+      "title": "Other work",
+      "intro": "A few things that do not need their own section.",
+      "ink": {
+        "title": "Works on paper",
+        "note": "Ink landscape. Kept here as a work, not a claim to a separate painting practice.",
+        "caption": "ink on paper",
+        "alt": "ink landscape with trees, water, rocks and a small pavilion"
+      },
+      "hardware": {
+        "title": "Hardware",
+        "note": "Hands-on maintenance of older server hardware: drives, dust and a screwdriver."
+      }
+    }
   },
   "ci": {
     "meta_title": "Ci · Hanpu Li",
