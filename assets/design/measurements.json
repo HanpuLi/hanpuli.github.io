@@ -1200,7 +1200,7 @@
       "created": "2026-09-24T11:00:00.000Z",
       "lines": [
         {
-          "id": "be955e11-0638-4058-aa1f-f49867f4221f",
+          "id": "4472506d-b289-46e7-9754-652728d9ab07",
           "workId": "ci-b3",
           "font": "bitmap",
           "size": 24,
@@ -1293,7 +1293,7 @@
         "schema": 1,
         "renderer": "pv-render-81dbad8b40efa8d1",
         "renderer_sha256": "81dbad8b40efa8d1de092a2771b52891c30fc16518b6ddf40eefd71ec0361014",
-        "catalogue_sha256": "dc236a1366560b0f61834c1acca87272d6ad7e3e665ed2460c2ee8522690af8e",
+        "catalogue_sha256": "6c9e0ebbf9ca8d265ac73d9d0d6f2acea44fffcf61a640f372303ab824929600",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
           "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",
@@ -1993,7 +1993,7 @@
     "assets/fonts/opendyslexic-italic.woff2": "b18685dcb99b4ba903549d215c0ae2ab39a5087097614fd4100ae6d387332b47",
     "assets/fonts/opendyslexic-regular.woff2": "0441bc21071e42db57c217f93fbc48d3b55a2987c02814c94dc93621c42e8695",
     "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
-    "assets/fonts/shippori-mincho-subset.woff2": "e4b2a5f8e2f61a5cd6877303f74a6489feb7740393c979f2db579091d5e59cbf",
+    "assets/fonts/shippori-mincho-subset.woff2": "67732144c533ff9bd27a9078f1189ba22fd8c56c2318036c8c60fa28552916d7",
     "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
     "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
     "index.html": "39f92cb063107c4d3c2b852a722a4adb8ac09b7c6f65281b20b7a6b4e563b762",
