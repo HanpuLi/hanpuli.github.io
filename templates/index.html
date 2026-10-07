@@ -83,6 +83,18 @@
         </article>
         {{ESSAY_CARDS}}
       </div>
+
+      <article class="process-note phonetics-note">
+        <figure>
+          <img src="{{ASSET_PREFIX}}assets/other/phonetics-process.jpg" width="1200" height="900" alt="{{home.phonetics.alt_attr}}" loading="lazy" decoding="async">
+          <figcaption>{{home.phonetics.caption}}</figcaption>
+        </figure>
+        <div class="process-copy">
+          <p class="process-kicker">{{home.phonetics.kicker}}</p>
+          <h3>{{home.phonetics.title}}</h3>
+          <p>{{home.phonetics.note}}</p>
+        </div>
+      </article>
     </section>
 
     <section id="ci" class="poetry-section" aria-labelledby="ci-heading">
@@ -273,8 +285,54 @@
         </figure>
       </div>
 
+      <section class="photo-city-sequence" aria-labelledby="york-heading">
+        <div class="photo-city-intro">
+          <h3 id="york-heading">{{home.york.title}}</h3>
+          <p>{{home.york.note}}</p>
+        </div>
+        <div class="photo-city-grid">
+          <figure>
+            <img src="{{ASSET_PREFIX}}assets/photos/york/high-petergate.jpg" width="800" height="1200" alt="{{home.york.alt.high_attr}}" loading="lazy" decoding="async">
+            <figcaption>{{home.york.caption.high}}</figcaption>
+          </figure>
+          <figure>
+            <img src="{{ASSET_PREFIX}}assets/photos/york/rose-window.jpg" width="800" height="1200" alt="{{home.york.alt.rose_attr}}" loading="lazy" decoding="async">
+            <figcaption>{{home.york.caption.rose}}</figcaption>
+          </figure>
+          <figure class="photo-city-wide">
+            <img src="{{ASSET_PREFIX}}assets/photos/york/street-clock.jpg" width="1200" height="800" alt="{{home.york.alt.clock_attr}}" loading="lazy" decoding="async">
+            <figcaption>{{home.york.caption.clock}}</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <p class="section-note">{{PHOTO_NOTE}}</p>
     </section>
+
+    <aside class="other-work" aria-labelledby="other-work-heading">
+      <div class="other-work-head">
+        <p class="process-kicker">{{home.other.eyebrow}}</p>
+        <h2 id="other-work-heading">{{home.other.title}}</h2>
+        <p>{{home.other.intro}}</p>
+      </div>
+      <div class="other-work-grid">
+        <article class="other-work-ink">
+          <figure>
+            <img src="{{ASSET_PREFIX}}assets/other/ink-landscape.jpg" width="900" height="1200" alt="{{home.other.ink.alt_attr}}" loading="lazy" decoding="async">
+            <figcaption>{{home.other.ink.caption}}</figcaption>
+          </figure>
+          <div>
+            <h3>{{home.other.ink.title}}</h3>
+            <p>{{home.other.ink.note}}</p>
+          </div>
+        </article>
+        <article>
+          <p class="other-work-no">A</p>
+          <h3>{{home.other.hardware.title}}</h3>
+          <p>{{home.other.hardware.note}}</p>
+        </article>
+      </div>
+    </aside>
 
     <section id="profile" class="profile-section" aria-labelledby="profile-heading">
       <div class="section-head">

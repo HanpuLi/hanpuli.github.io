@@ -48,7 +48,7 @@
       },
       "photo": {
         "title": "Photographies",
-        "kicker": "tournage / 35 mm / instantané"
+        "kicker": "production / rues / 35 mm / instantané"
       },
       "writing": {
         "title": "Écrits",
@@ -99,7 +99,7 @@
         "film": "film 35 mm",
         "instant": "film instantané"
       },
-      "note": "Photographies numériques, film 35 mm et film instantané — surtout dans l’heure qui précède une prise.",
+      "note": "Photographie numérique, film 35 mm et film instantané · production, rues, intérieurs.",
       "alt": {
         "01": "treillis du toit d’un musée, silhouette sur le parapet",
         "02": "seule au milieu des rangées, un bouquet à côté d’elle",
@@ -155,7 +155,43 @@
         "text": "Continuité, traduction et recherche sur des productions de l’Université de York."
       }
     ],
-    "location": "Londres"
+    "location": "Londres",
+    "phonetics": {
+      "kicker": "phonétique / phonologie · processus",
+      "title": "Une analyse acoustique au-delà de la consigne",
+      "note": "Un exercice de phonétique / phonologie que j’ai volontairement rendu plus difficile : enregistrer, examiner la forme d’onde et le spectrogramme, et pousser l’analyse plus loin que ne l’exigeait la consigne.",
+      "caption": "exercice de phonétique / phonologie · analyse acoustique",
+      "alt": "ordinateur portable affichant une forme d’onde et un spectrogramme à côté d’une caméra"
+    },
+    "york": {
+      "title": "York / rues",
+      "note": "Une courte série d’architecture et de rue réalisée avec un Canon EOS 5D Mark IV et un ancien zoom Sigma 80–200mm f/3.5–4 à mise au point manuelle, monté avec adaptateur.",
+      "alt": {
+        "high": "York Minster aperçu entre les bâtiments de High Petergate",
+        "clock": "grande horloge de rue au-dessus d’une rue de York dans la lumière de fin de journée",
+        "rose": "vue rapprochée de la rosace et du remplage de pierre de York Minster"
+      },
+      "caption": {
+        "high": "High Petergate / York",
+        "clock": "horloge de rue / York",
+        "rose": "York Minster / rosace"
+      }
+    },
+    "other": {
+      "eyebrow": "à côté",
+      "title": "Autres travaux",
+      "intro": "Quelques choses qui n’ont pas besoin de leur propre rubrique.",
+      "ink": {
+        "title": "Travaux sur papier",
+        "note": "Paysage à l’encre. Présenté ici comme une œuvre, sans en faire une pratique picturale séparée.",
+        "caption": "encre sur papier",
+        "alt": "paysage à l’encre avec arbres, eau, rochers et petit pavillon"
+      },
+      "hardware": {
+        "title": "Matériel",
+        "note": "Entretien concret d’ancien matériel serveur : disques, poussière et tournevis."
+      }
+    }
   },
   "ci": {
     "meta_title": "Ci · Hanpu Li",

@@ -48,7 +48,7 @@
       },
       "photo": {
         "title": "Fotografien",
-        "kicker": "Dreharbeit / 35 mm / Sofortbild"
+        "kicker": "Produktion / Straßen / 35 mm / Sofortbild"
       },
       "writing": {
         "title": "Texte",
@@ -99,7 +99,7 @@
         "film": "35-mm-Film",
         "instant": "Sofortbildfilm"
       },
-      "note": "Digitale Fotografien, 35-mm-Film und Sofortbildfilm · meist in der Stunde vor einem Take.",
+      "note": "Digitalfotografie, 35-mm-Film und Sofortbildfilm · Produktion, Straßen, Innenräume.",
       "alt": {
         "01": "Dachgitter eines Museums, eine Figur auf der Brüstung",
         "02": "allein zwischen den Sitzreihen, ein Blumenstrauß neben ihr",
@@ -155,7 +155,43 @@
         "text": "Script Supervision, Übersetzung und Recherche bei Produktionen der Universität York."
       }
     ],
-    "location": "London"
+    "location": "London",
+    "phonetics": {
+      "kicker": "Phonetik / Phonologie · Prozess",
+      "title": "Akustische Analyse über die Aufgabe hinaus",
+      "note": "Eine Übung in Phonetik / Phonologie, die ich freiwillig schwieriger machte: aufnehmen, Wellenform und Spektrogramm untersuchen und die Analyse weiter treiben, als die Aufgabe verlangte.",
+      "caption": "Übung in Phonetik / Phonologie · akustische Analyse",
+      "alt": "Laptop mit Wellenform und Spektrogramm neben einer Kamera"
+    },
+    "york": {
+      "title": "York / Straßen",
+      "note": "Eine kurze Folge von Architektur- und Straßenfotografien, aufgenommen mit einer Canon EOS 5D Mark IV und einem adaptierten älteren Sigma 80–200mm f/3.5–4 Zoom mit manueller Fokussierung.",
+      "alt": {
+        "high": "York Minster zwischen den Gebäuden der High Petergate",
+        "clock": "große Straßenuhr über einer Straße in York im späten Licht",
+        "rose": "Nahansicht des Rosenfensters und des steinernen Maßwerks am York Minster"
+      },
+      "caption": {
+        "high": "High Petergate / York",
+        "clock": "Straßenuhr / York",
+        "rose": "York Minster / Rosenfenster"
+      }
+    },
+    "other": {
+      "eyebrow": "nebenbei",
+      "title": "Andere Arbeiten",
+      "intro": "Ein paar Dinge, die keinen eigenen Abschnitt brauchen.",
+      "ink": {
+        "title": "Arbeiten auf Papier",
+        "note": "Tuschelandschaft. Hier als einzelne Arbeit, nicht als Behauptung einer eigenen Malereipraxis.",
+        "caption": "Tusche auf Papier",
+        "alt": "Tuschelandschaft mit Bäumen, Wasser, Felsen und einem kleinen Pavillon"
+      },
+      "hardware": {
+        "title": "Hardware",
+        "note": "Praktische Wartung älterer Serverhardware: Laufwerke, Staub und ein Schraubendreher."
+      }
+    }
   },
   "ci": {
     "meta_title": "Ci · Hanpu Li",

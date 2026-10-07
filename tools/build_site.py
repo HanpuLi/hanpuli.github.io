@@ -205,7 +205,7 @@ PROJECT_ORDINALS = {
 }
 
 PHOTO_NOTE_KEEP_TOGETHER = {
-    "en": ("35 mm", "instant film", "before a take"),
+    "en": ("35 mm", "instant film"),
     "zh": ("35 mm", "即影即有"),
     "zh-hans": ("35 mm", "即时成像胶片"),
     "ja": ("35 mmフィルム", "インスタントフィルム"),
