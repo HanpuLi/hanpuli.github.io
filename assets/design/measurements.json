@@ -1200,7 +1200,7 @@
       "created": "2026-09-24T11:00:00.000Z",
       "lines": [
         {
-          "id": "aa7c285a-8d8f-468c-9fcc-70242c10a308",
+          "id": "12a70fc7-8fa6-495f-bf2e-0526f32c6710",
           "workId": "ci-b3",
           "font": "bitmap",
           "size": 24,
@@ -1970,7 +1970,7 @@
     "totalY": 462
   },
   "inputs": {
-    "assets/site.css": "1922ae32f0be609dc669b3bbfeedd9a3967b269f7401b8ac82f582fb98961644",
+    "assets/site.css": "9437bb58eefcdbe9351056e73ac9d84fc3d7482be23c37989988e8ba44bd59c5",
     "content/poetry-voucher-app/gallery.js": "2a8cdf57a8404008de2926983dd499f00bf2daa447946ba228ac7d8a17fdc670",
     "content/poetry-voucher-app/shop.js": "3e24fbad590d8d8d714d4dbc7ef98332850425e8a92e8ad9294e09cead001b82",
     "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
@@ -1996,12 +1996,12 @@
     "assets/fonts/shippori-mincho-subset.woff2": "11a0bd0c6bd9a662b78f23b6a773ade32a8d9fd75e738663c8711bb8191ff8de",
     "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
     "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
-    "index.html": "ac3e37563f5abc06c807d60825e85fd9c07b3e54c3f7b5bfdc14d04c7318ca98",
-    "zh/index.html": "cf681fddc852f19e338dd3569f47b7cd665d279b25358d59ed54cb7fe01b4b47",
-    "zh-hans/index.html": "222a242ea2a00472d63f718fa8b1cc430db072bb81c07116c85b598691ea0f2d",
-    "ja/index.html": "9b4f796655bbe0a564f2c6cfac53b9bc026d25b4f50f70df06edf10aad2dfdc8",
-    "de/index.html": "2c4f4dca11a836379ac432def9cc339fe1983b785f32eb2de51452c9a878af0b",
-    "fr/index.html": "6c8840a30094657bb04cf1b4b60380b8858c1cea9fbb2a6da6a5ac6e4c44e96b",
-    "ru/index.html": "15ce49db59d825509ec360b815ee2a965624c6527e56bc08df3653c5b960d508"
+    "index.html": "39f92cb063107c4d3c2b852a722a4adb8ac09b7c6f65281b20b7a6b4e563b762",
+    "zh/index.html": "a8a8a64e8ef6735d19be997104db300e31e2fc066b701e5adac93aa4d5465161",
+    "zh-hans/index.html": "ca3d8893f3c45b979ef1aadbf6864f3b5ca88af8407cea59164ecbcd35f02331",
+    "ja/index.html": "f49495a7f9fc6dec35e832d0a61d0373ec7a8203ee91442963bc04270d17a4f6",
+    "de/index.html": "a0f4a8803bc184f963633b6ad859cbc15d9ec2e0eeeb5ea6919c556be7836f1d",
+    "fr/index.html": "22ed649219db92deb38cbbf92e5769884917278480971a1a7c92c44e27903e48",
+    "ru/index.html": "8ed08a1a4a3be6ffebee51488fc0c3b9182011ae755a8710ca55d1e957af1c56"
   }
 }

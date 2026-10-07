@@ -209,6 +209,27 @@
         <p class="section-kicker">{{home.sections.photo.kicker}}</p>
       </div>
 
+      <section class="photo-city-sequence" aria-labelledby="york-heading">
+        <div class="photo-city-intro">
+          <h3 id="york-heading">{{home.york.title}}</h3>
+          <p>{{home.york.note}}</p>
+        </div>
+        <div class="photo-city-grid">
+          <figure>
+            <img src="{{ASSET_PREFIX}}assets/photos/york/high-petergate.jpg" width="800" height="1200" alt="{{home.york.alt.high_attr}}" loading="lazy" decoding="async">
+            <figcaption>{{home.york.caption.high}}</figcaption>
+          </figure>
+          <figure>
+            <img src="{{ASSET_PREFIX}}assets/photos/york/rose-window.jpg" width="800" height="1200" alt="{{home.york.alt.rose_attr}}" loading="lazy" decoding="async">
+            <figcaption>{{home.york.caption.rose}}</figcaption>
+          </figure>
+          <figure class="photo-city-wide">
+            <img src="{{ASSET_PREFIX}}assets/photos/york/street-clock.jpg" width="1200" height="800" alt="{{home.york.alt.clock_attr}}" loading="lazy" decoding="async">
+            <figcaption>{{home.york.caption.clock}}</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <div class="photo-sequence">
         <figure class="photo-wide">
           <picture>
@@ -285,27 +306,6 @@
         </figure>
       </div>
 
-      <section class="photo-city-sequence" aria-labelledby="york-heading">
-        <div class="photo-city-intro">
-          <h3 id="york-heading">{{home.york.title}}</h3>
-          <p>{{home.york.note}}</p>
-        </div>
-        <div class="photo-city-grid">
-          <figure>
-            <img src="{{ASSET_PREFIX}}assets/photos/york/high-petergate.jpg" width="800" height="1200" alt="{{home.york.alt.high_attr}}" loading="lazy" decoding="async">
-            <figcaption>{{home.york.caption.high}}</figcaption>
-          </figure>
-          <figure>
-            <img src="{{ASSET_PREFIX}}assets/photos/york/rose-window.jpg" width="800" height="1200" alt="{{home.york.alt.rose_attr}}" loading="lazy" decoding="async">
-            <figcaption>{{home.york.caption.rose}}</figcaption>
-          </figure>
-          <figure class="photo-city-wide">
-            <img src="{{ASSET_PREFIX}}assets/photos/york/street-clock.jpg" width="1200" height="800" alt="{{home.york.alt.clock_attr}}" loading="lazy" decoding="async">
-            <figcaption>{{home.york.caption.clock}}</figcaption>
-          </figure>
-        </div>
-      </section>
-
       <p class="section-note">{{PHOTO_NOTE}}</p>
     </section>
 
@@ -313,7 +313,6 @@
       <div class="other-work-head">
         <p class="process-kicker">{{home.other.eyebrow}}</p>
         <h2 id="other-work-heading">{{home.other.title}}</h2>
-        <p>{{home.other.intro}}</p>
       </div>
       <div class="other-work-grid">
         <article class="other-work-ink">
@@ -325,11 +324,6 @@
             <h3>{{home.other.ink.title}}</h3>
             <p>{{home.other.ink.note}}</p>
           </div>
-        </article>
-        <article>
-          <p class="other-work-no">A</p>
-          <h3>{{home.other.hardware.title}}</h3>
-          <p>{{home.other.hardware.note}}</p>
         </article>
       </div>
     </aside>
