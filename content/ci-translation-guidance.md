@@ -84,3 +84,12 @@ The cycle becomes weaker if translation decides the dispute between its two voic
 - W8/W9: 同席 permits sitting together, not necessarily sharing a single chair. 衣冠 is metonymic: in 總稱圭璧 the praise applies to people, not to the garments themselves. The repeated 2022 title expresses knowing the outcome, not merely suspecting it.
 - W9: 先積 preserves priority, not just an already-completed accumulation.
 - W4/W10: retain local modality even where the larger poem invites a stronger philosophical reading. 欲出 does not guarantee a future emergence, and 時難逆 says 難, not an explicit absolute impossibility. 字入年輪方有響 preserves entering as the condition for resonance. 音書又杳 is renewed absence or remoteness of communication, not necessarily letters physically travelling away. 當年心力 is not confined to the effort of writing the old poem.
+
+## Separate revised lyric W12, 《鵲橋仙》
+
+- 「未消尺素」 states no need for a letter, not that no letter ever existed. 「自珍故物」 is the speaker's cherishing; 「紙上尋常字句」 does not confirm a reciprocal attachment.
+- 「柔荑傷處竟唇濡」 brings lips to a wound on a tender hand; whose lips are unspecified. Do not add blood, assign the people involved, or treat the moment as a promise. 「竟」 carries surprise.
+- 「經年後、還留幾許」 leaves unstated what remains and how much. Avoid identifying a surviving scar, affection or other single referent.
+- 「聞人道好，隨人道好」 deliberately repeats the spoken approval. Preserve the echo, which need not mean conviction.
+- 「瓦釜雷鳴何故」 is the speaker's pejorative judgement, not the author's established verdict on a third person. Keep the earthen-vessel image, rather than translating it as a fact about a bad partner.
+- 「逢君仍問近來安」 is an ordinary inquiry. 「說罷了、回身讓路」 ends with a physical turning and making way, not a stated farewell, concession in love or moral lesson.
