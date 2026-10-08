@@ -118,8 +118,7 @@ class Pages:
     def index(self, locale: str, copy: dict[str, Any]) -> str:
         ui = self.ui[locale]
         groups = ['<section class="poetry-index-section" aria-labelledby="poetry-collections"><h2 id="poetry-collections">'+esc(ui['collections'])+'</h2><ol class="poetry-collection-list">']
-        for cid in ('jia-yi','september-2026'):
-            collection = self.lib.collections[cid]
+        for collection in self.lib.collections.values():
             count = ui['count'].replace('{n}',str(len(collection['members'])))
             groups.append(f'<li><div class="poetry-entry-meta">{date_range(collection["dates"])}<span>{esc(count)}</span></div><h3><a href="{self.lib.path(collection["route"],locale)}">{esc(collection["title"][locale])}</a></h3>'+self.excerpt(collection['members'][0],locale)+'</li>')
         roof = self.lib.works['roof-splits']
@@ -242,6 +241,12 @@ class Pages:
             if page=='ci' and old in self.lib.data['legacy']['ci']:
                 tid=self.lib.data['legacy']['ci'][old]
                 label=(self.lib.edition(tid,locale) or self.lib.edition(tid,'zh'))['title']
+            elif old == 'voucher-heading':
+                label = 'Poetry Voucher'
+            elif page == 'shi' and old in ('summer-2017', 'summer-archive-link-title'):
+                label = self.lib.title('summer-2017', locale)
+            elif page == 'shi':
+                label = self.lib.title('roof-splits', locale)
             else: label=self.ui[locale]['heading']
             rows.append(f'<li id="{esc(old)}"><a href="{url}">{esc(label)}</a></li>')
         rows.append('</ul>')

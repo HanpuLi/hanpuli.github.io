@@ -148,18 +148,23 @@ class Library:
                                  + [w['route'] for w in self.works.values()]))
 
     def legacy_targets(self, page: str, locale: str) -> dict[str, str]:
+        prefix = '/' if locale == 'en' else '/' + locale + '/'
+        paper_url = prefix + 'poetry-voucher/'
         if page == 'ci':
             result = {key:self.text_url(tid,locale) for key,tid in self.data['legacy']['ci'].items()}
             result.update({'':self.path('',locale), 'poems':self.path('',locale),
                            'ci-cycle-heading':self.path('jia-yi',locale),
                            'ci-separate-heading':self.path('september-2026',locale),
                            'ci-revisions-2026-10-heading':self.path('chronology',locale),
-                           'ci-response-2026-10-heading':self.work_url('manjianghong-rereading-202610',locale)})
+                           'ci-response-2026-10-heading':self.work_url('manjianghong-rereading-202610',locale),
+                           'voucher-heading':paper_url})
             return result
         return {'':self.path('roof-splits',locale), 'drafts':self.path('roof-splits',locale),
                 'draft-1':self.path('roof-splits',locale)+'#draft-1',
                 'draft-2':self.path('roof-splits',locale)+'#draft-2',
-                'summer-2017':self.path('summer-2017',locale)}
+                'summer-2017':self.path('summer-2017',locale),
+                'summer-archive-link-title':self.path('summer-2017',locale),
+                'voucher-heading':paper_url}
 
     def shop_catalogue(self) -> dict[str, Any]:
         # Artwork encoding tables are a renderer asset, not a second literary source.

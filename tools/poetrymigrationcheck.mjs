@@ -48,6 +48,12 @@ try{
     await page.waitForURL(base+prefix+'poetry/jia-yi/#jia-10');
     assert.equal(await page.locator('.reader-poem').count(),17);
     assert(!(await page.locator('#jia-10').textContent()).includes('集外'));redirects++;
+    await page.goto(base+prefix+'shi.html#summer-archive-link-title');
+    await page.waitForURL(base+prefix+'poetry/summer-2017/');redirects++;
+    for(const legacyPage of ['ci','shi']){
+      await page.goto(base+prefix+legacyPage+'.html#voucher-heading');
+      await page.waitForURL(base+prefix+'poetry-voucher/');redirects++;
+    }
   }
   await page.goto(base+'/zh/poetry/jia-yi/#jia-10');
   const english=page.locator('a[data-poetry-language][hreflang="en-GB"]');
@@ -61,7 +67,12 @@ try{
   assert.equal(await page.locator('#sewn').count(),1);assert.equal(await page.locator('#echo').count(),1);
   const nojs=await browser.newContext({javaScriptEnabled:false});const staticPage=await nojs.newPage();
   await staticPage.goto(base+'/zh/ci.html#w12');await staticPage.locator('#w12 a').press('Enter');await staticPage.waitForURL(base+'/zh/poetry/queqiaoxian-20181222/');
-  assert.equal(await staticPage.locator('.poem-version.source .body').textContent(),current.poem);await nojs.close();
+  assert.equal(await staticPage.locator('.poem-version.source .body').textContent(),current.poem);
+  await staticPage.goto(base+'/zh/shi.html#summer-archive-link-title');
+  assert.equal(await staticPage.locator('#summer-archive-link-title a').textContent(),'你有沒有想起一個夏天');
+  await staticPage.locator('#summer-archive-link-title a').press('Enter');
+  await staticPage.waitForURL(base+'/zh/poetry/summer-2017/');
+  await nojs.close();
   if(screenshotDir){
     for(const [name,url,width,height] of [['index-desktop','/zh/poetry/',1440,1050],['index-mobile','/zh/poetry/',390,844],['reader-desktop','/poetry/queqiaoxian-20181222/',1440,1050],['reader-mobile','/zh/poetry/queqiaoxian-20181222/',390,844]]){
       await page.setViewportSize({width,height});await page.goto(base+url);await page.evaluate(()=>document.fonts.ready);
