@@ -38,6 +38,15 @@ def main() -> None:
         errors.append('Two rewritings of Manjianghong lost their common work')
     if library.versions['manjianghong-rereading-202610-text']['work']=='manjianghong-2022':
         errors.append('The independent later response was collapsed into a draft')
+    # Edition order belongs to version metadata. The unnumbered Chinese title
+    # must not silently acquire “I”/“一” in any translated literary title.
+    for lid in ('en','ja','de','fr','ru'):
+        first_title = library.edition('manjianghong-2022-sewn-202610', lid)['title']
+        other_title = library.edition('manjianghong-2022-echo-202610', lid)['title']
+        if re.search(r'(?:\s*[—–-]\s*(?:I|1)|\s*·\s*一)\s*$', first_title):
+            errors.append(f'{lid} Manjianghong first rewriting: extraneous ordinal in title')
+        if first_title == other_title:
+            errors.append(f'{lid} Manjianghong rewritings: indistinguishable translated titles')
     routes_checked=0
     body_checks=0
     for locale in LANGS:

@@ -213,7 +213,7 @@ for(const work of data.works){
   assert.deepEqual(Object.keys(work.translations),['en','zh-Hans','ja','de','fr','ru']);
   for(const locale of ['en','ja','de','fr','ru'])assert.deepEqual(work.translations[locale],text.editions[locale]);
   assert.deepEqual(work.translations['zh-Hans'],simplified[text.id]);
-  assert.equal(data.aliases[offer.legacy_ids[0]],work.id);
+  for(const legacyId of offer.legacy_ids)assert.equal(data.aliases[legacyId],work.id);
 }
 // Exercise the actual cart admission and pricing functions for every published variant.
 const shopPrefix=read('content/poetry-voucher-app/shop.js').split('  function notify(')[0];
