@@ -7,6 +7,8 @@ import {chromium} from 'playwright';
 
 const root=process.cwd(), fixtures=JSON.parse(await readFile('tools/fixtures/poetry-before-refactor.json','utf8'));
 const library=JSON.parse(await readFile('content/poetry/library.json','utf8'));
+const collectedWorks=new Set(library.collections.flatMap(collection=>collection.members));
+const standaloneWorks=library.works.filter(work=>!collectedWorks.has(work.id) && work.layout!=='summer-mirror');
 const catalogue=JSON.parse(await readFile('poetry-voucher/editions.json','utf8'));
 const target='queqiaoxian-20181222-revised-202610';
 const old=fixtures.legacy_catalogue_examples.find(w=>w.id==='ci-w12');
@@ -35,7 +37,7 @@ try{
     const prefix=locale?'/'+locale+'/':'/';
     await page.goto(base+prefix+'poetry/');
     assert.equal(await page.locator('.poetry-collection-list > li').count(),3);
-    assert.equal(await page.locator('.poetry-catalogue-entry').count(),9);
+    assert.equal(await page.locator('.poetry-catalogue-entry').count(),standaloneWorks.length);
     assert(!await overflow(page),prefix+'catalogue overflow');
     await page.goto(base+prefix+'poetry/queqiaoxian-20181222/');
     assert.equal(await page.locator('.poem-version.source .body').textContent(),locale==='zh-hans'?current.translations['zh-Hans'].body:current.poem);

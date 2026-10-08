@@ -590,6 +590,24 @@
       ],
       "related": [],
       "layout": "summer-mirror"
+    },
+    {
+      "id": "yingtianchang-20261008",
+      "kind": "poem",
+      "form": "ci",
+      "composed": {
+        "start": "2026-10-08",
+        "end": "2026-10-08",
+        "basis": "work-date"
+      },
+      "route": "yingtianchang-20261008",
+      "fragment": "",
+      "voice": null,
+      "authorial_label": null,
+      "versions": [
+        "yingtianchang-20261008-text"
+      ],
+      "related": []
     }
   ],
   "versions": [
@@ -1181,6 +1199,25 @@
       },
       "parts": [
         "summer-2017-revised-20261008"
+      ],
+      "fragment": ""
+    },
+    {
+      "id": "yingtianchang-20261008-text",
+      "work": "yingtianchang-20261008",
+      "date": "2026-10-08",
+      "kind": "text",
+      "label": {
+        "en": "",
+        "zh": "",
+        "zh-hans": "",
+        "ja": "",
+        "de": "",
+        "fr": "",
+        "ru": ""
+      },
+      "parts": [
+        "yingtianchang-20261008-text"
       ],
       "fragment": ""
     }
@@ -2241,6 +2278,38 @@
           "body": "Вспомнилось ли тебе одно лето?\n\nТем летом июльские цикады ещё не умолкли,\nи твой смех ещё не стих.\nТы поёшь для меня,\nя пишу стихи и читаю их тебе.\n\nПусти меня обратно,\nмне так не хватает тех дней.\nНо как мне взять тебя с собой,\nкогда ты всегда так молчишь?\n\nМне нравился морской простор,\nно резкие очертания гор оставались без внимания.\nЯ всё ещё бегу к свету;\nдаже солнце прячется то тут, то там.\n\nГоворят, звёзд много,\nно ты знаешь: сколько бы их ни было,\nвсё-таки ни одна из них не ты.\nЯ иду лишь туда, где есть ты.\n\nТам всё ещё плывут и кружат облака,\nа день и ночь, как назло, равны по длине.\nДержи меня там в плену,\nдай мне запомнить твой облик в каждое мгновение.\n\nТам есть спетые тобою песни,\nесть строки, прочитанные мною тебе;\nа ты, с кем меня связывает дружба,\nтем более не выходишь у меня из головы.\n\nБудешь ли ты помнить моё молчаливое «я»?\n\nВ те дни рана была глубоко в моём горле,\nно сердце всё ещё было тёплым.\nЯ хрипло пою для тебя;\nты только пока не уходи.\n\nВремя, замедлись,\nпусть даже я пою годами своей жизни.\nЯ вот так смотрю на тебя,\nсквозь замочную скважину, сквозь облака и туман.\n\nОдно слово или фраза?\nГоды спрашивают меня: что это значит?\nВ моём ответе нет красоты:\nк счастью, тогда мне довелось встретить тебя.\n\nЯ всегда помню тот сноп зелени,\nмерцавший среди листьев, когда солнце только всходило.\nСловно мне удалось найти сокровище,\nне могу сдержать улыбки, рассказываю каждому встречному.\n\nЯ всё ещё воспеваю дружбу, подобную горной вершине,\nкак бы ни были длинны или коротки дни и ночи.\nДай мне снова ощутить вкус начала:\nкак мы говорили обо всём, не хмуря бровей.\n\nТам есть спетые тобою песни,\nесть строки, прочитанные мною тебе;\nа ты, с кем меня связывает дружба,\nтем более не выходишь у меня из головы.\n\nНо прекрасное боится вечности,\nсловно цветы в районе Чанъань, покачавшие головами.\n\nС днём рождения.\n\nЭто стихотворение написано мною для тебя.\n\nБудешь ли ты\nпомнить меня?"
         }
       }
+    },
+    {
+      "id": "yingtianchang-20261008-text",
+      "version": "yingtianchang-20261008-text",
+      "part": null,
+      "source_date": "二〇二六年十月八日作",
+      "editions": {
+        "zh": {
+          "title": "《應天長·喚回》",
+          "body": "喚回猶把空衣理，\n袖口餘溫留在指。\n掩門初，聲又起，\n聽盡無聲偏側耳。\n\n指微蜷，杯倒置，\n匙底尚留殘齒。\n不許指溫先退，\n土木火金水"
+        },
+        "en": {
+          "title": "To the tune of Yingtianchang · Calling Back",
+          "body": "Calling back, still I straighten the empty robe;\nthe last warmth at its cuff stays on my fingers.\nAs the door begins to close, the sound rises again;\nI listen through the silence, yet still turn an ear.\n\nA finger curls slightly; the cup lies overturned.\nUnder the spoon, a broken tooth still remains.\nI will not let the warmth in my fingers go first.\nEarth, wood, fire, metal, water."
+        },
+        "ja": {
+          "title": "應天長の調べ · 呼び戻す",
+          "body": "呼び戻してなお、空の衣を整える。\n袖口の余温は指に残る。\n戸を閉めかけると、また音がする。\n無音を聴き尽くしても、なお耳を傾ける。\n\n指がかすかに曲がり、杯は伏せられ、\n匙の下には欠けた歯がまだ残る。\n指の温もりを先に退かせまい。\n土木火金水"
+        },
+        "de": {
+          "title": "Nach der Melodie Yingtianchang · Zurückrufen",
+          "body": "Ich rufe zurück und streiche noch das leere Gewand glatt;\nam Ärmelrand bleibt die Restwärme an den Fingern.\nDie Tür wird eben angelehnt; der Laut setzt wieder ein.\nIch höre, bis nichts mehr zu hören ist, und neige doch das Ohr.\n\nEin Finger krümmt sich leicht; der Becher steht auf dem Kopf.\nUnter dem Löffel bleibt ein abgebrochener Zahn.\nDie Wärme in den Fingern soll noch nicht weichen.\nErde, Holz, Feuer, Metall, Wasser."
+        },
+        "fr": {
+          "title": "Sur l’air de Yingtianchang · Rappeler",
+          "body": "J’appelle au retour, tout en redressant l’habit vide ;\nau bord de la manche, la chaleur restante demeure sur les doigts.\nLa porte à peine poussée, le son revient ;\nj’écoute jusqu’au bout du silence, et pourtant je tends l’oreille.\n\nUn doigt se replie un peu ; la coupe est renversée.\nSous la cuillère subsiste une dent brisée.\nJe refuse de laisser la chaleur des doigts s’en aller la première.\nTerre, bois, feu, métal, eau."
+        },
+        "ru": {
+          "title": "На мелодию Yingtianchang · Звать обратно",
+          "body": "Зову обратно и всё же расправляю пустую одежду;\nтепло с края рукава ещё держится на пальцах.\nДверь лишь начинаю прикрывать — звук возникает вновь;\nслушаю тишину до конца, но всё равно склоняю ухо.\n\nПалец едва сгибается, чашка перевёрнута;\nпод ложкой всё ещё лежит обломок зуба.\nНе позволю теплу на пальцах уйти прежде.\nЗемля, дерево, огонь, металл, вода."
+        }
+      }
     }
   ],
   "offers": [
@@ -2499,6 +2568,12 @@
       "legacy_ids": [
         "shi-d2-2"
       ]
+    },
+    {
+      "id": "yingtianchang-20261008-text",
+      "text": "yingtianchang-20261008-text",
+      "receipt_code": "YINGTIANCHANG 2026",
+      "legacy_ids": []
     }
   ],
   "legacy": {
