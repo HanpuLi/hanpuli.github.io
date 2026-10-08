@@ -307,7 +307,7 @@
       "voice": "separate",
       "source_title": "《鵲橋仙》",
       "source_body": "未消尺素，自珍故物，紙上尋常字句。\n柔荑傷處竟唇濡，經年後、還留幾許。\n\n聞人道好，隨人道好，瓦釜雷鳴何故。\n逢君仍問近來安，說罷了、回身讓路。",
-      "date": "二〇二六年十月修訂",
+      "date": "二〇一八年十二月二十二日作；二〇二六年十月修訂",
       "en": {
         "title": "To the tune of Queqiaoxian",
         "body": "No need for letters; I treasure the old things. On the paper, only ordinary words.\nYet lips moistened the wound on a tender hand; years later, how much remains?\n\nHearing others call it good, I call it good too. Why does the earthen pot thunder?\nMeeting you, I still ask how you have been; when the words are done, I turn and make way."
@@ -317,12 +317,13 @@
   "separate_groups": [
     {
       "id": "revisions-2026-10",
-      "revision_date": "2026-10-07",
+      "revision_date": "2026-10-08",
       "period": "2018–2022",
       "poem_ids": [
         "w5",
         "w7",
         "w11",
+        "w12",
         "w6",
         "w4",
         "w8",
@@ -343,8 +344,7 @@
       "id": "response-2026-10",
       "period": "2026.10",
       "poem_ids": [
-        "w10",
-        "w12"
+        "w10"
       ],
       "copy_key": "response"
     }

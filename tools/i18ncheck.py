@@ -228,9 +228,9 @@ def main() -> int:
     if ci.get("outside_dates") != {"a10": "2026-07-01"}:
         errors.append("ci-source outside_dates must contain only the 1 July A10 appendix")
     expected_separate_groups = [
-        {"id": "revisions-2026-10", "revision_date": "2026-10-07", "period": "2018–2022", "poem_ids": ["w5", "w7", "w11", "w6", "w4", "w8", "w9"], "copy_key": "revised"},
+        {"id": "revisions-2026-10", "revision_date": "2026-10-08", "period": "2018–2022", "poem_ids": ["w5", "w7", "w11", "w12", "w6", "w4", "w8", "w9"], "copy_key": "revised"},
         {"id": "sep-2026-09-09", "date": "2026-09-09", "period": "2026.09.09", "poem_ids": ["w2", "w3"]},
-        {"id": "response-2026-10", "period": "2026.10", "poem_ids": ["w10", "w12"], "copy_key": "response"},
+        {"id": "response-2026-10", "period": "2026.10", "poem_ids": ["w10"], "copy_key": "response"},
     ]
     if ci.get("separate_groups") != expected_separate_groups:
         errors.append("ci-source separate_groups must distinguish earlier poems, the September pair and the later response")
@@ -735,7 +735,7 @@ def main() -> int:
                 if text.count('class="ci-group ci-separate"') != len(expected_separate_groups):
                     errors.append(f"{path.relative_to(ROOT)}: expected distinct earlier, September and response ci groups")
                 reading_ids = tuple(re.findall(r'class="poem(?: jia| yi)?" id="([^"]+)"', text))
-                expected_reading_ids = ("w5", "w7", "w11", "w6", "w4", "w8", "w9") + CI_CYCLE_IDS + CI_OUTSIDE_IDS + ("w2", "w3", "w10", "w12")
+                expected_reading_ids = ("w5", "w7", "w11", "w12", "w6", "w4", "w8", "w9") + CI_CYCLE_IDS + CI_OUTSIDE_IDS + ("w2", "w3", "w10")
                 if reading_ids != expected_reading_ids:
                     errors.append(f"{path.relative_to(ROOT)}: rendered poem order must follow chronology while preserving the A/B cycle")
                 toc = re.search(r'<nav class="toc"[^>]*>(.*?)</nav>', text, flags=re.S)

@@ -6,12 +6,13 @@
   "separate_groups": [
     {
       "id": "revisions-2026-10",
-      "revision_date": "2026-10-07",
+      "revision_date": "2026-10-08",
       "period": "2018–2022",
       "poem_ids": [
         "w5",
         "w7",
         "w11",
+        "w12",
         "w6",
         "w4",
         "w8",
@@ -32,8 +33,7 @@
       "id": "response-2026-10",
       "period": "2026.10",
       "poem_ids": [
-        "w10",
-        "w12"
+        "w10"
       ],
       "copy_key": "response"
     }
@@ -239,8 +239,8 @@
       "voice": "separate",
       "source_title": "《鹊桥仙》",
       "source_body": "未消尺素，自珍故物，纸上寻常字句。\n柔荑伤处竟唇濡，经年后、还留几许。\n\n闻人道好，随人道好，瓦釜雷鸣何故。\n逢君仍问近来安，说罢了、回身让路。",
-      "date": "二〇二六年十月修订"
+      "date": "二〇一八年十二月二十二日作；二〇二六年十月修订"
     }
   ],
-  "source_sha256": "1f44ee5a2e03189b85fdca2456f361f429e587256a915f86049e737cc4a4b562"
+  "source_sha256": "00df84b94f40c244e8d0289f32d75f1a61206a32362a4bc08f69bb6bc218f7c1"
 }
