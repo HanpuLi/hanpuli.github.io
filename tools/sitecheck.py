@@ -117,7 +117,7 @@ def local_target(source: Path, ref: str) -> tuple[Path, str] | None:
 def check_raw_ampersands(path: Path, text: str, errors: list[str]) -> None:
     """Reject unescaped ampersands in HTML markup/text, excluding script/style data."""
     inspectable = re.sub(
-        r"<(?:script|style)\b.*?</(?:script|style)>",
+        r"<(?:script|style)\b[^>]*>.*?</(?:script|style)\s*>",
         "",
         text,
         flags=re.I | re.S,
