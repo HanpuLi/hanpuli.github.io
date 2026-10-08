@@ -46,7 +46,10 @@
   }
   function show(id){el(id).showModal();}
   function close(id){el(id).close();}
-  function localeTitle(work){const title=work.translations?.[uiLocale]?.title||work.title;const l={'zh-Hant':'zh','zh-Hans':'zh-hans'}[uiLocale]||uiLocale;const version=work.version_label?.[l];const part=work.part_id&&work.part_id!=='text'?work.part_id.replace('part-',''):'';return title+(version?' · '+version:'')+(part?' · '+part:'');}
+  const editionLocale=()=>({'zh-Hant':'zh','zh-Hans':'zh-hans'}[uiLocale]||uiLocale);
+  function workTitle(work){return work.work_titles?.[editionLocale()]||work.translations?.[uiLocale]?.title||work.title;}
+  function variantLabel(work){const version=work.version_label?.[editionLocale()],part=work.part_id&&work.part_id!=='text'?work.part_id.replace('part-',''):'';return [version,part].filter(Boolean).join(' · ');}
+  function localeTitle(work){const variant=variantLabel(work);return workTitle(work)+(variant?' · '+variant:'');}
   const shelfLabel=id=>t({'jia-yi':'cycle','lamplight-20260909':'pair','ci':'lyrics','poem':'poems','sanqu':'songs','classical-poem':'classical','roof':'roof'}[id]||id);
   const contentLang=locale=>locale==='zh-Hant'?'zh-Hant-HK':locale;
   const lineTitle=line=>line.work?localeTitle(line.work):workFor(line)?localeTitle(workFor(line)):line.title;
@@ -72,11 +75,11 @@
       const matches=editions.filter(w=>`${localeTitle(w)} ${w.title} ${w.poem} ${w.translations?.[uiLocale]?.body||''} ${(w.legacy_ids||[]).join(' ')}`.toLocaleLowerCase().includes(search));
       if(search&&!matches.length)continue;if(search)work=matches[0];count++;
       const card=node('article',undefined,'product-card'),head=node('div',undefined,'product-meta');card.dataset.work=workId;
-      head.append(node('span',work.composed||''),node('span',shelfLabel(work.shelf)));
+      const member=work.member_label?.[uiLocale.startsWith('zh')||uiLocale==='ja'?'zh':'en'];head.append(node('span',[work.composed,member].filter(Boolean).join(' · ')),node('span',shelfLabel(work.shelf)));
       const heading=node('h3'),excerpt=node('p',undefined,'product-excerpt'),foot=node('div',undefined,'product-foot'),price=node('strong',undefined,'product-price');foot.append(price);
-      const refresh=()=>{heading.textContent=localeTitle(work);const edition=work.translations?.[uiLocale];excerpt.textContent=(edition?.body||work.poem).split('\n').filter(Boolean).slice(0,3).join('\n');heading.lang=excerpt.lang=edition?contentLang(uiLocale):'zh-Hant-HK';price.textContent=uiMoney(quotePoem(work.poem).price);};
+      const refresh=()=>{heading.textContent=workTitle(work);const edition=work.translations?.[uiLocale],lines=(edition?.body||work.poem).split('\n').filter(Boolean);if(lines[0]?.trim()===(edition?.title||work.title).trim())lines.shift();excerpt.textContent=lines.slice(0,3).join('\n');heading.lang=excerpt.lang=edition?contentLang(uiLocale):'zh-Hant-HK';price.textContent=uiMoney(quotePoem(work.poem).price);};
       card.append(head,heading,excerpt);
-      if(editions.length>1){const choice=node('select');choice.className='product-version';choice.setAttribute('aria-label',t('versions')+' · '+localeTitle(work));for(const e of editions){const option=node('option',localeTitle(e));option.value=e.id;choice.append(option);}choice.value=work.id;choice.addEventListener('change',()=>{work=editions.find(w=>w.id===choice.value);refresh();});card.append(choice);}
+      if(editions.length>1){const choice=node('select');choice.className='product-version';choice.setAttribute('aria-label',t('versions')+' · '+workTitle(work));for(const e of editions){const option=node('option',variantLabel(e)||workTitle(e));option.value=e.id;choice.append(option);}choice.value=work.id;choice.addEventListener('change',()=>{work=editions.find(w=>w.id===choice.value);refresh();});card.append(choice);}
       const actions=node('div',undefined,'product-actions');actions.append(button(t('choose'),()=>openEditor(work.id),'text-button'),button(t('add'),()=>addDefault(work),'add-button'));
       card.append(foot,actions);grid.append(card);refresh();
     }

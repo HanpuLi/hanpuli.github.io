@@ -210,6 +210,8 @@ def voucher(data, base):
                 row = {'id': ident, 'work_id': w['id'], 'version_id': version['id'],
                        'part_id': part['id'], 'identity_schema': 2,
                        'source_id': receipt_label, 'title': e['zh']['title'], 'poem': e['zh']['body'],
+                       'work_titles': {l: title(w,l) for l in LANGUAGES},
+                       'member_label': w.get('member_label', {}),
                        'author': '李函璞 / Hanpu Li', 'collection': c['titles']['zh'] if c else '詩歌',
                        'edition': version['date_label'], 'version_label': version['label'],
                        'composed': w['composed']['start'], 'form': w['form'],

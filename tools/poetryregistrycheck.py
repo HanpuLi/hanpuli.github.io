@@ -68,7 +68,9 @@ def check_baseline(data):
                     if key in actual:
                         raise AssertionError('Same baseline text mapped twice: ' + key)
                     actual[key] = hashlib.sha256(edition['body'].encode()).hexdigest()
-    assert actual == fixture['body_sha256'], 'An existing original/translation body was altered, lost or reassigned'
+    # Freeze the baseline bodies, not the future size of the catalogue.
+    # New authored works or translations may be added without editing this fixture.
+    assert all(actual.get(key) == value for key, value in fixture['body_sha256'].items()), 'An existing original/translation body was altered, lost or reassigned'
     cycle = next(c for c in data['collections'] if c['id'] == 'jia-yi')
     assert cycle['members'] == fixture['jia_yi_members'], 'Author-ordered seventeen-member Jia/Yi sequence changed'
     assert len(cycle['members']) == 17 and cycle['members'][-1] == 'jia-yi-a10'
@@ -82,7 +84,7 @@ def check_baseline(data):
     roof = next(w for w in data['works'] if w['id'] == 'roof')
     assert [len(v['parts']) for v in roof['versions']] == [2, 2]
     assert all(w.get('voice') in ('jia', 'yi', None) for w in data['works'])
-    return len(actual)
+    return len(fixture['body_sha256'])
 
 
 def check():
@@ -101,9 +103,13 @@ def check():
     assert public['aliases']['ci-w12'] == 'queqiaoxian-20181222'
     assert not any(re.fullmatch(r'(?:W\d+|D\d+\.\d+)', x['source_id']) for x in public['works']), 'Legacy admission codes still displayed on new editions'
     summer = next(x for x in public['works'] if x['work_id'] == 'summer-2017')
-    assert set(summer['translations']) == {'zh-Hans'}, 'Unpublished summer translation was invented'
+    summer_work = next(w for w in data['works'] if w['id'] == 'summer-2017')
+    available = set(summer_work['versions'][0]['parts'][0]['editions']) - {'zh'}
+    assert set(summer['translations']) == {('zh-Hans' if l == 'zh-hans' else l) for l in available}, 'Unpublished summer translation was invented'
     for x in public['works']:
         assert x['identity_schema'] == 2
+        w = next(w for w in data['works'] if w['id'] == x['work_id'])
+        assert x['work_titles'] == {l: model.title(w,l) for l in model.LANGUAGES}
         for old in x['legacy_ids']:
             assert public['aliases'][old] == x['id']
         parsed = urlsplit(x['source_url'])

@@ -79,12 +79,16 @@ try{
     return page.evaluate(()=>poetryShop.snapshot().orders[0]);
   };
   await page.setViewportSize({width:1440,height:1000});await shop();
-  assert.equal(await page.locator('.product-card').count(),29);
+  assert.equal(await page.locator('.product-card').count(),registry.works.length);
+  assert.deepEqual((await page.locator('.product-card').evaluateAll(nodes=>nodes.map(n=>n.dataset.work))).sort(),registry.works.map(w=>w.id).sort());
   assert.equal(await page.locator('.product-card[data-work="roof"]').count(),1);
   assert.equal(await page.locator('.product-card[data-work="roof"] .product-version option').count(),4);
   const variants=page.locator('.product-card[data-work="manjianghong-2022"]');
   assert.equal(await variants.locator('.product-version option').count(),2);
+  const stableWorkTitle=await variants.locator('h3').textContent();
   await variants.locator('.product-version').selectOption('manjianghong-2022--echo');
+  assert.equal(await variants.locator('h3').textContent(),stableWorkTitle);
+  assert.deepEqual(await variants.locator('.product-version option').allTextContents(),['Sewn version','Another version']);
   await variants.locator('.text-button').click();
   assert.equal(await page.locator('#work').inputValue(),'manjianghong-2022--echo');
   assert((await page.locator('#poem').inputValue()).startsWith('漏盡鐘回'));

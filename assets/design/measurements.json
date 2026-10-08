@@ -1200,7 +1200,7 @@
       "created": "2026-09-24T11:00:00.000Z",
       "lines": [
         {
-          "id": "8c1b21b1-957e-4cdb-9183-d53cc434a4a6",
+          "id": "76cbab75-c258-489f-9847-0de812bc4935",
           "workId": "jia-yi-b3",
           "font": "bitmap",
           "size": 24,
@@ -1219,6 +1219,19 @@
             "source_id": "B3",
             "title": "乙三《無題 · 臨江仙》",
             "poem": "燭暗蛩寒簾影瘦，殘酲猶帶微温。\n筆停紙澀墨先吞。\n未緘還自疊，一折一重門。\n\n不是東風先折取，恐花為我辭根。\n新痕舊鑰莫輕論。\n相逢原是客，客受主家恩。",
+            "work_titles": {
+              "en": "Untitled · To the tune of Linjiangxian",
+              "zh": "乙三《無題 · 臨江仙》",
+              "zh-hans": "乙三《无题 · 临江仙》",
+              "ja": "無題 · 臨江仙の調べ",
+              "de": "Ohne Titel · Nach der Melodie Linjiangxian",
+              "fr": "Sans titre · Sur l’air de Linjiangxian",
+              "ru": "Без названия · На мелодию Linjiangxian"
+            },
+            "member_label": {
+              "zh": "乙三",
+              "en": "B3"
+            },
             "author": "李函璞 / Hanpu Li",
             "collection": "甲乙",
             "edition": "二〇二六年六月九日",
@@ -1301,9 +1314,9 @@
       },
       "publication": {
         "schema": 1,
-        "renderer": "pv-render-4d536dc360aee4ae",
-        "renderer_sha256": "4d536dc360aee4ae985c3e3ca36921e7826810bc95911383049bd0532398c16e",
-        "catalogue_sha256": "bd5c78680f6e8d01bf281d8686520d8992da0beff76d74348424f96e573fcb1b",
+        "renderer": "pv-render-e815ee57554bf708",
+        "renderer_sha256": "e815ee57554bf7087568a94548f2d8e9fa642e2184cc2893f32f0938bbf603bc",
+        "catalogue_sha256": "675b818a07d1bd5411286224780fc55800c0bdb622c2d3e00b0be399d4d3660c",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
           "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",
@@ -1330,7 +1343,7 @@
           "content/poetry-voucher-app/order-reading.js": "ab0607f84cf3c0f05837a188add012d046b0cbcfc44b81ee340a5845fb4eb080",
           "content/poetry-voucher-app/shop-copy.js": "6e0c7d8562700d3866a0ea7c54ac2dc99e16575a3807941c246781e087ee8fa1",
           "content/poetry-voucher-app/shop.css": "8516ab06a6532a6a2eee143a59fbd2f2cef10d727aa1db5a3060bf3df5370451",
-          "content/poetry-voucher-app/shop.js": "bed1e7860f92d5d00be07cae22efc6574b71412962259aa9082f28cd5051cc24",
+          "content/poetry-voucher-app/shop.js": "d91351a134d2e4c25890f484d9b6aa652c66427f2ad2fc9647e46e8458d7d942",
           "content/poetry-voucher-app/studio.css": "75be96fd6dcdc85bbdbf16b8f1cb1eef93565b0512eebb069fd187ec63c8580f",
           "templates/poetry-voucher-shop.html": "2f1537399a0ae4f8d02dc7efbd2a561bd0e3c5ad5d9e7e480b2340e8297d3011"
         },
@@ -1982,7 +1995,7 @@
   "inputs": {
     "assets/site.css": "712833d9ebe3a411dfd3dc7c47654c9c15fb75770f1f50bc1997750a4ae0867e",
     "content/poetry-voucher-app/gallery.js": "5a09c990d01a67f3377ad98eb0ebf75f14932c0c06c293d8d98eed243151b40e",
-    "content/poetry-voucher-app/shop.js": "bed1e7860f92d5d00be07cae22efc6574b71412962259aa9082f28cd5051cc24",
+    "content/poetry-voucher-app/shop.js": "d91351a134d2e4c25890f484d9b6aa652c66427f2ad2fc9647e46e8458d7d942",
     "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
     "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
     "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",
