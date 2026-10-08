@@ -33,10 +33,10 @@ The seven-language First Love abstract and the former `/status/` and `/read/` UR
 
 This validates tracked public HTML, then uses Chromium to exercise the seven portfolio locales at 320, 390, 520, 640, 768, 900, 1024, 1440 and 1728 px across the home, ci, poem, About, Credits & contexts, essay, Poetry Voucher and 404 page types. Each page is loaded once and resized through the matrix so intermediate-width regressions are covered without multiplying network waits. It checks page-level overflow, clipped navigation labels, overlapping interactive targets and wide-screen 404 quotation wrapping across every locale. Since the dependency-free accessibility checker already inspects every generated page structurally, axe-core runs the eight page types in representative English and Simplified-Chinese editions at narrow and wide widths rather than repeating the same DOM audit seven times. A second browser pass serves real missing URLs with GitHub Pages-style custom-404 semantics and verifies the 404 status, path-based locale selection, root-relative stylesheet loading, language switching and axe results at phone and desktop widths. The same suite runs in the `browser-qa` CI job after the dependency-free checks pass. `npm run qa:wrap` also reads the computed text wrapping of every published HTML page at phone width; the local `WRAP_ENGINE=webkit npm run qa:wrap` variant checks the same contract in WebKit.
 
-The Traditional Chinese literary source remains canonical. When `content/ci-source.json` or `content/shi-source.json` changes, regenerate the script-only Simplified Chinese mirrors before building:
+The Traditional Chinese literary source remains canonical. When `content/poetry/works.json` changes, regenerate the script-only Simplified Chinese mirrors before building:
 
 ```sh
-uv run --with opencc-python-reimplemented python tools/update_simplified_literary.py
+python3 tools/poetry_model.py
 ```
 
 The mirrors record the source SHA-256 and CI fails if they become stale. Editorial Simplified-Chinese UI copy in `content/locales/zh-hans.json` is maintained separately and is not overwritten by that helper.
@@ -46,7 +46,7 @@ The mirrors record the source SHA-256 and CI fails if they become stale. Editori
 The portfolio includes [Poetry Voucher](https://hanpuli.github.io/poetry-voucher/),
 a seven-language project overview and an author-only poetry shop. The former
 open-text Studio is retired; its old URL redirects to the same-language shop.
-The shop offers all 32 catalogue works with Traditional or Simplified Chinese
+The shop offers all published edition-parts with Traditional or Simplified Chinese
 originals, optional published translations, typeface and size choices, quantities,
 a local bag, fictional checkout, image PDFs and a complete offline HTML reading copy.
 There is no real payment, upload or delivery. The order page can hand its receipt and all poem vouchers to an H10S only when it is open inside that device's paired local wrapper and the user taps the print button; the public site has no remote print endpoint.
@@ -129,3 +129,11 @@ A separate scheduled workflow runs `tools/linkcheck_external.py` weekly against 
 ## Content and rights
 
 The repository is public so the site can be served by GitHub Pages. Publication does **not** grant a blanket open-source licence over the photographs, poems, essays, translations or other creative work. Third-party reuse requires permission unless applicable law provides otherwise.
+
+## Poetry catalogue and reading editions
+
+`content/poetry/works.json` is the single editorial source for works, versions, parts, translations and ordered collections. The seven `/poetry/` catalogues lead to independent readers. 《甲乙》 has seventeen members. 《屋頂裂開》 has two parts in two versions. The two 2022 *Manjianghong* rewrites are versions of one work; the later rereading poem is a separate linked work.
+
+`tools/poetry_model.py` produces the compatibility source files and the voucher catalogue; `tools/poetry_pages.py` renders the work-oriented readers. Legacy `ci.html` and `shi.html` routes remain fragment-aware, noindex compatibility pages with working links without JavaScript. Their old IDs are not new public catalogue numbers.
+
+Poetry Voucher resolves legacy basket selections through explicit aliases while reopening completed orders from their frozen snapshots. `npm run qa:poetry` verifies the migration on actual pages, baskets and orders. Source and tests are excluded from the GitHub Pages document output.

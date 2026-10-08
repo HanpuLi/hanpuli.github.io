@@ -2,6 +2,12 @@
 // Authored interface copy; literary text always comes from the published catalogue.
 const SHOP_LANGS=['en','zh-Hant','zh-Hans','ja','de','fr','ru'];
 const SHOP_COPY={
+pair:["Two poems · 9 September", "九月九日二首", "九月九日二首", "九月九日の二首", "Zwei Gedichte · 9. September", "Deux poèmes · 9 septembre", "Два стихотворения · 9 сентября"],
+poems:["Poems", "詩", "诗", "詩", "Gedichte", "Poèmes", "Стихи"],
+songs:["Songs", "曲", "曲", "曲", "Lieder", "Chansons", "Песни"],
+classical:["Classical verse", "古體詩", "古体诗", "古体詩", "Klassische Verse", "Vers classiques", "Классические стихи"],
+versions:["Version and part", "稿本與分篇", "稿本与分篇", "稿本と各篇", "Fassung und Teil", "Version et partie", "Редакция и часть"],
+
   h10LegacyCopy:['Legacy H10 paper copy · till 002','舊訂單 H10 紙本校樣 · till 002','旧订单 H10 纸本校样 · till 002','旧注文の H10 校正 · till 002','H10-Druckfassung der alten Bestellung · Kasse 002','Épreuve H10 de l’ancienne commande · caisse 002','Бумажная версия старого заказа для H10 · касса 002'],
 
 orders:['Orders','訂單','订单','注文','Bestellungen','Commandes','Заказы'],
@@ -22,8 +28,8 @@ custom:['Bring your own words','帶來自己的文字','带来自己的文字','
 search:['Search poems','搜尋作品','搜索作品','作品を検索','Gedichte suchen','Rechercher un poème','Поиск стихов'],
 filter:['Collection','作品集','作品集','作品集','Sammlung','Collection','Сборник'],
 all:['All editions','全部作品','全部作品','すべての作品','Alle Ausgaben','Toutes les éditions','Все издания'],
-cycle:['The A/B cycle','甲乙十六首','甲乙十六首','甲乙十六首','Der A/B-Zyklus','Le cycle A/B','Цикл A/B'],
-lyrics:['Other lyrics','集外詞作','集外词作','その他の詞','Weitere Ci','Autres ci','Другие цы'],
+cycle:['The A/B cycle','甲乙','甲乙','甲乙','Der A/B-Zyklus','Le cycle A/B','Цикл A/B'],
+lyrics:['Ci','詞','词','その他の詞','Weitere Ci','Autres ci','Другие цы'],
 roof:['The Roof Splits Open','屋頂裂開','屋顶裂开','屋根が裂ける','Das Dach reißt auf','Le toit se fend','Крыша раскалывается'],
 noResults:['No editions found.','沒有符合的作品。','没有符合的作品。','該当する作品はありません。','Keine Ausgaben gefunden.','Aucune édition trouvée.','Издания не найдены.'],
 colophonTitle:['Something to hold on to.','留住一點什麼。','留住一点什么。','手元に残るもの。','Etwas zum Festhalten.','Quelque chose à garder.','Что-то, что можно сохранить.'],

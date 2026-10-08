@@ -189,91 +189,59 @@ assert.equal(unusedLocaleRows.length,0,'dead studio i18n rows: '+unusedLocaleRow
 assert(!/\bPV1\b|\bPV3\b|\bPRN\b|SPECIMEN|自選面額|£1\.99|£10/.test(i18nSource),'stale or duplicated numeric studio copy survived cleanup');
 const data = JSON.parse(read('content/poetry-voucher-app/editions.json'));
 const catalogueCheck=spawnSync('python3',['tools/sync_voucher_translations.py','--check'],{cwd:new URL('..',import.meta.url),encoding:'utf8'});
-assert.equal(catalogueCheck.status,0,catalogueCheck.stderr||'voucher translations are stale');
+assert.equal(catalogueCheck.status,0,catalogueCheck.stderr||'voucher catalogue is stale');
 assert.equal(data.patterns['%'],'11001 11010 00100 01000 10110 10011 00000');
 assert(data.patterns['(']&&data.patterns[')']&&data.patterns['£']);
-assert.equal(new Set(data.works.map(work => work.id)).size, data.works.length);
-assert(data.works.some(work => work.id === 'ci-b3'));
-for (const work of data.works) {
-  const url = new URL(work.source_url);
-  assert.equal(url.origin, 'https://hanpuli.github.io');
-  assert(['/ci.html', '/shi.html'].includes(url.pathname));
-  assert(url.hash);
-  assert(work.title && work.poem);
-  assert.deepEqual(Object.keys(work.translations),['en','zh-Hans','ja','de','fr','ru']);
-}
-const ciSource=JSON.parse(read('content/ci-source.json'));
-const ciSimplified=JSON.parse(read('content/ci-simplified.json'));
-const shiSource=JSON.parse(read('content/shi-source.json'));
-const shiSimplified=JSON.parse(read('content/shi-simplified.json'));
-const shiEnglish=JSON.parse(read('content/shi-translations/en.json'));
-const ciById=new Map(ciSource.poems.map(poem=>[poem.id,poem]));
-const ciSimplifiedById=new Map(ciSimplified.poems.map(poem=>[poem.id,poem]));
-assert.equal(data.works.filter(work=>work.kind==='CI').length,ciSource.poems.length);
-assert.equal(data.works.filter(work=>work.kind==='POEM').length,shiSource.drafts.reduce((count,draft)=>count+draft.parts.length,0));
+assert.equal(data.version,2);
+assert.equal(new Set(data.works.map(w=>w.id)).size,data.works.length);
+const registry=JSON.parse(read('content/poetry/works.json'));
+const expectedParts=registry.works.flatMap(w=>w.versions.flatMap(v=>v.parts.map(p=>({w,v,p}))));
+assert.equal(data.works.length,expectedParts.length);
+assert.equal(new Set(data.works.map(w=>w.work_id)).size,registry.works.length);
 for(const work of data.works){
-  if(work.kind==='CI'){
-    const id=work.id.slice(3),sourcePoem=ciById.get(id);
-    assert(sourcePoem,`missing canonical ci source for ${work.id}`);
-    assert.equal(work.id,`ci-${sourcePoem.id}`);
-    assert.equal(work.source_id,id.toUpperCase(),work.id);
-    assert.equal(work.source_url,`https://hanpuli.github.io/ci.html#${id}`,work.id);
-    assert.equal(work.title,sourcePoem.source_title,work.id);
-    assert.equal(work.poem,sourcePoem.source_body,work.id);
-    assert.equal(work.translations.en.title,sourcePoem.en.title,work.id);
-    assert.equal(work.translations.en.body,sourcePoem.en.body,work.id);
-    assert.equal(work.translations['zh-Hans'].title,ciSimplifiedById.get(id)?.source_title,work.id);
-    assert.equal(work.translations['zh-Hans'].body,ciSimplifiedById.get(id)?.source_body,work.id);
-    assert.equal(work.collection,sourcePoem.voice==='separate'?'詞':ciSource.title,work.id);
-    const edition=sourcePoem.date||(
-      ciSource.outside_dates[id]?`外編 · ${ciSource.outside_dates[id]}`:`集作日期 ${ciSource.cycle_date}`
-    );
-    assert.equal(work.edition,edition,work.id);
-    continue;
-  }
-  assert.equal(work.kind,'POEM',work.id);
-  const match=/^shi-d([1-9]\d*)-([1-9]\d*)$/.exec(work.id);
-  assert(match,`invalid shi catalogue id: ${work.id}`);
-  const [draftNumber,partNumber]=match.slice(1).map(Number);
-  const draft=shiSource.drafts[draftNumber-1],part=draft?.parts[partNumber-1];
-  const translatedPart=shiEnglish.drafts[draftNumber-1]?.parts[partNumber-1];
-  assert(part&&translatedPart,`missing canonical shi source for ${work.id}`);
-  assert.equal(work.source_id,`D${draftNumber}.${partNumber}`,work.id);
-  assert.equal(work.source_url,'https://hanpuli.github.io/shi.html#drafts',work.id);
-  assert.equal(work.collection,shiSource.title,work.id);
-  assert.equal(work.title,`${shiSource.title} · ${part.number}`,work.id);
-  assert.equal(work.edition,draft.title,work.id);
-  assert.equal(work.poem,part.body,work.id);
-  assert.equal(work.translations.en.body,translatedPart.body,work.id);
-  assert.equal(work.translations['zh-Hans'].body,shiSimplified.drafts[draftNumber-1]?.parts[partNumber-1]?.body,work.id);
+  const source=expectedParts.find(({w,v,p})=>w.id===work.work_id&&v.id===work.version_id&&p.id===work.part_id);
+  assert(source,work.id);const {w,v,p}=source;
+  assert.equal(work.title,p.editions.zh.title);assert.equal(work.poem,p.editions.zh.body);
+  assert.equal(work.edition,v.date_label);assert.equal(work.identity_schema,2);
+  assert(!/^W\d+$|^D\d+\.\d+$/.test(work.source_id),work.id);
+  const url=new URL(work.source_url);assert.equal(url.origin,'https://hanpuli.github.io');assert(url.pathname.startsWith('/poetry/'));
+  const locales=Object.keys(p.editions).filter(l=>l!=='zh').map(l=>l==='zh-hans'?'zh-Hans':l);
+  assert.deepEqual(Object.keys(work.translations).sort(),locales.sort());
+  for(const [locale,edition] of Object.entries(work.translations))assert.deepEqual(edition,p.editions[locale==='zh-Hans'?'zh-hans':locale]);
+  for(const alias of work.legacy_ids)assert.equal(data.aliases[alias],work.id);
 }
-// Exercise the actual cart admission and pricing functions for every published variant.
+assert.equal(data.aliases['ci-w12'],'queqiaoxian-20181222');
+assert.equal(data.works.filter(w=>w.shelf==='jia-yi').length,17);
+assert.equal(data.works.filter(w=>w.work_id==='roof').length,4);
+assert.equal(data.works.filter(w=>w.work_id==='manjianghong-2022').length,2);
+const summer=data.works.find(w=>w.work_id==='summer-2017');assert.deepEqual(Object.keys(summer.translations),['zh-Hans']);
+// The production cart must resolve old basket IDs without accepting mutated text or inventing translations.
 const shopPrefix=read('content/poetry-voucher-app/shop.js').split('  function notify(')[0];
 const shopCart=vm.runInNewContext(shopPrefix+'return {validateLine,quote};})()',{
   works:data.works,crypto:{randomUUID},typeSizes,quotePoem,
   SHOP_LANGS:['en','zh-Hant','zh-Hans','ja','de','fr','ru']
 });
-const expectedIds=[...ciSource.poems.map(p=>`ci-${p.id}`),...shiSource.drafts.flatMap((d,i)=>d.parts.map((p,j)=>`shi-d${i+1}-${j+1}`))];
-assert.deepEqual(data.works.map(w=>w.id).sort(),expectedIds.sort());
-let shopVariants=0,outsideVariants=0;
+let shopVariants=0;
 for(const work of data.works){
-  const ciId=work.id.slice(3);
-  const expectedShelf=work.kind==='POEM'?shiSource.title:
-    ciById.get(ciId).voice==='separate'||ciSource.outside_dates[ciId]?'詞':ciSource.title;
-  assert.equal(work.shelf,expectedShelf,work.id);
-  for(const locale of ['zh-Hant','zh-Hans'])for(const translations of [[],...['en','ja','de','fr','ru'].map(language=>[language]),['en','ja','de','fr','ru']]){
+  const available=['en','ja','de','fr','ru'].filter(l=>work.translations[l]);
+  const options=[[],...available.map(l=>[l]),...(available.length>1?[available]:[])];
+  for(const locale of ['zh-Hant','zh-Hans'])for(const translations of options){
     const line=shopCart.validateLine({workId:work.id,locale,translations,font:'bitmap',size:TYPE_CONFIG.defaultSize,quantity:1});
     assert.equal(line.workId,work.id);assert.equal(line.locale,locale);
     assert.equal(line.poem,locale==='zh-Hans'?work.translations['zh-Hans'].body:work.poem);
     assert.deepEqual([...line.translations],translations);
     assert.equal(shopCart.quote(line).price,quotePoem(work.poem).price+translations.length*TARIFF.addOn);
-    shopVariants++;if(work.shelf!==ciSource.title)outsideVariants++;
+    shopVariants++;
   }
-  assert.throws(()=>shopCart.validateLine({workId:work.id,locale:'zh-Hant',translations:['missing'],font:'bitmap',size:TYPE_CONFIG.defaultSize,quantity:1}));
-  assert.throws(()=>shopCart.validateLine({workId:work.id,locale:'zh-Hant',translations:['en','en'],font:'bitmap',size:TYPE_CONFIG.defaultSize,quantity:1}));
+  for(const alias of work.legacy_ids){
+    const line=shopCart.validateLine({workId:alias,locale:'zh-Hant',translations:[],font:'bitmap',size:24,quantity:2});
+    assert.equal(line.workId,work.id);assert.equal(line.poem,work.poem);assert.equal(line.quantity,2);
+  }
+  assert.throws(()=>shopCart.validateLine({workId:work.id,locale:'zh-Hant',translations:['missing'],font:'bitmap',size:24,quantity:1}));
+  assert.throws(()=>shopCart.validateLine({workId:work.id,locale:'zh-Hant',translations:['en','en'],font:'bitmap',size:24,quantity:1}));
 }
-assert.equal(data.works.filter(w=>w.shelf===ciSource.title).length,16);
-console.log(`shop catalogue: ${shopVariants} checked configurations, including ${outsideVariants} outside the sixteen-poem cycle; actual cart validation and pricing OK`);
+assert.throws(()=>shopCart.validateLine({workId:summer.id,locale:'zh-Hant',translations:['en'],font:'bitmap',size:24,quantity:1}));
+console.log(`shop catalogue: ${registry.works.length} works, ${data.works.length} edition-parts, ${shopVariants} admitted variants; legacy basket aliases and exact pricing OK`);
 for (const file of ['gallery.js', 'i18n.js', 'editions.json', 'studio.css']) {
   const text = read('content/poetry-voucher-app/' + file);
   assert(!/tail95239f|100\.99\.73|192\.168\.|\/api\/print|\/dev\/|Bearer\s|sendBeacon|WebSocket/.test(text), file + ': private endpoint or telemetry');
@@ -288,4 +256,4 @@ const overviewTemplate=read('templates/poetry-voucher.html'),homeTemplate=read('
 assert(overviewTemplate.includes('width="{{PV_FULL_WIDTH}}"')&&overviewTemplate.includes('height="{{PV_FULL_HEIGHT}}"')&&overviewTemplate.includes('/poetry-voucher/sample-full.png'));
 assert(homeTemplate.includes('height="{{PV_EDITORIAL_HEIGHT}}"'));
 assert(!/height="566"/.test(overviewTemplate));
-console.log(`poetrycheck: ${scenes} payment cases, pricing, ${localeRows.length} translation rows, ${data.works.length} public works and privacy invariants OK`);
+console.log(`poetrycheck: ${scenes} payment cases, pricing, ${localeRows.length} translation rows, ${data.works.length} published edition-parts and privacy invariants OK`);

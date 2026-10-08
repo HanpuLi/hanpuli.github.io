@@ -11,7 +11,7 @@ import {chromium} from '@playwright/test';
 
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const EDITORIAL_SPECIMEN=Object.freeze({
-  workId:'ci-b3',
+  workId:'jia-yi-b3',
   created:'2026-09-22T15:25:50Z',
   entropy:Object.freeze([0x9a,0xbc,0xde,0xf0]),
   font:'site',

@@ -79,8 +79,8 @@ def check():
             assert "2017" in src or "二〇一七" in src
             assert "2026" in src or "二〇二六" in src
             assert "夏天" in src or "夏天" in text
-            shi=(ROOT/prefix/"shi.html").read_text(encoding="utf-8")
-            assert f'href="/{prefix}poetry/summer-2017/"' in shi,(lid,"missing shi page entry")
+            shi=(ROOT/prefix/"poetry/index.html").read_text(encoding="utf-8")
+            assert f'href="/{prefix}poetry/summer-2017/"' in shi,(lid,"missing unified poetry catalogue entry")
             if lid not in ("zh","zh-hans"):
                 assert data["locales"][lid]["original_notice"] in src,(lid,"language provenance missing")
     except Exception as exc:

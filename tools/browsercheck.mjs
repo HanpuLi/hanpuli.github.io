@@ -14,8 +14,11 @@ const essayRegistry = JSON.parse(
 ).essays;
 const pageSuffixes = [
   "",
-  "ci.html",
-  "shi.html",
+  "poetry/",
+  "poetry/jia-yi/",
+  "poetry/roof/",
+  "poetry/manjianghong-2022/",
+  "poetry/queqiaoxian-20181222/",
   "poetry/summer-2017/",
   "about.html",
   "contexts.html",

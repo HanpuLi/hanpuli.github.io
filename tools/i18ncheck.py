@@ -11,10 +11,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
-CI_CYCLE_IDS = ("a1","b1","a2","b2","b3","b4","b5","a3","a4","a5","a6","a7","b6","a8","b7","a9")
-CI_OUTSIDE_IDS = ("a10",)
-CI_SEPARATE_IDS = ("w2","w3","w5","w6","w7","w11","w4","w8","w9","w10","w12")
-CI_IDS = CI_CYCLE_IDS + CI_OUTSIDE_IDS + CI_SEPARATE_IDS
+import poetry_model
+REGISTRY = poetry_model.load()
+CI_IDS = tuple(REGISTRY['legacy_ci_order'])
+CI_CYCLE_IDS = tuple(p['legacy_ci'] for w in REGISTRY['works'] if w['voice'] for v in w['versions'] for p in v['parts'])
+CI_OUTSIDE_IDS = ()
+CI_SEPARATE_IDS = tuple(i for i in CI_IDS if i not in CI_CYCLE_IDS)
 def load(path: Path):
     with path.open(encoding="utf-8") as fh:
         return json.load(fh)
@@ -225,20 +227,16 @@ def main() -> int:
     if tuple(poems) != CI_IDS:
         errors.append(f"ci-source ids/order changed: {tuple(poems)}")
 
-    if ci.get("outside_dates") != {"a10": "2026-07-01"}:
-        errors.append("ci-source outside_dates must contain only the 1 July A10 appendix")
-    expected_separate_groups = [
-        {"id": "revisions-2026-10", "revision_date": "2026-10-08", "period": "2018–2022", "poem_ids": ["w5", "w7", "w11", "w12", "w6", "w4", "w8", "w9"], "copy_key": "revised"},
-        {"id": "sep-2026-09-09", "date": "2026-09-09", "period": "2026.09.09", "poem_ids": ["w2", "w3"]},
-        {"id": "response-2026-10", "period": "2026.10", "poem_ids": ["w10"], "copy_key": "response"},
-    ]
-    if ci.get("separate_groups") != expected_separate_groups:
-        errors.append("ci-source separate_groups must distinguish earlier poems, the September pair and the later response")
-    expected_reading_order = ["revisions-2026-10", "cycle", "sep-2026-09-09", "response-2026-10"]
-    if ci.get("reading_order") != expected_reading_order:
-        errors.append("ci-source reading_order must follow the author-approved original chronology")
-    if len(CI_CYCLE_IDS) != 16:
-        errors.append("internal error: the A/B cycle must contain exactly sixteen poems")
+    projected = poetry_model.ci_source(REGISTRY)
+    if ci != projected:
+        errors.append("ci-source compatibility export is stale relative to the canonical registry")
+    if ci.get("outside_dates"):
+        errors.append("A10 belongs to the Jia/Yi sequence, not an outside-cycle appendix")
+    from poetryregistrycheck import check_baseline
+    try:
+        check_baseline(REGISTRY)
+    except AssertionError as exc:
+        errors.append(str(exc))
     for pid in CI_SEPARATE_IDS:
         if poems[pid]["source_title"].startswith("集外"):
             errors.append(f"ci-source {pid}: separate poem must not be labelled 集外")
@@ -324,13 +322,13 @@ def main() -> int:
         b2_quotes[locale] = nonblank_lines(translated_b2)[5]
 
     expected_404_sources = {
-        "en": "Hanpu Li · Sixteen Poems of A and B · B2 · Tasuoxing",
-        "zh": "李函璞《甲乙十六首》·乙二〈踏莎行〉",
-        "zh-hans": "李函璞《甲乙十六首》·乙二〈踏莎行〉",
-        "ja": "Hanpu Li『甲乙十六首』・乙二「踏莎行」",
-        "de": "Hanpu Li · Sechzehn Gedichte von A und B · B2 · Tasuoxing",
-        "fr": "Hanpu Li · Seize poèmes de A et B · B2 · Tasuoxing",
-        "ru": "Hanpu Li · Шестнадцать стихотворений A и B · B2 · Tasuoxing",
+        "en": "Hanpu Li · A and B · B2 · Tasuoxing",
+        "zh": "李函璞《甲乙》·乙二〈踏莎行〉",
+        "zh-hans": "李函璞《甲乙》·乙二〈踏莎行〉",
+        "ja": "Hanpu Li『甲乙』・乙二「踏莎行」",
+        "de": "Hanpu Li · A und B · B2 · Tasuoxing",
+        "fr": "Hanpu Li · A et B · B2 · Tasuoxing",
+        "ru": "Hanpu Li · А и Б · B2 · Tasuoxing",
     }
 
     shi = load(CONTENT / "shi-source.json")
@@ -404,6 +402,7 @@ def main() -> int:
             (CONTENT / "locales" / "zh-hans.json").read_text(encoding="utf-8"),
             (CONTENT / "ci-simplified.json").read_text(encoding="utf-8"),
             (CONTENT / "shi-simplified.json").read_text(encoding="utf-8"),
+            json.dumps(load(CONTENT / "poetry/ui.json")["zh-hans"], ensure_ascii=False),
             *(json.dumps(metadata["zh-hans"], ensure_ascii=False) for metadata in essay_metadata.values()),
             json.dumps(about_site["zh-hans"], ensure_ascii=False),
             (CONTENT / "design" / "zh-hans.json").read_text(encoding="utf-8"),
@@ -637,7 +636,7 @@ def main() -> int:
                 errors.append(
                     f"{path.relative_to(ROOT)}: portfolio nav order is {nav_numbers}, expected 01–06"
                 )
-            expected_current = {"ci.html": "02", "shi.html": "05"}.get(name)
+            expected_current = {"ci.html": "02", "shi.html": "02"}.get(name)
             if expected_current and not re.search(
                 rf'<span aria-current="page">\s*<span class="nav-no">{expected_current}</span>',
                 text,
@@ -729,85 +728,27 @@ def main() -> int:
                         errors.append(
                             f"{path.relative_to(ROOT)}: section #{section_id} must use number {section_no}"
                         )
-            if name == "ci.html":
-                if text.count('class="ci-group ci-cycle"') != 1:
-                    errors.append(f"{path.relative_to(ROOT)}: expected one A/B cycle group")
-                if text.count('class="ci-group ci-separate"') != len(expected_separate_groups):
-                    errors.append(f"{path.relative_to(ROOT)}: expected distinct earlier, September and response ci groups")
-                reading_ids = tuple(re.findall(r'class="poem(?: jia| yi)?" id="([^"]+)"', text))
-                expected_reading_ids = ("w5", "w7", "w11", "w12", "w6", "w4", "w8", "w9") + CI_CYCLE_IDS + CI_OUTSIDE_IDS + ("w2", "w3", "w10")
-                if reading_ids != expected_reading_ids:
-                    errors.append(f"{path.relative_to(ROOT)}: rendered poem order must follow chronology while preserving the A/B cycle")
-                toc = re.search(r'<nav class="toc"[^>]*>(.*?)</nav>', text, flags=re.S)
-                expected_targets = ["ci-revisions-2026-10-heading", "ci-cycle-heading", "ci-separate-heading", "ci-response-2026-10-heading"]
-                if not toc or re.findall(r'href="#([^"]+)"', toc[1]) != expected_targets:
-                    errors.append(f"{path.relative_to(ROOT)}: contents must link to all four groups in reading order")
-                group_tocs = re.findall(r'<nav class="ci-poem-toc"[^>]*>(.*?)</nav>', text, flags=re.S)
-                toc_poems = tuple(pid for toc in group_tocs for pid in re.findall(r'href="#([^"]+)"', toc))
-                if toc_poems != expected_reading_ids:
-                    errors.append(f"{path.relative_to(ROOT)}: group contents must match the complete poem order")
-                if locale_data["ci"]["separate_note"] not in text:
-                    errors.append(
-                        f"{path.relative_to(ROOT)}: missing explicit note that September pair is separate"
-                    )
-                if locale_data["ci"]["revised_note"] not in text:
-                    errors.append(f"{path.relative_to(ROOT)}: missing the revised/response group's dating note")
-                if locale_data["ci"]["response_note"] not in text:
-                    errors.append(f"{path.relative_to(ROOT)}: missing the independent response's dating note")
-                source_versions = text.count('class="poem-version source"')
-                translated_versions = text.count('class="poem-version translation"')
-                if source_versions != len(CI_IDS):
-                    errors.append(
-                        f"{path.relative_to(ROOT)}: expected {len(CI_IDS)} source poem versions, got {source_versions}"
-                    )
-                expected_translations = 0 if locale in chinese_locales else len(CI_IDS)
-                if translated_versions != expected_translations:
-                    errors.append(
-                        f"{path.relative_to(ROOT)}: expected {expected_translations} paired translations, got {translated_versions}"
-                    )
-                if locale in chinese_locales:
-                    if text.count('class="poem-pair source-only"') != len(CI_IDS):
-                        errors.append(
-                            f"{path.relative_to(ROOT)}: Chinese ci page must keep every poem in source-only layout"
-                        )
-                elif text.count('class="poem-pair"') != len(CI_IDS):
-                    errors.append(
-                        f"{path.relative_to(ROOT)}: every translated ci poem must use paired source/translation layout"
-                    )
-
-            if name == "shi.html":
-                if locale in chinese_locales:
-                    if 'class="shi-content source-only"' not in text:
-                        errors.append(
-                            f"{path.relative_to(ROOT)}: Chinese poem page must retain source-only draft layout"
-                        )
-                    if 'class="draft-pair"' in text:
-                        errors.append(
-                            f"{path.relative_to(ROOT)}: Chinese poem page must not manufacture translation pairs"
-                        )
-                else:
-                    if 'class="shi-content comparison"' not in text:
-                        errors.append(
-                            f"{path.relative_to(ROOT)}: translated poem page must retain comparison layout"
-                        )
-                    expected_pairs = len(shi["drafts"])
-                    pairs = text.count('class="draft-pair"')
-                    sources = text.count('class="draft source"')
-                    translations = text.count('class="draft translation"')
-                    if (pairs, sources, translations) != (expected_pairs, expected_pairs, expected_pairs):
-                        errors.append(
-                            f"{path.relative_to(ROOT)}: expected {expected_pairs} source/translation draft pairs, "
-                            f"got pairs={pairs} source={sources} translation={translations}"
-                        )
+            if name in {"ci.html", "shi.html"}:
+                from poetry_pages import alias_map
+                mapping = alias_map(REGISTRY)[name.split('.')[0]]
+                if '<meta name="robots" content="noindex,follow">' not in text:
+                    errors.append(f"{path.relative_to(ROOT)}: legacy route must not compete with canonical poetry readers")
+                if '/assets/poetry-aliases.js' not in text:
+                    errors.append(f"{path.relative_to(ROOT)}: missing fragment-aware compatibility router")
+                for old, target in mapping.items():
+                    if old != 'poems' and f'id="{old}"' not in text:
+                        errors.append(f"{path.relative_to(ROOT)}: lost legacy anchor {old}")
+                    if old != 'poems' and f'href="{poetry_model.local_path(target, locale)}"' not in text:
+                        errors.append(f"{path.relative_to(ROOT)}: missing no-JavaScript work link {old}")
 
             if name == "index.html":
-                shi_href = "/shi.html" if locale == "en" else f"/{locale}/shi.html"
+                shi_href = "#other"
                 if not re.search(
                     rf'<a\b[^>]*href="{re.escape(shi_href)}"[^>]*>\s*<span class="nav-no">05</span>',
                     text,
                 ):
                     errors.append(
-                        f"{path.relative_to(ROOT)}: home navigation is missing 05 poem-page link"
+                        f"{path.relative_to(ROOT)}: home navigation is missing 05 other-work link"
                     )
                 shi_label = locale_data["common"]["nav"]["shi"]
                 if shi_label not in text:
@@ -826,7 +767,7 @@ def main() -> int:
                     errors.append(
                         f"{locale} 404 source must attribute the line to Hanpu Li’s own B2 in the cycle"
                     )
-                ci_href = "/ci.html" if locale == "en" else f"/{locale}/ci.html"
+                ci_href = poetry_model.local_path("poetry/jia-yi/", locale)
                 if f'href="{ci_href}#b2"' not in text:
                     errors.append(f"{path.relative_to(ROOT)}: 404 source citation does not link to B2")
                 for key in ("line", "description", "source", "home"):
@@ -846,6 +787,12 @@ def main() -> int:
                             )
                     if ".innerHTML" in text or ".outerHTML" in text:
                         errors.append("root 404 locale router must not parse locale strings as HTML")
+
+    try:
+        from poetryregistrycheck import check as check_poetry_registry
+        check_poetry_registry()
+    except (AssertionError, ValueError, OSError) as exc:
+        errors.append("poetryregistrycheck: " + str(exc))
 
     if errors:
         print("\n".join(errors), file=sys.stderr)

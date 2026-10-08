@@ -1,0 +1,38 @@
+{
+  "id": "ci-w12",
+  "source_id": "W12",
+  "title": "《鵲橋仙》",
+  "poem": "未消尺素，自珍故物，紙上尋常字句。\n柔荑傷處竟唇濡，經年後、還留幾許。\n\n聞人道好，隨人道好，瓦釜雷鳴何故。\n逢君仍問近來安，說罷了、回身讓路。",
+  "author": "李函璞 / Hanpu Li",
+  "collection": "詞",
+  "edition": "二〇一八年十二月二十二日作；二〇二六年十月修訂",
+  "kind": "CI",
+  "source_url": "https://hanpuli.github.io/ci.html#w12",
+  "translations": {
+    "en": {
+      "title": "To the tune of Queqiaoxian",
+      "body": "No need for letters; I treasure the old things. On the paper, only ordinary words.\nYet lips moistened the wound on a tender hand; years later, how much remains?\n\nHearing others call it good, I call it good too. Why does the earthen pot thunder?\nMeeting you, I still ask how you have been; when the words are done, I turn and make way."
+    },
+    "zh-Hans": {
+      "title": "《鹊桥仙》",
+      "body": "未消尺素，自珍故物，纸上寻常字句。\n柔荑伤处竟唇濡，经年后、还留几许。\n\n闻人道好，随人道好，瓦釜雷鸣何故。\n逢君仍问近来安，说罢了、回身让路。"
+    },
+    "ja": {
+      "title": "鵲橋仙の調べ",
+      "body": "手紙は要らない。古い品は大切にしている。紙にはありふれた言葉ばかり。\n柔らかな手の傷を、思いがけず唇が濡らした。幾年を経て、なおどれほど残るのか。\n\n人がよいと言うのを聞き、こちらもよいと言う。土の釜が雷鳴を響かせるのはなぜか。\n君に会えば、今も近頃の無事を尋ねる。言い終えて、身を返し道を譲る。"
+    },
+    "de": {
+      "title": "Nach der Melodie Queqiaoxian",
+      "body": "Kein Brief ist nötig; die alten Dinge halte ich in Ehren. Auf dem Papier nur gewöhnliche Worte.\nDoch Lippen benetzten die Wunde an einer zarten Hand; wie viel bleibt nach all den Jahren?\n\nIch höre andere sagen, es sei gut, und sage mit ihnen, es sei gut. Warum donnert der tönerne Kessel?\nBegegne ich dir, frage ich noch immer, wie es dir ergangen ist; sind die Worte gesprochen, drehe ich mich um und mache Platz."
+    },
+    "fr": {
+      "title": "Sur l’air de Queqiaoxian",
+      "body": "Nul besoin de lettre ; je chéris les objets d’autrefois. Sur le papier, des mots ordinaires.\nDes lèvres ont pourtant humecté la blessure d’une main délicate ; après tant d’années, combien en reste-t-il ?\n\nJ’entends les autres dire que c’est bien ; je dis comme eux que c’est bien. Pourquoi la marmite de terre tonne-t-elle ?\nQuand je te rencontre, je demande encore si tu vas bien ; une fois les mots dits, je me retourne et cède le passage."
+    },
+    "ru": {
+      "title": "На мелодию Queqiaoxian",
+      "body": "Письма ни к чему; берегу старые вещи. На бумаге лишь обычные слова.\nИ всё же губы смочили рану на нежной руке; сколько осталось спустя годы?\n\nСлышу, как другие говорят, что это хорошо, и вслед за ними говорю: хорошо. Отчего гремит глиняный котёл?\nВстретив тебя, всё ещё спрашиваю, как ты поживаешь; договорив, поворачиваюсь и уступаю дорогу."
+    }
+  },
+  "shelf": "詞"
+}

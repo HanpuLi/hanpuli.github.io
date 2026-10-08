@@ -68,3 +68,5 @@
 #product-editor .proof-desk figcaption{font:10px/1.5 var(--mono);letter-spacing:.05em;color:var(--muted)}
 .product-price{flex:none}
 @media(max-width:560px){.product-foot{min-width:0}.product-price{font-size:22px}}
+
+.product-card .product-version { max-inline-size: 100%; min-inline-size: 0; inline-size: 100%; font: inherit; font-size: .82rem; margin-block: .7rem; }

@@ -1200,8 +1200,8 @@
       "created": "2026-09-24T11:00:00.000Z",
       "lines": [
         {
-          "id": "b2716b4f-37fc-4daa-b989-acddfb504139",
-          "workId": "ci-b3",
+          "id": "8c1b21b1-957e-4cdb-9183-d53cc434a4a6",
+          "workId": "jia-yi-b3",
           "font": "bitmap",
           "size": 24,
           "locale": "zh-Hant",
@@ -1211,15 +1211,23 @@
           "author": "李函璞 / Hanpu Li",
           "poem": "燭暗蛩寒簾影瘦，殘酲猶帶微温。\n筆停紙澀墨先吞。\n未緘還自疊，一折一重門。\n\n不是東風先折取，恐花為我辭根。\n新痕舊鑰莫輕論。\n相逢原是客，客受主家恩。",
           "work": {
-            "id": "ci-b3",
+            "id": "jia-yi-b3",
+            "work_id": "jia-yi-b3",
+            "version_id": "original",
+            "part_id": "text",
+            "identity_schema": 2,
             "source_id": "B3",
             "title": "乙三《無題 · 臨江仙》",
             "poem": "燭暗蛩寒簾影瘦，殘酲猶帶微温。\n筆停紙澀墨先吞。\n未緘還自疊，一折一重門。\n\n不是東風先折取，恐花為我辭根。\n新痕舊鑰莫輕論。\n相逢原是客，客受主家恩。",
             "author": "李函璞 / Hanpu Li",
-            "collection": "甲乙十六首",
-            "edition": "集作日期 2026-06-09",
+            "collection": "甲乙",
+            "edition": "二〇二六年六月九日",
+            "version_label": {},
+            "composed": "2026-06-09",
+            "form": "ci",
             "kind": "CI",
-            "source_url": "https://hanpuli.github.io/ci.html#b3",
+            "source_url": "https://hanpuli.github.io/poetry/jia-yi/#b3",
+            "shelf": "jia-yi",
             "translations": {
               "en": {
                 "title": "Untitled · To the tune of Linjiangxian",
@@ -1246,7 +1254,9 @@
                 "body": "Свеча тускла, сверчки стынут, тень занавеси тонка;\nпоследний хмель ещё хранит немного тепла.\nКисть замирает. Бумага сопротивляется. Тушь первой проглатывает.\nЕщё не запечатано — снова складываю;\nкаждый сгиб — ещё одна дверь.\n\nНе восточный ветер первым сорвал цветок;\nбоюсь, цветок ради меня оставит корень.\nНе спеши судить о новом следе и старом ключе.\nПри встрече — всего лишь в гостях;\nа тот, кто в гостях, принимает доброту хозяев."
               }
             },
-            "shelf": "甲乙十六首"
+            "legacy_ids": [
+              "ci-b3"
+            ]
           },
           "items": [
             {
@@ -1291,9 +1301,9 @@
       },
       "publication": {
         "schema": 1,
-        "renderer": "pv-render-128818cdb51eac4b",
-        "renderer_sha256": "128818cdb51eac4b8ad4472182c946aca8c2b07dc066909b01d95f42ea128f6e",
-        "catalogue_sha256": "99808baac7f49c2a38273b8d3eb71448b4f43b404976b112d84acd8c5ff50f6b",
+        "renderer": "pv-render-4d536dc360aee4ae",
+        "renderer_sha256": "4d536dc360aee4ae985c3e3ca36921e7826810bc95911383049bd0532398c16e",
+        "catalogue_sha256": "bd5c78680f6e8d01bf281d8686520d8992da0beff76d74348424f96e573fcb1b",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
           "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",
@@ -1307,24 +1317,24 @@
           "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
           "assets/fonts/iming-gap.woff2": "f638c046658b1cc72359cc4d15f938ab8a007f676e70af2911b0285fb6e51b77",
           "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
-          "assets/fonts/noto-serif-sc-subset.woff2": "bae86797edd38da2790db92e28712755861314eab55ec6f72cb05de780a9c02f",
+          "assets/fonts/noto-serif-sc-subset.woff2": "26ab1822159398473e8eab6d9cda46179a9050968d8437bdf9fc71fac54aea84",
           "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
           "assets/fonts/shippori-mincho-subset.woff2": "5154d85180281c6ee97c4f4694bf619b835ddd22a820f893c363087ac5ddee48",
           "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
           "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
           "content/poetry-voucher-app/accessibility.css": "70f3da8ceff863234e7564d094f5f94e39675d0655dc477482aadd05e076f3e0",
-          "content/poetry-voucher-app/gallery.js": "2a8cdf57a8404008de2926983dd499f00bf2daa447946ba228ac7d8a17fdc670",
+          "content/poetry-voucher-app/gallery.js": "5a09c990d01a67f3377ad98eb0ebf75f14932c0c06c293d8d98eed243151b40e",
           "content/poetry-voucher-app/h10-print.js": "0608cb1d261f9444b5e19b4f397477ee4a15c8bdc3644cd249f7d47acde94f79",
           "content/poetry-voucher-app/i18n.js": "7734e8ae35742d1d366d5e062498d90298225e9b9640bac88a4340d732d0700a",
           "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
           "content/poetry-voucher-app/order-reading.js": "ab0607f84cf3c0f05837a188add012d046b0cbcfc44b81ee340a5845fb4eb080",
-          "content/poetry-voucher-app/shop-copy.js": "dcdf58e9267502304b241c9c2b12c6521b3aa8164657cc0c49865049ef7a6d48",
-          "content/poetry-voucher-app/shop.css": "06425c91c0e69c7b84d41f34b61bfae82fbfa82ca88c0a2d8a6d7134fb3c82ae",
-          "content/poetry-voucher-app/shop.js": "3e24fbad590d8d8d714d4dbc7ef98332850425e8a92e8ad9294e09cead001b82",
+          "content/poetry-voucher-app/shop-copy.js": "6e0c7d8562700d3866a0ea7c54ac2dc99e16575a3807941c246781e087ee8fa1",
+          "content/poetry-voucher-app/shop.css": "8516ab06a6532a6a2eee143a59fbd2f2cef10d727aa1db5a3060bf3df5370451",
+          "content/poetry-voucher-app/shop.js": "bed1e7860f92d5d00be07cae22efc6574b71412962259aa9082f28cd5051cc24",
           "content/poetry-voucher-app/studio.css": "75be96fd6dcdc85bbdbf16b8f1cb1eef93565b0512eebb069fd187ec63c8580f",
-          "templates/poetry-voucher-shop.html": "2617bd0c1aeb29d0b77167f632ea5ba3f43af26b2a45000157dbb11cd05a47a3"
+          "templates/poetry-voucher-shop.html": "2f1537399a0ae4f8d02dc7efbd2a561bd0e3c5ad5d9e7e480b2340e8297d3011"
         },
-        "textSnapshotSha256": "4e2f0b0031700e189848c9fb0852f993080eab30b8f84c6b7be29f38d3d3077f"
+        "textSnapshotSha256": "f42e1198f6db2cc7b4a175df6374a5dc71ff408d28790a19f31020178d669a8b"
       },
       "payment": {
         "method": "cash",
@@ -1397,7 +1407,7 @@
         "rsp": 6,
         "amount": 6
       },
-      "defaultWork": "ci-b3",
+      "defaultWork": "jia-yi-b3",
       "customWorkCode": "CUSTOM",
       "referenceDigits": 6,
       "paymentRefDigits": 8,
@@ -1883,7 +1893,7 @@
         "y": 546,
         "end": 578,
         "args": [
-          "集作日期 2026-06-09",
+          "二〇二六年六月九日",
           24,
           "FusionPixelZhHK, sans-serif",
           true,
@@ -1896,24 +1906,9 @@
         "kind": "VOUCHER",
         "method": "text",
         "y": 578,
-        "end": 610,
+        "end": 642,
         "args": [
-          "hanpuli.github.io/ci.html#b3",
-          24,
-          "FusionPixelLatin, sans-serif",
-          true,
-          32,
-          false,
-          400
-        ]
-      },
-      {
-        "kind": "VOUCHER",
-        "method": "text",
-        "y": 622,
-        "end": 654,
-        "args": [
-          "ART EDITION",
+          "hanpuli.github.io/poetry/jia-yi/#b3",
           24,
           "FusionPixelLatin, sans-serif",
           true,
@@ -1927,6 +1922,21 @@
         "method": "text",
         "y": 654,
         "end": 686,
+        "args": [
+          "ART EDITION",
+          24,
+          "FusionPixelLatin, sans-serif",
+          true,
+          32,
+          false,
+          400
+        ]
+      },
+      {
+        "kind": "VOUCHER",
+        "method": "text",
+        "y": 686,
+        "end": 718,
         "args": [
           "NO CASH VALUE",
           24,
@@ -1962,17 +1972,17 @@
     },
     "glyph": "01110 10001 10001 11111 10001 10001 10001",
     "width": 384,
-    "height": 1736,
+    "height": 1768,
     "receiptHeight": 946,
     "cutHeight": 92,
-    "voucherHeight": 698,
+    "voucherHeight": 730,
     "headerY": 262,
     "totalY": 462
   },
   "inputs": {
     "assets/site.css": "712833d9ebe3a411dfd3dc7c47654c9c15fb75770f1f50bc1997750a4ae0867e",
-    "content/poetry-voucher-app/gallery.js": "2a8cdf57a8404008de2926983dd499f00bf2daa447946ba228ac7d8a17fdc670",
-    "content/poetry-voucher-app/shop.js": "3e24fbad590d8d8d714d4dbc7ef98332850425e8a92e8ad9294e09cead001b82",
+    "content/poetry-voucher-app/gallery.js": "5a09c990d01a67f3377ad98eb0ebf75f14932c0c06c293d8d98eed243151b40e",
+    "content/poetry-voucher-app/shop.js": "bed1e7860f92d5d00be07cae22efc6574b71412962259aa9082f28cd5051cc24",
     "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
     "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
     "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",
@@ -1987,7 +1997,7 @@
     "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
     "assets/fonts/iming-gap.woff2": "f638c046658b1cc72359cc4d15f938ab8a007f676e70af2911b0285fb6e51b77",
     "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
-    "assets/fonts/noto-serif-sc-subset.woff2": "bae86797edd38da2790db92e28712755861314eab55ec6f72cb05de780a9c02f",
+    "assets/fonts/noto-serif-sc-subset.woff2": "26ab1822159398473e8eab6d9cda46179a9050968d8437bdf9fc71fac54aea84",
     "assets/fonts/opendyslexic-bold-italic.woff2": "1aadc8fa9656c92c09c8194790d0671bcd2b4bd961ba41fb8f7e605e5c493be0",
     "assets/fonts/opendyslexic-bold.woff2": "b534a0b84ef3cca941ebdb506ce3f4e0010aa4ef881271bac8b6959dbf694fbf",
     "assets/fonts/opendyslexic-italic.woff2": "b18685dcb99b4ba903549d215c0ae2ab39a5087097614fd4100ae6d387332b47",
@@ -1996,12 +2006,12 @@
     "assets/fonts/shippori-mincho-subset.woff2": "5154d85180281c6ee97c4f4694bf619b835ddd22a820f893c363087ac5ddee48",
     "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
     "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
-    "index.html": "39f92cb063107c4d3c2b852a722a4adb8ac09b7c6f65281b20b7a6b4e563b762",
-    "zh/index.html": "a8a8a64e8ef6735d19be997104db300e31e2fc066b701e5adac93aa4d5465161",
-    "zh-hans/index.html": "ca3d8893f3c45b979ef1aadbf6864f3b5ca88af8407cea59164ecbcd35f02331",
-    "ja/index.html": "f49495a7f9fc6dec35e832d0a61d0373ec7a8203ee91442963bc04270d17a4f6",
-    "de/index.html": "a0f4a8803bc184f963633b6ad859cbc15d9ec2e0eeeb5ea6919c556be7836f1d",
-    "fr/index.html": "22ed649219db92deb38cbbf92e5769884917278480971a1a7c92c44e27903e48",
-    "ru/index.html": "8ed08a1a4a3be6ffebee51488fc0c3b9182011ae755a8710ca55d1e957af1c56"
+    "index.html": "1f6087221d0184bc717303bdd7572cf23758876a1cb7726f5f98ecb6d6980875",
+    "zh/index.html": "97662f582f7c74c9b04cd654b0a5177fdd92ca813b8339e5ebe3f66df3b4dff0",
+    "zh-hans/index.html": "bc1efd3a1a420f90b6017d9cdfdd40d147aa52e8296eb002450e2ff504743d9d",
+    "ja/index.html": "64dbe25cd67c603c55522deefb9f4e44a6d273675253866604195ce1ced3ac01",
+    "de/index.html": "09ff0ff3ad357f22dcc697d9acf400b3287c6d5e5f6df3efdc57f2fb83e68f5f",
+    "fr/index.html": "df20228ea5d23d8c2c824c650730e6fb18bd8ec994243e07d3683e2a8081dcda",
+    "ru/index.html": "bc47401903a4960764fd229ccc77492bc444c4722e515f1c1caa2fdafa0c94e2"
   }
 }

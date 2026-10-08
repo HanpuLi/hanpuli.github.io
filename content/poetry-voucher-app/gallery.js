@@ -44,7 +44,7 @@ const RECEIPT_CONFIG=Object.freeze({
   cardEntries:Object.freeze(['CONTACTLESS','CHIP','MOBILE']),
   lineChars:30,
   columns:Object.freeze({qty:3,description:11,rsp:6,amount:6}),
-  defaultWork:'ci-b3',
+  defaultWork:'jia-yi-b3',
   customWorkCode:'CUSTOM',
   referenceDigits:6,
   paymentRefDigits:8,
@@ -229,6 +229,11 @@ function wrapTillField(text,width){
   if(line||!lines.length)lines.push(line);
   return lines;
 }
+// Keep historic short fields pixel-identical; full descriptive edition labels may wrap.
+function tillField(p,left,right=null){
+  if(String(left).length+(right===null?0:String(right).length)<=RECEIPT_CONFIG.lineChars){p.till(left,right);return;}
+  p.till(left);for(const row of wrapTillField(right,RECEIPT_CONFIG.lineChars))p.till(row);
+}
 function receiptItemLine(qty='',description='',rsp='',amount=''){
   const c=RECEIPT_CONFIG.columns;
   const q=String(qty).toUpperCase().slice(0,c.qty).padEnd(c.qty);
@@ -302,8 +307,8 @@ function updateSource(){
   const w=currentWork();$('source-note').replaceChildren();
   if(w){const a=document.createElement('a'),source=new URL(w.source_url);
     const route={'en':'','zh-Hant':'zh/','zh-Hans':'zh-hans/','ja':'ja/','de':'de/','fr':'fr/','ru':'ru/'}[uiLocale];
-    a.href='/'+route+source.pathname.split('/').pop()+source.hash;
-    a.textContent=tr('原站作品')+' · '+w.source_id;$('source-note').append(a);}
+    a.href='/'+route+source.pathname.replace(/^\/(?:zh|zh-hans|ja|de|fr|ru)\//,'/').replace(/^\//,'')+source.hash;
+    a.textContent=tr('原站作品')+' · '+(w.translations?.[uiLocale]?.title||w.title);$('source-note').append(a);}
   else $('source-note').textContent=tr('寫下自己的作品。署名留空也可以。');
 }
 function updateLocale(){
@@ -313,7 +318,7 @@ function updateLocale(){
     for(const w of works){const option=document.createElement('option');option.value=w.id;
       // Work titles are authored content. Use an existing published title where available.
       const title=w.translations?.[uiLocale]?.title||w.title;
-      option.textContent=`${w.source_id} / ${title}`;$('work').append(option);
+      const label=w.version_label?.[{'zh-Hant':'zh','zh-Hans':'zh-hans'}[uiLocale]||uiLocale]||'';option.textContent=title+(label?' / '+label:'')+(w.part_id&&w.part_id!=='text'?' / '+w.part_id.replace('part-',''):'');$('work').append(option);
     }$('work').value=selected;updateSource();
   }
   updateConfigCopy();
@@ -349,7 +354,8 @@ function updatePrice(reroll=false){
   $('price-change').textContent=`${tr('找零')} ${fmt(quote.change)} = ${parts(quote.changeParts)}`;
   return quote;
 }
-function currentWork(){return works.find(w=>w.id===$('work').value);}
+function resolveWork(id){return works.find(w=>w.id===id||w.legacy_ids?.includes(id));}
+function currentWork(){return resolveWork($('work').value);}
 function unchanged(w){
   if(!w)return false;
   const simplified=document.body.classList.contains('shop-page')&&$('original-script').value==='zh-Hans'?w.translations?.['zh-Hans']:null;
@@ -444,7 +450,7 @@ function render(spec){
   const merchant=RECEIPT_CONFIG.merchant,currency=RECEIPT_CONFIG.currency,separator='-'.repeat(RECEIPT_CONFIG.lineChars);
   p.till(merchant.name,null,true);p.till(merchant.project,null,true);p.till(merchant.city,null,true);p.till(merchant.site,null,true);p.space(10);
   p.till('CUSTOMER COPY',null,true);p.till('STORE '+meta.store,'TILL '+meta.till);p.till('OPERATOR '+meta.operator,'TRANS '+meta.transaction);
-  p.till(date,time);p.till('RECEIPT',ref);p.till('VOUCHER',voucher);p.space(6);
+  p.till(date,time);p.till('RECEIPT',ref);tillField(p,'VOUCHER',voucher);p.space(6);
   p.till(separator);p.till(receiptItemLine('QTY','DESCRIPTION','RSP(£)','AMT(£)'));p.till(separator);
   for(const item of items)for(const line of receiptItemRows(item,code))p.till(line);
   p.till(separator);p.till('RSP/AMT INCLUDE VAT',null,true);
@@ -583,5 +589,5 @@ $('work').addEventListener('change',loadWork);$('generate').addEventListener('cl
   for(const [id,maxLength] of Object.entries(INPUT_LIMITS))$(id).maxLength=maxLength;
   syncTypeSize();updateLocale();
   const requested=new URL(location.href).searchParams.get('work');
-  $('work').value=works.some(w=>w.id===requested)?requested:requested==='custom'&&!document.body.classList.contains('shop-page')?'custom':RECEIPT_CONFIG.defaultWork;$('work').disabled=false;loadWork();if(document.body.classList.contains('shop-page'))document.dispatchEvent(new Event('catalogueready'));else if(currentWork())await generate();
+  $('work').value=resolveWork(requested)?.id||(requested==='custom'&&!document.body.classList.contains('shop-page')?'custom':resolveWork(RECEIPT_CONFIG.defaultWork)?.id||works[0]?.id);$('work').disabled=false;loadWork();if(document.body.classList.contains('shop-page'))document.dispatchEvent(new Event('catalogueready'));else if(currentWork())await generate();
 }catch(error){message(error.message);document.dispatchEvent(new CustomEvent('catalogueerror',{detail:error.message}));}})();

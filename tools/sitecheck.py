@@ -273,7 +273,7 @@ def check_discovery(errors: list[str]) -> None:
         return f"{base_url}{prefix}/writing/first-love/"
 
     families: list[dict[str, str]] = []
-    for page in ("index", "ci", "shi", "about", "contexts", "poetry-voucher"):
+    for page in ("index", "about", "contexts", "poetry-voucher"):
         families.append({language["id"]: standard_url(language["id"], page) for language in languages})
     for essay in essays:
         families.append({
@@ -285,6 +285,12 @@ def check_discovery(errors: list[str]) -> None:
         language["id"]: f"{base_url}{'' if language['id'] == 'en' else '/' + language['id']}/poetry/summer-2017/"
         for language in languages
     })
+
+    from poetry_model import load as poetry_load, local_path
+    from poetry_pages import routes as poetry_routes
+    for route in poetry_routes(poetry_load()):
+        if route != 'poetry/summer-2017/':
+            families.append({language['id']: base_url + local_path(route, language['id']) for language in languages})
 
     expected_alternates: dict[str, dict[str, str]] = {}
     for family in families:

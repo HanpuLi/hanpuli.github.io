@@ -1,0 +1,46 @@
+/* Poetry readers share the site's paper, typography and reading controls. */
+.poetry-library .page-intro { max-width: none; }
+.poetry-library h1 { max-width: 25ch; text-wrap: balance; }
+.poetry-library :is(h1,h2,h3) { overflow-wrap: anywhere; }
+.poetry-library [id] { scroll-margin-block-start: 2rem; }
+.poetry-years,.poetry-breadcrumb,.poetry-versions,.poetry-neighbours,.poetry-part-actions {
+  display: flex; flex-wrap: wrap; gap: .65rem 1.6rem; align-items: baseline;
+}
+.poetry-years { margin-block: 2rem; font-family: var(--mono); font-size: .85rem; }
+.poetry-years a,.poetry-versions a { padding-block: .4rem; }
+.poetry-year { display: grid; grid-template-columns: 5.5rem minmax(0,1fr); gap: 2rem; padding-block: 2.5rem; border-block-start: 1px solid var(--line); }
+.poetry-year > h2 { font: 400 1rem var(--mono); color: var(--muted); margin: .25rem 0; }
+.poetry-index-entry { padding-block: 0 2rem; }
+.poetry-index-entry + .poetry-index-entry { padding-block-start: 1.6rem; border-block-start: 1px solid var(--line); }
+.poetry-index-entry:last-child { padding-block-end: 0; }
+.poetry-index-entry h3 { font-size: clamp(1.2rem,2.4vw,1.8rem); font-weight: 400; margin: .35rem 0 .55rem; max-width: 45ch; }
+.poetry-kind,.poetry-dates,.poetry-part-actions,.poetry-neighbours,.poetry-breadcrumb,.poetry-versions { font-size: .82rem; color: var(--muted); }
+.poetry-kind,.poetry-dates { font-family: var(--mono); margin-block: .65rem; }
+.poetry-incipit { color: var(--muted); font-size: 1rem; line-height: 1.65; margin: 0; max-width: 62ch; }
+.poetry-dates span { margin-inline-end: .7rem; }
+.poetry-breadcrumb { margin-block: 0 1.6rem; }
+.poetry-sequence-toc { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; list-style: none; padding: 0; margin-block: 1.8rem; }
+.poetry-sequence-toc a { display: inline-block; padding-block: .3rem; }
+.poetry-library .poem { margin-block: 2.7rem 1.1rem; padding-block-start: 1.6rem; border-block-start: 1px solid var(--line); }
+.poetry-library .poem-pair { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(1.5rem,4vw,4rem); }
+.poetry-library .poem-pair.source-only { grid-template-columns: minmax(0,1fr); }
+.poetry-library .poem-version { min-width: 0; }
+.poetry-library .poem-version :is(h2,h3) { font-size: 1.1rem; font-weight: 400; line-height: 1.75; margin-block: 0 1.25rem; }
+.poetry-library .poem-version .body { white-space: pre-line; overflow-wrap: anywhere; line-height: 1.9; font-size: 1.13rem; }
+.poetry-library .poem-version.translation .body { line-height: 1.65; }
+.poetry-library .date { font-size: .8rem; color: var(--muted); margin-block: 1.4rem .7rem; }
+.poetry-part-actions { justify-content: space-between; margin-block-start: 1.5rem; }
+.poetry-neighbours { justify-content: space-between; margin-block: 1rem 3.5rem; }
+.poetry-version-head { padding-block-start: 2rem; }
+.poetry-version-head h2 { font-size: 1.2rem; font-weight: 400; }
+.poetry-related { margin-block: 3rem; padding-block-start: 1.4rem; border-block-start: 1px solid var(--line); }
+.poetry-related h2 { font-size: 1rem; }
+.poetry-legacy-links { line-height: 2; padding-inline-start: 1.2rem; }
+@media(max-width: 700px) {
+  .poetry-year { grid-template-columns: 1fr; gap: .9rem; padding-block: 1.75rem; }
+  .poetry-library .poem-pair { grid-template-columns: 1fr; gap: 2rem; }
+  .poetry-library .poem-version .body { font-size: 1.04rem; }
+}
+html[data-reading-simple] .poetry-library .poem-pair { grid-template-columns: minmax(0,1fr); }
+
+.poetry-library .poetry-years { grid-column: 1 / -1; inline-size: 100%; }

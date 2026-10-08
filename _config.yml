@@ -10,3 +10,4 @@ exclude:
   - tools/
   - package.json
   - package-lock.json
+  - tests/

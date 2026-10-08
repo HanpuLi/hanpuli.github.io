@@ -6,7 +6,7 @@ import {spawn} from 'node:child_process';
 import {writeFile} from 'node:fs/promises';
 import {chromium} from '@playwright/test';
 const BASIC_SPECIMEN=Object.freeze({
-  workId:'ci-b3',
+  workId:'jia-yi-b3',
   created:'2026-09-22T12:00:00Z',
   entropy:Object.freeze([0x12,0x34,0x56,0x78]),
   font:'bitmap',
@@ -52,7 +52,9 @@ try{
   await page.locator('#language').selectOption('receipt');
   assert.deepEqual(await page.locator('#ui-locale .language-short').allTextContents(),['EN','繁','简','日','DE','FR','RU']);
   assert.match(await page.locator('#proof-note').textContent(),/^\d{12} \/ /);
-  const workIds=await page.evaluate(()=>works.map(w=>w.id)),rows=[];
+  // The retired one-strip Studio retains its historical catalogue scope.
+  // New long work is tested through the production paginated shop in poetryarchitecturecheck.mjs.
+  const workIds=await page.evaluate(()=>works.filter(w=>w.legacy_ids?.length).map(w=>w.id)),rows=[];
   for(let start=0;start<workIds.length;start+=6){
     const ids=workIds.slice(start,start+6);
     const batch=await page.evaluate(async({specimen,ids})=>{
@@ -72,7 +74,7 @@ try{
     },{specimen:BASIC_SPECIMEN,ids});
     rows.push(...batch);
   }
-  const expectedRenderCount=await page.evaluate(()=>works.length*2*(1+Object.keys(works[0].translations).length));
+  const expectedRenderCount=await page.evaluate(()=>works.filter(w=>w.legacy_ids?.length).reduce((sum,w)=>sum+2*(1+Object.keys(w.translations).length),0));
   assert.equal(rows.length,expectedRenderCount);
   assert(rows.every(r=>r.binary&&r.height+140<=runtime.paper.canvasMaxDots),JSON.stringify(rows.filter(r=>!r.binary||r.height+140>runtime.paper.canvasMaxDots)));
   assert(rows.every(r=>r.fee===(r.font==='site'?runtime.tariff.addOn:0)));
@@ -140,12 +142,12 @@ try{
     const results=[];
     for(const font of ['bitmap','site']){
       const family=font==='bitmap'?bitmapFamily('en'):serif,weight=font==='bitmap'?400:600;
-      const probe=w=>{const p=new Paper();p.text('NO. W3-02260923000001-01',24,family,true,32,false,w);return p.finish();};
+      const probe=w=>{const p=new Paper();p.text('NO. LINJIANGXIAN-02260923000001-01',24,family,true,32,false,w);return p.finish();};
       const image=probe(weight),data=image.getContext('2d').getImageData(0,0,image.width,image.height).data;
       const runs=[];let ink=0;for(let y=0;y<image.height;y++){let run=0;for(let x=0;x<=image.width;x++){if(x<image.width&&data[(y*image.width+x)*4]===0){run++;ink++;}else if(run){runs.push(run);run=0;}}}
       const normal=probe(400).getContext('2d').getImageData(0,0,image.width,image.height).data;let normalInk=0;for(let i=0;i<normal.length;i+=4)if(normal[i]===0)normalInk++;
-      const work=works.find(w=>w.id==='ci-w3'),p=new Paper(),calls=[],text=p.text.bind(p);p.text=(...args)=>{calls.push(args);return text(...args);};
-      renderVoucherBody(p,{...work,work,original:true,size:24,font},'W3-02260923000001-01',font==='bitmap'?bitmapFamily('zh-Hant'):serif,family);
+      const work=works.find(w=>w.id==='linjiangxian-20260909'),p=new Paper(),calls=[],text=p.text.bind(p);p.text=(...args)=>{calls.push(args);return text(...args);};
+      renderVoucherBody(p,{...work,work,original:true,size:24,font},'LINJIANGXIAN-02260923000001-01',font==='bitmap'?bitmapFamily('zh-Hant'):serif,family);
       const labels=calls.filter(a=>/^(NO\. |POETRY VOUCHER|ART EDITION|NO CASH VALUE|hanpuli\.github)/.test(a[0]));
       results.push({font,ink,normalInk,minRun:Math.min(...runs),labels:labels.map(a=>({size:a[1],family:a[2],weight:a[6]})),authorFamily:calls.find(a=>a[0]==='Hanpu Li')[2],png:p.finish().toDataURL()});
     }

@@ -35,7 +35,7 @@ try{
  const page=await browser.newPage();
  const shop=await readFile(path.join(root,'poetry-voucher/shop.js'),'utf8');
  await page.route('**/poetry-voucher/shop.js',r=>r.fulfill({contentType:'text/javascript',body:shop.replace('window.poetryShop=','window.__design={prepare,freezeOrder,continuousOrderPages,PagedPaper};window.poetryShop=')}));
- await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=ci-b3');await page.waitForFunction(()=>document.querySelector('#product-editor')?.open);await page.locator('#font').selectOption('bitmap');await page.locator('#size').selectOption('24');await page.locator('#save-line').click();
+ await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=jia-yi-b3');await page.waitForFunction(()=>document.querySelector('#product-editor')?.open);await page.locator('#font').selectOption('bitmap');await page.locator('#size').selectOption('24');await page.locator('#save-line').click();
  const output=await page.evaluate(async()=>{
   const order=await __design.freezeOrder();order.id='00000000-0000-4000-8000-000000000024';order.ref='260924120001';order.created=new Date('2026-09-24T11:00:00Z');order.receiptMetadata=receiptMeta(order.ref);order.payment={method:'cash',tender:500,change:500-order.total};
   const log=[];const proto=__design.PagedPaper.prototype;

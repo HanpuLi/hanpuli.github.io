@@ -8,15 +8,11 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `shared.json` — language-independent project URLs, evidence values, technical stacks and site metadata.
 - `languages.json` — supported locales and standards metadata.
 - `locales/<locale>.json` — navigation, metadata, project copy, captions, accessibility text and profile copy.
-- `ci-source.json` — canonical Chinese ci collection and English reference translations. `reading_order` controls both the page contents and the full reading sequence: eight earlier poems by original date (2018–2022), the sixteen-poem A/B cycle with its 1 July appendix, the separate pair dated 9 September 2026, then the independent October response. The cycle keeps its interleaved A/B sequence. `separate_groups` supplies the other groups and their internal order; the storage order of `poems` is not the page order. Original and revision dates are given separately on each poem; the two rewritings of the 2022 *Manjianghong* remain distinct. Published poem IDs, including `w4` for *Mantingfang*, are stable.
-- `ci-translation-guidance.md` — semantic constraints distilled from the author's current annotations; use this during every literary translation review.
-- `ci-translations/<locale>.json` — Japanese, German, French and Russian literary translations.
-- `ci-simplified.json` — script-only Simplified Chinese mirror of the canonical ci source; its source hash is checked in CI.
-- `shi-source.json` — canonical Chinese text of the poem and its two drafts.
-- `shi-translations/<locale>.json` — non-Chinese translations.
-- `shi-simplified.json` — script-only Simplified Chinese mirror of the canonical poem source; its source hash is checked in CI.
-- `summer-poem.json` — standalone early poem first written 6–20 November 2017 (seventeenth draft), revised 8 October 2026. It contains the author-approved R8 Traditional/Hong Kong and Simplified texts. The two twenty-five-line halves are checked for line-by-line Chinese-character symmetry by `summerpoemcheck.py` (run within `i18ncheck.py`). Its seven interface editions publish the appropriately labelled Chinese original; no unreviewed literary translations are supplied. The poem lives at `/poetry/summer-2017/`, linked from `shi.html`, and is not a Poetry Voucher shop item.
-- `essays.json` — registry of public essays, their source fragments, metadata files and social images.
+- `poetry/works.json` — authoritative work, collection, version, part and language-edition registry. Ordered collection membership is distinct from narrator voice; 《甲乙》 contains seventeen members, including A10. A work's composition date is distinct from its versions' dates.
+- `poetry/ui.json` — seven-language catalogue and reader interface copy.
+- `ci-source.json`, `ci-simplified.json`, `ci-translations/`, `shi-source.json`, `shi-simplified.json`, `shi-translations/` and `summer-poem.json` — generated compatibility exports. Do not author them directly. Existing poem IDs are legacy aliases only; they do not determine public ordering, titles, group membership or new voucher identities.
+- `ci-translation-guidance.md` — existing semantic guidance. The canonical registry retains all published originals and translations without flattening different versions into new works.
+- `poetry-voucher-app/catalogue-encoding.json` — fixed bitmap/till barcode data. The neighbouring `editions.json` is generated from the poetry registry, including current edition identities and read-only legacy aliases.
 - `essays/<slug>.inc` — English source fragments for the public essays.
 - `essay-<name>.json` — per-locale discovery titles, metadata and the notice used by each language shell; the essay bodies and their canonical publication titles remain English. `display_title` may contain unnested `<em>` only and is used on locale home cards, never as the essay's citation title.
 - `about-site.json` — the seven editorial essays for About this site: selection, visual authority, translation, versions, reader adaptation, authorship and maintenance.
@@ -56,10 +52,10 @@ uv run --with fonttools --with brotli --with pillow python tools/build_social_ca
 
 Literary translations are structurally constrained: the checker verifies the complete poem
 set and preserves the source/reference line and stanza structure. Traditional Chinese remains
-the canonical literary source. After changing it, regenerate only the script mirrors with:
+the canonical literary source. After changing the canonical registry, regenerate its compatibility exports with:
 
 ```sh
-uv run --with opencc-python-reimplemented python tools/update_simplified_literary.py
+python3 tools/poetry_model.py
 ```
 
 Editorial Simplified Chinese in `locales/zh-hans.json` is maintained independently; the helper
@@ -93,9 +89,7 @@ to the generated routes. Do not edit the generated copies independently.
 The shop offers the five published literary translations (English, Japanese,
 German, French and Russian) and a choice of original Chinese script,
 independently of its interface language. The Simplified edition mirrors the
-canonical text rather than translating it. Their authoritative text is in
-`ci-source.json`, `ci-simplified.json`, `ci-translations/`, `shi-simplified.json`,
-`shi-translations/` and the translated `shi.heading` values in `locales/`.
+canonical text rather than translating it. Their authoritative text is in `poetry/works.json`. The legacy files are generated exports, not parallel editorial sources.
 Run `python3 tools/sync_voucher_translations.py` after editing those sources;
 `node tools/poetrycheck.mjs` verifies the offline catalogue is in sync.
 
@@ -264,3 +258,15 @@ site build and specimen refresh. The explanatory font CSS changes with the
 measurements. Reflowed samples use unitless leading of at least 1.3; when this
 differs from the source, both source and sample line heights are listed.
 Reading preferences can override the samples for accessibility.
+
+## Poetry work/edition architecture
+
+The public entrypoint is `/poetry/` in each locale. Collections have their own full reading sequences; standalone works have descriptive routes. Multiple versions of one work remain on that work's reader. The summer poem keeps its authored parallel-half layout and does not acquire invented translations.
+
+Edit `poetry/works.json`, then run `python3 tools/build_site.py`. The builder projects legacy source files, the unified catalogue, all seven readers, no-JavaScript compatibility links, fragment-aware legacy redirects and Poetry Voucher data from that registry. `ci.html#w12` is an alias for `poetry/queqiaoxian-20181222/`; never reuse an old alias for another work.
+
+Poetry Voucher shows one card per work and an explicit version/part selector where needed. A new order freezes the selected edition; a previously saved order keeps its old source label, text, translation, prices and identity. Only unpurchased basket entries resolve historical IDs to current canonical identities. Do not rewrite historical order snapshots during a migration.
+
+Run `npm run qa:poetry` after any registry, reader or catalogue change. Its baseline fixture independently checks all 226 original/script/translation bodies, all seventeen ordered Jia/Yi members, canonical and legacy routes, same-version language switching, legacy basket recovery, frozen W12 order restoration and production pagination for long work. Other existing UI, tariff, one-bit encoding and accessibility tests remain active.
+
+Build the pages before subsetting Traditional/Japanese fonts, because that helper reads the actual generated HTML. Rebuild the site after font changes, then refresh measured design provenance with `npm run build:design`. Never make a test pass by discarding a literary version, shortening a poem, reassigning an alias or changing a frozen order.

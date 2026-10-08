@@ -11,13 +11,13 @@
   const clone=value=>JSON.parse(JSON.stringify(value));
   const units=()=>bag.reduce((sum,line)=>sum+line.quantity,0);
   const keyOf=line=>JSON.stringify([line.workId,line.title,line.author,line.poem,line.locale,line.translations,line.font,line.size]);
-  const workFor=line=>works.find(work=>work.id===line.workId);
+  const workFor=line=>works.find(work=>work.id===line.workId||work.legacy_ids?.includes(line.workId));
   function quote(line){const w=workFor(line),additions=(line.translations||[]).map(locale=>({locale,body:w?.translations?.[locale]?.body||''}));return quotePoem(w?.poem||line.poem,additions,line.font,!w);}
   function validateLine(raw){
     if(!raw||typeof raw!=='object'||!Number.isInteger(raw.quantity)||raw.quantity<1||raw.quantity>MAX_UNITS)throw Error('quantity');
     if(!['bitmap','site'].includes(raw.font)||!typeSizes(raw.font).includes(raw.size))throw Error('type');
     if(!SHOP_LANGS.includes(raw.locale))throw Error('locale');
-    const w=works.find(work=>work.id===raw.workId);
+    const w=works.find(work=>work.id===raw.workId||work.legacy_ids?.includes(raw.workId));
     if(!w)throw Error('catalogue-only');
     const legacy=raw.language&&raw.language!=='receipt'?raw.language:null;
     const locale=w?(raw.locale==='zh-Hans'||legacy==='zh-Hans'?'zh-Hans':'zh-Hant'):raw.locale;
@@ -46,7 +46,8 @@
   }
   function show(id){el(id).showModal();}
   function close(id){el(id).close();}
-  function localeTitle(work){const title=work.translations?.[uiLocale]?.title||work.title;return work.kind==='POEM'?`${title} · ${work.source_id}`:title;}
+  function localeTitle(work){const title=work.translations?.[uiLocale]?.title||work.title;const l={'zh-Hant':'zh','zh-Hans':'zh-hans'}[uiLocale]||uiLocale;const version=work.version_label?.[l];const part=work.part_id&&work.part_id!=='text'?work.part_id.replace('part-',''):'';return title+(version?' · '+version:'')+(part?' · '+part:'');}
+  const shelfLabel=id=>t({'jia-yi':'cycle','lamplight-20260909':'pair','ci':'lyrics','poem':'poems','sanqu':'songs','classical-poem':'classical','roof':'roof'}[id]||id);
   const contentLang=locale=>locale==='zh-Hant'?'zh-Hant-HK':locale;
   const lineTitle=line=>line.work?localeTitle(line.work):workFor(line)?localeTitle(workFor(line)):line.title;
   const displayLang=line=>(line.work||workFor(line))?.translations?.[uiLocale]?contentLang(uiLocale):contentLang(line.locale);
@@ -60,23 +61,26 @@
   }
   function catalogue(){
     const grid=el('product-grid'),search=el('shop-search').value.trim().toLocaleLowerCase(),filter=el('shop-filter').value;
+    const select=el('shop-filter');select.replaceChildren();
+    const all=node('option',t('all'));all.value='all';select.append(all);
+    for(const shelf of [...new Set(works.map(w=>w.shelf))]){const option=node('option',shelfLabel(shelf));option.value=shelf;select.append(option);}
+    select.value=[...select.options].some(o=>o.value===filter)?filter:'all';
     grid.replaceChildren();let count=0;
-    for(const work of works){
-      if(filter!=='all'&&work.shelf!==filter)continue;
-      const title=localeTitle(work),edition=work.translations?.[uiLocale];
-      if(search&&!`${title} ${work.title} ${work.source_id} ${work.poem} ${edition?.body||''}`.toLocaleLowerCase().includes(search))continue;
-      count++;
-      const card=node('article',undefined,'product-card'),head=node('div',undefined,'product-meta');
-      head.append(node('span',work.source_id),node('span',work.id.startsWith('shi-d')?t('draft'):work.shelf==='甲乙十六首'?t('cycle'):work.shelf==='詞'?t('lyrics'):t('roof')));
-      const heading=node('h3',title),excerpt=node('p',(edition?.body||work.poem).split('\n').filter(Boolean).slice(0,3).join('\n'),'product-excerpt');
-      if(!edition){heading.lang='zh-Hant-HK';excerpt.lang='zh-Hant-HK';}
-      const foot=node('div',undefined,'product-foot'),price=node('strong',uiMoney(quotePoem(work.poem).price),'product-price');
-      foot.append(price);
-      const actions=node('div',undefined,'product-actions');
-      actions.append(button(t('choose'),()=>openEditor(work.id),'text-button'),button(t('add'),()=>addDefault(work),'add-button'));
-      card.append(head,heading,excerpt,foot,actions);grid.append(card);
+    const groups=new Map();for(const work of works){const key=work.work_id||work.id;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(work);}
+    for(const [workId,editions] of groups){
+      let work=editions[0];if(select.value!=='all'&&work.shelf!==select.value)continue;
+      const matches=editions.filter(w=>`${localeTitle(w)} ${w.title} ${w.poem} ${w.translations?.[uiLocale]?.body||''} ${(w.legacy_ids||[]).join(' ')}`.toLocaleLowerCase().includes(search));
+      if(search&&!matches.length)continue;if(search)work=matches[0];count++;
+      const card=node('article',undefined,'product-card'),head=node('div',undefined,'product-meta');card.dataset.work=workId;
+      head.append(node('span',work.composed||''),node('span',shelfLabel(work.shelf)));
+      const heading=node('h3'),excerpt=node('p',undefined,'product-excerpt'),foot=node('div',undefined,'product-foot'),price=node('strong',undefined,'product-price');foot.append(price);
+      const refresh=()=>{heading.textContent=localeTitle(work);const edition=work.translations?.[uiLocale];excerpt.textContent=(edition?.body||work.poem).split('\n').filter(Boolean).slice(0,3).join('\n');heading.lang=excerpt.lang=edition?contentLang(uiLocale):'zh-Hant-HK';price.textContent=uiMoney(quotePoem(work.poem).price);};
+      card.append(head,heading,excerpt);
+      if(editions.length>1){const choice=node('select');choice.className='product-version';choice.setAttribute('aria-label',t('versions')+' · '+localeTitle(work));for(const e of editions){const option=node('option',localeTitle(e));option.value=e.id;choice.append(option);}choice.value=work.id;choice.addEventListener('change',()=>{work=editions.find(w=>w.id===choice.value);refresh();});card.append(choice);}
+      const actions=node('div',undefined,'product-actions');actions.append(button(t('choose'),()=>openEditor(work.id),'text-button'),button(t('add'),()=>addDefault(work),'add-button'));
+      card.append(foot,actions);grid.append(card);refresh();
     }
-    el('catalogue-count').textContent=String(count).padStart(2,'0')+' / '+String(works.length).padStart(2,'0');el('no-results').hidden=count>0;
+    el('catalogue-count').textContent=String(count).padStart(2,'0')+' / '+String(groups.size).padStart(2,'0');el('no-results').hidden=count>0;
   }
   function addDefault(work){
     editingId=null;
@@ -156,7 +160,7 @@
       this.c=canvas(PAPER_CONFIG.printableDots,PAPER_CONFIG.canvasMaxDots);this.x=this.c.getContext('2d');this.y=PAPER_CONFIG.receiptInsetDots;
       if(this.identity){
         super.till(this.identity.kind+' CONT. '+(this.pages.length+1));
-        super.till(this.identity.ref);super.till('-'.repeat(RECEIPT_CONFIG.lineChars));
+        for(const row of wrapTillField(this.identity.ref,RECEIPT_CONFIG.lineChars))super.till(row);super.till('-'.repeat(RECEIPT_CONFIG.lineChars));
       }
     }
     space(n){this.ensure(n);this.y+=n;}
@@ -187,7 +191,7 @@
     p.till('STORE '+meta.store,'TILL '+meta.till);p.till('OPERATOR '+meta.operator,'TRANS '+meta.transaction);
     p.till(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',day:'2-digit',month:'2-digit',year:'numeric'}).format(order.created),new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(order.created));
     p.till('ORDER',order.ref);p.till(sep);p.till(receiptItemLine('QTY','DESCRIPTION','RSP(£)','AMT(£)'));p.till(sep);
-    for(const line of order.lines){p.ensure(120);p.till('EDITION '+(line.work?.source_id||'CUSTOM'));for(const item of line.items)for(const text of receiptItemRows(item,line.work?.source_id||'CUSTOM'))p.till(text);p.space(8);}
+    for(const line of order.lines){p.ensure(120);for(const row of wrapTillField('EDITION '+(line.work?.source_id||'CUSTOM'),RECEIPT_CONFIG.lineChars))p.till(row);for(const item of line.items)for(const text of receiptItemRows(item,line.work?.source_id||'CUSTOM'))p.till(text);p.space(8);}
     p.till(sep);p.till('RSP/AMT INCLUDE VAT',null,true);p.till('SUBTOTAL','GBP '+priceText(order.total));p.till('TOTAL TO PAY','GBP '+priceText(order.total),false,true);
     p.till('NUMBER OF VOUCHERS',String(order.units));p.till('NUMBER OF ITEMS',String(order.items.reduce((sum,item)=>sum+item.quantity,0)));p.space(10);
     p.till('VAT SUMMARY',null,true);p.till('RATE','NET VAT GROSS');for(const row of vatSummary(order.items))p.till(row.code+' '+row.rate+'%',[row.net,row.vat,row.gross].map(priceText).join(' '));p.till('NOT A VAT INVOICE',null,true);p.space(12);
@@ -319,7 +323,7 @@
   el('back-to-bag').addEventListener('click',()=>{close('checkout-dialog');show('bag-dialog');});
   document.querySelector('.controls').addEventListener('input',editorPrice);el('work').addEventListener('change',editorPrice);el('original-script').addEventListener('change',editorPrice);
   document.addEventListener('presslocalechange',translateUI);
-  const initialise=()=>{if(ready)return;ready=true;restore();translateUI();const requested=new URL(location.href).searchParams.get('work');if(orderPage)openSavedOrder();else if(requested)openEditor(works.some(w=>w.id===requested)?requested:null);};
+  const initialise=()=>{if(ready)return;ready=true;restore();translateUI();const requested=new URL(location.href).searchParams.get('work');if(orderPage)openSavedOrder();else if(requested)openEditor(resolveWork(requested)?.id||null);};
   document.addEventListener('catalogueready',initialise);
   document.addEventListener('catalogueerror',()=>{notify('loadError');el('no-results').hidden=false;el('no-results').textContent=t('loadError');});
   translateUI();renderBag();if(works.length)initialise();

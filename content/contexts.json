@@ -74,11 +74,11 @@
         "records": [
           {
             "date": "2026",
-            "title": "Sixteen Poems of A and B",
-            "detail": "ci cycle · source text and translation",
+            "title": "A and B",
+            "detail": "Seventeen poems in two voices · originals and translations",
             "credit": "Hanpu Li",
-            "link_label": "read ci",
-            "href": "/ci.html"
+            "link_label": "Read the sequence",
+            "href": "/poetry/jia-yi/"
           },
           {
             "date": "2026",
@@ -199,11 +199,11 @@
         "records": [
           {
             "date": "2026",
-            "title": "《甲乙十六首》",
-            "detail": "詞作唱和集 · 原文與譯文",
+            "title": "甲乙",
+            "detail": "一人兩聲，十七首 · 原文與譯文",
             "credit": "Hanpu Li",
-            "link_label": "讀詞",
-            "href": "/zh/ci.html"
+            "link_label": "讀組詩",
+            "href": "/zh/poetry/jia-yi/"
           },
           {
             "date": "2026",
@@ -324,11 +324,11 @@
         "records": [
           {
             "date": "2026",
-            "title": "《甲乙十六首》",
-            "detail": "词作唱和集 · 原文与译文",
+            "title": "甲乙",
+            "detail": "一人两声，十七首 · 原文与译文",
             "credit": "Hanpu Li",
-            "link_label": "读词",
-            "href": "/zh-hans/ci.html"
+            "link_label": "读组诗",
+            "href": "/zh-hans/poetry/jia-yi/"
           },
           {
             "date": "2026",
@@ -449,11 +449,11 @@
         "records": [
           {
             "date": "2026",
-            "title": "Sixteen Poems of A and B",
-            "detail": "詞の応答連作 · 原文と翻訳",
+            "title": "甲乙",
+            "detail": "一人二声、十七篇 · 原文と翻訳",
             "credit": "Hanpu Li",
-            "link_label": "詞を読む",
-            "href": "/ja/ci.html"
+            "link_label": "連作を読む",
+            "href": "/ja/poetry/jia-yi/"
           },
           {
             "date": "2026",
@@ -574,11 +574,11 @@
         "records": [
           {
             "date": "2026",
-            "title": "Sixteen Poems of A and B",
-            "detail": "Ci-Zyklus · Ausgangstext und Übersetzung",
+            "title": "A und B",
+            "detail": "Siebzehn Gedichte in zwei Stimmen · Originale und Übersetzungen",
             "credit": "Hanpu Li",
-            "link_label": "Ci lesen",
-            "href": "/de/ci.html"
+            "link_label": "Zyklus lesen",
+            "href": "/de/poetry/jia-yi/"
           },
           {
             "date": "2026",
@@ -699,11 +699,11 @@
         "records": [
           {
             "date": "2026",
-            "title": "Sixteen Poems of A and B",
-            "detail": "cycle de ci · texte source et traduction",
+            "title": "A et B",
+            "detail": "Dix-sept poèmes en deux voix · originaux et traductions",
             "credit": "Hanpu Li",
-            "link_label": "lire les ci",
-            "href": "/fr/ci.html"
+            "link_label": "Lire le cycle",
+            "href": "/fr/poetry/jia-yi/"
           },
           {
             "date": "2026",
@@ -824,11 +824,11 @@
         "records": [
           {
             "date": "2026",
-            "title": "Sixteen Poems of A and B",
-            "detail": "цикл цы · исходный текст и перевод",
+            "title": "А и Б",
+            "detail": "Семнадцать стихотворений в двух голосах · оригиналы и переводы",
             "credit": "Hanpu Li",
-            "link_label": "читать цы",
-            "href": "/ru/ci.html"
+            "link_label": "Читать цикл",
+            "href": "/ru/poetry/jia-yi/"
           },
           {
             "date": "2026",
