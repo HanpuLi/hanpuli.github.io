@@ -249,11 +249,13 @@ def check_web_app(errors: list[str]) -> None:
         errors.append("favicon.ico: missing or invalid ICO header")
 
     required_head = (
-        '<link rel="icon" href="/favicon.ico">',
-        'assets/site-icon-32.png?v=20260930a',
-        'assets/site-icon-64.png?v=20260930a',
-        'assets/apple-touch-icon.png?v=20260930a',
-        '<link rel="manifest" href="/site.webmanifest">',
+        '<link rel="icon" href="/favicon.ico?v=20261008a">',
+        'assets/site-icon-32.png?v=20261008a',
+        'assets/site-icon-64.png?v=20261008a',
+        'assets/site-icon-32-dark.png?v=20261008a',
+        'assets/site-icon-64-dark.png?v=20261008a',
+        'assets/apple-touch-icon.png?v=20261008a',
+        '<link rel="manifest" href="/site.webmanifest?v=20261008a">',
         '<meta name="application-name" content="Hanpu Li">',
     )
     for path in HTML_FILES:
@@ -435,9 +437,9 @@ def check_discovery(errors: list[str]) -> None:
             'name="twitter:description"',
             'name="twitter:image"',
             '<script type="application/ld+json">',
-            '<link rel="manifest" href="/site.webmanifest">',
-            'assets/site-icon-32.png?v=20260930a',
-            'assets/apple-touch-icon.png?v=20260930a',
+            '<link rel="manifest" href="/site.webmanifest?v=20261008a">',
+            'assets/site-icon-32.png?v=20261008a',
+            'assets/apple-touch-icon.png?v=20261008a',
         )
         for marker in required_markers:
             if marker not in source:

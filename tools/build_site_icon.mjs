@@ -1,27 +1,28 @@
 #!/usr/bin/env node
-// Render the high-resolution source mark into browser, Apple and web-app icons.
-// The SVG embeds the cropped high-resolution artwork.
+// Render the paper-free vector master into browser, Apple and web-app icons.
+// Full vector textures stay in docs/, which GitHub Pages excludes from the site.
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 
 const root = new URL('../', import.meta.url);
-const svg = await readFile(new URL('assets/site-mark.svg', root));
+const svg = await readFile(new URL('docs/site-icon/site-mark-web.svg', root));
 const image = `data:image/svg+xml;base64,${svg.toString('base64')}`;
 const browser = await chromium.launch({ headless: true });
 try {
   const rendered = new Map();
-  const render = async (size, file, scale = 1) => {
+  const render = async (size, file, scale = 1, colorScheme = 'light') => {
     const output = fileURLToPath(new URL(`assets/${file}`, root));
     const page = await browser.newPage({
       viewport: { width: size, height: size },
       deviceScaleFactor: 1,
-      colorScheme: 'light',
+      colorScheme,
     });
     const renderedSize = Math.round(size * scale);
     const inset = Math.round((size - renderedSize) / 2);
+    const background = colorScheme === 'dark' ? '#151412' : '#f5f2eb';
     await page.setContent(`<style>
-      html, body { width: ${size}px; height: ${size}px; margin: 0; background: #f5f2eb; }
+      html, body { width: ${size}px; height: ${size}px; margin: 0; background: ${background}; }
       img { display: block; position: absolute; inset: ${inset}px; width: ${renderedSize}px; height: ${renderedSize}px; }
     </style><img src="${image}" alt="">`);
     await page.locator('img').evaluate((img) => img.decode());
@@ -32,7 +33,9 @@ try {
   };
 
   for (const [size, file] of [
+    [16, 'site-icon-16.png'],
     [32, 'site-icon-32.png'],
+    [48, 'site-icon-48.png'],
     [64, 'site-icon-64.png'],
     [180, 'apple-touch-icon.png'],
     [192, 'site-icon-192.png'],
@@ -40,12 +43,17 @@ try {
   ]) {
     await render(size, file);
   }
+  for (const size of [32, 64]) {
+    await render(size, `site-icon-${size}-dark.png`, 1, 'dark');
+  }
   await render(512, 'site-icon-maskable-512.png', 0.7);
 
   // ICO supports PNG-compressed entries. Keep a root fallback for user agents
   // and crawlers that request /favicon.ico without consulting the document head.
   const icoEntries = [
+    [16, rendered.get('site-icon-16.png')],
     [32, rendered.get('site-icon-32.png')],
+    [48, rendered.get('site-icon-48.png')],
     [64, rendered.get('site-icon-64.png')],
   ];
   const header = Buffer.alloc(6);
