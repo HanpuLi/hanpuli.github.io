@@ -18,6 +18,8 @@ from typing import Any
 from first_love_public_pages import build as build_first_love_pages, path_for as first_love_page_path
 from design_plates import site_html as design_site, voucher_html as design_voucher, specimen_css
 from editorial_notes import sections_html as editorial_sections, references_html as editorial_references, project_toc
+from poetry_library import Library, materialize as materialize_poetry
+from poetry_pages import Pages as PoetryPages
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -36,11 +38,11 @@ IDENTITY = load_json(CONTENT / "identity.json")
 SHARED = load_json(CONTENT / "shared.json")
 LANGUAGES = load_json(CONTENT / "languages.json")
 LANG_BY_ID = {item["id"]: item for item in LANGUAGES}
-CI_SOURCE = load_json(CONTENT / "ci-source.json")
-CI_SIMPLIFIED = load_json(CONTENT / "ci-simplified.json")
-SHI_SOURCE = load_json(CONTENT / "shi-source.json")
-SHI_SIMPLIFIED = load_json(CONTENT / "shi-simplified.json")
-SUMMER_POEM = load_json(CONTENT / "summer-poem.json")
+POETRY = Library(ROOT)
+SUMMER_TEXT = POETRY.texts['summer-2017-revised-20261008']
+SUMMER_POEM = {'id':'summer-2017', **POETRY.data['summer_metadata'],
+    'texts':{'zh':SUMMER_TEXT['editions']['zh']['body'],
+             'zh-hans':POETRY.edition(SUMMER_TEXT['id'],'zh-hans')['body']}}
 ESSAY_REGISTRY = load_json(CONTENT / "essays.json")["essays"]
 ESSAY_METADATA = {
     item["slug"]: load_json(CONTENT / item["metadata"])
@@ -195,7 +197,7 @@ PORTFOLIO_NAV_ITEMS = (
     ("02", "ci", "ci"),
     ("03", "work", "work"),
     ("04", "photo", "photo"),
-    ("05", "shi", "shi"),
+    ("05", "other", "other-work"),
     ("06", "profile", "profile"),
 )
 
@@ -258,9 +260,9 @@ def portfolio_nav_html(
             continue
 
         if key == "ci":
-            href = "#ci" if home_page else page_path(locale_id, "ci")
-        elif key == "shi":
-            href = page_path(locale_id, "shi")
+            href = "#ci" if home_page else POETRY.path("", locale_id)
+        elif key == "other":
+            href = "#other-work" if home_page else f"{home}#other-work"
         else:
             href = f"#{anchor}" if home_page else f"{home}#{anchor}"
         rows.append(f'<a href="{html.escape(href, quote=True)}">{number_html} {label}</a>')
@@ -552,265 +554,6 @@ def material_title_html(locale_id: str, title: str) -> str:
     return rendered
 
 
-def ci_source(locale_id: str) -> dict[str, Any]:
-    return CI_SIMPLIFIED if locale_id == "zh-hans" else CI_SOURCE
-
-
-def ci_translation(locale_id: str) -> dict[str, dict[str, str]]:
-    if locale_id == "en":
-        return {poem["id"]: poem["en"] for poem in CI_SOURCE["poems"]}
-    if locale_id in CHINESE_LOCALES:
-        return {}
-    path = CONTENT / "ci-translations" / f"{locale_id}.json"
-    data = load_json(path)
-    poems = data.get("poems", {})
-    expected = [p["id"] for p in CI_SOURCE["poems"]]
-    if set(poems) != set(expected):
-        missing = sorted(set(expected) - set(poems))
-        extra = sorted(set(poems) - set(expected))
-        raise BuildError(f"{path}: poem id mismatch missing={missing} extra={extra}")
-    return poems
-
-
-def ci_separate_groups() -> list[dict[str, Any]]:
-    groups = CI_SOURCE.get("separate_groups", [])
-    expected = [p["id"] for p in CI_SOURCE["poems"] if p["voice"] == "separate"]
-    grouped = [pid for group in groups for pid in group.get("poem_ids", [])]
-    if sorted(grouped) != sorted(expected) or any(not group.get("poem_ids") for group in groups):
-        raise BuildError(f"ci-source.json: separate groups must contain each separate poem exactly once: {grouped!r}")
-    if len({group["id"] for group in groups}) != len(groups):
-        raise BuildError("ci-source.json: duplicate separate-group id")
-    return groups
-
-
-def ci_reading_groups() -> list[dict[str, Any]]:
-    """One reading order for both the contents and the complete poems."""
-    groups = {
-        group["id"]: {
-            **group,
-            "kind": "separate",
-            "heading_id": "ci-separate-heading" if group["id"] == "sep-2026-09-09" else f'ci-{group["id"]}-heading',
-        }
-        for group in ci_separate_groups()
-    }
-    groups["cycle"] = {
-        "id": "cycle", "kind": "cycle", "heading_id": "ci-cycle-heading",
-        "period": "2026.06–07",
-        "poem_ids": [p["id"] for p in CI_SOURCE["poems"] if p["voice"] != "separate"],
-    }
-    order = CI_SOURCE["reading_order"]
-    if sorted(order) != sorted(groups):
-        raise BuildError("ci-source.json: reading_order must contain every group exactly once")
-    return [groups[group_id] for group_id in order]
-
-
-def ci_group_copy(group: dict[str, Any], locale: dict[str, Any]) -> tuple[str, str]:
-    if group["kind"] == "cycle":
-        return locale["ci"]["heading"], locale["ci"]["subtitle"]
-    key = group.get("copy_key", "separate")
-    return locale["ci"][f"{key}_heading"], locale["ci"][f"{key}_note"]
-
-
-def ci_toc(locale_id: str, locale: dict[str, Any]) -> str:
-    items = []
-    for index, group in enumerate(ci_reading_groups(), 1):
-        heading, _ = ci_group_copy(group, locale)
-        items.append(
-            f'<li><a href="#{group["heading_id"]}">'
-            f'<span class="ci-contents-number" aria-hidden="true">{index:02d}</span>'
-            f'<span class="ci-contents-title">{html.escape(heading)}</span>'
-            f'<span class="ci-contents-period">{html.escape(group["period"])}</span>'
-            '</a></li>'
-        )
-    return (
-        f'<nav class="toc" aria-label="{html.escape(locale["ci"]["contents_label"], quote=True)}">'
-        '<ol class="ci-contents">' + "\n".join(items) + '</ol></nav>'
-    )
-
-
-def ci_group_toc(group: dict[str, Any], locale_id: str, locale: dict[str, Any],
-                 poems: dict[str, dict[str, Any]], translations: dict[str, Any]) -> str:
-    cn_numbers = {1: "一", 2: "二", 3: "三", 4: "四", 5: "五", 6: "六", 7: "七", 8: "八", 9: "九", 10: "十"}
-    items = []
-    appendix = ""
-    for pid in group["poem_ids"]:
-        title = poems[pid]["source_title"] if locale_id in CHINESE_LOCALES else translations[pid]["title"]
-        if group["kind"] == "cycle":
-            voice = "甲" if pid.startswith("a") else "乙"
-            label = voice + cn_numbers[int(pid[1:])] if locale_id in CHINESE_LOCALES else pid.upper()
-            if pid in CI_SOURCE["outside_dates"]:
-                appendix = (
-                    '<p class="ci-appendix-link">'
-                    f'<a href="#{pid}" title="{html.escape(title, quote=True)}">'
-                    f'{html.escape(locale["ci"]["outside"])} · {label}</a>'
-                    f'<time datetime="{CI_SOURCE["outside_dates"][pid]}">{CI_SOURCE["outside_dates"][pid]}</time></p>'
-                )
-                continue
-        else:
-            label = title
-        items.append(f'<li><a href="#{pid}" title="{html.escape(title, quote=True)}">{html.escape(label)}</a></li>')
-    kind = "ci-cycle-links" if group["kind"] == "cycle" else "ci-title-links"
-    return (
-        f'<nav class="ci-poem-toc" aria-labelledby="{group["heading_id"]}">'
-        f'<ol class="{kind}">' + "\n".join(items) + '</ol>' + appendix + '</nav>'
-    )
-
-
-def ci_poem_html(
-    poem: dict[str, Any],
-    *,
-    locale_id: str,
-    target_lang: str,
-    source_lang: str,
-    translations: dict[str, dict[str, str]],
-) -> str:
-    voice = poem["voice"]
-    classes = "poem" + (f" {voice}" if voice in {"jia", "yi"} else "")
-    source_title = html.escape(poem["source_title"])
-    if locale_id not in CHINESE_LOCALES and voice in {"jia", "yi"}:
-        voice_letter = "A" if voice == "jia" else "B"
-        voice_index = f'{voice_letter}{poem["id"][1:]}'
-        source_title = (
-            f'<span class="voice-index" lang="en">{voice_index}&#160;·&#160;</span>'
-            f"{source_title}"
-        )
-    source_body = html.escape(poem["source_body"])
-    source_date = (
-        f'\n        <div class="date">{html.escape(poem["date"])}</div>'
-        if poem.get("date")
-        else ""
-    )
-    versions = [
-        (
-            f'      <section class="poem-version source" lang="{source_lang}">\n'
-            f'        <h3>{source_title}</h3>\n'
-            f'        <div class="body">{source_body}</div>'
-            f'{source_date}\n'
-            f'      </section>'
-        )
-    ]
-    pair_class = "poem-pair source-only"
-    if locale_id not in CHINESE_LOCALES:
-        item = translations[poem["id"]]
-        # Keep the title divider with the preceding phrase when a long title wraps.
-        translation_title = html.escape(item["title"].replace(" · ", "\u00a0· "))
-        versions.append(
-            f'      <section class="poem-version translation" '
-            f'lang="{html.escape(target_lang, quote=True)}">\n'
-            f'        <h3>{translation_title}</h3>\n'
-            f'        <div class="body">{html.escape(item["body"])}</div>\n'
-            f'      </section>'
-        )
-        pair_class = "poem-pair"
-
-    return (
-        f'  <div class="{classes}" id="{poem["id"]}">\n'
-        f'    <div class="{pair_class}">\n'
-        + "\n".join(versions)
-        + "\n    </div>\n"
-        f'  </div>'
-    )
-
-
-def ci_poems_html(locale_id: str, locale: dict[str, Any]) -> str:
-    translations = ci_translation(locale_id)
-    target_lang = LANG_BY_ID[locale_id]["html_lang"]
-    source_data = ci_source(locale_id)
-    source_lang = "zh-Hans" if locale_id == "zh-hans" else "zh-Hant-HK"
-    poems_by_id = {p["id"]: p for p in source_data["poems"]}
-    out = []
-    for index, group in enumerate(ci_reading_groups(), 1):
-        heading, note = ci_group_copy(group, locale)
-        out.extend([
-            f'<section class="ci-group ci-{group["kind"]}" aria-labelledby="{group["heading_id"]}">',
-            '  <header class="ci-group-head">',
-            f'    <p class="ci-group-no">{index:02d}</p>',
-            '    <div class="ci-group-copy">',
-            f'      <h2 id="{group["heading_id"]}" tabindex="-1">{html.escape(heading)}</h2>',
-            f'      <p>{html.escape(note)}</p>',
-        ])
-        if group["kind"] == "cycle":
-            out.append(f'      <p class="source-title" lang="{source_lang}">{html.escape(source_data["title"])}</p>')
-        out.extend([
-            '    </div>',
-            ci_group_toc(group, locale_id, locale, poems_by_id, translations),
-            '  </header>',
-        ])
-        out.extend(
-            ci_poem_html(
-                poems_by_id[pid],
-                locale_id=locale_id,
-                target_lang=target_lang,
-                source_lang=source_lang,
-                translations=translations,
-            )
-            for pid in group["poem_ids"]
-        )
-        out.append("</section>")
-
-    return "\n\n".join(out)
-
-
-def shi_translation(locale_id: str) -> list[dict[str, Any]]:
-    if locale_id == "zh":
-        return SHI_SOURCE["drafts"]
-    if locale_id == "zh-hans":
-        return SHI_SIMPLIFIED["drafts"]
-    path = CONTENT / "shi-translations" / f"{locale_id}.json"
-    data = load_json(path)
-    drafts = data.get("drafts", [])
-    if len(drafts) != len(SHI_SOURCE["drafts"]):
-        raise BuildError(f"{path}: expected {len(SHI_SOURCE['drafts'])} drafts, got {len(drafts)}")
-    for i, draft in enumerate(drafts):
-        expected_parts = len(SHI_SOURCE["drafts"][i]["parts"])
-        if len(draft.get("parts", [])) != expected_parts:
-            raise BuildError(f"{path}: draft {i+1} expected {expected_parts} parts")
-    return drafts
-
-
-def shi_draft_html(draft: dict[str, Any], lang: str, classes: str) -> str:
-    rows = [
-        f'    <div class="{classes}" lang="{html.escape(lang, quote=True)}">',
-        f'      <h2>{html.escape(draft["title"])}</h2>',
-    ]
-    for part in draft["parts"]:
-        rows.append(f'      <p class="num">{html.escape(part["number"])}</p>')
-        rows.append(f'      <div class="body">{html.escape(part["body"])}</div>')
-    rows.append("    </div>")
-    return "\n".join(rows)
-
-
-def shi_drafts_html(locale_id: str) -> str:
-    target_lang = (
-        "zh-Hant-HK" if locale_id == "zh"
-        else "zh-Hans" if locale_id == "zh-hans"
-        else LANG_BY_ID[locale_id]["html_lang"]
-    )
-
-    if locale_id in CHINESE_LOCALES:
-        drafts = shi_translation(locale_id)
-        return "\n\n".join(
-            shi_draft_html(draft, target_lang, "draft")
-            for draft in drafts
-        )
-
-    translations = shi_translation(locale_id)
-    blocks = []
-    for index, (source, translated) in enumerate(
-        zip(SHI_SOURCE["drafts"], translations),
-        start=1,
-    ):
-        blocks.append(
-            f'  <section class="draft-pair" data-draft="{index}">\n'
-            + shi_draft_html(source, "zh-Hant-HK", "draft source")
-            + "\n"
-            + shi_draft_html(translated, target_lang, "draft translation")
-            + "\n  </section>"
-        )
-    return "\n\n".join(blocks)
-
-
-
 SUMMER_SLUG = "summer-2017"
 
 
@@ -883,20 +626,6 @@ def summer_body_html(locale_id: str) -> str:
                      + "\n".join(units) + '\n      </div>')
     coda = "\n".join(f'        <p class="summer-coda-stanza">{html.escape(block)}</p>' for block in sections[14:])
     return "\n".join(parts) + '\n      <div class="summer-coda">\n' + coda + '\n      </div>'
-
-
-def summer_archive_link_html(locale_id: str) -> str:
-    copy = SUMMER_POEM["locales"][locale_id]
-    original, lang = summer_source(locale_id)
-    title = html.escape(original.splitlines()[0])
-    return (
-        '<section class="summer-archive-entry" aria-labelledby="summer-archive-link-title">\n'
-        f'  <p class="summer-archive-kicker">{html.escape(copy["archive_label"])}</p>\n'
-        f'  <h2 id="summer-archive-link-title"><a href="{html.escape(summer_page_path(locale_id), quote=True)}" '
-        f'lang="{lang}">{title}</a></h2>\n'
-        f'  <p class="summer-archive-description">{html.escape(copy["archive_date"])}</p>\n'
-        '</section>'
-    )
 
 
 def render_summer_page(locale_id: str, locale: dict[str, Any], template: str) -> str:
@@ -1071,7 +800,7 @@ def notfound_locale_template(locale_id: str) -> str:
     locale = load_json(CONTENT / "locales" / f"{locale_id}.json")
     language = LANG_BY_ID[locale_id]
     home_href = html.escape(page_path(locale_id, "index"), quote=True)
-    ci_href = html.escape(page_path(locale_id, "ci") + "#b2", quote=True)
+    ci_href = html.escape(POETRY.work_url("jia-yi-b2",locale_id),quote=True)
     template_id = html.escape(f"notfound-locale-{locale_id}", quote=True)
     html_lang = html.escape(language["html_lang"], quote=True)
     title = html.escape(locale["notfound"]["meta_title"], quote=True)
@@ -1188,14 +917,6 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         social_alt = meta_title
         og_type = "website"
         page_kind = "index"
-    elif page in {"ci", "shi"}:
-        meta_title = locale[page]["meta_title"]
-        meta_description = locale[page]["meta_description"]
-        social_path, social_width, social_height, social_type = SOCIAL_IMAGES[page]
-        social_image = f"{BASE_URL}/{social_path}"
-        social_alt = meta_title
-        og_type = "article"
-        page_kind = page
     elif page == "poetry-voucher":
         meta_title = POETRY_VOUCHER[locale_id]["title"] + " · Hanpu Li"
         meta_description = POETRY_VOUCHER[locale_id]["description"]
@@ -1257,11 +978,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         if page != "404"
         else ""
     )
-    w2 = next(p for p in ci_source(locale_id)["poems"] if p["id"] == "w2")
-    if locale_id in CHINESE_LOCALES:
-        preview_body = html.escape(w2["source_body"])
-    else:
-        preview_body = html.escape(ci_translation(locale_id)["w2"]["body"])
+    preview_body = html.escape(POETRY.edition('zhegutian-20260909-text', locale_id)['body'])
     lede_note = locale["home"]["lede_note"].strip()
     hero_footnote_mark = '<sup class="hero-footnote-mark" aria-hidden="true">*</sup>' if lede_note else ""
     hero_footnote = (
@@ -1399,8 +1116,14 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "FIRST_LOVE_HREF": first_love_page_path(locale_id, "request"),
         "FIRST_LOVE_ABSTRACT_HREF": first_love_page_path(locale_id, "request"),
         "HOME_HREF": page_path(locale_id, "index"),
-        "CI_HREF": page_path(locale_id, "ci"),
-        "SHI_HREF": page_path(locale_id, "shi"),
+        "CI_HREF": POETRY.path("", locale_id),
+        "B2_HREF": POETRY.work_url("jia-yi-b2",locale_id),
+        "B3_HREF": POETRY.work_url("jia-yi-b3",locale_id),
+        "B4_HREF": POETRY.work_url("jia-yi-b4",locale_id),
+        "POETRY_FIRST_HREF": POETRY.work_url("zhegutian-20260909",locale_id),
+        "POETRY_SECOND_HREF": POETRY.work_url("linjiangxian-20260909",locale_id),
+        "POETRY_COLLECTION_HREF": POETRY.path("jia-yi",locale_id),
+        "SHI_HREF": POETRY.path("",locale_id),
         "TRAINSPOTTING_HREF": essay_page_path(locale_id, "trainspotting"),
         "ESSAY_CARDS": essay_cards_html(locale_id, locale),
         "LANG_SWITCHER": language_switcher(locale_id, page),
@@ -1415,20 +1138,13 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "POETRY_PREVIEW_TITLE": locale["home"]["poetry"]["preview_title"],
         "POETRY_PREVIEW_BODY": preview_body,
         "POETRY_PREVIEW_DATE": locale["home"]["poetry"]["preview_date"],
-        "SHI_SOURCE_HEADING": html.escape(
-            SHI_SIMPLIFIED["title"] if locale_id == "zh-hans" else SHI_SOURCE["title"]
-        ),
-        "CI_TOC": ci_toc(locale_id, locale),
-        "CI_POEMS": ci_poems_html(locale_id, locale),
-        "SHI_DRAFTS": shi_drafts_html(locale_id),
-        "SUMMER_ARCHIVE_LINK": summer_archive_link_html(locale_id),
-        "SHI_DRAFTS_CLASS": (
-            "source-only" if locale_id in CHINESE_LOCALES else "comparison"
-        ),
+
     }
 
 
 def render_page(locale_id: str, page: str, locale: dict[str, Any]) -> str:
+    if page in {"ci", "shi"}:
+        return PoetryPages(sys.modules[__name__]).legacy(page,locale_id,locale)
     template = (TEMPLATES / f"{page}.html").read_text(encoding="utf-8")
     return render_template(template, locale, specials_for(locale_id, page, locale))
 
@@ -1534,7 +1250,9 @@ def build(check: bool = False) -> list[Path]:
         "original_draft":17, "revision":"2026-10-08",
     }:
         raise BuildError("summer poem: publication dates changed unexpectedly")
-    changed: list[Path] = []
+    changed: list[Path] = materialize_poetry(check=check)
+    poetry_pages = PoetryPages(sys.modules[__name__])
+    changed.extend(poetry_pages.build(locales,check=check))
     for lid, locale in locales.items():
         if lid != ROOT_LOCALE:
             (ROOT / lid).mkdir(exist_ok=True)
@@ -1660,7 +1378,7 @@ def build(check: bool = False) -> list[Path]:
         rows.append("  </url>")
         return rows
 
-    standard_pages = ("index", "ci", "shi", "about", "contexts", "poetry-voucher")
+    standard_pages = ("index", "about", "contexts", "poetry-voucher")
     standard_variants = {
         page: {language["id"]: absolute_url(language["id"], page) for language in LANGUAGES}
         for page in standard_pages
@@ -1671,6 +1389,10 @@ def build(check: bool = False) -> list[Path]:
             for language in LANGUAGES
         }
         for essay in ESSAY_REGISTRY
+    }
+    poetry_variants = {
+        route: {language['id']: BASE_URL + POETRY.path(route,language['id']) for language in LANGUAGES}
+        for route in POETRY.routes() if route != 'summer-2017'
     }
     summer_variants = {
         language["id"]: BASE_URL + summer_page_path(language["id"])
@@ -1693,6 +1415,8 @@ def build(check: bool = False) -> list[Path]:
             sitemap_lines.extend(
                 sitemap_entry(variants[lid], variants, variants[ROOT_LOCALE])
             )
+        for variants in poetry_variants.values():
+            sitemap_lines.extend(sitemap_entry(variants[lid],variants,variants[ROOT_LOCALE]))
         for variants in essay_variants.values():
             sitemap_lines.extend(
                 sitemap_entry(

@@ -9,9 +9,9 @@
       "work": "research",
       "photo": "photographs",
       "writing": "writing",
-      "ci": "ci",
-      "shi": "poem",
-      "profile": "contexts"
+      "ci": "Poetry",
+      "profile": "contexts",
+      "other": "other"
     },
     "email": "Email",
     "evidence": "Research plates",
@@ -56,8 +56,8 @@
         "kicker": "film / criticism / research"
       },
       "ci": {
-        "title": "Ci",
-        "kicker": "recent / one author / two voices"
+        "title": "Poetry",
+        "kicker": "poems / sequences / versions"
       },
       "profile": {
         "title": "Selected contexts",
@@ -141,9 +141,9 @@
       "preview_title": "To the tune of <em>Zhegutian</em> · Several evenings at the lamp, trying to write; unfinished",
       "translation_w2": "<em>Zhegutian</em> · translation",
       "translation_w3": "<em>Linjiangxian</em> · translation",
-      "cycle": "Also: <em>Sixteen Poems of A and B</em>, a response cycle written by one author in two voices.",
-      "full_cycle": "all ci, source text + translation",
-      "poem_link": "poem",
+      "cycle": "A and B",
+      "full_cycle": "All poetry",
+      "poem_link": "By date",
       "preview_date": "9 September 2026"
     },
     "chronology": [
@@ -193,34 +193,11 @@
       }
     }
   },
-  "ci": {
-    "meta_title": "Ci · Hanpu Li",
-    "meta_description": "Ci by Hanpu Li: Sixteen Poems of A and B with its appendix, two poems from September 2026, and nine other lyrics, with Chinese originals and translations.",
-    "heading": "Sixteen Poems of A and B",
-    "subtitle": "A sixteen-poem cycle written by one author in two voices, A (甲) and B (乙). A usually gives a detailed prefatory account; B’s first five poems are untitled. The cycle is dated 9 June 2026. One out-of-cycle poem dated 1 July follows as an appendix. The author’s annotations are available on request.",
-    "outside": "Appendix",
-    "footer": "annotations to Sixteen Poems of A and B available on request",
-    "page_heading": "Ci",
-    "page_subtitle": "Arranged by original date, with the A/B cycle kept in its reading sequence. Chinese originals and translations appear together.",
-    "separate_heading": "9 September 2026 · two poems",
-    "separate_note": "A separate pair, not part of Sixteen Poems of A and B.",
-    "revised_heading": "Earlier poems",
-    "revised_note": "Eight poems first written in 2018–2022, revised or rewritten in October 2026. Listed by original date; the two versions of Manjianghong remain distinct.",
-    "contents_label": "Contents",
-    "response_heading": "A later response",
-    "response_note": "An independent poem written in October 2026, looking back on the poems of 2022."
-  },
-  "shi": {
-    "meta_title": "The Roof Splits Open · Hanpu Li",
-    "meta_description": "Two drafts of one poem, a year apart. The revision is an erosion.",
-    "heading": "The Roof Splits Open",
-    "subtitle": "Untitled; named after its first line. Two drafts of one poem, a year apart — the revision is an erosion."
-  },
   "notfound": {
     "meta_title": "Page not found · Hanpu Li",
     "line": "One stretch of water, plain to see. No boat.",
     "description": "This page does not exist, or has moved elsewhere.",
-    "source": "Hanpu Li · Sixteen Poems of A and B · B2 · Tasuoxing",
+    "source": "Hanpu Li · A and B · B2 · Tasuoxing",
     "home": "Back home"
   }
 }

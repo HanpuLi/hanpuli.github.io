@@ -9,9 +9,9 @@
       "work": "Forschung",
       "photo": "Fotografien",
       "writing": "Texte",
-      "ci": "Ci",
-      "shi": "Gedicht",
-      "profile": "Kontexte"
+      "ci": "Lyrik",
+      "profile": "Kontexte",
+      "other": "Weiteres"
     },
     "email": "E-Mail",
     "evidence": "Forschungsblätter",
@@ -55,8 +55,8 @@
         "kicker": "Film / Kritik / Forschung"
       },
       "ci": {
-        "title": "Ci",
-        "kicker": "neu / eine Hand / zwei Stimmen"
+        "title": "Lyrik",
+        "kicker": "Gedichte / Zyklen / Fassungen"
       },
       "profile": {
         "title": "Ausgewählte Kontexte",
@@ -140,9 +140,9 @@
       "preview_title": "Nach der Melodie <em>Zhegutian</em> · Mehrere Abende an der Lampe, Schreibversuche; unvollendet",
       "translation_w2": "<em>Zhegutian</em> · Übersetzung",
       "translation_w3": "<em>Linjiangxian</em> · Übersetzung",
-      "cycle": "Außerdem: <em>Sechzehn Gedichte von A und B</em>, ein Antwortzyklus aus einer Hand in zwei Stimmen.",
-      "full_cycle": "alle Ci, Ausgangstext + Übersetzung",
-      "poem_link": "Gedicht",
+      "cycle": "A und B",
+      "full_cycle": "Alle Gedichte",
+      "poem_link": "Nach Datum",
       "preview_date": "9. September 2026"
     },
     "chronology": [
@@ -193,34 +193,11 @@
       }
     }
   },
-  "ci": {
-    "meta_title": "Ci · Hanpu Li",
-    "meta_description": "Ci von Hanpu Li: Sechzehn Gedichte von A und B mit Anhang, zwei Gedichte vom September 2026 und neun weitere Ci, mit chinesischen Originalen und Übersetzungen.",
-    "heading": "Sechzehn Gedichte von A und B",
-    "subtitle": "Ein Zyklus aus sechzehn Gedichten, von einer Person in zwei Stimmen geschrieben, A (甲) und B (乙). A gibt meist eine ausführliche Vorbemerkung; die ersten fünf Gedichte von B sind unbetitelt. Der Zyklus ist auf den 9. Juni 2026 datiert. Ein Gedicht außerhalb des Zyklus vom 1. Juli folgt als Anhang. Die zugehörigen Anmerkungen sind auf Anfrage erhältlich.",
-    "outside": "außerhalb des Zyklus",
-    "footer": "Anmerkungen zu „Sechzehn Gedichten von A und B“ auf Anfrage",
-    "page_heading": "Ci",
-    "page_subtitle": "Nach dem Datum der Erstfassung geordnet; der A/B-Zyklus behält seine Lesefolge. Chinesische Originale und Übersetzungen stehen nebeneinander.",
-    "separate_heading": "9. September 2026 · zwei Gedichte",
-    "separate_note": "Ein separates Paar; nicht Teil von Sechzehn Gedichte von A und B.",
-    "revised_heading": "Frühere Gedichte",
-    "revised_note": "Acht Gedichte von 2018–2022, im Oktober 2026 überarbeitet oder neu gefasst. Geordnet nach dem Datum der Erstfassung; die beiden Neufassungen von Manjianghong bleiben eigenständig.",
-    "contents_label": "Inhalt",
-    "response_heading": "Eine spätere Antwort",
-    "response_note": "Ein eigenständiges Gedicht vom Oktober 2026, das auf die Gedichte von 2022 zurückblickt."
-  },
-  "shi": {
-    "meta_title": "Das Dach reißt auf · Hanpu Li",
-    "meta_description": "Zwei Fassungen eines Gedichts, ein Jahr auseinander. Die Überarbeitung ist Erosion.",
-    "heading": "Das Dach reißt auf",
-    "subtitle": "Unbetitelt; nach der ersten Zeile benannt. Zwei Fassungen eines Gedichts, ein Jahr auseinander · die Überarbeitung ist Erosion."
-  },
   "notfound": {
     "meta_title": "Seite nicht gefunden · Hanpu Li",
     "line": "Eine Wasserfläche, klar vor Augen. Kein Boot.",
     "description": "Diese Seite existiert nicht oder wurde verschoben.",
-    "source": "Hanpu Li · Sechzehn Gedichte von A und B · B2 · Tasuoxing",
+    "source": "Hanpu Li · A und B · B2 · Tasuoxing",
     "home": "Zur Startseite"
   }
 }

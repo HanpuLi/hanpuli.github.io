@@ -64,6 +64,8 @@ def wanted_character(char: str) -> bool:
 
 def collect_text() -> str:
     text = "".join(path.read_text(encoding="utf-8") for path in CONTENT_FILES)
+    text += json.dumps(json.loads((CONTENT / "poetry/ui.json").read_text())["zh-hans"], ensure_ascii=False)
+    text += json.dumps(json.loads((CONTENT / "poetry/simplified.json").read_text())["texts"], ensure_ascii=False)
     summer = json.loads((CONTENT / "summer-poem.json").read_text(encoding="utf-8"))
     text += summer["texts"]["zh-hans"]
     text += json.dumps(summer["locales"]["zh-hans"], ensure_ascii=False)

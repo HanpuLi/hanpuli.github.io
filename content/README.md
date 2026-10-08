@@ -8,14 +8,12 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `shared.json` — language-independent project URLs, evidence values, technical stacks and site metadata.
 - `languages.json` — supported locales and standards metadata.
 - `locales/<locale>.json` — navigation, metadata, project copy, captions, accessibility text and profile copy.
-- `ci-source.json` — canonical Chinese ci collection and English reference translations. `reading_order` controls both the page contents and the full reading sequence: eight earlier poems by original date (2018–2022), the sixteen-poem A/B cycle with its 1 July appendix, the separate pair dated 9 September 2026, then the independent October response. The cycle keeps its interleaved A/B sequence. `separate_groups` supplies the other groups and their internal order; the storage order of `poems` is not the page order. Original and revision dates are given separately on each poem; the two rewritings of the 2022 *Manjianghong* remain distinct. Published poem IDs, including `w4` for *Mantingfang*, are stable.
-- `ci-translation-guidance.md` — semantic constraints distilled from the author's current annotations; use this during every literary translation review.
-- `ci-translations/<locale>.json` — Japanese, German, French and Russian literary translations.
-- `ci-simplified.json` — script-only Simplified Chinese mirror of the canonical ci source; its source hash is checked in CI.
-- `shi-source.json` — canonical Chinese text of the poem and its two drafts.
-- `shi-translations/<locale>.json` — non-Chinese translations.
-- `shi-simplified.json` — script-only Simplified Chinese mirror of the canonical poem source; its source hash is checked in CI.
-- `summer-poem.json` — standalone early poem first written 6–20 November 2017 (seventeenth draft), revised 8 October 2026. It contains the author-approved R8 Traditional/Hong Kong and Simplified texts. The two twenty-five-line halves are checked for line-by-line Chinese-character symmetry by `summerpoemcheck.py` (run within `i18ncheck.py`). Its seven interface editions publish the appropriately labelled Chinese original; no unreviewed literary translations are supplied. The poem lives at `/poetry/summer-2017/`, linked from `shi.html`, and is not a Poetry Voucher shop item.
+- `poetry/library.json` — canonical works, ordered collections, versions, text parts, language editions, paper-edition offers and legacy aliases. No work is classified merely as outside the A/B sequence.
+- `poetry/simplified.json` — script-only mirrors keyed to text parts, with source and per-original hashes.
+- `poetry/ui.json` — seven-language catalogue, reader and navigation copy.
+- `poetry/translation-guidance.md` — semantic constraints for literary translation.
+- `poetry/voucher-encoding.json` — non-literary artwork and barcode tables.
+- `ci-source.json`, `ci-simplified.json`, `ci-translations/`, `shi-source.json`, `shi-simplified.json`, `shi-translations/` and `summer-poem.json` — generated compatibility views. Do not author in them.
 - `essays.json` — registry of public essays, their source fragments, metadata files and social images.
 - `essays/<slug>.inc` — English source fragments for the public essays.
 - `essay-<name>.json` — per-locale discovery titles, metadata and the notice used by each language shell; the essay bodies and their canonical publication titles remain English. `display_title` may contain unnested `<em>` only and is used on locale home cards, never as the essay's citation title.
@@ -93,9 +91,8 @@ to the generated routes. Do not edit the generated copies independently.
 The shop offers the five published literary translations (English, Japanese,
 German, French and Russian) and a choice of original Chinese script,
 independently of its interface language. The Simplified edition mirrors the
-canonical text rather than translating it. Their authoritative text is in
-`ci-source.json`, `ci-simplified.json`, `ci-translations/`, `shi-simplified.json`,
-`shi-translations/` and the translated `shi.heading` values in `locales/`.
+canonical text rather than translating it. Their authoritative text and version relationships are in
+`poetry/library.json` and the script-only `poetry/simplified.json` mirror.
 Run `python3 tools/sync_voucher_translations.py` after editing those sources;
 `node tools/poetrycheck.mjs` verifies the offline catalogue is in sync.
 

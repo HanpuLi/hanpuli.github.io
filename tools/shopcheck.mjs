@@ -44,9 +44,9 @@ try{
  const purchasedRef=order.ref;await page.reload();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1);assert.equal((await state()).orders[0].ref,purchasedRef);
  await page.locator('#keep-shopping').click();await page.waitForFunction(count=>document.querySelectorAll('.product-card').length===count,catalogueSize);
  // Long authored work still exercises multipage output without reopening a custom editor.
- await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=ci-b6');await page.waitForFunction(()=>document.querySelector('#product-editor').open);
+ await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=jia-yi-b6-text');await page.waitForFunction(()=>document.querySelector('#product-editor').open);
  await page.locator('#size').selectOption('36');for(const lang of ['en','ja','de','fr','ru'])await page.locator(`#translation-options input[value="${lang}"]`).check();await page.locator('#save-line').click();
- await bag();await page.locator('#to-checkout').click();await page.locator('#place-order').click();await issued(page,30000);assert.equal((await state()).orders[0].lines[0].workId,'ci-b6');assert(await page.locator('.order-strip-proof img').count()>2,'long authored edition remains one continuous output with separator');
+ await bag();await page.locator('#to-checkout').click();await page.locator('#place-order').click();await issued(page,30000);assert.equal((await state()).orders[0].lines[0].workId,'jia-yi-b6-text');assert(await page.locator('.order-strip-proof img').count()>2,'long authored edition remains one continuous output with separator');
  // A separate purchase has its own URL; the previous order remains available in this tab.
  const firstUrl=page.url(),firstRef=(await state()).orders[0].ref;
  await page.locator('#keep-shopping').click();await page.waitForFunction(count=>document.querySelectorAll('.product-card').length===count,catalogueSize);

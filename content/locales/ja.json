@@ -9,9 +9,9 @@
       "work": "研究",
       "photo": "写真",
       "writing": "文章",
-      "ci": "詞",
-      "shi": "詩",
-      "profile": "活動歴"
+      "ci": "詩歌",
+      "profile": "活動歴",
+      "other": "その他"
     },
     "email": "メール",
     "evidence": "研究図版",
@@ -55,8 +55,8 @@
         "kicker": "映画 / 批評 / 研究"
       },
       "ci": {
-        "title": "詞",
-        "kicker": "近作 / 一人の作者 / 二つの声"
+        "title": "詩歌",
+        "kicker": "単篇 / 連作 / 各稿"
       },
       "profile": {
         "title": "主な活動歴",
@@ -140,9 +140,9 @@
       "preview_title": "<em>鷓鴣天</em>の調べ · 幾晩か灯の下で書こうとした、未完",
       "translation_w2": "<em>鷓鴣天</em> · 訳",
       "translation_w3": "<em>臨江仙</em> · 訳",
-      "cycle": "ほかに、<em>甲乙十六首</em>。一人の作者が二つの声で応答する連作。",
-      "full_cycle": "詞作品一覧、原文 + 訳",
-      "poem_link": "詩",
+      "cycle": "甲と乙",
+      "full_cycle": "詩歌一覧",
+      "poem_link": "年代順",
       "preview_date": "2026年9月9日"
     },
     "chronology": [
@@ -193,34 +193,11 @@
       }
     }
   },
-  "ci": {
-    "meta_title": "詞 · Hanpu Li",
-    "meta_description": "李函璞の詞。甲乙十六首と集外篇、2026年9月9日の二首、旧作と続稿の九首。中国語原文と翻訳。",
-    "heading": "甲乙十六首",
-    "subtitle": "一人の作者が甲と乙、二つの声で書いた十六首の連作。甲には多くの場合、詳しい序文が添えられ、乙の最初の5首は無題。連作の日付は2026年6月9日。7月1日付の集外一首を付す。作者注はご希望に応じて提供。",
-    "outside": "集外",
-    "footer": "『甲乙十六首』の注釈はご希望に応じて提供",
-    "page_heading": "詞",
-    "page_subtitle": "初作の年代順に収録。甲乙連作は本来の配列を保ち、中国語原文と訳文を併記する。",
-    "separate_heading": "2026年9月9日 · 二首",
-    "separate_note": "別の一組で、『甲乙十六首』には含まれない。",
-    "revised_heading": "旧作",
-    "revised_note": "2018–2022年の旧作八篇を、2026年10月に改訂・改作した。初作の日付順に収録し、「満江紅」の二つの改作は別々に残す。",
-    "contents_label": "目次",
-    "response_heading": "旧作を読み返して",
-    "response_note": "2022年の詞を振り返り、2026年10月に独立した一篇として書いた。"
-  },
-  "shi": {
-    "meta_title": "屋根が裂ける · Hanpu Li",
-    "meta_description": "1年を隔てた同一詩の二稿。改稿は侵食である。",
-    "heading": "屋根が裂ける",
-    "subtitle": "無題。第一行から仮題を取った。1年を隔てた同一詩の二稿。改稿は侵食である。"
-  },
   "notfound": {
     "meta_title": "ページが見つかりません · Hanpu Li",
     "line": "目の前にはひと筋の水。舟はない。",
     "description": "このページは存在しないか、別の場所へ移動しました。",
-    "source": "Hanpu Li『甲乙十六首』・乙二「踏莎行」",
+    "source": "Hanpu Li『甲乙』・乙二「踏莎行」",
     "home": "ホームへ戻る"
   }
 }

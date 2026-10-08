@@ -11,13 +11,14 @@
   const clone=value=>JSON.parse(JSON.stringify(value));
   const units=()=>bag.reduce((sum,line)=>sum+line.quantity,0);
   const keyOf=line=>JSON.stringify([line.workId,line.title,line.author,line.poem,line.locale,line.translations,line.font,line.size]);
-  const workFor=line=>works.find(work=>work.id===line.workId);
+  const findWork=id=>works.find(work=>work.id===id||work.legacy_ids?.includes(id));
+  const workFor=line=>findWork(line.workId);
   function quote(line){const w=workFor(line),additions=(line.translations||[]).map(locale=>({locale,body:w?.translations?.[locale]?.body||''}));return quotePoem(w?.poem||line.poem,additions,line.font,!w);}
   function validateLine(raw){
     if(!raw||typeof raw!=='object'||!Number.isInteger(raw.quantity)||raw.quantity<1||raw.quantity>MAX_UNITS)throw Error('quantity');
     if(!['bitmap','site'].includes(raw.font)||!typeSizes(raw.font).includes(raw.size))throw Error('type');
     if(!SHOP_LANGS.includes(raw.locale))throw Error('locale');
-    const w=works.find(work=>work.id===raw.workId);
+    const w=findWork(raw.workId);
     if(!w)throw Error('catalogue-only');
     const legacy=raw.language&&raw.language!=='receipt'?raw.language:null;
     const locale=w?(raw.locale==='zh-Hans'||legacy==='zh-Hans'?'zh-Hans':'zh-Hant'):raw.locale;
@@ -46,7 +47,14 @@
   }
   function show(id){el(id).showModal();}
   function close(id){el(id).close();}
-  function localeTitle(work){const title=work.translations?.[uiLocale]?.title||work.title;return work.kind==='POEM'?`${title} · ${work.source_id}`:title;}
+  function localeTitle(work){const title=work.translations?.[uiLocale]?.title||work.title;return work.part_id?`${title} · ${(work.edition_labels?.[uiLocale]||work.edition).split(' · ')[0]}`:title;}
+  function catalogueFilters(){
+    const select=el('shop-filter'),selected=select.value;
+    const options=[['all',t('all')]],seen=new Set();
+    for(const work of works)if(!seen.has(work.shelf)){seen.add(work.shelf);options.push([work.shelf,work.shelf_labels?.[uiLocale]||work.collection]);}
+    select.replaceChildren(...options.map(([value,label])=>{const option=node('option',label);option.value=value;return option;}));
+    select.value=options.some(([value])=>value===selected)?selected:'all';
+  }
   const contentLang=locale=>locale==='zh-Hant'?'zh-Hant-HK':locale;
   const lineTitle=line=>line.work?localeTitle(line.work):workFor(line)?localeTitle(workFor(line)):line.title;
   const displayLang=line=>(line.work||workFor(line))?.translations?.[uiLocale]?contentLang(uiLocale):contentLang(line.locale);
@@ -67,7 +75,7 @@
       if(search&&!`${title} ${work.title} ${work.source_id} ${work.poem} ${edition?.body||''}`.toLocaleLowerCase().includes(search))continue;
       count++;
       const card=node('article',undefined,'product-card'),head=node('div',undefined,'product-meta');
-      head.append(node('span',work.source_id),node('span',work.id.startsWith('shi-d')?t('draft'):work.shelf==='甲乙十六首'?t('cycle'):work.shelf==='詞'?t('lyrics'):t('roof')));
+      head.append(node('span',work.authorial_label||work.edition_labels?.[uiLocale]||work.edition),node('span',work.shelf_labels?.[uiLocale]||work.collection));
       const heading=node('h3',title),excerpt=node('p',(edition?.body||work.poem).split('\n').filter(Boolean).slice(0,3).join('\n'),'product-excerpt');
       if(!edition){heading.lang='zh-Hant-HK';excerpt.lang='zh-Hant-HK';}
       const foot=node('div',undefined,'product-foot'),price=node('strong',uiMoney(quotePoem(work.poem).price),'product-price');
@@ -221,7 +229,7 @@
     const cutHeight=cutHerePage().height;
     for(const line of order.lines){const translations=line.translations.map(locale=>({locale,...line.work.translations[locale]}));
       for(let unit=0;unit<line.quantity;unit++){
-        index++;const voucherId=(line.work?.source_id||'CUSTOM')+'-'+order.ref+'-'+String(index).padStart(2,'0'),paper=new PagedPaper({kind:'VOUCHER',ref:voucherId});paper.threshold=TYPE_CONFIG.threshold[line.font];
+        index++;const voucherId=paperVoucherId(line.work,order.ref,index),paper=new PagedPaper({kind:'VOUCHER',ref:voucherId});paper.threshold=TYPE_CONFIG.threshold[line.font];
         const spec={...line,original:!!line.work,translations};
         renderVoucherBody(paper,spec,voucherId,line.font==='site'?serif:bitmapFamily(line.locale),locale=>line.font==='site'?serif:bitmapFamily(locale));
         const pages=paper.finishPages();rows+=cutHeight+pages.reduce((n,page)=>n+page.height,0);count+=1+pages.length;
@@ -310,7 +318,7 @@
   }
   function translateUI(){
     document.querySelectorAll('[data-shop]').forEach(n=>n.textContent=t(n.dataset.shop).replace('{price}',uiMoney(TARIFF.addOn)));document.querySelectorAll('[data-shop-placeholder]').forEach(n=>n.placeholder=t(n.dataset.shopPlaceholder));document.querySelectorAll('[data-order-link]').forEach(n=>n.href='order.html?lang='+encodeURIComponent(uiLocale));document.title=t(orderPage?'order':'shop')+' · Poetry Voucher · Hanpu Li';if(orderPageStatus){el('order-page-status').textContent=t(orderPageStatus);if(orderPageStatus!=='orderLoading')el('order-heading').textContent=t('order');}
-    if(ready){catalogue();renderBag();renderCheckout();editorPrice();}for(const entry of orders)updateOrderUI(entry.order,entry.section);if(toastKey)el('shop-status').textContent=t(toastKey);if(editorStatusKey)el('editor-status').textContent=t(editorStatusKey);if(checkoutStatusKey)el('checkout-status').textContent=t(checkoutStatusKey);if(editingId)el('save-line').textContent=t('save');
+    if(ready){catalogueFilters();catalogue();renderBag();renderCheckout();editorPrice();}for(const entry of orders)updateOrderUI(entry.order,entry.section);if(toastKey)el('shop-status').textContent=t(toastKey);if(editorStatusKey)el('editor-status').textContent=t(editorStatusKey);if(checkoutStatusKey)el('checkout-status').textContent=t(checkoutStatusKey);if(editingId)el('save-line').textContent=t('save');
   }
   document.querySelectorAll('[data-close]').forEach(n=>n.addEventListener('click',()=>{if(!busy)close(n.dataset.close);}));
   document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('cancel',event=>{if(busy)event.preventDefault();}));
@@ -319,7 +327,7 @@
   el('back-to-bag').addEventListener('click',()=>{close('checkout-dialog');show('bag-dialog');});
   document.querySelector('.controls').addEventListener('input',editorPrice);el('work').addEventListener('change',editorPrice);el('original-script').addEventListener('change',editorPrice);
   document.addEventListener('presslocalechange',translateUI);
-  const initialise=()=>{if(ready)return;ready=true;restore();translateUI();const requested=new URL(location.href).searchParams.get('work');if(orderPage)openSavedOrder();else if(requested)openEditor(works.some(w=>w.id===requested)?requested:null);};
+  const initialise=()=>{if(ready)return;ready=true;restore();translateUI();const requested=new URL(location.href).searchParams.get('work');if(orderPage)openSavedOrder();else if(requested)openEditor(findWork(requested)?.id||null);};
   document.addEventListener('catalogueready',initialise);
   document.addEventListener('catalogueerror',()=>{notify('loadError');el('no-results').hidden=false;el('no-results').textContent=t('loadError');});
   translateUI();renderBag();if(works.length)initialise();

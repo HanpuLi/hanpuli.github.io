@@ -6,7 +6,7 @@ import {spawn} from 'node:child_process';
 import {writeFile} from 'node:fs/promises';
 import {chromium} from '@playwright/test';
 const BASIC_SPECIMEN=Object.freeze({
-  workId:'ci-b3',
+  workId:'jia-yi-b3-text',
   created:'2026-09-22T12:00:00Z',
   entropy:Object.freeze([0x12,0x34,0x56,0x78]),
   font:'bitmap',
@@ -144,7 +144,7 @@ try{
       const image=probe(weight),data=image.getContext('2d').getImageData(0,0,image.width,image.height).data;
       const runs=[];let ink=0;for(let y=0;y<image.height;y++){let run=0;for(let x=0;x<=image.width;x++){if(x<image.width&&data[(y*image.width+x)*4]===0){run++;ink++;}else if(run){runs.push(run);run=0;}}}
       const normal=probe(400).getContext('2d').getImageData(0,0,image.width,image.height).data;let normalInk=0;for(let i=0;i<normal.length;i+=4)if(normal[i]===0)normalInk++;
-      const work=works.find(w=>w.id==='ci-w3'),p=new Paper(),calls=[],text=p.text.bind(p);p.text=(...args)=>{calls.push(args);return text(...args);};
+      const work=works.find(w=>w.id==='linjiangxian-20260909-text'),p=new Paper(),calls=[],text=p.text.bind(p);p.text=(...args)=>{calls.push(args);return text(...args);};
       renderVoucherBody(p,{...work,work,original:true,size:24,font},'W3-02260923000001-01',font==='bitmap'?bitmapFamily('zh-Hant'):serif,family);
       const labels=calls.filter(a=>/^(NO\. |POETRY VOUCHER|ART EDITION|NO CASH VALUE|hanpuli\.github)/.test(a[0]));
       results.push({font,ink,normalInk,minRun:Math.min(...runs),labels:labels.map(a=>({size:a[1],family:a[2],weight:a[6]})),authorFamily:calls.find(a=>a[0]==='Hanpu Li')[2],png:p.finish().toDataURL()});

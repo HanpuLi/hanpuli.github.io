@@ -9,9 +9,9 @@
       "work": "研究",
       "photo": "摄影",
       "writing": "写作",
-      "ci": "词",
-      "shi": "诗",
-      "profile": "脉络"
+      "ci": "诗歌",
+      "profile": "脉络",
+      "other": "其他"
     },
     "email": "邮件",
     "evidence": "研究图版",
@@ -56,8 +56,8 @@
         "kicker": "电影 / 评论 / 研究"
       },
       "ci": {
-        "title": "词",
-        "kicker": "近作 / 一人两声"
+        "title": "诗歌",
+        "kicker": "单篇 / 组诗 / 稿本"
       },
       "profile": {
         "title": "节选脉络",
@@ -141,9 +141,9 @@
       "preview_title": "《鹧鸪天 · 连夕灯下试笔，未竟》",
       "translation_w2": "《鹧鸪天》 · 原作",
       "translation_w3": "《临江仙》 · 原作",
-      "cycle": "另有《甲乙十六首》：一人分作两声的唱和集。",
-      "full_cycle": "全部词作",
-      "poem_link": "诗",
+      "cycle": "甲乙",
+      "full_cycle": "诗歌总目",
+      "poem_link": "按年代",
       "preview_date": "二〇二六年九月九日"
     },
     "chronology": [
@@ -193,34 +193,11 @@
       }
     }
   },
-  "ci": {
-    "meta_title": "词 · Hanpu Li 李函璞",
-    "meta_description": "李函璞词作：《甲乙十六首》及其集外附录、二〇二六年九月九日二首，另收旧作与续稿九首。",
-    "heading": "甲乙十六首",
-    "subtitle": "一人分作两声的唱和集：甲多详序，乙前五首无题。十六首并系于二〇二六年六月九日；另附七月一日集外一首。附自撰笺注，备索。此版采用简体字。",
-    "outside": "集外",
-    "footer": "《甲乙十六首》笺注全文备索",
-    "page_heading": "词",
-    "page_subtitle": "按初作年代编排，组诗保留原有次序；非中文版本并列原文与译文。",
-    "separate_heading": "二〇二六年九月九日 · 二首",
-    "separate_note": "另成一组，不属《甲乙十六首》。",
-    "revised_heading": "旧作",
-    "revised_note": "二〇一八至二〇二二年旧作八首，于二〇二六年十月修订或重写。依初作日期排列；《满江红》的两个重写版本分别保留。",
-    "contents_label": "目录",
-    "response_heading": "重读旧作",
-    "response_note": "二〇二六年十月另作，回看二〇二二年的旧词。"
-  },
-  "shi": {
-    "meta_title": "屋顶裂开 · Hanpu Li 李函璞",
-    "meta_description": "《屋顶裂开》两稿，相隔一年——修订在删。",
-    "heading": "屋顶裂开",
-    "subtitle": "原无题，以首句名之。同一首诗的两稿，相隔一年；修订在删。此版采用简体字。"
-  },
   "notfound": {
     "meta_title": "页面不存在 · Hanpu Li 李函璞",
     "line": "分明一水无舟艇。",
     "description": "此页不存在，或已移往别处。",
-    "source": "李函璞《甲乙十六首》·乙二〈踏莎行〉",
+    "source": "李函璞《甲乙》·乙二〈踏莎行〉",
     "home": "返回首页"
   }
 }

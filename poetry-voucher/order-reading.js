@@ -8,7 +8,7 @@ const OrderReading = (() => {
     return element;
   };
   const language = value => value === 'zh-Hant' ? 'zh-Hant-HK' : value;
-  const voucherId = (order, line, index) => (line.work?.source_id || 'CUSTOM') + '-' + order.ref + '-' + String(index).padStart(2, '0');
+  const voucherId = (order, line, index) => (line.work?.version_id && !line.work.authorial_label ? '' : (line.work?.source_id || 'CUSTOM') + '-') + order.ref + '-' + String(index).padStart(2, '0');
   async function textHash(lines) {
     const texts = lines.map(line => ({
       work: line.work?.id || null, locale: line.locale, title: line.title,

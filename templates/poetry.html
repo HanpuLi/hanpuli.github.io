@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{HTML_LANG}}" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
+<title>{{POETRY_TITLE}}</title>
+<meta name="description" content="{{POETRY_DESCRIPTION}}">
+<link rel="canonical" href="{{POETRY_CANONICAL}}">
+{{POETRY_ALTERNATES}}
+{{SOCIAL_META}}
+<meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
+{{ICON_LINKS}}
+{{FONT_PRELOADS}}
+<script src="/assets/accessibility.js"></script>
+<script defer src="/assets/profile-credit.js"></script>
+<script defer src="/assets/poetry-navigation.js"></script>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/poetry.css">
+{{STRUCTURED_DATA}}
+{{POETRY_EXTRA_HEAD}}
+</head>
+<body class="literary-page poetry-page {{POETRY_PAGE_CLASS}} locale-{{LOCALE}}">
+<a class="skip-link" href="#poetry-main">{{common.skip_poems}}</a>
+<div class="wrap">
+<header class="page-topbar">
+  <a class="page-wordmark" href="{{HOME_HREF}}">{{PRIMARY_NAME}} <span lang="zh-Hant-HK">{{CHINESE_NAME}}</span></a>
+  <nav class="page-nav" aria-label="{{common.site_nav_label_attr}}">{{PORTFOLIO_NAV}}</nav>
+  <div class="page-utility"><nav class="page-languages" aria-label="{{common.language_nav_label_attr}}">{{LANG_SWITCHER}}</nav></div>
+  {{READING_TOOLS}}
+</header>
+<main id="poetry-main" tabindex="-1">
+  <header class="page-intro poetry-intro">
+{{POETRY_BREADCRUMBS}}
+    <h1>{{POETRY_HEADING}}</h1>
+    <div class="sub">{{POETRY_INTRO}}</div>
+{{POETRY_SWITCHER}}
+  </header>
+  {{POETRY_CONTENT}}
+</main>
+<footer class="page-footer">
+  <p><a href="{{POETRY_INDEX}}">{{POETRY_BACK}}</a> <span aria-hidden="true">·</span> <a href="{{HOME_HREF}}">{{PRIMARY_NAME}}</a></p>
+  <p class="page-footer-context"><a href="{{ABOUT_HREF}}">{{ABOUT_LINK_LABEL}}</a></p>
+</footer>
+</div>
+</body>
+</html>
