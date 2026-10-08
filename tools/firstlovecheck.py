@@ -65,11 +65,13 @@ def main() -> int:
         if parser.forms:
             errors.append(f"{rel}: access request form remains")
         for marker in (
-            '<link rel="icon" href="/favicon.ico">',
-            'assets/site-icon-32.png?v=20260930a',
-            'assets/site-icon-64.png?v=20260930a',
-            'assets/apple-touch-icon.png?v=20260930a',
-            '<link rel="manifest" href="/site.webmanifest">',
+            '<link rel="icon" href="/favicon.ico?v=20261008a">',
+            'assets/site-icon-32.png?v=20261008a',
+            'assets/site-icon-64.png?v=20261008a',
+            'assets/site-icon-32-dark.png?v=20261008a',
+            'assets/site-icon-64-dark.png?v=20261008a',
+            'assets/apple-touch-icon.png?v=20261008a',
+            '<link rel="manifest" href="/site.webmanifest?v=20261008a">',
         ):
             if marker not in source:
                 errors.append(f"{rel}: missing shared app/icon marker {marker!r}")

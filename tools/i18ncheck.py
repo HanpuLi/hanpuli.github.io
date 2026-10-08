@@ -475,7 +475,7 @@ def main() -> int:
                 '<meta property="og:image"',
                 '<meta name="twitter:card" content="summary_large_image">',
                 '<script type="application/ld+json">',
-                'rel="manifest" href="/site.webmanifest"',
+                'rel="manifest" href="/site.webmanifest?v=20261008a"',
                 'assets/site-icon-32.png',
                 'assets/site-icon-64.png',
                 'assets/apple-touch-icon.png',
@@ -614,7 +614,7 @@ def main() -> int:
                 "assets/site-icon-32.png",
                 "assets/site-icon-64.png",
                 "assets/apple-touch-icon.png",
-                'rel="manifest" href="/site.webmanifest"',
+                'rel="manifest" href="/site.webmanifest?v=20261008a"',
                 '<meta name="application-name" content="Hanpu Li">',
             ):
                 if icon not in text:

@@ -117,7 +117,9 @@ Then open http://127.0.0.1:8000/.
 
 The index and portfolio pages use repository-local 1200×630 Open Graph cards carrying the shared site mark. Social platforms use these cards rather than the favicon, so the mark is composed into the card artwork itself. The site icon sets a red ink stroke across two dark editorial rules, echoing the home page’s question of whether evidence supports a claim.
 
-`assets/site-mark.svg` embeds the cropped high-resolution artwork. The icon build produces 32/64 px browser PNGs, the root `favicon.ico` fallback, a 180 px Apple touch icon, 192/512 px web-app icons and a padded 512 px maskable icon. `site.webmanifest` supplies the installable-web-app identity. Rebuild the icons with the pinned browser dependencies after `npm ci`:
+`docs/site-icon/site-mark-web.svg` is the paper-free vector source, preserving the original mark's curved contours, ink variation and dry-brush texture. `docs/site-icon/site-mark-layered.svg` keeps the independently editable paper layer hidden by default. These full-detail SVG sources are excluded from GitHub Pages; `assets/site-mark.svg` retains the original bitmap reference.
+
+The icon build produces 16/32/48/64 px browser PNGs, 32/64 px dark-mode variants, the root `favicon.ico` fallback, a 180 px Apple touch icon, 192/512 px web-app icons and a padded 512 px maskable icon. Browser icons use the website's plain light or dark background without paper texture. `site.webmanifest` supplies the installable-web-app identity. Rebuild the icons with the pinned browser dependencies after `npm ci`:
 
 ```sh
 node tools/build_site_icon.mjs

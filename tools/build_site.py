@@ -55,7 +55,7 @@ CHINESE_LOCALES = {"zh", "zh-hans"}
 BASE_URL = IDENTITY["site_url"].rstrip("/")
 PERSON_ID = f"{BASE_URL}/#person"
 WEBSITE_ID = f"{BASE_URL}/#website"
-ICON_VERSION = "20260930a"
+ICON_VERSION = "20261008a"
 SOCIAL_IMAGES = {
     "site": ("assets/social/site.png", 1200, 630, "image/png"),
     "ci": ("assets/social/ci.png", 1200, 630, "image/png"),
@@ -349,11 +349,13 @@ def essay_cards_html(locale_id: str, locale: dict[str, Any]) -> str:
 
 def icon_links() -> str:
     return (
-        '<link rel="icon" href="/favicon.ico">\n'
+        f'<link rel="icon" href="/favicon.ico?v={ICON_VERSION}">\n'
         f'<link rel="icon" href="/assets/site-icon-32.png?v={ICON_VERSION}" type="image/png" sizes="32x32">\n'
         f'<link rel="icon" href="/assets/site-icon-64.png?v={ICON_VERSION}" type="image/png" sizes="64x64">\n'
+        f'<link rel="icon" href="/assets/site-icon-32-dark.png?v={ICON_VERSION}" type="image/png" sizes="32x32" media="(prefers-color-scheme: dark)">\n'
+        f'<link rel="icon" href="/assets/site-icon-64-dark.png?v={ICON_VERSION}" type="image/png" sizes="64x64" media="(prefers-color-scheme: dark)">\n'
         f'<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v={ICON_VERSION}" sizes="180x180">\n'
-        '<link rel="manifest" href="/site.webmanifest">\n'
+        f'<link rel="manifest" href="/site.webmanifest?v={ICON_VERSION}">\n'
         '<meta name="application-name" content="Hanpu Li">\n'
         '<meta name="apple-mobile-web-app-title" content="Hanpu Li">\n'
         '<meta name="apple-mobile-web-app-capable" content="yes">\n'
