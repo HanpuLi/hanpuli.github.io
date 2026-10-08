@@ -251,7 +251,8 @@ class Library:
         sc['source_sha256'] = hashlib.sha256(encode(files[self.content/'shi-source.json']).encode()).hexdigest()
         summer = self.texts['summer-2017-revised-20261008']
         files[self.content/'summer-poem.json'] = {'id':'summer-2017',**self.data['summer_metadata'],
-          'texts':{'zh':summer['editions']['zh']['body'], 'zh-hans':self.edition(summer['id'],'zh-hans')['body']}}
+          'texts':{**{lid:edition['body'] for lid,edition in summer['editions'].items()},
+                   'zh-hans':self.edition(summer['id'],'zh-hans')['body']}}
         files[self.content/'poetry-voucher-app/editions.json'] = self.shop_catalogue()
         return files
 

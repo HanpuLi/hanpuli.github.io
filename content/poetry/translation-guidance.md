@@ -98,3 +98,16 @@ The cycle becomes weaker if translation decides the dispute between its two voic
 - 「聞人道好，隨人道好」 deliberately repeats the spoken approval. Preserve the echo, which need not mean conviction.
 - 「瓦釜雷鳴何故」 is the speaker's pejorative judgement, not the author's established verdict on a third person. Keep the earthen-vessel image, rather than translating it as a fact about a bad partner.
 - 「逢君仍問近來安」 is an ordinary inquiry. 「說罷了、回身讓路」 ends with a physical turning and making way, not a stated farewell, concession in love or moral lesson.
+
+## Summer poem: five translations of the October 2026 revision
+
+- The Chinese R8 source and its reviewed Simplified mirror are unchanged. New English, Japanese, German, French and Russian editions belong to `summer-2017-revised-20261008`, not to a fabricated new Chinese version.
+- Each edition retains the 18 stanza blocks and their line counts: the opening question, six four-line stanzas, a second question, six four-line stanzas and four coda blocks. The two refrain blocks are identical within each language; the final question still occupies two authored lines. The Chinese per-line character symmetry is not imposed on translated alphabets.
+- The addressee remains a friend. Do not turn this into an explicit declaration of romantic love, a death, a confirmed separation or a claim about reciprocity. Target-language grammar does not assign a sex to either person.
+- In 「你會不會記住沉默的我」, silence describes the speaker, not the manner in which the addressee remembers. The coda drops the silence qualifier and separates the final question across two lines.
+- 「即使我歌以年華」 uses the years of a life as the means or material of singing. It is not simply a song about youth, nor a promise of eternal life.
+- 「把我困在那裏吧」 retains being held/trapped there. Do not soften it into an uncomplicated wish to visit. 「日夜偏偏等長」 contrasts with the later indifference to the length of day and night.
+- 「就似發尋到了寶藏」 is preserved exactly in Chinese. The translated sense is finding treasure; no new Chinese emendation or extra sequence of searching and discovery is asserted. 「那束綠」 remains a grouping of green, not an identified plant or person's clothing.
+- Keep Chang’an District as an unspecified district name; do not infer a city or substitute historical Chang’an. The flowers shake their heads; no wind or other physical cause is supplied.
+- The repeated songs and lines remain things sung by the addressee and read by the speaker respectively. 「幸而那時遇見了你」 remains the meeting at that time, not a retrospective judgement that the relationship succeeded.
+- Preserve the ordinary birthday greeting and the completed act of writing the poem. No explanatory reading has been appended to the literary text.
