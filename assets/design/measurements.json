@@ -1200,7 +1200,7 @@
       "created": "2026-09-24T11:00:00.000Z",
       "lines": [
         {
-          "id": "c19a939b-6348-425d-a6c7-c0f7a3dcb3e7",
+          "id": "4eb938d9-ceb0-4885-94ad-e087d8fa9c09",
           "workId": "jia-yi-b3-text",
           "font": "bitmap",
           "size": 24,
@@ -1317,8 +1317,8 @@
       },
       "publication": {
         "schema": 1,
-        "renderer": "pv-render-3ac9b0823c3badc9",
-        "renderer_sha256": "3ac9b0823c3badc985f01976b901951007f57d0bb98e3c351b8a50e338503483",
+        "renderer": "pv-render-54e0d3929797b8c0",
+        "renderer_sha256": "54e0d3929797b8c0b33cca016c6fbd40e701a45b15f80eabbd66e7522ff5cd1f",
         "catalogue_sha256": "fdfc4b6e7a3ef144ea224a322d26092d424ac4610d001c991c70860f0c57774d",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
@@ -1335,7 +1335,7 @@
           "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
           "assets/fonts/noto-serif-sc-subset.woff2": "82c4a88a8b436bb256d301b697f4488ad5e4cbadd6088bb83d0a24bf309a6f1c",
           "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
-          "assets/fonts/shippori-mincho-subset.woff2": "ba8d18eed8b346a1a0028b4fbdea6ecb20865643e1746a71ee04015b33fd88d8",
+          "assets/fonts/shippori-mincho-subset.woff2": "94d9a228cf50094797a60a5300734cf0fd8c4fdb80419e0b7ba8f118ecac780c",
           "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
           "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
           "content/poetry-voucher-app/accessibility.css": "70f3da8ceff863234e7564d094f5f94e39675d0655dc477482aadd05e076f3e0",
@@ -1996,7 +1996,7 @@
     "totalY": 462
   },
   "inputs": {
-    "assets/site.css": "712833d9ebe3a411dfd3dc7c47654c9c15fb75770f1f50bc1997750a4ae0867e",
+    "assets/site.css": "bf89bdd6be02ffcad7e9a2f71fd3d9dcc849d082ec79863b82a40cfcb4f7b141",
     "content/poetry-voucher-app/gallery.js": "efb56a9c9f92e30d9243c758d0d648c725534901c2ce5ed96e3571e335642bfa",
     "content/poetry-voucher-app/shop.js": "7a919a7b003d065f07e48a0ad38a237b197d2c888bdc898aa1a5237f14aea319",
     "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
@@ -2019,7 +2019,7 @@
     "assets/fonts/opendyslexic-italic.woff2": "b18685dcb99b4ba903549d215c0ae2ab39a5087097614fd4100ae6d387332b47",
     "assets/fonts/opendyslexic-regular.woff2": "0441bc21071e42db57c217f93fbc48d3b55a2987c02814c94dc93621c42e8695",
     "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
-    "assets/fonts/shippori-mincho-subset.woff2": "ba8d18eed8b346a1a0028b4fbdea6ecb20865643e1746a71ee04015b33fd88d8",
+    "assets/fonts/shippori-mincho-subset.woff2": "94d9a228cf50094797a60a5300734cf0fd8c4fdb80419e0b7ba8f118ecac780c",
     "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
     "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
     "index.html": "46e453802bf58fbd0049cd08f045e141a301e6977b7659ae447f5d6e143bbf55",

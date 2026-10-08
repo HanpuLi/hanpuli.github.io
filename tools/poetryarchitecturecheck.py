@@ -99,8 +99,10 @@ def main() -> None:
             errors.append('Broken paper source fragment: '+offer['source_url'])
         if offer['shelf']=='jia-yi' and not offer['authorial_label']:
             errors.append('Narrator label missing from A/B edition')
-    if any(t['id'].startswith('summer-2017') and 'en' in t['editions'] for t in library.texts.values()):
-        errors.append('Migration invented an unpublished Summer translation')
+    # Authored translations may be added without changing the pinned Chinese text.
+    # Validate what each actual locale page renders rather than freezing absence.
+    from summerpoemcheck import check as check_summer
+    errors.extend(check_summer())
     if errors:
         raise SystemExit('\n'.join(errors))
     print(f'poetryarchitecturecheck: {routes_checked} canonical locale routes; {body_checks} rendered text checks; '

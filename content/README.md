@@ -261,3 +261,9 @@ site build and specimen refresh. The explanatory font CSS changes with the
 measurements. Reflowed samples use unitless leading of at least 1.3; when this
 differs from the source, both source and sample line heights are listed.
 Reading preferences can override the samples for accessibility.
+
+## Summer translation editions
+
+The `summer-2017-revised-20261008` text record contains the R8 Chinese original and five literary translations. Its Simplified mirror remains a script conversion. Each language page renders that language's complete poem, keeping the two halves, repeated refrain and final two-line question. Foreign editions link directly to the Chinese original. Chinese character-count symmetry is checked only for the original scripts, not imposed on the translations.
+
+`tools/summerpoemcheck.py` compares all seven actual rendered bodies to their canonical editions; `npm run qa:summer-translations` also checks browser reading, no-JavaScript availability, native language tags and inter-edition links. A missing translation must not fall back to Chinese under a translated interface.

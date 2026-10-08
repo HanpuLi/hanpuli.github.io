@@ -41,7 +41,7 @@ LANG_BY_ID = {item["id"]: item for item in LANGUAGES}
 POETRY = Library(ROOT)
 SUMMER_TEXT = POETRY.texts['summer-2017-revised-20261008']
 SUMMER_POEM = {'id':'summer-2017', **POETRY.data['summer_metadata'],
-    'texts':{'zh':SUMMER_TEXT['editions']['zh']['body'],
+    'texts':{**{lid:edition['body'] for lid,edition in SUMMER_TEXT['editions'].items()},
              'zh-hans':POETRY.edition(SUMMER_TEXT['id'],'zh-hans')['body']}}
 ESSAY_REGISTRY = load_json(CONTENT / "essays.json")["essays"]
 ESSAY_METADATA = {
@@ -599,9 +599,10 @@ def summer_language_switcher(locale_id: str) -> str:
 
 
 def summer_source(locale_id: str) -> tuple[str, str]:
-    if locale_id == "zh-hans":
-        return SUMMER_POEM["texts"]["zh-hans"], "zh-Hans"
-    return SUMMER_POEM["texts"]["zh"], "zh-Hant-HK"
+    # Interface localisation is not a substitute for a literary translation.
+    if locale_id not in SUMMER_POEM["texts"]:
+        raise BuildError(f"summer poem: missing published text for {locale_id}")
+    return SUMMER_POEM["texts"][locale_id], LANG_BY_ID[locale_id]["html_lang"]
 
 
 def summer_body_html(locale_id: str) -> str:
@@ -609,6 +610,9 @@ def summer_body_html(locale_id: str) -> str:
     sections = body.split("\n\n")
     if len(sections) != 18 or sections[6] != sections[13]:
         raise BuildError("summer poem: expected 18 stanzas and two identical refrains")
+    original_shape = [len(block.splitlines()) for block in SUMMER_POEM["texts"]["zh"].split("\n\n")]
+    if [len(block.splitlines()) for block in sections] != original_shape:
+        raise BuildError(f"summer poem: {locale_id} changes the authored stanza/line structure")
     upper = [sections[0], *sections[1:6], sections[6]]
     lower = [sections[7], *sections[8:13], sections[13]]
     if len(upper) != len(lower) or any(
@@ -661,6 +665,11 @@ def render_summer_page(locale_id: str, locale: dict[str, Any], template: str) ->
         "SUMMER_ARCHIVE_LABEL": html.escape(copy["archive_label"]),
         "SUMMER_DATE": html.escape(copy["archive_date"]),
         "SUMMER_LANGUAGE_NOTE": html.escape(copy["original_notice"]),
+        "SUMMER_ORIGINAL_LINK": (
+            ' <a class="summer-original-link" href="' + summer_page_path("zh") + '">'
+            + html.escape(copy["original_link_label"]) + '</a>'
+            if locale_id not in ("zh", "zh-hans") else ""
+        ),
         "SUMMER_BACK_LABEL": html.escape(copy["back_label"]),
         "SUMMER_BODY": summer_body_html(locale_id),
     })

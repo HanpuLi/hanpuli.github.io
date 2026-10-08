@@ -4924,6 +4924,7 @@ html[data-reading-simple] .site-home .other-work-grid > article + article {
   line-height: 1.75;
 }
 .summer-poem-page .summer-kicker { color: var(--faint); letter-spacing: .06em; }
+.summer-poem-page .summer-original-link { display: inline-block; min-height: 44px; padding-block: .55rem; margin-inline-start: .5em; }
 .summer-poem-page .summer-reading {
   width: min(100%, 48rem);
   padding: clamp(50px, 8vw, 98px) 0;
