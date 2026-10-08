@@ -148,7 +148,7 @@
   font-family: "IMing Gap";
   src: url("fonts/iming-gap.woff2") format("woff2");
   font-display: swap;
-  unicode-range: U+5151, U+55BB, U+60E6, U+62CB, U+67E5, U+8E29;
+  unicode-range: U+5151, U+55BB, U+60E6, U+62CB, U+67E5, U+8E29, U+8EB2;
 }
 
 :root {
@@ -4906,3 +4906,79 @@ html[data-reading-simple] .site-home .other-work-grid > article + article {
     margin-top: 1.4rem;
   }
 }
+
+
+/* An early standalone poem: both questions and both halves share one type scale. */
+.summer-poem-page .summer-context {
+  max-width: 70ch;
+  padding: clamp(56px, 8vw, 92px) 0 32px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+.summer-poem-page .summer-kicker,
+.summer-poem-page .summer-date,
+.summer-poem-page .summer-language-note {
+  margin: 0 0 10px;
+  font-family: var(--mono);
+  font-size: .8125rem;
+  line-height: 1.75;
+}
+.summer-poem-page .summer-kicker { color: var(--faint); letter-spacing: .06em; }
+.summer-poem-page .summer-reading {
+  width: min(100%, 48rem);
+  padding: clamp(50px, 8vw, 98px) 0;
+  font-size: clamp(16px, 1.45vw, 19px);
+  line-height: 2.06;
+}
+.summer-poem-page :is(.summer-question, .summer-stanza, .summer-coda-stanza) {
+  margin: 0;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  font: inherit;
+}
+.summer-poem-page .summer-question {
+  margin-bottom: clamp(34px, 5vw, 60px);
+}
+.summer-poem-page .summer-stanza {
+  margin-bottom: clamp(27px, 3.2vw, 46px);
+}
+.summer-poem-page .summer-stanza.summer-refrain { margin-top: clamp(34px, 4.6vw, 64px); }
+.summer-poem-page .summer-half + .summer-half { margin-top: clamp(68px, 10vw, 122px); }
+.summer-poem-page .summer-coda {
+  margin-top: clamp(80px, 10vw, 132px);
+  padding-top: clamp(35px, 5vw, 64px);
+  border-top: 1px solid var(--line);
+}
+.summer-poem-page .summer-coda-stanza {
+  margin-bottom: clamp(25px, 3.5vw, 44px);
+}
+.summer-poem-page .summer-back {
+  padding-bottom: clamp(54px, 7vw, 92px);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .8125rem;
+}
+.summer-poem-page .summer-back a { color: inherit; text-decoration: underline; text-underline-offset: .25em; }
+.shi-page .summer-archive-entry {
+  border-top: 1px solid var(--line);
+  padding: clamp(45px, 5vw, 76px) 0 clamp(55px, 7vw, 92px);
+}
+.shi-page .summer-archive-kicker,
+.shi-page .summer-archive-description {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .8125rem;
+  line-height: 1.7;
+}
+.shi-page .summer-archive-entry h2 {
+  margin: 12px 0 14px;
+  font-size: clamp(24px, 3vw, 44px);
+  font-weight: 400;
+  line-height: 1.3;
+}
+.shi-page .summer-archive-entry h2 a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+.shi-page .summer-archive-entry h2 a:hover { color: var(--accent); border-color: currentColor; }

@@ -15,6 +15,7 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `shi-source.json` — canonical Chinese text of the poem and its two drafts.
 - `shi-translations/<locale>.json` — non-Chinese translations.
 - `shi-simplified.json` — script-only Simplified Chinese mirror of the canonical poem source; its source hash is checked in CI.
+- `summer-poem.json` — standalone early poem first written 6–20 November 2017 (seventeenth draft), revised 8 October 2026. It contains the author-approved R8 Traditional/Hong Kong and Simplified texts. The two twenty-five-line halves are checked for line-by-line Chinese-character symmetry by `summerpoemcheck.py` (run within `i18ncheck.py`). Its seven interface editions publish the appropriately labelled Chinese original; no unreviewed literary translations are supplied. The poem lives at `/poetry/summer-2017/`, linked from `shi.html`, and is not a Poetry Voucher shop item.
 - `essays.json` — registry of public essays, their source fragments, metadata files and social images.
 - `essays/<slug>.inc` — English source fragments for the public essays.
 - `essay-<name>.json` — per-locale discovery titles, metadata and the notice used by each language shell; the essay bodies and their canonical publication titles remain English. `display_title` may contain unnested `<em>` only and is used on locale home cards, never as the essay's citation title.

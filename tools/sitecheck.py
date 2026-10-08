@@ -281,6 +281,10 @@ def check_discovery(errors: list[str]) -> None:
             for language in languages
         })
     families.append({language["id"]: first_love_url(language["id"]) for language in languages})
+    families.append({
+        language["id"]: f"{base_url}{'' if language['id'] == 'en' else '/' + language['id']}/poetry/summer-2017/"
+        for language in languages
+    })
 
     expected_alternates: dict[str, dict[str, str]] = {}
     for family in families:

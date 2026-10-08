@@ -16,6 +16,7 @@ const pageSuffixes = [
   "",
   "ci.html",
   "shi.html",
+  "poetry/summer-2017/",
   "about.html",
   "contexts.html",
   ...essayRegistry.map(({slug}) => `writing/${slug}/`),

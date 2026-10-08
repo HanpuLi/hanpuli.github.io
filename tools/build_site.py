@@ -40,6 +40,7 @@ CI_SOURCE = load_json(CONTENT / "ci-source.json")
 CI_SIMPLIFIED = load_json(CONTENT / "ci-simplified.json")
 SHI_SOURCE = load_json(CONTENT / "shi-source.json")
 SHI_SIMPLIFIED = load_json(CONTENT / "shi-simplified.json")
+SUMMER_POEM = load_json(CONTENT / "summer-poem.json")
 ESSAY_REGISTRY = load_json(CONTENT / "essays.json")["essays"]
 ESSAY_METADATA = {
     item["slug"]: load_json(CONTENT / item["metadata"])
@@ -444,6 +445,7 @@ def structured_data_html(
             "shi": "CollectionPage",
             "essay": "Article",
             "poetry-voucher": "CreativeWork",
+            "summer-poem": "CreativeWork",
         }
         page_type = type_map[page_kind]
         node = {
@@ -453,7 +455,7 @@ def structured_data_html(
             "name": title,
             "description": description,
             "isPartOf": {"@id": WEBSITE_ID},
-            "inLanguage": "en-GB" if page_kind == "essay" else language,
+            "inLanguage": ("zh-Hans" if locale_id == "zh-hans" else "zh-Hant-HK") if page_kind == "summer-poem" else ("en-GB" if page_kind == "essay" else language),
         }
         if image_url:
             node["image"] = image_url
@@ -806,6 +808,135 @@ def shi_drafts_html(locale_id: str) -> str:
             + "\n  </section>"
         )
     return "\n\n".join(blocks)
+
+
+
+SUMMER_SLUG = "summer-2017"
+
+
+def summer_page_path(locale_id: str) -> str:
+    prefix = "/" if locale_id == ROOT_LOCALE else f"/{locale_id}/"
+    return prefix + f"poetry/{SUMMER_SLUG}/"
+
+
+def summer_output_path(locale_id: str) -> Path:
+    folder = ROOT if locale_id == ROOT_LOCALE else ROOT / locale_id
+    return folder / "poetry" / SUMMER_SLUG / "index.html"
+
+
+def summer_hreflang_links() -> str:
+    result = []
+    for language in LANGUAGES:
+        lid = language["id"]
+        href = html.escape(BASE_URL + summer_page_path(lid), quote=True)
+        lang = html.escape(language["html_lang"], quote=True)
+        result.append(f'<link rel="alternate" hreflang="{lang}" href="{href}">')
+    result.append(f'<link rel="alternate" hreflang="x-default" href="{BASE_URL + summer_page_path(ROOT_LOCALE)}">')
+    return "\n".join(result)
+
+
+def summer_language_switcher(locale_id: str) -> str:
+    bits = []
+    for language in LANGUAGES:
+        lid = language["id"]
+        label = html.escape(language["short"])
+        title = html.escape(language["label"], quote=True)
+        target_lang = html.escape(language["html_lang"], quote=True)
+        if lid == locale_id:
+            bits.append(
+                f'<span class="current" lang="{target_lang}" aria-current="page" title="{title}">'
+                f'<span class="language-short" aria-hidden="true">{label}</span>'
+                f'<span class="visually-hidden">{title}</span></span>'
+            )
+        else:
+            href = html.escape(summer_page_path(lid), quote=True)
+            bits.append(f'<a href="{href}" hreflang="{target_lang}" lang="{target_lang}" aria-label="{title}" title="{title}">'
+                        f'<span class="language-short" aria-hidden="true">{label}</span></a>')
+    return "\n      ".join(bits)
+
+
+def summer_source(locale_id: str) -> tuple[str, str]:
+    if locale_id == "zh-hans":
+        return SUMMER_POEM["texts"]["zh-hans"], "zh-Hans"
+    return SUMMER_POEM["texts"]["zh"], "zh-Hant-HK"
+
+
+def summer_body_html(locale_id: str) -> str:
+    body, _source_lang = summer_source(locale_id)
+    sections = body.split("\n\n")
+    if len(sections) != 18 or sections[6] != sections[13]:
+        raise BuildError("summer poem: expected 18 stanzas and two identical refrains")
+    upper = [sections[0], *sections[1:6], sections[6]]
+    lower = [sections[7], *sections[8:13], sections[13]]
+    if len(upper) != len(lower) or any(
+        len(first.splitlines()) != len(second.splitlines())
+        for first, second in zip(upper, lower)
+    ):
+        raise BuildError("summer poem: upper and lower halves must have matching stanza lines")
+    parts = []
+    for name, stanzas in (("upper", upper), ("lower", lower)):
+        units = []
+        for idx, block in enumerate(stanzas):
+            kind = "summer-question" if idx == 0 else "summer-stanza summer-refrain" if idx == 6 else "summer-stanza"
+            units.append(f'        <p class="{kind}">{html.escape(block)}</p>')
+        parts.append(f'      <div class="summer-half summer-{name}" data-half="{name}">\n'
+                     + "\n".join(units) + '\n      </div>')
+    coda = "\n".join(f'        <p class="summer-coda-stanza">{html.escape(block)}</p>' for block in sections[14:])
+    return "\n".join(parts) + '\n      <div class="summer-coda">\n' + coda + '\n      </div>'
+
+
+def summer_archive_link_html(locale_id: str) -> str:
+    copy = SUMMER_POEM["locales"][locale_id]
+    original, lang = summer_source(locale_id)
+    title = html.escape(original.splitlines()[0])
+    return (
+        '<section class="summer-archive-entry" aria-labelledby="summer-archive-link-title">\n'
+        f'  <p class="summer-archive-kicker">{html.escape(copy["archive_label"])}</p>\n'
+        f'  <h2 id="summer-archive-link-title"><a href="{html.escape(summer_page_path(locale_id), quote=True)}" '
+        f'lang="{lang}">{title}</a></h2>\n'
+        f'  <p class="summer-archive-description">{html.escape(copy["archive_date"])}</p>\n'
+        '</section>'
+    )
+
+
+def render_summer_page(locale_id: str, locale: dict[str, Any], template: str) -> str:
+    copy = SUMMER_POEM["locales"][locale_id]
+    source, text_lang = summer_source(locale_id)
+    poem_title = source.splitlines()[0]
+    title = f'{poem_title} · {IDENTITY["primary_name"]}'
+    absolute = BASE_URL + summer_page_path(locale_id)
+    photo_path, width, height, kind = SOCIAL_IMAGES["site"]
+    image_url = f"{BASE_URL}/{photo_path}"
+    meta = social_meta_html(
+        locale_id=locale_id, title=title, description=copy["description"],
+        url=absolute, image_url=image_url, image_alt=title,
+        width=width, height=height, image_type=kind, og_type="article",
+    )
+    structured = structured_data_html(
+        locale_id=locale_id, page_kind="summer-poem",
+        title=title, description=copy["description"], url=absolute, image_url=image_url,
+    )
+    preloads = font_preloads(locale_id, "shi").replace('href="assets/', 'href="/assets/').replace('href="../assets/', 'href="/assets/')
+    shared = specials_for(locale_id, "shi", locale)
+    shared.update({
+        "SUMMER_META_TITLE": html.escape(title),
+        "SUMMER_META_DESCRIPTION_ATTR": html.escape(copy["description"], quote=True),
+        "SUMMER_CANONICAL": html.escape(absolute, quote=True),
+        "SUMMER_HREFLANG_LINKS": summer_hreflang_links(),
+        "SOCIAL_META": meta,
+        "STRUCTURED_DATA": structured,
+        "SUMMER_FONT_PRELOADS": preloads,
+        "SUMMER_LANG_SWITCHER": summer_language_switcher(locale_id),
+        "SUMMER_TITLE": html.escape(poem_title),
+        "SUMMER_TEXT_LANG": text_lang,
+        "SUMMER_ARCHIVE_LABEL": html.escape(copy["archive_label"]),
+        "SUMMER_DATE": html.escape(copy["archive_date"]),
+        "SUMMER_LANGUAGE_NOTE": html.escape(copy["original_notice"]),
+        "SUMMER_BACK_LABEL": html.escape(copy["back_label"]),
+        "SUMMER_BODY": summer_body_html(locale_id),
+    })
+    return render_template(template, locale, shared)
+
 
 
 def about_sections_html(locale_id: str) -> str:
@@ -1290,6 +1421,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "CI_TOC": ci_toc(locale_id, locale),
         "CI_POEMS": ci_poems_html(locale_id, locale),
         "SHI_DRAFTS": shi_drafts_html(locale_id),
+        "SUMMER_ARCHIVE_LINK": summer_archive_link_html(locale_id),
         "SHI_DRAFTS_CLASS": (
             "source-only" if locale_id in CHINESE_LOCALES else "comparison"
         ),
@@ -1393,6 +1525,15 @@ def build(check: bool = False) -> list[Path]:
                 f"missing={missing[:10]} extra={extra[:10]} type={mismatched[:10]}"
             )
 
+    if set(SUMMER_POEM["locales"]) != set(LANG_BY_ID):
+        raise BuildError("summer poem: missing locale metadata")
+    for lid, copy in SUMMER_POEM["locales"].items():
+        validate_locale_schema(lid, copy, SUMMER_POEM["locales"]["en"])
+    if SUMMER_POEM["dates"] != {
+        "original_start":"2017-11-06", "original_end":"2017-11-20",
+        "original_draft":17, "revision":"2026-10-08",
+    }:
+        raise BuildError("summer poem: publication dates changed unexpectedly")
     changed: list[Path] = []
     for lid, locale in locales.items():
         if lid != ROOT_LOCALE:
@@ -1491,6 +1632,19 @@ def build(check: bool = False) -> list[Path]:
                 if not check:
                     essay_target.write_text(essay_rendered, encoding="utf-8")
 
+    summer_template = (TEMPLATES / "summer-poem.html").read_text(encoding="utf-8")
+    for lid, locale in locales.items():
+        target = summer_output_path(lid)
+        content = render_summer_page(lid, locale, summer_template)
+        if not content.endswith("\n"):
+            content += "\n"
+        old = target.read_text(encoding="utf-8") if target.exists() else None
+        if old != content:
+            changed.append(target)
+            if not check:
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text(content, encoding="utf-8")
+
     def sitemap_entry(location: str, variants: dict[str, str], x_default: str) -> list[str]:
         rows = ["  <url>", f"    <loc>{html.escape(location, quote=True)}</loc>"]
         for language in LANGUAGES:
@@ -1517,6 +1671,10 @@ def build(check: bool = False) -> list[Path]:
             for language in LANGUAGES
         }
         for essay in ESSAY_REGISTRY
+    }
+    summer_variants = {
+        language["id"]: BASE_URL + summer_page_path(language["id"])
+        for language in LANGUAGES
     }
     first_love_variants = {
         language["id"]: BASE_URL + first_love_page_path(language["id"], "request")
@@ -1548,6 +1706,13 @@ def build(check: bool = False) -> list[Path]:
                 first_love_variants[lid],
                 first_love_variants,
                 first_love_variants[ROOT_LOCALE],
+            )
+        )
+        sitemap_lines.extend(
+            sitemap_entry(
+                summer_variants[lid],
+                summer_variants,
+                summer_variants[ROOT_LOCALE],
             )
         )
     sitemap_lines.append("</urlset>")

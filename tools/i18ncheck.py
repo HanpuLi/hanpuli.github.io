@@ -80,6 +80,8 @@ def simplified_font_characters(text: str) -> str:
 
 def main() -> int:
     errors = []
+    from summerpoemcheck import check as check_summer_poem
+    errors.extend(check_summer_poem())
     languages = load(CONTENT / "languages.json")
     locales = tuple(item["id"] for item in languages)
     chinese_locales = {"zh", "zh-hans"}
@@ -408,6 +410,8 @@ def main() -> int:
             json.dumps(load(CONTENT / "poetry-voucher.json")["zh-hans"], ensure_ascii=False),
             json.dumps(load(CONTENT / "contexts.json")["zh-hans"], ensure_ascii=False),
             json.dumps(load(CONTENT / "first-love-public.json")["zh-hans"], ensure_ascii=False),
+            load(CONTENT / "summer-poem.json")["texts"]["zh-hans"],
+            json.dumps(load(CONTENT / "summer-poem.json")["locales"]["zh-hans"], ensure_ascii=False),
             subprocess.check_output([
                 "node", "-e",
                 "const fs=require('node:fs'),vm=require('node:vm');"
