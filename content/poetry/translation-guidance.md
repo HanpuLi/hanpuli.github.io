@@ -99,6 +99,12 @@ The cycle becomes weaker if translation decides the dispute between its two voic
 - 「瓦釜雷鳴何故」 is the speaker's pejorative judgement, not the author's established verdict on a third person. Keep the earthen-vessel image, rather than translating it as a fact about a bad partner.
 - 「逢君仍問近來安」 is an ordinary inquiry. 「說罷了、回身讓路」 ends with a physical turning and making way, not a stated farewell, concession in love or moral lesson.
 
+## Two Manjianghong rewritings: title versus version
+
+- The first rewriting’s Chinese title is 《滿江紅 · 望沮攔約當應是》, **without** an appended numeral. Its English, Japanese, German, French and Russian literary titles are likewise unnumbered. The earlier “— I” / “· 一” was editorially invented and must not be restored.
+- The second rewriting is explicitly titled 《滿江紅 · 望沮攔約當應是 · 又稿》; preserve the corresponding “another version” distinction in each translation. Use the separate version labels (“縫補稿” / “又稿” and their translations) for navigational differentiation, not an ordinal appended to the first poem’s title.
+- This change concerns literary **titles only**. Original bodies, translations of bodies, dates, independent response poem and previously issued Poetry Voucher order snapshots are unchanged.
+
 ## Summer poem: five translations of the October 2026 revision
 
 - The Chinese R8 source and its reviewed Simplified mirror are unchanged. New English, Japanese, German, French and Russian editions belong to `summer-2017-revised-20261008`, not to a fabricated new Chinese version.
