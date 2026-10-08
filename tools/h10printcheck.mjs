@@ -11,7 +11,7 @@ const server=spawn('python3',['-m','http.server','19854','--bind','127.0.0.1'],{
 const parent=createServer((request,response)=>{
   response.setHeader('Content-Type','text/html');
   response.end(`
-    <iframe id="shop" src="${shopOrigin}/poetry-voucher/shop.html?lang=en&work=ci-b3"></iframe>
+    <iframe id="shop" src="${shopOrigin}/poetry-voucher/shop.html?lang=en&work=jia-yi-b3-text"></iframe>
     <script>
       window.received=[];
       const frame=document.getElementById('shop'),origin='${shopOrigin}',nonce='12345678-1234-4123-8123-123456789abc';
@@ -36,7 +36,7 @@ try{
   // The parent captures pixels via postMessage and has no printer endpoint.
   await page.goto(terminalOrigin+'/');
   const shop=page.frameLocator('#shop');
-  await shop.locator('#work option[value="ci-b3"]').waitFor({state:'attached',timeout:15000});
+  await shop.locator('#work option[value="jia-yi-b3-text"]').waitFor({state:'attached',timeout:15000});
   await shop.locator('#product-editor[open]').waitFor();
   await shop.locator('#font').selectOption('site');
   await shop.locator('#size').selectOption('24');
@@ -47,7 +47,7 @@ try{
   await shop.locator('.completed-order').waitFor({timeout:30000});
   const order=await shop.locator('body').evaluate(()=>poetryShop.snapshot().orders[0]);
   assert.equal(order.lines.length,1);
-  assert.equal(order.lines[0].workId,'ci-b3');
+  assert.equal(order.lines[0].workId,'jia-yi-b3-text');
   assert.equal(order.lines[0].font,'site');
   await shop.locator('.h10-print-order:visible').click();
   await page.waitForFunction(()=>received.length===1,{},{timeout:10000});

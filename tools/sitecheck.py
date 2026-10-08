@@ -273,8 +273,13 @@ def check_discovery(errors: list[str]) -> None:
         return f"{base_url}{prefix}/writing/first-love/"
 
     families: list[dict[str, str]] = []
-    for page in ("index", "ci", "shi", "about", "contexts", "poetry-voucher"):
+    for page in ("index", "about", "contexts", "poetry-voucher"):
         families.append({language["id"]: standard_url(language["id"], page) for language in languages})
+    from poetry_library import Library
+    library=Library(ROOT)
+    for route in library.routes():
+        if route!='summer-2017':
+            families.append({language['id']:base_url+library.path(route,language['id']) for language in languages})
     for essay in essays:
         families.append({
             language["id"]: essay_url(language["id"], essay["slug"])

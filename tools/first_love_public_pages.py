@@ -9,7 +9,7 @@ from pathlib import Path
 RETIRED_READER_URL = "https://node.tail95239f.ts.net:10000/first-love-reader/v/first-love-v113-2026-08-27/"
 PAGES = ("request", "status", "read")
 NAV_ITEMS = (("01", "writing", "writing"), ("02", "ci", "ci"), ("03", "work", "work"),
-             ("04", "photo", "photo"), ("05", "shi", "shi"), ("06", "profile", "profile"))
+             ("04", "photo", "photo"), ("05", "other", "other-work"), ("06", "profile", "profile"))
 
 
 def path_for(locale_id: str, page: str) -> str:
@@ -49,8 +49,8 @@ def _portfolio_nav(locale_id: str, locale: dict) -> str:
         number_html = f'<span class="nav-no">{number}</span>'
         if key == "writing":
             rows.append(f'<span aria-current="page">{number_html} {label}</span>')
-        elif key in {"ci", "shi"}:
-            rows.append(f'<a href="{html.escape(_standard_page(locale_id, key), quote=True)}">{number_html} {label}</a>')
+        elif key == "ci":
+            rows.append(f'<a href="{home}poetry/">{number_html} {label}</a>')
         else:
             rows.append(f'<a href="{html.escape(home + "#" + anchor, quote=True)}">{number_html} {label}</a>')
     return "\n      ".join(rows)

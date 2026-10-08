@@ -94,7 +94,7 @@ def save_card(name: str, eyebrow: str, title: str, *, glyph: str | None = None) 
 
 def main() -> None:
     save_card("site.png", "HANPU LI / PORTFOLIO", "WRITING · FILM\nPHOTOGRAPHY\nSYSTEMS")
-    save_card("ci.png", "04 / CI", "Sixteen-poem cycle · appendix · later pair", glyph="詞")
+    save_card("ci.png", "02 / POETRY", "Poems · sequences · versions", glyph="詩")
     save_card("shi.png", "05 / POEMS", "Poems in draft", glyph="詩")
     save_card("about.png", "IMPLEMENTATION NOTES / 2026", "ABOUT\nTHIS SITE")
     save_card("contexts.png", "RESEARCH / PRACTICE", "SELECTED\nCONTEXTS")

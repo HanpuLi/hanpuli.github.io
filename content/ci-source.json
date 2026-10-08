@@ -1,12 +1,12 @@
 {
-  "title": "甲乙十六首",
+  "generated_from": "poetry/library.json",
+  "title": "詩歌",
   "cycle_date": "2026-06-09",
-  "outside_dates": {
-    "a10": "2026-07-01"
-  },
+  "outside_dates": {},
   "poems": [
     {
       "id": "a1",
+      "work_id": "jia-yi-a1",
       "voice": "jia",
       "source_title": "甲一《臨江仙 · 與同硯燈下夜坐，侵曉方別》",
       "source_body": "幾度深宵同默坐，孤燈紅淚垂遲。\n一秋心緒有誰知。\n啓窗星欲墜，光落兩人衣。\n\n不語各含無限思，而今惟道相期。\n夜闌暗忘漏聲移。\n慵來還指日，明日又今時。",
@@ -18,6 +18,7 @@
     },
     {
       "id": "b1",
+      "work_id": "jia-yi-b1",
       "voice": "yi",
       "source_title": "乙一《無題 · 臨江仙》",
       "source_body": "虛廊月好人初定，同攜花徑遲遲。\n燈前笑語兩無疑。\n舊衾隨手與，今日不須知。\n\n客散非因誰獨在，他人皆自相依。\n席旁偶坐共相棲。\n漏殘晨露上，風過落花時。",
@@ -29,6 +30,7 @@
     },
     {
       "id": "a2",
+      "work_id": "jia-yi-a2",
       "voice": "jia",
       "source_title": "甲二《臨江仙 · 醉後扶靨登樓，夤夜同倚，人問不避》",
       "source_body": "沈醉曾扶相並倚，登樓未肯人知。\n今宵燈影漸迷離。\n漏殘催曙色，猶帶靨邊緋。\n\n同擁寒衾還細話，當筵曾許心期。\n醒來可認醉中辭？\n朝霞渾未記，宿霧已盈墀。",
@@ -40,6 +42,7 @@
     },
     {
       "id": "b2",
+      "work_id": "jia-yi-b2",
       "voice": "yi",
       "source_title": "乙二《無題 · 踏莎行》",
       "source_body": "一室香温，兩痕影並。\n笑聲沉入簾間暝。\n隔簾燈色欲先寒，有人暗處衣光冷。\n\n欲喚還休，歡猶未省。\n分明一水無舟艇。\n殘灰散盡各歸時，餘釭獨照空庭靜。",
@@ -51,6 +54,7 @@
     },
     {
       "id": "b3",
+      "work_id": "jia-yi-b3",
       "voice": "yi",
       "source_title": "乙三《無題 · 臨江仙》",
       "source_body": "燭暗蛩寒簾影瘦，殘酲猶帶微温。\n筆停紙澀墨先吞。\n未緘還自疊，一折一重門。\n\n不是東風先折取，恐花為我辭根。\n新痕舊鑰莫輕論。\n相逢原是客，客受主家恩。",
@@ -62,6 +66,7 @@
     },
     {
       "id": "b4",
+      "work_id": "jia-yi-b4",
       "voice": "yi",
       "source_title": "乙四《無題 · 渡江雲》",
       "source_body": "清銅新樣齒，欲封還止，殘熱指間彈。\n忽燈前小影，緘淺香微，半晌已潸然。\n綢繆一晌，轉覺是、別處温言。\n空鑄得、舊模新鑰，紋疊總相沿。\n\n更闌。\n啼痕自拭，燭燼重挑，奈宵長箋短。\n謄復塗、深言怕誤，淺字偏安。\n明朝銅色經他手，便認作、一諾窮年。\n燈滅後、丁寧只是加餐。",
@@ -73,6 +78,7 @@
     },
     {
       "id": "b5",
+      "work_id": "jia-yi-b5",
       "voice": "yi",
       "source_title": "乙五《無題 · 十六字令》",
       "source_body": "銅。鑰齒新裁付掌中。天寒了，加飯且從容。",
@@ -84,6 +90,7 @@
     },
     {
       "id": "a3",
+      "work_id": "jia-yi-a3",
       "voice": "jia",
       "source_title": "甲三《鷓鴣天 · 卿贈鑰，附書數字，燈下展讀》",
       "source_body": "鑰齒新裁心自珍，提毫未寫已逡巡。\n拆來只有三行字，半晌綢繆一晌嗔。\n\n星欲墜，露初勻。\n當時未敢喚真真。\n案前字暖春封淺，猶有殘香繞指温。",
@@ -95,6 +102,7 @@
     },
     {
       "id": "a4",
+      "work_id": "jia-yi-a4",
       "voice": "jia",
       "source_title": "甲四，憶甲一《臨江仙 · 曩與同硯默坐數夕，別後音塵寖薄，久乃自定》",
       "source_body": "曾共虛廊默坐，當時只道尋常。\n孤燈紅淚共商量。\n不知秋已半，但覺夜初長。\n\n別後音書都杳，逢人怕説西窗。\n偶因殘夢溯流光。\n思忘還入枕，避跡反成雙。",
@@ -106,6 +114,7 @@
     },
     {
       "id": "a5",
+      "work_id": "jia-yi-a5",
       "voice": "jia",
       "source_title": "甲五，憶甲二《臨江仙 · 記醉後扶靨登樓，夤夜人問，始無避焉》",
       "source_body": "那夜誰分賓主，並肩同倚更闌。\n當筵人問不曾瞞。\n雪泥誰去早，此後各風煙。\n\n別處星辰未改，人間幾換流年。\n舊潮猶帶醉時顏。\n思忘成此闋，相對鬢先斑。",
@@ -117,6 +126,7 @@
     },
     {
       "id": "a6",
+      "work_id": "jia-yi-a6",
       "voice": "jia",
       "source_title": "甲六，憶甲三《鷓鴣天 · 篋中故鑰銅花滿眼，追念往還書字，悵然有作》",
       "source_body": "小鑰經年鏽暗生，故箋翻罷眼猶明。\n當時避卻鴛鴦字，卻把鴛鴦寫幾層。\n\n窗月冷，鬢霜驚。\n如今畫裏喚誰名。\n相看似隔前生事，齧盡痴根草又青。",
@@ -128,6 +138,7 @@
     },
     {
       "id": "a7",
+      "work_id": "jia-yi-a7",
       "voice": "jia",
       "source_title": "甲七《臨江仙 · 分蕙寄某，憶昔贈蘭蓀時，惘然有作》",
       "source_body": "手分舊蕙移新種，如今可記春温。\n當初玉指贈蘭蓀。\n不知根已定，空自換苔痕。\n\n別後西窗青幾度，也應灌溉朝昏。\n爾來各自長年輪。\n偶然風過處，依約暗香聞。",
@@ -139,6 +150,7 @@
     },
     {
       "id": "b6",
+      "work_id": "jia-yi-b6",
       "voice": "yi",
       "source_title": "乙六《得某所寄》",
       "source_body": "故盆移蕙草，幾度誤春痕。\n鄰圃分新種，行人折故根。\n窗虛留寸土，門掩各朝昏。\n別後遷新邑，經年異故園。\n\n囊空行愈遠，塵積逐年增。\n盆碎無遺瓦，殘根失所憑。\n\n啟緘留指印，手尚帶春泥。\n稚女描新帖，盆花落漸稀。\n\n虛廊月正好，燈下話綢繆。\n君書千里至，字字是舊秋。\n展卷心先遠，擱筆無可酬。\n非是無一字，風過落花休。\n\n掩卷天將暮，稚女索殘詩。\n舊盆花事盡，春至又生枝。\n澆水成前事，素心終不移。\n君舟向滄海，我亦有天涯。",
@@ -150,6 +162,7 @@
     },
     {
       "id": "a8",
+      "work_id": "jia-yi-a8",
       "voice": "jia",
       "source_title": "甲八《夜聞舊曲》",
       "source_body": "當時窗下別，今作檐前雨。\n怕聽舊時曲，聲聲催天曙。\n餘音不肯絕，繞作迴腸縷。\n一燈寒在壁，照壁如照汝。\n\n昔我今何在，孤影各茫然。\n推窗山似海，萬古一微弦。\n此聲殊未已，人世不知年。\n側耳疑相答，餘音何處傳。",
@@ -161,6 +174,7 @@
     },
     {
       "id": "b7",
+      "work_id": "jia-yi-b7",
       "voice": "yi",
       "source_title": "乙七《忘川 · 檢篋得舊稿，不復攜，悉以寄某，並題》",
       "source_body": "燈下讀舊詞，夜深方得眠。\n當時渾不異，往事付流年。\n我又移新處，君猶理舊篇。\n小兒催入夢，蕙草立窗前。\n莫攀檐前柳，莫數落花天。\n忘川人自渡，各自有歸邊。",
@@ -172,6 +186,7 @@
     },
     {
       "id": "a9",
+      "work_id": "jia-yi-a9",
       "voice": "jia",
       "source_title": "甲九《鷓鴣天 · 得某所寄舊稿，燈下讀竟，與篋中所存合編，第其甲乙。裝成，客至輒出以相示，題其尾》",
       "source_body": "兩疊殘箋展案前，舊時燈影各成篇。\n親將一線縫卿我，留得鴛鴦傍脊眠。\n\n賓一哂，語猶慳。\n箋中淺字只加餐。\n深言怕誤重重掩，欲喚還休欲喚難。",
@@ -183,18 +198,20 @@
     },
     {
       "id": "a10",
+      "work_id": "jia-yi-a10",
       "voice": "jia",
-      "source_title": "集外 · 甲十《中呂 · 山坡羊 · 又過舊廬》",
+      "source_title": "甲十《中呂 · 山坡羊 · 又過舊廬》",
       "source_body": "風迎面，人立此，\n鼻尖一動魂先至。\n認不真，卻認真，\n繞來繞去街角立。\n廿年風霜渾不記，\n這點子氣味偏惦記。\n\n遲，是誤了；\n歸，也是誤了。",
-      "date": null,
+      "date": "二〇二六年七月一日",
       "en": {
-        "title": "Outside the cycle · Zhonglü · To the tune of Shanpoyang · Passing the old house again",
+        "title": "Zhonglü · To the tune of Shanpoyang · Passing the old house again",
         "body": "Wind in the face. Stopped here.\nThe nose moves first — the soul arrives before I do.\nCan’t be sure it’s real; am sure anyway.\nRound and round the corner of the street, and standing still.\nTwenty years of weather, none of it kept —\nthis little bit of smell, kept.\n\nToo late — that was the mistake.\nComing back — that was the mistake too."
       }
     },
     {
       "id": "w2",
-      "voice": "separate",
+      "work_id": "zhegutian-20260909",
+      "voice": null,
       "source_title": "《鷓鴣天 · 連夕燈下試筆，未竟》",
       "source_body": "幾夕簾前共剪燈，平生話到又三更。\n從頭説盡還存半，且任宵深硯自凝。\n\n言漸杳，露初零。獨餘一語未分明。\n頻頻蘸得毫端黑，墨至濃時偏不成。",
       "date": "二〇二六年九月九日",
@@ -205,7 +222,8 @@
     },
     {
       "id": "w3",
-      "voice": "separate",
+      "work_id": "linjiangxian-20260909",
+      "voice": null,
       "source_title": "《臨江仙》",
       "source_body": "簾影幾宵長共話，露痕初濕闌干。\n言猶未了息先安。\n夢深渾不覺，月上夜將殘。\n\n他日重簾垂到地，垂來一似從前。\n手臨燈畔數迴旋。\n明朝風或緊，窗且掩周全。",
       "date": "二〇二六年九月九日",
@@ -216,7 +234,8 @@
     },
     {
       "id": "w5",
-      "voice": "separate",
+      "work_id": "linjiangxian-20180108",
+      "voice": null,
       "source_title": "《臨江仙》",
       "source_body": "麴櫱鹽梅無舊譜，塵來未皺芳流。\n簾前欲去影先留。\n緣愁都不守，只道別家秋。\n\n閬苑蓬萊身已遠，青驄且繫書樓。\n別期未至不題愁。\n炭冰摧過後，吟捻憶君眸。",
       "date": "二〇一八年一月八日至十四日作；二〇二六年十月修訂",
@@ -227,7 +246,8 @@
     },
     {
       "id": "w6",
-      "voice": "separate",
+      "work_id": "linjiangxianyin-20191028",
+      "voice": null,
       "source_title": "《臨江仙引》",
       "source_body": "塢裂，宴散，鐘垂晚、暫偷安。\n星師不復嘉年。\n任舊牆吞影，剩歸夢盤桓。\n空庭雪柳，折處尚溫，偏倚爛柯山。\n\n三山別來無去處，苔階不認人還。\n度鐵城礄路，更麻雨潺潺。\n拋殘血縷滿指，待來世兩相憐。",
       "date": "二〇一九年十月二十八日作；二〇二六年十月修訂",
@@ -238,7 +258,8 @@
     },
     {
       "id": "w7",
-      "voice": "separate",
+      "work_id": "chaozhongcuo-20181023",
+      "voice": null,
       "source_title": "《朝中措》",
       "source_body": "鷦金梳作暗香英，香到鏡中停。\n偶影欄前欲並，一絲朱髮先縈。\n\n唇邊鳳語，挹來便作，銀磬微鳴。\n字底分明芒刺，唇間猶護餘聲。",
       "date": "二〇一八年十月二十三日作；二〇二六年十月修訂",
@@ -249,7 +270,8 @@
     },
     {
       "id": "w11",
-      "voice": "separate",
+      "work_id": "fengrusong-20181102",
+      "voice": null,
       "source_title": "《風入松》",
       "source_body": "丘亭欲雪已凝霜，依舊頑陽。\n斜暉落甓猶難去，然金爐、待子宵長。\n千里行來至此，雁丘今可成堂。\n\n舊山橫影亂爐光，燼處餘香。\n筆枯化紙容人念，料經年、應易遷忘。\n芍藥更添紅雨，玉筋暗觸龍章。",
       "date": "二〇一八年十一月二日作；二〇二六年十月修訂",
@@ -260,7 +282,8 @@
     },
     {
       "id": "w4",
-      "voice": "separate",
+      "work_id": "mantingfang-20191219",
+      "voice": null,
       "source_title": "《滿庭芳 · 遙思楚潭》",
       "source_body": "風佩初停，雨梳朝蕣，尺書先識眉彎。\n一聲低喚，驚散夢中弦。\n墨跡新添氣息，微微顫、欲出行間。\n相逢處，餘溫未定，人近楚天寬。\n\n辭顏。名已熟，臨唇卻緩，舌底生瀾。\n把千里關山，盡斂襟前。\n幾月光陰忽薄，回眸際、指過眉山。\n從頭認，詩還半闋，雙影壓箋邊。",
       "date": "二〇一九年十二月十九日作；二〇二六年十月修訂",
@@ -271,7 +294,8 @@
     },
     {
       "id": "w8",
-      "voice": "separate",
+      "work_id": "manjianghong-2022",
+      "voice": null,
       "source_title": "《滿江紅 · 望沮攔約當應是》",
       "source_body": "舊隙才縫，春風又、殷勤留客。\n門欲掩、卻翻簾影，放春偷入。\n瘦損腰圍衣尚窄，暗痕都向肌膚積。\n算歸來、猶有舊針留，縫新隙。\n\n燈未冷，人已易。門不閉，風偏急。\n更何須揀擇，過門皆璧。\n初景寒柯違業識，豐城元禮宜同席。\n看收場、針腳又周全，無痕跡。",
       "date": "二〇二二年原作；二〇二六年十月重寫（縫補稿）",
@@ -282,7 +306,8 @@
     },
     {
       "id": "w9",
-      "voice": "separate",
+      "work_id": "manjianghong-2022",
+      "voice": null,
       "source_title": "《滿江紅 · 望沮攔約當應是 · 又稿》",
       "source_body": "漏盡鐘回，催曉處、餘聲仍塞。\n門欲掩、劣衿將去，又迎嘉客。\n舊事還從新曆出，階前風雨渾成笛。\n算韶光、只在一聲中，塵先積。\n\n空空雪，留故色。光易轉，痕難拭。\n縱衣冠屢換，總稱圭璧。\n初景寒柯違業識，豐城元禮宜同席。\n曉山塗，晝影祭寒華，猶無息。",
       "date": "二〇二二年原作；二〇二六年十月重寫（又稿）",
@@ -293,7 +318,8 @@
     },
     {
       "id": "w10",
-      "voice": "separate",
+      "work_id": "manjianghong-rereading-202610",
+      "voice": null,
       "source_title": "《滿江紅 · 重讀舊作，憶經年復通音問事》",
       "source_body": "舊闋重翻，先認得、當年心力。\n曾細剖、片言千轉，氣微聲澀。\n鎖盡諸門身作鎖，翻來私語都成棘。\n縱丁寧、舌底已春深，花時隔。\n\n名復見，箋乍濕。言可續，時難逆。\n任音書又杳，不催消息。\n字入年輪方有響，痕藏木理猶能識。\n聽鐘回、晝影過寒柯，尋常日。",
       "date": "二〇二六年十月另作",
@@ -304,7 +330,8 @@
     },
     {
       "id": "w12",
-      "voice": "separate",
+      "work_id": "queqiaoxian-20181222",
+      "voice": null,
       "source_title": "《鵲橋仙》",
       "source_body": "未消尺素，自珍故物，紙上尋常字句。\n柔荑傷處竟唇濡，經年後、還留幾許。\n\n聞人道好，隨人道好，瓦釜雷鳴何故。\n逢君仍問近來安，說罷了、回身讓路。",
       "date": "二〇一八年十二月二十二日作；二〇二六年十月修訂",
@@ -313,46 +340,5 @@
         "body": "No need for letters; I treasure the old things. On the paper, only ordinary words.\nYet lips moistened the wound on a tender hand; years later, how much remains?\n\nHearing others call it good, I call it good too. Why does the earthen pot thunder?\nMeeting you, I still ask how you have been; when the words are done, I turn and make way."
       }
     }
-  ],
-  "separate_groups": [
-    {
-      "id": "revisions-2026-10",
-      "revision_date": "2026-10-08",
-      "period": "2018–2022",
-      "poem_ids": [
-        "w5",
-        "w7",
-        "w11",
-        "w12",
-        "w6",
-        "w4",
-        "w8",
-        "w9"
-      ],
-      "copy_key": "revised"
-    },
-    {
-      "id": "sep-2026-09-09",
-      "date": "2026-09-09",
-      "period": "2026.09.09",
-      "poem_ids": [
-        "w2",
-        "w3"
-      ]
-    },
-    {
-      "id": "response-2026-10",
-      "period": "2026.10",
-      "poem_ids": [
-        "w10"
-      ],
-      "copy_key": "response"
-    }
-  ],
-  "reading_order": [
-    "revisions-2026-10",
-    "cycle",
-    "sep-2026-09-09",
-    "response-2026-10"
   ]
 }

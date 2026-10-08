@@ -4,6 +4,12 @@ Personal portfolio and writing site for Hanpu Li, published with GitHub Pages at
 
 The site is deliberately static: editorial HTML/CSS, local image/font assets and no client-side application framework. A small standard-library Python generator produces complete static English, Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian editions from structured content. A quiet `Credits & contexts` back-matter page keeps credit names and selected professional records separate from the work pages. Ordinary pages have no runtime translation layer; the root custom 404 carries a small path-aware locale router because GitHub Pages serves the same root 404 document for real missing URLs in every language tree. The repository also hosts the public privacy/terms pages for the mail-assistant project.
 
+## Poetry catalogue
+
+`/poetry/` is the shared entrance for poems, sequences and retained versions. Each language has the same work routes. `/poetry/chronology/` indexes first dates without splitting a sequence into unrelated entries. The A/B sequence contains its seventeen author-confirmed members, including A10. Roof remains one two-part work in two drafts; the two Manjianghong rewritings share one work, while the later response has its own identity.
+
+All literary content is authored in `content/poetry/library.json`. The simplified mirror, old ci/shi JSON files, canonical readers, old-route recovery pages and Poetry Voucher catalogue are generated views. See `docs/poetry-architecture.md` for editing and compatibility contracts.
+
 ## Local checks
 
 Regenerate pages after editing structured copy, then run the dependency-free checks used by the first CI job:
@@ -12,6 +18,7 @@ Regenerate pages after editing structured copy, then run the dependency-free che
 python3 tools/build_site.py
 python3 tools/build_site.py --check
 python3 tools/i18ncheck.py
+python3 tools/poetryarchitecturecheck.py
 python3 tools/a11ycheck.py
 node --check assets/accessibility.js
 python3 tools/sitecheck.py
@@ -33,7 +40,7 @@ The seven-language First Love abstract and the former `/status/` and `/read/` UR
 
 This validates tracked public HTML, then uses Chromium to exercise the seven portfolio locales at 320, 390, 520, 640, 768, 900, 1024, 1440 and 1728 px across the home, ci, poem, About, Credits & contexts, essay, Poetry Voucher and 404 page types. Each page is loaded once and resized through the matrix so intermediate-width regressions are covered without multiplying network waits. It checks page-level overflow, clipped navigation labels, overlapping interactive targets and wide-screen 404 quotation wrapping across every locale. Since the dependency-free accessibility checker already inspects every generated page structurally, axe-core runs the eight page types in representative English and Simplified-Chinese editions at narrow and wide widths rather than repeating the same DOM audit seven times. A second browser pass serves real missing URLs with GitHub Pages-style custom-404 semantics and verifies the 404 status, path-based locale selection, root-relative stylesheet loading, language switching and axe results at phone and desktop widths. The same suite runs in the `browser-qa` CI job after the dependency-free checks pass. `npm run qa:wrap` also reads the computed text wrapping of every published HTML page at phone width; the local `WRAP_ENGINE=webkit npm run qa:wrap` variant checks the same contract in WebKit.
 
-The Traditional Chinese literary source remains canonical. When `content/ci-source.json` or `content/shi-source.json` changes, regenerate the script-only Simplified Chinese mirrors before building:
+The Traditional Chinese literary source remains canonical. After changing `content/poetry/library.json`, regenerate only its script mirrors and compatibility views before building:
 
 ```sh
 uv run --with opencc-python-reimplemented python tools/update_simplified_literary.py
@@ -46,7 +53,7 @@ The mirrors record the source SHA-256 and CI fails if they become stale. Editori
 The portfolio includes [Poetry Voucher](https://hanpuli.github.io/poetry-voucher/),
 a seven-language project overview and an author-only poetry shop. The former
 open-text Studio is retired; its old URL redirects to the same-language shop.
-The shop offers all 32 catalogue works with Traditional or Simplified Chinese
+The shop offers registered paper editions with Traditional or Simplified Chinese
 originals, optional published translations, typeface and size choices, quantities,
 a local bag, fictional checkout, image PDFs and a complete offline HTML reading copy.
 There is no real payment, upload or delivery. The order page can hand its receipt and all poem vouchers to an H10S only when it is open inside that device's paired local wrapper and the user taps the print button; the public site has no remote print endpoint.

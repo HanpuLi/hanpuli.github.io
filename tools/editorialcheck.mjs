@@ -140,8 +140,8 @@ try {
     }
   }
 
-  await open(page, '/fr/ci.html', 320);
-  const ciTitle = await lines(page, '#a2 .translation h3');
+  await open(page, '/fr/poetry/jia-yi/', 320);
+  const ciTitle = await lines(page, '#jia-2 .translation h2');
   if (ciTitle.some((line) => /^[;:!?]/u.test(line))) {
     failures.push(`FR A2 title @ 320: ${ciTitle.join(' | ')}`);
   }
@@ -327,7 +327,7 @@ try {
     }
   }
 
-  for (const path of ['/', '/ci.html', '/poetry-voucher/', '/poetry-voucher/shop.html?lang=en', '/poetry-voucher/make.html?lang=en']) {
+  for (const path of ['/', '/poetry/', '/poetry-voucher/', '/poetry-voucher/shop.html?lang=en', '/poetry-voucher/make.html?lang=en']) {
     for (const width of [320, 390]) {
       await open(page, path, width);
       const tools = await page.locator('.reading-tools').evaluate((element) => ({
@@ -354,7 +354,7 @@ try {
     }
   }
 
-  for (const path of ['/', '/ci.html', '/poetry-voucher/']) {
+  for (const path of ['/', '/poetry/', '/poetry-voucher/']) {
     await open(page, path, 1440);
     const alignment = await page.locator('.reading-tools summary').evaluate((summary) => {
       const header = summary.closest('header');

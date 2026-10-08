@@ -44,7 +44,7 @@ const RECEIPT_CONFIG=Object.freeze({
   cardEntries:Object.freeze(['CONTACTLESS','CHIP','MOBILE']),
   lineChars:30,
   columns:Object.freeze({qty:3,description:11,rsp:6,amount:6}),
-  defaultWork:'ci-b3',
+  defaultWork:'jia-yi-b3-text',
   customWorkCode:'CUSTOM',
   referenceDigits:6,
   paymentRefDigits:8,
@@ -273,6 +273,12 @@ function receiptReference(created,entropy){
   for(const byte of entropy)suffix=(suffix*256+byte)%modulo;
   return parts.year+parts.month+parts.day+String(suffix).padStart(RECEIPT_CONFIG.referenceDigits,'0');
 }
+// Issued historical identifiers are immutable. New standalone editions use the
+// receipt reference, not an arbitrary catalogue counter; A/B labels remain meaningful.
+function paperVoucherId(work,ref,index=null){
+  const suffix=index===null?'':'-'+String(index).padStart(2,'0');
+  return work?.version_id&&!work.authorial_label?ref+suffix:(work?.source_id||'CUSTOM')+'-'+ref+suffix;
+}
 const $=id=>document.getElementById(id);
 const serif='EB, ShipCommon, Ship, IMing, Noto, serif',mono='Courier, monospace';
 const INPUT_LIMITS=Object.freeze({title:160,author:100,poem:1800});
@@ -302,8 +308,8 @@ function updateSource(){
   const w=currentWork();$('source-note').replaceChildren();
   if(w){const a=document.createElement('a'),source=new URL(w.source_url);
     const route={'en':'','zh-Hant':'zh/','zh-Hans':'zh-hans/','ja':'ja/','de':'de/','fr':'fr/','ru':'ru/'}[uiLocale];
-    a.href='/'+route+source.pathname.split('/').pop()+source.hash;
-    a.textContent=tr('原站作品')+' · '+w.source_id;$('source-note').append(a);}
+    a.href='/'+route+source.pathname.replace(/^\/(?:zh\/|zh-hans\/|ja\/|de\/|fr\/|ru\/)?/,'')+source.hash;
+    a.textContent=tr('原站作品')+' · '+(w.translations?.[uiLocale]?.title||w.title);$('source-note').append(a);}
   else $('source-note').textContent=tr('寫下自己的作品。署名留空也可以。');
 }
 function updateLocale(){
@@ -313,7 +319,7 @@ function updateLocale(){
     for(const w of works){const option=document.createElement('option');option.value=w.id;
       // Work titles are authored content. Use an existing published title where available.
       const title=w.translations?.[uiLocale]?.title||w.title;
-      option.textContent=`${w.source_id} / ${title}`;$('work').append(option);
+      const edition=(w.edition_labels?.[uiLocale]||'').split(' · ')[0];option.textContent=title+(w.part_id?' · '+edition:'');$('work').append(option);
     }$('work').value=selected;updateSource();
   }
   updateConfigCopy();
@@ -434,7 +440,7 @@ function barcodeBits(ref){
   return [...values,check].map(v=>codes[v]).join('')+stopCode+'11';
 }
 function render(spec){
-  const p=new Paper(),ref=spec.ref,code=spec.original?spec.work.source_id:RECEIPT_CONFIG.customWorkCode,voucher=spec.voucherId||code+'-'+ref,contentLocale=spec.locale||(spec.original?'zh-Hant':'en');
+  const p=new Paper(),ref=spec.ref,code=spec.original?spec.work.source_id:RECEIPT_CONFIG.customWorkCode,voucher=spec.voucherId||paperVoucherId(spec.original?spec.work:null,ref),contentLocale=spec.locale||(spec.original?'zh-Hant':'en');
   const bodyFont=spec.font==='site'?serif:bitmapFamily(contentLocale),translationFont=locale=>spec.font==='site'?serif:bitmapFamily(locale);
   p.threshold=TYPE_CONFIG.threshold[spec.font];
   const items=spec.items||[sku('poem',spec.price)],meta=receiptMeta(ref),tax=vatSummary(items);
@@ -578,10 +584,11 @@ if(document.body.classList.contains('shop-page')){
 }
 $('work').addEventListener('change',loadWork);$('generate').addEventListener('click',generate);
 (async()=>{try{
-  const r=await fetch('editions.json');if(!r.ok)throw Error('作品目錄暫時無法載入，請重新整理。');
-  const data=await r.json();works=data.works;patterns=data.patterns;codes=data.code128;stopCode=data.code128_stop;
+  const r=await fetch('editions.json?catalogue=2');if(!r.ok)throw Error('作品目錄暫時無法載入，請重新整理。');
+  const data=await r.json();if(data.version!==2||!Array.isArray(data.works))throw Error('Catalogue version mismatch. Reload this page.');works=data.works;patterns=data.patterns;codes=data.code128;stopCode=data.code128_stop;
   for(const [id,maxLength] of Object.entries(INPUT_LIMITS))$(id).maxLength=maxLength;
   syncTypeSize();updateLocale();
   const requested=new URL(location.href).searchParams.get('work');
-  $('work').value=works.some(w=>w.id===requested)?requested:requested==='custom'&&!document.body.classList.contains('shop-page')?'custom':RECEIPT_CONFIG.defaultWork;$('work').disabled=false;loadWork();if(document.body.classList.contains('shop-page'))document.dispatchEvent(new Event('catalogueready'));else if(currentWork())await generate();
+  const requestedWork=works.find(w=>w.id===requested||w.legacy_ids?.includes(requested));
+  $('work').value=requestedWork?requestedWork.id:requested==='custom'&&!document.body.classList.contains('shop-page')?'custom':RECEIPT_CONFIG.defaultWork;$('work').disabled=false;loadWork();if(document.body.classList.contains('shop-page'))document.dispatchEvent(new Event('catalogueready'));else if(currentWork())await generate();
 }catch(error){message(error.message);document.dispatchEvent(new CustomEvent('catalogueerror',{detail:error.message}));}})();

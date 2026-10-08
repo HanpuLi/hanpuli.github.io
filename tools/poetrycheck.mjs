@@ -193,59 +193,27 @@ assert.equal(catalogueCheck.status,0,catalogueCheck.stderr||'voucher translation
 assert.equal(data.patterns['%'],'11001 11010 00100 01000 10110 10011 00000');
 assert(data.patterns['(']&&data.patterns[')']&&data.patterns['£']);
 assert.equal(new Set(data.works.map(work => work.id)).size, data.works.length);
-assert(data.works.some(work => work.id === 'ci-b3'));
-for (const work of data.works) {
-  const url = new URL(work.source_url);
-  assert.equal(url.origin, 'https://hanpuli.github.io');
-  assert(['/ci.html', '/shi.html'].includes(url.pathname));
-  assert(url.hash);
-  assert(work.title && work.poem);
-  assert.deepEqual(Object.keys(work.translations),['en','zh-Hans','ja','de','fr','ru']);
-}
-const ciSource=JSON.parse(read('content/ci-source.json'));
-const ciSimplified=JSON.parse(read('content/ci-simplified.json'));
-const shiSource=JSON.parse(read('content/shi-source.json'));
-const shiSimplified=JSON.parse(read('content/shi-simplified.json'));
-const shiEnglish=JSON.parse(read('content/shi-translations/en.json'));
-const ciById=new Map(ciSource.poems.map(poem=>[poem.id,poem]));
-const ciSimplifiedById=new Map(ciSimplified.poems.map(poem=>[poem.id,poem]));
-assert.equal(data.works.filter(work=>work.kind==='CI').length,ciSource.poems.length);
-assert.equal(data.works.filter(work=>work.kind==='POEM').length,shiSource.drafts.reduce((count,draft)=>count+draft.parts.length,0));
+assert(data.works.some(work => work.id === 'jia-yi-b3-text'));
+const library=JSON.parse(read('content/poetry/library.json'));
+const simplified=JSON.parse(read('content/poetry/simplified.json')).texts;
+const textById=new Map(library.texts.map(text=>[text.id,text]));
+const offerById=new Map(library.offers.map(offer=>[offer.id,offer]));
+assert.equal(data.works.length,offerById.size);
+assert(library.collections.find(c=>c.id==='jia-yi').members.includes('jia-yi-a10'));
 for(const work of data.works){
-  if(work.kind==='CI'){
-    const id=work.id.slice(3),sourcePoem=ciById.get(id);
-    assert(sourcePoem,`missing canonical ci source for ${work.id}`);
-    assert.equal(work.id,`ci-${sourcePoem.id}`);
-    assert.equal(work.source_id,id.toUpperCase(),work.id);
-    assert.equal(work.source_url,`https://hanpuli.github.io/ci.html#${id}`,work.id);
-    assert.equal(work.title,sourcePoem.source_title,work.id);
-    assert.equal(work.poem,sourcePoem.source_body,work.id);
-    assert.equal(work.translations.en.title,sourcePoem.en.title,work.id);
-    assert.equal(work.translations.en.body,sourcePoem.en.body,work.id);
-    assert.equal(work.translations['zh-Hans'].title,ciSimplifiedById.get(id)?.source_title,work.id);
-    assert.equal(work.translations['zh-Hans'].body,ciSimplifiedById.get(id)?.source_body,work.id);
-    assert.equal(work.collection,sourcePoem.voice==='separate'?'詞':ciSource.title,work.id);
-    const edition=sourcePoem.date||(
-      ciSource.outside_dates[id]?`外編 · ${ciSource.outside_dates[id]}`:`集作日期 ${ciSource.cycle_date}`
-    );
-    assert.equal(work.edition,edition,work.id);
-    continue;
-  }
-  assert.equal(work.kind,'POEM',work.id);
-  const match=/^shi-d([1-9]\d*)-([1-9]\d*)$/.exec(work.id);
-  assert(match,`invalid shi catalogue id: ${work.id}`);
-  const [draftNumber,partNumber]=match.slice(1).map(Number);
-  const draft=shiSource.drafts[draftNumber-1],part=draft?.parts[partNumber-1];
-  const translatedPart=shiEnglish.drafts[draftNumber-1]?.parts[partNumber-1];
-  assert(part&&translatedPart,`missing canonical shi source for ${work.id}`);
-  assert.equal(work.source_id,`D${draftNumber}.${partNumber}`,work.id);
-  assert.equal(work.source_url,'https://hanpuli.github.io/shi.html#drafts',work.id);
-  assert.equal(work.collection,shiSource.title,work.id);
-  assert.equal(work.title,`${shiSource.title} · ${part.number}`,work.id);
-  assert.equal(work.edition,draft.title,work.id);
-  assert.equal(work.poem,part.body,work.id);
-  assert.equal(work.translations.en.body,translatedPart.body,work.id);
-  assert.equal(work.translations['zh-Hans'].body,shiSimplified.drafts[draftNumber-1]?.parts[partNumber-1]?.body,work.id);
+  const offer=offerById.get(work.id),text=textById.get(offer?.text);
+  assert(offer&&text,'paper edition must resolve to a published text');
+  const url=new URL(work.source_url);
+  assert.equal(url.origin,'https://hanpuli.github.io');
+  assert(url.pathname.startsWith('/poetry/'));
+  assert(!/^(?:W[0-9]+|D[0-9]+\.[0-9]+)$/.test(work.source_id),'counter leaked into a new paper edition');
+  assert.equal(work.poem,text.editions.zh.body);
+  assert.equal(work.title,text.editions.zh.title);
+  assert.equal(work.version_id,text.version);
+  assert.deepEqual(Object.keys(work.translations),['en','zh-Hans','ja','de','fr','ru']);
+  for(const locale of ['en','ja','de','fr','ru'])assert.deepEqual(work.translations[locale],text.editions[locale]);
+  assert.deepEqual(work.translations['zh-Hans'],simplified[text.id]);
+  assert.equal(data.aliases[offer.legacy_ids[0]],work.id);
 }
 // Exercise the actual cart admission and pricing functions for every published variant.
 const shopPrefix=read('content/poetry-voucher-app/shop.js').split('  function notify(')[0];
@@ -253,13 +221,13 @@ const shopCart=vm.runInNewContext(shopPrefix+'return {validateLine,quote};})()',
   works:data.works,crypto:{randomUUID},typeSizes,quotePoem,
   SHOP_LANGS:['en','zh-Hant','zh-Hans','ja','de','fr','ru']
 });
-const expectedIds=[...ciSource.poems.map(p=>`ci-${p.id}`),...shiSource.drafts.flatMap((d,i)=>d.parts.map((p,j)=>`shi-d${i+1}-${j+1}`))];
+const expectedIds=library.offers.map(offer=>offer.id);
 assert.deepEqual(data.works.map(w=>w.id).sort(),expectedIds.sort());
 let shopVariants=0,outsideVariants=0;
 for(const work of data.works){
-  const ciId=work.id.slice(3);
-  const expectedShelf=work.kind==='POEM'?shiSource.title:
-    ciById.get(ciId).voice==='separate'||ciSource.outside_dates[ciId]?'詞':ciSource.title;
+  const parent=library.works.find(w=>w.id===work.work_id);
+  const collection=library.collections.find(group=>group.members.includes(parent.id));
+  const expectedShelf=collection?.id||(parent.id==='roof-splits'?'roof-splits':'individual');
   assert.equal(work.shelf,expectedShelf,work.id);
   for(const locale of ['zh-Hant','zh-Hans'])for(const translations of [[],...['en','ja','de','fr','ru'].map(language=>[language]),['en','ja','de','fr','ru']]){
     const line=shopCart.validateLine({workId:work.id,locale,translations,font:'bitmap',size:TYPE_CONFIG.defaultSize,quantity:1});
@@ -267,18 +235,18 @@ for(const work of data.works){
     assert.equal(line.poem,locale==='zh-Hans'?work.translations['zh-Hans'].body:work.poem);
     assert.deepEqual([...line.translations],translations);
     assert.equal(shopCart.quote(line).price,quotePoem(work.poem).price+translations.length*TARIFF.addOn);
-    shopVariants++;if(work.shelf!==ciSource.title)outsideVariants++;
+    shopVariants++;if(work.shelf!=='jia-yi')outsideVariants++;
   }
   assert.throws(()=>shopCart.validateLine({workId:work.id,locale:'zh-Hant',translations:['missing'],font:'bitmap',size:TYPE_CONFIG.defaultSize,quantity:1}));
   assert.throws(()=>shopCart.validateLine({workId:work.id,locale:'zh-Hant',translations:['en','en'],font:'bitmap',size:TYPE_CONFIG.defaultSize,quantity:1}));
 }
-assert.equal(data.works.filter(w=>w.shelf===ciSource.title).length,16);
-console.log(`shop catalogue: ${shopVariants} checked configurations, including ${outsideVariants} outside the sixteen-poem cycle; actual cart validation and pricing OK`);
+assert.equal(data.works.filter(w=>w.shelf==='jia-yi').length,library.collections.find(c=>c.id==='jia-yi').members.length);
+console.log(`shop catalogue: ${shopVariants} checked configurations, including ${outsideVariants} outside the A/B sequence; actual cart validation and pricing OK`);
 for (const file of ['gallery.js', 'i18n.js', 'editions.json', 'studio.css']) {
   const text = read('content/poetry-voucher-app/' + file);
   assert(!/tail95239f|100\.99\.73|192\.168\.|\/api\/print|\/dev\/|Bearer\s|sendBeacon|WebSocket/.test(text), file + ': private endpoint or telemetry');
 }
-assert.deepEqual([...source.matchAll(/fetch\(([^)]+)\)/g)].map(match => match[1]), ["'editions.json'"]);
+assert.deepEqual([...source.matchAll(/fetch\(([^)]+)\)/g)].map(match => match[1]), ["'editions.json?catalogue=2'"]);
 assert(!/localStorage|sessionStorage|indexedDB|innerHTML/.test(source));
 assert(!/cardEnding:'0000'|auth:'TEST|operator:'01'|p\.till\('ENTRY','CONTACTLESS'\)/.test(source),'transaction-specific receipt metadata must be derived from the receipt reference');
 const studioTemplate=read('templates/poetry-voucher-studio.html');
@@ -288,4 +256,4 @@ const overviewTemplate=read('templates/poetry-voucher.html'),homeTemplate=read('
 assert(overviewTemplate.includes('width="{{PV_FULL_WIDTH}}"')&&overviewTemplate.includes('height="{{PV_FULL_HEIGHT}}"')&&overviewTemplate.includes('/poetry-voucher/sample-full.png'));
 assert(homeTemplate.includes('height="{{PV_EDITORIAL_HEIGHT}}"'));
 assert(!/height="566"/.test(overviewTemplate));
-console.log(`poetrycheck: ${scenes} payment cases, pricing, ${localeRows.length} translation rows, ${data.works.length} public works and privacy invariants OK`);
+console.log(`poetrycheck: ${scenes} payment cases, pricing, ${localeRows.length} translation rows, ${data.works.length} paper editions and privacy invariants OK`);

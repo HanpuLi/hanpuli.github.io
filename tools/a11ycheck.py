@@ -54,6 +54,7 @@ def first_love_paths() -> list[Path]:
 def page_paths() -> list[Path]:
     return [
         *portfolio_paths(),
+        *[path for base in [ROOT / locale / "poetry" for locale in LOCALES] for path in base.rglob("index.html")],
         *essay_paths(),
         *first_love_paths(),
         *[ROOT / locale / "poetry-voucher" / "index.html" for locale in LOCALES],

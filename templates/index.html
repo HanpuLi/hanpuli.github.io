@@ -112,11 +112,11 @@
         </div>
         <div class="poetry-index">
           <p>{{home.poetry.recent}}</p>
-          <a href="{{CI_HREF}}#w2">{{home.poetry.translation_w2}}</a>
-          <a href="{{CI_HREF}}#w3">{{home.poetry.translation_w3}}</a>
-          <p class="poetry-cycle">{{home.poetry.cycle}}</p>
+          <a href="{{POETRY_FIRST_HREF}}">{{home.poetry.translation_w2}}</a>
+          <a href="{{POETRY_SECOND_HREF}}">{{home.poetry.translation_w3}}</a>
+          <p class="poetry-cycle"><a href="{{POETRY_COLLECTION_HREF}}">{{home.poetry.cycle}}</a></p>
           <a class="text-link" href="{{CI_HREF}}">{{home.poetry.full_cycle}}</a>
-          <a class="text-link" href="{{SHI_HREF}}">{{home.poetry.poem_link}}</a>
+          <a class="text-link" href="{{SHI_HREF}}chronology/">{{home.poetry.poem_link}}</a>
         </div>
       </div>
     </section>
@@ -309,7 +309,7 @@
       <p class="section-note">{{PHOTO_NOTE}}</p>
     </section>
 
-    <aside class="other-work" aria-labelledby="other-work-heading">
+    <aside id="other-work" class="other-work" aria-labelledby="other-work-heading">
       <div class="other-work-head">
         <p class="process-kicker">{{home.other.eyebrow}}</p>
         <h2 id="other-work-heading">{{home.other.title}}</h2>

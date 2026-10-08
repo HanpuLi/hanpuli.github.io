@@ -1,6 +1,9 @@
-# Translation guidance for 《甲乙十六首》
+# Poetry translation guidance
 
-This file records semantic constraints distilled from the author's current annotations. It is a translation/QA aid, not a substitute for the canonical Chinese text in `ci-source.json`.
+The original Chinese and each translation belong to an explicit text version in `library.json`. The former `w` references below are historical cross-references, not current work numbers. A/B labels remain authorial labels within the sequence. A10 is a member, not an appendix.
+
+
+This file records semantic constraints distilled from the author's current annotations. It is a translation/QA aid, not a substitute for the canonical Chinese editions in `library.json`.
 
 ## General method
 
@@ -43,9 +46,9 @@ This file records semantic constraints distilled from the author's current annot
 - 甲九「舊時燈影各成篇」: `各` keeps the two textual voices distinct before A physically binds them together in the next line; do not translate it as mutual agreement or a shared retrospective account.
 - 甲九「賓一哂，語猶慳」: keep the challenge implicit. The guest only smiles; do not invent an explicit objection, and do not force 「語猶慳」 to belong unambiguously to the guest or to A.
 - 甲九「箋中淺字只加餐／深言怕誤重重掩／欲喚還休欲喚難」: this is A's interpretive reordering of B's own language. It draws on B4's 「深言怕誤，淺字偏安」 and 「丁寧只是加餐」 and B2's 「欲喚還休」, turning restraint into evidence of deeper feeling. Preserve that slippage as A's reading; do not upgrade it into an objective claim that B reciprocated A's love. Preserve the lexical repetition in 「欲喚…欲喚」 rather than paraphrasing the second occurrence away, and reuse the established B2/B4 wording in each target language wherever possible so the quotation-like echo remains audible.
-- 集外甲十「中呂 · 山坡羊」: retain `Zhonglü` as the modal designation; do not omit it.
-- 集外《鷓鴣天》「硯」: translate specifically as inkstone / Tuschstein / pierre à encre where the object matters.
-- 集外《鷓鴣天》「獨餘一語」: `語` is an utterance/phrase, not necessarily a typographic line.
+- 甲十「中呂 · 山坡羊」: retain `Zhonglü` as the modal designation; do not omit it.
+- 九月九日《鷓鴣天》「硯」: translate specifically as inkstone / Tuschstein / pierre à encre where the object matters.
+- 九月九日《鷓鴣天》「獨餘一語」: `語` is an utterance/phrase, not necessarily a typographic line.
 
 ## Editorial principle
 
