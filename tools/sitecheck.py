@@ -116,12 +116,42 @@ def local_target(source: Path, ref: str) -> tuple[Path, str] | None:
 
 def check_raw_ampersands(path: Path, text: str, errors: list[str]) -> None:
     """Reject unescaped ampersands in HTML markup/text, excluding script/style data."""
-    inspectable = re.sub(
-        r"<(?:script|style)\b[^>]*>.*?</(?:script|style)\s*>",
-        "",
-        text,
-        flags=re.I | re.S,
-    )
+    # Parse raw-text elements rather than approximating HTML end tags with a
+    # regular expression. Masking preserves line positions in diagnostics.
+    class RawTextMasker(HTMLParser):
+        def __init__(self) -> None:
+            super().__init__(convert_charrefs=False)
+            self.starts = [0] + [i + 1 for i, char in enumerate(text) if char == "\n"]
+            self.open_element: tuple[str, int] | None = None
+            self.spans: list[tuple[int, int]] = []
+
+        def position(self) -> int:
+            line, column = self.getpos()
+            return self.starts[line - 1] + column
+
+        def handle_starttag(self, tag, attrs):
+            if tag in {"script", "style"} and self.open_element is None:
+                self.open_element = (tag, self.position())
+
+        def handle_startendtag(self, tag, attrs):
+            # HTML raw-text elements are not void elements, even with '/>'.
+            self.handle_starttag(tag, attrs)
+
+        def handle_endtag(self, tag):
+            if self.open_element and tag == self.open_element[0]:
+                end = text.find(">", self.position())
+                self.spans.append((self.open_element[1], len(text) if end < 0 else end + 1))
+                self.open_element = None
+
+    parser = RawTextMasker()
+    parser.feed(text)
+    parser.close()
+    if parser.open_element:
+        parser.spans.append((parser.open_element[1], len(text)))
+    masked = list(text)
+    for start, end in parser.spans:
+        masked[start:end] = ["\n" if char == "\n" else " " for char in text[start:end]]
+    inspectable = "".join(masked)
     for match in re.finditer(r"&(?!#\d+;|#x[0-9a-f]+;|[a-z][a-z0-9]+;)", inspectable, re.I):
         line = inspectable.count("\n", 0, match.start()) + 1
         errors.append(f"{path.relative_to(ROOT)}:{line}: raw ampersand must be encoded as &amp;")
