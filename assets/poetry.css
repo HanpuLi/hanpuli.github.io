@@ -32,6 +32,17 @@
 .poetry-kundoku .kundoku { padding-block:1rem .5rem; }
 .poetry-kundoku .body { text-align:start; }
 .kundoku-notes { margin:1.25rem 0 0; padding-left:1.3em; color:var(--muted); font-size:.8rem; line-height:1.8; }
+.poetry-reading-aids { max-width:42rem; margin:1.5rem auto 0; border-block:1px solid var(--line); }
+.poetry-reading-aid + .poetry-reading-aid { border-top:1px solid var(--line); }
+.poetry-reading-aid > summary { min-height:44px; padding:.8rem 0; color:var(--muted); font-size:.85rem; line-height:1.7; cursor:pointer; }
+.poetry-reading-aid > summary:hover, .poetry-reading-aid[open] > summary { color:var(--ink); }
+.poetry-reading-aid .reading-aid-body { white-space:pre-line; text-align:start; writing-mode:horizontal-tb; padding:.6rem 0 1.3rem; line-height:1.95; }
+.poetry-annotations { margin:.6rem 0 1.3rem; font-size:.9rem; line-height:1.9; text-align:start; writing-mode:horizontal-tb; }
+.poetry-annotations dt { margin-top:1.15rem; font-weight:400; }
+.poetry-annotations dt:first-child { margin-top:0; }
+.poetry-annotations dd { margin:.25rem 0 0; color:var(--muted); }
+.annotation-sources { display:block; margin-top:.35rem; font-size:.8rem; overflow-wrap:anywhere; }
+.annotation-sources a { display:inline-block; padding:.3rem 0; }
 .poetry-sequence-nav { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.6rem 1.5rem; border-bottom:1px solid var(--line); padding:1rem 0 2rem; margin-bottom:3rem; font-size:.8rem; }
 .poetry-sequence-nav a { max-width:46%; min-height:44px; padding:.5rem 0; }
 .poetry-sequence-nav a span { display:block; color:var(--muted); font: .65rem/1.8 var(--mono); }

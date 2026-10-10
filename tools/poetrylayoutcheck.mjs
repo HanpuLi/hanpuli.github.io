@@ -9,6 +9,7 @@ import {chromium, webkit} from 'playwright';
 const root = process.cwd();
 const library = JSON.parse(await readFile(path.join(root, 'content/poetry/library.json'), 'utf8'));
 const kundoku = JSON.parse(await readFile(path.join(root, 'content/poetry/kundoku.json'), 'utf8'));
+const readingAids = JSON.parse(await readFile(path.join(root, 'content/poetry/reading-aids.json'), 'utf8'));
 const classicalRoutes = [...new Set(library.works.filter(work => ['ci', 'shi', 'qu'].includes(work.form))
   .map(work => `/zh/poetry/${work.route}/`))];
 classicalRoutes.push('/zh/poetry/september-2026/');
@@ -102,6 +103,8 @@ try {
     assert.equal(Object.keys(expected.sources).length, 17);
     await page.goto(base + route, {waitUntil:'load'});
     assert.equal(await page.locator('.poetry-kundoku').count(), locale === 'ja' ? 17 : 0);
+    assert.equal(await page.locator('[data-poetry-paraphrase]').count(), ['zh', 'zh-hans'].includes(locale) ? 17 : 0);
+    assert.equal(await page.locator('[data-poetry-notes]').count(), ['zh', 'zh-hans'].includes(locale) ? 17 : 0);
     const initial = locale === 'zh-hans' ? 'horizontal' : 'vertical';
     await inspect(page, expected, initial);
     await page.locator('button[data-poetry-layout="vertical"]').click();
@@ -196,7 +199,50 @@ try {
   assert.equal(await readingPage.locator('.poetry-kundoku').count(), 0);
   await readingPage.goto(base + '/ja/poetry/summer-2017/', {waitUntil:'load'});
   assert.equal(await readingPage.locator('.poetry-kundoku').count(), 0);
+  const coveredChinese = new Set();
+  for (const locale of ['zh', 'zh-hans']) {
+    for (const route of classicalRoutes.map(route => route.replace('/zh/', `/${locale}/`))) {
+      await readingPage.goto(base + route, {waitUntil:'load'});
+      assert.equal(await readingPage.locator('.poetry-reading-aid[open]').count(), 0);
+      for (const aid of await readingPage.locator('[data-poetry-paraphrase]').all()) {
+        const tid = await aid.getAttribute('data-poetry-paraphrase');
+        const notes = readingPage.locator(`[data-poetry-notes="${tid}"]`);
+        const edition = readingAids.texts[tid][locale];
+        await aid.locator('summary').press('Enter');
+        assert.ok(await aid.locator('.reading-aid-body').isVisible());
+        assert.equal(await aid.locator('.reading-aid-body').textContent(), edition.body);
+        assert.equal(await notes.getAttribute('open'), null, 'paraphrase must not open annotations');
+        await notes.locator('summary').press('Space');
+        assert.ok(await notes.locator('dl').isVisible());
+        assert.deepEqual(await notes.locator('dt').allTextContents(), edition.notes.map(note => note.lemma));
+        assert.deepEqual(await notes.locator('.annotation-sources a').evaluateAll(links => links.map(link => link.getAttribute('href'))),
+          edition.notes.flatMap(note => note.refs.map(rid => readingAids.references[rid].url)));
+        assert.equal(await aid.locator('.reading-aid-body').evaluate(el => getComputedStyle(el).writingMode), 'horizontal-tb');
+        assert.equal(await notes.locator('dl').evaluate(el => getComputedStyle(el).writingMode), 'horizontal-tb');
+        coveredChinese.add(`${locale}/${tid}`);
+      }
+      for (const width of [320, 390, 1280]) {
+        await readingPage.setViewportSize({width, height:844});
+        await settle(readingPage);
+        assert.ok(await readingPage.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `${route} ${width}: expanded Chinese aid overflow`);
+      }
+    }
+    await plain.goto(base + `/${locale}/poetry/yingtianchang-20261008/`, {waitUntil:'load'});
+    await plain.locator('[data-poetry-paraphrase] > summary').press('Enter');
+    assert.ok(await plain.locator('.reading-aid-body').isVisible());
+    assert.equal(await plain.locator('[data-poetry-notes]').getAttribute('open'), null);
+    await plain.locator('[data-poetry-notes] > summary').press('Space');
+    assert.ok(await plain.locator('.poetry-annotations').isVisible(), 'Chinese native disclosures work without JavaScript');
+    await plain.locator('[data-poetry-paraphrase] > summary').press('Enter');
+    assert.ok(!(await plain.locator('.reading-aid-body').isVisible()));
+    assert.ok(await plain.locator('.poetry-annotations').isVisible(), 'closing paraphrase must not close notes');
+    for (const modern of ['roof-splits', 'summer-2017']) {
+      await plain.goto(base + `/${locale}/poetry/${modern}/`, {waitUntil:'load'});
+      assert.equal(await plain.locator('.poetry-reading-aid').count(), 0);
+    }
+  }
+  assert.equal(coveredChinese.size, Object.keys(readingAids.texts).length * 2);
   await cold.close();
   assert.deepEqual(errors, []);
-  console.log(`poetrylayoutcheck: ${engineName}, ${layouts} layouts; ${classicalRoutes.length} classical routes; seven locales; 320–1280 px; ${coveredReadings.size} kundoku readings, native keyboard disclosure without JavaScript; authored lines, titles, labels, translations, preference memory, simple reading and blocked storage OK`);
+  console.log(`poetrylayoutcheck: ${engineName}, ${layouts} layouts; ${classicalRoutes.length} classical routes; seven locales; 320–1280 px; ${coveredReadings.size} kundoku readings and ${coveredChinese.size} Chinese readings/annotations; independent native keyboard disclosures without JavaScript; authored lines, titles, labels, translations, preference memory, simple reading and blocked storage OK`);
 } finally { await browser?.close(); await new Promise(resolve => server.close(resolve)); }

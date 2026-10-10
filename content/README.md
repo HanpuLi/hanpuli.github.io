@@ -14,6 +14,9 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `poetry/translation-guidance.md` — semantic constraints for literary translation.
 - `poetry/kundoku.json` — Japanese classical-text reading aids, separately authored
   from modern translations and pinned to each Chinese body by SHA-256.
+- `poetry/reading-aids.json` — Traditional and Simplified Chinese plain-language
+  paraphrases and annotations, pinned to each classical Chinese body by SHA-256;
+  reference titles and original-source links are kept with this editorial layer.
 - `poetry/voucher-encoding.json` — non-literary artwork and barcode tables.
 - `ci-source.json`, `ci-simplified.json`, `ci-translations/`, `shi-source.json`, `shi-simplified.json`, `shi-translations/` and `summer-poem.json` — generated compatibility views. Do not author in them.
 - `essays.json` — registry of public essays, their source fragments, metadata files and social images.
@@ -36,6 +39,16 @@ JavaScript and keeps the source's line and stanza boundaries. These readings
 are interpretive aids, not additional paper editions. If a Chinese body changes,
 review the corresponding reading before updating its source hash; the build
 rejects stale or incomplete readings. Modern poems have no kundoku layer.
+
+Chinese classical readers offer two separate native, initially closed disclosures,
+`白話譯文` / `白话译文` and `箋注` / `笺注`, below the original. They work without
+JavaScript; paraphrases keep the original's line and stanza boundaries and stay
+horizontal when the original is vertical. Annotations explain local senses,
+allusions and links within the sequence without filling in unidentified actors or
+private biography. They are editorial reading aids, not authorial revisions,
+foreign-language editions or new paper editions. Both Chinese scripts live in
+`reading-aids.json`. Review both whenever an original changes before updating its
+body hash. Modern poems do not acquire this layer.
 
 English is the default site at `/`. Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are emitted at
 `/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Ordinary language switching is static navigation. Two interactive exceptions select already-authored copy at runtime: the root custom 404 router (preserving the 404 response), and the Poetry Voucher shop (preserving the visitor's selection while changing interface language).
