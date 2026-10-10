@@ -5,6 +5,18 @@ The original Chinese and each translation belong to an explicit text version in 
 
 This file records semantic constraints distilled from the author's current annotations. It is a translation/QA aid, not a substitute for the canonical Chinese editions in `library.json`.
 
+## Author clarifications, 10 October 2026
+
+- 甲七「青幾度」 uses 青 for green and counts how many springs have returned since parting. Preserve the repeated spring greening at the west window; do not render it as blue or as an unrelated colour change. The Japanese modern translation states spring green explicitly; the kundoku retains 青 with a short note explaining this local sense.
+- 乙四「緘淺」 and 甲三「春封淺」 overlay the physical sealing of the letter and the shallowness of its words. Preserve that overlay without inventing a loose seal, an unsealed letter, or an objectively shallow relationship.
+- 甲四「孤燈紅淚共商量」 means thinking together beneath the lamp. The lamp's red tears remain part of the image; do not make the lamp a third participant in a conversation.
+- 甲八「側耳疑相答」 takes a one-way response, with the doubt retained. It does not establish an exchange of replies.
+- 甲十「認不真，卻認真」 uses the two expressions differently. Do not translate both as believing something to be true: the uncertainty of recognition and the earnestness of engagement must remain distinct.
+- 九月九日《臨江仙》「重簾」 reads zhòng, a heavy curtain, rather than chóng, layered curtains.
+- W5「炭冰摧過後」 means being struck or broken by charcoal and ice. Charcoal and ice are the forces acting on a person, not things that themselves break up. Preserve the subject's omission where the target language permits.
+- 《應天長·喚回》「空衣」 is an unoccupied garment, with nobody wearing it; 「匙底」 is the bottom of a soup spoon. 「殘齒」 permits remaining and incomplete/broken readings. Do not add whose teeth these are or how they came to be there.
+- Both drafts of 《屋頂》 use 「丟」 in the sense of "lost", as the author subsequently clarified. This supersedes the earlier reply to retain both loss and discarding. Do not introduce an act of throwing away, sending away, or intentionally disposing of the shadow. Preserve the distinction between the first draft's 「丟不遠」 and the second draft's compressed 「不遠」.
+
 ## General method
 
 - Treat A and B as situated narrators, not omniscient authorities. A's interpretation is not automatically fact; B's self-explanation is not automatically the final verdict.
