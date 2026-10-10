@@ -9,6 +9,7 @@ from typing import Any
 from urllib.parse import urlencode
 
 from poetry_library import Library, LANGS, SHOP_LANGS, read
+from poetry_kundoku import Kundoku
 
 
 def esc(value: Any) -> str:
@@ -29,6 +30,7 @@ class Pages:
     def __init__(self, base: Any):
         self.base = base
         self.lib = Library(base.ROOT)
+        self.kundoku = Kundoku(self.lib)
         self.ui = read(base.CONTENT / 'poetry/ui.json')
         self.template = (base.TEMPLATES / 'poetry.html').read_text(encoding='utf-8')
 
@@ -216,6 +218,14 @@ class Pages:
             _, display_title = self.presentation_title(translation['title'],code,locale)
             rows.append(f'<section class="poem-version translation" lang="{self.base.LANG_BY_ID[locale]["html_lang"]}"><h2 data-poetry-title="{esc(display_title)}">{esc(title)}</h2><div class="body">{esc(translation["body"])}</div></section>')
         rows.append('</div>')
+        if locale == 'ja' and classical:
+            notes = self.kundoku.texts[tid].get('notes', [])
+            note_html = ('<ul class="kundoku-notes">' + ''.join(f'<li>{esc(note)}</li>' for note in notes)
+                         + '</ul>') if notes else ''
+            rows.append(f'<details class="poetry-kundoku" lang="ja" data-poetry-kundoku="{esc(tid)}">'
+                        f'<summary>{esc(self.kundoku.label)}</summary>'
+                        f'<div class="poem-version kundoku"><div class="body">'
+                        f'{esc(self.kundoku.body(tid))}</div>{note_html}</div></details>')
         if tid in lib.offers:
             href='/poetry-voucher/shop.html?'+urlencode({'lang':SHOP_LANGS[locale],'work':tid})
             rows.append(f'<p class="poetry-paper-link"><a href="{esc(href)}">{esc(ui["voucher"])}</a></p>')

@@ -8,12 +8,14 @@ import re
 from pathlib import Path
 from urllib.parse import urlsplit
 from poetry_library import Library, LANGS, materialize, read
+from poetry_kundoku import Kundoku
 
 ROOT=Path(__file__).resolve().parents[1]
 
 
 def main() -> None:
     library=Library(ROOT)
+    kundoku=Kundoku(library)
     fixture=read(ROOT/'tools/fixtures/poetry-before-refactor.json')
     errors=[]
     for key,expected in fixture['body_sha256'].items():
@@ -68,6 +70,12 @@ def main() -> None:
                     expected=[library.edition(tid,'zh-hans' if locale=='zh-hans' else 'zh')['body']]
                     if locale not in ('zh','zh-hans') and library.edition(tid,locale):
                         expected.append(library.edition(tid,locale)['body'])
+                    classical=library.work_for_text(tid)['form'] in ('ci','shi','qu')
+                    if locale=='ja' and classical:
+                        expected.append(kundoku.body(tid))
+                    reading=re.search(r'<details\b[^>]*data-poetry-kundoku="([^"]+)"',body)
+                    if bool(reading)!=(locale=='ja' and classical) or (reading and reading[1]!=tid):
+                        errors.append(f'Wrong kundoku ownership: {path.relative_to(ROOT)} / {tid}')
                     if actual!=expected:
                         errors.append(f'Wrong rendered text/translation: {path.relative_to(ROOT)} / {tid}')
                     body_checks+=len(expected)
