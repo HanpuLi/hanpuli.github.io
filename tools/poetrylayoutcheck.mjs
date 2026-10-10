@@ -100,7 +100,7 @@ try {
     sources.set(locale, expected);
     assert.equal(Object.keys(expected.sources).length, 17);
     await page.goto(base + route, {waitUntil:'load'});
-    const initial = locale === 'zh' ? 'vertical' : 'horizontal';
+    const initial = locale === 'zh-hans' ? 'horizontal' : 'vertical';
     await inspect(page, expected, initial);
     await page.locator('button[data-poetry-layout="vertical"]').click();
     const vertical = await inspect(page, expected, 'vertical');
@@ -136,6 +136,8 @@ try {
   assert.equal(await page.evaluate(() => document.documentElement.dataset.poetryLayout), 'horizontal');
   await page.reload({waitUntil:'load'});
   assert.equal(await page.evaluate(() => document.documentElement.dataset.poetryLayout), 'horizontal');
+  await page.goto(base + '/ja/poetry/jia-yi/', {waitUntil:'load'});
+  await inspect(page, sources.get('ja'), 'horizontal');
   await page.goto(base + '/zh/poetry/jia-yi/?layout=vertical', {waitUntil:'load'});
   await inspect(page, sources.get('zh'), 'vertical');
   await page.evaluate(() => document.documentElement.setAttribute('data-reading-simple', ''));
@@ -154,6 +156,8 @@ try {
   await inspect(blocked, sources.get('zh'), 'vertical');
   await blocked.locator('button[data-poetry-layout="horizontal"]').click();
   await inspect(blocked, sources.get('zh'), 'horizontal');
+  await blocked.goto(base + '/ja/poetry/jia-yi/', {waitUntil:'load'});
+  await inspect(blocked, sources.get('ja'), 'vertical');
   const cold = await browser.newContext({viewport:{width:390, height:844}});
   const linked = await cold.newPage();
   await linked.goto(base + '/zh/poetry/jia-yi/#jia-10', {waitUntil:'load'});

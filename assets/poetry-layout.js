@@ -29,7 +29,9 @@
   let preferred;
   try { preferred = localStorage.getItem(key); } catch { /* Page controls still work. */ }
   if (!['horizontal', 'vertical'].includes(preferred)) {
-    preferred = document.body.classList.contains('locale-zh') ? 'vertical' : 'horizontal';
+    const traditionalOriginal = document.querySelector(
+      '.reader-poem[data-poetry-classical] .poem-version.source[lang^="zh-Hant"]');
+    preferred = traditionalOriginal ? 'vertical' : 'horizontal';
   }
   if (['horizontal', 'vertical'].includes(requested)) preferred = requested;
 

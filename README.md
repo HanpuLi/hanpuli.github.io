@@ -23,9 +23,10 @@ original-font replacement instructions. Rebuild with
 
 All literary content is authored in `content/poetry/library.json`. The simplified mirror, old ci/shi JSON files, canonical readers, old-route recovery pages and Poetry Voucher catalogue are generated views. See `docs/poetry-architecture.md` for editing and compatibility contracts.
 
-Traditional Chinese classical readers default to vertical text and titles. A
-horizontal/vertical control remembers the reader's choice locally; other editions
-default to horizontal text, and translations retain their horizontal layout.
+Traditional Chinese classical originals default to vertical text and titles in
+every interface language. A horizontal/vertical control remembers the reader's
+choice locally; Simplified Chinese originals default to horizontal text, and
+translations retain their horizontal layout.
 The A/B labels remain horizontal metadata. Short titles stay in one vertical
 column; narrow screens place complete stanzas in successive bands and divide an
 oversized stanza only between authored lines. Modern poems retain their authored
