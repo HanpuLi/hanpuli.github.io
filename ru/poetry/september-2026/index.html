@@ -52,15 +52,18 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-cyrillic-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/cousine-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/cousine-cyrillic-400.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/ru/poetry/september-2026/#page","url":"https://hanpuli.github.io/ru/poetry/september-2026/","name":"Два стихотворения · 9 сентября 2026 · Hanpu Li","description":"Два стихотворения · 9 сентября 2026 · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"ru","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
@@ -111,21 +114,22 @@
     <h1>Два стихотворения · 9 сентября 2026</h1>
     <div class="sub"><p>Два стихотворения от 9 сентября 2026 года.</p><p>2 стихотворений · <time datetime="2026-09-09">2026.09.09</time></p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="Набор оригинала" data-simple-label="В одноколоночном режиме текст расположен горизонтально." hidden><span>Набор оригинала</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">Горизонтальный</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">Вертикальный</button></div>
   </header>
   <nav id="contents" class="poetry-member-nav" aria-label="Оглавление"><ol>
 <li><a href="/ru/poetry/zhegutian-20260909/" title="На мелодию Zhegutian · Несколько вечеров при лампе, пробуя писать; не окончено">На мелодию Zhegutian · Несколько вечеров при лампе, пробуя писать; не окончено</a></li>
 <li><a href="/ru/poetry/linjiangxian-20260909/" title="На мелодию Linjiangxian">На мелодию Linjiangxian</a></li>
 </ol></nav>
-<article class="poem reader-poem" id="zhegutian-20260909" data-poetry-text="zhegutian-20260909-text">
+<article class="poem reader-poem" id="zhegutian-20260909" data-poetry-text="zhegutian-20260909-text" data-poetry-classical>
 <p class="poetry-dates">Первая версия <time datetime="2026-09-09">2026.09.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《鷓鴣天 · 連夕燈下試筆，未竟》</h2><div class="body">幾夕簾前共剪燈，平生話到又三更。
+<h2 data-poetry-title="《鷓鴣天 · 連夕燈下試筆，未竟》">《鷓鴣天 · 連夕燈下試筆，未竟》</h2><div class="body">幾夕簾前共剪燈，平生話到又三更。
 從頭説盡還存半，且任宵深硯自凝。
 
 言漸杳，露初零。獨餘一語未分明。
 頻頻蘸得毫端黑，墨至濃時偏不成。</div></section>
-<section class="poem-version translation" lang="ru"><h2>На мелодию Zhegutian · Несколько вечеров при лампе, пробуя писать; не окончено</h2><div class="body">Несколько вечеров перед занавесом вместе подрезали фитиль;
+<section class="poem-version translation" lang="ru"><h2 data-poetry-title="На мелодию Zhegutian · Несколько вечеров при лампе, пробуя писать; не окончено">На мелодию Zhegutian · Несколько вечеров при лампе, пробуя писать; не окончено</h2><div class="body">Несколько вечеров перед занавесом вместе подрезали фитиль;
 о целой жизни говорили — и вот опять третья ночная стража.
 От начала до конца всё рассказано — половина ещё остаётся.
 Пусть ночь становится глубже; пусть тушь сама застывает на тушечном камне.
@@ -138,18 +142,18 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ru&amp;work=zhegutian-20260909-text">Выбрать бумажное издание</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Произведения · На мелодию Zhegutian · Несколько вечеров при лампе, пробуя писать; не окончено"><a class="poetry-next" href="/ru/poetry/linjiangxian-20260909/"><span>Следующее</span> На мелодию Linjiangxian</a><a href="/ru/poetry/september-2026/#contents">Оглавление</a></nav>
-<article class="poem reader-poem" id="linjiangxian-20260909" data-poetry-text="linjiangxian-20260909-text">
+<article class="poem reader-poem" id="linjiangxian-20260909" data-poetry-text="linjiangxian-20260909-text" data-poetry-classical>
 <p class="poetry-dates">Первая версия <time datetime="2026-09-09">2026.09.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《臨江仙》</h2><div class="body">簾影幾宵長共話，露痕初濕闌干。
+<h2 data-poetry-title="《臨江仙》">《臨江仙》</h2><div class="body">簾影幾宵長共話，露痕初濕闌干。
 言猶未了息先安。
 夢深渾不覺，月上夜將殘。
 
 他日重簾垂到地，垂來一似從前。
 手臨燈畔數迴旋。
 明朝風或緊，窗且掩周全。</div></section>
-<section class="poem-version translation" lang="ru"><h2>На мелодию Linjiangxian</h2><div class="body">Тень занавеси; несколько ночей мы долго говорили вместе;
+<section class="poem-version translation" lang="ru"><h2 data-poetry-title="На мелодию Linjiangxian">На мелодию Linjiangxian</h2><div class="body">Тень занавеси; несколько ночей мы долго говорили вместе;
 первая роса намочила перила.
 Слова ещё не кончены — дыхание успокоилось раньше.
 Сон глубок — ничего не замечаю;

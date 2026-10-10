@@ -52,21 +52,24 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-cyrillic-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/cousine-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/cousine-cyrillic-400.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/ru/poetry/manjianghong-2022/#page","url":"https://hanpuli.github.io/ru/poetry/manjianghong-2022/","name":"На мелодию Manjianghong · 2022 · Hanpu Li","description":"На мелодию Manjianghong · Хотеть удержать тебя, знать, к чему всё идёт · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"ru","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 
 </head>
-<body class="literary-page poetry-page poetry-reader locale-ru">
+<body class="literary-page poetry-page poetry-reader poetry-single locale-ru">
 <a class="skip-link" href="#poetry-main">Перейти к стихотворениям</a>
 <div class="wrap">
 <header class="page-topbar">
@@ -111,17 +114,18 @@
     <h1>На мелодию Manjianghong · Хотеть удержать тебя, знать, к чему всё идёт</h1>
     <div class="sub"><p>Цы</p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="Набор оригинала" data-simple-label="В одноколоночном режиме текст расположен горизонтально." hidden><span>Набор оригинала</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">Горизонтальный</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">Вертикальный</button></div>
   </header>
   <nav class="poetry-version-nav" aria-label="Редакции">
 <a href="#sewn">Версия со швом</a>
 <a href="#echo">Другая переработка</a>
 </nav>
 <p class="poetry-version-label">Версия со швом</p>
-<article class="poem reader-poem" id="sewn" data-poetry-text="manjianghong-2022-sewn-202610">
+<article class="poem reader-poem" id="sewn" data-poetry-text="manjianghong-2022-sewn-202610" data-poetry-classical>
 <p class="poetry-dates">Первая версия 2022 <span aria-hidden="true">·</span> Переработка <time datetime="2026-10">2026.10</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《滿江紅 · 望沮攔約當應是》</h2><div class="body">舊隙才縫，春風又、殷勤留客。
+<h2 data-poetry-title="《滿江紅 · 望沮攔約當應是》">《滿江紅 · 望沮攔約當應是》</h2><div class="body">舊隙才縫，春風又、殷勤留客。
 門欲掩、卻翻簾影，放春偷入。
 瘦損腰圍衣尚窄，暗痕都向肌膚積。
 算歸來、猶有舊針留，縫新隙。
@@ -130,7 +134,7 @@
 更何須揀擇，過門皆璧。
 初景寒柯違業識，豐城元禮宜同席。
 看收場、針腳又周全，無痕跡。</div></section>
-<section class="poem-version translation" lang="ru"><h2>На мелодию Manjianghong · Хотеть удержать тебя, знать, к чему всё идёт</h2><div class="body">Старая прореха едва зашита, а весенний ветер опять усердно удерживает гостя.
+<section class="poem-version translation" lang="ru"><h2 data-poetry-title="На мелодию Manjianghong · Хотеть удержать тебя, знать, к чему всё идёт">На мелодию Manjianghong · Хотеть удержать тебя, знать, к чему всё идёт</h2><div class="body">Старая прореха едва зашита, а весенний ветер опять усердно удерживает гостя.
 Дверь хочет закрыться, но тень занавеси поворачивается, впуская весну украдкой.
 Талия стала тоньше, а одежда всё ещё тесна; все скрытые следы копятся на коже.
 При возвращении, думаю, старая игла ещё останется, чтобы зашить новую прореху.
@@ -143,11 +147,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ru&amp;work=manjianghong-2022-sewn-202610">Выбрать бумажное издание</a></p>
 </article>
 <p class="poetry-version-label">Другая переработка</p>
-<article class="poem reader-poem" id="echo" data-poetry-text="manjianghong-2022-echo-202610">
+<article class="poem reader-poem" id="echo" data-poetry-text="manjianghong-2022-echo-202610" data-poetry-classical>
 <p class="poetry-dates">Первая версия 2022 <span aria-hidden="true">·</span> Переработка <time datetime="2026-10">2026.10</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《滿江紅 · 望沮攔約當應是 · 又稿》</h2><div class="body">漏盡鐘回，催曉處、餘聲仍塞。
+<h2 data-poetry-title="《滿江紅 · 望沮攔約當應是 · 又稿》">《滿江紅 · 望沮攔約當應是 · 又稿》</h2><div class="body">漏盡鐘回，催曉處、餘聲仍塞。
 門欲掩、劣衿將去，又迎嘉客。
 舊事還從新曆出，階前風雨渾成笛。
 算韶光、只在一聲中，塵先積。
@@ -156,7 +160,7 @@
 縱衣冠屢換，總稱圭璧。
 初景寒柯違業識，豐城元禮宜同席。
 曉山塗，晝影祭寒華，猶無息。</div></section>
-<section class="poem-version translation" lang="ru"><h2>На мелодию Manjianghong · Хотеть удержать тебя, знать, к чему всё идёт — другой вариант</h2><div class="body">Водяные часы истекли, колокол возвращается. Там, где он торопит рассвет, отзвук всё ещё заграждён.
+<section class="poem-version translation" lang="ru"><h2 data-poetry-title="На мелодию Manjianghong · Хотеть удержать тебя, знать, к чему всё идёт — другой вариант">На мелодию Manjianghong · Хотеть удержать тебя, знать, к чему всё идёт — другой вариант</h2><div class="body">Водяные часы истекли, колокол возвращается. Там, где он торопит рассвет, отзвук всё ещё заграждён.
 Дверь хочет закрыться, убогий ворот собирается уйти, но снова встречают славного гостя.
 Старые события вновь выходят из нового календаря; у ступеней ветер и дождь целиком обращаются в звучание флейты.
 Всё прекрасное время — лишь в одном звуке, а пыль скопилась раньше.

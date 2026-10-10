@@ -52,19 +52,22 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/fr/poetry/linjiangxianyin-20191028/#page","url":"https://hanpuli.github.io/fr/poetry/linjiangxianyin-20191028/","name":"Sur l’air de Linjiangxian Yin · Hanpu Li","description":"Sur l’air de Linjiangxian Yin · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"fr","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 
 </head>
-<body class="literary-page poetry-page poetry-reader locale-fr">
+<body class="literary-page poetry-page poetry-reader poetry-single locale-fr">
 <a class="skip-link" href="#poetry-main">Aller aux poèmes</a>
 <div class="wrap">
 <header class="page-topbar">
@@ -109,12 +112,13 @@
     <h1>Sur l’air de Linjiangxian Yin</h1>
     <div class="sub"><p>Ci</p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="Disposition de l’original" data-simple-label="La lecture en une colonne utilise le texte horizontal." hidden><span>Disposition de l’original</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">Horizontale</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">Verticale</button></div>
   </header>
-  <article class="poem reader-poem" id="linjiangxianyin-20191028" data-poetry-text="linjiangxianyin-20191028-revised-202610">
+  <article class="poem reader-poem" id="linjiangxianyin-20191028" data-poetry-text="linjiangxianyin-20191028-revised-202610" data-poetry-classical>
 <p class="poetry-dates">Première rédaction <time datetime="2019-10-28">2019.10.28</time> <span aria-hidden="true">·</span> Révision <time datetime="2026-10">2026.10</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《臨江仙引》</h2><div class="body">塢裂，宴散，鐘垂晚、暫偷安。
+<h2 data-poetry-title="《臨江仙引》">《臨江仙引》</h2><div class="body">塢裂，宴散，鐘垂晚、暫偷安。
 星師不復嘉年。
 任舊牆吞影，剩歸夢盤桓。
 空庭雪柳，折處尚溫，偏倚爛柯山。
@@ -122,7 +126,7 @@
 三山別來無去處，苔階不認人還。
 度鐵城礄路，更麻雨潺潺。
 拋殘血縷滿指，待來世兩相憐。</div></section>
-<section class="poem-version translation" lang="fr"><h2>Sur l’air de Linjiangxian Yin</h2><div class="body">L’enceinte se fend ; le festin se disperse ; la cloche pend dans le soir—un instant de paix dérobé.
+<section class="poem-version translation" lang="fr"><h2 data-poetry-title="Sur l’air de Linjiangxian Yin">Sur l’air de Linjiangxian Yin</h2><div class="body">L’enceinte se fend ; le festin se disperse ; la cloche pend dans le soir—un instant de paix dérobé.
 La cité des étoiles n’abrite plus ces belles années.
 Que le vieux mur engloutisse l’ombre ; seul le rêve du retour continue de tourner.
 Saule de neige dans la cour vide, encore chaud à la cassure, pourtant appuyé au mont Lanke.

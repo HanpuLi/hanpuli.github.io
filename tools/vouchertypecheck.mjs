@@ -108,7 +108,7 @@ try{
     const {root}=await cdp.send('DOM.getDocument');
     const {nodeId}=await cdp.send('DOM.querySelector',{nodeId:root.nodeId,selector:'#ui-locale [data-locale="zh-Hans"] .language-short'});
     const {fonts}=await cdp.send('CSS.getPlatformFontsForNode',{nodeId});
-    assert(fonts.length>0&&fonts.every(f=>f.isCustomFont&&/Noto Serif SC/.test(f.familyName)),'zh-Hans locale label fallback: '+JSON.stringify(fonts));
+    assert(fonts.length>0&&fonts.every(f=>f.isCustomFont&&/^Hanpu Chinese/.test(f.familyName)),'zh-Hans locale label fallback: '+JSON.stringify(fonts));
   }
   for(const [locale,text] of Object.entries(samples)){
     await page.locator(`#ui-locale [data-locale="${locale}"]`).click();

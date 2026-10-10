@@ -743,7 +743,7 @@ def font_preloads(locale_id: str, page: str) -> str:
     prefix = "/" if page == "404" else asset_prefix(locale_id)
     fonts = [
         "eb-garamond-latin-400.woff2",
-        "shippori-mincho-common.woff2",
+        "hanpu-chinese-common.woff2",
     ]
     if locale_id == "ru":
         fonts.extend([
@@ -753,10 +753,10 @@ def font_preloads(locale_id: str, page: str) -> str:
         ])
     else:
         fonts.append("courier-prime-latin-400.woff2")
-        if locale_id in {"zh", "ja"}:
-            fonts.append("shippori-mincho-subset.woff2")
-        elif locale_id == "zh-hans":
-            fonts.append("noto-serif-sc-subset.woff2")
+        if locale_id in {"zh", "zh-hans"}:
+            fonts.append("hanpu-chinese.woff2")
+        elif locale_id == "ja":
+            fonts.extend(["shippori-mincho-common.woff2", "shippori-mincho-subset.woff2"])
     return "\n".join(
         f'<link rel="preload" as="font" type="font/woff2" href="{prefix}assets/fonts/{name}" crossorigin>'
         for name in fonts

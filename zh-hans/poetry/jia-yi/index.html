@@ -52,14 +52,17 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/noto-serif-sc-subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/zh-hans/poetry/jia-yi/#page","url":"https://hanpuli.github.io/zh-hans/poetry/jia-yi/","name":"甲乙 · Hanpu Li","description":"甲乙 · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"zh-Hans","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
@@ -110,6 +113,7 @@
     <h1>甲乙</h1>
     <div class="sub"><p>一人分作甲乙两声，依组诗次序阅读。</p><p>17 首 · <time datetime="2026-06-09">2026.06.09</time> – <time datetime="2026-07-01">2026.07.01</time></p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="原文排版" data-simple-label="单栏阅读使用横排。" hidden><span>原文排版</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">横排</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">竖排</button></div>
   </header>
   <nav id="contents" class="poetry-member-nav" aria-label="目录"><ol>
 <li><a href="/zh-hans/poetry/jia-yi/#jia-1" title="甲一《临江仙 · 与同砚灯下夜坐，侵晓方别》">甲一</a></li>
@@ -130,11 +134,11 @@
 <li><a href="/zh-hans/poetry/jia-yi/#jia-9" title="甲九《鹧鸪天 · 得某所寄旧稿，灯下读竟，与箧中所存合编，第其甲乙。装成，客至辄出以相示，题其尾》">甲九</a></li>
 <li><a href="/zh-hans/poetry/jia-yi/#jia-10" title="甲十《中吕 · 山坡羊 · 又过旧庐》">甲十</a></li>
 </ol></nav>
-<article class="poem reader-poem" id="jia-1" data-poetry-text="jia-yi-a1-text">
+<article class="poem reader-poem" id="jia-1" data-poetry-text="jia-yi-a1-text" data-poetry-classical data-poetry-label="甲一">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>甲一《临江仙 · 与同砚灯下夜坐，侵晓方别》</h2><div class="body">几度深宵同默坐，孤灯红泪垂迟。
+<h2 data-poetry-title="《临江仙 · 与同砚灯下夜坐，侵晓方别》">甲一《临江仙 · 与同砚灯下夜坐，侵晓方别》</h2><div class="body">几度深宵同默坐，孤灯红泪垂迟。
 一秋心绪有谁知。
 启窗星欲坠，光落两人衣。
 
@@ -145,11 +149,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-a1-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A1"><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#yi-1"><span>下一篇</span> 乙一</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a></nav>
-<article class="poem reader-poem" id="yi-1" data-poetry-text="jia-yi-b1-text">
+<article class="poem reader-poem" id="yi-1" data-poetry-text="jia-yi-b1-text" data-poetry-classical data-poetry-label="乙一">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>乙一《无题 · 临江仙》</h2><div class="body">虚廊月好人初定，同携花径迟迟。
+<h2 data-poetry-title="《无题 · 临江仙》">乙一《无题 · 临江仙》</h2><div class="body">虚廊月好人初定，同携花径迟迟。
 灯前笑语两无疑。
 旧衾随手与，今日不须知。
 
@@ -160,11 +164,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-b1-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B1"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#jia-1"><span>上一篇</span> 甲一</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#jia-2"><span>下一篇</span> 甲二</a></nav>
-<article class="poem reader-poem" id="jia-2" data-poetry-text="jia-yi-a2-text">
+<article class="poem reader-poem" id="jia-2" data-poetry-text="jia-yi-a2-text" data-poetry-classical data-poetry-label="甲二">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>甲二《临江仙 · 醉后扶靥登楼，夤夜同倚，人问不避》</h2><div class="body">沈醉曾扶相并倚，登楼未肯人知。
+<h2 data-poetry-title="《临江仙 · 醉后扶靥登楼，夤夜同倚，人问不避》">甲二《临江仙 · 醉后扶靥登楼，夤夜同倚，人问不避》</h2><div class="body">沈醉曾扶相并倚，登楼未肯人知。
 今宵灯影渐迷离。
 漏残催曙色，犹带靥边绯。
 
@@ -175,11 +179,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-a2-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A2"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#yi-1"><span>上一篇</span> 乙一</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#yi-2"><span>下一篇</span> 乙二</a></nav>
-<article class="poem reader-poem" id="yi-2" data-poetry-text="jia-yi-b2-text">
+<article class="poem reader-poem" id="yi-2" data-poetry-text="jia-yi-b2-text" data-poetry-classical data-poetry-label="乙二">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>乙二《无题 · 踏莎行》</h2><div class="body">一室香温，两痕影并。
+<h2 data-poetry-title="《无题 · 踏莎行》">乙二《无题 · 踏莎行》</h2><div class="body">一室香温，两痕影并。
 笑声沉入帘间暝。
 隔帘灯色欲先寒，有人暗处衣光冷。
 
@@ -190,11 +194,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-b2-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B2"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#jia-2"><span>上一篇</span> 甲二</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#yi-3"><span>下一篇</span> 乙三</a></nav>
-<article class="poem reader-poem" id="yi-3" data-poetry-text="jia-yi-b3-text">
+<article class="poem reader-poem" id="yi-3" data-poetry-text="jia-yi-b3-text" data-poetry-classical data-poetry-label="乙三">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>乙三《无题 · 临江仙》</h2><div class="body">烛暗蛩寒帘影瘦，残酲犹带微温。
+<h2 data-poetry-title="《无题 · 临江仙》">乙三《无题 · 临江仙》</h2><div class="body">烛暗蛩寒帘影瘦，残酲犹带微温。
 笔停纸涩墨先吞。
 未缄还自叠，一折一重门。
 
@@ -205,11 +209,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-b3-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B3"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#yi-2"><span>上一篇</span> 乙二</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#yi-4"><span>下一篇</span> 乙四</a></nav>
-<article class="poem reader-poem" id="yi-4" data-poetry-text="jia-yi-b4-text">
+<article class="poem reader-poem" id="yi-4" data-poetry-text="jia-yi-b4-text" data-poetry-classical data-poetry-label="乙四">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>乙四《无题 · 渡江云》</h2><div class="body">清铜新样齿，欲封还止，残热指间弹。
+<h2 data-poetry-title="《无题 · 渡江云》">乙四《无题 · 渡江云》</h2><div class="body">清铜新样齿，欲封还止，残热指间弹。
 忽灯前小影，缄浅香微，半晌已潸然。
 绸缪一晌，转觉是、别处温言。
 空铸得、旧模新钥，纹叠总相沿。
@@ -223,20 +227,20 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-b4-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B4"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#yi-3"><span>上一篇</span> 乙三</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#yi-5"><span>下一篇</span> 乙五</a></nav>
-<article class="poem reader-poem" id="yi-5" data-poetry-text="jia-yi-b5-text">
+<article class="poem reader-poem" id="yi-5" data-poetry-text="jia-yi-b5-text" data-poetry-classical data-poetry-label="乙五">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>乙五《无题 · 十六字令》</h2><div class="body">铜。钥齿新裁付掌中。天寒了，加饭且从容。</div></section>
+<h2 data-poetry-title="《无题 · 十六字令》">乙五《无题 · 十六字令》</h2><div class="body">铜。钥齿新裁付掌中。天寒了，加饭且从容。</div></section>
 </div>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-b5-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B5"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#yi-4"><span>上一篇</span> 乙四</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#jia-3"><span>下一篇</span> 甲三</a></nav>
-<article class="poem reader-poem" id="jia-3" data-poetry-text="jia-yi-a3-text">
+<article class="poem reader-poem" id="jia-3" data-poetry-text="jia-yi-a3-text" data-poetry-classical data-poetry-label="甲三">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>甲三《鹧鸪天 · 卿赠钥，附书数字，灯下展读》</h2><div class="body">钥齿新裁心自珍，提毫未写已逡巡。
+<h2 data-poetry-title="《鹧鸪天 · 卿赠钥，附书数字，灯下展读》">甲三《鹧鸪天 · 卿赠钥，附书数字，灯下展读》</h2><div class="body">钥齿新裁心自珍，提毫未写已逡巡。
 拆来只有三行字，半晌绸缪一晌嗔。
 
 星欲坠，露初匀。
@@ -246,11 +250,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-a3-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A3"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#yi-5"><span>上一篇</span> 乙五</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#jia-4"><span>下一篇</span> 甲四</a></nav>
-<article class="poem reader-poem" id="jia-4" data-poetry-text="jia-yi-a4-text">
+<article class="poem reader-poem" id="jia-4" data-poetry-text="jia-yi-a4-text" data-poetry-classical data-poetry-label="甲四 · 忆甲一">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>甲四，忆甲一《临江仙 · 曩与同砚默坐数夕，别后音尘寖薄，久乃自定》</h2><div class="body">曾共虚廊默坐，当时只道寻常。
+<h2 data-poetry-title="《临江仙 · 曩与同砚默坐数夕，别后音尘寖薄，久乃自定》">甲四，忆甲一《临江仙 · 曩与同砚默坐数夕，别后音尘寖薄，久乃自定》</h2><div class="body">曾共虚廊默坐，当时只道寻常。
 孤灯红泪共商量。
 不知秋已半，但觉夜初长。
 
@@ -261,11 +265,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-a4-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A4"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#jia-3"><span>上一篇</span> 甲三</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#jia-5"><span>下一篇</span> 甲五</a></nav>
-<article class="poem reader-poem" id="jia-5" data-poetry-text="jia-yi-a5-text">
+<article class="poem reader-poem" id="jia-5" data-poetry-text="jia-yi-a5-text" data-poetry-classical data-poetry-label="甲五 · 忆甲二">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>甲五，忆甲二《临江仙 · 记醉后扶靥登楼，夤夜人问，始无避焉》</h2><div class="body">那夜谁分宾主，并肩同倚更阑。
+<h2 data-poetry-title="《临江仙 · 记醉后扶靥登楼，夤夜人问，始无避焉》">甲五，忆甲二《临江仙 · 记醉后扶靥登楼，夤夜人问，始无避焉》</h2><div class="body">那夜谁分宾主，并肩同倚更阑。
 当筵人问不曾瞒。
 雪泥谁去早，此后各风烟。
 
@@ -276,11 +280,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-a5-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A5"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#jia-4"><span>上一篇</span> 甲四</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#jia-6"><span>下一篇</span> 甲六</a></nav>
-<article class="poem reader-poem" id="jia-6" data-poetry-text="jia-yi-a6-text">
+<article class="poem reader-poem" id="jia-6" data-poetry-text="jia-yi-a6-text" data-poetry-classical data-poetry-label="甲六 · 忆甲三">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>甲六，忆甲三《鹧鸪天 · 箧中故钥铜花满眼，追念往还书字，怅然有作》</h2><div class="body">小钥经年锈暗生，故笺翻罢眼犹明。
+<h2 data-poetry-title="《鹧鸪天 · 箧中故钥铜花满眼，追念往还书字，怅然有作》">甲六，忆甲三《鹧鸪天 · 箧中故钥铜花满眼，追念往还书字，怅然有作》</h2><div class="body">小钥经年锈暗生，故笺翻罢眼犹明。
 当时避却鸳鸯字，却把鸳鸯写几层。
 
 窗月冷，鬓霜惊。
@@ -290,11 +294,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-a6-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A6"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#jia-5"><span>上一篇</span> 甲五</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#jia-7"><span>下一篇</span> 甲七</a></nav>
-<article class="poem reader-poem" id="jia-7" data-poetry-text="jia-yi-a7-text">
+<article class="poem reader-poem" id="jia-7" data-poetry-text="jia-yi-a7-text" data-poetry-classical data-poetry-label="甲七">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>甲七《临江仙 · 分蕙寄某，忆昔赠兰荪时，惘然有作》</h2><div class="body">手分旧蕙移新种，如今可记春温。
+<h2 data-poetry-title="《临江仙 · 分蕙寄某，忆昔赠兰荪时，惘然有作》">甲七《临江仙 · 分蕙寄某，忆昔赠兰荪时，惘然有作》</h2><div class="body">手分旧蕙移新种，如今可记春温。
 当初玉指赠兰荪。
 不知根已定，空自换苔痕。
 
@@ -305,11 +309,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-a7-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A7"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#jia-6"><span>上一篇</span> 甲六</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#yi-6"><span>下一篇</span> 乙六</a></nav>
-<article class="poem reader-poem" id="yi-6" data-poetry-text="jia-yi-b6-text">
+<article class="poem reader-poem" id="yi-6" data-poetry-text="jia-yi-b6-text" data-poetry-classical data-poetry-label="乙六">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>乙六《得某所寄》</h2><div class="body">故盆移蕙草，几度误春痕。
+<h2 data-poetry-title="《得某所寄》">乙六《得某所寄》</h2><div class="body">故盆移蕙草，几度误春痕。
 邻圃分新种，行人折故根。
 窗虚留寸土，门掩各朝昏。
 别后迁新邑，经年异故园。
@@ -333,11 +337,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-b6-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B6"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#jia-7"><span>上一篇</span> 甲七</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#jia-8"><span>下一篇</span> 甲八</a></nav>
-<article class="poem reader-poem" id="jia-8" data-poetry-text="jia-yi-a8-text">
+<article class="poem reader-poem" id="jia-8" data-poetry-text="jia-yi-a8-text" data-poetry-classical data-poetry-label="甲八">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>甲八《夜闻旧曲》</h2><div class="body">当时窗下别，今作檐前雨。
+<h2 data-poetry-title="《夜闻旧曲》">甲八《夜闻旧曲》</h2><div class="body">当时窗下别，今作檐前雨。
 怕听旧时曲，声声催天曙。
 余音不肯绝，绕作回肠缕。
 一灯寒在壁，照壁如照汝。
@@ -350,11 +354,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-a8-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A8"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#yi-6"><span>上一篇</span> 乙六</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#yi-7"><span>下一篇</span> 乙七</a></nav>
-<article class="poem reader-poem" id="yi-7" data-poetry-text="jia-yi-b7-text">
+<article class="poem reader-poem" id="yi-7" data-poetry-text="jia-yi-b7-text" data-poetry-classical data-poetry-label="乙七">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>乙七《忘川 · 检箧得旧稿，不复携，悉以寄某，并题》</h2><div class="body">灯下读旧词，夜深方得眠。
+<h2 data-poetry-title="《忘川 · 检箧得旧稿，不复携，悉以寄某，并题》">乙七《忘川 · 检箧得旧稿，不复携，悉以寄某，并题》</h2><div class="body">灯下读旧词，夜深方得眠。
 当时浑不异，往事付流年。
 我又移新处，君犹理旧篇。
 小儿催入梦，蕙草立窗前。
@@ -364,11 +368,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-b7-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B7"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#jia-8"><span>上一篇</span> 甲八</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#jia-9"><span>下一篇</span> 甲九</a></nav>
-<article class="poem reader-poem" id="jia-9" data-poetry-text="jia-yi-a9-text">
+<article class="poem reader-poem" id="jia-9" data-poetry-text="jia-yi-a9-text" data-poetry-classical data-poetry-label="甲九">
 <p class="poetry-dates">集作日期 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>甲九《鹧鸪天 · 得某所寄旧稿，灯下读竟，与箧中所存合编，第其甲乙。装成，客至辄出以相示，题其尾》</h2><div class="body">两叠残笺展案前，旧时灯影各成篇。
+<h2 data-poetry-title="《鹧鸪天 · 得某所寄旧稿，灯下读竟，与箧中所存合编，第其甲乙。装成，客至辄出以相示，题其尾》">甲九《鹧鸪天 · 得某所寄旧稿，灯下读竟，与箧中所存合编，第其甲乙。装成，客至辄出以相示，题其尾》</h2><div class="body">两叠残笺展案前，旧时灯影各成篇。
 亲将一线缝卿我，留得鸳鸯傍脊眠。
 
 宾一哂，语犹悭。
@@ -378,11 +382,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=zh-Hans&amp;work=jia-yi-a9-text">选择纸上版本</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A9"><a class="poetry-previous" href="/zh-hans/poetry/jia-yi/#yi-7"><span>上一篇</span> 乙七</a><a href="/zh-hans/poetry/jia-yi/#contents">目录</a><a class="poetry-next" href="/zh-hans/poetry/jia-yi/#jia-10"><span>下一篇</span> 甲十</a></nav>
-<article class="poem reader-poem" id="jia-10" data-poetry-text="jia-yi-a10-text">
+<article class="poem reader-poem" id="jia-10" data-poetry-text="jia-yi-a10-text" data-poetry-classical data-poetry-label="甲十">
 <p class="poetry-dates">初作 <time datetime="2026-07-01">2026.07.01</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2>甲十《中吕 · 山坡羊 · 又过旧庐》</h2><div class="body">风迎面，人立此，
+<h2 data-poetry-title="《中吕 · 山坡羊 · 又过旧庐》">甲十《中吕 · 山坡羊 · 又过旧庐》</h2><div class="body">风迎面，人立此，
 鼻尖一动魂先至。
 认不真，却认真，
 绕来绕去街角立。

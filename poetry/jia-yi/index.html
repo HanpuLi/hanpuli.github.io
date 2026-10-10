@@ -52,13 +52,16 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/poetry/jia-yi/#page","url":"https://hanpuli.github.io/poetry/jia-yi/","name":"A and B · Hanpu Li","description":"A and B · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"en-GB","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
@@ -109,6 +112,7 @@
     <h1>A and B</h1>
     <div class="sub"><p>One author, two voices. Read in the order of the sequence.</p><p>17 poems · <time datetime="2026-06-09">2026.06.09</time> – <time datetime="2026-07-01">2026.07.01</time></p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="Original layout" data-simple-label="Single-column reading uses horizontal text." hidden><span>Original layout</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">Horizontal</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">Vertical</button></div>
   </header>
   <nav id="contents" class="poetry-member-nav" aria-label="Contents"><ol>
 <li><a href="/poetry/jia-yi/#jia-1" title="To the tune of Linjiangxian · Sitting with a fellow student by lamplight at night; parting only at dawn">A1</a></li>
@@ -129,18 +133,18 @@
 <li><a href="/poetry/jia-yi/#jia-9" title="To the tune of Zhegutian · On receiving the old drafts sent to me, I read them by lamplight, combined them with those kept in my box, and arranged them as A and B. Once bound, I brought them out whenever a guest called, and wrote this at the end">A9</a></li>
 <li><a href="/poetry/jia-yi/#jia-10" title="Zhonglü · To the tune of Shanpoyang · Passing the old house again">A10</a></li>
 </ol></nav>
-<article class="poem reader-poem" id="jia-1" data-poetry-text="jia-yi-a1-text">
+<article class="poem reader-poem" id="jia-1" data-poetry-text="jia-yi-a1-text" data-poetry-classical data-poetry-label="A1">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲一《臨江仙 · 與同硯燈下夜坐，侵曉方別》</h2><div class="body">幾度深宵同默坐，孤燈紅淚垂遲。
+<h2 data-poetry-title="《臨江仙 · 與同硯燈下夜坐，侵曉方別》">甲一《臨江仙 · 與同硯燈下夜坐，侵曉方別》</h2><div class="body">幾度深宵同默坐，孤燈紅淚垂遲。
 一秋心緒有誰知。
 啓窗星欲墜，光落兩人衣。
 
 不語各含無限思，而今惟道相期。
 夜闌暗忘漏聲移。
 慵來還指日，明日又今時。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>A1 · To the tune of Linjiangxian · Sitting with a fellow student by lamplight at night; parting only at dawn</h2><div class="body">How often we sat together silent, deep into the night;
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="To the tune of Linjiangxian · Sitting with a fellow student by lamplight at night; parting only at dawn">A1 · To the tune of Linjiangxian · Sitting with a fellow student by lamplight at night; parting only at dawn</h2><div class="body">How often we sat together silent, deep into the night;
 the lone lamp’s red tears slow to fall.
 Who is there to know the feelings of a whole autumn?
 We open the window: a star about to fall,
@@ -155,18 +159,18 @@ tomorrow, at this same hour.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-a1-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · A1"><a class="poetry-next" href="/poetry/jia-yi/#yi-1"><span>Next</span> B1</a><a href="/poetry/jia-yi/#contents">Contents</a></nav>
-<article class="poem reader-poem" id="yi-1" data-poetry-text="jia-yi-b1-text">
+<article class="poem reader-poem" id="yi-1" data-poetry-text="jia-yi-b1-text" data-poetry-classical data-poetry-label="B1">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙一《無題 · 臨江仙》</h2><div class="body">虛廊月好人初定，同攜花徑遲遲。
+<h2 data-poetry-title="《無題 · 臨江仙》">乙一《無題 · 臨江仙》</h2><div class="body">虛廊月好人初定，同攜花徑遲遲。
 燈前笑語兩無疑。
 舊衾隨手與，今日不須知。
 
 客散非因誰獨在，他人皆自相依。
 席旁偶坐共相棲。
 漏殘晨露上，風過落花時。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>B1 · Untitled · To the tune of Linjiangxian</h2><div class="body">The moon is bright in the empty corridor; people have only just settled.
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="Untitled · To the tune of Linjiangxian">B1 · Untitled · To the tune of Linjiangxian</h2><div class="body">The moon is bright in the empty corridor; people have only just settled.
 Together we take our time along the flowered path.
 By the lamp we laugh and talk, neither of us in doubt.
 The old quilt, handed over casually.
@@ -181,18 +185,18 @@ Wind passes, as petals fall.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-b1-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · B1"><a class="poetry-previous" href="/poetry/jia-yi/#jia-1"><span>Previous</span> A1</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#jia-2"><span>Next</span> A2</a></nav>
-<article class="poem reader-poem" id="jia-2" data-poetry-text="jia-yi-a2-text">
+<article class="poem reader-poem" id="jia-2" data-poetry-text="jia-yi-a2-text" data-poetry-classical data-poetry-label="A2">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲二《臨江仙 · 醉後扶靨登樓，夤夜同倚，人問不避》</h2><div class="body">沈醉曾扶相並倚，登樓未肯人知。
+<h2 data-poetry-title="《臨江仙 · 醉後扶靨登樓，夤夜同倚，人問不避》">甲二《臨江仙 · 醉後扶靨登樓，夤夜同倚，人問不避》</h2><div class="body">沈醉曾扶相並倚，登樓未肯人知。
 今宵燈影漸迷離。
 漏殘催曙色，猶帶靨邊緋。
 
 同擁寒衾還細話，當筵曾許心期。
 醒來可認醉中辭？
 朝霞渾未記，宿霧已盈墀。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>A2 · To the tune of Linjiangxian · After wine, cheek supported as we climbed upstairs; leaning together far into the night; when people asked, not evading them</h2><div class="body">Deep in drink, we steadied one another and leaned side by side.
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="To the tune of Linjiangxian · After wine, cheek supported as we climbed upstairs; leaning together far into the night; when people asked, not evading them">A2 · To the tune of Linjiangxian · After wine, cheek supported as we climbed upstairs; leaning together far into the night; when people asked, not evading them</h2><div class="body">Deep in drink, we steadied one another and leaned side by side.
 We went upstairs, unwilling to let others know.
 Tonight the lamplight grows indistinct.
 The water-clock runs low, hastening the dawn;
@@ -207,18 +211,18 @@ Night mist has already filled the steps.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-a2-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · A2"><a class="poetry-previous" href="/poetry/jia-yi/#yi-1"><span>Previous</span> B1</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#yi-2"><span>Next</span> B2</a></nav>
-<article class="poem reader-poem" id="yi-2" data-poetry-text="jia-yi-b2-text">
+<article class="poem reader-poem" id="yi-2" data-poetry-text="jia-yi-b2-text" data-poetry-classical data-poetry-label="B2">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙二《無題 · 踏莎行》</h2><div class="body">一室香温，兩痕影並。
+<h2 data-poetry-title="《無題 · 踏莎行》">乙二《無題 · 踏莎行》</h2><div class="body">一室香温，兩痕影並。
 笑聲沉入簾間暝。
 隔簾燈色欲先寒，有人暗處衣光冷。
 
 欲喚還休，歡猶未省。
 分明一水無舟艇。
 殘灰散盡各歸時，餘釭獨照空庭靜。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>B2 · Untitled · To the tune of Tasuoxing</h2><div class="body">A room warm with scent; two traces of shadow side by side.
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="Untitled · To the tune of Tasuoxing">B2 · Untitled · To the tune of Tasuoxing</h2><div class="body">A room warm with scent; two traces of shadow side by side.
 Laughter sinks into the dark between the curtains.
 Beyond the curtain, even the lamplight seems the first to chill;
 someone in the dark, the light on their clothes grown cold.
@@ -231,18 +235,18 @@ the remaining lamp alone lights the still, empty courtyard.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-b2-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · B2"><a class="poetry-previous" href="/poetry/jia-yi/#jia-2"><span>Previous</span> A2</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#yi-3"><span>Next</span> B3</a></nav>
-<article class="poem reader-poem" id="yi-3" data-poetry-text="jia-yi-b3-text">
+<article class="poem reader-poem" id="yi-3" data-poetry-text="jia-yi-b3-text" data-poetry-classical data-poetry-label="B3">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙三《無題 · 臨江仙》</h2><div class="body">燭暗蛩寒簾影瘦，殘酲猶帶微温。
+<h2 data-poetry-title="《無題 · 臨江仙》">乙三《無題 · 臨江仙》</h2><div class="body">燭暗蛩寒簾影瘦，殘酲猶帶微温。
 筆停紙澀墨先吞。
 未緘還自疊，一折一重門。
 
 不是東風先折取，恐花為我辭根。
 新痕舊鑰莫輕論。
 相逢原是客，客受主家恩。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>B3 · Untitled · To the tune of Linjiangxian</h2><div class="body">Candle dim, crickets cold, the curtain’s shadow thin;
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="Untitled · To the tune of Linjiangxian">B3 · Untitled · To the tune of Linjiangxian</h2><div class="body">Candle dim, crickets cold, the curtain’s shadow thin;
 the wine’s last haze still holds a little warmth.
 The brush stops. The paper resists. The ink swallows first.
 Still unsealed, I fold it up again;
@@ -257,11 +261,11 @@ and a guest receives the kindness of the house.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-b3-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · B3"><a class="poetry-previous" href="/poetry/jia-yi/#yi-2"><span>Previous</span> B2</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#yi-4"><span>Next</span> B4</a></nav>
-<article class="poem reader-poem" id="yi-4" data-poetry-text="jia-yi-b4-text">
+<article class="poem reader-poem" id="yi-4" data-poetry-text="jia-yi-b4-text" data-poetry-classical data-poetry-label="B4">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙四《無題 · 渡江雲》</h2><div class="body">清銅新樣齒，欲封還止，殘熱指間彈。
+<h2 data-poetry-title="《無題 · 渡江雲》">乙四《無題 · 渡江雲》</h2><div class="body">清銅新樣齒，欲封還止，殘熱指間彈。
 忽燈前小影，緘淺香微，半晌已潸然。
 綢繆一晌，轉覺是、別處温言。
 空鑄得、舊模新鑰，紋疊總相沿。
@@ -271,7 +275,7 @@ and a guest receives the kindness of the house.</div></section>
 謄復塗、深言怕誤，淺字偏安。
 明朝銅色經他手，便認作、一諾窮年。
 燈滅後、丁寧只是加餐。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>B4 · Untitled · To the tune of Dujiangyun</h2><div class="body">Bright copper, teeth newly fashioned.
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="Untitled · To the tune of Dujiangyun">B4 · Untitled · To the tune of Dujiangyun</h2><div class="body">Bright copper, teeth newly fashioned.
 About to seal it, I stop;
 still warm, it is flicked between my fingers.
 Suddenly, a small shadow before the lamp;
@@ -295,12 +299,12 @@ After the lamp is out, all I urge is: eat well.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-b4-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · B4"><a class="poetry-previous" href="/poetry/jia-yi/#yi-3"><span>Previous</span> B3</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#yi-5"><span>Next</span> B5</a></nav>
-<article class="poem reader-poem" id="yi-5" data-poetry-text="jia-yi-b5-text">
+<article class="poem reader-poem" id="yi-5" data-poetry-text="jia-yi-b5-text" data-poetry-classical data-poetry-label="B5">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙五《無題 · 十六字令》</h2><div class="body">銅。鑰齒新裁付掌中。天寒了，加飯且從容。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>B5 · Untitled · To the tune of Shiliuziling</h2><div class="body">Copper.
+<h2 data-poetry-title="《無題 · 十六字令》">乙五《無題 · 十六字令》</h2><div class="body">銅。鑰齒新裁付掌中。天寒了，加飯且從容。</div></section>
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="Untitled · To the tune of Shiliuziling">B5 · Untitled · To the tune of Shiliuziling</h2><div class="body">Copper.
 A key, teeth newly cut, placed in your palm.
 The cold has come.
 Eat well, and take your time.</div></section>
@@ -308,17 +312,17 @@ Eat well, and take your time.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-b5-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · B5"><a class="poetry-previous" href="/poetry/jia-yi/#yi-4"><span>Previous</span> B4</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#jia-3"><span>Next</span> A3</a></nav>
-<article class="poem reader-poem" id="jia-3" data-poetry-text="jia-yi-a3-text">
+<article class="poem reader-poem" id="jia-3" data-poetry-text="jia-yi-a3-text" data-poetry-classical data-poetry-label="A3">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲三《鷓鴣天 · 卿贈鑰，附書數字，燈下展讀》</h2><div class="body">鑰齒新裁心自珍，提毫未寫已逡巡。
+<h2 data-poetry-title="《鷓鴣天 · 卿贈鑰，附書數字，燈下展讀》">甲三《鷓鴣天 · 卿贈鑰，附書數字，燈下展讀》</h2><div class="body">鑰齒新裁心自珍，提毫未寫已逡巡。
 拆來只有三行字，半晌綢繆一晌嗔。
 
 星欲墜，露初勻。
 當時未敢喚真真。
 案前字暖春封淺，猶有殘香繞指温。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>A3 · To the tune of Zhegutian · You gave me a key, with a note of a few words enclosed; unfolded and read by lamplight</h2><div class="body">Teeth of the key newly cut; I treasure it.
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="To the tune of Zhegutian · You gave me a key, with a note of a few words enclosed; unfolded and read by lamplight">A3 · To the tune of Zhegutian · You gave me a key, with a note of a few words enclosed; unfolded and read by lamplight</h2><div class="body">Teeth of the key newly cut; I treasure it.
 I lift the brush; before a word is written, already I hesitate.
 On opening it, only three lines of writing.
 A while of tenderness, a spell of pique.
@@ -331,18 +335,18 @@ a lingering scent still curls warm round my fingers.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-a3-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · A3"><a class="poetry-previous" href="/poetry/jia-yi/#yi-5"><span>Previous</span> B5</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#jia-4"><span>Next</span> A4</a></nav>
-<article class="poem reader-poem" id="jia-4" data-poetry-text="jia-yi-a4-text">
+<article class="poem reader-poem" id="jia-4" data-poetry-text="jia-yi-a4-text" data-poetry-classical data-poetry-label="A4 · Recalling A1">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲四，憶甲一《臨江仙 · 曩與同硯默坐數夕，別後音塵寖薄，久乃自定》</h2><div class="body">曾共虛廊默坐，當時只道尋常。
+<h2 data-poetry-title="《臨江仙 · 曩與同硯默坐數夕，別後音塵寖薄，久乃自定》">甲四，憶甲一《臨江仙 · 曩與同硯默坐數夕，別後音塵寖薄，久乃自定》</h2><div class="body">曾共虛廊默坐，當時只道尋常。
 孤燈紅淚共商量。
 不知秋已半，但覺夜初長。
 
 別後音書都杳，逢人怕説西窗。
 偶因殘夢溯流光。
 思忘還入枕，避跡反成雙。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>A4 · To the tune of Linjiangxian · Recalling A1: once I sat silent for several evenings with a fellow student; after parting, news grew scarce, and only after a long while did I settle myself</h2><div class="body">Once we sat together silent in the empty corridor;
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="To the tune of Linjiangxian · once I sat silent for several evenings with a fellow student; after parting, news grew scarce, and only after a long while did I settle myself">A4 · To the tune of Linjiangxian · Recalling A1: once I sat silent for several evenings with a fellow student; after parting, news grew scarce, and only after a long while did I settle myself</h2><div class="body">Once we sat together silent in the empty corridor;
 back then I thought it only ordinary.
 The lone lamp’s red tears joined in our counsel.
 I did not know autumn was half gone;
@@ -357,18 +361,18 @@ shunning every trace, I find myself paired with it still.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-a4-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · A4"><a class="poetry-previous" href="/poetry/jia-yi/#jia-3"><span>Previous</span> A3</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#jia-5"><span>Next</span> A5</a></nav>
-<article class="poem reader-poem" id="jia-5" data-poetry-text="jia-yi-a5-text">
+<article class="poem reader-poem" id="jia-5" data-poetry-text="jia-yi-a5-text" data-poetry-classical data-poetry-label="A5 · Recalling A2">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲五，憶甲二《臨江仙 · 記醉後扶靨登樓，夤夜人問，始無避焉》</h2><div class="body">那夜誰分賓主，並肩同倚更闌。
+<h2 data-poetry-title="《臨江仙 · 記醉後扶靨登樓，夤夜人問，始無避焉》">甲五，憶甲二《臨江仙 · 記醉後扶靨登樓，夤夜人問，始無避焉》</h2><div class="body">那夜誰分賓主，並肩同倚更闌。
 當筵人問不曾瞞。
 雪泥誰去早，此後各風煙。
 
 別處星辰未改，人間幾換流年。
 舊潮猶帶醉時顏。
 思忘成此闋，相對鬢先斑。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>A5 · To the tune of Linjiangxian · Recalling A2: after wine, cheek supported as we climbed upstairs; when people asked late that night, for the first time nothing was evaded</h2><div class="body">That night, who distinguished guest from host?
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="To the tune of Linjiangxian · after wine, cheek supported as we climbed upstairs; when people asked late that night, for the first time nothing was evaded">A5 · To the tune of Linjiangxian · Recalling A2: after wine, cheek supported as we climbed upstairs; when people asked late that night, for the first time nothing was evaded</h2><div class="body">That night, who distinguished guest from host?
 Shoulder to shoulder, leaning together as the watch ran late.
 At the feast, when people asked, I did not conceal it.
 On the snow and mud, who was first to leave?
@@ -383,17 +387,17 @@ face to face, our temples are the first to grey.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-a5-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · A5"><a class="poetry-previous" href="/poetry/jia-yi/#jia-4"><span>Previous</span> A4</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#jia-6"><span>Next</span> A6</a></nav>
-<article class="poem reader-poem" id="jia-6" data-poetry-text="jia-yi-a6-text">
+<article class="poem reader-poem" id="jia-6" data-poetry-text="jia-yi-a6-text" data-poetry-classical data-poetry-label="A6 · Recalling A3">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲六，憶甲三《鷓鴣天 · 篋中故鑰銅花滿眼，追念往還書字，悵然有作》</h2><div class="body">小鑰經年鏽暗生，故箋翻罷眼猶明。
+<h2 data-poetry-title="《鷓鴣天 · 篋中故鑰銅花滿眼，追念往還書字，悵然有作》">甲六，憶甲三《鷓鴣天 · 篋中故鑰銅花滿眼，追念往還書字，悵然有作》</h2><div class="body">小鑰經年鏽暗生，故箋翻罷眼猶明。
 當時避卻鴛鴦字，卻把鴛鴦寫幾層。
 
 窗月冷，鬢霜驚。
 如今畫裏喚誰名。
 相看似隔前生事，齧盡痴根草又青。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>A6 · To the tune of Zhegutian · Recalling A3: the old key in the box, covered in verdigris; thinking back over the letters exchanged, I wrote this in melancholy</h2><div class="body">A small key: with the years, rust has darkly grown.
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="To the tune of Zhegutian · the old key in the box, covered in verdigris; thinking back over the letters exchanged, I wrote this in melancholy">A6 · To the tune of Zhegutian · Recalling A3: the old key in the box, covered in verdigris; thinking back over the letters exchanged, I wrote this in melancholy</h2><div class="body">A small key: with the years, rust has darkly grown.
 The old letters read through, my eyes are still bright.
 Back then, the words “mandarin ducks” were left unwritten;
 yet mandarin ducks were written in, layer upon layer.
@@ -406,18 +410,18 @@ The root of longing gnawed away to nothing; the grass is green again.</div></sec
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-a6-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · A6"><a class="poetry-previous" href="/poetry/jia-yi/#jia-5"><span>Previous</span> A5</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#jia-7"><span>Next</span> A7</a></nav>
-<article class="poem reader-poem" id="jia-7" data-poetry-text="jia-yi-a7-text">
+<article class="poem reader-poem" id="jia-7" data-poetry-text="jia-yi-a7-text" data-poetry-classical data-poetry-label="A7">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲七《臨江仙 · 分蕙寄某，憶昔贈蘭蓀時，惘然有作》</h2><div class="body">手分舊蕙移新種，如今可記春温。
+<h2 data-poetry-title="《臨江仙 · 分蕙寄某，憶昔贈蘭蓀時，惘然有作》">甲七《臨江仙 · 分蕙寄某，憶昔贈蘭蓀時，惘然有作》</h2><div class="body">手分舊蕙移新種，如今可記春温。
 當初玉指贈蘭蓀。
 不知根已定，空自換苔痕。
 
 別後西窗青幾度，也應灌溉朝昏。
 爾來各自長年輪。
 偶然風過處，依約暗香聞。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>A7 · To the tune of Linjiangxian · Dividing an orchid to send to someone; remembering the time the fragrant herbs were given; written in wistfulness</h2><div class="body">By hand I divide the old orchid for new plantings.
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="To the tune of Linjiangxian · Dividing an orchid to send to someone; remembering the time the fragrant herbs were given; written in wistfulness">A7 · To the tune of Linjiangxian · Dividing an orchid to send to someone; remembering the time the fragrant herbs were given; written in wistfulness</h2><div class="body">By hand I divide the old orchid for new plantings.
 Now, is the warmth of that spring still remembered?
 Back then, jade fingers gave the fragrant herbs.
 I did not know the roots had already taken hold;
@@ -432,11 +436,11 @@ a faint scent, just discernible.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-a7-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · A7"><a class="poetry-previous" href="/poetry/jia-yi/#jia-6"><span>Previous</span> A6</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#yi-6"><span>Next</span> B6</a></nav>
-<article class="poem reader-poem" id="yi-6" data-poetry-text="jia-yi-b6-text">
+<article class="poem reader-poem" id="yi-6" data-poetry-text="jia-yi-b6-text" data-poetry-classical data-poetry-label="B6">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙六《得某所寄》</h2><div class="body">故盆移蕙草，幾度誤春痕。
+<h2 data-poetry-title="《得某所寄》">乙六《得某所寄》</h2><div class="body">故盆移蕙草，幾度誤春痕。
 鄰圃分新種，行人折故根。
 窗虛留寸土，門掩各朝昏。
 別後遷新邑，經年異故園。
@@ -456,7 +460,7 @@ a faint scent, just discernible.</div></section>
 舊盆花事盡，春至又生枝。
 澆水成前事，素心終不移。
 君舟向滄海，我亦有天涯。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>B6 · On receiving what was sent</h2><div class="body">In the old pot, the orchid transplanted;
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="On receiving what was sent">B6 · On receiving what was sent</h2><div class="body">In the old pot, the orchid transplanted;
 more than once, spring’s trace went awry.
 The neighbouring garden takes a new division;
 a passer-by breaks off an old root.
@@ -496,11 +500,11 @@ I too have a horizon of my own.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-b6-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · B6"><a class="poetry-previous" href="/poetry/jia-yi/#jia-7"><span>Previous</span> A7</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#jia-8"><span>Next</span> A8</a></nav>
-<article class="poem reader-poem" id="jia-8" data-poetry-text="jia-yi-a8-text">
+<article class="poem reader-poem" id="jia-8" data-poetry-text="jia-yi-a8-text" data-poetry-classical data-poetry-label="A8">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲八《夜聞舊曲》</h2><div class="body">當時窗下別，今作檐前雨。
+<h2 data-poetry-title="《夜聞舊曲》">甲八《夜聞舊曲》</h2><div class="body">當時窗下別，今作檐前雨。
 怕聽舊時曲，聲聲催天曙。
 餘音不肯絕，繞作迴腸縷。
 一燈寒在壁，照壁如照汝。
@@ -509,7 +513,7 @@ I too have a horizon of my own.</div></section>
 推窗山似海，萬古一微弦。
 此聲殊未已，人世不知年。
 側耳疑相答，餘音何處傳。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>A8 · Hearing an old tune at night</h2><div class="body">Then, a parting beneath the window;
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="Hearing an old tune at night">A8 · Hearing an old tune at night</h2><div class="body">Then, a parting beneath the window;
 now, rain before the eaves.
 I fear to hear the old tune;
 note after note hastens the dawn.
@@ -530,17 +534,17 @@ Where is the lingering sound carried?</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-a8-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · A8"><a class="poetry-previous" href="/poetry/jia-yi/#yi-6"><span>Previous</span> B6</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#yi-7"><span>Next</span> B7</a></nav>
-<article class="poem reader-poem" id="yi-7" data-poetry-text="jia-yi-b7-text">
+<article class="poem reader-poem" id="yi-7" data-poetry-text="jia-yi-b7-text" data-poetry-classical data-poetry-label="B7">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙七《忘川 · 檢篋得舊稿，不復攜，悉以寄某，並題》</h2><div class="body">燈下讀舊詞，夜深方得眠。
+<h2 data-poetry-title="《忘川 · 檢篋得舊稿，不復攜，悉以寄某，並題》">乙七《忘川 · 檢篋得舊稿，不復攜，悉以寄某，並題》</h2><div class="body">燈下讀舊詞，夜深方得眠。
 當時渾不異，往事付流年。
 我又移新處，君猶理舊篇。
 小兒催入夢，蕙草立窗前。
 莫攀檐前柳，莫數落花天。
 忘川人自渡，各自有歸邊。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>B7 · Wangchuan, the river of forgetting · Searching the box, I found old drafts; rather than carry them further, I sent them all, with these lines</h2><div class="body">By lamplight I read the old poems;
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="Wangchuan, the river of forgetting · Searching the box, I found old drafts; rather than carry them further, I sent them all, with these lines">B7 · Wangchuan, the river of forgetting · Searching the box, I found old drafts; rather than carry them further, I sent them all, with these lines</h2><div class="body">By lamplight I read the old poems;
 only deep in the night could I sleep.
 Back then, none of it seemed any different;
 what has passed I give over to the years.
@@ -556,17 +560,17 @@ each has a shore to come home to.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-b7-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · B7"><a class="poetry-previous" href="/poetry/jia-yi/#jia-8"><span>Previous</span> A8</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#jia-9"><span>Next</span> A9</a></nav>
-<article class="poem reader-poem" id="jia-9" data-poetry-text="jia-yi-a9-text">
+<article class="poem reader-poem" id="jia-9" data-poetry-text="jia-yi-a9-text" data-poetry-classical data-poetry-label="A9">
 <p class="poetry-dates">Cycle date <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲九《鷓鴣天 · 得某所寄舊稿，燈下讀竟，與篋中所存合編，第其甲乙。裝成，客至輒出以相示，題其尾》</h2><div class="body">兩疊殘箋展案前，舊時燈影各成篇。
+<h2 data-poetry-title="《鷓鴣天 · 得某所寄舊稿，燈下讀竟，與篋中所存合編，第其甲乙。裝成，客至輒出以相示，題其尾》">甲九《鷓鴣天 · 得某所寄舊稿，燈下讀竟，與篋中所存合編，第其甲乙。裝成，客至輒出以相示，題其尾》</h2><div class="body">兩疊殘箋展案前，舊時燈影各成篇。
 親將一線縫卿我，留得鴛鴦傍脊眠。
 
 賓一哂，語猶慳。
 箋中淺字只加餐。
 深言怕誤重重掩，欲喚還休欲喚難。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>A9 · To the tune of Zhegutian · On receiving the old drafts sent to me, I read them by lamplight, combined them with those kept in my box, and arranged them as A and B. Once bound, I brought them out whenever a guest called, and wrote this at the end</h2><div class="body">Two sheaves of old pages spread before me on the desk;
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="To the tune of Zhegutian · On receiving the old drafts sent to me, I read them by lamplight, combined them with those kept in my box, and arranged them as A and B. Once bound, I brought them out whenever a guest called, and wrote this at the end">A9 · To the tune of Zhegutian · On receiving the old drafts sent to me, I read them by lamplight, combined them with those kept in my box, and arranged them as A and B. Once bound, I brought them out whenever a guest called, and wrote this at the end</h2><div class="body">Two sheaves of old pages spread before me on the desk;
 in the lamplight of those days, each had formed a poem of its own.
 With my own hands, I stitch you and me with a single thread;
 and leave the mandarin ducks to sleep beside the spine.
@@ -579,11 +583,11 @@ about to call out, then holding back; about to call out is hard.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=en&amp;work=jia-yi-a9-text">Choose a paper edition</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Works · A9"><a class="poetry-previous" href="/poetry/jia-yi/#yi-7"><span>Previous</span> B7</a><a href="/poetry/jia-yi/#contents">Contents</a><a class="poetry-next" href="/poetry/jia-yi/#jia-10"><span>Next</span> A10</a></nav>
-<article class="poem reader-poem" id="jia-10" data-poetry-text="jia-yi-a10-text">
+<article class="poem reader-poem" id="jia-10" data-poetry-text="jia-yi-a10-text" data-poetry-classical data-poetry-label="A10">
 <p class="poetry-dates">First written <time datetime="2026-07-01">2026.07.01</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲十《中呂 · 山坡羊 · 又過舊廬》</h2><div class="body">風迎面，人立此，
+<h2 data-poetry-title="《中呂 · 山坡羊 · 又過舊廬》">甲十《中呂 · 山坡羊 · 又過舊廬》</h2><div class="body">風迎面，人立此，
 鼻尖一動魂先至。
 認不真，卻認真，
 繞來繞去街角立。
@@ -592,7 +596,7 @@ about to call out, then holding back; about to call out is hard.</div></section>
 
 遲，是誤了；
 歸，也是誤了。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>A10 · Zhonglü · To the tune of Shanpoyang · Passing the old house again</h2><div class="body">Wind in the face. Stopped here.
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="Zhonglü · To the tune of Shanpoyang · Passing the old house again">A10 · Zhonglü · To the tune of Shanpoyang · Passing the old house again</h2><div class="body">Wind in the face. Stopped here.
 The nose moves first — the soul arrives before I do.
 Can’t be sure it’s real; am sure anyway.
 Round and round the corner of the street, and standing still.

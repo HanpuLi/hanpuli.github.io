@@ -4,11 +4,36 @@ Personal portfolio and writing site for Hanpu Li, published with GitHub Pages at
 
 The site is deliberately static: editorial HTML/CSS, local image/font assets and no client-side application framework. A small standard-library Python generator produces complete static English, Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian editions from structured content. A quiet `Credits & contexts` back-matter page keeps credit names and selected professional records separate from the work pages. Ordinary pages have no runtime translation layer; the root custom 404 carries a small path-aware locale router because GitHub Pages serves the same root 404 document for real missing URLs in every language tree. The repository also hosts the public privacy/terms pages for the mail-assistant project.
 
+Traditional and Simplified Chinese use locally hosted subsets derived from
+I.MingCP 8.10, including Chinese names on other language editions and the
+Poetry Voucher website-font option. Japanese retains Shippori, Latin retains
+EB Garamond / Courier Prime, Russian retains the existing Cyrillic faces, and
+accessibility reading preferences retain their alternative fonts. The original
+bitmap voucher option remains available. Subsets have distinct internal names
+and preserve copyright/licence metadata. See
+`assets/fonts/CHINESE_FONT_LICENSES.txt` for the IPA licence, materials and
+original-font replacement instructions. Rebuild with
+`uv run --with fonttools --with brotli python tools/rebuild-chinese-fonts.py`;
+`--check` verifies coverage, hashes and both CSS unicode ranges.
+
+
 ## Poetry catalogue
 
 `/poetry/` is the shared entrance for poems, sequences and retained versions. Each language has the same work routes. `/poetry/chronology/` indexes first dates without splitting a sequence into unrelated entries. The A/B sequence contains its seventeen author-confirmed members, including A10. Roof remains one two-part work in two drafts; the two Manjianghong rewritings share one work, while the later response has its own identity.
 
 All literary content is authored in `content/poetry/library.json`. The simplified mirror, old ci/shi JSON files, canonical readers, old-route recovery pages and Poetry Voucher catalogue are generated views. See `docs/poetry-architecture.md` for editing and compatibility contracts.
+
+Traditional Chinese classical readers default to vertical text and titles. A
+horizontal/vertical control remembers the reader's choice locally; other editions
+default to horizontal text, and translations retain their horizontal layout.
+The A/B labels remain horizontal metadata. Short titles stay in one vertical
+column; narrow screens place complete stanzas in successive bands and divide an
+oversized stanza only between authored lines. Modern poems retain their authored
+horizontal lines. Simple reading uses horizontal text. With scripts disabled, the
+complete original and translations remain available horizontally. Poem blocks
+are centred without centring or rewriting the individual authored lines.
+`npm run qa:poetry-layout` exercises these behaviours in Chromium;
+`POETRY_LAYOUT_ENGINE=webkit npm run qa:poetry-layout` checks WebKit as well.
 
 ## Local checks
 

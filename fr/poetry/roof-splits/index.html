@@ -52,19 +52,22 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/fr/poetry/roof-splits/#page","url":"https://hanpuli.github.io/fr/poetry/roof-splits/","name":"Le toit se fend · Hanpu Li","description":"Le toit se fend · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"fr","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 
 </head>
-<body class="literary-page poetry-page poetry-reader locale-fr">
+<body class="literary-page poetry-page poetry-reader poetry-single locale-fr">
 <a class="skip-link" href="#poetry-main">Aller aux poèmes</a>
 <div class="wrap">
 <header class="page-topbar">
@@ -109,6 +112,7 @@
     <h1>Le toit se fend</h1>
     <div class="sub"><p>Poème</p></div>
 
+
   </header>
   <nav class="poetry-version-nav" aria-label="Versions">
 <a href="#draft-1">Version 1</a>
@@ -119,7 +123,7 @@
 <p class="poetry-dates">Première rédaction <time datetime="2025-02-06">2025.02.06</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>屋頂裂開 · 一</h2><div class="body">屋頂裂開。裂開裏有灰。
+<h2 data-poetry-title="屋頂裂開 · 一">屋頂裂開 · 一</h2><div class="body">屋頂裂開。裂開裏有灰。
 灰裏沒有風。風走了。走不了。
 
 門口濕了。濕得像腳尖在笑。
@@ -144,7 +148,7 @@
 鏽裏漫出眼睛。
 眼睛踩着屋頂裂縫裏的灰，
 灰又散開，散開得像你不在。</div></section>
-<section class="poem-version translation" lang="fr"><h2>Le toit se fend · 1</h2><div class="body">Le toit se fend. Dans la fente, de la cendre.
+<section class="poem-version translation" lang="fr"><h2 data-poetry-title="Le toit se fend · 1">Le toit se fend · 1</h2><div class="body">Le toit se fend. Dans la fente, de la cendre.
 Dans la cendre, pas de vent. Le vent est parti. Ne peut pas partir.
 
 L’entrée est mouillée. Mouillée comme si la pointe des pieds riait.
@@ -176,7 +180,7 @@ la cendre se disperse encore, se disperse comme ton absence.</div></section>
 <p class="poetry-dates">Première rédaction <time datetime="2025-02-06">2025.02.06</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>屋頂裂開 · 二</h2><div class="body">窗欞散架。散架裏有光。
+<h2 data-poetry-title="屋頂裂開 · 二">屋頂裂開 · 二</h2><div class="body">窗欞散架。散架裏有光。
 光裏沒有影。影丟了，丟不遠。
 
 門檻斜了。斜得像話説到一半。
@@ -202,7 +206,7 @@ la cendre se disperse encore, se disperse comme ton absence.</div></section>
 時辰盯着窗欞散架裏的光，
 光又合攏，合攏得像我忘了問——
 問什麼</div></section>
-<section class="poem-version translation" lang="fr"><h2>Le toit se fend · 2</h2><div class="body">Le châssis de la fenêtre se disloque. Dans la dislocation, de la lumière.
+<section class="poem-version translation" lang="fr"><h2 data-poetry-title="Le toit se fend · 2">Le toit se fend · 2</h2><div class="body">Le châssis de la fenêtre se disloque. Dans la dislocation, de la lumière.
 Dans la lumière, pas d’ombre. L’ombre est perdue, pas loin.
 
 Le seuil penche. Penche comme une phrase dite à moitié.
@@ -237,7 +241,7 @@ demander quoi</div></section>
 <p class="poetry-dates">Première rédaction <time datetime="2025-02-06">2025.02.06</time> <span aria-hidden="true">·</span> Révision <time datetime="2026-02-13">2026.02.13</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>屋頂裂開 · 一</h2><div class="body">屋頂裂開。裂開裏灰。
+<h2 data-poetry-title="屋頂裂開 · 一">屋頂裂開 · 一</h2><div class="body">屋頂裂開。裂開裏灰。
 灰裏沒風。風走了。走不了。
 
 門口濕了。濕得笑。
@@ -262,7 +266,7 @@ demander quoi</div></section>
 鏽裏漫出眼。
 踩裂縫，
 散開，你不在。</div></section>
-<section class="poem-version translation" lang="fr"><h2>Le toit se fend · 1</h2><div class="body">Le toit se fend. Dans la fente cendre.
+<section class="poem-version translation" lang="fr"><h2 data-poetry-title="Le toit se fend · 1">Le toit se fend · 1</h2><div class="body">Le toit se fend. Dans la fente cendre.
 Dans la cendre pas de vent. Le vent est parti. Ne peut pas partir.
 
 L’entrée est mouillée. Mouillée à rire.
@@ -294,7 +298,7 @@ se disperse, tu n’es pas là.</div></section>
 <p class="poetry-dates">Première rédaction <time datetime="2025-02-06">2025.02.06</time> <span aria-hidden="true">·</span> Révision <time datetime="2026-02-13">2026.02.13</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>屋頂裂開 · 二</h2><div class="body">窗欞散架。裏頭光。
+<h2 data-poetry-title="屋頂裂開 · 二">屋頂裂開 · 二</h2><div class="body">窗欞散架。裏頭光。
 沒有影。丟了，不遠。
 
 門檻斜了。半句話卡在木紋裏。
@@ -320,7 +324,7 @@ se disperse, tu n’es pas là.</div></section>
 盯着散架，
 光合攏，我忘了問——
 問什麼</div></section>
-<section class="poem-version translation" lang="fr"><h2>Le toit se fend · 2</h2><div class="body">Le châssis se disloque. Dedans lumière.
+<section class="poem-version translation" lang="fr"><h2 data-poetry-title="Le toit se fend · 2">Le toit se fend · 2</h2><div class="body">Le châssis se disloque. Dedans lumière.
 Pas d’ombre. Perdue, pas loin.
 
 Le seuil penche. Une demi-phrase coincée dans le fil du bois.

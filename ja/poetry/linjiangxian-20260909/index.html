@@ -52,20 +52,24 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-subset.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/ja/poetry/linjiangxian-20260909/#page","url":"https://hanpuli.github.io/ja/poetry/linjiangxian-20260909/","name":"臨江仙の調べ · Hanpu Li","description":"臨江仙の調べ · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"ja","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 
 </head>
-<body class="literary-page poetry-page poetry-reader locale-ja">
+<body class="literary-page poetry-page poetry-reader poetry-single locale-ja">
 <a class="skip-link" href="#poetry-main">詞へスキップ</a>
 <div class="wrap">
 <header class="page-topbar">
@@ -110,19 +114,20 @@
     <h1>臨江仙の調べ</h1>
     <div class="sub"><p>詞</p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="原文の組み方" data-simple-label="単一列の表示では横書きになります。" hidden><span>原文の組み方</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">横書き</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">縦書き</button></div>
   </header>
-  <article class="poem reader-poem" id="linjiangxian-20260909" data-poetry-text="linjiangxian-20260909-text">
+  <article class="poem reader-poem" id="linjiangxian-20260909" data-poetry-text="linjiangxian-20260909-text" data-poetry-classical>
 <p class="poetry-dates">初稿 <time datetime="2026-09-09">2026.09.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《臨江仙》</h2><div class="body">簾影幾宵長共話，露痕初濕闌干。
+<h2 data-poetry-title="《臨江仙》">《臨江仙》</h2><div class="body">簾影幾宵長共話，露痕初濕闌干。
 言猶未了息先安。
 夢深渾不覺，月上夜將殘。
 
 他日重簾垂到地，垂來一似從前。
 手臨燈畔數迴旋。
 明朝風或緊，窗且掩周全。</div></section>
-<section class="poem-version translation" lang="ja"><h2>臨江仙の調べ</h2><div class="body">簾の影、幾晩も続いた長い話。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="臨江仙の調べ">臨江仙の調べ</h2><div class="body">簾の影、幾晩も続いた長い話。
 降りはじめた露が欄干を濡らす。
 言葉は終わらないまま、息のほうが先に穏やかになる。
 深い夢のなか、何も気づかず、

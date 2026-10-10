@@ -280,7 +280,12 @@ function paperVoucherId(work,ref,index=null){
   return work?.version_id&&!work.authorial_label?ref+suffix:(work?.source_id||'CUSTOM')+'-'+ref+suffix;
 }
 const $=id=>document.getElementById(id);
-const serif='EB, ShipCommon, Ship, IMing, Noto, serif',mono='Courier, monospace';
+const serif='EB, "Hanpu Chinese Common", "Hanpu Chinese", ShipCommon, Ship, HanpuGap, serif',mono='Courier, monospace';
+function siteSerif(locale){
+  if(locale==='ja')return 'EB, ShipCommon, Ship, HanpuGap, serif';
+  if(locale?.startsWith('zh'))return '"Hanpu Chinese Common", "Hanpu Chinese", EB, serif';
+  return serif;
+}
 const INPUT_LIMITS=Object.freeze({title:160,author:100,poem:1800});
 let works=[],patterns,codes,stopCode,revision=0,objectURLs=[],messageKey='正在載入作品…',proofState=null;
 let paymentRoll=null,cashRoll=0.5;
@@ -441,7 +446,7 @@ function barcodeBits(ref){
 }
 function render(spec){
   const p=new Paper(),ref=spec.ref,code=spec.original?spec.work.source_id:RECEIPT_CONFIG.customWorkCode,voucher=spec.voucherId||paperVoucherId(spec.original?spec.work:null,ref),contentLocale=spec.locale||(spec.original?'zh-Hant':'en');
-  const bodyFont=spec.font==='site'?serif:bitmapFamily(contentLocale),translationFont=locale=>spec.font==='site'?serif:bitmapFamily(locale);
+  const bodyFont=spec.font==='site'?siteSerif(contentLocale):bitmapFamily(contentLocale),translationFont=locale=>spec.font==='site'?siteSerif(locale):bitmapFamily(locale);
   p.threshold=TYPE_CONFIG.threshold[spec.font];
   const items=spec.items||[sku('poem',spec.price)],meta=receiptMeta(ref),tax=vatSummary(items);
   if(items.reduce((sum,item)=>sum+itemAmount(item),0)!==spec.price)throw Error('Receipt total does not match item amounts.');
@@ -544,7 +549,7 @@ async function generate(event){
     if(spec.font==='bitmap')selected.forEach(item=>pixelLoads.add(bitmapFace(item.locale)));
     if(spec.original)pixelLoads.add(bitmapFace('zh-Hant'));
     await Promise.all([
-      ...['EB','Courier','ShipCommon','Ship','IMing','Noto','FusionPixelLatin'].map(f=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px ${f}`,fontSample)),
+      ...['EB','Courier','ShipCommon','Ship','HanpuGap','Hanpu Chinese Common','Hanpu Chinese','FusionPixelLatin'].map(f=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px "${f}"`,fontSample)),
       ...[...pixelLoads].map(f=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px ${f}`,fontSample))
     ]);
     await document.fonts.load(`italic ${TYPE_CONFIG.translation}px EB`);

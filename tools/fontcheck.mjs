@@ -24,9 +24,12 @@ const base='http://127.0.0.1:'+server.address().port;
 const browser=await chromium.launch({headless:true});
 const context=await browser.newContext({viewport:{width:1280,height:900}});
 const unexpected=[], missing=[], summary=new Map();
+const retiredChinese=[];
+const misplacedFaces=[];
 const requiredFaces=[
  ['EB Garamond','About'],['Courier Prime','metadata'],['Cousine RU','Русский'],
- ['Shippori Common','繁日'],['Shippori Mincho','網站日本語'],['IMing Gap','喻'],
+ ['Hanpu Chinese Common','繁简'],['Hanpu Chinese','網站网站？！'],
+ ['Shippori Common','繁日'],['Shippori Mincho','網站日本語'],['Hanpu CJK Gap','喻'],
  ['Noto Serif SC Site','网站'],['Noto Serif SC Locale','简'],
  ['Site Serif Symbols','≈'],['Site Mono Symbols','Δ']
 ];
@@ -40,6 +43,9 @@ try{
   const bad=[];
   page.on('response',r=>{if(r.status()>=400)bad.push([r.status(),r.url()]);});
   await page.goto(base+route,{waitUntil:'load'});
+  // This paragraph may be replaced by the regional profile response after
+  // load. Observe the settled copy instead of pairing old text with new paint.
+  if(route.endsWith('/about.html'))await page.waitForLoadState('networkidle');
   await page.evaluate(async()=>{const style=document.createElement('style');style.textContent='*{content-visibility:visible !important}';document.head.append(style);await document.fonts.ready;});
   assert.deepEqual(bad,[],route+': missing resources');
   const targets=await page.evaluate(()=>{
@@ -51,7 +57,15 @@ try{
       const cs=getComputedStyle(el),r=el.getBoundingClientRect();
       if(cs.display==='none'||cs.visibility==='hidden'||Number(cs.opacity)===0||r.width===0||r.height===0)continue;
       const id='fa-'+(++i);el.dataset.fontAudit=id;
-      out.push({id,text:text.slice(0,180),family:cs.fontFamily,insideReading:!!el.closest('.reading-tools')});
+      const lang=el.closest('[lang]')?.lang||'';
+      // CDP includes descendant TextNodes. A wordmark, for example, contains
+      // both its Latin name and an explicitly Chinese child span.
+      const mixedLanguage=[...el.querySelectorAll('[lang]')].some(child=>child.lang.split('-')[0]!==lang.split('-')[0]);
+      // External links can add a Chinese interface label via ::after even
+      // inside an English essay. Those glyphs belong to the interface language.
+      const pseudoText=[el,...el.querySelectorAll('a, summary')].flatMap(node=>['::before','::after'].map(pseudo=>getComputedStyle(node,pseudo).content)).join('');
+      const containsCjk=/[\u{2e80}-\u{9fff}\u{f900}-\u{faff}\u{ff00}-\u{ffef}\u{20000}-\u{323af}]/u.test(el.textContent+pseudoText);
+      out.push({id,text:text.slice(0,180),family:cs.fontFamily,lang,mixedLanguage,containsCjk,insideReading:!!el.closest('.reading-tools')});
     }
     return out;
   });
@@ -65,6 +79,13 @@ try{
     for(const f of fonts){
       const key=f.familyName+'|'+f.isCustomFont;
       summary.set(key,(summary.get(key)||0)+f.glyphCount);
+      if(f.familyName.startsWith('Noto Serif SC') && !t.insideReading){
+        retiredChinese.push({route,text:t.text,painted:f.familyName,glyphs:f.glyphCount});
+      }
+      if(!t.insideReading && !t.mixedLanguage && ((t.lang.startsWith('zh') && t.containsCjk && f.familyName.startsWith('Shippori')) ||
+         (/^(en|de|fr|ru)(-|$)/.test(t.lang) && !t.containsCjk && f.familyName.startsWith('Hanpu Chinese')))){
+        misplacedFaces.push({route,text:t.text,lang:t.lang,painted:f.familyName});
+      }
       if(!f.isCustomFont && !t.insideReading && !/^system-ui|^-apple-system/.test(t.family)){
         unexpected.push({route,text:t.text,family:t.family,painted:f.familyName,glyphs:f.glyphCount});
       }
@@ -77,4 +98,7 @@ console.log('fontcheck families:',JSON.stringify([...summary.entries()].sort((a,
 if(missing.length)console.log('fontcheck: CDP returned no paint data for '+missing.length+' offscreen/direct-text probes; fallback assertions use only observed paint data.');
 if(unexpected.length)console.error('Unexpected system fallback:',JSON.stringify(unexpected.slice(0,80),null,2));
 assert.deepEqual(unexpected,[],'unexpected non-webfont fallback outside accessibility reading controls');
+assert.deepEqual(retiredChinese,[],'Chinese copy still paints with the retired Simplified-Chinese face');
+if(misplacedFaces.length)console.error('Fonts outside their language context:',JSON.stringify(misplacedFaces.slice(0,40),null,2));
+assert.equal(misplacedFaces.length,0,'painted font crosses the Chinese/Japanese/Latin language boundary');
 console.log('fontcheck: '+routes.length+' HTML documents; visible direct text uses only declared webfonts outside the intentional system-sans reading panel.');

@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""重建香港正字繁体 / 日文所用的 Shippori webfont 子集。
+"""重建日文所用的 Shippori webfont 子集与合规改名的缺字补丁。
 
 页面文字改动后运行:
     uv run --with fonttools --with brotli python tools/rebuild-fonts.py
 
-简体中文版的 Noto Serif SC 子集由 tools/rebuild-zh-hans-font.py 单独维护，
-不要把简体字形并入 Shippori 子集。
+全站繁简中文的一点明子集由 tools/rebuild-chinese-fonts.py 维护。
+Shippori 保留日文字形，不接管中文主字体。
 
 Shippori Mincho 只含全站实际用字;新增汉字若不重建会回落宋体。
 Shippori 缺字由 I.MingCP 补丁兜底——若脚本报告缺字变化,
-需同步更新 assets/site.css 中 @font-face "IMing Gap" 的 unicode-range。
+需同步更新 assets/site.css 中 @font-face "Hanpu CJK Gap" 的 unicode-range。
 依赖: pip install fonttools brotli
 源字体(均在 ~/Library/Fonts/): ShipporiMincho-Regular.ttf, I.MingCP-8.10.ttf
 """
@@ -21,7 +21,7 @@ SP = os.path.expanduser("~/Library/Fonts/ShipporiMincho-Regular.ttf")
 IM = os.path.expanduser("~/Library/Fonts/I.MingCP-8.10.ttf")
 OUT = os.path.join(ROOT, "assets/fonts/shippori-mincho-subset.woff2")
 COMMON_OUT = os.path.join(ROOT, "assets/fonts/shippori-mincho-common.woff2")
-GAP = os.path.join(ROOT, "assets/fonts/iming-gap.woff2")
+GAP = os.path.join(ROOT, "assets/fonts/hanpu-cjk-gap.woff2")
 # Present on the default English edition: identity, locale controls, 留證 and the favicon glyph.
 # Keep this set deliberately CJK-only; punctuation/symbols fall back to the Latin/system faces.
 COMMON_CHARS = set("李函璞留證詞繁日")
@@ -67,7 +67,7 @@ class BodyTextParser(HTMLParser):
 chars = set()
 for f in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
     rel = os.path.relpath(f, ROOT).split(os.sep)
-    # The Noto Serif SC subset owns the Simplified-Chinese edition; standalone
+    # The shared Chinese subsets own the Simplified-Chinese edition; standalone
     # utility pages have their own typography and must not leak characters into
     # the Traditional/Japanese Shippori subset.
     if (
@@ -84,11 +84,12 @@ for f in glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True):
 # Runtime shop labels do not appear in generated HTML until the locale is selected.
 shop_text = subprocess.check_output(["node", "-e", "const fs=require('fs'),vm=require('vm'); const s=fs.readFileSync('content/poetry-voucher-app/shop-copy.js','utf8'); process.stdout.write(vm.runInNewContext(s+';Object.values(SHOP_COPY).map(r=>r[1]+r[3]).join(\"\")'));"], cwd=ROOT, text=True)
 chars.update(c for c in shop_text if ord(c) >= 0x2E80)
-# The Simplified-Chinese locale switch label is rendered by the one-glyph
-# Noto Serif SC locale subset built by rebuild-zh-hans-font.py, not Shippori/I.Ming.
+# The Simplified-Chinese locale switch label is rendered by the shared Chinese
+# common face, not the Japanese Shippori subsets.
 chars.discard("简")
 
 from fontTools.ttLib import TTFont
+from font_licensing import rename_ipa_subset
 
 # Some public text is inserted at runtime by the regional profile endpoint and
 # therefore is not present in the static HTML scanned above. Preserve CJK
@@ -147,21 +148,26 @@ if missing:
     subprocess.run([sys.executable, "-m", "fontTools.subset", IM,
                     f"--text={''.join(missing)}", "--flavor=woff2",
                     f"--output-file={GAP}", "--no-hinting"], check=True)
+    gap_font = TTFont(GAP)
+    rename_ipa_subset(gap_font, TTFont(IM), 'Hanpu CJK Gap', 'HanpuCJKGap-Regular')
+    gap_font.save(GAP)
+    with open(os.path.join(ROOT, 'assets/fonts/hanpu-cjk-gap-characters.txt'), 'w', encoding='utf-8') as gap_chars:
+        gap_chars.write(''.join(missing))
     rng = ", ".join(f"U+{ord(c):04X}" for c in missing)
     print(f"Shippori 缺字 {''.join(missing)} → I.MingCP 补丁已重建")
 
     face = re.search(
-        r'@font-face\s*\{(?=[^}]*font-family:\s*["\']IMing Gap["\'])[^}]*unicode-range:\s*([^;]+);',
+        r'@font-face\s*\{(?=[^}]*font-family:\s*["\']Hanpu CJK Gap["\'])[^}]*unicode-range:\s*([^;]+);',
         css,
         flags=re.S,
     )
     actual_range = face.group(1).strip() if face else None
     if actual_range != rng:
         print(
-            f"IMing Gap unicode-range 不一致: CSS={actual_range!r}, 应为={rng!r}",
+            f"Hanpu CJK Gap unicode-range 不一致: CSS={actual_range!r}, 应为={rng!r}",
             file=sys.stderr,
         )
         raise SystemExit(1)
-    print(f"IMing Gap unicode-range 已核对: {rng}")
+    print(f"Hanpu CJK Gap unicode-range 已核对: {rng}")
 else:
-    print("Shippori 无缺字;iming-gap.woff2 可按需移除。")
+    print("Shippori 无缺字;hanpu-cjk-gap.woff2 可按需移除。")

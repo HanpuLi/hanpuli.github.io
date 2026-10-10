@@ -1,0 +1,64 @@
+Chinese website font subsets
+===========================
+
+hanpu-chinese-common.woff2 (Hanpu Chinese Common), hanpu-chinese.woff2
+(Hanpu Chinese), and hanpu-cjk-gap.woff2 (Hanpu CJK Gap) are derived font
+programs made from I.MingCP 8.10. All three are licensed under the IPA Font
+License Agreement v1.0, supplied in IPA_Font_License_Agreement_v1.0.txt.
+
+Copyright attribution retained in the font files:
+Copyright © 2003-2024 I.Font Project;
+Information-technology Promotion Agency, Japan (IPA), 2011-2018.
+
+The new names distinguish the subsets from their source. No claim is made to
+authorship of the original glyph designs. These font terms do not change the
+authorship or copyright of the poems, translations, essays or website text.
+
+Upstream project and contributors:
+https://github.com/ichitenfont/I.Ming
+Unmodified original font:
+https://raw.githubusercontent.com/ichitenfont/I.Ming/master/8.10/I.MingCP-8.10.ttf
+Original SHA-256 (verified against the upstream download on 2026-10-10):
+1c411a2e97b65c26aaa01707bbe06919569fcd7683c8bb5db114a96264710458
+
+Modifications and materials for further modification
+----------------------------------------------------
+The two Chinese faces cover the site's actual Traditional and Simplified
+Chinese characters. The common face contains identity/navigation characters
+so other language editions need not load the complete Chinese subset. The
+small CJK gap face retains the previous seven-character fallback for Japanese.
+Unused glyphs and hinting are removed, relevant OpenType layout and vertical
+metrics are retained, and the fonts are compressed to WOFF2. Internal family,
+full, unique and PostScript names are changed; copyright/licence metadata is
+retained. The glyph outlines are not redrawn.
+
+The character lists and metadata are available beside the fonts:
+hanpu-chinese-common-characters.txt
+hanpu-chinese-characters.txt
+hanpu-cjk-gap-characters.txt
+hanpu-chinese.meta.json
+
+Build and metadata sources are available in the public website repository:
+https://github.com/HanpuLi/hanpuli.github.io/blob/main/tools/rebuild-chinese-fonts.py
+https://github.com/HanpuLi/hanpuli.github.io/blob/main/tools/rebuild-fonts.py
+https://github.com/HanpuLi/hanpuli.github.io/blob/main/tools/font_licensing.py
+
+How to replace a subset with the unmodified original
+----------------------------------------------------
+1. Download the original I.MingCP-8.10.ttf from the upstream URL above and
+   verify the supplied SHA-256. Keep its original internal name and bytes.
+2. Place that unmodified file at assets/fonts/I.MingCP-8.10.ttf in your copy
+   of the site, together with IPA_Font_License_Agreement_v1.0.txt.
+3. In the corresponding @font-face declarations in assets/site.css and the
+   Poetry Voucher stylesheet, replace the subset URL with
+   /assets/fonts/I.MingCP-8.10.ttf and change format("woff2") to
+   format("truetype") where present. CSS family aliases may stay unchanged;
+   the original font's internal name must remain unchanged.
+4. Preserve the Chinese unicode-range declarations to keep the existing Latin
+   and Japanese font selection, or remove a range when intentionally using
+   the full original beyond those characters. Reload the page.
+
+The normal site loads only the small subsets. Providing these replacement
+instructions does not require normal visitors to download the full font.
+Further distributed derived fonts must comply with the same IPA agreement,
+including distinct names, the required materials and replacement means.

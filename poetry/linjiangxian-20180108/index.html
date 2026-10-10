@@ -52,19 +52,22 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/poetry/linjiangxian-20180108/#page","url":"https://hanpuli.github.io/poetry/linjiangxian-20180108/","name":"To the tune of Linjiangxian · Hanpu Li","description":"To the tune of Linjiangxian · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"en-GB","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 
 </head>
-<body class="literary-page poetry-page poetry-reader locale-en">
+<body class="literary-page poetry-page poetry-reader poetry-single locale-en">
 <a class="skip-link" href="#poetry-main">Skip to poems</a>
 <div class="wrap">
 <header class="page-topbar">
@@ -109,19 +112,20 @@
     <h1>To the tune of Linjiangxian</h1>
     <div class="sub"><p>Ci</p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="Original layout" data-simple-label="Single-column reading uses horizontal text." hidden><span>Original layout</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">Horizontal</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">Vertical</button></div>
   </header>
-  <article class="poem reader-poem" id="linjiangxian-20180108" data-poetry-text="linjiangxian-20180108-revised-202610">
+  <article class="poem reader-poem" id="linjiangxian-20180108" data-poetry-text="linjiangxian-20180108-revised-202610" data-poetry-classical>
 <p class="poetry-dates">First written <time datetime="2018-01-08">2018.01.08</time> – <time datetime="2018-01-14">2018.01.14</time> <span aria-hidden="true">·</span> Revision <time datetime="2026-10">2026.10</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《臨江仙》</h2><div class="body">麴櫱鹽梅無舊譜，塵來未皺芳流。
+<h2 data-poetry-title="《臨江仙》">《臨江仙》</h2><div class="body">麴櫱鹽梅無舊譜，塵來未皺芳流。
 簾前欲去影先留。
 緣愁都不守，只道別家秋。
 
 閬苑蓬萊身已遠，青驄且繫書樓。
 別期未至不題愁。
 炭冰摧過後，吟捻憶君眸。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>To the tune of Linjiangxian</h2><div class="body">Ferment and malt, salt and plum: no old recipe; dust comes, but has not rippled the fragrant stream.
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="To the tune of Linjiangxian">To the tune of Linjiangxian</h2><div class="body">Ferment and malt, salt and plum: no old recipe; dust comes, but has not rippled the fragrant stream.
 Before the curtain, about to leave, the shadow stays first.
 I hold neither ties nor sorrow, speak only of your autumn.
 

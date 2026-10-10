@@ -60,7 +60,9 @@ try{
   await page.goto(base+'/zh/poetry/jia-yi/#jia-10');
   const english=page.locator('a[data-poetry-language][hreflang="en-GB"]');
   await english.click();await page.waitForURL(base+'/poetry/jia-yi/#jia-10');
-  assert((await page.locator('#jia-10 .translation h2').textContent()).includes('A10'));
+  assert.equal(await page.locator('#jia-10 .poetry-authorial-label').textContent(),'A10');
+  assert.equal(await page.locator('#jia-10 .translation h2').textContent(),
+    library.texts.find(text=>text.id==='jia-yi-a10-text').editions.en.title);
   await page.goto(base+'/shi.html#drafts');await page.waitForURL(base+'/poetry/roof-splits/');
   assert.equal(await page.locator('.poetry-version').count(),2);assert.equal(await page.locator('.reader-poem').count(),4);redirects++;
   await page.goto(base+'/poetry/manjianghong-2022/');

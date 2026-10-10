@@ -428,24 +428,35 @@ def main() -> int:
     if leaked:
         errors.append("zh-hans contains Traditional-only glyphs that should be simplified: " + " ".join(leaked))
 
-    font_meta_path = ROOT / "assets" / "fonts" / "noto-serif-sc-subset.meta.json"
-    font_path = ROOT / "assets" / "fonts" / "noto-serif-sc-subset.woff2"
-    locale_font_path = ROOT / "assets" / "fonts" / "noto-serif-sc-locale.woff2"
-    if not font_meta_path.exists() or not font_path.exists():
-        errors.append("Simplified-Chinese font subset or metadata is missing")
-    if not locale_font_path.exists():
-        errors.append("Simplified-Chinese locale-switch font subset is missing")
-    if font_meta_path.exists() and font_path.exists():
+    font_dir = ROOT / "assets" / "fonts"
+    font_meta_path = font_dir / "hanpu-chinese.meta.json"
+    if not font_meta_path.exists():
+        errors.append("Shared Chinese font metadata is missing")
+    else:
         font_meta = load(font_meta_path)
-        chars = simplified_font_characters(zh_hans_text)
-        chars_hash = hashlib.sha256(chars.encode("utf-8")).hexdigest()
-        font_hash = hashlib.sha256(font_path.read_bytes()).hexdigest()
-        if font_meta.get("character_count") != len(chars):
-            errors.append("Simplified-Chinese font subset character count is stale")
-        if font_meta.get("character_set_sha256") != chars_hash:
-            errors.append("Simplified-Chinese font subset character set is stale")
-        if font_meta.get("font_sha256") != font_hash:
-            errors.append("Simplified-Chinese font subset hash does not match its metadata")
+        covered = set()
+        faces = {face["file"]: face for face in font_meta.get("faces", [])}
+        for filename in ("hanpu-chinese-common.woff2", "hanpu-chinese.woff2"):
+            font_path = font_dir / filename
+            chars_path = font_dir / (filename.removesuffix(".woff2") + "-characters.txt")
+            face = faces.get(filename)
+            if not face or not font_path.exists() or not chars_path.exists():
+                errors.append(f"Shared Chinese font or character list is missing: {filename}")
+                continue
+            chars = chars_path.read_text(encoding="utf-8")
+            if covered.intersection(chars):
+                errors.append("Shared Chinese font partitions overlap")
+            covered.update(chars)
+            if face.get("character_count") != len(chars):
+                errors.append(f"Shared Chinese font character count is stale: {filename}")
+            if face.get("sha256") != hashlib.sha256(font_path.read_bytes()).hexdigest():
+                errors.append(f"Shared Chinese font hash differs from metadata: {filename}")
+        chars = "".join(sorted(covered))
+        if font_meta.get("character_count") != len(chars) or font_meta.get("character_set_sha256") != hashlib.sha256(chars.encode("utf-8")).hexdigest():
+            errors.append("Shared Chinese font character metadata is stale")
+        missing = set(simplified_font_characters(zh_hans_text)) - covered
+        if missing:
+            errors.append("Shared Chinese font misses Simplified-Chinese copy: " + "".join(sorted(missing)))
 
     for locale in locales:
         folder = ROOT if locale == "en" else ROOT / locale
@@ -590,11 +601,11 @@ def main() -> int:
             expected = next(item["html_lang"] for item in languages if item["id"] == locale)
             if not re.search(rf'<html\b[^>]*\blang="{re.escape(expected)}"', text):
                 errors.append(f"{path.relative_to(ROOT)}: wrong html lang")
-            has_sc_font = "noto-serif-sc-subset.woff2" in text
-            if locale == "zh-hans" and not has_sc_font:
-                errors.append(f"{path.relative_to(ROOT)}: Simplified-Chinese page is missing the SC font subset")
-            if locale != "zh-hans" and has_sc_font:
-                errors.append(f"{path.relative_to(ROOT)}: non-Simplified page must not load the SC font subset")
+            has_chinese_font = "hanpu-chinese.woff2" in text
+            if locale in {"zh", "zh-hans"} and not has_chinese_font:
+                errors.append(f"{path.relative_to(ROOT)}: Chinese page is missing the shared font subset")
+            if locale not in {"zh", "zh-hans"} and has_chinese_font:
+                errors.append(f"{path.relative_to(ROOT)}: non-Chinese page must not preload the full Chinese subset")
             if name != "404.html":
                 alternates = len(re.findall(r'<link rel="alternate" hreflang=', text))
                 if alternates != expected_alternates:

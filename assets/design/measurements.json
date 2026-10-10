@@ -122,7 +122,7 @@
       "type": [
         {
           "text": "RESEARCH · REMOTE SENSING · POLITICAL ECONOMY",
-          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
+          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
           "size": 13,
           "leading": 18.2,
           "tracking": "0.715px",
@@ -137,7 +137,7 @@
         },
         {
           "text": "The Material Footprint of Virtual Production",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", \"Songti SC\", serif",
           "size": 54,
           "leading": 52.92,
           "tracking": "-1.62px",
@@ -152,7 +152,7 @@
         },
         {
           "text": "The completed spatial phase of an ongoing study of the Shepperton Studios expansion, testing low-carbon discourse against land-cover change, thermal evidence and the planning record.",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", \"Songti SC\", serif",
           "size": 16.56,
           "leading": 27.4896,
           "tracking": "normal",
@@ -288,7 +288,7 @@
       "type": [
         {
           "text": "研究 · 遙感 · 政治經濟學",
-          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
+          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
           "size": 13,
           "leading": 18.2,
           "tracking": "0.715px",
@@ -296,7 +296,7 @@
           "transform": "uppercase",
           "fonts": [
             {
-              "family": "Shippori Mincho",
+              "family": "Hanpu Chinese",
               "custom": true
             },
             {
@@ -307,7 +307,7 @@
         },
         {
           "text": "虛擬製作的物質足跡",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "family": "\"Hanpu Chinese Common\", \"Hanpu Chinese\", \"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Songti TC\", \"Songti SC\", serif",
           "size": 54,
           "leading": 70.2,
           "tracking": "-1.62px",
@@ -315,14 +315,14 @@
           "transform": "none",
           "fonts": [
             {
-              "family": "Shippori Mincho",
+              "family": "Hanpu Chinese",
               "custom": true
             }
           ]
         },
         {
           "text": "一項持續研究已完成的空間階段：以 Shepperton Studios 擴建為對象，把低碳敘事與地表覆蓋變化、熱環境證據及規劃紀錄逐一對照。",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "family": "\"Hanpu Chinese Common\", \"Hanpu Chinese\", \"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Songti TC\", \"Songti SC\", serif",
           "size": 16.56,
           "leading": 27.4896,
           "tracking": "normal",
@@ -330,7 +330,11 @@
           "transform": "none",
           "fonts": [
             {
-              "family": "Shippori Mincho",
+              "family": "Hanpu Chinese Common",
+              "custom": true
+            },
+            {
+              "family": "Hanpu Chinese",
               "custom": true
             },
             {
@@ -462,7 +466,7 @@
       "type": [
         {
           "text": "研究 · 遥感 · 政治经济学",
-          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Noto Serif SC Site\", \"Songti SC\", \"Courier New\", monospace",
+          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", \"Songti SC\", \"Courier New\", monospace",
           "size": 13,
           "leading": 18.2,
           "tracking": "0.715px",
@@ -470,18 +474,18 @@
           "transform": "uppercase",
           "fonts": [
             {
-              "family": "Courier Prime",
+              "family": "Hanpu Chinese",
               "custom": true
             },
             {
-              "family": "Noto Serif SC ExtraLight",
+              "family": "Courier Prime",
               "custom": true
             }
           ]
         },
         {
           "text": "虚拟制作的物质足迹",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Noto Serif SC Site\", \"Songti SC\", \"Noto Serif CJK SC\", serif",
+          "family": "\"Hanpu Chinese Common\", \"Hanpu Chinese\", \"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Songti SC\", serif",
           "size": 54,
           "leading": 70.2,
           "tracking": "-1.62px",
@@ -489,14 +493,14 @@
           "transform": "none",
           "fonts": [
             {
-              "family": "Noto Serif SC ExtraLight",
+              "family": "Hanpu Chinese",
               "custom": true
             }
           ]
         },
         {
           "text": "一项持续研究已完成的空间阶段：以 Shepperton Studios 扩建为对象，把低碳叙事与地表覆盖变化、热环境证据及规划记录逐一对照。",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Noto Serif SC Site\", \"Songti SC\", \"Noto Serif CJK SC\", serif",
+          "family": "\"Hanpu Chinese Common\", \"Hanpu Chinese\", \"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Songti SC\", serif",
           "size": 16.56,
           "leading": 27.4896,
           "tracking": "normal",
@@ -504,11 +508,15 @@
           "transform": "none",
           "fonts": [
             {
-              "family": "EB Garamond",
+              "family": "Hanpu Chinese Common",
               "custom": true
             },
             {
-              "family": "Noto Serif SC ExtraLight",
+              "family": "Hanpu Chinese",
+              "custom": true
+            },
+            {
+              "family": "EB Garamond",
               "custom": true
             }
           ]
@@ -636,7 +644,7 @@
       "type": [
         {
           "text": "研究 · リモートセンシング · 政治経済学",
-          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
+          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Courier New\", monospace",
           "size": 13,
           "leading": 18.2,
           "tracking": "0.715px",
@@ -655,7 +663,7 @@
         },
         {
           "text": "バーチャルプロダクション​の物質的​フットプリント",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", serif",
           "size": 54,
           "leading": 61.56,
           "tracking": "-1.62px",
@@ -674,7 +682,7 @@
         },
         {
           "text": "Shepperton Studios 拡張をめぐる継続研究のうち、完了した空間分析フェーズ。低炭素をめぐる言説を、土地被覆の変化、熱データ、計画記録と照合する。",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", serif",
           "size": 16.56,
           "leading": 27.4896,
           "tracking": "normal",
@@ -814,7 +822,7 @@
       "type": [
         {
           "text": "FORSCHUNG · FERNERKUNDUNG · POLITISCHE ÖKONOMIE",
-          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
+          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
           "size": 13,
           "leading": 18.2,
           "tracking": "0.715px",
@@ -829,7 +837,7 @@
         },
         {
           "text": "Der materielle Fußabdruck virtueller Produktion",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", \"Songti SC\", serif",
           "size": 54,
           "leading": 52.92,
           "tracking": "-1.62px",
@@ -844,7 +852,7 @@
         },
         {
           "text": "Die abgeschlossene räumliche Phase einer laufenden Studie zur Erweiterung der Shepperton Studios; sie prüft den Low-Carbon-Diskurs an Landbedeckungsänderungen, thermischen Daten und Planungsakten.",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", \"Songti SC\", serif",
           "size": 16.56,
           "leading": 27.4896,
           "tracking": "normal",
@@ -980,7 +988,7 @@
       "type": [
         {
           "text": "RECHERCHE · TÉLÉDÉTECTION · ÉCONOMIE POLITIQUE",
-          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
+          "family": "\"Courier Prime\", \"Cousine RU\", \"Site Mono Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
           "size": 13,
           "leading": 18.2,
           "tracking": "0.715px",
@@ -995,7 +1003,7 @@
         },
         {
           "text": "L’empreinte matérielle de la production virtuelle",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", \"Songti SC\", serif",
           "size": 54,
           "leading": 52.92,
           "tracking": "-1.62px",
@@ -1010,7 +1018,7 @@
         },
         {
           "text": "La phase spatiale achevée d’une étude en cours sur l’agrandissement des Shepperton Studios, confrontant le discours bas carbone aux changements d’occupation des sols, aux données thermiques et au dossier d’urbanisme.",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", \"Songti SC\", serif",
           "size": 16.56,
           "leading": 27.4896,
           "tracking": "normal",
@@ -1146,7 +1154,7 @@
       "type": [
         {
           "text": "ИССЛЕДОВАНИЕ · ДИСТАНЦИОННОЕ ЗОНДИРОВАНИЕ · ПОЛИТИЧЕСКАЯ ЭКОНОМИЯ",
-          "family": "\"Cousine RU\", \"Courier Prime\", \"Site Mono Symbols\", \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
+          "family": "\"Cousine RU\", \"Courier Prime\", \"Site Mono Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", \"Songti SC\", \"Courier New\", monospace",
           "size": 13,
           "leading": 18.2,
           "tracking": "0.715px",
@@ -1161,7 +1169,7 @@
         },
         {
           "text": "Материальный след виртуального производства",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", \"Songti SC\", serif",
           "size": 41.76,
           "leading": 40.9248,
           "tracking": "-1.2528px",
@@ -1176,7 +1184,7 @@
         },
         {
           "text": "Завершённый пространственный этап продолжающегося исследования расширения Shepperton Studios: низкоуглеродная риторика сопоставляется с изменениями земного покрова, тепловыми данными и материалами планирования.",
-          "family": "\"EB Garamond\", \"Site Serif Symbols\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"IMing Gap\", \"Songti TC\", \"Songti SC\", serif",
+          "family": "\"EB Garamond\", \"Site Serif Symbols\", \"Hanpu Chinese Common\", \"Hanpu Chinese\", Georgia, \"Shippori Common\", \"Shippori Mincho\", \"Hanpu CJK Gap\", \"Songti TC\", \"Songti SC\", serif",
           "size": 16.56,
           "leading": 27.4896,
           "tracking": "normal",
@@ -1200,7 +1208,7 @@
       "created": "2026-09-24T11:00:00.000Z",
       "lines": [
         {
-          "id": "87fbcc2c-a948-4f61-a495-788cb0287609",
+          "id": "0c8b76c3-f85d-4db3-8223-2bb6dff324a0",
           "workId": "jia-yi-b3-text",
           "font": "bitmap",
           "size": 24,
@@ -1317,8 +1325,8 @@
       },
       "publication": {
         "schema": 1,
-        "renderer": "pv-render-6bcf87a13d6a733d",
-        "renderer_sha256": "6bcf87a13d6a733dc1fac2b36c42fdd067d69044103657ac1cf688cad87b70af",
+        "renderer": "pv-render-28d3c30ef52ebb46",
+        "renderer_sha256": "28d3c30ef52ebb46f5e0b70df6369a2f3ad9f7693ffba13eccc1d9ed1262cf59",
         "catalogue_sha256": "7678a0dbd0079526172e295241b22e0aef3c3d50d1b180ba0c873b24b6ec6939",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
@@ -1331,7 +1339,9 @@
           "assets/fonts/fusion-pixel-12px-latin.woff2": "095cfda45b63eedc1e985da815ef73c1c910e698b5632098076af83738f109e1",
           "assets/fonts/fusion-pixel-12px-zh-hans.woff2": "01559eceaa1bda8d59bf4a44ab95674c346ffd3a25582eea201947324e707a2a",
           "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
-          "assets/fonts/iming-gap.woff2": "f638c046658b1cc72359cc4d15f938ab8a007f676e70af2911b0285fb6e51b77",
+          "assets/fonts/hanpu-chinese-common.woff2": "23ceccfff4e67750c6e404318faa218b7896f6e0d2c26b4f3795fcf3da1f471e",
+          "assets/fonts/hanpu-chinese.woff2": "d0f71ca546661c5a5af98a43db4f3cdb86c3d2c1cde5eef6f941e914fb84ca70",
+          "assets/fonts/hanpu-cjk-gap.woff2": "e2a87fb0cfc979362749782e70d16cc52cdb0a41b9b62ef741602f84dcfce01a",
           "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
           "assets/fonts/noto-serif-sc-subset.woff2": "7bbfd0a3b0fb309b6b8b2400363f5a9c77bdf2cf9d41997c8f8ecae6f64b7025",
           "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
@@ -1339,15 +1349,15 @@
           "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
           "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
           "content/poetry-voucher-app/accessibility.css": "70f3da8ceff863234e7564d094f5f94e39675d0655dc477482aadd05e076f3e0",
-          "content/poetry-voucher-app/gallery.js": "efb56a9c9f92e30d9243c758d0d648c725534901c2ce5ed96e3571e335642bfa",
+          "content/poetry-voucher-app/gallery.js": "473e9f47bb6c7e1fd2c59147b9cf59280097c72d4e5c455356348f3085c172d6",
           "content/poetry-voucher-app/h10-print.js": "0608cb1d261f9444b5e19b4f397477ee4a15c8bdc3644cd249f7d47acde94f79",
           "content/poetry-voucher-app/i18n.js": "7734e8ae35742d1d366d5e062498d90298225e9b9640bac88a4340d732d0700a",
           "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
           "content/poetry-voucher-app/order-reading.js": "bad98af82024d515e66ac811c7a5c1f5c17c0f2c88347e4e076668238fbea186",
           "content/poetry-voucher-app/shop-copy.js": "dcdf58e9267502304b241c9c2b12c6521b3aa8164657cc0c49865049ef7a6d48",
           "content/poetry-voucher-app/shop.css": "06425c91c0e69c7b84d41f34b61bfae82fbfa82ca88c0a2d8a6d7134fb3c82ae",
-          "content/poetry-voucher-app/shop.js": "7a919a7b003d065f07e48a0ad38a237b197d2c888bdc898aa1a5237f14aea319",
-          "content/poetry-voucher-app/studio.css": "75be96fd6dcdc85bbdbf16b8f1cb1eef93565b0512eebb069fd187ec63c8580f",
+          "content/poetry-voucher-app/shop.js": "66d182846b1001d3525a2a90684b0df81e532134a35c7fb113a7d3adad2bd71d",
+          "content/poetry-voucher-app/studio.css": "df1fc45f534b5881d7f34551d8bcfc68ca264e6ff8dcd012c44591ac2078824f",
           "templates/poetry-voucher-shop.html": "f2b5cc9e1c11e899b29d7f62a8ede67e2627d6575accd2259ac7e78df53661d8"
         },
         "textSnapshotSha256": "f6e24f6ce9a034b4c44080f5784966afce008f97fafb74f9fa76617b3ab148b8"
@@ -1983,7 +1993,7 @@
       "args": [
         "燭暗蛩寒簾影瘦，殘酲猶帶微温。",
         24,
-        "EB, ShipCommon, Ship, IMing, Noto, serif"
+        "\"Hanpu Chinese Common\", \"Hanpu Chinese\", EB, serif"
       ]
     },
     "glyph": "01110 10001 10001 11111 10001 10001 10001",
@@ -1996,9 +2006,9 @@
     "totalY": 462
   },
   "inputs": {
-    "assets/site.css": "bf89bdd6be02ffcad7e9a2f71fd3d9dcc849d082ec79863b82a40cfcb4f7b141",
-    "content/poetry-voucher-app/gallery.js": "efb56a9c9f92e30d9243c758d0d648c725534901c2ce5ed96e3571e335642bfa",
-    "content/poetry-voucher-app/shop.js": "7a919a7b003d065f07e48a0ad38a237b197d2c888bdc898aa1a5237f14aea319",
+    "assets/site.css": "1e7ff59c2743972281e5e6c2d33fe22ff86138510164fa2003eaebdd9560d3ba",
+    "content/poetry-voucher-app/gallery.js": "473e9f47bb6c7e1fd2c59147b9cf59280097c72d4e5c455356348f3085c172d6",
+    "content/poetry-voucher-app/shop.js": "66d182846b1001d3525a2a90684b0df81e532134a35c7fb113a7d3adad2bd71d",
     "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
     "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
     "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",
@@ -2011,7 +2021,9 @@
     "assets/fonts/fusion-pixel-12px-latin.woff2": "095cfda45b63eedc1e985da815ef73c1c910e698b5632098076af83738f109e1",
     "assets/fonts/fusion-pixel-12px-zh-hans.woff2": "01559eceaa1bda8d59bf4a44ab95674c346ffd3a25582eea201947324e707a2a",
     "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
-    "assets/fonts/iming-gap.woff2": "f638c046658b1cc72359cc4d15f938ab8a007f676e70af2911b0285fb6e51b77",
+    "assets/fonts/hanpu-chinese-common.woff2": "23ceccfff4e67750c6e404318faa218b7896f6e0d2c26b4f3795fcf3da1f471e",
+    "assets/fonts/hanpu-chinese.woff2": "d0f71ca546661c5a5af98a43db4f3cdb86c3d2c1cde5eef6f941e914fb84ca70",
+    "assets/fonts/hanpu-cjk-gap.woff2": "e2a87fb0cfc979362749782e70d16cc52cdb0a41b9b62ef741602f84dcfce01a",
     "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
     "assets/fonts/noto-serif-sc-subset.woff2": "7bbfd0a3b0fb309b6b8b2400363f5a9c77bdf2cf9d41997c8f8ecae6f64b7025",
     "assets/fonts/opendyslexic-bold-italic.woff2": "1aadc8fa9656c92c09c8194790d0671bcd2b4bd961ba41fb8f7e605e5c493be0",
@@ -2022,12 +2034,12 @@
     "assets/fonts/shippori-mincho-subset.woff2": "666b4e88c334b97f0646e58a1205141866358827478b2ab9edbd33bebcf891b2",
     "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
     "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
-    "index.html": "5851b94bec3a6b070e0f7ad6bc900e12e4f408f0e5c03b6a386677be16635f07",
-    "zh/index.html": "650926e7fd79fc8661794ea6d1a8922373174b7283deef90a5d98d4f40d33d79",
-    "zh-hans/index.html": "4d381650116b3cfd8dbc54f96c7b1d681714121616e62b893f5276fc6e0f99bd",
-    "ja/index.html": "b07064fba780c4a3b52e17ae41461906e452c98396ff57e230b0cff8e601e6fc",
-    "de/index.html": "325c2452162e868e20c069f0ca3cdc8291ebaa4a2652c87139410a2d3e6383f6",
-    "fr/index.html": "1c534881e409a057876d44d0b3a630fa2463b9dcc385014c27b6ad6df9218af0",
-    "ru/index.html": "dde56fbc7817a57a9f91cd86ed7d92fb45a540bbe66926ba48b7a8507b0ac2bf"
+    "index.html": "4af76f97aaf0e4e04d465bdae400a0ba45c1f80fd58e4008daa3cddf656fff2e",
+    "zh/index.html": "606fef90f764e912d3bab5007f106f7e4de5386b2dd38300d49deb849c64449c",
+    "zh-hans/index.html": "8ea239ac10212b47c0c7bbf90d7da5893a11adabc61f4baf59fb4b4c036d187c",
+    "ja/index.html": "f465a2653ed71d59ca3d5f2f64077c2ea3bebff45a7009c369fb51266f22c8a2",
+    "de/index.html": "d22c6ca881f1bb127e1b843faa7e7381bd31eed4ffbddc439241a1e6261ab069",
+    "fr/index.html": "e9b4fd8db8e81f699edc53baf29db1125c10b093e5dd858535fe23287461f4c9",
+    "ru/index.html": "c54a39c82d4abf519860395485ed3e07165175b0904106ed085ece642edf9de6"
   }
 }

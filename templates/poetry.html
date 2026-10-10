@@ -16,8 +16,11 @@
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 {{STRUCTURED_DATA}}
 {{POETRY_EXTRA_HEAD}}
 </head>
@@ -36,6 +39,7 @@
     <h1>{{POETRY_HEADING}}</h1>
     <div class="sub">{{POETRY_INTRO}}</div>
 {{POETRY_SWITCHER}}
+{{POETRY_LAYOUT_CONTROL}}
   </header>
   {{POETRY_CONTENT}}
 </main>

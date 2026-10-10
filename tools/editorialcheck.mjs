@@ -190,8 +190,19 @@ try {
   const navHeight = await page.locator('.section-nav').evaluate((nav) => nav.getBoundingClientRect().height);
   if (navHeight > 110) failures.push(`RU nav @ 520: ${navHeight}px high`);
   const ruNameFonts = await platformFonts(page, '.hero-id p:first-child');
-  if (!ruNameFonts.some((font) => font.familyName.startsWith('Shippori') && font.glyphCount >= 3)) {
+  if (!ruNameFonts.some((font) => font.familyName.startsWith('Hanpu Chinese') && font.glyphCount >= 3)) {
     failures.push(`RU Chinese name: ${ruNameFonts.map((font) => `${font.familyName} (${font.glyphCount})`).join(', ')}`);
+  }
+
+  await open(page, '/ja/', 520);
+  const jaNameFonts = await platformFonts(page, '.hero-id p:first-child');
+  const jaCopyFonts = await platformFonts(page, '.hero-copy');
+  if (!jaNameFonts.some((font) => font.familyName.startsWith('Hanpu Chinese') && font.glyphCount >= 3)) {
+    failures.push(`JA Chinese name: ${jaNameFonts.map((font) => font.familyName).join(', ')}`);
+  }
+  if (!jaCopyFonts.some((font) => font.familyName.startsWith('Shippori')) ||
+      jaCopyFonts.some((font) => font.familyName.startsWith('Hanpu Chinese'))) {
+    failures.push(`JA copy lost its Japanese face: ${jaCopyFonts.map((font) => font.familyName).join(', ')}`);
   }
 
   // Test the preference in a clean context and inspect the fonts Chromium
@@ -209,8 +220,8 @@ try {
   if (sansStack !== 'var(--readable-sans)' && !sansStack.includes('system-ui')) {
     failures.push(`ZH-Hans sans preference: unexpected computed stack ${sansStack}`);
   }
-  if (!serifFonts.some((font) => font.familyName.includes('Noto Serif SC')) ||
-      !sansFonts.length || sansFonts.some((font) => font.familyName.includes('Noto Serif SC'))) {
+  if (!serifFonts.some((font) => font.familyName.startsWith('Hanpu Chinese')) ||
+      !sansFonts.length || sansFonts.some((font) => font.familyName.startsWith('Hanpu Chinese'))) {
     failures.push(`ZH-Hans sans preference did not replace painted serif fonts: before=${serifFonts.map((font) => font.familyName).join(', ')}, after=${sansFonts.map((font) => font.familyName).join(', ')}`);
   }
   await sansPage.goto(base + '/ru/', { waitUntil: 'load' });
@@ -219,8 +230,8 @@ try {
   await sansPage.locator('[data-reading-pref="sans"]').check();
   await sansPage.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   const ruSansFonts = await platformFonts(sansPage, '.hero-id p:first-child');
-  if (!ruSansFonts.length || ruSansFonts.some((font) => font.familyName.startsWith('Shippori'))) {
-    failures.push(`RU Chinese name remained in Shippori under sans preference: ${ruSansFonts.map((font) => font.familyName).join(', ')}`);
+  if (!ruSansFonts.length || ruSansFonts.some((font) => font.familyName.startsWith('Hanpu Chinese'))) {
+    failures.push(`RU Chinese name remained in the Chinese serif under sans preference: ${ruSansFonts.map((font) => font.familyName).join(', ')}`);
   }
   await cleanContext.close();
 
