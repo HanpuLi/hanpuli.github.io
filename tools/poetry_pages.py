@@ -77,10 +77,37 @@ class Pages:
             'LANG_SWITCHER':self.languages(route,locale), 'READING_TOOLS':b.reading_tools(copy),
             'POETRY_BREADCRUMBS':breadcrumbs, 'POETRY_HEADING':esc(heading),
             'POETRY_INTRO':intro, 'POETRY_SWITCHER':switcher, 'POETRY_CONTENT':content,
+            'POETRY_LAYOUT_CONTROL':self.layout_controls(locale) if 'data-poetry-classical' in content else '',
             'POETRY_INDEX':self.lib.path('',locale), 'POETRY_BACK':esc(ui['back']),
             'ABOUT_HREF':b.page_path(locale,'about'), 'ABOUT_LINK_LABEL':esc(b.ABOUT_SITE[locale]['footer_link']),
         }
         return b.render_template(self.template,copy,values)
+
+    def layout_controls(self, locale: str) -> str:
+        ui = self.ui[locale]
+        return (f'<div class="poetry-layout-controls" role="group" aria-label="{esc(ui["layout_label"])}" '
+                f'data-simple-label="{esc(ui["layout_simple"])}" hidden><span>{esc(ui["layout_label"])}</span>'
+                + ''.join(f'<button type="button" data-poetry-layout="{mode}" aria-pressed="false">{esc(ui[key])}</button>'
+                          for mode,key in [('horizontal','layout_horizontal'),('vertical','layout_vertical')]) + '</div>')
+
+    def presentation_title(self, title: str, code: str | None, locale: str) -> tuple[str, str]:
+        """Separate sequence labels for display without changing canonical editions."""
+        if not code:
+            return '', title
+        if locale in ('zh','zh-hans') and '《' in title:
+            prefix, rest = title.split('《', 1)
+            return prefix.replace('，', ' · '), '《' + rest
+        label = code
+        if locale == 'ja':
+            label = ('甲' if code[0]=='A' else '乙') + dict(zip(range(1,11),'一二三四五六七八九十'))[int(code[1:])]
+        recalls = {'en':r'Recalling A[123]: ', 'ja':r'甲[一二三]を回想して。',
+                   'de':r'Erinnerung an A[123]: ', 'fr':r'En souvenir de A[123]\u202f: ',
+                   'ru':r'Вспоминая A[123]: '}
+        match = re.search(recalls.get(locale, r'(?!)'), title)
+        if match:
+            label += ' · ' + match.group().rstrip(' :\u202f。')
+            title = title[:match.start()] + title[match.end():]
+        return label, title
 
     def view_switch(self, locale: str, chronology: bool = False) -> str:
         ui = self.ui[locale]
@@ -176,13 +203,18 @@ class Pages:
         fragment = lib.text_url(tid,locale).partition('#')[2] or work['id']
         tag = 'zh-Hans' if locale=='zh-hans' else 'zh-Hant-HK'
         pair = 'poem-pair' + ('' if translation else ' source-only')
-        rows = [f'<article class="poem reader-poem" id="{esc(fragment)}" data-poetry-text="{esc(tid)}">',self.metadata(work,version,locale),f'<div class="{pair}">',f'<section class="poem-version source" lang="{tag}">']
+        classical = work['form'] in ('ci','shi','qu')
+        label, _ = self.presentation_title((translation or original)['title'],work['authorial_label'],locale)
+        _, source_title = self.presentation_title(original['title'],work['authorial_label'],original_locale)
+        attrs = (' data-poetry-classical' if classical else '') + (f' data-poetry-label="{esc(label)}"' if label else '')
+        rows = [f'<article class="poem reader-poem" id="{esc(fragment)}" data-poetry-text="{esc(tid)}"{attrs}>',self.metadata(work,version,locale),f'<div class="{pair}">',f'<section class="poem-version source" lang="{tag}">']
         title_class = ' class="visually-hidden"' if single and not translation else ''
-        rows.append(f'<h2{title_class}>{esc(original["title"])}</h2><div class="body">{esc(original["body"])}</div></section>')
+        rows.append(f'<h2{title_class} data-poetry-title="{esc(source_title)}">{esc(original["title"])}</h2><div class="body">{esc(original["body"])}</div></section>')
         if translation:
             code = work['authorial_label']
             title = (code+' · ' if code else '') + translation['title']
-            rows.append(f'<section class="poem-version translation" lang="{self.base.LANG_BY_ID[locale]["html_lang"]}"><h2>{esc(title)}</h2><div class="body">{esc(translation["body"])}</div></section>')
+            _, display_title = self.presentation_title(translation['title'],code,locale)
+            rows.append(f'<section class="poem-version translation" lang="{self.base.LANG_BY_ID[locale]["html_lang"]}"><h2 data-poetry-title="{esc(display_title)}">{esc(title)}</h2><div class="body">{esc(translation["body"])}</div></section>')
         rows.append('</div>')
         if tid in lib.offers:
             href='/poetry-voucher/shop.html?'+urlencode({'lang':SHOP_LANGS[locale],'work':tid})
@@ -216,7 +248,7 @@ class Pages:
     def work_page(self, wid: str, locale: str, copy: dict[str, Any]) -> str:
         work, ui = self.lib.works[wid],self.ui[locale]
         intro = '<p>'+esc(ui[work['form']])+'</p>'
-        return self.shell(route=work['route'],locale=locale,copy=copy,heading=self.lib.title(wid,locale),content=self.work_contents(wid,locale),intro=intro,breadcrumbs=self.breadcrumbs(locale,wid))
+        return self.shell(route=work['route'],locale=locale,copy=copy,heading=self.lib.title(wid,locale),content=self.work_contents(wid,locale),intro=intro,breadcrumbs=self.breadcrumbs(locale,wid),page_class='poetry-reader poetry-single')
 
     def collection_page(self, cid: str, locale: str, copy: dict[str, Any]) -> str:
         group, ui = self.lib.collections[cid],self.ui[locale]

@@ -1,6 +1,5 @@
 (() => {
   const endpoint = "https://hanpuli-geo-proxy.striped-file.workers.dev/api/profile-credit";
-  const fontEndpoint = "https://hanpuli-geo-proxy.striped-file.workers.dev/api/profile-credit-font";
 
   const localeMatch = location.pathname.match(/^\/(zh-hans|zh|ja|de|fr|ru)(?=\/|$)/);
   const locale = localeMatch ? localeMatch[1] : "en";
@@ -25,30 +24,9 @@
 
   async function ensureSimplifiedChineseRegionalFont() {
     if (locale !== "zh-hans") return;
-    if (!document.querySelector("style[data-profile-credit-font]")) {
-      const style = document.createElement("style");
-      style.dataset.profileCreditFont = "";
-      style.textContent = `
-        @font-face {
-          font-family: "Noto Serif SC Profile";
-          src: url("${fontEndpoint}") format("woff2");
-          font-style: normal;
-          font-weight: 400;
-          font-display: swap;
-        }
-        .locale-zh-hans [data-regional-identity],
-        .locale-zh-hans [data-conditional-profile-credit],
-        .locale-zh-hans #quality .about-section-copy > p:first-child {
-          font-family: "EB Garamond", "Site Serif Symbols", Georgia,
-            "Noto Serif SC Profile", "Noto Serif SC Site",
-            "Songti SC", "Noto Serif CJK SC", serif;
-        }
-      `;
-      document.head.append(style);
-    }
     if (document.fonts?.load) {
       await document.fonts.load(
-        '16px "Noto Serif SC Profile"',
+        '16px "Hanpu Chinese"',
         "\u4eac\u534f\u6025\u613f\u6b66\u6c49",
       );
     }

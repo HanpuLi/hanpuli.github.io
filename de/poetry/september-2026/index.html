@@ -52,13 +52,16 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/de/poetry/september-2026/#page","url":"https://hanpuli.github.io/de/poetry/september-2026/","name":"Zwei Gedichte · 9. September 2026 · Hanpu Li","description":"Zwei Gedichte · 9. September 2026 · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"de","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
@@ -109,21 +112,22 @@
     <h1>Zwei Gedichte · 9. September 2026</h1>
     <div class="sub"><p>Zwei Gedichte vom 9. September 2026.</p><p>2 Gedichte · <time datetime="2026-09-09">2026.09.09</time></p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="Layout des Originals" data-simple-label="Die einspaltige Ansicht verwendet horizontalen Text." hidden><span>Layout des Originals</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">Horizontal</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">Vertikal</button></div>
   </header>
   <nav id="contents" class="poetry-member-nav" aria-label="Inhalt"><ol>
 <li><a href="/de/poetry/zhegutian-20260909/" title="Nach der Melodie Zhegutian · Mehrere Abende an der Lampe, Schreibversuche; unvollendet">Nach der Melodie Zhegutian · Mehrere Abende an der Lampe, Schreibversuche; unvollendet</a></li>
 <li><a href="/de/poetry/linjiangxian-20260909/" title="Nach der Melodie Linjiangxian">Nach der Melodie Linjiangxian</a></li>
 </ol></nav>
-<article class="poem reader-poem" id="zhegutian-20260909" data-poetry-text="zhegutian-20260909-text">
+<article class="poem reader-poem" id="zhegutian-20260909" data-poetry-text="zhegutian-20260909-text" data-poetry-classical>
 <p class="poetry-dates">Erstfassung <time datetime="2026-09-09">2026.09.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《鷓鴣天 · 連夕燈下試筆，未竟》</h2><div class="body">幾夕簾前共剪燈，平生話到又三更。
+<h2 data-poetry-title="《鷓鴣天 · 連夕燈下試筆，未竟》">《鷓鴣天 · 連夕燈下試筆，未竟》</h2><div class="body">幾夕簾前共剪燈，平生話到又三更。
 從頭説盡還存半，且任宵深硯自凝。
 
 言漸杳，露初零。獨餘一語未分明。
 頻頻蘸得毫端黑，墨至濃時偏不成。</div></section>
-<section class="poem-version translation" lang="de"><h2>Nach der Melodie Zhegutian · Mehrere Abende an der Lampe, Schreibversuche; unvollendet</h2><div class="body">An manchen Abenden schnitten wir vor dem Vorhang gemeinsam den Docht;
+<section class="poem-version translation" lang="de"><h2 data-poetry-title="Nach der Melodie Zhegutian · Mehrere Abende an der Lampe, Schreibversuche; unvollendet">Nach der Melodie Zhegutian · Mehrere Abende an der Lampe, Schreibversuche; unvollendet</h2><div class="body">An manchen Abenden schnitten wir vor dem Vorhang gemeinsam den Docht;
 ein ganzes Leben durchgeredet, und wieder war es die dritte Nachtwache.
 Vom Anfang bis zum Ende alles erzählt; die Hälfte bleibt.
 Lass die Nacht tief werden; lass die Tinte im Tuschstein von selbst stocken.
@@ -136,18 +140,18 @@ gerade wenn die Tinte am dichtesten ist, wollen die Worte nicht werden.</div></s
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=de&amp;work=zhegutian-20260909-text">Papierausgabe wählen</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="Werke · Nach der Melodie Zhegutian · Mehrere Abende an der Lampe, Schreibversuche; unvollendet"><a class="poetry-next" href="/de/poetry/linjiangxian-20260909/"><span>Weiter</span> Nach der Melodie Linjiangxian</a><a href="/de/poetry/september-2026/#contents">Inhalt</a></nav>
-<article class="poem reader-poem" id="linjiangxian-20260909" data-poetry-text="linjiangxian-20260909-text">
+<article class="poem reader-poem" id="linjiangxian-20260909" data-poetry-text="linjiangxian-20260909-text" data-poetry-classical>
 <p class="poetry-dates">Erstfassung <time datetime="2026-09-09">2026.09.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《臨江仙》</h2><div class="body">簾影幾宵長共話，露痕初濕闌干。
+<h2 data-poetry-title="《臨江仙》">《臨江仙》</h2><div class="body">簾影幾宵長共話，露痕初濕闌干。
 言猶未了息先安。
 夢深渾不覺，月上夜將殘。
 
 他日重簾垂到地，垂來一似從前。
 手臨燈畔數迴旋。
 明朝風或緊，窗且掩周全。</div></section>
-<section class="poem-version translation" lang="de"><h2>Nach der Melodie Linjiangxian</h2><div class="body">Vorhangschatten, mehrere Nächte langen Gesprächs;
+<section class="poem-version translation" lang="de"><h2 data-poetry-title="Nach der Melodie Linjiangxian">Nach der Melodie Linjiangxian</h2><div class="body">Vorhangschatten, mehrere Nächte langen Gesprächs;
 der erste Tau nässt das Geländer.
 Die Worte noch nicht zu Ende; der Atem beruhigt sich zuerst.
 Tief im Traum, nichts wissend;

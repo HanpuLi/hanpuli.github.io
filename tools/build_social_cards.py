@@ -48,9 +48,8 @@ def font_supports(path: Path, text: str) -> bool:
 
 def cjk_font(text: str, size: int) -> ImageFont.FreeTypeFont:
     candidates = (
-        FONTS / "shippori-mincho-common.woff2",
-        FONTS / "shippori-mincho-subset.woff2",
-        FONTS / "iming-gap.woff2",
+        FONTS / "hanpu-chinese-common.woff2",
+        FONTS / "hanpu-chinese.woff2",
     )
     for path in candidates:
         if font_supports(path, text):

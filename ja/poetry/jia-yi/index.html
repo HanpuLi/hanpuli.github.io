@@ -52,14 +52,18 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-subset.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/ja/poetry/jia-yi/#page","url":"https://hanpuli.github.io/ja/poetry/jia-yi/","name":"甲と乙 · Hanpu Li","description":"甲と乙 · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"ja","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
@@ -110,6 +114,7 @@
     <h1>甲と乙</h1>
     <div class="sub"><p>一人の作者による甲と乙の二つの声。連作の順に読む。</p><p>17 篇 · <time datetime="2026-06-09">2026.06.09</time> – <time datetime="2026-07-01">2026.07.01</time></p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="原文の組み方" data-simple-label="単一列の表示では横書きになります。" hidden><span>原文の組み方</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">横書き</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">縦書き</button></div>
   </header>
   <nav id="contents" class="poetry-member-nav" aria-label="目次"><ol>
 <li><a href="/ja/poetry/jia-yi/#jia-1" title="臨江仙の調べ · 学友と灯の下で夜を過ごし、明け方になって別れる">甲一</a></li>
@@ -130,18 +135,18 @@
 <li><a href="/ja/poetry/jia-yi/#jia-9" title="鷓鴣天の調べ · 送られてきた古い草稿を受け取り、灯の下で読み終え、箱に残していたものと合わせて甲・乙として編んだ。綴じ上げてからは客が来るたび見せ、この末尾に記す">甲九</a></li>
 <li><a href="/ja/poetry/jia-yi/#jia-10" title="中呂 · 山坡羊の調べ · 旧居の前をまた通る">甲十</a></li>
 </ol></nav>
-<article class="poem reader-poem" id="jia-1" data-poetry-text="jia-yi-a1-text">
+<article class="poem reader-poem" id="jia-1" data-poetry-text="jia-yi-a1-text" data-poetry-classical data-poetry-label="甲一">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲一《臨江仙 · 與同硯燈下夜坐，侵曉方別》</h2><div class="body">幾度深宵同默坐，孤燈紅淚垂遲。
+<h2 data-poetry-title="《臨江仙 · 與同硯燈下夜坐，侵曉方別》">甲一《臨江仙 · 與同硯燈下夜坐，侵曉方別》</h2><div class="body">幾度深宵同默坐，孤燈紅淚垂遲。
 一秋心緒有誰知。
 啓窗星欲墜，光落兩人衣。
 
 不語各含無限思，而今惟道相期。
 夜闌暗忘漏聲移。
 慵來還指日，明日又今時。</div></section>
-<section class="poem-version translation" lang="ja"><h2>A1 · 臨江仙の調べ · 学友と灯の下で夜を過ごし、明け方になって別れる</h2><div class="body">幾度、夜更けまで二人で黙って座ったことだろう。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="臨江仙の調べ · 学友と灯の下で夜を過ごし、明け方になって別れる">A1 · 臨江仙の調べ · 学友と灯の下で夜を過ごし、明け方になって別れる</h2><div class="body">幾度、夜更けまで二人で黙って座ったことだろう。
 ひとつきりの灯、その赤い涙がゆっくり垂れる。
 ひと秋ぶんの胸のうちを、誰が知るだろう。
 窓を開ける。星はいまにも落ちそうで、
@@ -156,18 +161,18 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-a1-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A1"><a class="poetry-next" href="/ja/poetry/jia-yi/#yi-1"><span>次の篇</span> 乙一</a><a href="/ja/poetry/jia-yi/#contents">目次</a></nav>
-<article class="poem reader-poem" id="yi-1" data-poetry-text="jia-yi-b1-text">
+<article class="poem reader-poem" id="yi-1" data-poetry-text="jia-yi-b1-text" data-poetry-classical data-poetry-label="乙一">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙一《無題 · 臨江仙》</h2><div class="body">虛廊月好人初定，同攜花徑遲遲。
+<h2 data-poetry-title="《無題 · 臨江仙》">乙一《無題 · 臨江仙》</h2><div class="body">虛廊月好人初定，同攜花徑遲遲。
 燈前笑語兩無疑。
 舊衾隨手與，今日不須知。
 
 客散非因誰獨在，他人皆自相依。
 席旁偶坐共相棲。
 漏殘晨露上，風過落花時。</div></section>
-<section class="poem-version translation" lang="ja"><h2>B1 · 無題 · 臨江仙の調べ</h2><div class="body">ひっそりした廊下に月が明るく、人の気配がようやく静まった。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="無題 · 臨江仙の調べ">B1 · 無題 · 臨江仙の調べ</h2><div class="body">ひっそりした廊下に月が明るく、人の気配がようやく静まった。
 二人で花の小径を、ゆっくり歩く。
 灯の前で笑い、話し、互いに疑いもない。
 古い掛け布団を、何気なく手渡す。
@@ -182,18 +187,18 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-b1-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B1"><a class="poetry-previous" href="/ja/poetry/jia-yi/#jia-1"><span>前の篇</span> 甲一</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#jia-2"><span>次の篇</span> 甲二</a></nav>
-<article class="poem reader-poem" id="jia-2" data-poetry-text="jia-yi-a2-text">
+<article class="poem reader-poem" id="jia-2" data-poetry-text="jia-yi-a2-text" data-poetry-classical data-poetry-label="甲二">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲二《臨江仙 · 醉後扶靨登樓，夤夜同倚，人問不避》</h2><div class="body">沈醉曾扶相並倚，登樓未肯人知。
+<h2 data-poetry-title="《臨江仙 · 醉後扶靨登樓，夤夜同倚，人問不避》">甲二《臨江仙 · 醉後扶靨登樓，夤夜同倚，人問不避》</h2><div class="body">沈醉曾扶相並倚，登樓未肯人知。
 今宵燈影漸迷離。
 漏殘催曙色，猶帶靨邊緋。
 
 同擁寒衾還細話，當筵曾許心期。
 醒來可認醉中辭？
 朝霞渾未記，宿霧已盈墀。</div></section>
-<section class="poem-version translation" lang="ja"><h2>A2 · 臨江仙の調べ · 酒のあと、頬に手を添えて階上へ上がり、夜更けまで寄り添う。人に問われても避けなかった</h2><div class="body">深く酔い、支え合って並んで寄りかかった。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="臨江仙の調べ · 酒のあと、頬に手を添えて階上へ上がり、夜更けまで寄り添う。人に問われても避けなかった">A2 · 臨江仙の調べ · 酒のあと、頬に手を添えて階上へ上がり、夜更けまで寄り添う。人に問われても避けなかった</h2><div class="body">深く酔い、支え合って並んで寄りかかった。
 階上へ上がり、人には知られたくなかった。
 今夜、灯影はしだいにぼやけてゆく。
 水時計は尽きかけ、夜明けを急かし、
@@ -208,18 +213,18 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-a2-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A2"><a class="poetry-previous" href="/ja/poetry/jia-yi/#yi-1"><span>前の篇</span> 乙一</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#yi-2"><span>次の篇</span> 乙二</a></nav>
-<article class="poem reader-poem" id="yi-2" data-poetry-text="jia-yi-b2-text">
+<article class="poem reader-poem" id="yi-2" data-poetry-text="jia-yi-b2-text" data-poetry-classical data-poetry-label="乙二">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙二《無題 · 踏莎行》</h2><div class="body">一室香温，兩痕影並。
+<h2 data-poetry-title="《無題 · 踏莎行》">乙二《無題 · 踏莎行》</h2><div class="body">一室香温，兩痕影並。
 笑聲沉入簾間暝。
 隔簾燈色欲先寒，有人暗處衣光冷。
 
 欲喚還休，歡猶未省。
 分明一水無舟艇。
 殘灰散盡各歸時，餘釭獨照空庭靜。</div></section>
-<section class="poem-version translation" lang="ja"><h2>B2 · 無題 · 踏莎行の調べ</h2><div class="body">香りの温かな一室。並ぶ二つの影の跡。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="無題 · 踏莎行の調べ">B2 · 無題 · 踏莎行の調べ</h2><div class="body">香りの温かな一室。並ぶ二つの影の跡。
 笑い声は簾のあいだの闇へ沈む。
 簾の向こうでは、灯の色さえ先に冷えてゆきそうで、
 暗がりの誰か、その衣に落ちる光も冷たい。
@@ -232,18 +237,18 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-b2-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B2"><a class="poetry-previous" href="/ja/poetry/jia-yi/#jia-2"><span>前の篇</span> 甲二</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#yi-3"><span>次の篇</span> 乙三</a></nav>
-<article class="poem reader-poem" id="yi-3" data-poetry-text="jia-yi-b3-text">
+<article class="poem reader-poem" id="yi-3" data-poetry-text="jia-yi-b3-text" data-poetry-classical data-poetry-label="乙三">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙三《無題 · 臨江仙》</h2><div class="body">燭暗蛩寒簾影瘦，殘酲猶帶微温。
+<h2 data-poetry-title="《無題 · 臨江仙》">乙三《無題 · 臨江仙》</h2><div class="body">燭暗蛩寒簾影瘦，殘酲猶帶微温。
 筆停紙澀墨先吞。
 未緘還自疊，一折一重門。
 
 不是東風先折取，恐花為我辭根。
 新痕舊鑰莫輕論。
 相逢原是客，客受主家恩。</div></section>
-<section class="poem-version translation" lang="ja"><h2>B3 · 無題 · 臨江仙の調べ</h2><div class="body">蝋燭は暗く、こおろぎは冷え、簾の影は細い。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="無題 · 臨江仙の調べ">B3 · 無題 · 臨江仙の調べ</h2><div class="body">蝋燭は暗く、こおろぎは冷え、簾の影は細い。
 酔いの名残にはまだわずかな温もり。
 筆が止まる。紙は渋る。墨が先に呑み込む。
 まだ封もせず、また折りたたむ。
@@ -258,11 +263,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-b3-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B3"><a class="poetry-previous" href="/ja/poetry/jia-yi/#yi-2"><span>前の篇</span> 乙二</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#yi-4"><span>次の篇</span> 乙四</a></nav>
-<article class="poem reader-poem" id="yi-4" data-poetry-text="jia-yi-b4-text">
+<article class="poem reader-poem" id="yi-4" data-poetry-text="jia-yi-b4-text" data-poetry-classical data-poetry-label="乙四">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙四《無題 · 渡江雲》</h2><div class="body">清銅新樣齒，欲封還止，殘熱指間彈。
+<h2 data-poetry-title="《無題 · 渡江雲》">乙四《無題 · 渡江雲》</h2><div class="body">清銅新樣齒，欲封還止，殘熱指間彈。
 忽燈前小影，緘淺香微，半晌已潸然。
 綢繆一晌，轉覺是、別處温言。
 空鑄得、舊模新鑰，紋疊總相沿。
@@ -272,7 +277,7 @@
 謄復塗、深言怕誤，淺字偏安。
 明朝銅色經他手，便認作、一諾窮年。
 燈滅後、丁寧只是加餐。</div></section>
-<section class="poem-version translation" lang="ja"><h2>B4 · 無題 · 渡江雲の調べ</h2><div class="body">明るい銅、新しく刻まれた歯。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="無題 · 渡江雲の調べ">B4 · 無題 · 渡江雲の調べ</h2><div class="body">明るい銅、新しく刻まれた歯。
 封じようとして、手を止める。
 まだ熱を残し、指のあいだで弾く。
 ふいに、灯の前に小さな影。
@@ -296,12 +301,12 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-b4-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B4"><a class="poetry-previous" href="/ja/poetry/jia-yi/#yi-3"><span>前の篇</span> 乙三</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#yi-5"><span>次の篇</span> 乙五</a></nav>
-<article class="poem reader-poem" id="yi-5" data-poetry-text="jia-yi-b5-text">
+<article class="poem reader-poem" id="yi-5" data-poetry-text="jia-yi-b5-text" data-poetry-classical data-poetry-label="乙五">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙五《無題 · 十六字令》</h2><div class="body">銅。鑰齒新裁付掌中。天寒了，加飯且從容。</div></section>
-<section class="poem-version translation" lang="ja"><h2>B5 · 無題 · 十六字令の調べ</h2><div class="body">銅。
+<h2 data-poetry-title="《無題 · 十六字令》">乙五《無題 · 十六字令》</h2><div class="body">銅。鑰齒新裁付掌中。天寒了，加飯且從容。</div></section>
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="無題 · 十六字令の調べ">B5 · 無題 · 十六字令の調べ</h2><div class="body">銅。
 歯を新しく刻んだ鍵を、あなたの掌へ。
 寒さが来た。
 よく食べて、急がずに。</div></section>
@@ -309,17 +314,17 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-b5-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B5"><a class="poetry-previous" href="/ja/poetry/jia-yi/#yi-4"><span>前の篇</span> 乙四</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#jia-3"><span>次の篇</span> 甲三</a></nav>
-<article class="poem reader-poem" id="jia-3" data-poetry-text="jia-yi-a3-text">
+<article class="poem reader-poem" id="jia-3" data-poetry-text="jia-yi-a3-text" data-poetry-classical data-poetry-label="甲三">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲三《鷓鴣天 · 卿贈鑰，附書數字，燈下展讀》</h2><div class="body">鑰齒新裁心自珍，提毫未寫已逡巡。
+<h2 data-poetry-title="《鷓鴣天 · 卿贈鑰，附書數字，燈下展讀》">甲三《鷓鴣天 · 卿贈鑰，附書數字，燈下展讀》</h2><div class="body">鑰齒新裁心自珍，提毫未寫已逡巡。
 拆來只有三行字，半晌綢繆一晌嗔。
 
 星欲墜，露初勻。
 當時未敢喚真真。
 案前字暖春封淺，猶有殘香繞指温。</div></section>
-<section class="poem-version translation" lang="ja"><h2>A3 · 鷓鴣天の調べ · あなたから鍵を贈られ、数語の書きつけが添えられていた。灯の下で広げて読む</h2><div class="body">新しく刻まれた鍵の歯。私はそれを大切にする。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="鷓鴣天の調べ · あなたから鍵を贈られ、数語の書きつけが添えられていた。灯の下で広げて読む">A3 · 鷓鴣天の調べ · あなたから鍵を贈られ、数語の書きつけが添えられていた。灯の下で広げて読む</h2><div class="body">新しく刻まれた鍵の歯。私はそれを大切にする。
 筆を取り上げる。まだ一字も書かぬうちから、もうためらう。
 開いてみれば、書かれているのは三行だけ。
 しばしの親しさ、ひとときの不機嫌。
@@ -332,18 +337,18 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-a3-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A3"><a class="poetry-previous" href="/ja/poetry/jia-yi/#yi-5"><span>前の篇</span> 乙五</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#jia-4"><span>次の篇</span> 甲四</a></nav>
-<article class="poem reader-poem" id="jia-4" data-poetry-text="jia-yi-a4-text">
+<article class="poem reader-poem" id="jia-4" data-poetry-text="jia-yi-a4-text" data-poetry-classical data-poetry-label="甲四 · 甲一を回想して">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲四，憶甲一《臨江仙 · 曩與同硯默坐數夕，別後音塵寖薄，久乃自定》</h2><div class="body">曾共虛廊默坐，當時只道尋常。
+<h2 data-poetry-title="《臨江仙 · 曩與同硯默坐數夕，別後音塵寖薄，久乃自定》">甲四，憶甲一《臨江仙 · 曩與同硯默坐數夕，別後音塵寖薄，久乃自定》</h2><div class="body">曾共虛廊默坐，當時只道尋常。
 孤燈紅淚共商量。
 不知秋已半，但覺夜初長。
 
 別後音書都杳，逢人怕説西窗。
 偶因殘夢溯流光。
 思忘還入枕，避跡反成雙。</div></section>
-<section class="poem-version translation" lang="ja"><h2>A4 · 臨江仙の調べ · 甲一を回想して。かつて学友と幾晩か黙って座った。別れてから便りはしだいに薄れ、長い時を経てようやく心を定めた</h2><div class="body">かつて、ひっそりした廊下で二人は黙って座った。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="臨江仙の調べ · かつて学友と幾晩か黙って座った。別れてから便りはしだいに薄れ、長い時を経てようやく心を定めた">A4 · 臨江仙の調べ · 甲一を回想して。かつて学友と幾晩か黙って座った。別れてから便りはしだいに薄れ、長い時を経てようやく心を定めた</h2><div class="body">かつて、ひっそりした廊下で二人は黙って座った。
 あのときは、ただありふれたことだと思っていた。
 ひとつの灯の赤い涙も、二人の話に加わった。
 秋がもう半ばまで来ているとは知らず、
@@ -358,18 +363,18 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-a4-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A4"><a class="poetry-previous" href="/ja/poetry/jia-yi/#jia-3"><span>前の篇</span> 甲三</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#jia-5"><span>次の篇</span> 甲五</a></nav>
-<article class="poem reader-poem" id="jia-5" data-poetry-text="jia-yi-a5-text">
+<article class="poem reader-poem" id="jia-5" data-poetry-text="jia-yi-a5-text" data-poetry-classical data-poetry-label="甲五 · 甲二を回想して">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲五，憶甲二《臨江仙 · 記醉後扶靨登樓，夤夜人問，始無避焉》</h2><div class="body">那夜誰分賓主，並肩同倚更闌。
+<h2 data-poetry-title="《臨江仙 · 記醉後扶靨登樓，夤夜人問，始無避焉》">甲五，憶甲二《臨江仙 · 記醉後扶靨登樓，夤夜人問，始無避焉》</h2><div class="body">那夜誰分賓主，並肩同倚更闌。
 當筵人問不曾瞞。
 雪泥誰去早，此後各風煙。
 
 別處星辰未改，人間幾換流年。
 舊潮猶帶醉時顏。
 思忘成此闋，相對鬢先斑。</div></section>
-<section class="poem-version translation" lang="ja"><h2>A5 · 臨江仙の調べ · 甲二を回想して。酒のあと、頬に手を添えて階上へ上がった夜、人に問われて初めて何も避けなかった</h2><div class="body">あの夜、誰が客と主人を分けただろう。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="臨江仙の調べ · 酒のあと、頬に手を添えて階上へ上がった夜、人に問われて初めて何も避けなかった">A5 · 臨江仙の調べ · 甲二を回想して。酒のあと、頬に手を添えて階上へ上がった夜、人に問われて初めて何も避けなかった</h2><div class="body">あの夜、誰が客と主人を分けただろう。
 肩を並べ、夜更けまで寄りかかっていた。
 宴の席で人に問われても、隠さなかった。
 雪と泥の上、先に去ったのは誰だったか。
@@ -384,17 +389,17 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-a5-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A5"><a class="poetry-previous" href="/ja/poetry/jia-yi/#jia-4"><span>前の篇</span> 甲四</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#jia-6"><span>次の篇</span> 甲六</a></nav>
-<article class="poem reader-poem" id="jia-6" data-poetry-text="jia-yi-a6-text">
+<article class="poem reader-poem" id="jia-6" data-poetry-text="jia-yi-a6-text" data-poetry-classical data-poetry-label="甲六 · 甲三を回想して">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲六，憶甲三《鷓鴣天 · 篋中故鑰銅花滿眼，追念往還書字，悵然有作》</h2><div class="body">小鑰經年鏽暗生，故箋翻罷眼猶明。
+<h2 data-poetry-title="《鷓鴣天 · 篋中故鑰銅花滿眼，追念往還書字，悵然有作》">甲六，憶甲三《鷓鴣天 · 篋中故鑰銅花滿眼，追念往還書字，悵然有作》</h2><div class="body">小鑰經年鏽暗生，故箋翻罷眼猶明。
 當時避卻鴛鴦字，卻把鴛鴦寫幾層。
 
 窗月冷，鬢霜驚。
 如今畫裏喚誰名。
 相看似隔前生事，齧盡痴根草又青。</div></section>
-<section class="poem-version translation" lang="ja"><h2>A6 · 鷓鴣天の調べ · 甲三を回想して。箱の中の古い鍵は緑青に覆われていた。往復した手紙を思い返し、もの寂しく書く</h2><div class="body">小さな鍵。年を経て、錆は暗く広がった。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="鷓鴣天の調べ · 箱の中の古い鍵は緑青に覆われていた。往復した手紙を思い返し、もの寂しく書く">A6 · 鷓鴣天の調べ · 甲三を回想して。箱の中の古い鍵は緑青に覆われていた。往復した手紙を思い返し、もの寂しく書く</h2><div class="body">小さな鍵。年を経て、錆は暗く広がった。
 古い手紙を読み終えても、目はまだ冴えている。
 あのころ、「鴛鴦」の二字は書かずに避けたのに、
 その鴛鴦を、幾重にも書き込んでいた。
@@ -407,18 +412,18 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-a6-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A6"><a class="poetry-previous" href="/ja/poetry/jia-yi/#jia-5"><span>前の篇</span> 甲五</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#jia-7"><span>次の篇</span> 甲七</a></nav>
-<article class="poem reader-poem" id="jia-7" data-poetry-text="jia-yi-a7-text">
+<article class="poem reader-poem" id="jia-7" data-poetry-text="jia-yi-a7-text" data-poetry-classical data-poetry-label="甲七">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲七《臨江仙 · 分蕙寄某，憶昔贈蘭蓀時，惘然有作》</h2><div class="body">手分舊蕙移新種，如今可記春温。
+<h2 data-poetry-title="《臨江仙 · 分蕙寄某，憶昔贈蘭蓀時，惘然有作》">甲七《臨江仙 · 分蕙寄某，憶昔贈蘭蓀時，惘然有作》</h2><div class="body">手分舊蕙移新種，如今可記春温。
 當初玉指贈蘭蓀。
 不知根已定，空自換苔痕。
 
 別後西窗青幾度，也應灌溉朝昏。
 爾來各自長年輪。
 偶然風過處，依約暗香聞。</div></section>
-<section class="poem-version translation" lang="ja"><h2>A7 · 臨江仙の調べ · 蘭を株分けしてある人へ送る。かつて香草を贈られた時を思い、もの寂しく書く</h2><div class="body">手で古い蘭を分け、新しく植える。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="臨江仙の調べ · 蘭を株分けしてある人へ送る。かつて香草を贈られた時を思い、もの寂しく書く">A7 · 臨江仙の調べ · 蘭を株分けしてある人へ送る。かつて香草を贈られた時を思い、もの寂しく書く</h2><div class="body">手で古い蘭を分け、新しく植える。
 あの春の温もりを、いまも覚えているだろうか。
 あのころ、玉のような指が香草を贈ってくれた。
 根がもう定着していたとは知らず、
@@ -433,11 +438,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-a7-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A7"><a class="poetry-previous" href="/ja/poetry/jia-yi/#jia-6"><span>前の篇</span> 甲六</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#yi-6"><span>次の篇</span> 乙六</a></nav>
-<article class="poem reader-poem" id="yi-6" data-poetry-text="jia-yi-b6-text">
+<article class="poem reader-poem" id="yi-6" data-poetry-text="jia-yi-b6-text" data-poetry-classical data-poetry-label="乙六">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙六《得某所寄》</h2><div class="body">故盆移蕙草，幾度誤春痕。
+<h2 data-poetry-title="《得某所寄》">乙六《得某所寄》</h2><div class="body">故盆移蕙草，幾度誤春痕。
 鄰圃分新種，行人折故根。
 窗虛留寸土，門掩各朝昏。
 別後遷新邑，經年異故園。
@@ -457,7 +462,7 @@
 舊盆花事盡，春至又生枝。
 澆水成前事，素心終不移。
 君舟向滄海，我亦有天涯。</div></section>
-<section class="poem-version translation" lang="ja"><h2>B6 · 送られてきたものを受け取って</h2><div class="body">古い鉢に、移し植えた蘭。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="送られてきたものを受け取って">B6 · 送られてきたものを受け取って</h2><div class="body">古い鉢に、移し植えた蘭。
 春の痕が幾度かずれた。
 隣の庭は、新しい株分けを受け取り、
 通りすがりの人が、古い根を折る。
@@ -497,11 +502,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-b6-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B6"><a class="poetry-previous" href="/ja/poetry/jia-yi/#jia-7"><span>前の篇</span> 甲七</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#jia-8"><span>次の篇</span> 甲八</a></nav>
-<article class="poem reader-poem" id="jia-8" data-poetry-text="jia-yi-a8-text">
+<article class="poem reader-poem" id="jia-8" data-poetry-text="jia-yi-a8-text" data-poetry-classical data-poetry-label="甲八">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲八《夜聞舊曲》</h2><div class="body">當時窗下別，今作檐前雨。
+<h2 data-poetry-title="《夜聞舊曲》">甲八《夜聞舊曲》</h2><div class="body">當時窗下別，今作檐前雨。
 怕聽舊時曲，聲聲催天曙。
 餘音不肯絕，繞作迴腸縷。
 一燈寒在壁，照壁如照汝。
@@ -510,7 +515,7 @@
 推窗山似海，萬古一微弦。
 此聲殊未已，人世不知年。
 側耳疑相答，餘音何處傳。</div></section>
-<section class="poem-version translation" lang="ja"><h2>A8 · 夜、昔の曲を聞く</h2><div class="body">あのときは、窓の下で別れた。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="夜、昔の曲を聞く">A8 · 夜、昔の曲を聞く</h2><div class="body">あのときは、窓の下で別れた。
 いまは、軒先の雨になった。
 昔の曲を聴くのが怖い。
 音ひとつごとに、夜明けが近づく。
@@ -531,17 +536,17 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-a8-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A8"><a class="poetry-previous" href="/ja/poetry/jia-yi/#yi-6"><span>前の篇</span> 乙六</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#yi-7"><span>次の篇</span> 乙七</a></nav>
-<article class="poem reader-poem" id="yi-7" data-poetry-text="jia-yi-b7-text">
+<article class="poem reader-poem" id="yi-7" data-poetry-text="jia-yi-b7-text" data-poetry-classical data-poetry-label="乙七">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>乙七《忘川 · 檢篋得舊稿，不復攜，悉以寄某，並題》</h2><div class="body">燈下讀舊詞，夜深方得眠。
+<h2 data-poetry-title="《忘川 · 檢篋得舊稿，不復攜，悉以寄某，並題》">乙七《忘川 · 檢篋得舊稿，不復攜，悉以寄某，並題》</h2><div class="body">燈下讀舊詞，夜深方得眠。
 當時渾不異，往事付流年。
 我又移新處，君猶理舊篇。
 小兒催入夢，蕙草立窗前。
 莫攀檐前柳，莫數落花天。
 忘川人自渡，各自有歸邊。</div></section>
-<section class="poem-version translation" lang="ja"><h2>B7 · 忘川、忘却の川 · 箱を探して古い草稿を見つけた。これ以上持ち歩かず、すべてある人に送り、この詩を添える</h2><div class="body">灯の下で、昔の詞を読む。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="忘川、忘却の川 · 箱を探して古い草稿を見つけた。これ以上持ち歩かず、すべてある人に送り、この詩を添える">B7 · 忘川、忘却の川 · 箱を探して古い草稿を見つけた。これ以上持ち歩かず、すべてある人に送り、この詩を添える</h2><div class="body">灯の下で、昔の詞を読む。
 夜も深くなって、ようやく眠れた。
 あのころは、何ひとつ違って見えなかった。
 過ぎたことは、流れる歳月に渡す。
@@ -557,17 +562,17 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-b7-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · B7"><a class="poetry-previous" href="/ja/poetry/jia-yi/#jia-8"><span>前の篇</span> 甲八</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#jia-9"><span>次の篇</span> 甲九</a></nav>
-<article class="poem reader-poem" id="jia-9" data-poetry-text="jia-yi-a9-text">
+<article class="poem reader-poem" id="jia-9" data-poetry-text="jia-yi-a9-text" data-poetry-classical data-poetry-label="甲九">
 <p class="poetry-dates">連作の日付 <time datetime="2026-06-09">2026.06.09</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲九《鷓鴣天 · 得某所寄舊稿，燈下讀竟，與篋中所存合編，第其甲乙。裝成，客至輒出以相示，題其尾》</h2><div class="body">兩疊殘箋展案前，舊時燈影各成篇。
+<h2 data-poetry-title="《鷓鴣天 · 得某所寄舊稿，燈下讀竟，與篋中所存合編，第其甲乙。裝成，客至輒出以相示，題其尾》">甲九《鷓鴣天 · 得某所寄舊稿，燈下讀竟，與篋中所存合編，第其甲乙。裝成，客至輒出以相示，題其尾》</h2><div class="body">兩疊殘箋展案前，舊時燈影各成篇。
 親將一線縫卿我，留得鴛鴦傍脊眠。
 
 賓一哂，語猶慳。
 箋中淺字只加餐。
 深言怕誤重重掩，欲喚還休欲喚難。</div></section>
-<section class="poem-version translation" lang="ja"><h2>A9 · 鷓鴣天の調べ · 送られてきた古い草稿を受け取り、灯の下で読み終え、箱に残していたものと合わせて甲・乙として編んだ。綴じ上げてからは客が来るたび見せ、この末尾に記す</h2><div class="body">古びた紙束を二つ、机上にひろげる。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="鷓鴣天の調べ · 送られてきた古い草稿を受け取り、灯の下で読み終え、箱に残していたものと合わせて甲・乙として編んだ。綴じ上げてからは客が来るたび見せ、この末尾に記す">A9 · 鷓鴣天の調べ · 送られてきた古い草稿を受け取り、灯の下で読み終え、箱に残していたものと合わせて甲・乙として編んだ。綴じ上げてからは客が来るたび見せ、この末尾に記す</h2><div class="body">古びた紙束を二つ、机上にひろげる。
 昔の灯影のもと、それぞれが一篇をなしていた。
 みずから一本の糸で、あなたと私を縫い合わせ、
 鴛鴦を本の背に寄せて眠らせておく。
@@ -580,11 +585,11 @@
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=ja&amp;work=jia-yi-a9-text">紙の版を選ぶ</a></p>
 </article>
 <nav class="poetry-sequence-nav" aria-label="作品 · A9"><a class="poetry-previous" href="/ja/poetry/jia-yi/#yi-7"><span>前の篇</span> 乙七</a><a href="/ja/poetry/jia-yi/#contents">目次</a><a class="poetry-next" href="/ja/poetry/jia-yi/#jia-10"><span>次の篇</span> 甲十</a></nav>
-<article class="poem reader-poem" id="jia-10" data-poetry-text="jia-yi-a10-text">
+<article class="poem reader-poem" id="jia-10" data-poetry-text="jia-yi-a10-text" data-poetry-classical data-poetry-label="甲十">
 <p class="poetry-dates">初稿 <time datetime="2026-07-01">2026.07.01</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>甲十《中呂 · 山坡羊 · 又過舊廬》</h2><div class="body">風迎面，人立此，
+<h2 data-poetry-title="《中呂 · 山坡羊 · 又過舊廬》">甲十《中呂 · 山坡羊 · 又過舊廬》</h2><div class="body">風迎面，人立此，
 鼻尖一動魂先至。
 認不真，卻認真，
 繞來繞去街角立。
@@ -593,7 +598,7 @@
 
 遲，是誤了；
 歸，也是誤了。</div></section>
-<section class="poem-version translation" lang="ja"><h2>A10 · 中呂 · 山坡羊の調べ · 旧居の前をまた通る</h2><div class="body">風が顔に当たる。ここで立ち止まる。
+<section class="poem-version translation" lang="ja"><h2 data-poetry-title="中呂 · 山坡羊の調べ · 旧居の前をまた通る">A10 · 中呂 · 山坡羊の調べ · 旧居の前をまた通る</h2><div class="body">風が顔に当たる。ここで立ち止まる。
 鼻先が先に動く。魂のほうが、私より先に着く。
 本当かはわからない。それでも、本当だと思う。
 街角をぐるぐる回って、また立ち止まる。

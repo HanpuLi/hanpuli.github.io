@@ -1,0 +1,46 @@
+.poetry-layout-controls { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; margin-top:1.5rem; font:.8rem/1.6 var(--mono); }
+.poetry-layout-controls[hidden] { display:none; }
+.poetry-layout-controls > span { margin-inline-end:.5rem; }
+.poetry-layout-controls button { min-height:44px; padding:.5rem 1rem; border:1px solid var(--line); background:transparent; color:var(--ink); font:inherit; cursor:pointer; }
+.poetry-layout-controls button[aria-pressed="true"] { border-color:var(--ink); background:var(--paper-soft); }
+.poetry-layout-controls button:disabled { opacity:.5; cursor:default; }
+.poetry-authorial-label { white-space:nowrap; }
+.poetry-page .poem-version .body { width:fit-content; max-width:100%; margin-inline:auto; }
+.poetry-composition { --flow-stanza-gap:24px; --flow-title-gap:18px; --flow-band-gap:28px; }
+html[data-poetry-layout="vertical"] .poetry-composition > h2 {
+  writing-mode:vertical-rl; text-orientation:mixed; text-align:start;
+  inline-size:18em; flex:none; margin:0; font-size:1.125rem;
+  line-height:1.7; letter-spacing:.025em; line-break:strict; text-wrap:wrap;
+}
+html[data-poetry-layout="vertical"] .poetry-stanza {
+  writing-mode:vertical-rl; text-orientation:mixed; white-space:pre;
+  letter-spacing:.03em; flex:none; width:max-content; margin:0;
+}
+/* Bands already supply stanza spacing, including the wider reading setting. */
+.poetry-page .poetry-composition .poetry-stanza { margin:0; }
+.poetry-composition[data-flow-active][data-flow-title-position="side"] {
+  display:flex; flex-direction:row-reverse; align-items:flex-start;
+  justify-content:center; gap:var(--flow-title-gap); width:fit-content;
+  max-width:100%; margin-inline:auto;
+}
+.poetry-composition[data-flow-active][data-flow-title-position="top"] {
+  display:flex; flex-direction:column; align-items:flex-end;
+  gap:var(--flow-band-gap); width:fit-content; max-width:100%; margin-inline:auto;
+}
+.poetry-page .poetry-composition[data-flow-active] > .flow-poem-body {
+  display:flex; flex-direction:column; align-items:flex-end; justify-content:flex-start;
+  gap:var(--flow-band-gap); flex:none; margin:0; max-width:100%; white-space:normal;
+}
+.flow-row { display:flex; flex-direction:row-reverse; align-items:flex-start; justify-content:flex-start; gap:var(--flow-stanza-gap); width:100%; }
+.poetry-page .poetry-composition h2[data-flow-title] {
+  display:flex; flex-direction:column; align-items:flex-start; flex:none;
+  inline-size:max-content; min-height:0; margin:0; gap:0; white-space:pre;
+}
+.flow-title-column { display:block; flex:none; inline-size:max-content; white-space:pre; }
+html[data-poetry-layout="vertical"] .locale-zh.poetry-single .poetry-intro > h1 {
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip-path:inset(50%); white-space:nowrap;
+}
+@media(max-width:620px) {
+  html[data-poetry-layout="vertical"] .poetry-composition > h2 { font-size:1rem; }
+}

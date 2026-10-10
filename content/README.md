@@ -20,6 +20,14 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `about-site.json` — the seven editorial essays for About this site: selection, visual authority, translation, versions, reader adaptation, authorship and maintenance.
 - `contexts.json` — localised catalogue back matter for credit-name mapping, selected professional contexts and clearly identified first-party public records.
 
+Reader layout controls use the `layout_*` keys in `poetry/ui.json`, the shared
+`templates/poetry.html` shell and `assets/poetry-layout.{css,js}` /
+`assets/poetry-flow.js`. Presentation labels and titles are derived by
+`tools/poetry_pages.py`; keep authorial labels, title text and original line/stanza
+boundaries in the canonical library. Layout and label changes do not require
+rewriting the poems. The complete no-script HTML remains the horizontal reading
+fallback.
+
 English is the default site at `/`. Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are emitted at
 `/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Ordinary language switching is static navigation. Two interactive exceptions select already-authored copy at runtime: the root custom 404 router (preserving the 404 response), and the Poetry Voucher shop (preserving the visitor's selection while changing interface language).
 
@@ -64,12 +72,14 @@ Editorial Simplified Chinese in `locales/zh-hans.json` is maintained independent
 never overwrites it.
 
 After changing CJK copy, first run `python3 tools/build_site.py`: the
-Traditional/Japanese subset helper reads generated HTML. Then rebuild the
-Traditional/Japanese and Simplified-Chinese subsets with:
+Chinese subset helper reads public HTML and structured/runtime copy. Traditional
+and Simplified Chinese share I.MingCP-derived faces; Japanese keeps Shippori.
+Rebuild the Chinese faces, and the Japanese assets when their copy changes, with:
 
 ```sh
 uv run --with fonttools --with brotli python tools/rebuild-fonts.py
-uv run --with fonttools --with brotli python tools/rebuild-zh-hans-font.py
+uv run --with fonttools --with brotli python tools/rebuild-chinese-fonts.py
+uv run --with fonttools --with brotli python tools/rebuild-chinese-fonts.py --check
 ```
 
 Run `python3 tools/build_site.py` again after the fonts change to refresh the

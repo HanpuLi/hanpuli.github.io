@@ -52,19 +52,22 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/de/poetry/mantingfang-20191219/#page","url":"https://hanpuli.github.io/de/poetry/mantingfang-20191219/","name":"Nach der Melodie Mantingfang · 2019 · Hanpu Li","description":"Nach der Melodie Mantingfang · Gedanken an Chutan aus der Ferne · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"de","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 
 </head>
-<body class="literary-page poetry-page poetry-reader locale-de">
+<body class="literary-page poetry-page poetry-reader poetry-single locale-de">
 <a class="skip-link" href="#poetry-main">Zu den Gedichten springen</a>
 <div class="wrap">
 <header class="page-topbar">
@@ -109,12 +112,13 @@
     <h1>Nach der Melodie Mantingfang · Gedanken an Chutan aus der Ferne</h1>
     <div class="sub"><p>Ci</p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="Layout des Originals" data-simple-label="Die einspaltige Ansicht verwendet horizontalen Text." hidden><span>Layout des Originals</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">Horizontal</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">Vertikal</button></div>
   </header>
-  <article class="poem reader-poem" id="mantingfang-20191219" data-poetry-text="mantingfang-20191219-revised-202610">
+  <article class="poem reader-poem" id="mantingfang-20191219" data-poetry-text="mantingfang-20191219-revised-202610" data-poetry-classical>
 <p class="poetry-dates">Erstfassung <time datetime="2019-12-19">2019.12.19</time> <span aria-hidden="true">·</span> Überarbeitung <time datetime="2026-10">2026.10</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《滿庭芳 · 遙思楚潭》</h2><div class="body">風佩初停，雨梳朝蕣，尺書先識眉彎。
+<h2 data-poetry-title="《滿庭芳 · 遙思楚潭》">《滿庭芳 · 遙思楚潭》</h2><div class="body">風佩初停，雨梳朝蕣，尺書先識眉彎。
 一聲低喚，驚散夢中弦。
 墨跡新添氣息，微微顫、欲出行間。
 相逢處，餘溫未定，人近楚天寬。
@@ -123,7 +127,7 @@
 把千里關山，盡斂襟前。
 幾月光陰忽薄，回眸際、指過眉山。
 從頭認，詩還半闋，雙影壓箋邊。</div></section>
-<section class="poem-version translation" lang="de"><h2>Nach der Melodie Mantingfang · Gedanken an Chutan aus der Ferne</h2><div class="body">Die Gehänge des Windes sind eben still geworden; Regen kämmt den Morgenhibiskus; Briefe kannten den Bogen der Brauen zuerst.
+<section class="poem-version translation" lang="de"><h2 data-poetry-title="Nach der Melodie Mantingfang · Gedanken an Chutan aus der Ferne">Nach der Melodie Mantingfang · Gedanken an Chutan aus der Ferne</h2><div class="body">Die Gehänge des Windes sind eben still geworden; Regen kämmt den Morgenhibiskus; Briefe kannten den Bogen der Brauen zuerst.
 Ein leiser Ruf zerstreut die Saiten des Traums.
 Die Tintenspuren bekommen Atem; leise zitternd wollen sie zwischen den Zeilen hervortreten.
 Wo wir uns begegnen, ist die verbliebene Wärme noch nicht zur Ruhe gekommen; du bist nah, und der Himmel von Chu wird weit.

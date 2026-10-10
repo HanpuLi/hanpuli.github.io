@@ -80,7 +80,7 @@
     ],
     "scope_title": "Making and maintaining",
     "scope_body": [
-      "A small Python builder turns structured content and templates into static HTML. Fonts and images are served with the site; the type system includes EB Garamond, Courier Prime, Cousine, Shippori Mincho, Noto Serif SC and I.Ming. Responsive layout and optional reading controls adapt the documents. Core reading content remains available without JavaScript; a small number of progressive enhancements and the Poetry Voucher shop use it in the browser.",
+      "A small Python builder turns structured content and templates into static HTML. Fonts and images are served with the site; the type system includes EB Garamond, Courier Prime, Cousine, Shippori Mincho for Japanese and I.MingCP for Traditional and Simplified Chinese. Responsive layout and optional reading controls adapt the documents. Core reading content remains available without JavaScript; a small number of progressive enhancements and the Poetry Voucher shop use it in the browser.",
       "Build, language, link, font and browser checks support those publishing decisions. They are maintenance, not an aesthetic argument. The public repository is available for inspection; its availability is not a blanket licence over the creative work. Poetry Voucher separately permits personal saving, printing and giving printed copies to others."
     ],
     "privacy_title": "Local state and hosting",
@@ -183,7 +183,7 @@
     ],
     "scope_title": "製作與維護",
     "scope_body": [
-      "小型 Python 構建器把結構化內容與模板生成靜態 HTML。字體和圖片隨站點託管；字體系統包括 EB Garamond、Courier Prime、Cousine、Shippori Mincho、Noto Serif SC 與 I.Ming。響應式版式及可選閲讀控件使文檔適應閲讀條件。核心閲讀內容不依賴 JavaScript；少量漸進增強功能與詩券商店會在瀏覽器中使用它。",
+      "小型 Python 構建器把結構化內容與模板生成靜態 HTML。字體和圖片隨站點託管；字體系統包括 EB Garamond、Courier Prime、Cousine、日文的 Shippori Mincho，以及繁簡中文的一點明 I.MingCP。響應式版式及可選閲讀控件使文檔適應閲讀條件。核心閲讀內容不依賴 JavaScript；少量漸進增強功能與詩券商店會在瀏覽器中使用它。",
       "構建、多語、鏈接、字體與瀏覽器檢查為這些出版決定服務。這是維護，不是美學論證。公開倉庫供人檢查，並不向所有創作內容授予一攬子開放許可。詩券另行允許個人保存、打印，以及把打印件贈給他人。"
     ],
     "privacy_title": "本地狀態與託管",
@@ -286,7 +286,7 @@
     ],
     "scope_title": "制作与维护",
     "scope_body": [
-      "小型 Python 构建器把结构化内容与模板生成静态 HTML。字体和图片随站点托管；字体系统包括 EB Garamond、Courier Prime、Cousine、Shippori Mincho、Noto Serif SC 与 I.Ming。响应式版式及可选阅读控件使文档适应阅读条件。核心阅读内容不依赖 JavaScript；少量渐进增强功能与诗券商店会在浏览器中使用它。",
+      "小型 Python 构建器把结构化内容与模板生成静态 HTML。字体和图片随站点托管；字体系统包括 EB Garamond、Courier Prime、Cousine、日文的 Shippori Mincho，以及繁简中文的一点明 I.MingCP。响应式版式及可选阅读控件使文档适应阅读条件。核心阅读内容不依赖 JavaScript；少量渐进增强功能与诗券商店会在浏览器中使用它。",
       "构建、多语、链接、字体与浏览器检查为这些出版决定服务。这是维护，不是美学论证。公开仓库供人检查，并不向所有创作内容授予一揽子开放许可。诗券另行允许个人保存、打印，以及把打印件赠给他人。"
     ],
     "privacy_title": "本地状态与托管",
@@ -389,7 +389,7 @@
     ],
     "scope_title": "制作と維持",
     "scope_body": [
-      "小さなPythonビルダーが構造化された内容とテンプレートから静的HTMLを作ります。画像とフォントはサイト側で配信し、書体にはEB Garamond、Courier Prime、Cousine、Shippori Mincho、Noto Serif SC、I.Mingを使います。レスポンシブな配置と任意の読書設定が文書を調整します。中核となる読書内容はJavaScriptなしでも利用でき、少数の段階的拡張機能とPoetry Voucherではブラウザー内でJavaScriptを使います。",
+      "小さなPythonビルダーが構造化された内容とテンプレートから静的HTMLを作ります。画像とフォントはサイト側で配信し、書体にはEB Garamond、Courier Prime、Cousine、日本語にShippori Mincho、繁体字・簡体字中国語にI.MingCPを使います。レスポンシブな配置と任意の読書設定が文書を調整します。中核となる読書内容はJavaScriptなしでも利用でき、少数の段階的拡張機能とPoetry Voucherではブラウザー内でJavaScriptを使います。",
       "ビルド、言語、リンク、字体、ブラウザーの検査はこれらの出版上の選択を支えます。維持の作業であって、美学の論証ではありません。公開リポジトリは検証のために読めますが、創作物すべてへの包括的な利用許諾ではありません。詩券では別途、個人の保存、印刷、印刷物の贈与を認めています。"
     ],
     "privacy_title": "ローカルな状態とホスティング",
@@ -492,7 +492,7 @@
     ],
     "scope_title": "Herstellung und Pflege",
     "scope_body": [
-      "Ein kleiner Python-Generator erzeugt aus strukturierten Inhalten und Vorlagen statisches HTML. Schriften und Bilder werden mit der Website ausgeliefert; das Schriftsystem umfasst EB Garamond, Courier Prime, Cousine, Shippori Mincho, Noto Serif SC und I.Ming. Responsives Layout und optionale Lesehilfen passen die Dokumente an. Die zentralen Leseinhalte bleiben ohne JavaScript verfügbar; einige wenige progressive Erweiterungen und der Poetry-Voucher-Shop verwenden es im Browser.",
+      "Ein kleiner Python-Generator erzeugt aus strukturierten Inhalten und Vorlagen statisches HTML. Schriften und Bilder werden mit der Website ausgeliefert; das Schriftsystem umfasst EB Garamond, Courier Prime, Cousine, Shippori Mincho für Japanisch und I.MingCP für traditionelles und vereinfachtes Chinesisch. Responsives Layout und optionale Lesehilfen passen die Dokumente an. Die zentralen Leseinhalte bleiben ohne JavaScript verfügbar; einige wenige progressive Erweiterungen und der Poetry-Voucher-Shop verwenden es im Browser.",
       "Build-, Sprach-, Link-, Schrift- und Browserprüfungen stützen diese Publikationsentscheidungen. Das ist Pflege, kein ästhetisches Argument. Das öffentliche Repository ermöglicht Einsicht, gewährt aber keine pauschale Lizenz für die kreativen Arbeiten. Poetry Voucher erlaubt gesondert persönliches Speichern, Drucken und Verschenken gedruckter Exemplare."
     ],
     "privacy_title": "Lokaler Zustand und Hosting",
@@ -595,7 +595,7 @@
     ],
     "scope_title": "Fabriquer et entretenir",
     "scope_body": [
-      "Un petit générateur Python transforme contenus structurés et modèles en HTML statique. Images et polices sont hébergées avec le site ; le système typographique comprend EB Garamond, Courier Prime, Cousine, Shippori Mincho, Noto Serif SC et I.Ming. La mise en page adaptative et les commandes facultatives ajustent les documents. Le contenu principal reste accessible sans JavaScript ; quelques améliorations progressives et la boutique Poetry Voucher l’utilisent dans le navigateur.",
+      "Un petit générateur Python transforme contenus structurés et modèles en HTML statique. Images et polices sont hébergées avec le site ; le système typographique comprend EB Garamond, Courier Prime, Cousine, Shippori Mincho pour le japonais et I.MingCP pour le chinois traditionnel et simplifié. La mise en page adaptative et les commandes facultatives ajustent les documents. Le contenu principal reste accessible sans JavaScript ; quelques améliorations progressives et la boutique Poetry Voucher l’utilisent dans le navigateur.",
       "Les vérifications de génération, de langues, de liens, de caractères et de navigateur soutiennent ces choix de publication. C’est de la maintenance, pas un argument esthétique. Le dépôt public permet l’inspection, sans accorder de licence générale sur les œuvres. Poetry Voucher autorise séparément la sauvegarde personnelle, l’impression et le don d’exemplaires imprimés."
     ],
     "privacy_title": "État local et hébergement",
@@ -698,7 +698,7 @@
     ],
     "scope_title": "Создание и сопровождение",
     "scope_body": [
-      "Небольшой сборщик Python превращает структурированные материалы и шаблоны в статический HTML. Изображения и шрифты размещены вместе с сайтом; набор включает EB Garamond, Courier Prime, Cousine, Shippori Mincho, Noto Serif SC и I.Ming. Адаптивная вёрстка и необязательные настройки приспосабливают документы к чтению. Основное содержание доступно без JavaScript; несколько прогрессивных улучшений и магазин Poetry Voucher используют его в браузере.",
+      "Небольшой сборщик Python превращает структурированные материалы и шаблоны в статический HTML. Изображения и шрифты размещены вместе с сайтом; набор включает EB Garamond, Courier Prime, Cousine, Shippori Mincho для японского и I.MingCP для традиционного и упрощённого китайского. Адаптивная вёрстка и необязательные настройки приспосабливают документы к чтению. Основное содержание доступно без JavaScript; несколько прогрессивных улучшений и магазин Poetry Voucher используют его в браузере.",
       "Проверки сборки, языков, ссылок, шрифтов и браузера поддерживают эти издательские решения. Это сопровождение, не эстетический аргумент. Открытый репозиторий позволяет изучать материалы, но не предоставляет общей лицензии на творческие работы. Poetry Voucher отдельно разрешает личное сохранение, печать и передачу отпечатанных экземпляров в подарок."
     ],
     "privacy_title": "Локальные данные и хостинг",

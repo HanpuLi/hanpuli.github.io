@@ -52,21 +52,24 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-cyrillic-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/cousine-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/cousine-cyrillic-400.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/ru/poetry/yingtianchang-20261008/#page","url":"https://hanpuli.github.io/ru/poetry/yingtianchang-20261008/","name":"На мелодию Yingtianchang · Звать обратно · Hanpu Li","description":"На мелодию Yingtianchang · Звать обратно · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"ru","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 
 </head>
-<body class="literary-page poetry-page poetry-reader locale-ru">
+<body class="literary-page poetry-page poetry-reader poetry-single locale-ru">
 <a class="skip-link" href="#poetry-main">Перейти к стихотворениям</a>
 <div class="wrap">
 <header class="page-topbar">
@@ -111,12 +114,13 @@
     <h1>На мелодию Yingtianchang · Звать обратно</h1>
     <div class="sub"><p>Цы</p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="Набор оригинала" data-simple-label="В одноколоночном режиме текст расположен горизонтально." hidden><span>Набор оригинала</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">Горизонтальный</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">Вертикальный</button></div>
   </header>
-  <article class="poem reader-poem" id="yingtianchang-20261008" data-poetry-text="yingtianchang-20261008-text">
+  <article class="poem reader-poem" id="yingtianchang-20261008" data-poetry-text="yingtianchang-20261008-text" data-poetry-classical>
 <p class="poetry-dates">Первая версия <time datetime="2026-10-08">2026.10.08</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《應天長·喚回》</h2><div class="body">喚回猶把空衣理，
+<h2 data-poetry-title="《應天長·喚回》">《應天長·喚回》</h2><div class="body">喚回猶把空衣理，
 袖口餘溫留在指。
 掩門初，聲又起，
 聽盡無聲偏側耳。
@@ -125,7 +129,7 @@
 匙底尚留殘齒。
 不許指溫先退，
 土木火金水</div></section>
-<section class="poem-version translation" lang="ru"><h2>На мелодию Yingtianchang · Звать обратно</h2><div class="body">Зову обратно и всё же расправляю пустую одежду;
+<section class="poem-version translation" lang="ru"><h2 data-poetry-title="На мелодию Yingtianchang · Звать обратно">На мелодию Yingtianchang · Звать обратно</h2><div class="body">Зову обратно и всё же расправляю пустую одежду;
 тепло с края рукава ещё держится на пальцах.
 Дверь лишь начинаю прикрывать — звук возникает вновь;
 слушаю тишину до конца, но всё равно склоняю ухо.

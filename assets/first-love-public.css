@@ -1,14 +1,14 @@
 .first-love-page.locale-ru {
-  --mono: "Cousine RU", "Courier Prime", "Shippori Common", "Shippori Mincho", "Courier New", monospace;
+  --mono: "Cousine RU", "Courier Prime", "Hanpu Chinese Common", "Hanpu Chinese", "Courier New", monospace;
 }
 
 .first-love-page.locale-zh-hans {
-  --serif: "EB Garamond", Georgia, "Noto Serif SC Site", "Songti SC", "Noto Serif CJK SC", serif;
-  --mono: "Courier Prime", "Noto Serif SC Site", "Songti SC", "Courier New", monospace;
+  --serif: "Hanpu Chinese Common", "Hanpu Chinese", "EB Garamond", Georgia, "Songti SC", serif;
+  --mono: "Courier Prime", "Hanpu Chinese Common", "Hanpu Chinese", "Songti SC", "Courier New", monospace;
 }
 
 .first-love-page:not(.locale-zh-hans) .page-languages [lang="zh-Hans"] {
-  font-family: "Noto Serif SC Locale", "Songti SC", "Noto Serif CJK SC", serif;
+  font-family: "Hanpu Chinese Common", "Hanpu Chinese", "Songti SC", serif;
 }
 
 .first-love-page main {

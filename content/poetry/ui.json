@@ -27,7 +27,11 @@
     "shi": "Verse",
     "qu": "Qu",
     "modern-poem": "Poem",
-    "collection_date": "Cycle date"
+    "collection_date": "Cycle date",
+    "layout_label": "Original layout",
+    "layout_horizontal": "Horizontal",
+    "layout_vertical": "Vertical",
+    "layout_simple": "Single-column reading uses horizontal text."
   },
   "zh": {
     "heading": "詩歌",
@@ -57,7 +61,11 @@
     "shi": "詩",
     "qu": "曲",
     "modern-poem": "詩",
-    "collection_date": "集作日期"
+    "collection_date": "集作日期",
+    "layout_label": "原文排版",
+    "layout_horizontal": "橫排",
+    "layout_vertical": "豎排",
+    "layout_simple": "單欄閱讀使用橫排。"
   },
   "zh-hans": {
     "heading": "诗歌",
@@ -87,7 +95,11 @@
     "shi": "诗",
     "qu": "曲",
     "modern-poem": "诗",
-    "collection_date": "集作日期"
+    "collection_date": "集作日期",
+    "layout_label": "原文排版",
+    "layout_horizontal": "横排",
+    "layout_vertical": "竖排",
+    "layout_simple": "单栏阅读使用横排。"
   },
   "ja": {
     "heading": "詩歌",
@@ -117,7 +129,11 @@
     "shi": "詩",
     "qu": "曲",
     "modern-poem": "詩",
-    "collection_date": "連作の日付"
+    "collection_date": "連作の日付",
+    "layout_label": "原文の組み方",
+    "layout_horizontal": "横書き",
+    "layout_vertical": "縦書き",
+    "layout_simple": "単一列の表示では横書きになります。"
   },
   "de": {
     "heading": "Lyrik",
@@ -147,7 +163,11 @@
     "shi": "Verse",
     "qu": "Qu",
     "modern-poem": "Gedicht",
-    "collection_date": "Datierung des Zyklus"
+    "collection_date": "Datierung des Zyklus",
+    "layout_label": "Layout des Originals",
+    "layout_horizontal": "Horizontal",
+    "layout_vertical": "Vertikal",
+    "layout_simple": "Die einspaltige Ansicht verwendet horizontalen Text."
   },
   "fr": {
     "heading": "Poésie",
@@ -177,7 +197,11 @@
     "shi": "Vers",
     "qu": "Qu",
     "modern-poem": "Poème",
-    "collection_date": "Date du cycle"
+    "collection_date": "Date du cycle",
+    "layout_label": "Disposition de l’original",
+    "layout_horizontal": "Horizontale",
+    "layout_vertical": "Verticale",
+    "layout_simple": "La lecture en une colonne utilise le texte horizontal."
   },
   "ru": {
     "heading": "Поэзия",
@@ -207,6 +231,10 @@
     "shi": "Стихи",
     "qu": "Цюй",
     "modern-poem": "Стихотворение",
-    "collection_date": "Дата цикла"
+    "collection_date": "Дата цикла",
+    "layout_label": "Набор оригинала",
+    "layout_horizontal": "Горизонтальный",
+    "layout_vertical": "Вертикальный",
+    "layout_simple": "В одноколоночном режиме текст расположен горизонтально."
   }
 }

@@ -6,10 +6,8 @@
   此文件为站点用字子集，非完整字体。
 - **noto-serif-sc-subset.woff2** — Noto Serif SC（Google / Adobe），
   Google Fonts 分发的简体中文可变字体之站点用字子集，SIL Open Font License 1.1
-  （https://github.com/google/fonts/tree/main/ofl/notoserifsc ）。仅用于简体中文版，避免以日文字形或繁体中文字形替代简体中文。
-- **iming-gap.woff2** — 缺字补丁子集（U+5151 兑、U+55BB 喻、U+60E6 惦、U+67E5 查、U+8E29 踩），取自一点明朝体 I.MingCP
-  （https://github.com/ichitenfont/I.Ming ），IPA Font License v1.0 派生程序，
-  已改名为 "IMing Gap"，未使用原保留名称。完整授权文本见上游仓库。
+  （https://github.com/google/fonts/tree/main/ofl/notoserifsc ）。保留历史子集供对照及既有构建验证；全站简体中文主字体现由 Hanpu Chinese 子集承担。
+- **hanpu-chinese-common.woff2 / hanpu-chinese.woff2 / hanpu-cjk-gap.woff2** — 一點明體 CP 8.10（I.Font Project / IPA）的站点子集，分别以内部名称 Hanpu Chinese Common、Hanpu Chinese、Hanpu CJK Gap 分发。前两份用于全站繁简中文，第三份保留日文原有的七字缺字补丁。IPA Font License v1.0。保留上游版权及许可字段，衍生字体名称不包含原字体名称。完整日英许可见 [IPA_Font_License_Agreement_v1.0.txt](IPA_Font_License_Agreement_v1.0.txt)，来源、改动、用字清单、生成文件及恢复完整原版的方法见 [CHINESE_FONT_LICENSES.txt](CHINESE_FONT_LICENSES.txt)。原版下载 SHA-256 已核对为 `1c411a2e97b65c26aaa01707bbe06919569fcd7683c8bb5db114a96264710458`。
 - **eb-garamond-latin-400.woff2 / eb-garamond-latin-italic-400.woff2 / eb-garamond-cyrillic-400.woff2 / eb-garamond-cyrillic-italic-400.woff2** — EB Garamond（Georg Duffner / Octavio Pardo），Google Fonts / Fontsource 分发的站点用 Latin 与 Cyrillic webfont 子集，SIL Open Font License 1.1。Latin 子集额外保留 U+014D（ō），用于 giri/ninjō 等罗马字排印，避免单字形回退。
 - **courier-prime-latin-400.woff2** — Courier Prime（Quote-Unquote Apps），Google Fonts 分发的 Latin webfont，SIL Open Font License 1.1。
 - **cousine-latin-400.woff2 / cousine-cyrillic-400.woff2** — Cousine（Steve Matteson），Fontsource 分发的 Latin 与 Cyrillic webfont 子集，SIL Open Font License 1.1；仅用于俄语版等宽排印。

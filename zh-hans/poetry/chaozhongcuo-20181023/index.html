@@ -52,20 +52,23 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/noto-serif-sc-subset.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/zh-hans/poetry/chaozhongcuo-20181023/#page","url":"https://hanpuli.github.io/zh-hans/poetry/chaozhongcuo-20181023/","name":"《朝中措》 · Hanpu Li","description":"《朝中措》 · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"zh-Hans","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 
 </head>
-<body class="literary-page poetry-page poetry-reader locale-zh-hans">
+<body class="literary-page poetry-page poetry-reader poetry-single locale-zh-hans">
 <a class="skip-link" href="#poetry-main">跳至词作</a>
 <div class="wrap">
 <header class="page-topbar">
@@ -110,12 +113,13 @@
     <h1>《朝中措》</h1>
     <div class="sub"><p>词</p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="原文排版" data-simple-label="单栏阅读使用横排。" hidden><span>原文排版</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">横排</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">竖排</button></div>
   </header>
-  <article class="poem reader-poem" id="chaozhongcuo-20181023" data-poetry-text="chaozhongcuo-20181023-revised-202610">
+  <article class="poem reader-poem" id="chaozhongcuo-20181023" data-poetry-text="chaozhongcuo-20181023-revised-202610" data-poetry-classical>
 <p class="poetry-dates">初作 <time datetime="2018-10-23">2018.10.23</time> <span aria-hidden="true">·</span> 修订 <time datetime="2026-10">2026.10</time></p>
 <div class="poem-pair source-only">
 <section class="poem-version source" lang="zh-Hans">
-<h2 class="visually-hidden">《朝中措》</h2><div class="body">鹪金梳作暗香英，香到镜中停。
+<h2 class="visually-hidden" data-poetry-title="《朝中措》">《朝中措》</h2><div class="body">鹪金梳作暗香英，香到镜中停。
 偶影栏前欲并，一丝朱发先萦。
 
 唇边凤语，挹来便作，银磬微鸣。

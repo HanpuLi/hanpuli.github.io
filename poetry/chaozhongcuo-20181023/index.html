@@ -52,19 +52,22 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/poetry/chaozhongcuo-20181023/#page","url":"https://hanpuli.github.io/poetry/chaozhongcuo-20181023/","name":"To the tune of Chaozhongcuo · Hanpu Li","description":"To the tune of Chaozhongcuo · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"en-GB","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 
 </head>
-<body class="literary-page poetry-page poetry-reader locale-en">
+<body class="literary-page poetry-page poetry-reader poetry-single locale-en">
 <a class="skip-link" href="#poetry-main">Skip to poems</a>
 <div class="wrap">
 <header class="page-topbar">
@@ -109,17 +112,18 @@
     <h1>To the tune of Chaozhongcuo</h1>
     <div class="sub"><p>Ci</p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="Original layout" data-simple-label="Single-column reading uses horizontal text." hidden><span>Original layout</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">Horizontal</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">Vertical</button></div>
   </header>
-  <article class="poem reader-poem" id="chaozhongcuo-20181023" data-poetry-text="chaozhongcuo-20181023-revised-202610">
+  <article class="poem reader-poem" id="chaozhongcuo-20181023" data-poetry-text="chaozhongcuo-20181023-revised-202610" data-poetry-classical>
 <p class="poetry-dates">First written <time datetime="2018-10-23">2018.10.23</time> <span aria-hidden="true">·</span> Revision <time datetime="2026-10">2026.10</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《朝中措》</h2><div class="body">鷦金梳作暗香英，香到鏡中停。
+<h2 data-poetry-title="《朝中措》">《朝中措》</h2><div class="body">鷦金梳作暗香英，香到鏡中停。
 偶影欄前欲並，一絲朱髮先縈。
 
 唇邊鳳語，挹來便作，銀磬微鳴。
 字底分明芒刺，唇間猶護餘聲。</div></section>
-<section class="poem-version translation" lang="en-GB"><h2>To the tune of Chaozhongcuo</h2><div class="body">Feather-gold combed into a blossom of hidden scent; the scent reaches the mirror and stops.
+<section class="poem-version translation" lang="en-GB"><h2 data-poetry-title="To the tune of Chaozhongcuo">To the tune of Chaozhongcuo</h2><div class="body">Feather-gold combed into a blossom of hidden scent; the scent reaches the mirror and stops.
 With only a shadow for company at the railing, longing to stand side by side; one strand of red hair entwines first.
 
 Phoenix words at the lips: once drawn in, they become the faint ringing of a silver chime-stone.

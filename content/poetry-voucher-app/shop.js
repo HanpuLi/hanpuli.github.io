@@ -223,7 +223,7 @@
     PoetryOrder.validate(order);
     if(order.publication?.textSnapshotSha256&&await OrderReading.textHash(order.lines)!==order.publication.textSnapshotSha256)throw Error('Saved text fingerprint does not match.');
     const sample=order.lines.map(line=>line.poem+line.title+line.author+line.translations.map(locale=>line.work?.translations?.[locale]?.body||'').join('')).join('')+'李函璞';
-    await Promise.all(['EB','Courier','ShipCommon','Ship','IMing','Noto',...new Set(SHOP_LANGS.map(bitmapFace))].map(font=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px ${font}`,sample)));
+    await Promise.all(['EB','Courier','ShipCommon','Ship','HanpuGap','Hanpu Chinese Common','Hanpu Chinese',...new Set(SHOP_LANGS.map(bitmapFace))].map(font=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px "${font}"`,sample)));
     await document.fonts.load(`italic ${TYPE_CONFIG.translation}px EB`);
     const receipt=receiptPages(order),vouchers=[];let index=0,rows=receipt.reduce((n,page)=>n+page.height,0),count=receipt.length;
     const cutHeight=cutHerePage().height;
@@ -231,7 +231,7 @@
       for(let unit=0;unit<line.quantity;unit++){
         index++;const voucherId=paperVoucherId(line.work,order.ref,index),paper=new PagedPaper({kind:'VOUCHER',ref:voucherId});paper.threshold=TYPE_CONFIG.threshold[line.font];
         const spec={...line,original:!!line.work,translations};
-        renderVoucherBody(paper,spec,voucherId,line.font==='site'?serif:bitmapFamily(line.locale),locale=>line.font==='site'?serif:bitmapFamily(locale));
+        renderVoucherBody(paper,spec,voucherId,line.font==='site'?siteSerif(line.locale):bitmapFamily(line.locale),locale=>line.font==='site'?siteSerif(locale):bitmapFamily(locale));
         const pages=paper.finishPages();rows+=cutHeight+pages.reduce((n,page)=>n+page.height,0);count+=1+pages.length;
         if(rows>120000||count>128)throw Error('Order exceeds page budget; reduce quantities or translations.');
         vouchers.push({id:voucherId,title:line.title,line,pages});

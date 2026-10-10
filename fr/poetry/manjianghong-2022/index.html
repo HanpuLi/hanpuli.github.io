@@ -52,19 +52,22 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/eb-garamond-latin-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/shippori-mincho-common.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/hanpu-chinese-common.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/courier-prime-latin-400.woff2" crossorigin>
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <script defer src="/assets/poetry-navigation.js"></script>
+<script defer src="/assets/poetry-flow.js"></script>
+<script defer src="/assets/poetry-layout.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/poetry.css">
+<link rel="stylesheet" href="/assets/poetry-layout.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hanpuli.github.io/#person","name":"Hanpu Li","alternateName":["李函璞"],"url":"https://hanpuli.github.io/","image":"https://hanpuli.github.io/assets/site-icon-512.png","sameAs":["https://github.com/HanpuLi","https://www.linkedin.com/in/hanpuli/","https://independent.academia.edu/LiHanpu"],"knowsAbout":["writing","film criticism","digital publishing","photography","spatial research","remote sensing","open-source systems"]},{"@type":"WebSite","@id":"https://hanpuli.github.io/#website","url":"https://hanpuli.github.io/","name":"Hanpu Li","image":"https://hanpuli.github.io/assets/site-icon-512.png","publisher":{"@id":"https://hanpuli.github.io/#person"},"inLanguage":["en-GB","zh-Hant-HK","zh-Hans","ja","de","fr","ru"]},{"@type":"CollectionPage","@id":"https://hanpuli.github.io/fr/poetry/manjianghong-2022/#page","url":"https://hanpuli.github.io/fr/poetry/manjianghong-2022/","name":"Sur l’air de Manjianghong · 2022 · Hanpu Li","description":"Sur l’air de Manjianghong · Vouloir te retenir, savoir ce qui doit advenir · Hanpu Li","isPartOf":{"@id":"https://hanpuli.github.io/#website"},"inLanguage":"fr","image":"https://hanpuli.github.io/assets/social/ci.png","creator":{"@id":"https://hanpuli.github.io/#person"}}]}
 </script>
 
 </head>
-<body class="literary-page poetry-page poetry-reader locale-fr">
+<body class="literary-page poetry-page poetry-reader poetry-single locale-fr">
 <a class="skip-link" href="#poetry-main">Aller aux poèmes</a>
 <div class="wrap">
 <header class="page-topbar">
@@ -109,17 +112,18 @@
     <h1>Sur l’air de Manjianghong · Vouloir te retenir, savoir ce qui doit advenir</h1>
     <div class="sub"><p>Ci</p></div>
 
+<div class="poetry-layout-controls" role="group" aria-label="Disposition de l’original" data-simple-label="La lecture en une colonne utilise le texte horizontal." hidden><span>Disposition de l’original</span><button type="button" data-poetry-layout="horizontal" aria-pressed="false">Horizontale</button><button type="button" data-poetry-layout="vertical" aria-pressed="false">Verticale</button></div>
   </header>
   <nav class="poetry-version-nav" aria-label="Versions">
 <a href="#sewn">Version de la couture</a>
 <a href="#echo">Autre réécriture</a>
 </nav>
 <p class="poetry-version-label">Version de la couture</p>
-<article class="poem reader-poem" id="sewn" data-poetry-text="manjianghong-2022-sewn-202610">
+<article class="poem reader-poem" id="sewn" data-poetry-text="manjianghong-2022-sewn-202610" data-poetry-classical>
 <p class="poetry-dates">Première rédaction 2022 <span aria-hidden="true">·</span> Révision <time datetime="2026-10">2026.10</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《滿江紅 · 望沮攔約當應是》</h2><div class="body">舊隙才縫，春風又、殷勤留客。
+<h2 data-poetry-title="《滿江紅 · 望沮攔約當應是》">《滿江紅 · 望沮攔約當應是》</h2><div class="body">舊隙才縫，春風又、殷勤留客。
 門欲掩、卻翻簾影，放春偷入。
 瘦損腰圍衣尚窄，暗痕都向肌膚積。
 算歸來、猶有舊針留，縫新隙。
@@ -128,7 +132,7 @@
 更何須揀擇，過門皆璧。
 初景寒柯違業識，豐城元禮宜同席。
 看收場、針腳又周全，無痕跡。</div></section>
-<section class="poem-version translation" lang="fr"><h2>Sur l’air de Manjianghong · Vouloir te retenir, savoir ce qui doit advenir</h2><div class="body">L’ancienne déchirure à peine cousue, le vent de printemps presse de nouveau un hôte de rester.
+<section class="poem-version translation" lang="fr"><h2 data-poetry-title="Sur l’air de Manjianghong · Vouloir te retenir, savoir ce qui doit advenir">Sur l’air de Manjianghong · Vouloir te retenir, savoir ce qui doit advenir</h2><div class="body">L’ancienne déchirure à peine cousue, le vent de printemps presse de nouveau un hôte de rester.
 La porte voudrait se fermer ; l’ombre du rideau se retourne pourtant, laissant entrer le printemps en secret.
 La taille s’est amincie, mais le vêtement reste étroit ; toutes les marques cachées s’accumulent sur la peau.
 Au retour, je le suppose, la vieille aiguille sera encore là, pour coudre la nouvelle déchirure.
@@ -141,11 +145,11 @@ Voyez la fin : les points de nouveau impeccables, nulle trace.</div></section>
 <p class="poetry-paper-link"><a href="/poetry-voucher/shop.html?lang=fr&amp;work=manjianghong-2022-sewn-202610">Choisir une édition sur papier</a></p>
 </article>
 <p class="poetry-version-label">Autre réécriture</p>
-<article class="poem reader-poem" id="echo" data-poetry-text="manjianghong-2022-echo-202610">
+<article class="poem reader-poem" id="echo" data-poetry-text="manjianghong-2022-echo-202610" data-poetry-classical>
 <p class="poetry-dates">Première rédaction 2022 <span aria-hidden="true">·</span> Révision <time datetime="2026-10">2026.10</time></p>
 <div class="poem-pair">
 <section class="poem-version source" lang="zh-Hant-HK">
-<h2>《滿江紅 · 望沮攔約當應是 · 又稿》</h2><div class="body">漏盡鐘回，催曉處、餘聲仍塞。
+<h2 data-poetry-title="《滿江紅 · 望沮攔約當應是 · 又稿》">《滿江紅 · 望沮攔約當應是 · 又稿》</h2><div class="body">漏盡鐘回，催曉處、餘聲仍塞。
 門欲掩、劣衿將去，又迎嘉客。
 舊事還從新曆出，階前風雨渾成笛。
 算韶光、只在一聲中，塵先積。
@@ -154,7 +158,7 @@ Voyez la fin : les points de nouveau impeccables, nulle trace.</div></section>
 縱衣冠屢換，總稱圭璧。
 初景寒柯違業識，豐城元禮宜同席。
 曉山塗，晝影祭寒華，猶無息。</div></section>
-<section class="poem-version translation" lang="fr"><h2>Sur l’air de Manjianghong · Vouloir te retenir, savoir ce qui doit advenir — autre version</h2><div class="body">La clepsydre s’épuise, la cloche revient. Là où elle presse l’aube, sa résonance reste obstruée.
+<section class="poem-version translation" lang="fr"><h2 data-poetry-title="Sur l’air de Manjianghong · Vouloir te retenir, savoir ce qui doit advenir — autre version">Sur l’air de Manjianghong · Vouloir te retenir, savoir ce qui doit advenir — autre version</h2><div class="body">La clepsydre s’épuise, la cloche revient. Là où elle presse l’aube, sa résonance reste obstruée.
 La porte voudrait se fermer ; le pauvre col s’apprête à partir, mais on accueille encore un hôte de choix.
 Les vieux événements ressortent du nouveau calendrier ; devant les marches, vent et pluie se font tout entiers flûte.
 Tout ce beau temps tient dans un seul son—et la poussière s’est amassée la première.
