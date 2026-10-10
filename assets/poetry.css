@@ -26,6 +26,12 @@
 .poetry-dates { color:var(--muted); font: .7rem/1.7 var(--mono); margin:0 0 1.5rem; }
 .poetry-paper-link { margin:1.5rem 0 .5rem; font: .7rem/1.6 var(--mono); }
 .poetry-paper-link a { display:inline-block; min-height:44px; padding:.7rem 0; }
+.poetry-kundoku { margin-top:1.5rem; }
+.poetry-kundoku > summary { width:fit-content; min-height:44px; padding:.7rem 0; color:var(--muted); font:.75rem/1.7 var(--mono); cursor:pointer; }
+.poetry-kundoku > summary:hover, .poetry-kundoku[open] > summary { color:var(--ink); }
+.poetry-kundoku .kundoku { padding-block:1rem .5rem; }
+.poetry-kundoku .body { text-align:start; }
+.kundoku-notes { margin:1.25rem 0 0; padding-left:1.3em; color:var(--muted); font-size:.8rem; line-height:1.8; }
 .poetry-sequence-nav { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.6rem 1.5rem; border-bottom:1px solid var(--line); padding:1rem 0 2rem; margin-bottom:3rem; font-size:.8rem; }
 .poetry-sequence-nav a { max-width:46%; min-height:44px; padding:.5rem 0; }
 .poetry-sequence-nav a span { display:block; color:var(--muted); font: .65rem/1.8 var(--mono); }

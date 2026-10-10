@@ -8,6 +8,7 @@ import {chromium, webkit} from 'playwright';
 
 const root = process.cwd();
 const library = JSON.parse(await readFile(path.join(root, 'content/poetry/library.json'), 'utf8'));
+const kundoku = JSON.parse(await readFile(path.join(root, 'content/poetry/kundoku.json'), 'utf8'));
 const classicalRoutes = [...new Set(library.works.filter(work => ['ci', 'shi', 'qu'].includes(work.form))
   .map(work => `/zh/poetry/${work.route}/`))];
 classicalRoutes.push('/zh/poetry/september-2026/');
@@ -100,6 +101,7 @@ try {
     sources.set(locale, expected);
     assert.equal(Object.keys(expected.sources).length, 17);
     await page.goto(base + route, {waitUntil:'load'});
+    assert.equal(await page.locator('.poetry-kundoku').count(), locale === 'ja' ? 17 : 0);
     const initial = locale === 'zh-hans' ? 'horizontal' : 'vertical';
     await inspect(page, expected, initial);
     await page.locator('button[data-poetry-layout="vertical"]').click();
@@ -164,7 +166,37 @@ try {
   await settle(linked);
   const anchor = await linked.locator('#jia-10').boundingBox();
   assert.ok(anchor.y < 844 && anchor.y + anchor.height > 0, `vertical deep link must remain visible: ${JSON.stringify(anchor)}`);
+  const coveredReadings = new Set();
+  const readingPage = await cold.newPage();
+  for (const route of classicalRoutes.map(route => route.replace('/zh/', '/ja/'))) {
+    const expected = await original(plain, route);
+    await readingPage.goto(base + route, {waitUntil:'load'});
+    const disclosures = readingPage.locator('.poetry-kundoku');
+    assert.equal(await disclosures.count(), Object.keys(expected.sources).length);
+    assert.equal(await readingPage.locator('.poetry-kundoku[open]').count(), 0);
+    for (const tid of Object.keys(expected.sources)) {
+      const disclosure = readingPage.locator(`[data-poetry-kundoku="${tid}"]`);
+      await disclosure.locator('summary').click();
+      assert.ok(await disclosure.locator('.body').isVisible());
+      assert.equal(await disclosure.locator('.body').textContent(), kundoku.texts[tid].body);
+      coveredReadings.add(tid);
+    }
+    for (const width of [320, 1280]) {
+      await readingPage.setViewportSize({width, height:844});
+      await inspect(readingPage, expected, 'vertical');
+    }
+  }
+  assert.deepEqual([...coveredReadings].sort(), Object.keys(kundoku.texts).sort());
+  await plain.goto(base + '/ja/poetry/yingtianchang-20261008/', {waitUntil:'load'});
+  await plain.locator('.poetry-kundoku > summary').press('Enter');
+  assert.ok(await plain.locator('.kundoku .body').isVisible(), 'native disclosure works by keyboard without JavaScript');
+  assert.equal(await plain.locator('.kundoku .body').textContent(), kundoku.texts['yingtianchang-20261008-text'].body);
+  assert.ok(await plain.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+  await readingPage.goto(base + '/ja/poetry/roof-splits/', {waitUntil:'load'});
+  assert.equal(await readingPage.locator('.poetry-kundoku').count(), 0);
+  await readingPage.goto(base + '/ja/poetry/summer-2017/', {waitUntil:'load'});
+  assert.equal(await readingPage.locator('.poetry-kundoku').count(), 0);
   await cold.close();
   assert.deepEqual(errors, []);
-  console.log(`poetrylayoutcheck: ${engineName}, ${layouts} layouts; ${classicalRoutes.length} classical routes; seven locales; 320–1280 px; authored lines, titles, labels, translations, preference memory, simple reading and blocked storage OK`);
+  console.log(`poetrylayoutcheck: ${engineName}, ${layouts} layouts; ${classicalRoutes.length} classical routes; seven locales; 320–1280 px; ${coveredReadings.size} kundoku readings, native keyboard disclosure without JavaScript; authored lines, titles, labels, translations, preference memory, simple reading and blocked storage OK`);
 } finally { await browser?.close(); await new Promise(resolve => server.close(resolve)); }

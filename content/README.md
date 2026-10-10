@@ -12,6 +12,8 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `poetry/simplified.json` — script-only mirrors keyed to text parts, with source and per-original hashes.
 - `poetry/ui.json` — seven-language catalogue, reader and navigation copy.
 - `poetry/translation-guidance.md` — semantic constraints for literary translation.
+- `poetry/kundoku.json` — Japanese classical-text reading aids, separately authored
+  from modern translations and pinned to each Chinese body by SHA-256.
 - `poetry/voucher-encoding.json` — non-literary artwork and barcode tables.
 - `ci-source.json`, `ci-simplified.json`, `ci-translations/`, `shi-source.json`, `shi-simplified.json`, `shi-translations/` and `summer-poem.json` — generated compatibility views. Do not author in them.
 - `essays.json` — registry of public essays, their source fragments, metadata files and social images.
@@ -27,6 +29,13 @@ Reader layout controls use the `layout_*` keys in `poetry/ui.json`, the shared
 boundaries in the canonical library. Layout and label changes do not require
 rewriting the poems. The complete no-script HTML remains the horizontal reading
 fallback.
+
+Japanese classical readers also offer a native, initially closed
+`訓読・書き下し文` disclosure after the modern translation. It works without
+JavaScript and keeps the source's line and stanza boundaries. These readings
+are interpretive aids, not additional paper editions. If a Chinese body changes,
+review the corresponding reading before updating its source hash; the build
+rejects stale or incomplete readings. Modern poems have no kundoku layer.
 
 English is the default site at `/`. Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are emitted at
 `/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Ordinary language switching is static navigation. Two interactive exceptions select already-authored copy at runtime: the root custom 404 router (preserving the 404 response), and the Poetry Voucher shop (preserving the visitor's selection while changing interface language).
