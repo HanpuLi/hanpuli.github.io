@@ -1,8 +1,11 @@
-.poetry-layout-controls { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; margin-top:1.5rem; font:.8rem/1.6 var(--mono); }
+.poetry-layout-controls { display:flex; flex-wrap:wrap; align-items:center; gap:0 .25rem; margin-top:1.25rem; color:var(--muted); font:.75rem/1.7 var(--mono); }
 .poetry-layout-controls[hidden] { display:none; }
-.poetry-layout-controls > span { margin-inline-end:.5rem; }
-.poetry-layout-controls button { min-height:44px; padding:.5rem 1rem; border:1px solid var(--line); background:transparent; color:var(--ink); font:inherit; cursor:pointer; }
-.poetry-layout-controls button[aria-pressed="true"] { border-color:var(--ink); background:var(--paper-soft); }
+.poetry-layout-controls > span { margin-inline-end:.75rem; }
+.poetry-layout-controls button { position:relative; min-height:44px; padding:.6rem .625rem; border:0; background:transparent; color:var(--muted); font:inherit; cursor:pointer; }
+.poetry-layout-controls button::after { content:""; position:absolute; inset-inline:.625rem; bottom:.4rem; height:1px; background:currentColor; opacity:0; }
+.poetry-layout-controls button[aria-pressed="true"] { color:var(--ink); }
+.poetry-layout-controls button[aria-pressed="true"]::after { opacity:1; }
+.poetry-layout-controls button:hover { color:var(--ink); }
 .poetry-layout-controls button:disabled { opacity:.5; cursor:default; }
 .poetry-authorial-label { white-space:nowrap; }
 .poetry-page .poem-version .body { width:fit-content; max-width:100%; margin-inline:auto; }
