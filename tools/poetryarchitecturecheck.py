@@ -9,6 +9,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from poetry_library import Library, LANGS, materialize, read
 from poetry_kundoku import Kundoku
+from poetry_reading_aids import ReadingAids
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -16,6 +17,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def main() -> None:
     library=Library(ROOT)
     kundoku=Kundoku(library)
+    aids=ReadingAids(library)
     fixture=read(ROOT/'tools/fixtures/poetry-before-refactor.json')
     errors=[]
     for key,expected in fixture['body_sha256'].items():
@@ -76,6 +78,30 @@ def main() -> None:
                     reading=re.search(r'<details\b[^>]*data-poetry-kundoku="([^"]+)"',body)
                     if bool(reading)!=(locale=='ja' and classical) or (reading and reading[1]!=tid):
                         errors.append(f'Wrong kundoku ownership: {path.relative_to(ROOT)} / {tid}')
+                    paraphrases=re.findall(r'<details\b([^>]*data-poetry-paraphrase="([^"]+)"[^>]*)>(.*?)</details>',body,re.S)
+                    annotations=re.findall(r'<details\b([^>]*data-poetry-notes="([^"]+)"[^>]*)>(.*?)</details>',body,re.S)
+                    has_aids=locale in ('zh','zh-hans') and classical
+                    if len(paraphrases)!=int(has_aids) or len(annotations)!=int(has_aids):
+                        errors.append(f'Wrong Chinese reading-aid coverage: {path.relative_to(ROOT)} / {tid}')
+                    elif has_aids:
+                        edition=aids.edition(tid,locale)
+                        for disclosure,label in ((paraphrases[0],'paraphrase'),(annotations[0],'notes')):
+                            attrs,owner,inner=disclosure
+                            if owner!=tid or re.search(r'\bopen(?:\s|=|$)',attrs):
+                                errors.append(f'Wrong or initially open Chinese disclosure: {path.relative_to(ROOT)} / {tid}')
+                            if f'<summary>{html.escape(aids.labels[locale][label])}</summary>' not in inner:
+                                errors.append(f'Wrong Chinese disclosure label: {path.relative_to(ROOT)} / {tid}')
+                        rendered=re.search(r'<div class="reading-aid-body">(.*?)</div>',paraphrases[0][2],re.S)
+                        if not rendered or html.unescape(rendered[1])!=edition['body']:
+                            errors.append(f'Wrong Chinese paraphrase: {path.relative_to(ROOT)} / {tid}')
+                        rendered_notes=re.findall(r'<dt>(.*?)</dt><dd>(.*?)</dd>',annotations[0][2],re.S)
+                        expected_notes=[]
+                        for note in edition['notes']:
+                            links=[f'<a href="{html.escape(aids.references[rid]["url"])}">{html.escape(aids.references[rid]["label"][locale])}</a>' for rid in note['refs']]
+                            sources=('<span class="annotation-sources">'+'；'.join(links)+'</span>') if links else ''
+                            expected_notes.append((html.escape(note['lemma']),html.escape(note['body'])+sources))
+                        if rendered_notes!=expected_notes:
+                            errors.append(f'Wrong Chinese annotations/references: {path.relative_to(ROOT)} / {tid}')
                     if actual!=expected:
                         errors.append(f'Wrong rendered text/translation: {path.relative_to(ROOT)} / {tid}')
                     body_checks+=len(expected)

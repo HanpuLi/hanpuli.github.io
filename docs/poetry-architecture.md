@@ -19,6 +19,14 @@ Roof is one two-part work with two retained drafts. Four paper options do not ma
 
 `content/poetry/simplified.json` is a script mirror. Per-original hashes preserve previously reviewed conversions when unrelated metadata changes. `poetry/ui.json` contains seven-locale catalogue and navigation copy. `poetry/translation-guidance.md` records semantic editorial constraints.
 
+Chinese paraphrases and annotations are authored separately in
+`content/poetry/reading-aids.json`. Each classical text version has its own reviewed
+Chinese-body hash, both script editions and annotation references. The Chinese
+reader renders two independent native disclosures, closed by default, following
+the original. This layer neither creates an edition in the literary library nor
+enters the paper catalogue. The build rejects stale hashes, missing versions,
+broken reference keys and changed paraphrase line/stanza structure.
+
 ## Routes and reading order
 
 The catalogue is `/poetry/`; `/poetry/chronology/` is a date-based view of the same works. Each locale uses the same route slugs. Collections keep their reading order rather than being flattened into a chronological list of isolated texts.

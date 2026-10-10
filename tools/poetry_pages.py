@@ -10,6 +10,7 @@ from urllib.parse import urlencode
 
 from poetry_library import Library, LANGS, SHOP_LANGS, read
 from poetry_kundoku import Kundoku
+from poetry_reading_aids import ReadingAids
 
 
 def esc(value: Any) -> str:
@@ -31,6 +32,7 @@ class Pages:
         self.base = base
         self.lib = Library(base.ROOT)
         self.kundoku = Kundoku(self.lib)
+        self.reading_aids = ReadingAids(self.lib)
         self.ui = read(base.CONTENT / 'poetry/ui.json')
         self.template = (base.TEMPLATES / 'poetry.html').read_text(encoding='utf-8')
 
@@ -218,6 +220,23 @@ class Pages:
             _, display_title = self.presentation_title(translation['title'],code,locale)
             rows.append(f'<section class="poem-version translation" lang="{self.base.LANG_BY_ID[locale]["html_lang"]}"><h2 data-poetry-title="{esc(display_title)}">{esc(title)}</h2><div class="body">{esc(translation["body"])}</div></section>')
         rows.append('</div>')
+        if locale in ('zh', 'zh-hans') and classical:
+            reading = self.reading_aids.edition(tid, locale)
+            labels = self.reading_aids.labels[locale]
+            rows.append(f'<div class="poetry-reading-aids" lang="{tag}">'
+                        f'<details class="poetry-reading-aid" data-poetry-paraphrase="{esc(tid)}">'
+                        f'<summary>{esc(labels["paraphrase"])}</summary>'
+                        f'<div class="reading-aid-body">{esc(reading["body"])}</div></details>'
+                        f'<details class="poetry-reading-aid" data-poetry-notes="{esc(tid)}">'
+                        f'<summary>{esc(labels["notes"])}</summary><dl class="poetry-annotations">')
+            for note in reading['notes']:
+                sources = []
+                for rid in note['refs']:
+                    ref = self.reading_aids.references[rid]
+                    sources.append(f'<a href="{esc(ref["url"])}">{esc(ref["label"][locale])}</a>')
+                links = ('<span class="annotation-sources">' + '；'.join(sources) + '</span>') if sources else ''
+                rows.append(f'<dt>{esc(note["lemma"])}</dt><dd>{esc(note["body"])}{links}</dd>')
+            rows.append('</dl></details></div>')
         if locale == 'ja' and classical:
             notes = self.kundoku.texts[tid].get('notes', [])
             note_html = ('<ul class="kundoku-notes">' + ''.join(f'<li>{esc(note)}</li>' for note in notes)
