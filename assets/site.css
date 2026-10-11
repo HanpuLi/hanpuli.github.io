@@ -3487,9 +3487,10 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   white-space: nowrap;
 }
 
-/* A Japanese compound can exceed the entire text measure at 200% zoom.
-   Preserve the authored phrase, but permit a line break in narrow reflow. */
-@media (max-width: 430px) {
+/* At enlarged text sizes, a protected media phrase can be wider than
+   the whole photo measure. Use a rem-sized container query so normal-sized
+   320/390px layouts still preserve complete film terms. */
+@container photo (max-width: 15rem) {
   .site-home #photo .section-note .keep-together {
     white-space: normal;
     overflow-wrap: anywhere;
