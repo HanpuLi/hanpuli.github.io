@@ -22,8 +22,8 @@ html[data-poetry-layout="vertical"] .poetry-stanza {
 /* Bands already supply stanza spacing, including the wider reading setting. */
 .poetry-page .poetry-composition .poetry-stanza { margin:0; }
 .poetry-composition[data-flow-active][data-flow-title-position="side"] {
-  display:flex; flex-direction:row-reverse; align-items:flex-start;
-  justify-content:center; gap:var(--flow-title-gap); width:fit-content;
+  display:flex; flex-direction:row-reverse; flex-wrap:wrap; align-items:flex-start;
+  justify-content:center; gap:var(--flow-title-gap); row-gap:var(--flow-band-gap); width:fit-content;
   max-width:100%; margin-inline:auto;
 }
 .poetry-composition[data-flow-active][data-flow-title-position="top"] {

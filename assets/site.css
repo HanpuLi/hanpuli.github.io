@@ -418,6 +418,13 @@ main[tabindex="-1"]:focus {
   z-index: 2;
 }
 
+/* A closed native disclosure must not create a second grid track. In some
+   browsers its hidden panel still has box geometry and causes horizontal
+   scrolling at 200% text zoom, even though it cannot be interacted with. */
+.reading-tools details:not([open]) > .reading-panel {
+  display: none;
+}
+
 .reading-tools summary {
   display: inline-flex;
   min-width: 44px;
@@ -3390,7 +3397,7 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
     --section-rail: clamp(2rem, 7.5cqi, 7.5rem);
     --module-gap: clamp(.75rem, 1.25cqi, 1.5rem);
     display: grid;
-    grid-template-columns: minmax(max-content, var(--section-rail)) repeat(11, minmax(0, 1fr));
+    grid-template-columns: minmax(0, var(--section-rail)) repeat(11, minmax(0, 1fr));
     column-gap: var(--module-gap);
   }
 
@@ -3478,6 +3485,15 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
 
 .site-home #photo .section-note .keep-together {
   white-space: nowrap;
+}
+
+/* A Japanese compound can exceed the entire text measure at 200% zoom.
+   Preserve the authored phrase, but permit a line break in narrow reflow. */
+@media (max-width: 430px) {
+  .site-home #photo .section-note .keep-together {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 }
 
 .site-home .project-feature .project-proof dd {
@@ -4497,6 +4513,21 @@ html[data-reading-large] .essay-page :is(
 
   .site-home::before {
     display: none !important;
+  }
+}
+
+/* Let the number of mobile navigation columns respond to text size as well
+   as viewport size. A fixed pair of tracks clips longer labels at 200% text. */
+@media (max-width: 430px) {
+  .site-home .section-nav,
+  .page-topbar .page-nav,
+  html[data-reading-simple] .site-home .section-nav,
+  html[data-reading-simple] .page-topbar .page-nav {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
+  }
+
+  .site-home .site-footer {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
   }
 }
 
