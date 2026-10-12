@@ -136,6 +136,11 @@ window.PoetryFlow = (() => {
       for (const limit of [...limits].sort((a,b) => a-b)) {
         const columns = packTitle(phrases, heights, limit);
         const width = columns.length * columnWidth;
+        // The shortest composition can require too many title columns for
+        // the reader. This happens to long A/B titles with enlarged text and
+        // wider CJK font metrics on Linux. Reject layouts that extend past
+        // the available line width, even when they would be shorter vertically.
+        if (width > available + 0.25) continue;
         const side = width + titleGap + widest <= available + 0.25;
         const rows = packStanzas(stanzas, boxes, side ? available-width-titleGap : available, stanzaGap);
         const bodyHeight = rows.reduce((sum, row) => sum + row.height, 0) + bandGap * (rows.length-1);

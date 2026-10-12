@@ -54,11 +54,14 @@ async function inspect(page, expected, layout) {
         }
         const text = chunks.length ? [...stanzas.values()].map(parts => parts.join('\n')).join('\n\n') : body.textContent;
         const title = article.querySelector('.source h2');
+        const frame = article.querySelector('.source').getBoundingClientRect();
+        const heading = title.getBoundingClientRect();
+        const titleWithinSource = heading.left >= frame.left - 1 && heading.right <= frame.right + 1;
         const rectangles = [...article.querySelectorAll('.poetry-composition, .flow-row, .poetry-stanza, .source h2')]
           .filter(el => !el.classList.contains('visually-hidden'))
           .map(el => ({tag:el.className, left:el.getBoundingClientRect().left, right:el.getBoundingClientRect().right}));
         return {id:article.dataset.poetryText, text, raw:body.textContent, rectangles,
-          title:title.textContent, columns:title.querySelectorAll('.flow-title-column').length,
+          titleWithinSource, title:title.textContent, columns:title.querySelectorAll('.flow-title-column').length,
           label:article.querySelector('.poetry-authorial-label')?.textContent,
           mode:getComputedStyle(chunks[0] || body).writingMode};
       }),
@@ -71,6 +74,7 @@ async function inspect(page, expected, layout) {
     assert.equal(article.text, expected.sources[article.id], `${article.id}: authored lines or stanza boundaries changed`);
     assert.equal(article.raw, expected.sources[article.id], `${article.id}: DOM copy must preserve the complete original`);
     assert.equal(article.mode, layout === 'vertical' ? 'vertical-rl' : 'horizontal-tb');
+    assert.ok(article.titleWithinSource, `${article.id}: title escapes its reading column`);
     for (const rect of article.rectangles) {
       assert.ok(rect.left >= -1 && rect.right <= result.width + 1, `${article.id} ${result.width}: clipped ${JSON.stringify(rect)}`);
     }
@@ -130,6 +134,14 @@ try {
       await page.evaluate(() => {
         for (const name of ['large', 'spacing', 'measure']) document.documentElement.removeAttribute('data-reading-' + name);
       });
+      if (width === 320) {
+        // Text-only zoom does not change the viewport. Long authored titles
+        // still need to remain within the source column at 200% font size.
+        await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
+        await inspect(page, expected, 'vertical');
+        await page.evaluate(() => { document.documentElement.style.removeProperty('font-size'); });
+        await inspect(page, expected, 'vertical');
+      }
     }
   }
   await page.goto(base + '/zh/poetry/jia-yi/#jia-10', {waitUntil:'load'});

@@ -418,6 +418,13 @@ main[tabindex="-1"]:focus {
   z-index: 2;
 }
 
+/* A closed native disclosure must not create a second grid track. In some
+   browsers its hidden panel still has box geometry and causes horizontal
+   scrolling at 200% text zoom, even though it cannot be interacted with. */
+.reading-tools details:not([open]) > .reading-panel {
+  display: none;
+}
+
 .reading-tools summary {
   display: inline-flex;
   min-width: 44px;
@@ -3390,7 +3397,7 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
     --section-rail: clamp(2rem, 7.5cqi, 7.5rem);
     --module-gap: clamp(.75rem, 1.25cqi, 1.5rem);
     display: grid;
-    grid-template-columns: minmax(max-content, var(--section-rail)) repeat(11, minmax(0, 1fr));
+    grid-template-columns: minmax(0, var(--section-rail)) repeat(11, minmax(0, 1fr));
     column-gap: var(--module-gap);
   }
 
@@ -3455,6 +3462,20 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
 }
 
 
+/* A narrow work container at enlarged text size cannot fit its numbered
+   rail alongside the project copy. Stack the number above its project rather
+   than trading horizontal overflow for overlapping text. */
+@container work (max-width: 15rem) {
+  .site-home .project {
+    display: block;
+  }
+
+  .site-home .project-main,
+  .site-home .project-feature .project-main {
+    margin-block-start: 1rem;
+  }
+}
+
 /* Editorial type and spacing contracts. */
 .site-home :is(.section-head h2, .writing-list h3),
 .essay-page :is(.essay-intro h1, .essay-deck, .essay-body h2) {
@@ -3478,6 +3499,16 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
 
 .site-home #photo .section-note .keep-together {
   white-space: nowrap;
+}
+
+/* At enlarged text sizes, a protected media phrase can be wider than
+   the whole photo measure. Use a rem-sized container query so normal-sized
+   320/390px layouts still preserve complete film terms. */
+@container photo (max-width: 15rem) {
+  .site-home #photo .section-note .keep-together {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 }
 
 .site-home .project-feature .project-proof dd {
@@ -4497,6 +4528,21 @@ html[data-reading-large] .essay-page :is(
 
   .site-home::before {
     display: none !important;
+  }
+}
+
+/* Let the number of mobile navigation columns respond to text size as well
+   as viewport size. A fixed pair of tracks clips longer labels at 200% text. */
+@media (max-width: 430px) {
+  .site-home .section-nav,
+  .page-topbar .page-nav,
+  html[data-reading-simple] .site-home .section-nav,
+  html[data-reading-simple] .page-topbar .page-nav {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
+  }
+
+  .site-home .site-footer {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
   }
 }
 

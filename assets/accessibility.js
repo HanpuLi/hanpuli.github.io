@@ -217,6 +217,13 @@
         summary.focus();
         event.preventDefault();
       });
+      // Once keyboard focus moves beyond the disclosure, the non-modal panel
+      // must stop covering subsequent links and their focus indicators.
+      document.addEventListener("focusin", (event) => {
+        if (disclosure.open && !disclosure.contains(event.target)) {
+          disclosure.open = false;
+        }
+      });
     }
   }
 
