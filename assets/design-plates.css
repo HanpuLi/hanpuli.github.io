@@ -71,7 +71,7 @@
  .plate-responsive{grid-template-columns:minmax(0,1fr)}
  .plate-responsive>div:last-child{padding-block-start:0}
  .plate-callouts{grid-template-columns:minmax(0,1fr)}
- .plate-width-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.4rem 1rem}
+ .plate-width-row{grid-template-columns:repeat(auto-fit,minmax(min(100%,7.25rem),1fr));gap:.4rem 1rem}
  .plate-width-row svg{grid-column:1/-1;grid-row:2}.plate-width-row p{text-align:end}
  .plate-glyph-detail{grid-template-columns:minmax(0,1fr);gap:1.5rem}.plate-glyph{justify-self:center}
  .plate-cell-ruler{display:none}

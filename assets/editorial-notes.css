@@ -173,6 +173,9 @@ html[data-reading-sans] .editorial-references {font-family:var(--readable-sans,s
   .voucher-project .editorial-section {display:block;padding-block:2.25rem 2.75rem}
   .about-page .editorial-section .about-section-head,
   .voucher-project .editorial-section .about-section-head {padding:0;margin-block-end:1.5rem}
+  /* Editorial headings keep their authored words, but a single long word must
+     be allowed to reflow rather than widen the page at 200% text size. */
+  :is(.about-page,.voucher-project) .editorial-section h2 {overflow-wrap:anywhere}
   .voucher-project .pv-notes.pv-essay section {max-inline-size:none}
   .editorial-references {margin-inline:0}
   .pv-contents ol {gap:0 1rem}
@@ -230,8 +233,15 @@ body:is(.about-page,.voucher-project) .page-topbar a {margin-block:0}
   }
 }
 @media(max-width:520px) {
-  body:is(.about-page,.voucher-project) .page-topbar .page-nav {grid-template-columns:repeat(2,minmax(0,1fr))}
-  body:is(.about-page,.voucher-project):is(.locale-zh,.locale-zh-hans,.locale-ja) .page-topbar .page-nav {grid-template-columns:repeat(3,minmax(0,1fr))}
+  /* Match the editorial two-column (CJK three-column) layout at normal text
+     size. Intrinsic rem minima grow at text zoom, letting the grid stack before
+     longer labels touch one another. */
+  body:is(.about-page,.voucher-project) .page-topbar .page-nav {
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,max(7rem,44%)),1fr));
+  }
+  body:is(.about-page,.voucher-project):is(.locale-zh,.locale-zh-hans,.locale-ja) .page-topbar .page-nav {
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,max(5rem,29%)),1fr));
+  }
 }
 
 /* Keep the accessibility panel inside the editorial header when the second
