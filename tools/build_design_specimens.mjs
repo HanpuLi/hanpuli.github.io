@@ -37,7 +37,10 @@ try{
  await page.route('**/poetry-voucher/shop.js*',r=>r.fulfill({contentType:'text/javascript',body:shop.replace('window.poetryShop=','window.__design={prepare,freezeOrder,continuousOrderPages,PagedPaper};window.poetryShop=')}));
  await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=jia-yi-b3-text');await page.waitForFunction(()=>document.querySelector('#product-editor')?.open);await page.locator('#font').selectOption('bitmap');await page.locator('#size').selectOption('24');await page.locator('#save-line').click();
  const output=await page.evaluate(async()=>{
-  const order=await __design.freezeOrder();order.id='00000000-0000-4000-8000-000000000024';order.ref='260924120001';order.created=new Date('2026-09-24T11:00:00Z');order.receiptMetadata=receiptMeta(order.ref);order.payment={method:'cash',tender:500,change:500-order.total};
+  // freezeOrder normally assigns a random line UUID. Fix the fixture's line
+  // identity as well as its order identity so rebuilding CSS measurements is
+  // byte-for-byte reproducible rather than introducing unrelated churn.
+  const order=await __design.freezeOrder();order.lines[0].id='675902e3-5fcf-4f9c-a635-4397b78e8c6b';order.id='00000000-0000-4000-8000-000000000024';order.ref='260924120001';order.created=new Date('2026-09-24T11:00:00Z');order.receiptMetadata=receiptMeta(order.ref);order.payment={method:'cash',tender:500,change:500-order.total};
   const log=[];const proto=__design.PagedPaper.prototype;
   for(const method of ['till','text']){const old=proto[method];proto[method]=function(...args){const y=this.y;const v=old.apply(this,args);log.push({kind:this.identity.kind,method,y,end:this.y,args});return v;};}
   const first=await __design.prepare(order);const calls=log.slice();const pages=__design.continuousOrderPages(first);const full=canvas(384,pages.reduce((n,c)=>n+c.height,0));let y=0;for(const c of pages){full.getContext('2d').drawImage(c,0,y);y+=c.height;}

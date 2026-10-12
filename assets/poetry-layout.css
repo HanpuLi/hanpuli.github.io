@@ -8,6 +8,12 @@
 .poetry-layout-controls button:hover { color:var(--ink); }
 .poetry-layout-controls button:disabled { opacity:.5; cursor:default; }
 .poetry-authorial-label { white-space:nowrap; }
+/* At very large text sizes, translated A/B metadata can be wider than the
+   reader. Keep the script horizontal, but permit a line break instead of
+   clipping the edition label or forcing two-dimensional scrolling. */
+@container page-shell (max-width: 15rem) {
+  .poetry-authorial-label { white-space:normal; overflow-wrap:anywhere; }
+}
 .poetry-page .poem-version .body { width:fit-content; max-width:100%; margin-inline:auto; }
 .poetry-composition { --flow-stanza-gap:24px; --flow-title-gap:18px; --flow-band-gap:28px; }
 html[data-poetry-layout="vertical"] .poetry-composition > h2 {

@@ -3462,6 +3462,20 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
 }
 
 
+/* A narrow work container at enlarged text size cannot fit its numbered
+   rail alongside the project copy. Stack the number above its project rather
+   than trading horizontal overflow for overlapping text. */
+@container work (max-width: 15rem) {
+  .site-home .project {
+    display: block;
+  }
+
+  .site-home .project-main,
+  .site-home .project-feature .project-main {
+    margin-block-start: 1rem;
+  }
+}
+
 /* Editorial type and spacing contracts. */
 .site-home :is(.section-head h2, .writing-list h3),
 .essay-page :is(.essay-intro h1, .essay-deck, .essay-body h2) {
