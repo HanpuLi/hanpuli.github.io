@@ -18,9 +18,7 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 HTML_FILES = sorted(
     p for p in ROOT.rglob("*.html")
-    if ".git" not in p.parts
-    and "node_modules" not in p.parts
-    and "templates" not in p.parts
+    if not set(p.relative_to(ROOT).parts).intersection({".git", "node_modules", ".worktrees", ".clb", "templates"})
     and p.name != "card.html"
 )
 SKIP_SCHEMES = {"http", "https", "mailto", "tel", "data", "javascript"}
@@ -175,7 +173,7 @@ def check_json_ld(path: Path, text: str, errors: list[str]) -> None:
 def check_css(errors: list[str]) -> None:
     url_re = re.compile(r"url\((['\"]?)([^)'\"]+)\1\)")
     for css in ROOT.rglob("*.css"):
-        if "node_modules" in css.parts:
+        if set(css.relative_to(ROOT).parts).intersection({".git", "node_modules", ".worktrees", ".clb"}):
             continue
         text = css.read_text(encoding="utf-8")
         for match in url_re.finditer(text):

@@ -50,6 +50,12 @@ foreign-language editions or new paper editions. Both Chinese scripts live in
 `reading-aids.json`. Review both whenever an original changes before updating its
 body hash. Modern poems do not acquire this layer.
 
+Write annotations as direct lexical, allusive and contextual explanations. Do not
+introduce hypothetical misreadings merely to disclaim them (for example, “does
+not claim”, “cannot infer” or “does not turn the poem into”); state a limit only
+when it resolves a genuine ambiguity in the source wording. Source references
+must support the claim actually made in the note.
+
 English is the default site at `/`. Traditional Chinese (Hong Kong), Simplified Chinese, Japanese, German, French and Russian are emitted at
 `/zh/`, `/zh-hans/`, `/ja/`, `/de/`, `/fr/` and `/ru/`. Ordinary language switching is static navigation. Two interactive exceptions select already-authored copy at runtime: the root custom 404 router (preserving the 404 response), and the Poetry Voucher shop (preserving the visitor's selection while changing interface language).
 
