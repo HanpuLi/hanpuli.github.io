@@ -38,6 +38,7 @@ try{
   const shop=page.frameLocator('#shop');
   await shop.locator('#work option[value="jia-yi-b3-text"]').waitFor({state:'attached',timeout:15000});
   await shop.locator('#product-editor[open]').waitFor();
+  await shop.locator('.advanced-type summary').click();
   await shop.locator('#font').selectOption('site');
   await shop.locator('#size').selectOption('24');
   await shop.locator('#save-line').click();

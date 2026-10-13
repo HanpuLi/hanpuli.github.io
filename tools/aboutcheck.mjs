@@ -148,7 +148,7 @@ try{
     }
   }
   await nojs.close();
-  const shop=await browser.newPage();await shop.goto(base+'/poetry-voucher/shop.html?lang=en');await shop.waitForSelector('.product-card');
+  const shop=await browser.newPage();await shop.goto(base+'/poetry-voucher/shop.html?lang=en');await shop.waitForSelector('.product-card',{state:'attached'});
   const quotes=await shop.evaluate(()=>({drafts:['roof-splits-draft-1-part-1','roof-splits-draft-2-part-1'].map(id=>{const w=works.find(w=>w.id===id);const q=quotePoem(w.poem,'','bitmap');return [q.characters,q.lines,q.stanzas,q.price];}),threshold:[quotePoem('x'.repeat(40),'','bitmap').price,quotePoem('x'.repeat(20)+'\n'+'x'.repeat(20),'','bitmap').price],unchanged:[quotePoem(works.find(w=>w.id==='jia-yi-b3-text').poem,'','bitmap').price,quotePoem(works.find(w=>w.id==='jia-yi-b3-text').poem.replace(/\n/g,''),'','bitmap').price],tariff:TARIFF}));
   assert.deepEqual(quotes.drafts,[[185,19,7,699],[109,19,7,499]],'Published comparison must track the real renderer');
   assert.deepEqual(quotes.threshold,[199,299]);assert.deepEqual(quotes.unchanged,[299,299]);
