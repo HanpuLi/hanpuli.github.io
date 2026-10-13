@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Research data &amp; open-source work · Hanpu Li</title>
+<meta name="description" content="Verified research data, computational film analysis and open-source engineering by Hanpu Li.">
+<link rel="canonical" href="https://hanpuli.github.io/research-data.html">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+:root{color-scheme:light}body{background:#f5f2eb;color:#242321;font-family:Georgia,serif;line-height:1.65;margin:0}.research-wrap{max-width:780px;margin:auto;padding:3.5rem 1.5rem 6rem}header{border-bottom:1px solid #b9b2a7;padding-bottom:1.2rem}header a{color:inherit;text-decoration:none}h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.14;font-weight:400;margin:3rem 0 1rem}h2{font-weight:400;font-size:1.55rem;margin-top:2.6rem}article{padding:1.5rem 0;border-top:1px solid #c6beb1}article h3{font-size:1.23rem;margin:.3rem 0}a{color:#365e7a;text-underline-offset:3px}.eyebrow,.status{font: .75rem/1.5 system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#615c55}.meta{color:#555049;font-size:.94rem}footer{margin-top:3rem;border-top:1px solid #c6beb1;padding-top:1rem}.skip{position:absolute;left:-100vw}.skip:focus{left:1rem;top:1rem;background:white;padding:.7rem}li{margin:.5rem 0}
+</style>
+</head>
+<body><a class="skip" href="#main">Skip to content</a><div class="research-wrap">
+<header><a href="/">Hanpu Li · 李函璞</a> <span aria-hidden="true">/</span> <a href="/#work">Research</a></header>
+<main id="main"><p class="eyebrow">Selected work · Evidence and reproducibility</p><h1>Research data &amp;<br>open-source work</h1>
+<p>Research materials, code and methods accompanying work in film studies and digital scholarship. Each entry links to its underlying evidence. A public dataset, a merged pull request and a peer-reviewed publication are different kinds of achievement; the descriptions below retain those distinctions.</p>
+<h2>Film research</h2>
+<article><p class="status">Public dataset · October 2026</p><h3><em>First Love</em> (2019): frame-accurate shot-length measurements</h3>
+<p>Independent analysis of a 147.88-second betrayal-sequence excerpt from Takashi Miike's <em>First Love</em>, identifying 17 complete consecutive shots (mean shot length 8.70 seconds). Cut candidates were generated computationally and checked against adjacent video frames. The measurement is specific to one FilmFour television recording and is not a full-film statistic.</p>
+<p><a href="https://github.com/HanpuLi/first-love-verification/tree/publish/verification-analysis-20260925/data/cinemetrics">Dataset, methods and FACT export</a> · <a href="https://github.com/HanpuLi/first-love-verification/pull/9">Merged data contribution</a> · <a href="https://cinemetrics.uchicago.edu/movie/0d9aff11-65ef-4c3e-90e7-99cbde4649ca">Cinemetrics database entry</a></p>
+<p class="meta">Database correction pending: the current Cinemetrics summary counts one incomplete boundary shot and therefore displays 18 shots, 150.9 seconds and ASL 8.4 seconds. The corrected 17-shot measurement is available in the linked dataset; do not cite the uncorrected database summary as the sample result.</p></article>
+<article><p class="status">Open research methods and code</p><h3><em>First Love</em>: verification materials</h3>
+<p>Computational checks supporting a film-studies essay, including subtitle-timebase comparisons, cut detection, reproducibility notes and explicit limits on inference. Source film footage and subtitles are not redistributed.</p>
+<p><a href="https://github.com/HanpuLi/first-love-verification">Source and reproducibility documentation</a> · <a href="/writing/first-love/">Read the essay</a></p></article>
+<h2>Software engineering</h2>
+<article><p class="status">Open-source contribution · Status should be verified at source</p><h3>CPython</h3>
+<p>Python interpreter contribution and associated tests. The linked pull request provides the authoritative record of review, CI status and eventual merge outcome; no acceptance or release is implied here.</p>
+<p><a href="https://github.com/python/cpython/pull/157901">CPython pull request #157901</a></p></article>
+<footer><p class="meta">For publication and research enquiries, see the <a href="/">main site</a>. This page deliberately excludes pending external submissions and unverified awards.</p></footer>
+</main></div></body></html>
