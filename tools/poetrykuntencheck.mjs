@@ -53,7 +53,7 @@ try {
         assert.ok(await article.locator('.source').evaluate(el=>el.classList.contains('poetry-kanbun-showing')));
         assert.equal(await page.locator('[data-poetry-kunten-toggle]').isChecked(),true);
         assert.equal(await iframe.getAttribute('sandbox'),'allow-scripts','viewer may not access parent DOM');
-        const renderer = page.frameLocator('iframe[data-kanbun-frame]');
+        const renderer = iframe.contentFrame();
         assert.equal(await renderer.locator('#kanbun-display .unit').count(),16);
         assert.equal(await renderer.locator('#kanbun-display .kaeriten').count(),3);
         // A one-line poem must remain in one vertical character column.

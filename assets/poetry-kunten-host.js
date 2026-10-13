@@ -77,7 +77,7 @@
     if (msg.state !== 'ready' ||
         msg.sha256 !== stage.dataset.kanbunSha256 ||
         !Number.isInteger(msg.width) || !Number.isInteger(msg.height) ||
-        msg.width < 20 || msg.height < 50 || msg.width > 1200 || msg.height > 3000) return;
+        msg.width < 20 || msg.height < 50 || msg.width > 1200 || msg.height > 20000) return;
     // Sizing is provided by the isolated renderer, not estimated via padding
     // around arbitrary glyphs. Never let an iframe exceed its parent column.
     frame.style.width = msg.width + 'px';
@@ -91,11 +91,21 @@
       if (!reference || !frame.contentWindow) continue;
       const style = getComputedStyle(reference);
       const size = Number.parseFloat(style.fontSize);
+      const section = article.querySelector('.poem-version.source');
+      const title = section?.querySelector('.poetry-kanbun-heading');
+      const display = section?.querySelector('.poetry-kanbun-display');
+      const sectionWidth = section?.getBoundingClientRect().width || innerWidth;
+      const titleWidth = title?.getBoundingClientRect().width || 32;
+      const gap = Number.parseFloat(getComputedStyle(display).columnGap) || 12;
+      // Reserve 38px inside the iframe for glyph bounds/gutters, plus a
+      // safety margin around the separate source title.
+      const cap = Math.max(100,Math.floor(sectionWidth - titleWidth - gap - 44));
       if (Number.isFinite(size))
         frame.contentWindow.postMessage({
           type:'hanpu-kanbun-preferences-v1',
           fontSize:Math.max(20,Math.min(36,Math.round(size*1.35))),
           foreground:style.color,
+          maxContentWidth:cap,
         }, '*');
     }
   }
@@ -119,8 +129,11 @@
     });
   }
   addEventListener('poetry-layout-applied', () => {
-    if (currentLayout !== root.dataset.poetryLayout) apply();
-    else apply();
+    apply();
+    updateFontSizes();
+  });
+  addEventListener('resize', () => {
+    updateFontSizes();
   });
   new MutationObserver(mutations => {
     if (mutations.some(m => m.attributeName === 'data-reading-simple' ||

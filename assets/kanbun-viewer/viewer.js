@@ -29,7 +29,6 @@
   });
   let last = '';
   let lastWidth = 0;
-  let pending = false;
   function measure() {
     // Measure actual painted DOM boxes, not a width guessed from the number
     // of characters or a fixed amount of pseudo-ruby padding. The upstream
@@ -69,19 +68,23 @@
       parent.postMessage(payload, '*');
     }
   }
-  function scheduleMeasure() {
-    if (pending) return;
-    pending = true;
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      pending = false;
-      measure();
-    }));
-  }
   addEventListener('message', event => {
     if (event.source !== parent || event.data?.type !== 'hanpu-kanbun-preferences-v1') return;
     const size = event.data.fontSize;
     if (typeof size === 'number' && size >= 18 && size <= 42)
       node.style.fontSize = size + 'px';
+    // The host sends space available after the vertical title and gutters.
+    // A new constraint may reduce the number of columns per reading band,
+    // so reset the prior non-shrinking width before synchronous remeasurement.
+    const cap = event.data.maxContentWidth;
+    if (Number.isFinite(cap) && cap >= 100 && cap <= 1600) {
+      const value = Math.floor(cap) + 'px';
+      if (node.style.getPropertyValue('--kanbun-content-cap') !== value) {
+        node.style.setProperty('--kanbun-content-cap', value);
+        lastWidth = 0;
+        last = '';
+      }
+    }
     const foreground = event.data.foreground;
     if (typeof foreground === 'string' && foreground.length < 100 &&
         CSS.supports('color',foreground)) document.body.style.color = foreground;
@@ -90,12 +93,13 @@
     measure();
   });
   document.fonts.ready.then(() => {
-    // Send a synchronous initial measurement to let the host reveal the frame.
-    // Once visible, coalesce subsequent measurements across two paint frames.
+    // ResizeObserver also fires for offscreen documents, whereas animation
+    // frames may be paused. Re-measure directly; the payload is deduplicated
+    // by width/height to avoid message storms.
     measure();
-    const observer = new ResizeObserver(scheduleMeasure);
+    const observer = new ResizeObserver(measure);
     observer.observe(node);
   });
-  document.fonts.addEventListener('loadingdone',scheduleMeasure);
-  addEventListener('resize',scheduleMeasure);
+  document.fonts.addEventListener('loadingdone',measure);
+  addEventListener('resize',measure);
 })();

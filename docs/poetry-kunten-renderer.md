@@ -1,9 +1,12 @@
 # Japanese kanbun reading layer: independent viewer prototype
 
-Status: experimental branch, not released. The single annotated pilot is
-the revised Chinese text of 乙五, keyed as jia-yi-b5-text. The other 28
-classical text versions retain their separately edited 書き下し文 but do
-not yet have reviewed character-level marks.
+Status: experimental branch, not released. All 29 classical text versions
+now have manually edited, source-anchored editorial pilot marks. The original
+Chinese corpus and separate 書き下し文 are unchanged by the mark renderer.
+A10 and 鵲橋仙 require explicit interpretative glosses rather than inventing
+traditional points for modern expressions. Coverage does **not** amount to
+an academically certified Japanese kanbun edition. See
+poetry-kunten-collation.md for coverage, uncertainties and textual decisions.
 
 ## Source and presentation boundaries
 
@@ -63,6 +66,8 @@ its SVG output is paths-only and requires a separate accessible text.
 - python3 tools/sitecheck.py
 - npm run qa:poetry-layout (Chromium and the WebKit environment variant)
 - npm run qa:poetry-kunten
+- npm run qa:poetry-kunten-multiline
+- npm run qa:poetry-kunten-zoom
 
 The dedicated browser test checks widths 320/390/1280 in both engines,
 the exact original text, source selection/copy, responsive overflow,
@@ -77,11 +82,27 @@ toggle.
 The initial browser-independent sizing was insufficient: WebKit sometimes
 reported a 17 px overflow, while moving the frame completely offscreen
 could suspend its animation frames and prevent its initial ready message.
-The frame now synchronously measures the union of rendered mark and kanji
-boxes on first load and notifies the parent. Once visible, subsequent
-measurements run after two paint frames; observed scrolling is included
-in the bounds, and the frame does not shrink beneath a previously
-confirmed width. This avoids using guessed letter-by-letter padding.
+The frame synchronously measures the union of rendered mark and kanji
+boxes at first load and after font/column updates. ResizeObserver also
+measures directly: animation frames can be suspended in offscreen frames.
+Observed scrolling is included, and the frame does not shrink beneath a
+previously confirmed width at the same column cap. This avoids using
+guessed per-character padding.
+
+The original host rejected a legitimate iframe height above 3000px when
+五段乙六 was enlarged to 200%, leaving most of the poem clipped. The
+verified five-stanza rendering exceeds 4200px at the largest tested
+font; the host now accepts source-matched dimensions up to 20000px.
+This threshold is a resource bound, not a fixed poem line limit.
+
+A second fault was in the inherited PoetryFlow band splitter: after it
+moved original stanza elements out of the document and rendered cloned
+bands, the next reflow checked computed writing-mode on the detached
+originals. Browsers report these as horizontal, so repeated reflows
+alternated between split and unsplit stanzas. It now checks the attached
+displayed stanza. The dedicated zoom regression repeatedly reflows
+both marked and unmarked poems in Chromium and WebKit at 320/390px,
+with 200% text scaling; no width overflow or poem truncation remains.
 Five consecutive six-viewport Chromium/WebKit regression runs passed
 on the 2026-10-13 developer build, followed by a complete npm run qa
 and a final targeted rerun for the no-JS toggle. An executable test
@@ -89,9 +110,10 @@ result does not certify the linguistic correctness of the markings.
 
 ## Next work
 
-1. Add source-linked marks manually for the remaining 28 versions. Review
-   potentially ambiguous Chinese grammatical particles, nested returns,
-   再読文字, variant glyphs, and Japanese old/new orthography per text.
+1. Complete philological review of all 29 annotated versions, including
+   modern/colloquial particles, nested returns, 再読文字 and variant glyphs.
+   All manuscripts now have source-aligned pilot marks; no historical
+   authenticity is implied by the completed structural coverage.
 2. Test independently authored multiline and multistanza examples at
    narrow widths before enabling them. Preserve authored stanza boundaries;
    a wide stanza must split only at source line boundaries.

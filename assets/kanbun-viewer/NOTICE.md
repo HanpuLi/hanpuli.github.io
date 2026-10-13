@@ -22,6 +22,7 @@ licensing cannot be decided solely by choosing an iframe boundary. Public
 deployment requires a separate compliance review.
 
 The Chinese originals, Japanese editorial readings, and authored annotations
-are separate from this display component. Only one text, 乙五, presently has
-pilot character-level marks. No specialist certification of all works is
-claimed.
+are separate from this display component. All 29 classical
+texts presently have pilot character-level marks; all 29 are covered, with
+special explanatory treatment of modern idioms. No specialist certification
+of all works is claimed.

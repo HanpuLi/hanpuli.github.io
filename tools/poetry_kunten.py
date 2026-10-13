@@ -56,15 +56,42 @@ class Kunten:
                 prev = i
                 if mark["char"] != source[i] or source[i].isspace() or source[i] in "。，、！？；：":
                     raise ValueError("Kanbun mark detached from Chinese character: " + tid)
-                if set(mark) - {"position", "char", "furigana", "okurigana", "kaeriten"}:
+                allowed = {"position", "char", "furigana", "okurigana",
+                           "saidoku_furigana", "saidoku_okurigana", "kaeriten"}
+                if set(mark) - allowed:
                     raise ValueError("Unknown kanbun mark type: " + tid)
-                if not any(k in mark for k in ("furigana", "okurigana", "kaeriten")):
+                if not any(k in mark for k in allowed - {"position", "char"}):
                     raise ValueError("Empty mark: " + tid)
-                for field in ("furigana", "okurigana"):
+                for field in ("furigana", "okurigana", "saidoku_furigana",
+                              "saidoku_okurigana"):
                     if field in mark and not KANA.fullmatch(mark[field]):
                         raise ValueError("Malformed kana in " + tid)
+                if ("saidoku_furigana" in mark) != ("saidoku_okurigana" in mark):
+                    raise ValueError("Incomplete saidokumoji pair: " + tid)
                 if "kaeriten" in mark and mark["kaeriten"] not in RETURNS:
                     raise ValueError("Unsupported return mark in " + tid)
+                if mark.get("kaeriten") == "レ":
+                    if i + 1 >= len(source) or source[i + 1].isspace() or source[i + 1] in "，。、！？；：":
+                        raise ValueError("レ point has no adjacent character: " + tid)
+
+            # Ordinary 二 / 一 points must balance within an authored line.
+            # Do not split at commas: e.g. 朝中措「便作，銀磬微鳴」
+            # intentionally carries a returned clause across a caesura.
+            pairs = {mark["position"]: mark.get("kaeriten") for mark in entry["marks"]}
+            start = 0
+            for line in source.splitlines(keepends=True):
+                stack: list[int] = []
+                for position in range(start, start + len(line)):
+                    point = pairs.get(position)
+                    if point == "二":
+                        stack.append(position)
+                    elif point == "一":
+                        if not stack:
+                            raise ValueError("Orphan 一 point: " + tid)
+                        stack.pop()
+                if stack:
+                    raise ValueError("Unpaired 二 point: " + tid)
+                start += len(line)
 
     def annotated(self, tid: str) -> str:
         source = self.library.edition(tid, "zh")["body"]
@@ -79,6 +106,9 @@ class Kunten:
                 result.append("(" + mark["furigana"] + ")")
             if mark.get("okurigana"):
                 result.append("{" + mark["okurigana"] + "}")
+            if mark.get("saidoku_furigana"):
+                result.append("‹" + mark["saidoku_furigana"] + "›")
+                result.append("«" + mark["saidoku_okurigana"] + "»")
             if mark.get("kaeriten"):
                 result.append("[" + mark["kaeriten"] + "]")
         return "".join(result)
@@ -107,7 +137,7 @@ class Kunten:
             {"tid": tid, "body": source, "sha256": self.texts[tid]["source_body_sha256"]},
             ensure_ascii=False, separators=(",", ":"),
         ).replace("<", "\\u003c")
-        return f"""<!doctype html>
+        return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">

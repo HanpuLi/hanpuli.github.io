@@ -275,6 +275,15 @@ class Pages:
                         f'<summary>{esc(self.kundoku.label)}</summary>'
                         f'<div class="poem-version kundoku"><div class="body">'
                         f'{esc(self.kundoku.body(tid))}</div>{note_html}</div></details>')
+            if tid in self.kunten.texts:
+                editorial = self.kunten.texts[tid].get('notes', [])
+                if editorial:
+                    body = ''.join(f'<li>{esc(note)}</li>' for note in editorial)
+                    rows.append(f'<details class="poetry-kunten-notes" lang="ja" '
+                                f'data-poetry-kunten-notes="{esc(tid)}">'
+                                '<summary>訓点校注（編集）</summary>'
+                                f'<div class="poem-version kundoku"><ul class="kundoku-notes">{body}</ul>'
+                                '</div></details>')
         if tid in lib.offers:
             href='/poetry-voucher/shop.html?'+urlencode({'lang':SHOP_LANGS[locale],'work':tid})
             rows.append(f'<p class="poetry-paper-link"><a href="{esc(href)}">{esc(ui["voucher"])}</a></p>')
