@@ -69,6 +69,10 @@ window.PoetryFlow = (() => {
 
   function layout(record) {
     const {composition, title, body, titleText} = record;
+    if (composition.parentElement?.classList.contains('poetry-kanbun-showing')) {
+      clear(record);
+      return;
+    }
     let stanzas = record.stanzas;
     if (!stanzas.length || getComputedStyle(stanzas[0]).writingMode !== 'vertical-rl') {
       clear(record); return;

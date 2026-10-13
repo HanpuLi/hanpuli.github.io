@@ -1,0 +1,29 @@
+/* Isolated visual reader for kanbunHTML.
+ * This stylesheet is part of the kanbun-viewer AGPL-3.0 subprogram.
+ * It does not style or modify the portfolio document. */
+:root { color-scheme:light dark; }
+html, body {
+  margin:0; padding:0; overflow:hidden; width:max-content;
+  background:transparent; color:#27231e;
+  font-family: "Shippori Mincho", "Yu Mincho", YuMincho, serif;
+}
+body { padding:12px 15px; box-sizing:content-box; }
+#kanbun-display.kanbun {
+  margin:0; padding:0; width:max-content; height:28em;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  font-family:"Shippori Mincho", "Yu Mincho", YuMincho, serif;
+  font-size:23px; font-weight:400; line-height:1;
+}
+#kanbun-display.kanbun .kanbun-stanza { margin:0; padding:0; }
+#kanbun-display.kanbun .kanbun-stanza + .kanbun-stanza {
+  margin-left:1.25em;
+}
+#kanbun-display.kanbun p {
+  margin:0; padding:0;
+  font-family:"Shippori Mincho", "Yu Mincho", YuMincho, serif;
+}
+#kanbun-display.kanbun .unit { vertical-align:middle; }
+/* The upstream grid, including ruby, kaeriten and okurigana, owns placement. */
+@media(prefers-color-scheme:dark){
+  html,body {color:#eae7e1;background:transparent;}
+}

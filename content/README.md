@@ -14,6 +14,10 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `poetry/translation-guidance.md` — semantic constraints for literary translation.
 - `poetry/kundoku.json` — Japanese classical-text reading aids, separately authored
   from modern translations and pinned to each Chinese body by SHA-256.
+- `poetry/kunten.json` — reviewed, per-character Japanese 返り点・送り仮名・振り仮名
+  for a separate visual overlay on the unchanged Chinese original, anchored by
+  original-text SHA-256. Experimental: currently only 乙五 has marked readings.
+  See `docs/poetry-kunten-renderer.md` for sandbox, licences and release gate.
 - `poetry/reading-aids.json` — Traditional and Simplified Chinese plain-language
   paraphrases and annotations, pinned to each classical Chinese body by SHA-256;
   reference titles and original-source links are kept with this editorial layer.

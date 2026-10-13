@@ -20,6 +20,7 @@ from design_plates import site_html as design_site, voucher_html as design_vouch
 from editorial_notes import sections_html as editorial_sections, references_html as editorial_references, project_toc
 from poetry_library import Library, materialize as materialize_poetry
 from poetry_pages import Pages as PoetryPages
+from poetry_kunten import Kunten
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -1264,6 +1265,7 @@ def build(check: bool = False) -> list[Path]:
     changed: list[Path] = materialize_poetry(check=check)
     poetry_pages = PoetryPages(sys.modules[__name__])
     changed.extend(poetry_pages.build(locales,check=check))
+    changed.extend(Kunten(POETRY).build(check=check))
     for lid, locale in locales.items():
         if lid != ROOT_LOCALE:
             (ROOT / lid).mkdir(exist_ok=True)

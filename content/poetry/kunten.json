@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "language": "ja",
+  "note": "Positions are zero-based Unicode character offsets in the exact Traditional Chinese source. Add only hand-reviewed character-level marks; the original remains unchanged.",
+  "texts": {
+    "jia-yi-b5-text": {
+      "source_body_sha256": "fda398b1d224751a130a36e90eea2c9c76bf28adbdac6db5cf7840bed40ba2db",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 2,
+          "char": "鑰",
+          "furigana": "かぎ"
+        },
+        {
+          "position": 4,
+          "char": "新",
+          "furigana": "あら",
+          "okurigana": "タニ"
+        },
+        {
+          "position": 5,
+          "char": "裁",
+          "okurigana": "シテ"
+        },
+        {
+          "position": 6,
+          "char": "付",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 8,
+          "char": "中",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 11,
+          "char": "寒",
+          "furigana": "さむ",
+          "okurigana": "クナリ"
+        },
+        {
+          "position": 12,
+          "char": "了",
+          "furigana": "ぬ"
+        },
+        {
+          "position": 14,
+          "char": "加",
+          "furigana": "くわ",
+          "okurigana": "ヘ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 15,
+          "char": "飯",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 16,
+          "char": "且",
+          "furigana": "か",
+          "okurigana": "ツ"
+        },
+        {
+          "position": 17,
+          "char": "從",
+          "furigana": "しょう"
+        },
+        {
+          "position": 18,
+          "char": "容",
+          "furigana": "よう",
+          "okurigana": "タレ"
+        }
+      ]
+    }
+  }
+}
