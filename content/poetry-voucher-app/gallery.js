@@ -553,12 +553,13 @@ async function generate(event){
       ...[...pixelLoads].map(f=>document.fonts.load(`${TYPE_CONFIG.defaultSize}px ${f}`,fontSample))
     ]);
     await document.fonts.load(`italic ${TYPE_CONFIG.translation}px EB`);
-    const result=render(spec),png=await new Promise(resolve=>result.full.toBlob(resolve,'image/png'));
+    // A shop proof only needs live paper imagery; checkout builds the actual PDF.
+    const result=render(spec),png=shop?null:await new Promise(resolve=>result.full.toBlob(resolve,'image/png'));
     if(revision!==currentRevision){message('排版時內容已改動，請再製作一次。');return;}
     objectURLs.forEach(URL.revokeObjectURL);objectURLs=[];
     for(const kind of ['receipt','voucher','full']){$(kind+'-image').src=result[kind].toDataURL('image/png');$(kind+'-image').hidden=false;}
-    $('full-pdf').href=blobURL(pdf(result.full));$('full-pdf').hidden=false;
-    $('full-png').href=blobURL(png);$('full-png').hidden=false;
+    if(!shop){$('full-pdf').href=blobURL(pdf(result.full));$('full-pdf').hidden=false;
+      $('full-png').href=blobURL(png);$('full-png').hidden=false;}
     $('reading-title').textContent=spec.title;$('reading-author').textContent=spec.author;$('reading-poem').textContent=spec.poem;$('reading-poem').lang=spec.locale;
     $('translation-section').hidden=!selected.length;$('translation-section').lang=selected[0]?.locale||'en';$('translation-title').textContent=selected.map(item=>item.title).join(' / ');$('translation').textContent=selected.map(item=>item.body).join('\n\n');
     proofState={ref:spec.ref,original,mm:(result.full.height+PAPER_CONFIG.pdfVerticalMarginDots*2)/PAPER_CONFIG.dotsPerMm};updateLocale();

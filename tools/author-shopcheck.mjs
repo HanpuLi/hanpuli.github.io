@@ -40,7 +40,7 @@ try{
   await page.locator('#poem').evaluate(element=>{element.value='Not the author poem';element.dispatchEvent(new Event('input',{bubbles:true}));});
   await page.locator('#save-line').click();assert.equal((await page.evaluate(()=>poetryShop.snapshot())).bag.length,0);
   await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=jia-yi-b3-text');await loaded();await page.waitForFunction(()=>document.querySelector('#product-editor').open);
-  await page.locator('#font').selectOption('site');await page.locator('#translation-options input[value=en]').check();await page.locator('#save-line').click();await purchase();
+  await page.locator('.advanced-type summary').click();await page.locator('#font').selectOption('site');await page.locator('#translation-options input[value=en]').check();await page.locator('#save-line').click();await purchase();
   const order=await page.evaluate(()=>poetryShop.snapshot().orders[0]),orderUrl=page.url();
   assert.equal(order.total,697);assert.equal(order.lines[0].work.source_id,'B3');
   assert.match(order.publication.textSnapshotSha256,/^[a-f0-9]{64}$/);assert.match(order.publication.renderer,/^pv-render-[a-f0-9]{16}$/);
@@ -79,7 +79,7 @@ try{
   await page.reload();await loaded();assert.equal((await page.evaluate(()=>poetryShop.snapshot())).bag.length,0);
   results.push('Previously consented custom text is retained but not reissued; frozen historical reader orders remain readable and safely escaped.');
   await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=jia-yi-b6-text');await loaded();await page.waitForFunction(()=>document.querySelector('#product-editor').open);
-  await page.locator('#size').selectOption('36');for(const lang of ['en','ja','de','fr','ru'])await page.locator(`#translation-options input[value=${lang}]`).check();await page.locator('#save-line').click();await purchase();
+  await page.locator('.advanced-type summary').click();await page.locator('#size').selectOption('36');for(const lang of ['en','ja','de','fr','ru'])await page.locator(`#translation-options input[value=${lang}]`).check();await page.locator('#save-line').click();await purchase();
   // Revised B6: 160 characters, 16 source lines, 5 stanzas -> GBP 5.99;
   // five translations at GBP 1.99 each bring the current edition to GBP 15.94.
   const longOrder=await page.evaluate(()=>poetryShop.snapshot().orders[0]);assert.equal(longOrder.total,1594);const images=await page.locator('.order-strip-proof img').evaluateAll(nodes=>nodes.map(n=>n.src));assert(images.length>=4);

@@ -126,6 +126,7 @@ try{
   await page.evaluate(()=>localStorage.removeItem('poetry-voucher-bag-v1'));
   await page.goto(base+'/poetry-voucher/shop.html?lang=en&work='+target);await ready(page);
   await page.waitForFunction(()=>document.querySelector('#product-editor').open);
+  await page.locator('.advanced-type summary').click();
   await page.locator('#font').selectOption('site');
   await page.locator('#translation-options input[value="en"]').check();
   await page.locator('#save-line').click();await page.locator('#open-bag').click();
