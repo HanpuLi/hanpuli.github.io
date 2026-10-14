@@ -200,8 +200,18 @@ const textById=new Map(library.texts.map(text=>[text.id,text]));
 const offerById=new Map(library.offers.map(offer=>[offer.id,offer]));
 assert.equal(data.works.length,offerById.size);
 assert(library.collections.find(c=>c.id==='jia-yi').members.includes('jia-yi-a10'));
+const versionById=new Map(library.versions.map(version=>[version.id,version]));
+// A whole-version offer prints every part in order, each under its number from the "Title · N" heading.
+const joinParts=editions=>{const heads=editions.map(e=>e.title.split(' · '));return {title:heads[0][0],body:editions.map((e,i)=>heads[i][1]+'\n\n'+e.body.replace(/^\n+|\n+$/g,'')).join('\n\n')};};
+const offeredText=offer=>{
+  if(offer?.text)return textById.get(offer.text);
+  const version=versionById.get(offer?.version);if(!version)return undefined;
+  const parts=version.parts.map(id=>textById.get(id));
+  return {id:version.id,version:version.id,parts:version.parts,editions:Object.fromEntries(['zh','en','ja','de','fr','ru'].map(l=>[l,joinParts(parts.map(t=>t.editions[l]))]))};
+};
+const simplifiedFor=text=>text.parts?joinParts(text.parts.map(id=>simplified[id])):simplified[text.id];
 for(const work of data.works){
-  const offer=offerById.get(work.id),text=textById.get(offer?.text);
+  const offer=offerById.get(work.id),text=offeredText(offer);
   assert(offer&&text,'paper edition must resolve to a published text');
   const url=new URL(work.source_url);
   assert.equal(url.origin,'https://hanpuli.github.io');
@@ -212,7 +222,7 @@ for(const work of data.works){
   assert.equal(work.version_id,text.version);
   assert.deepEqual(Object.keys(work.translations),['en','zh-Hans','ja','de','fr','ru']);
   for(const locale of ['en','ja','de','fr','ru'])assert.deepEqual(work.translations[locale],text.editions[locale]);
-  assert.deepEqual(work.translations['zh-Hans'],simplified[text.id]);
+  assert.deepEqual(work.translations['zh-Hans'],simplifiedFor(text));
   for(const legacyId of offer.legacy_ids)assert.equal(data.aliases[legacyId],work.id);
 }
 // Exercise the actual cart admission and pricing functions for every published variant.

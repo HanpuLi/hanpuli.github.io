@@ -653,6 +653,7 @@ def render_summer_page(locale_id: str, locale: dict[str, Any], template: str) ->
     )
     preloads = font_preloads(locale_id, "shi").replace('href="assets/', 'href="/assets/').replace('href="../assets/', 'href="/assets/')
     shared = specials_for(locale_id, "shi", locale)
+    frame = PoetryPages(sys.modules[__name__]).mirrored_frame(SUMMER_SLUG, locale_id)
     shared.update({
         "SUMMER_META_TITLE": html.escape(title),
         "SUMMER_META_DESCRIPTION_ATTR": html.escape(copy["description"], quote=True),
@@ -674,6 +675,9 @@ def render_summer_page(locale_id: str, locale: dict[str, Any], template: str) ->
         ),
         "SUMMER_BACK_LABEL": html.escape(copy["back_label"]),
         "SUMMER_BODY": summer_body_html(locale_id),
+        "SUMMER_BREADCRUMBS": frame["breadcrumbs"],
+        "SUMMER_SEQUENCE": frame["sequence"],
+        "SUMMER_PAPER_LINK": frame["paper"],
     })
     return render_template(template, locale, shared)
 
