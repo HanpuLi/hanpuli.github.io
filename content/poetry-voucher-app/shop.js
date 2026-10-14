@@ -1,7 +1,7 @@
 'use strict';
 (() => {
   const MAX_UNITS=24, STORAGE_KEY='poetry-voucher-bag-v1', ORDER_KEY='poetry-voucher-order-v1-';
-  const orderPage=document.body.dataset.page==='order',editionPage=document.body.dataset.page==='edition';
+  const pageKind=typeof document!=='undefined'?document.body.dataset.page:'',orderPage=pageKind==='order',editionPage=pageKind==='edition';
   const EDIT_KEY='poetry-voucher-edition-edit-v1';
   let orderPageStatus=null;
   const el=id=>document.getElementById(id);
