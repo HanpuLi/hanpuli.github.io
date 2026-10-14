@@ -249,7 +249,10 @@ html:lang(ja) {
 }
 
 [lang="ja"] {
-  --serif: "EB Garamond", "Site Serif Symbols", Georgia, "Shippori Common", "Shippori Mincho", "Hanpu CJK Gap", "Songti TC", serif;
+  /* Chinese source titles on Japanese pages use 書名号 and other CJK
+     punctuation. Place the site's own CJK faces before system Georgia,
+     otherwise a few characters are painted by an unrelated Latin serif. */
+  --serif: "EB Garamond", "Site Serif Symbols", "Shippori Common", "Shippori Mincho", "Hanpu CJK Gap", "Hanpu Chinese", Georgia, "Songti TC", serif;
   font-family: var(--serif);
 }
 

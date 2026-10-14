@@ -114,7 +114,17 @@ try {
     await page.locator('button[data-poetry-layout="vertical"]').click();
     const vertical = await inspect(page, expected, 'vertical');
     const a10 = vertical.articles.find(article => article.id === 'jia-yi-a10-text');
-    assert.equal(a10.columns, 1, 'short A10 title should occupy one column');
+    if (locale === 'ja') {
+      // A10 now has an annotated vertical reading, so its canonical heading
+      // is intentionally clipped rather than split into flow-title columns.
+      // Verify the displayed kanbun heading instead of counting hidden ones.
+      assert.equal(a10.columns, 0, 'marked A10 has a visually clipped source heading');
+      const markedTitle=page.locator('[data-poetry-text="jia-yi-a10-text"] .poetry-kanbun-heading');
+      await markedTitle.waitFor({state:'visible'});
+      assert.equal(await markedTitle.evaluate(el=>getComputedStyle(el).writingMode),'vertical-rl');
+    } else {
+      assert.equal(a10.columns, 1, 'short unmarked A10 title should occupy one column');
+    }
     assert.ok(a10.label);
     assert.ok(!a10.title.startsWith(a10.label));
     await page.locator('button[data-poetry-layout="horizontal"]').click();

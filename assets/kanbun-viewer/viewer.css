@@ -1,0 +1,66 @@
+/* Isolated visual reader for kanbunHTML.
+ * This stylesheet is part of the kanbun-viewer AGPL-3.0 subprogram.
+ * It does not style or modify the portfolio document. */
+/* Each sandbox frame is a separate font-loading document: the host page's
+   @font-face declarations do not cross into it. Reuse the site's already
+   distributed Japanese and Chinese webfonts; leave kanbunHTML's grid intact. */
+@font-face {
+  font-family:"Shippori Mincho";
+  src:url("../fonts/shippori-mincho-subset.woff2") format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+@font-face {
+  font-family:"Shippori Common";
+  src:url("../fonts/shippori-mincho-common.woff2") format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+  unicode-range:U+51FD,U+65E5,U+674E,U+749E,U+7559,U+7E41,U+8A5E,U+8B49;
+}
+@font-face {
+  font-family:"Hanpu Chinese";
+  src:url("../fonts/hanpu-chinese.woff2") format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+.kanbun,
+.kanbun:lang(ja),
+.kanbun :lang(ja),
+.kanbun .dash,
+.kanbun .ellipsis {
+  font-family:"Shippori Common","Shippori Mincho","Hanpu Chinese",serif;
+}
+:root { color-scheme:light dark; }
+html, body {
+  margin:0; padding:0; overflow:hidden; width:max-content;
+  background:transparent; color:#27231e;
+  font-family: "Shippori Mincho", "Yu Mincho", YuMincho, serif;
+}
+body { padding:12px 15px; box-sizing:content-box; }
+/* The established kanbunHTML grid still owns character, ruby, okurigana
+   and return-mark positioning. The outer flex layout only packs complete
+   authored lines into reading bands when the parent column is narrow. */
+#kanbun-display.kanbun {
+  margin:0; padding:0;
+  width:max-content; max-width:var(--kanbun-content-cap, 1000px);
+  height:auto; display:flex;flex-direction:column;
+  writing-mode:horizontal-tb; text-orientation:mixed;
+  font-family:"Shippori Mincho", "Yu Mincho", YuMincho, serif;
+  font-size:23px; font-weight:400; line-height:1;
+}
+#kanbun-display.kanbun .kanbun-stanza {
+  margin:0; padding:0; width:100%;
+  display:flex;flex-flow:row-reverse wrap;align-content:flex-start;
+  row-gap:20px;
+}
+#kanbun-display.kanbun .kanbun-stanza + .kanbun-stanza {
+  margin:24px 0 0;
+}
+#kanbun-display.kanbun p {
+  margin:0; padding:0;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  height:max-content; width:max-content;
+  font-family:"Shippori Mincho", "Yu Mincho", YuMincho, serif;
+}
+#kanbun-display.kanbun .unit { vertical-align:middle; }
+/* The upstream grid, including ruby, kaeriten and okurigana, owns placement. */
+@media(prefers-color-scheme:dark){
+  html,body {color:#eae7e1;background:transparent;}
+}

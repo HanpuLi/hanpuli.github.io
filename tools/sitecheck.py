@@ -257,6 +257,11 @@ def check_web_app(errors: list[str]) -> None:
         '<meta name="application-name" content="Hanpu Li">',
     )
     for path in HTML_FILES:
+        # Embedded, noindex AGPL visual subdocuments are not standalone
+        # portfolio pages or installed web-app entry points. All other HTML
+        # validation still applies to them, including their local assets.
+        if path.is_relative_to(ROOT / 'assets/kanbun-viewer/works'):
+            continue
         source = path.read_text(encoding="utf-8")
         for marker in required_head:
             if marker not in source:

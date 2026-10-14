@@ -60,6 +60,7 @@
       button.disabled = simple && button.dataset.poetryLayout === 'vertical';
       button.title = button.disabled ? controls.dataset.simpleLabel : '';
     }
+    dispatchEvent(new Event('poetry-layout-applied'));
   }
   controls.addEventListener('click', event => {
     const button = event.target.closest('[data-poetry-layout]');
