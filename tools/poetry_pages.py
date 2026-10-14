@@ -240,7 +240,6 @@ class Pages:
                 f'sandbox="allow-scripts" loading="eager" src="{esc(self.kunten.href(tid))}">'
                 '</iframe></div><div class="poetry-kanbun-tools">'
                 '<button type="button" data-kanbun-copy>原文をコピー</button>'
-                '<a href="/assets/kanbun-viewer/NOTICE.md">表示エンジンの出典</a>'
                 '</div></div>'
             )
             rows.append('</section>')

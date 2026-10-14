@@ -1325,8 +1325,8 @@
       },
       "publication": {
         "schema": 1,
-        "renderer": "pv-render-0987c1f21679b2b8",
-        "renderer_sha256": "0987c1f21679b2b8fcfefad55605e607150ef8913535f6553b489eb72e60b7a5",
+        "renderer": "pv-render-ce248399fdaed0df",
+        "renderer_sha256": "ce248399fdaed0dfa9d235110b6f4256c8fa3c44de39d3bc66a1597de2fba77c",
         "catalogue_sha256": "0b42bc3e26733835d786a09e371f44ea1de5e90cde4f588f3ca4cc8855f91050",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
@@ -1341,11 +1341,11 @@
           "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
           "assets/fonts/hanpu-chinese-common.woff2": "ccc4bef5470502b170c520485038b7743090c0c835e775306421a7b1939ef1f3",
           "assets/fonts/hanpu-chinese.woff2": "8e6d1b949389b1f680278e9f6b1ea9e30dd2ee22bda158b2df0fd62f6f6bc35f",
-          "assets/fonts/hanpu-cjk-gap.woff2": "a52ae47d2dbfac2fec6ec63fdceb5ba6f5c572acd96793f373d0482d704c2d30",
+          "assets/fonts/hanpu-cjk-gap.woff2": "a298d759c0fffe4d262b3f7425c7b5ba1c821db2e21a4d9f14169ae07dcd9883",
           "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
           "assets/fonts/noto-serif-sc-subset.woff2": "7bbfd0a3b0fb309b6b8b2400363f5a9c77bdf2cf9d41997c8f8ecae6f64b7025",
           "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
-          "assets/fonts/shippori-mincho-subset.woff2": "61fc90e4dcb0a6baec94e083a6d3a4df101877359df39082ccedf1b1dbf6cb0d",
+          "assets/fonts/shippori-mincho-subset.woff2": "4caac9d9ce4c31471ec145e357f9f6d741ad386cff83428763feb30ce0d6228a",
           "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
           "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
           "content/poetry-voucher-app/accessibility.css": "70f3da8ceff863234e7564d094f5f94e39675d0655dc477482aadd05e076f3e0",
@@ -2006,7 +2006,7 @@
     "totalY": 462
   },
   "inputs": {
-    "assets/site.css": "4c10c19ad7581f8de334bd8cabb4567a3df5dbfe07da857999ffb6b96fce4af0",
+    "assets/site.css": "3076d15bf31803b0af84e0670585d226db329f4ebc83a4e8a17392770b6422d6",
     "content/poetry-voucher-app/gallery.js": "583a03cf8aea8bde58f4eedd8cdf400d89d38f17602a3ccb8222174920923917",
     "content/poetry-voucher-app/shop.js": "33e4a72a4df8e92662d169235dcf4d871651ddb1865adab7ad180a7635909ae1",
     "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
