@@ -1124,6 +1124,9 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "FIRST_LOVE_VERIFY_URL": html.escape(
             SHARED["writing"]["first_love_verification_url"], quote=True
         ),
+        "FIRST_LOVE_DATA_URL": html.escape(
+            SHARED["writing"]["first_love_data"]["concept_doi_url"], quote=True
+        ),
         "FIRST_LOVE_HREF": first_love_page_path(locale_id, "request"),
         "FIRST_LOVE_ABSTRACT_HREF": first_love_page_path(locale_id, "request"),
         "HOME_HREF": page_path(locale_id, "index"),

@@ -1325,8 +1325,8 @@
       },
       "publication": {
         "schema": 1,
-        "renderer": "pv-render-9690417b88153eb3",
-        "renderer_sha256": "9690417b88153eb3fb24cb59ba653c4964c23f70af73cee99d63449393735271",
+        "renderer": "pv-render-0987c1f21679b2b8",
+        "renderer_sha256": "0987c1f21679b2b8fcfefad55605e607150ef8913535f6553b489eb72e60b7a5",
         "catalogue_sha256": "0b42bc3e26733835d786a09e371f44ea1de5e90cde4f588f3ca4cc8855f91050",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
@@ -1339,8 +1339,8 @@
           "assets/fonts/fusion-pixel-12px-latin.woff2": "095cfda45b63eedc1e985da815ef73c1c910e698b5632098076af83738f109e1",
           "assets/fonts/fusion-pixel-12px-zh-hans.woff2": "01559eceaa1bda8d59bf4a44ab95674c346ffd3a25582eea201947324e707a2a",
           "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
-          "assets/fonts/hanpu-chinese-common.woff2": "07f3ab0a337e14a9dad079e2d216b37e217a0f383130a29cde5229f43b96c204",
-          "assets/fonts/hanpu-chinese.woff2": "856cbca0458d4c9bf5b678aa63f37a905751d8ef7583ec7c8bfffe8e7fa0c1fb",
+          "assets/fonts/hanpu-chinese-common.woff2": "ccc4bef5470502b170c520485038b7743090c0c835e775306421a7b1939ef1f3",
+          "assets/fonts/hanpu-chinese.woff2": "8e6d1b949389b1f680278e9f6b1ea9e30dd2ee22bda158b2df0fd62f6f6bc35f",
           "assets/fonts/hanpu-cjk-gap.woff2": "a52ae47d2dbfac2fec6ec63fdceb5ba6f5c572acd96793f373d0482d704c2d30",
           "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
           "assets/fonts/noto-serif-sc-subset.woff2": "7bbfd0a3b0fb309b6b8b2400363f5a9c77bdf2cf9d41997c8f8ecae6f64b7025",
@@ -1357,7 +1357,7 @@
           "content/poetry-voucher-app/shop-copy.js": "71e76fe4cbebcfac78a34f90ca3f6bcc773a41d512b17dde2f81c29c835f6233",
           "content/poetry-voucher-app/shop.css": "0eefb48fdb71b4314fedd21e1ddf948b63699a6e4b52db6d0c6e6ddf3d6ccf7e",
           "content/poetry-voucher-app/shop.js": "33e4a72a4df8e92662d169235dcf4d871651ddb1865adab7ad180a7635909ae1",
-          "content/poetry-voucher-app/studio.css": "5dca5c53d617ffbfd4c36378f7c5b01ed55759a0c60beb80f42da89d68188798",
+          "content/poetry-voucher-app/studio.css": "33ac719c94b56007588f12ff75387a0f5479d6bec73ee42da9290828f1d2fadd",
           "templates/poetry-voucher-shop.html": "0fd6f2243c82debab98a1558ac2d6777a577f602150ee5e7dbed7dbea902bb63"
         },
         "textSnapshotSha256": "f6e24f6ce9a034b4c44080f5784966afce008f97fafb74f9fa76617b3ab148b8"
@@ -2006,7 +2006,7 @@
     "totalY": 462
   },
   "inputs": {
-    "assets/site.css": "0904cf5aaacc5b5bf6f8b0a1c9788bcf62eafc9b924989aa2fabcc620cac8866",
+    "assets/site.css": "4c10c19ad7581f8de334bd8cabb4567a3df5dbfe07da857999ffb6b96fce4af0",
     "content/poetry-voucher-app/gallery.js": "583a03cf8aea8bde58f4eedd8cdf400d89d38f17602a3ccb8222174920923917",
     "content/poetry-voucher-app/shop.js": "33e4a72a4df8e92662d169235dcf4d871651ddb1865adab7ad180a7635909ae1",
     "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
@@ -2021,9 +2021,9 @@
     "assets/fonts/fusion-pixel-12px-latin.woff2": "095cfda45b63eedc1e985da815ef73c1c910e698b5632098076af83738f109e1",
     "assets/fonts/fusion-pixel-12px-zh-hans.woff2": "01559eceaa1bda8d59bf4a44ab95674c346ffd3a25582eea201947324e707a2a",
     "assets/fonts/fusion-pixel-12px-zh-hk.woff2": "573425df4584b6b6d03be5177273d8d5eeb3261aaf7b1aca9a41576b6299344c",
-    "assets/fonts/hanpu-chinese-common.woff2": "07f3ab0a337e14a9dad079e2d216b37e217a0f383130a29cde5229f43b96c204",
-    "assets/fonts/hanpu-chinese.woff2": "856cbca0458d4c9bf5b678aa63f37a905751d8ef7583ec7c8bfffe8e7fa0c1fb",
-    "assets/fonts/hanpu-cjk-gap.woff2": "a52ae47d2dbfac2fec6ec63fdceb5ba6f5c572acd96793f373d0482d704c2d30",
+    "assets/fonts/hanpu-chinese-common.woff2": "ccc4bef5470502b170c520485038b7743090c0c835e775306421a7b1939ef1f3",
+    "assets/fonts/hanpu-chinese.woff2": "8e6d1b949389b1f680278e9f6b1ea9e30dd2ee22bda158b2df0fd62f6f6bc35f",
+    "assets/fonts/hanpu-cjk-gap.woff2": "a298d759c0fffe4d262b3f7425c7b5ba1c821db2e21a4d9f14169ae07dcd9883",
     "assets/fonts/noto-serif-sc-locale.woff2": "4ff651e1566c6abe69e5f7501a8c55c596b1fef8483f047ab3b6404d86c26c70",
     "assets/fonts/noto-serif-sc-subset.woff2": "7bbfd0a3b0fb309b6b8b2400363f5a9c77bdf2cf9d41997c8f8ecae6f64b7025",
     "assets/fonts/opendyslexic-bold-italic.woff2": "1aadc8fa9656c92c09c8194790d0671bcd2b4bd961ba41fb8f7e605e5c493be0",
@@ -2031,15 +2031,15 @@
     "assets/fonts/opendyslexic-italic.woff2": "b18685dcb99b4ba903549d215c0ae2ab39a5087097614fd4100ae6d387332b47",
     "assets/fonts/opendyslexic-regular.woff2": "0441bc21071e42db57c217f93fbc48d3b55a2987c02814c94dc93621c42e8695",
     "assets/fonts/shippori-mincho-common.woff2": "114b9c30176161c4291056ff5a1a835a66ca4f43bf81f2697c15e9f87bf35db0",
-    "assets/fonts/shippori-mincho-subset.woff2": "61fc90e4dcb0a6baec94e083a6d3a4df101877359df39082ccedf1b1dbf6cb0d",
+    "assets/fonts/shippori-mincho-subset.woff2": "4caac9d9ce4c31471ec145e357f9f6d741ad386cff83428763feb30ce0d6228a",
     "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
     "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
-    "index.html": "4af76f97aaf0e4e04d465bdae400a0ba45c1f80fd58e4008daa3cddf656fff2e",
-    "zh/index.html": "606fef90f764e912d3bab5007f106f7e4de5386b2dd38300d49deb849c64449c",
-    "zh-hans/index.html": "8ea239ac10212b47c0c7bbf90d7da5893a11adabc61f4baf59fb4b4c036d187c",
-    "ja/index.html": "f465a2653ed71d59ca3d5f2f64077c2ea3bebff45a7009c369fb51266f22c8a2",
-    "de/index.html": "d22c6ca881f1bb127e1b843faa7e7381bd31eed4ffbddc439241a1e6261ab069",
-    "fr/index.html": "e9b4fd8db8e81f699edc53baf29db1125c10b093e5dd858535fe23287461f4c9",
-    "ru/index.html": "c54a39c82d4abf519860395485ed3e07165175b0904106ed085ece642edf9de6"
+    "index.html": "7cf9b454aaf9a746c1110298498387c569cee4a3579793e63b855b443c6fb394",
+    "zh/index.html": "7f20769002d1df99a763f863e512201d5ba7ba748c07f181c894834e9c6d41d0",
+    "zh-hans/index.html": "beb8e0490f5d8208948c7c910b7a0e144c6201f312c0631b36f63ab953f102cf",
+    "ja/index.html": "efe07a2a2aaa2d5dd264faca58b405d73cad651d7ab0db6b1db7dfc9b006dc95",
+    "de/index.html": "69b0d584f91c95b2eec84c6d7cad6f50bd1dc0c7a3a08663fc9a04603e42e705",
+    "fr/index.html": "f7ffdefd97275dbb01adf6dbe4c0c49bb26bb96c5016bd19cd5f38503af0431c",
+    "ru/index.html": "929ddbbdf351463eefd420d1321bf0032c4b9be2f380971feca9627b9b6e7b50"
   }
 }

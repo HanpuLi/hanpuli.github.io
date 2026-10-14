@@ -100,6 +100,17 @@
   font-size: .78rem;
 }
 
+.access-data {
+  margin-top: .5rem;
+  overflow-wrap: anywhere;
+}
+
+.data-note {
+  max-width: 52rem;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
 .reader-notice {
   max-width: 52rem;
   color: var(--accent);

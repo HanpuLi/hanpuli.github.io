@@ -100,6 +100,7 @@ def _structured_data(
     title: str,
     description: str,
     url: str,
+    data: dict,
 ) -> str:
     person_id = f"{site}/#person"
     website_id = f"{site}/#website"
@@ -136,6 +137,18 @@ def _structured_data(
                 "isPartOf": {"@id": website_id},
                 "inLanguage": language["html_lang"],
                 "author": {"@id": person_id},
+            },
+            {
+                "@type": "SoftwareSourceCode",
+                "@id": data["concept_doi_url"],
+                "url": data["concept_doi_url"],
+                "identifier": data["concept_doi_url"],
+                "name": data["title"],
+                "version": data["version"],
+                "codeRepository": data["repository_url"],
+                "license": data["license_url"],
+                "author": {"@id": person_id},
+                "publisher": {"@type": "Organization", "name": "Zenodo"},
             },
         ],
     }
@@ -178,6 +191,7 @@ def render(
     locale_id: str,
     page: str,
     copy: dict,
+    data: dict,
 ) -> str:
     language = next(item for item in languages if item["id"] == locale_id)
     locale = locales[locale_id]
@@ -202,7 +216,10 @@ def render(
             f'<p class="abstract-copy">{html.escape(copy["abstract"])}</p>'
             f'<p class="reader-notice">{html.escape(copy["note"])}</p>'
             f'<p class="access-companion"><a href="https://github.com/HanpuLi/first-love-verification">'
-            f'{html.escape(copy["verification"])}</a></p></section>'
+            f'{html.escape(copy["verification"])}</a></p>'
+            f'<p class="access-companion access-data">{html.escape(copy["data_label"])}'
+            f'{"" if copy["data_label"].endswith("：") else " "}<a href="{html.escape(data["concept_doi_url"], quote=True)}">{html.escape(data["concept_doi_url"])}</a></p>'
+            f'<p class="data-note">{html.escape(copy["data_note"])}</p></section>'
         )
     robots = '<meta name="robots" content="noindex,noarchive,nosnippet">' if legacy else ""
     seo_meta = ""
@@ -223,6 +240,7 @@ def render(
             title,
             copy["description"],
             url,
+            data,
         )
         seo_meta = "\n" + social_meta + "\n" + structured_data
     home = _home(locale_id)
@@ -283,6 +301,7 @@ def build(root: Path, check: bool = False) -> list[Path]:
     copy = json.loads((root / "content/first-love-public.json").read_text(encoding="utf-8"))
     about = json.loads((root / "content/about-site.json").read_text(encoding="utf-8"))
     identity = json.loads((root / "content/identity.json").read_text(encoding="utf-8"))
+    data = json.loads((root / "content/shared.json").read_text(encoding="utf-8"))["writing"]["first_love_data"]
     locales = {item["id"]: json.loads((root / "content/locales" / f'{item["id"]}.json').read_text(encoding="utf-8")) for item in languages}
     expected = {item["id"] for item in languages}
     if set(copy) != expected:
@@ -304,6 +323,7 @@ def build(root: Path, check: bool = False) -> list[Path]:
                 lid,
                 page,
                 copy[lid],
+                data,
             )
             rendered = "\n".join(line.rstrip() for line in rendered.splitlines()) + "\n"
             old = target.read_text(encoding="utf-8") if target.exists() else None
