@@ -59,8 +59,12 @@ const PAPER_CONFIG=Object.freeze({
   bodyWidthDots:352,
   receiptInsetDots:12,
   receiptCellDots:12,
-  canvasMaxDots:5960,
-  contentMaxDots:5900,
+  // One strip is one canvas: it starts short and grows on demand. 32000 dots (4 m) keeps a single
+  // canvas inside every browser's limits (Firefox 32767 per side; Safari ~16.7M pixels). Only content
+  // beyond that continues on a further page; a whole order may run to 120000 dots (15 m), as on the H10.
+  initialCanvasDots:5960,
+  canvasMaxDots:32000,
+  contentMaxDots:31940,
   pdfSideMarginDots:40,
   pdfVerticalMarginDots:20,
   barcodeHeightDots:38
@@ -410,8 +414,14 @@ function loadWork(){
 const priceText=p=>(p/100).toFixed(2);
 function canvas(w,h){const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,w,h);x.fillStyle='#000';return c;}
 class Paper{
-  constructor(){this.c=canvas(PAPER_CONFIG.printableDots,PAPER_CONFIG.canvasMaxDots);this.x=this.c.getContext('2d');this.y=PAPER_CONFIG.receiptInsetDots;}
-  space(n){this.y+=n;if(this.y>PAPER_CONFIG.contentMaxDots)throw Error('這份文字超過紙條長度上限，請縮短正文或減小字號。');}
+  constructor(){this.c=canvas(PAPER_CONFIG.printableDots,PAPER_CONFIG.initialCanvasDots);this.x=this.c.getContext('2d');this.y=PAPER_CONFIG.receiptInsetDots;}
+  grow(need){
+    if(need<=this.c.height||this.c.height>=PAPER_CONFIG.canvasMaxDots)return;
+    const next=canvas(PAPER_CONFIG.printableDots,Math.min(PAPER_CONFIG.canvasMaxDots,Math.max(need,this.c.height*2)));
+    const font=this.x.font;next.getContext('2d').drawImage(this.c,0,0);
+    this.c=next;this.x=next.getContext('2d');this.x.font=font;this.x.textBaseline='alphabetic';
+  }
+  space(n){this.y+=n;if(this.y>PAPER_CONFIG.contentMaxDots)throw Error('這份文字超過紙條長度上限，請縮短正文或減小字號。');this.grow(this.y+600);}
   till(left='',right=null,center=false,tall=false){
     let line=left.toUpperCase();
     if(right!==null)line+=' '.repeat(Math.max(0,RECEIPT_CONFIG.lineChars-line.length-right.length))+right.toUpperCase();

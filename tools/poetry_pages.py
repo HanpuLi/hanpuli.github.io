@@ -245,8 +245,11 @@ class Pages:
                         f'<summary>{esc(self.kundoku.label)}</summary>'
                         f'<div class="poem-version kundoku"><div class="body">'
                         f'{esc(self.kundoku.body(tid))}</div>{note_html}</div></details>')
-        if tid in lib.offers:
-            href='/poetry-voucher/shop.html?'+urlencode({'lang':SHOP_LANGS[locale],'work':tid})
+        # A whole-version paper edition is linked once, after its last part.
+        offer_id = tid if tid in lib.offers else (
+            version['id'] if version['id'] in lib.offers and tid == version['parts'][-1] else None)
+        if offer_id:
+            href='/poetry-voucher/shop.html?'+urlencode({'lang':SHOP_LANGS[locale],'work':offer_id})
             rows.append(f'<p class="poetry-paper-link"><a href="{esc(href)}">{esc(ui["voucher"])}</a></p>')
         rows.append('</article>')
         return '\n'.join(rows)

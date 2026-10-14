@@ -98,8 +98,13 @@ class Library:
                 if locale not in LANGS or not edition['title'].strip() or not edition['body'].strip():
                     raise ValueError('Invalid literary edition: ' + tid)
         for offer in self.offers.values():
-            if offer['text'] not in self.texts:
+            # An offer sells either one text part or a whole version (all parts on one receipt).
+            if ('text' in offer) == ('version' in offer):
+                raise ValueError('Shop edition must name exactly one text or version: ' + offer['id'])
+            if 'text' in offer and offer['text'] not in self.texts:
                 raise ValueError('Shop edition without text')
+            if 'version' in offer and offer['version'] not in self.versions:
+                raise ValueError('Shop edition without version')
         for alias, tid in self.data['legacy']['catalogue'].items():
             if tid not in self.offers or alias not in self.offers[tid]['legacy_ids']:
                 raise ValueError('Invalid shop alias: ' + alias)
@@ -138,6 +143,25 @@ class Library:
         if text['part'] is not None:
             fragment += '-part-' + text['part']
         return self.path(work['route'], locale) + ('#' + fragment if fragment else '')
+
+    def version_url(self, vid: str, locale: str = 'en') -> str:
+        version = self.versions[vid]
+        fragment = version['fragment']
+        return self.path(self.works[version['work']]['route'], locale) + ('#' + fragment if fragment else '')
+
+    def offered_edition(self, parts: list[str], locale: str) -> dict[str, str] | None:
+        """One receipt text: a single part as published, or every part of a version in order."""
+        editions = [self.edition(tid, locale) for tid in parts]
+        if any(e is None for e in editions):
+            return None
+        if len(editions) == 1:
+            return editions[0]
+        # Multipart titles read "Title · N"; the whole version keeps the title and numbers each part.
+        heads = [e['title'].rsplit(' · ', 1) for e in editions]
+        if any(len(h) != 2 or h[0] != heads[0][0] for h in heads):
+            raise ValueError('Multipart version without a shared "Title · N" heading: ' + parts[0])
+        return {'title': heads[0][0],
+                'body': '\n\n'.join(number + '\n\n' + e['body'].strip('\n') for (_, number), e in zip(heads, editions))}
 
     def standalone(self) -> list[dict[str, Any]]:
         return sorted((w for w in self.works.values() if w['id'] not in self.memberships),
@@ -179,11 +203,13 @@ class Library:
             work = self.works[wid]
             for vid in work['versions']:
                 version = self.versions[vid]
-                for tid in version['parts']:
-                    if tid not in self.offers:
-                        continue
-                    offer, text = self.offers[tid], self.texts[tid]
-                    original = text['editions']['zh']
+                if vid in self.offers:
+                    sold = [(vid, self.offers[vid], None)]
+                else:
+                    sold = [(tid, self.offers[tid], self.texts[tid]) for tid in version['parts'] if tid in self.offers]
+                for oid, offer, text in sold:
+                    parts = version['parts'] if text is None else [oid]
+                    original = self.offered_edition(parts, 'zh')
                     cid = self.memberships.get(wid)
                     shelf = cid or ('roof-splits' if wid=='roof-splits' else 'individual')
                     shelf_labels = self.collections[cid]['title'] if cid else (
@@ -192,24 +218,25 @@ class Library:
                     labels = {}
                     for locale in LANGS:
                         label = version['label'][locale]
-                        if text['part']:
+                        if text is not None and text['part']:
                             label += ' · ' + text['part']
                         if not label:
                             label = work['composed']['start'].replace('-', '.')
                         labels[SHOP_LANGS[locale]] = label
-                    translations = {'en':self.edition(tid,'en'), 'zh-Hans':self.edition(tid,'zh-hans')}
-                    translations.update({l:self.edition(tid,l) for l in ('ja','de','fr','ru')})
+                    translations = {'en':self.offered_edition(parts,'en'), 'zh-Hans':self.offered_edition(parts,'zh-hans')}
+                    translations.update({l:self.offered_edition(parts,l) for l in ('ja','de','fr','ru')})
                     if any(value is None for value in translations.values()):
-                        raise ValueError('Offered edition has unpublished translation: ' + tid)
+                        raise ValueError('Offered edition has unpublished translation: ' + oid)
+                    source_date = self.texts[parts[0]]['source_date']
                     data['works'].append({
-                        'id':offer['id'], 'work_id':wid, 'version_id':vid, 'part_id':text['part'],
+                        'id':offer['id'], 'work_id':wid, 'version_id':vid, 'part_id':None if text is None else text['part'],
                         'source_id':offer['receipt_code'], 'authorial_label':work['authorial_label'],
                         'title':original['title'], 'poem':original['body'], 'author':'李函璞 / Hanpu Li',
                         'collection':shelf_labels['zh'], 'shelf':shelf,
                         'shelf_labels':{SHOP_LANGS[l]:shelf_labels[l] for l in LANGS},
-                        'edition':text['source_date'] or version['date'], 'edition_labels':labels,
+                        'edition':source_date or version['date'], 'edition_labels':labels,
                         'kind':'POEM', 'form':work['form'],
-                        'source_url':'https://hanpuli.github.io' + self.text_url(tid),
+                        'source_url':'https://hanpuli.github.io' + (self.text_url(oid) if text is not None else self.version_url(vid)),
                         'legacy_ids':offer['legacy_ids'], 'translations':translations,
                     })
         return data
