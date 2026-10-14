@@ -325,3 +325,30 @@ html[data-reading-large] .edition-page #product-editor :is(label[for=original-sc
 }
 .edition-page #product-editor .option-card .option-name{flex:1 1 auto;min-width:0}
 .edition-page #product-editor .option-card .option-price:empty{display:none}
+/* Polish after the Apple Store pass. */
+/* The full poem is an optional fourth fold, drawn like the type-and-size fold. */
+.edition-page #product-editor .shop-reading{margin:0;padding:22px 0;border:0;border-top:1px solid var(--line);background:none}
+.edition-page #product-editor .shop-reading>summary{display:flex;align-items:baseline;min-height:44px;list-style:none;cursor:pointer;font:calc(19px*var(--edition-scale))/1.45 var(--serif);color:var(--ink)}
+.edition-page #product-editor .shop-reading>summary::-webkit-details-marker{display:none}
+.edition-page #product-editor .shop-reading>summary::after{content:"+";margin-inline-start:auto;font:16px/1 var(--mono);color:var(--muted)}
+.edition-page #product-editor .shop-reading[open]>summary::after{content:"−"}
+.edition-page #product-editor .shop-reading .verse{max-height:none;overflow:visible}
+html[data-reading-large] .edition-page #product-editor .shop-reading>summary{font-size:calc(19px*var(--edition-scale))}
+/* Programmatic focus on arrival is for screen readers, not a visible ring. */
+/* tabindex=-1 targets are never reached by Tab, so they draw no ring. */
+.shop-page :is(#order-heading,#current-collection,main#product-editor)[tabindex="-1"]:focus{outline:none}
+@media(min-width:900px){
+ .completed-order>.order-proof-grid{display:block;justify-self:start;width:fit-content;max-width:100%;padding:32px 48px}
+ .completed-order .order-strip-proof{margin-inline:0}
+}
+/* Phone header on shop pages: two rows instead of three. */
+@media(max-width:560px){
+ .shop-page .studio-header{flex-wrap:wrap;row-gap:6px}
+ .shop-page .language-nav{order:1;flex:1 1 auto;width:auto;min-width:0;padding-top:6px}
+ .shop-page .studio-header .reading-tools{order:2;flex:0 0 auto;width:auto;margin:0;align-self:end}
+ .shop-page .reading-tools details{width:auto}
+ .shop-page .reading-tools summary{padding:6px 10px;min-height:40px}
+ .shop-page .reading-tools .reading-tools-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+ .shop-page .reading-tools .reading-panel{position:absolute;inset-block-start:calc(100% + 8px);inset-inline-end:0;width:min(360px,calc(100vw - 40px));max-width:none;margin:0;z-index:40}
+}
+.edition-page #product-editor .shop-reading>summary{padding-inline-start:calc(12px*1.9 + 6px)}
