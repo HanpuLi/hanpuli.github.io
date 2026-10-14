@@ -23,7 +23,10 @@ try{
   const loaded=async()=>{
     await page.waitForFunction(count=>window.poetryShop&&document.querySelectorAll('.product-card').length===count,catalogueSize);
   };
-  const purchase=async()=>{if(!(await page.locator('#bag-dialog').isVisible()))await page.locator('#open-bag').click();await page.locator('#to-checkout').click();await page.locator('#place-order').click();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1,{},{timeout:60000});};
+  const purchase=async()=>{
+    // After an edition page saves, the shop reopens the bag once its catalogue loads; let that settle first.
+    await page.waitForLoadState('load');await page.locator('#bag-dialog').waitFor({state:'visible',timeout:15000}).catch(()=>{});
+    if(!(await page.locator('#bag-dialog').isVisible()))await page.locator('#open-bag').click();await page.locator('#to-checkout').click();await page.locator('#place-order').click();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1,{},{timeout:60000});};
   const file=async(selector,name)=>{const pending=page.waitForEvent('download');await page.locator(selector).click();const downloaded=await pending;const path=join(artifacts,name);await downloaded.saveAs(path);return readFile(path);};
   for(const lang of ['en','zh-Hant','zh-Hans','ja','de','fr','ru']){
     await page.goto(base+'/poetry-voucher/make.html?lang='+lang+'&work=custom');await loaded();
