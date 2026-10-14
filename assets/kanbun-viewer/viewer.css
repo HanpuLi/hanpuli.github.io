@@ -33,45 +33,19 @@ html, body {
   font-family: "Shippori Mincho", "Yu Mincho", YuMincho, serif;
 }
 body { padding:12px 15px; box-sizing:content-box; }
-/* kanbun-render.css owns character, reading and return-mark placement.
-   The outer flex layout only packs complete authored lines into reading
-   bands when the parent column is narrow. */
+/* kanbun-render.css owns the cells and the 行款 of each column. The outer
+   flex layout only lays the one stream of columns (title, preface, body)
+   right to left, wrapping into right-aligned bands when the frame is too
+   narrow for all of them. */
 #kanbun-display.kanbun {
   margin:0; padding:0;
   width:max-content; max-width:var(--kanbun-content-cap, 1000px);
-  height:auto; display:flex;flex-flow:row-reverse wrap;align-items:flex-start;row-gap:20px;
+  height:auto; display:flex; flex-flow:row-reverse wrap; align-items:flex-start;
+  column-gap:.12em; row-gap:1.2em;
   writing-mode:horizontal-tb; text-orientation:mixed;
   font-family:"Shippori Mincho", "Yu Mincho", YuMincho, serif;
   font-size:23px; font-weight:400; line-height:1;
 }
-#kanbun-display.kanbun .kanbun-stanza {
-  margin:0; padding:0; width:100%;
-  display:flex;flex-flow:row-reverse wrap;align-content:flex-start;
-  row-gap:20px; column-gap:.3em;
-}
-#kanbun-display.kanbun .kanbun-stanza + .kanbun-stanza {
-  margin:24px 0 0;
-}
-#kanbun-display.kanbun p {
-  margin:0; padding:0;
-  height:max-content; width:max-content;
-  font-family:"Shippori Mincho", "Yu Mincho", YuMincho, serif;
-}
 @media(prefers-color-scheme:dark){
   html,body {color:#eae7e1;background:transparent;}
 }
-/* The title is its own right-hand block: tune name at full height,
-   clause-broken prefaces smaller and set lower. Every stanza band starts
-   at the same edge, so a second stanza never sits under the title. */
-#kanbun-display.kanbun .kanbun-heading {
-  display:flex; flex-flow:row-reverse wrap; align-items:flex-start;
-  align-content:flex-start; column-gap:.3em; row-gap:14px;
-  flex:0 1 auto; min-width:0; max-width:100%; margin-left:.8em;
-}
-/* Beside the title when about four columns fit; otherwise the whole body
-   moves below it, still flush to one right-hand edge. */
-#kanbun-display.kanbun .kanbun-body {
-  display:flex; flex-direction:column; flex:1 1 0; min-width:min(100%,9em);
-}
-#kanbun-display.kanbun p.kanbun-title { font-size:.86em; }
-#kanbun-display.kanbun p.kanbun-preface { font-size:.74em; padding-top:1.4em; }

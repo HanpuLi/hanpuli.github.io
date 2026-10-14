@@ -20,11 +20,26 @@ poetry-kunten-collation.md for coverage, uncertainties and textual decisions.
 - Titles are read text too (2026-10-14). Each manuscript and 書き下し
   entry carries a `title` list, one item per part of the 《…》 title
   (tune name, preface, version note; a sequence label such as 甲四 is
-  navigation and is not read). The viewer sets the title as a right-hand
-  block beside (or, when narrow, above) all stanzas, so every stanza starts
-  at the same edge. Short unpunctuated parts share the tune name's column
-  (≤12 Han); prefaces are smaller and lower, clauses packed into columns of
-  ≤14 Han. The 書き下し disclosure prints the read title above the body.
+  navigation and is not read). The 書き下し disclosure prints the read
+  title above the body.
+- 行款 (2026-10-14). The viewer sets each work like a page of a printed
+  詞集 / 和刻訓点本. Every column holds exactly 12 character cells on
+  every screen width (a cell is one Han character with its punctuation,
+  okurigana and return marks); columns fill top to bottom, right to left.
+  The tune name has its own first column; a short unpunctuated part
+  (無題 · 臨江仙, 滿庭芳 · 遙思楚潭) shares it (≤12 Han). A preface is
+  set 低二格, smaller type on the same grid: two empty cells, then 10
+  cells a column, running on without clause breaks, so it ends level
+  with the body. The body begins in a fresh column and runs on; an
+  authored line break is not a column break. A new stanza (上下片) is
+  marked by one empty cell (空一格), or simply by the top of a column
+  when it falls there. Cells keep one pitch; a reading longer than its
+  cell continues beside the next character, which moves down only when
+  it would meet that reading. The whole stream of columns wraps into
+  right-aligned bands only when the frame is too narrow; on a desktop
+  most works are one band, like a single page. The generated page keeps
+  the source title parts, stanzas and lines; kanbun-render.js
+  (flowKanbunColumns, settleKanbunColumns) does the re-flow.
 - tools/poetry_kunten.py builds one standalone, noindex HTML presentation
   document per reviewed work inside assets/kanbun-viewer/works/. It preserves
   paragraph and stanza source boundaries, and passes textual reading marks

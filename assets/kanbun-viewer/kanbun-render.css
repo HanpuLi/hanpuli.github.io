@@ -1,35 +1,49 @@
 /* Vertical kanbun typesetting. Copyright 2026 Hanpu Li; site code.
- * Each authored line is one physical column of .unit cells:
+ * Text is set in the fixed 行款 of a printed 詞集: .kanbun-column holds
+ * twelve cells of one pitch; each .unit is one cell:
  *
  *   left side    character   right side
  *   saidoku      字          furigana
  *   kaeriten     punctuation okurigana
  *
  * The three tracks never share horizontal space, so readings cannot be
- * drawn over a character. Rows are auto-sized: long readings lengthen
- * their own cell instead of running into the next character. */
-.kanbun .kanbun-line {
-  display:flex; flex-direction:column; align-items:center;
-  writing-mode:horizontal-tb;
+ * drawn over a character. A reading longer than its cell continues beside
+ * the next character; settleKanbunColumns (kanbun-render.js) moves a cell
+ * down only where that would meet another reading. */
+.kanbun { --kanbun-pitch:1.44em; }
+.kanbun .kanbun-column {
+  display:flex; flex-direction:column; align-items:center; flex:none;
+  width:2.03em; writing-mode:horizontal-tb;
 }
 .kanbun .unit {
-  display:grid;
+  display:grid; flex:none;
   grid-template-columns:.48em 1em .55em;
-  grid-template-rows:.5em .5em minmax(.22em,auto);
+  grid-template-rows:.5em .5em minmax(0,1fr);
+  height:var(--kanbun-pitch);
   line-height:1;
 }
+/* 空一格 between stanzas and the two empty cells of 低二格. */
+.kanbun .kanbun-space,
+.kanbun .kanbun-indent { display:block; flex:none; width:1em; height:var(--kanbun-pitch); }
+/* A preface is smaller type on the same grid, so its columns end level
+   with the body's. --kanbun-pitch is resolved in the unit's own em. */
+.kanbun .kanbun-preface .unit { font-size:.74em; height:calc(var(--kanbun-pitch) / .74); }
 .kanbun .kanji {
   grid-column:2; grid-row:1 / 3;
   width:1em; height:1em; text-align:center;
 }
 .kanbun .punctuation {
-  grid-column:2; grid-row:3;
-  writing-mode:vertical-rl; height:1em; width:1em;
+  grid-column:2; grid-row:3; align-self:start;
+  writing-mode:vertical-rl; font-size:.72em; height:1em; width:1em;
+  margin-left:.39em;
 }
+/* 句読点 sit at the character's lower right; a middle dot is centred. */
+.kanbun .punctuation.dot { margin-left:.19em; }
 .kanbun .side {
-  display:flex; flex-direction:column;
+  display:flex; flex-direction:column; min-height:0;
   font-size:.5em; line-height:1;
 }
+.kanbun .side > * { flex:none; }
 .kanbun .side-right { grid-column:3; grid-row:1 / -1; padding-left:.08em; }
 .kanbun .side-right.side-sunk { grid-row:2 / -1; }
 .kanbun .side-left { grid-column:1; grid-row:2 / -1; align-items:flex-end; padding-right:.08em; }

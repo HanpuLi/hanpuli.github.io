@@ -23,8 +23,7 @@ RETURNS = set("レ一二三四五六七八九十上下甲乙丙丁天地人") | 
 }
 MARKUP_CHARS = set("(){}[]‹›«»⦉⦊⌊⌋‘’“”\u2010")
 BASE = Path("assets/kanbun-viewer")
-TITLE_COLUMN = 12  # Han characters in a single title column
-PREFACE_COLUMN = 14  # Han characters in one column of a clause-broken preface
+TITLE_COLUMN = 12  # Han characters in a single title column (the 行款)
 SOURCE_FILES = ("kanbun-render.js", "kanbun-render.css", "viewer.js", "viewer.css")
 
 
@@ -178,28 +177,21 @@ class Kunten:
         source = self.library.edition(tid, "zh")["body"]
         # convertKanbunDiv converts each direct child paragraph and expects
         # an HTML-escaped annotated string, not already-rendered HTML.
-        # Preserve original line and stanza boundaries for the vertical
-        # typesetter; it handles each stanza's immediate paragraphs.
-        # The title opens the first stanza as its own columns, as on a
-        # printed kanbun page. A short unpunctuated part (無題 · 臨江仙,
-        # 滿庭芳 · 遙思楚潭) shares the tune name's column; a preface with
-        # clauses is set smaller and lower, broken only after a ，/。.
+        # The page keeps the source structure (title parts, stanzas,
+        # authored lines); kanbun-render.js then re-flows the units into
+        # the fixed 行款 of a printed 詞集: 12 cells a column, the tune
+        # name first, the preface 低二格 and run on, the body in a fresh
+        # column with one empty cell between stanzas.
+        # A short unpunctuated part (無題 · 臨江仙, 滿庭芳 · 遙思楚潭)
+        # shares the tune name's column; any other part is a preface.
         columns: list[tuple[str, str]] = []
         for n, part in enumerate(self.annotated_title(tid)):
-            # Clauses are packed into as few preface columns as fit, so a
-            # long preface does not strand a short last clause.
-            pieces: list[str] = []
-            for clause in (c for c in re.split(r"(?<=[，。])", part) if c):
-                if pieces and han_count(pieces[-1] + clause) <= PREFACE_COLUMN:
-                    pieces[-1] += clause
-                else:
-                    pieces.append(clause)
-            if (n and len(pieces) == 1 and columns[-1][0] == "kanbun-title"
+            clauses = [c for c in re.split(r"(?<=[，。])", part) if c]
+            if (n and len(clauses) == 1 and columns[-1][0] == "kanbun-title"
                     and han_count(columns[-1][1] + part) <= TITLE_COLUMN):
                 columns[-1] = ("kanbun-title", columns[-1][1] + "·" + part)
             else:
-                kind = "kanbun-title" + (" kanbun-preface" if n else "")
-                columns += [(kind, piece) for piece in pieces]
+                columns.append(("kanbun-title" + (" kanbun-preface" if n else ""), part))
         heading = ('<div class="kanbun-heading" data-kanbun-heading>'
                    + "".join(f'<p class="{kind}">{esc(text)}</p>' for kind, text in columns)
                    + '</div>')
@@ -211,8 +203,6 @@ class Kunten:
             )
             if lines:
                 stanzas.append(f'<div class="kanbun-stanza" data-kanbun-stanza>{lines}</div>')
-        # The heading is a separate right-hand block, so every stanza band
-        # starts at the same edge left of it rather than under the title.
         paragraphs = heading + '<div class="kanbun-body">' + "".join(stanzas) + '</div>'
         source_json = json.dumps(
             {"tid": tid, "body": source, "sha256": self.texts[tid]["source_body_sha256"]},

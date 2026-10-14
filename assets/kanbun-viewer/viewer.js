@@ -10,12 +10,15 @@
   try {
     original = JSON.parse(record.textContent);
     if (!original.body || !original.tid || !original.sha256 ||
-        typeof convertKanbunDiv !== 'function') throw Error('Invalid viewer data');
+        typeof convertKanbunDiv !== 'function' ||
+        typeof flowKanbunColumns !== 'function') throw Error('Invalid viewer data');
     const stanzas = node.querySelectorAll('[data-kanbun-stanza]');
     if (!stanzas.length) throw Error('Missing kanbun stanza');
     stanzas.forEach(stanza=>convertKanbunDiv(stanza));
     const heading = node.querySelector('[data-kanbun-heading]');
     if (heading) convertKanbunDiv(heading);
+    flowKanbunColumns(node);
+    settleKanbunColumns(node);
   } catch {
     parent.postMessage({type:'hanpu-kanbun-viewer-v1',state:'error',
                         tid:document.body.dataset.kanbunText}, '*');
@@ -35,7 +38,7 @@
     // of characters or a fixed amount of pseudo-ruby padding. Reading
     // cells sit in side tracks of each .unit and are measured directly.
     const content = [node, ...node.querySelectorAll(
-      '.unit,.kanbun-heading,.kanbun-body,.kanbun-stanza,.kanji,.furigana,.okurigana,.kaeriten,.saidoku,.punctuation'
+      '.unit,.kanbun-column,.kanji,.furigana,.okurigana,.kaeriten,.saidoku,.punctuation'
     )];
     let right = 0;
     let bottom = 0;
@@ -71,10 +74,13 @@
   addEventListener('message', event => {
     if (event.source !== parent || event.data?.type !== 'hanpu-kanbun-preferences-v1') return;
     const size = event.data.fontSize;
-    if (typeof size === 'number' && size >= 18 && size <= 42)
+    if (typeof size === 'number' && size >= 18 && size <= 42 &&
+        node.style.fontSize !== size + 'px') {
       node.style.fontSize = size + 'px';
-    // The host sends space available after the vertical title and gutters.
-    // A new constraint may reduce the number of columns per reading band,
+      settleKanbunColumns(node);
+    }
+    // The host sends the space available in its column. A new constraint
+    // may reduce the number of columns per reading band,
     // so reset the prior non-shrinking width before synchronous remeasurement.
     const cap = event.data.maxContentWidth;
     if (Number.isFinite(cap) && cap >= 100 && cap <= 1600) {
@@ -93,6 +99,8 @@
     measure();
   });
   document.fonts.ready.then(() => {
+    // Reading lengths depend on the loaded kana faces.
+    settleKanbunColumns(node);
     // ResizeObserver also fires for offscreen documents, whereas animation
     // frames may be paused. Re-measure directly; the payload is deduplicated
     // by width/height to avoid message storms.
@@ -100,6 +108,9 @@
     const observer = new ResizeObserver(measure);
     observer.observe(node);
   });
-  document.fonts.addEventListener('loadingdone',measure);
+  document.fonts.addEventListener('loadingdone',()=>{
+    settleKanbunColumns(node);
+    measure();
+  });
   addEventListener('resize',measure);
 })();

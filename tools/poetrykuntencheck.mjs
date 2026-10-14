@@ -55,16 +55,18 @@ try {
         assert.equal(await page.locator('[data-poetry-kunten-toggle],[data-poetry-kanbun-local-toggle]').count(),0,'one three-way choice, no second toggle');
         assert.equal(await iframe.getAttribute('sandbox'),'allow-scripts','viewer may not access parent DOM');
         const renderer = iframe.contentFrame();
-        const body = '#kanbun-display p:not(.kanbun-title)';
+        const body = '#kanbun-display .kanbun-column[data-kanbun-column="body"]';
         assert.equal(await renderer.locator(body+' .unit').count(),16);
         assert.equal(await renderer.locator(body+' .kaeriten').count(),3);
         // 乙五《無題 · 十六字令》: one short title column beside the poem.
         assert.deepEqual(await renderer.locator('#kanbun-display .kanbun-title').allTextContents(),['無題·十六字令']);
-        // A one-line poem must remain in one vertical character column.
+        // Fixed 行款: sixteen characters are one full column of twelve and
+        // a column of four, whatever the width, and never split further.
+        assert.deepEqual(await renderer.locator(body).evaluateAll(cols=>cols.map(c=>c.children.length)),[12,4]);
         const columns = await renderer.locator(body+' .kanji').evaluateAll(nodes =>
           [...new Set(nodes.map(el=>Math.round(el.getBoundingClientRect().x)))]
         );
-        assert.ok(columns.length <= 2,
+        assert.equal(columns.length,2,
           name+' '+width+': broken glyph columns '+JSON.stringify(columns));
         const collisions = await renderer.locator('#kanbun-display').evaluate(root=>{
           const bases = [...root.querySelectorAll('.kanji')];

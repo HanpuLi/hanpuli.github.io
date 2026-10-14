@@ -36,14 +36,17 @@ const server=createServer(async(req,res)=>{
 await new Promise(done=>server.listen(0,'127.0.0.1',done));
 const base='http://127.0.0.1:'+server.address().port;
 let verified=0, wrapped=0,stanzasVerified=0;
+const COLUMN=12, INDENT=2;
 const inspect=async (frame, expected) => {
-  return frame.locator('#kanbun-display').evaluate(el=>{
+  return frame.locator('#kanbun-display').evaluate((el,{COLUMN,INDENT})=>{
     const rect=el.getBoundingClientRect();
-    // Title columns are checked for collisions with everything else, but
-    // the authored-line, glyph and mark counts below belong to the body.
-    const lines=[...el.querySelectorAll('p:not(.kanbun-title)')];
-    const titles=[...el.querySelectorAll('p.kanbun-title')];
-    const units=[...el.querySelectorAll('.unit')];
+    // The fixed 行款: one stream of .kanbun-column elements. Title and
+    // preface columns are checked for collisions with everything else;
+    // glyph and mark counts below belong to the body columns.
+    const columns=[...el.querySelectorAll('.kanbun-column')];
+    const lines=columns.filter(c=>c.dataset.kanbunColumn==='body');
+    const titles=columns.filter(c=>c.classList.contains('kanbun-title'));
+    const prefaces=columns.filter(c=>c.dataset.kanbunColumn==='preface');
     const chars=[...el.querySelectorAll('.kanji')];
     const han=nodes=>nodes.flatMap(p=>[...p.querySelectorAll('.kanji')]).map(n=>n.textContent)
       .filter(value=>/\p{Script=Han}/u.test(value)).join('');
@@ -60,28 +63,75 @@ const inspect=async (frame, expected) => {
     for(let i=0;i<notes.length;i++)for(let j=i+1;j<notes.length;j++)
       if(intersection(notes[i].getBoundingClientRect(),notes[j].getBoundingClientRect())>1)
         errors.push('two markers collide '+notes[i].textContent+' '+notes[j].textContent);
-    for(const p of [...titles,...lines]){
+    for(let i=0;i<chars.length;i++)for(let j=i+1;j<chars.length;j++)
+      if(intersection(chars[i].getBoundingClientRect(),chars[j].getBoundingClientRect())>1)
+        errors.push('two characters collide '+chars[i].textContent+' '+chars[j].textContent);
+    for(const p of columns){
       const b=p.getBoundingClientRect();
-      if(b.left<-1 || b.right>innerWidth+1)errors.push('authored line clipped');
+      if(b.left<-1 || b.right>innerWidth+1)errors.push('column clipped');
     }
+    // 行款: cells of the column, each one .unit, 空一格 or 低二格 cell.
+    const cells=c=>[...c.children];
+    const kinds=c=>cells(c).map(n=>n.classList.contains('unit')?'u':
+      n.classList.contains('kanbun-space')?'s':n.classList.contains('kanbun-indent')?'i':'?');
+    const pitch=lines[0]?.querySelector('.kanbun-space,.unit:not([style*="margin"])')
+      ?.getBoundingClientRect().height;
+    if(!(pitch>10))errors.push('no cell pitch '+pitch);
+    lines.forEach((c,i)=>{
+      const k=kinds(c);
+      if(k.includes('?')||k.includes('i'))errors.push('foreign cell in body column '+i);
+      if(k.length>COLUMN || (i<lines.length-1 && k.length!==COLUMN))
+        errors.push('body column '+i+' holds '+k.length+' cells');
+      if(k[0]!=='u')errors.push('body column '+i+' starts with an empty cell');
+    });
+    // A run of preface columns for one title part: all but its last hold
+    // COLUMN-INDENT characters, each set INDENT cells below the column top.
+    prefaces.forEach((c,i)=>{
+      const k=kinds(c);
+      const lastOfPart=prefaces[i+1]?.dataset.kanbunPart!==c.dataset.kanbunPart;
+      if(k.slice(0,INDENT).join('')!=='i'.repeat(INDENT) || k.slice(INDENT).some(x=>x!=='u'))
+        errors.push('preface column '+i+' is not set 低二格');
+      if(k.length>COLUMN || (!lastOfPart && k.length!==COLUMN))
+        errors.push('preface column '+i+' holds '+k.length+' cells');
+      const first=c.querySelector('.unit').getBoundingClientRect().top-c.getBoundingClientRect().top;
+      if(Math.abs(first-INDENT*pitch)>1.5)errors.push('preface column '+i+' starts '+first+' not '+INDENT*pitch);
+    });
+    titles.filter(c=>!prefaces.includes(c)).forEach((c,i)=>{
+      const k=kinds(c);
+      if(k.length>COLUMN || k.some(x=>x!=='u'))errors.push('title column '+i+' holds '+k.join(''));
+    });
+    // Title and preface come first; the body begins in a fresh column.
+    const firstBody=columns.indexOf(lines[0]);
+    if(columns.slice(0,firstBody).some(c=>!titles.includes(c)) ||
+       columns.slice(firstBody).some(c=>titles.includes(c)))errors.push('title/body column order');
+    // 上下片: each later stanza opens after 空一格 or at a column top.
+    const starts=[...el.querySelectorAll('[data-kanbun-stanza-start]')];
+    for(const unit of starts){
+      const before=unit.previousElementSibling;
+      if(before && !before.classList.contains('kanbun-space'))errors.push('stanza joined without a gap');
+    }
+    if(el.querySelectorAll('.kanbun-space').length>starts.length)errors.push('stray empty cell');
+    const bandTops=[...new Set(columns.map(n=>Math.round(n.getBoundingClientRect().top)))];
+    // Bands are right-aligned: every band's first column touches one edge.
+    const rightEdges=bandTops.map(top=>Math.max(...columns.filter(n=>
+      Math.round(n.getBoundingClientRect().top)===top).map(n=>n.getBoundingClientRect().right)));
+    if(Math.max(...rightEdges)-Math.min(...rightEdges)>1.5)errors.push('bands not right-aligned');
     return {
       glyphs:chars.length,renderedHan:han(lines),titleHan:han(titles),
       returnMarks:lines.reduce((n,p)=>n+p.querySelectorAll('.kaeriten').length,0),
       titleReturnMarks:titles.reduce((n,p)=>n+p.querySelectorAll('.kaeriten').length,0),
-      stanzaCount:el.querySelectorAll('[data-kanbun-stanza]').length,lineCount:lines.length,
-      bands:[...new Set(lines.map(n=>Math.round(n.getBoundingClientRect().y)))].length,
+      stanzaStarts:starts.length,columnCount:lines.length,
+      bands:bandTops.length,
       contentRight:rect.right,scroll:document.documentElement.scrollWidth-innerWidth,
       pageWidth:innerWidth, errors,
-      linePositions:lines.map(l=>({left:Math.round(l.getBoundingClientRect().left),
-          top:Math.round(l.getBoundingClientRect().top)})),
     };
-  },expected);
+  },{COLUMN,INDENT});
 };
 try{
   for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
     const browser=await engine.launch();
     try{
-      for(const width of [320,390,1280]){
+      for(const width of [320,390,768,1280]){
         const page=await browser.newPage({viewport:{width,height:870}});
         const exceptions=[];
         page.on('pageerror',e=>exceptions.push(e.message));
@@ -121,9 +171,16 @@ try{
           assert.equal(geometry.titleReturnMarks,entry.title.flat().filter(m=>m.kaeriten).length,
             tid+': title return marks');
           const expectedStanzas=source.split('\n\n').filter(s=>s.trim()).length;
-          const expectedLines=source.split('\n').filter(s=>s.trim()).length;
-          assert.equal(geometry.stanzaCount,expectedStanzas,tid+': lost authored stanza');
-          assert.equal(geometry.lineCount,expectedLines,tid+': lost authored line');
+          assert.equal(geometry.stanzaStarts,expectedStanzas-1,tid+': lost stanza boundary');
+          // Independent count of the 行款 from the source: Han characters
+          // run on, one empty cell before a stanza unless at a column top.
+          let fill=0,columnsExpected=0;
+          source.split('\n\n').filter(s=>s.trim()).forEach((stanza,i)=>{
+            if(i&&fill%COLUMN)fill++;
+            fill+=[...stanza].filter(c=>/\p{Script=Han}/u.test(c)).length;
+          });
+          columnsExpected=Math.ceil(fill/COLUMN);
+          assert.equal(geometry.columnCount,columnsExpected,tid+': body columns not 12 cells each');
           assert.ok(geometry.scroll<=1,
             engineName+' '+width+' '+tid+': clipped inside reader '+JSON.stringify(geometry));
           assert.deepEqual(geometry.errors,[],
@@ -149,6 +206,6 @@ try{
   }
   console.log('poetrykuntenmultilinecheck: '+verified+' document/viewport pairs; '
     +wrapped+' wrapped samples, '+stanzasVerified+' multi-stanza samples; '
-    +'Chromium and WebKit; hash, marks, stanza boundaries, line order, '
-    +'glyph collision, internal/host overflow PASS');
+    +'Chromium and WebKit; hash, marks, 12-cell 行款, 低二格 preface, 空一格 stanza gap, '
+    +'glyph collision, right-aligned bands, internal/host overflow PASS');
 }finally{await new Promise(done=>server.close(done));}
