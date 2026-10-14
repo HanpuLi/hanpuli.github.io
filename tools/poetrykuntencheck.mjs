@@ -112,6 +112,16 @@ try {
           });
         }
         await stage.locator('[data-kanbun-copy]').click();
+        if (name === 'chromium' && width === 1280) {
+          // The confirmation is brief, and a denied clipboard is reported as a failure.
+          const copy = stage.locator('[data-kanbun-copy]');
+          assert.equal(await copy.textContent(),'原文をコピーしました');
+          await page.waitForFunction(n=>n.textContent==='原文をコピー',await copy.elementHandle(),{timeout:4000});
+          await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async()=>{throw new DOMException('denied','NotAllowedError');}}}));
+          await copy.click();assert.equal(await copy.textContent(),'コピーできませんでした');
+          await page.waitForFunction(n=>n.textContent==='原文をコピー',await copy.elementHandle(),{timeout:4000});
+          await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async text=>{window.__copiedOriginal=text;}}}));
+        }
         if (name === 'chromium' && width === 390) {
           assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),original,
             'Actual browser clipboard must contain only the original Chinese');

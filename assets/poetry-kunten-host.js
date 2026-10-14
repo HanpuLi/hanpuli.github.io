@@ -119,13 +119,15 @@
       if (!original) return;
       const label = button.dataset.initialLabel || button.textContent;
       button.dataset.initialLabel = label;
+      let copied = false;
       try {
         await navigator.clipboard.writeText(original);
-        button.textContent = '原文をコピーしました';
-      } catch {
-        // A clipboard permission denial should never be reported as success.
-        button.textContent = label;
-      }
+        copied = true;
+      } catch {}
+      // Confirmation is brief; a clipboard denial is said plainly, never reported as success.
+      button.textContent = copied ? '原文をコピーしました' : 'コピーできませんでした';
+      clearTimeout(button.resetTimer);
+      button.resetTimer = setTimeout(() => { button.textContent = label; }, 2000);
     });
   }
   addEventListener('poetry-layout-applied', () => {
