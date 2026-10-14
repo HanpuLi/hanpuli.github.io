@@ -82,7 +82,13 @@ open-text Studio is retired; its old URL redirects to the same-language shop.
 The shop offers registered paper editions with Traditional or Simplified Chinese
 originals, optional published translations, typeface and size choices, quantities,
 a local bag, fictional checkout, image PDFs and a complete offline HTML reading copy.
-There is no real payment, upload or delivery. The order page can hand its receipt and all poem vouchers to an H10S only when it is open inside that device's paired local wrapper and the user taps the print button; the public site has no remote print endpoint.
+Public product selection uses an independent `/poetry-voucher/edition.html?lang=...&work=...`
+document, not a modal over the catalogue. Mobile has normal page scrolling and a
+persistent price/action footer. Legacy `shop.html?work=...` links redirect to the
+edition document; only the paired H10S local wrapper retains its embedded editor.
+The bag is retained across product pages in local storage, falling back to tab
+storage when persistent storage is unavailable. There is no real payment,
+upload or delivery. The order page can hand its receipt and all poem vouchers to an H10S only when it is open inside that device's paired local wrapper and the user taps the print button; the public site has no remote print endpoint.
 
 The work is intended to be encountered on paper. The project overview now shows
 scans of two actual B3 and B4 thermal-paper editions printed on 26 September 2026,

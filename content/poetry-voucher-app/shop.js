@@ -1,13 +1,14 @@
 'use strict';
 (() => {
   const MAX_UNITS=24, STORAGE_KEY='poetry-voucher-bag-v1', ORDER_KEY='poetry-voucher-order-v1-';
-  const orderPage=typeof document!=='undefined'&&document.body.dataset.page==='order';
+  const orderPage=document.body.dataset.page==='order',editionPage=document.body.dataset.page==='edition';
+  const EDIT_KEY='poetry-voucher-edition-edit-v1';
   let orderPageStatus=null;
   const el=id=>document.getElementById(id);
   const t=key=>SHOP_COPY[key]?.[SHOP_LANGS.indexOf(uiLocale)]||SHOP_COPY[key]?.[0]||key;
   const node=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
   const button=(text,action,className='text-button')=>{const n=node('button',text,className);n.type='button';n.addEventListener('click',action);return n;};
-  let retainedCustom=[],bag=[],editingId=null,editingLocale='en',busy=false,ready=false,storageOK=true,toastTimer,toastKey=null,editorStatusKey=null,checkoutStatusKey=null,orders=[],pendingOrder=null,pendingPlan=null,catalogueExpanded=false,previewTimer=null;
+  let retainedCustom=[],bag=[],editingId=null,editingLocale='en',busy=false,ready=false,storageOK=true,canNavigate=true,toastTimer,toastKey=null,editorStatusKey=null,checkoutStatusKey=null,orders=[],pendingOrder=null,pendingPlan=null,catalogueExpanded=false,previewTimer=null;
   const clone=value=>JSON.parse(JSON.stringify(value));
   const units=()=>bag.reduce((sum,line)=>sum+line.quantity,0);
   const keyOf=line=>JSON.stringify([line.workId,line.title,line.author,line.poem,line.locale,line.translations,line.font,line.size]);
@@ -33,21 +34,57 @@
     return line;
   }
   function renderToast(key){const toast=el('shop-status');toast.replaceChildren(document.createTextNode(t(key)));if(key==='added'){const next=button(t('viewBag'),()=>{if(!el('bag-dialog').open)show('bag-dialog');toast.classList.remove('visible');},'toast-action');toast.append(' ',next);}}
-  function notify(key){toastKey=key;if(el('product-editor').open){editorStatusKey=key;el('editor-status').textContent=t(key);}renderToast(key);el('shop-status').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el('shop-status').classList.remove('visible'),4500);}
-  function persist(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({version:1,saveCustom:retainedCustom.length>0,lines:bag,retiredCustom:retainedCustom}));storageOK=true;}catch{storageOK=false;}el('storage-note').textContent=t(storageOK?'storage':'storageError');}
+  function notify(key){toastKey=key;if(editionPage||el('product-editor').open){editorStatusKey=key;el('editor-status').textContent=t(key);}renderToast(key);el('shop-status').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el('shop-status').classList.remove('visible'),4500);}
+  function persist(){
+    const payload=JSON.stringify({version:1,savedAt:Date.now(),saveCustom:retainedCustom.length>0,lines:bag,retiredCustom:retainedCustom});
+    let tabSaved=false;
+    try{localStorage.setItem(STORAGE_KEY,payload);storageOK=true;}catch{storageOK=false;}
+    try{sessionStorage.setItem(STORAGE_KEY,payload);tabSaved=true;}catch{}
+    canNavigate=storageOK||tabSaved;
+    el('storage-note').textContent=t(storageOK?'storage':tabSaved?'storageError':'storageBlocked');
+  }
   function restore(){
     let rejected=false;
-    try{const raw=localStorage.getItem(STORAGE_KEY);if(!raw)return;const saved=JSON.parse(raw);if(saved.version!==1||!Array.isArray(saved.lines)||saved.lines.length>MAX_UNITS)throw Error('version');
+    try{
+      // Prefer the newest validated snapshot. A session copy keeps an active bag
+      // alive across the real product document when persistent storage is denied.
+      const candidates=[];let sameTab=false;
+      for(const storageName of ['localStorage','sessionStorage']){
+        try{const raw=window[storageName].getItem(STORAGE_KEY);if(raw){candidates.push(JSON.parse(raw));if(storageName==='sessionStorage')sameTab=true;}}catch{}
+      }
+      const saved=candidates.sort((a,b)=>(b?.savedAt||0)-(a?.savedAt||0))[0];
+      if(!saved){persist();return;}
+      if(saved.version!==1||!Array.isArray(saved.lines)||saved.lines.length>MAX_UNITS)throw Error('version');
       // Do not silently delete previously consented custom text when retiring its editor.
       retainedCustom=saved.saveCustom===true?[...saved.lines,...(Array.isArray(saved.retiredCustom)?saved.retiredCustom:[])].filter(line=>line&&typeof line==='object'&&!line.workId):[];
       for(const candidate of saved.lines){if(!candidate?.workId)continue;try{const line=validateLine(candidate);if(units()+line.quantity>MAX_UNITS)throw Error('limit');const match=bag.find(x=>keyOf(x)===keyOf(line));if(match)match.quantity+=line.quantity;else bag.push(line);}catch{rejected=true;}}
-      if(rejected)notify('recovered');else if(retainedCustom.length)notify('legacyCustom');else if(bag.length)notify('restored');
+      if(rejected)notify('recovered');else if(retainedCustom.length)notify('legacyCustom');else if(bag.length&&!sameTab)notify('restored');
     }catch{rejected=true;notify('recovered');}
     // Re-save only validated data; unavailable storage never prevents shopping.
     persist();
   }
   function show(id){el(id).showModal();}
   function close(id){el(id).close();}
+  const isEditorActive=()=>editionPage||el('product-editor').open;
+  function backToCatalogue(bag=false){
+    const params=new URLSearchParams({lang:uiLocale});
+    const work=currentWork(),shelf=new URL(location.href).searchParams.get('collection')||work?.shelf||el('shop-filter').value;
+    if(shelf&&shelf!=='all')params.set('collection',shelf);
+    if(bag)params.set('bag','1');
+    return 'shop.html?'+params.toString();
+  }
+  function productHeading(){
+    if(!editionPage)return;
+    const work=currentWork();if(!work)return;
+    el('edition-product-title').textContent=localeTitle(work);
+    el('edition-collection').textContent=work.shelf_labels?.[uiLocale]||work.collection;
+    el('edition-back').href=backToCatalogue(!!editingId);
+  }
+  function editionLink(workId,edit=false){
+    const work=findWork(workId),params=new URLSearchParams({lang:uiLocale,work:work.id,collection:work.shelf});
+    if(edit)params.set('edit','1');
+    return 'edition.html?'+params.toString();
+  }
   function localeTitle(work){const title=work.translations?.[uiLocale]?.title||work.title;return work.part_id?`${title} · ${(work.edition_labels?.[uiLocale]||work.edition).split(' · ')[0]}`:title;}
   function catalogueFilters(){
     const select=el('shop-filter'),selected=select.value;
@@ -103,7 +140,7 @@
       const included=node('p',t('editionIncludes')+(selected.translations.length?' '+t('pairedWith').replace('{language}',languageName(selected.translations[0])):''),'product-includes');
       const foot=node('div',undefined,'product-foot'),price=node('strong',uiMoney(amount),'product-price');
       foot.append(price,node('span',t('fictionalPrice'),'micro'));
-      const actions=node('div',undefined,'product-actions'),choose=button(t('choose'),()=>openEditor(work.id),'choose-button');
+      const actions=node('div',undefined,'product-actions'),choose=window.parent===window?Object.assign(node('a',t('choose'),'choose-button'),{href:editionLink(work.id)}):button(t('choose'),()=>openEditor(work.id),'choose-button');
       heading.id='work-title-'+work.id;choose.id='work-choose-'+work.id;choose.setAttribute('aria-labelledby',choose.id+' '+heading.id);actions.append(choose);
       card.append(head,heading,excerpt,included,foot,actions);grid.append(card);
     }
@@ -120,29 +157,42 @@
   }
   function schedulePreview(){
     clearTimeout(previewTimer);
-    const dialog=el('product-editor');if(!dialog.open)return;
+    if(!isEditorActive())return;
     el('preview-status').textContent=t('previewWorking');el('full-image').hidden=true;
     previewTimer=setTimeout(async()=>{
-      if(!dialog.open)return;
+      if(!isEditorActive())return;
       await generate();
-      if(dialog.open)el('preview-status').textContent=el('full-image').hidden?t('previewError'):t('previewReady');
+      if(isEditorActive())el('preview-status').textContent=el('full-image').hidden?t('previewError'):t('previewReady');
     },220);
   }
   function openEditor(workId,line=null){
-    if(!works.some(work=>work.id===workId)){notify('authorOnly');return;}
+    const selected=findWork(workId);
+    if(!selected){notify('authorOnly');return;}
+    // Public purchasing has a real product URL and a normal document scroll.
+    // Only the paired local printer iframe keeps its legacy embedded editor.
+    if(!editionPage&&window.parent===window){
+      if(line){try{sessionStorage.setItem(EDIT_KEY,JSON.stringify({workId,line}));}catch{notify('storageError');return;}}
+      location.assign(editionLink(workId,!!line));return;
+    }
     editorStatusKey=null;el('editor-status').textContent='';editingId=line?.id||null;editingLocale=line?.locale||uiLocale;
-    el('work').value=workId||'custom';loadWork();
-    if(line){for(const k of ['title','author','poem'])el(k).value=line[k];el('font').value=line.font;el('original-script').value=line.workId?line.locale:'zh-Hant';document.querySelectorAll('#translation-options input').forEach(input=>input.checked=line.translations.includes(input.value));syncTypeSize();el('size').value=String(line.size);dirty();}
-    else {const work=findWork(workId),preset=defaultEdition(work);el('font').value=preset.font;syncTypeSize();el('size').value=String(preset.size);el('original-script').value=preset.locale;if(preset.locale==='zh-Hans'){const simplified=work.translations?.['zh-Hans'];if(simplified){el('title').value=simplified.title;el('poem').value=simplified.body;}}document.querySelectorAll('#translation-options input').forEach(input=>input.checked=preset.translations.includes(input.value));dirty();}
+    el('work').value=workId;loadWork();
+    if(line){for(const k of ['title','author','poem'])el(k).value=line[k];el('font').value=line.font;el('original-script').value=line.locale;document.querySelectorAll('#translation-options input').forEach(input=>input.checked=line.translations.includes(input.value));syncTypeSize();el('size').value=String(line.size);dirty();}
+    else {const preset=defaultEdition(selected);el('font').value=preset.font;syncTypeSize();el('size').value=String(preset.size);el('original-script').value=preset.locale;if(preset.locale==='zh-Hans'){const simplified=selected.translations?.['zh-Hans'];if(simplified){el('title').value=simplified.title;el('poem').value=simplified.body;}}document.querySelectorAll('#translation-options input').forEach(input=>input.checked=preset.translations.includes(input.value));dirty();}
     document.querySelector('#product-editor .advanced-type').open=false;
-    el('save-line').textContent=t(line?'save':'add');editorPrice();show('product-editor');schedulePreview();
+    el('save-line').textContent=t(line?'save':'add');editorPrice();
+    if(editionPage){
+      const url=new URL(location.href);if(url.searchParams.get('work')!==workId){url.searchParams.set('work',workId);history.replaceState(null,'',url);}
+      productHeading();document.querySelector('[data-view="voucher"]')?.click();
+    }else show('product-editor');
+    schedulePreview();
   }
   function editorPrice(){editorReading();el('typeface-note').dataset.owner='shop';el('typeface-note').textContent=t('typefaceShopNote').replace('{price}',uiMoney(TARIFF.addOn));try{el('editor-price').textContent=uiMoney(updatePrice().price);}catch{el('editor-price').textContent='—';}}
   function saveEditor(){
+    if(editionPage&&!canNavigate){notify('storageBlocked');return;}
     const w=currentWork(),original=unchanged(w);
     if(!original){notify('authorOnly');return;}
     if(!el('title').value.trim()||!el('poem').value.trim()){notify('required');return;}
-    try{const line=validateLine({workId:original?w.id:null,title:el('title').value.trim(),author:el('author').value,poem:el('poem').value.replace(/\r\n?/g,'\n'),locale:original?el('original-script').value:editingLocale,translations:original?[...document.querySelectorAll('#translation-options input:checked')].map(input=>input.value):[],font:el('font').value,size:Number(el('size').value),quantity:1});if(insert(line))close('product-editor');}
+    try{const line=validateLine({workId:original?w.id:null,title:el('title').value.trim(),author:el('author').value,poem:el('poem').value.replace(/\r\n?/g,'\n'),locale:original?el('original-script').value:editingLocale,translations:original?[...document.querySelectorAll('#translation-options input:checked')].map(input=>input.value):[],font:el('font').value,size:Number(el('size').value),quantity:1});if(insert(line)){if(editionPage){try{sessionStorage.removeItem(EDIT_KEY);}catch{}if(canNavigate)location.assign(backToCatalogue(true));else notify('storageBlocked');}else close('product-editor');}}
     catch{notify('invalid');}
   }
   function lineDetails(line){const script=line.workId?(line.locale==='zh-Hans'?t('originalSimplified'):t('originalLanguage')):languageName(line.locale),added=line.translations.length?' + '+line.translations.map(languageName).join(', '):'';return `${script}${added} / ${line.font==='site'?tr('網站字體'):tr('點陣體 · 預設，已包含')} / ${sizeDots(line.size)}`;}
@@ -349,10 +399,10 @@
     finally{busy=false;el('place-order').disabled=false;el('back-to-bag').disabled=false;renderBag();}
   }
   function translateUI(){
-    document.querySelectorAll('[data-shop]').forEach(n=>n.textContent=t(n.dataset.shop).replace('{price}',uiMoney(TARIFF.addOn)));document.querySelectorAll('[data-shop-placeholder]').forEach(n=>n.placeholder=t(n.dataset.shopPlaceholder));let hasSavedOrder=false;try{const id=sessionStorage.getItem(ORDER_KEY+'latest');hasSavedOrder=!!id&&!!sessionStorage.getItem(ORDER_KEY+id);}catch{}document.querySelectorAll('[data-order-link]').forEach(n=>{n.href='order.html?lang='+encodeURIComponent(uiLocale);n.hidden=!hasSavedOrder;});document.title=t(orderPage?'order':'shop')+' · Poetry Voucher · Hanpu Li';if(orderPageStatus){el('order-page-status').textContent=t(orderPageStatus);if(orderPageStatus!=='orderLoading')el('order-heading').textContent=t('order');}
-    if(ready){catalogueFilters();catalogue();renderBag();renderCheckout();editorPrice();}for(const entry of orders)updateOrderUI(entry.order,entry.section);if(toastKey)renderToast(toastKey);if(editorStatusKey)el('editor-status').textContent=t(editorStatusKey);if(checkoutStatusKey)el('checkout-status').textContent=t(checkoutStatusKey);if(editingId)el('save-line').textContent=t('save');
+    document.querySelectorAll('[data-shop]').forEach(n=>n.textContent=t(n.dataset.shop).replace('{price}',uiMoney(TARIFF.addOn)));document.querySelectorAll('[data-shop-placeholder]').forEach(n=>n.placeholder=t(n.dataset.shopPlaceholder));let hasSavedOrder=false;try{const id=sessionStorage.getItem(ORDER_KEY+'latest');hasSavedOrder=!!id&&!!sessionStorage.getItem(ORDER_KEY+id);}catch{}document.querySelectorAll('[data-order-link]').forEach(n=>{n.href='order.html?lang='+encodeURIComponent(uiLocale);n.hidden=!hasSavedOrder;});document.title=t(orderPage?'order':editionPage?'configure':'shop')+' · Poetry Voucher · Hanpu Li';if(orderPageStatus){el('order-page-status').textContent=t(orderPageStatus);if(orderPageStatus!=='orderLoading')el('order-heading').textContent=t('order');}
+    if(ready){catalogueFilters();catalogue();renderBag();renderCheckout();editorPrice();productHeading();}if(editionPage){el('voucher-hero-image').alt=t('viewVoucher');el('voucher-view').setAttribute('aria-label',t('viewVoucher'));}for(const entry of orders)updateOrderUI(entry.order,entry.section);if(toastKey)renderToast(toastKey);if(editorStatusKey)el('editor-status').textContent=t(editorStatusKey);if(checkoutStatusKey)el('checkout-status').textContent=t(checkoutStatusKey);if(editingId)el('save-line').textContent=t('save');
   }
-  document.querySelectorAll('[data-close]').forEach(n=>n.addEventListener('click',()=>{if(!busy)close(n.dataset.close);}));
+  document.querySelectorAll('[data-close]').forEach(n=>n.addEventListener('click',()=>{if(busy)return;if(editionPage&&n.dataset.close==='bag-dialog'&&n.dataset.shop==='continue')location.assign(backToCatalogue());else close(n.dataset.close);}));
   document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('cancel',event=>{if(busy)event.preventDefault();}));
   el('open-bag').addEventListener('click',()=>show('bag-dialog'));el('save-line').addEventListener('click',saveEditor);
   el('browse-all').addEventListener('click',()=>{catalogueExpanded=true;catalogue();el('current-collection').focus({preventScroll:true});});
@@ -361,7 +411,35 @@
   el('back-to-bag').addEventListener('click',()=>{close('checkout-dialog');show('bag-dialog');});
   document.querySelector('.controls').addEventListener('input',()=>{editorPrice();schedulePreview();});el('work').addEventListener('change',()=>{editorPrice();schedulePreview();});el('original-script').addEventListener('change',()=>{editorPrice();schedulePreview();});
   document.addEventListener('presslocalechange',translateUI);
-  const initialise=()=>{if(ready)return;ready=true;restore();translateUI();const requested=new URL(location.href).searchParams.get('work');if(orderPage)openSavedOrder();else if(requested)openEditor(findWork(requested)?.id||null);};
+  const initialise=()=>{
+    if(ready)return;ready=true;restore();translateUI();
+    const params=new URL(location.href).searchParams,requested=params.get('work');
+    if(orderPage){openSavedOrder();return;}
+    if(editionPage){
+      const work=findWork(requested);
+      if(!work){location.replace('shop.html?lang='+encodeURIComponent(uiLocale));return;}
+      let line=null;
+      if(params.get('edit')==='1'){
+        try{const selected=JSON.parse(sessionStorage.getItem(EDIT_KEY)||'null');
+          if(selected?.workId===work.id)line=bag.find(item=>keyOf(item)===keyOf(selected.line))||null;
+        }catch{}
+      }
+      openEditor(work.id,line);return;
+    }
+    const collection=params.get('collection');
+    if(collection&&[...el('shop-filter').options].some(o=>o.value===collection)){
+      el('shop-filter').value=collection;catalogue();
+    }
+    if(requested){
+      const work=findWork(requested);
+      if(work&&window.parent===window){location.replace(editionLink(work.id));return;}
+      if(work)openEditor(work.id);
+    }
+    if(params.get('bag')==='1'&&bag.length){
+      const clean=new URL(location.href);clean.searchParams.delete('bag');history.replaceState(null,'',clean);
+      show('bag-dialog');
+    }
+  };
   document.addEventListener('catalogueready',initialise);
   document.addEventListener('catalogueerror',()=>{notify('loadError');el('no-results').hidden=false;el('no-results').textContent=t('loadError');});
   translateUI();renderBag();if(works.length)initialise();

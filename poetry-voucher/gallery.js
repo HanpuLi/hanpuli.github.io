@@ -559,6 +559,7 @@ async function generate(event){
     if(revision!==currentRevision){message('排版時內容已改動，請再製作一次。');return;}
     objectURLs.forEach(URL.revokeObjectURL);objectURLs=[];
     for(const kind of ['receipt','voucher','full']){$(kind+'-image').src=result[kind].toDataURL('image/png');$(kind+'-image').hidden=false;}
+    const hero=document.getElementById('voucher-hero-image');if(hero){hero.src=result.voucher.toDataURL('image/png');hero.hidden=false;}
     if(!shop){$('full-pdf').href=blobURL(pdf(result.full));$('full-pdf').hidden=false;
       $('full-png').href=blobURL(png);$('full-png').hidden=false;}
     $('reading-title').textContent=spec.title;$('reading-author').textContent=spec.author;$('reading-poem').textContent=spec.poem;$('reading-poem').lang=spec.locale;
@@ -574,7 +575,7 @@ async function generate(event){
   finally{$('generate').disabled=false;}
 }
 document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{
-  for(const name of ['pair','full','text'])$(name+'-view').hidden=name!==b.dataset.view;
+  for(const name of ['voucher','pair','full','text']){const view=document.getElementById(name+'-view');if(view)view.hidden=name!==b.dataset.view;}
   document.querySelectorAll('[data-view]').forEach(other=>other.setAttribute('aria-pressed',String(other===b)));
 }));
 fields.forEach(id=>$(id).addEventListener('input',dirty));

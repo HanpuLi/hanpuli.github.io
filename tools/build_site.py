@@ -1461,7 +1461,8 @@ def build(check: bool = False) -> list[Path]:
 
     app_sources = [(TEMPLATES / 'poetry-voucher-retired.html', ROOT / 'poetry-voucher' / 'make.html'),
                    (TEMPLATES / 'poetry-voucher-shop.html', ROOT / 'poetry-voucher' / 'shop.html'),
-                   (TEMPLATES / 'poetry-voucher-shop.html', ROOT / 'poetry-voucher' / 'order.html')]
+                   (TEMPLATES / 'poetry-voucher-shop.html', ROOT / 'poetry-voucher' / 'order.html'),
+                   (TEMPLATES / 'poetry-voucher-shop.html', ROOT / 'poetry-voucher' / 'edition.html')]
     # Explicit public bundle: never sweep private printer files into the output.
     app_sources += [(CONTENT / 'poetry-voucher-app' / name, ROOT / 'poetry-voucher' / name)
                     for name in ('gallery.js', 'i18n.js', 'editions.json', 'studio.css', 'shop.js', 'shop-copy.js', 'shop.css', 'accessibility.css', 'order-reading.js', 'order-core.js', 'h10-print.js', 'retired-studio.js')]
@@ -1469,6 +1470,39 @@ def build(check: bool = False) -> list[Path]:
         data = source.read_bytes()
         if target.name == 'order.html':
             data = data.replace(b'data-page="shop"', b'data-page="order"').replace(b'<div id="shop-front">', b'<div id="shop-front" hidden>').replace(b'aria-labelledby="order-heading" hidden', b'aria-labelledby="order-heading"').replace(b'/poetry-voucher/shop.html">\n<link rel="stylesheet"', b'/poetry-voucher/order.html">\n<link rel="stylesheet"')
+        if target.name == 'edition.html':
+            # A separate, addressable product document, not a dialog mounted over Shop.
+            # Reuse the author-edition controls and printer renderer without duplicating
+            # 19 KB of translated markup or creating a second checkout implementation.
+            def swap_once(old: bytes, new: bytes):
+                nonlocal data
+                if data.count(old) != 1:
+                    raise ValueError(f'Edition source template changed: {old!r}')
+                data = data.replace(old, new, 1)
+            swap_once(b'class="shop-page" data-page="shop"', b'class="shop-page edition-page" data-page="edition"')
+            swap_once(b'<a class="skip" href="#shop">', b'<a class="skip" href="#product-editor">')
+            swap_once(b'/poetry-voucher/shop.html">\n<link rel="stylesheet"', b'/poetry-voucher/edition.html">\n<link rel="stylesheet"')
+            swap_once(b'<main id="shop" tabindex="-1">', b'<div id="shop" hidden>')
+            swap_once(b'</main>\n<dialog id="product-editor" aria-labelledby="editor-heading"><button class="dialog-close" type="button" data-close="product-editor" data-shop="close">Close</button>',
+                      b'</div>\n<main id="product-editor" aria-labelledby="edition-product-title" tabindex="-1"><nav class="edition-breadcrumb" aria-label="Product navigation"><a id="edition-back" data-shop="backCollections" href="shop.html">Back to collections</a></nav><header class="edition-lead"><p class="eyebrow" id="edition-collection">Poetry Voucher</p><h1 id="edition-product-title">Poetry Voucher</h1><p data-shop="editionDelivery">Your printed edition begins with a poem. The fictional receipt is issued at checkout. No payment or shipping.</p></header>')
+            swap_once(b'</div></dialog>\n<dialog id="bag-dialog"', b'</div></main>\n<dialog id="bag-dialog"')
+            # The first product view is the poem itself, not a squeezed two-column
+            # receipt. Receipt, full strip and text remain selectable on demand.
+            swap_once("<div class=\"view-switch\" role=\"group\" aria-label=\"預覽方式\">".encode("utf-8"),
+                      "<div class=\"view-switch\" role=\"group\" aria-label=\"預覽方式\"><button type=\"button\" data-view=\"voucher\" aria-pressed=\"true\" data-shop=\"viewVoucher\">Poem voucher</button>".encode("utf-8"))
+            swap_once(b'<button type="button" data-view="pair" aria-pressed="true"',
+                      b'<button type="button" data-view="pair" aria-pressed="false"')
+            swap_once(b'<div id="full-view" class="proof-desk single" hidden>', b'<div id="full-view" class="proof-desk single" hidden tabindex="0" aria-label="Continuous receipt and voucher proof">')
+            swap_once(b'<div id="pair-view" class="proof-desk">',
+                      b'<div id="voucher-view" class="proof-desk single" tabindex="0" aria-label="Poem voucher proof"><figure><div class="paper"><img id="voucher-hero-image" src="sample-voucher.png" alt="Poem voucher proof" hidden></div></figure></div><div id="pair-view" class="proof-desk" hidden>')
+            swap_once(b'<div id="pair-view" class="proof-desk" hidden>', b'<div id="pair-view" class="proof-desk" hidden tabindex="0" aria-label="Receipt and voucher proof">')
+            swap_once(b'<strong id="editor-price"></strong>',
+                      b'<strong id="editor-price"></strong><span class="edition-price-note" data-shop="fictionalPrice">Fictional price</span>')
+            # Number the sequence in reading order on the dedicated page.
+            # Content (01) is fixed by the URL and hidden here, so the first visible step is the edition.
+            swap_once(b'<legend><span aria-hidden="true">02</span> <span data-shop="stageLayout">', b'<legend><span aria-hidden="true">01</span> <span data-shop="stageLayout">')
+            swap_once(b'<h2><span aria-hidden="true">03</span>', b'<h2><span aria-hidden="true">01</span>')
+            # The page has one main landmark and keeps its bag / checkout dialogs.
         if not target.exists() or target.read_bytes() != data:
             changed.append(target)
             if not check:
