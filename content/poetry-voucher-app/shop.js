@@ -34,7 +34,7 @@
     return line;
   }
   function renderToast(key){const toast=el('shop-status');toast.replaceChildren(document.createTextNode(t(key)));if(key==='added'){const next=button(t('viewBag'),()=>{if(!el('bag-dialog').open)show('bag-dialog');toast.classList.remove('visible');},'toast-action');toast.append(' ',next);}}
-  function notify(key){toastKey=key;if(editionPage||el('product-editor').open){editorStatusKey=key;el('editor-status').textContent=t(key);}renderToast(key);el('shop-status').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el('shop-status').classList.remove('visible'),4500);}
+  function notify(key){toastKey=key;if(!editionPage&&el('product-editor').open){editorStatusKey=key;el('editor-status').textContent=t(key);}renderToast(key);el('shop-status').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el('shop-status').classList.remove('visible'),4500);}
   function persist(){
     const payload=JSON.stringify({version:1,savedAt:Date.now(),saveCustom:retainedCustom.length>0,lines:bag,retiredCustom:retainedCustom});
     let tabSaved=false;
@@ -60,25 +60,40 @@
       for(const candidate of saved.lines){if(!candidate?.workId)continue;try{const line=validateLine(candidate);if(units()+line.quantity>MAX_UNITS)throw Error('limit');const match=bag.find(x=>keyOf(x)===keyOf(line));if(match)match.quantity+=line.quantity;else bag.push(line);}catch{rejected=true;}}
       if(rejected)notify('recovered');else if(retainedCustom.length)notify('legacyCustom');else if(bag.length&&!sameTab)notify('restored');
     }catch{rejected=true;notify('recovered');}
-    // Re-save only validated data; unavailable storage never prevents shopping.
+    // Re-save only validated data. Without persistent storage the bag lives in this
+    // tab's session storage; only with both unavailable does the product page refuse
+    // to leave (saveEditor), because the selection could not survive the navigation.
     persist();
   }
   function show(id){el(id).showModal();}
   function close(id){el(id).close();}
   const isEditorActive=()=>editionPage||el('product-editor').open;
-  function backToCatalogue(bag=false){
+  // Leaving a product returns to the shelf it came from, with focus on its card;
+  // leaving after an edit returns to the bag that was being edited.
+  function backToCatalogue(toBag=false){
     const params=new URLSearchParams({lang:uiLocale});
     const work=currentWork(),shelf=new URL(location.href).searchParams.get('collection')||work?.shelf||el('shop-filter').value;
     if(shelf&&shelf!=='all')params.set('collection',shelf);
-    if(bag)params.set('bag','1');
-    return 'shop.html?'+params.toString();
+    if(toBag)params.set('bag','1');
+    return 'shop.html?'+params.toString()+(!toBag&&work?'#work-choose-'+work.id:'');
+  }
+  function syncCollectionURL(){
+    if(editionPage||orderPage)return;
+    const url=new URL(location.href),filter=el('shop-filter').value;
+    if(filter&&filter!=='all'&&!el('shop-search').value.trim())url.searchParams.set('collection',filter);else url.searchParams.delete('collection');
+    url.hash='';history.replaceState(null,'',url);
   }
   function productHeading(){
     if(!editionPage)return;
     const work=currentWork();if(!work)return;
-    el('edition-product-title').textContent=localeTitle(work);
-    el('edition-collection').textContent=work.shelf_labels?.[uiLocale]||work.collection;
+    const title=localeTitle(work),shelf=work.shelf_labels?.[uiLocale]||work.collection;
+    el('edition-product-title').textContent=title;
+    el('edition-collection').textContent=shelf;
     el('edition-back').href=backToCatalogue(!!editingId);
+    el('edition-back').textContent=editingId?t('backToBag'):t('backToShelf').replace('{collection}',shelf);
+    el('edition-editing').hidden=!editingId;
+    document.title=title+' · Poetry Voucher · Hanpu Li';
+    document.querySelector('meta[name="description"]').content=title+' · '+t('editionDelivery');
   }
   function editionLink(workId,edit=false){
     const work=findWork(workId),params=new URLSearchParams({lang:uiLocale,work:work.id,collection:work.shelf});
@@ -118,7 +133,7 @@
     for(const [index,group] of groups.entries()){
       const tile=node('button',undefined,'collection-tile');tile.type='button';
       tile.append(node('span',String(index+1).padStart(2,'0'),'collection-no'),node('strong',group.title),node('span',t('poemCount').replace('{count}',group.count),'collection-count'));
-      tile.addEventListener('click',()=>{el('shop-search').value='';el('shop-filter').value=group.shelf;catalogueExpanded=false;catalogue();el('current-collection').focus({preventScroll:true});el('catalogue-heading').scrollIntoView({block:'start'});});
+      tile.addEventListener('click',()=>{el('shop-search').value='';el('shop-filter').value=group.shelf;catalogueExpanded=false;catalogue();syncCollectionURL();el('current-collection').focus({preventScroll:true});el('catalogue-heading').scrollIntoView({block:'start'});});
       picker.append(tile);
     }
     const showWorks=!!search||filter!=='all'||catalogueExpanded;
@@ -158,11 +173,11 @@
   function schedulePreview(){
     clearTimeout(previewTimer);
     if(!isEditorActive())return;
-    el('preview-status').textContent=t('previewWorking');el('full-image').hidden=true;
+    el('preview-status').textContent=t('previewWorking');el('preview-status').classList.remove('is-error');el('full-image').hidden=true;
     previewTimer=setTimeout(async()=>{
       if(!isEditorActive())return;
       await generate();
-      if(isEditorActive())el('preview-status').textContent=el('full-image').hidden?t('previewError'):t('previewReady');
+      if(isEditorActive()){const failed=el('full-image').hidden;el('preview-status').textContent=t(failed?'previewError':'previewReady');el('preview-status').classList.toggle('is-error',failed);}
     },220);
   }
   function openEditor(workId,line=null){
@@ -171,7 +186,7 @@
     // Public purchasing has a real product URL and a normal document scroll.
     // Only the paired local printer iframe keeps its legacy embedded editor.
     if(!editionPage&&window.parent===window){
-      if(line){try{sessionStorage.setItem(EDIT_KEY,JSON.stringify({workId,line}));}catch{notify('storageError');return;}}
+      if(line){try{sessionStorage.setItem(EDIT_KEY,JSON.stringify({workId,line}));}catch{notify('storageBlocked');return;}}
       location.assign(editionLink(workId,!!line));return;
     }
     editorStatusKey=null;el('editor-status').textContent='';editingId=line?.id||null;editingLocale=line?.locale||uiLocale;
@@ -399,15 +414,15 @@
     finally{busy=false;el('place-order').disabled=false;el('back-to-bag').disabled=false;renderBag();}
   }
   function translateUI(){
-    document.querySelectorAll('[data-shop]').forEach(n=>n.textContent=t(n.dataset.shop).replace('{price}',uiMoney(TARIFF.addOn)));document.querySelectorAll('[data-shop-placeholder]').forEach(n=>n.placeholder=t(n.dataset.shopPlaceholder));let hasSavedOrder=false;try{const id=sessionStorage.getItem(ORDER_KEY+'latest');hasSavedOrder=!!id&&!!sessionStorage.getItem(ORDER_KEY+id);}catch{}document.querySelectorAll('[data-order-link]').forEach(n=>{n.href='order.html?lang='+encodeURIComponent(uiLocale);n.hidden=!hasSavedOrder;});document.title=t(orderPage?'order':editionPage?'configure':'shop')+' · Poetry Voucher · Hanpu Li';if(orderPageStatus){el('order-page-status').textContent=t(orderPageStatus);if(orderPageStatus!=='orderLoading')el('order-heading').textContent=t('order');}
-    if(ready){catalogueFilters();catalogue();renderBag();renderCheckout();editorPrice();productHeading();}if(editionPage){el('voucher-hero-image').alt=t('viewVoucher');el('voucher-view').setAttribute('aria-label',t('viewVoucher'));}for(const entry of orders)updateOrderUI(entry.order,entry.section);if(toastKey)renderToast(toastKey);if(editorStatusKey)el('editor-status').textContent=t(editorStatusKey);if(checkoutStatusKey)el('checkout-status').textContent=t(checkoutStatusKey);if(editingId)el('save-line').textContent=t('save');
+    document.querySelectorAll('[data-shop]').forEach(n=>n.textContent=t(n.dataset.shop).replace('{price}',uiMoney(TARIFF.addOn)));document.querySelectorAll('[data-shop-placeholder]').forEach(n=>n.placeholder=t(n.dataset.shopPlaceholder));document.querySelectorAll('[data-shop-label]').forEach(n=>n.setAttribute('aria-label',t(n.dataset.shopLabel)));let hasSavedOrder=false;try{const id=sessionStorage.getItem(ORDER_KEY+'latest');hasSavedOrder=!!id&&!!sessionStorage.getItem(ORDER_KEY+id);}catch{}document.querySelectorAll('[data-order-link]').forEach(n=>{n.href='order.html?lang='+encodeURIComponent(uiLocale);n.hidden=!hasSavedOrder;});document.title=t(orderPage?'order':editionPage?'configure':'shop')+' · Poetry Voucher · Hanpu Li';if(orderPageStatus){el('order-page-status').textContent=t(orderPageStatus);if(orderPageStatus!=='orderLoading')el('order-heading').textContent=t('order');}
+    if(ready){catalogueFilters();catalogue();renderBag();renderCheckout();editorPrice();productHeading();}if(editionPage)el('voucher-hero-image').alt=t('viewVoucher');for(const entry of orders)updateOrderUI(entry.order,entry.section);if(toastKey)renderToast(toastKey);if(editorStatusKey)el('editor-status').textContent=t(editorStatusKey);if(checkoutStatusKey)el('checkout-status').textContent=t(checkoutStatusKey);if(editingId)el('save-line').textContent=t('save');
   }
   document.querySelectorAll('[data-close]').forEach(n=>n.addEventListener('click',()=>{if(busy)return;if(editionPage&&n.dataset.close==='bag-dialog'&&n.dataset.shop==='continue')location.assign(backToCatalogue());else close(n.dataset.close);}));
   document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('cancel',event=>{if(busy)event.preventDefault();}));
   el('open-bag').addEventListener('click',()=>show('bag-dialog'));el('save-line').addEventListener('click',saveEditor);
-  el('browse-all').addEventListener('click',()=>{catalogueExpanded=true;catalogue();el('current-collection').focus({preventScroll:true});});
+  el('browse-all').addEventListener('click',()=>{catalogueExpanded=true;catalogue();syncCollectionURL();el('current-collection').focus({preventScroll:true});});
   el('back-to-collections').addEventListener('click',()=>{catalogueExpanded=false;el('shop-filter').value='all';el('shop-search').value='';catalogue();el('collection-picker').querySelector('button')?.focus({preventScroll:true});});
-  el('shop-search').addEventListener('input',catalogue);el('shop-filter').addEventListener('change',catalogue);el('to-checkout').addEventListener('click',checkout);el('place-order').addEventListener('click',placeOrder);
+  el('shop-search').addEventListener('input',catalogue);el('shop-filter').addEventListener('change',()=>{catalogue();syncCollectionURL();});el('to-checkout').addEventListener('click',checkout);el('place-order').addEventListener('click',placeOrder);
   el('back-to-bag').addEventListener('click',()=>{close('checkout-dialog');show('bag-dialog');});
   document.querySelector('.controls').addEventListener('input',()=>{editorPrice();schedulePreview();});el('work').addEventListener('change',()=>{editorPrice();schedulePreview();});el('original-script').addEventListener('change',()=>{editorPrice();schedulePreview();});
   document.addEventListener('presslocalechange',translateUI);
@@ -430,6 +445,9 @@
     if(collection&&[...el('shop-filter').options].some(o=>o.value===collection)){
       el('shop-filter').value=collection;catalogue();
     }
+    // Returning from a product page: put the reader back on the card they left.
+    const returnTo=location.hash.startsWith('#work-choose-')&&document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if(returnTo&&params.get('bag')!=='1'){returnTo.scrollIntoView({block:'center'});returnTo.focus({preventScroll:true});}
     if(requested){
       const work=findWork(requested);
       if(work&&window.parent===window){location.replace(editionLink(work.id));return;}

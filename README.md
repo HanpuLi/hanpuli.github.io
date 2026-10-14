@@ -87,7 +87,9 @@ document, not a modal over the catalogue. Mobile has normal page scrolling and a
 persistent price/action footer. Legacy `shop.html?work=...` links redirect to the
 edition document; only the paired H10S local wrapper retains its embedded editor.
 The bag is retained across product pages in local storage, falling back to tab
-storage when persistent storage is unavailable. There is no real payment,
+storage when persistent storage is unavailable. If the browser blocks both, the
+product page refuses to add to the bag and says why, because the selection could
+not survive the move back to the catalogue. There is no real payment,
 upload or delivery. The order page can hand its receipt and all poem vouchers to an H10S only when it is open inside that device's paired local wrapper and the user taps the print button; the public site has no remote print endpoint.
 
 The work is intended to be encountered on paper. The project overview now shows

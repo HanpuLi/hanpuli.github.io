@@ -24,6 +24,7 @@ html[data-reading-sans] .shop-title-italic{transform:none}
 html[data-reading-sans] .studio-header .language-nav [lang="zh-Hans"] .language-short{position:relative;top:-1px}
 html[data-reading-large] body.shop-page,html[data-reading-large] body.studio-page{font-size:18px}
 html[data-reading-large] .shop-page :is(.shop-intro,.product-excerpt,.bag-line,.order-reading,.note,.micro),html[data-reading-large] .studio-page :is(.workspace,.controls,.note,.micro,.reading .verse){font-size:calc(1em + 2px)}
+html[data-reading-large] .edition-page #product-editor .controls :is(label,legend,summary){font-size:15px}html[data-reading-large] .edition-page #product-editor .controls select{font-size:17px}html[data-reading-large] .edition-page #product-editor .reading .verse{font-size:calc(1em + 2px)}
 html[data-reading-spacing] body.shop-page,html[data-reading-spacing] body.studio-page{line-height:1.82}
 html[data-reading-spacing] .shop-page :is(p,li,dt,dd,figcaption,.micro,.verse),html[data-reading-spacing] .studio-page :is(p,li,dt,dd,figcaption,.micro,.verse){letter-spacing:.035em;word-spacing:.1em;line-height:1.85}
 html[data-reading-measure] .shop-page :is(.shop-intro>p,.product-excerpt,.shop-colophon p,.order-reading .verse),html[data-reading-measure] .studio-page :is(.studio-deck,.note,.verse){max-width:56ch}

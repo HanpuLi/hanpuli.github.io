@@ -9,7 +9,9 @@ import {chromium} from 'playwright';
 const root=process.cwd();
 const mime={'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.json':'application/json','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.svg':'image/svg+xml','.ico':'image/x-icon','.woff2':'font/woff2'};
 const htmlFiles=spawnSync('git',['ls-files','*.html'],{encoding:'utf8'}).stdout.trim().split('\n').filter(Boolean).filter(f=>!f.startsWith('templates/'));
-const routes=htmlFiles.map(f=>f.endsWith('/index.html')?'/'+f.slice(0,-10):'/'+f).map(r=>r==='//'?'/':r);
+const routes=htmlFiles.map(f=>f.endsWith('/index.html')?'/'+f.slice(0,-10):'/'+f).map(r=>r==='//'?'/':r)
+ // The product document needs a work; without one it correctly returns to Shop.
+ .map(r=>r==='/poetry-voucher/edition.html'?r+'?lang=en&work=jia-yi-b3-text':r);
 const server=createServer(async(req,res)=>{
   try{
     let u=decodeURIComponent(new URL(req.url,'http://localhost').pathname);

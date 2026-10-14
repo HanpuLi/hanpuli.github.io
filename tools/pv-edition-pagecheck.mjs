@@ -35,6 +35,22 @@ try{
   assert.equal(await page.locator('#translation-options input:checked').count(),['en','ja','de','fr','ru'].includes(lang)?1:0);
   assert(await page.locator('#edition-product-title').innerText());
   assert(await page.locator('#editor-price').innerText());
+  // Audit 2026-10-14: the paper is visible on arrival, the page is not trapped in
+  // an inner scroll box, the order of reading follows the layout, and there are
+  // no stray sequence numbers on a single-step page.
+  const first=await page.evaluate(()=>{const v=document.querySelector('#voucher-view').getBoundingClientRect(),bar=document.querySelector('.editor-actions').getBoundingClientRect();return {top:v.top,visible:Math.min(v.bottom,bar.top)-Math.max(v.top,0),scrollY};});
+  assert.equal(first.scrollY,0);
+  assert(first.visible>=200,`${lang}: poetry voucher visible on the first screen (${Math.round(first.visible)}px)`);
+  const desk=await page.locator('#voucher-view').boundingBox();
+  await page.mouse.move(desk.x+desk.width/2,Math.min(desk.y+desk.height/2,700));await page.mouse.wheel(0,400);
+  await page.waitForFunction(()=>scrollY>0,{},{timeout:3000}).catch(()=>{});
+  assert(await page.evaluate(()=>scrollY>0),`${lang}: wheel over the proof scrolls the page`);
+  await page.evaluate(()=>scrollTo(0,0));
+  assert(await page.evaluate(()=>!!(document.querySelector('.proof-area').compareDocumentPosition(document.querySelector('.controls'))&Node.DOCUMENT_POSITION_FOLLOWING)),'proof precedes choices in the DOM');
+  assert.equal(await page.evaluate(()=>[...document.querySelectorAll('#product-editor legend,#product-editor h2,#product-editor .eyebrow')].filter(n=>n.checkVisibility()&&/\b\d{2}\b/.test(n.textContent)).length),0,`${lang}: no step numbers on the product page`);
+  assert.equal(new Set(await page.locator('.view-switch button').evaluateAll(bs=>bs.map(b=>Math.round(b.getBoundingClientRect().top)))).size,1,`${lang}: view buttons on one row`);
+  assert((await page.title()).startsWith(await page.locator('#edition-product-title').innerText()),`${lang}: document title names the work`);
+  for(const href of await page.locator('#ui-locale a').evaluateAll(as=>as.map(a=>a.getAttribute('href'))))assert.match(href,/[?&]work=/,`${lang}: language links keep the work`);
   for(const width of [320,390,768,1440]){
    await page.setViewportSize({width,height:844});
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${lang} ${width}: no horizontal overflow`);
@@ -43,6 +59,12 @@ try{
    assert(geometry.w>=120,`${lang} ${width}: purchase action can be tapped`);
    assert.notEqual(geometry.body,'hidden',`${lang} ${width}: body must scroll`);
   }
+  // Keyboard focus is never hidden behind the fixed purchase bar (WCAG 2.4.11).
+  await page.setViewportSize({width:1440,height:900});await page.evaluate(()=>{scrollTo(0,0);document.activeElement?.blur();});
+  for(let i=0;i<60&&!await page.evaluate(()=>!!document.activeElement?.closest('#translation-options'));i++)await page.keyboard.press('Tab');
+  const obscured=await page.evaluate(()=>{const r=document.activeElement.getBoundingClientRect(),bar=document.querySelector('.editor-actions').getBoundingClientRect();return {inside:!!document.activeElement.closest('#translation-options'),bottom:r.bottom,bar:bar.top};});
+  assert(obscured.inside,`${lang}: translations reachable by keyboard`);
+  assert(obscured.bottom<=obscured.bar,`${lang}: focused translation clears the purchase bar (${obscured.bottom} > ${obscured.bar})`);
   await page.setViewportSize({width:390,height:844});
   await page.locator('#translation-options').scrollIntoViewIfNeeded();
   assert(await page.evaluate(()=>scrollY>0),`${lang}: controls require normal page scroll`);
@@ -81,6 +103,13 @@ try{
  assert.equal(new URL(page.url()).searchParams.get('work'),'jia-yi-b3-text','old product URLs redirect');
  await page.goto(base+'/poetry-voucher/edition.html?lang=en&work=jia-yi-b3-text');
  await page.locator('#voucher-hero-image').waitFor({state:'visible'});
+ // Leaving a product returns to its shelf, focused on the card that was chosen.
+ await page.locator('#edition-back').click();
+ await page.waitForURL(/\/poetry-voucher\/shop\.html\?.*#work-choose-jia-yi-b3-text$/);
+ await page.waitForFunction(()=>document.activeElement?.id==='work-choose-jia-yi-b3-text',{},{timeout:30000});
+ assert(await page.evaluate(()=>{const r=document.activeElement.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight;}),'back link restores the chosen card into view');
+ assert(new URL(page.url()).searchParams.get('collection'),'shelf is kept in the URL');
+ await page.goBack();await page.locator('#voucher-hero-image').waitFor({state:'visible'});
  const initial=(await page.locator('#edition-product-title').innerText());
  await page.locator('[data-locale="fr"]').click();
  assert.equal(new URL(page.url()).searchParams.get('work'),'jia-yi-b3-text');
