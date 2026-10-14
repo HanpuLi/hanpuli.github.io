@@ -10,7 +10,7 @@ from pathlib import Path
 
 from poetry_library import Library
 from poetry_kunten import Kunten
-from poetry_kundoku import Kundoku
+from poetry_kundoku import Kundoku, title_parts
 from poetry_kunten_manuscript import compile_manuscript
 from poetry_library import read
 
@@ -52,6 +52,13 @@ def build(root: Path) -> tuple[str, int]:
             raise ValueError(f"{tid}: per-character marks disagree with markup")
         label=library.work_for_text(tid)["id"]
         lines += ["## "+tid+" ("+label+")",""]
+        titles=title_parts(library.edition(tid,"zh")["title"])
+        if kun.annotated_title(tid)!=manuscripts[tid]["title"]:
+            raise ValueError(f"{tid}: compiler doesn't reproduce title markup")
+        for part,(cn,marked,ja) in enumerate(zip(titles,manuscripts[tid]["title"],
+                                                  readings.texts[tid]["title"]),start=1):
+            lines += [f"**题·第{part}部分**","","- 原文："+tick(cn),
+                      "- 训点原稿："+tick(marked),"- 書き下し文："+tick(ja),""]
         offset=0
         for row,(cn,ja,marked) in enumerate(zip(src_lines,jap_lines,mark_lines),start=1):
             a=cn.rstrip("\n")

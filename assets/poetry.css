@@ -31,6 +31,7 @@
 :is(.poetry-kundoku, .poetry-kunten-notes) > summary:hover, :is(.poetry-kundoku, .poetry-kunten-notes)[open] > summary { color:var(--ink); }
 :is(.poetry-kundoku, .poetry-kunten-notes) .kundoku { padding-block:1rem .5rem; }
 :is(.poetry-kundoku, .poetry-kunten-notes) .body { text-align:start; }
+.kundoku-title { margin:0 0 .9rem; color:var(--muted); font-size:.9em; line-height:1.7; }
 .kundoku-notes { margin:1.25rem 0 0; padding-left:1.3em; color:var(--muted); font-size:.8rem; line-height:1.8; }
 .poetry-reading-aids { max-width:42rem; margin:1.5rem auto 0; border-block:1px solid var(--line); }
 .poetry-reading-aid + .poetry-reading-aid { border-top:1px solid var(--line); }

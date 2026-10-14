@@ -55,10 +55,13 @@ try {
         assert.equal(await page.locator('[data-poetry-kunten-toggle],[data-poetry-kanbun-local-toggle]').count(),0,'one three-way choice, no second toggle');
         assert.equal(await iframe.getAttribute('sandbox'),'allow-scripts','viewer may not access parent DOM');
         const renderer = iframe.contentFrame();
-        assert.equal(await renderer.locator('#kanbun-display .unit').count(),16);
-        assert.equal(await renderer.locator('#kanbun-display .kaeriten').count(),3);
+        const body = '#kanbun-display p:not(.kanbun-title)';
+        assert.equal(await renderer.locator(body+' .unit').count(),16);
+        assert.equal(await renderer.locator(body+' .kaeriten').count(),3);
+        // 乙五《無題 · 十六字令》: two title columns before the poem.
+        assert.deepEqual(await renderer.locator('#kanbun-display .kanbun-title').allTextContents(),['無題','十六字令']);
         // A one-line poem must remain in one vertical character column.
-        const columns = await renderer.locator('#kanbun-display .kanji').evaluateAll(nodes =>
+        const columns = await renderer.locator(body+' .kanji').evaluateAll(nodes =>
           [...new Set(nodes.map(el=>Math.round(el.getBoundingClientRect().x)))]
         );
         assert.ok(columns.length <= 2,

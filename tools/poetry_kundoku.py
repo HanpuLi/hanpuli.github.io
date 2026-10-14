@@ -2,9 +2,19 @@
 from __future__ import annotations
 
 import hashlib
+import re
 from typing import Any
 
 from poetry_library import Library, read
+
+
+def title_parts(title: str) -> list[str]:
+    """The 《…》 source title as its read parts: tune name, preface, version note.
+
+    A sequence label before 《 (甲四，憶甲一) is navigation, not title text."""
+    if '《' not in title or not title.endswith('》'):
+        raise ValueError('Classical title without 《…》: ' + title)
+    return re.split(r'\s*·\s*', title[title.index('《') + 1:-1])
 
 
 class Kundoku:
@@ -27,9 +37,19 @@ class Kundoku:
             if not body.strip() or any(not line.strip() for line in body.splitlines()
                                        if line != ''):
                 raise ValueError('Empty kundoku reading or line: ' + tid)
+            # Titles and prefaces are part of the read text, not page chrome.
+            title = reading.get('title')
+            if (not isinstance(title, list)
+                    or len(title) != len(title_parts(library.edition(tid, 'zh')['title']))
+                    or any(not isinstance(part, str) or not part.strip() or '\n' in part
+                           for part in title)):
+                raise ValueError('Kundoku title must read each part of the original title: ' + tid)
             shape = lambda text: [len(stanza.splitlines()) for stanza in text.split('\n\n')]
             if shape(body) != shape(source):
                 raise ValueError('Kundoku must preserve original lines and stanzas: ' + tid)
 
     def body(self, tid: str) -> str:
         return self.texts[tid]['body']
+
+    def title(self, tid: str) -> str:
+        return ' · '.join(self.texts[tid]['title'])

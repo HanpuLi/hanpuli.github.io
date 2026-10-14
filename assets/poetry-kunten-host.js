@@ -72,14 +72,12 @@
       const style = getComputedStyle(reference);
       const size = Number.parseFloat(style.fontSize);
       const section = article.querySelector('.poem-version.source');
-      const title = section?.querySelector('.poetry-kanbun-heading');
       const display = section?.querySelector('.poetry-kanbun-display');
       const sectionWidth = section?.getBoundingClientRect().width || innerWidth;
-      const titleWidth = title?.getBoundingClientRect().width || 32;
       const gap = Number.parseFloat(getComputedStyle(display).columnGap) || 12;
       // Reserve 38px inside the iframe for glyph bounds/gutters, plus a
-      // safety margin around the separate source title.
-      const cap = Math.max(100,Math.floor(sectionWidth - titleWidth - gap - 44));
+      // safety margin. The title is typeset inside the frame.
+      const cap = Math.max(100,Math.floor(sectionWidth - gap - 44));
       if (Number.isFinite(size))
         frame.contentWindow.postMessage({
           type:'hanpu-kanbun-preferences-v1',

@@ -60,3 +60,8 @@ body { padding:12px 15px; box-sizing:content-box; }
 @media(prefers-color-scheme:dark){
   html,body {color:#eae7e1;background:transparent;}
 }
+/* The title opens the first stanza: tune name at full height, prefaces
+   smaller and set lower, then a wider gap before the poem's first line. */
+#kanbun-display.kanbun p.kanbun-title { font-size:.86em; }
+#kanbun-display.kanbun p.kanbun-preface { font-size:.74em; padding-top:1.4em; }
+#kanbun-display.kanbun p.kanbun-title + p:not(.kanbun-title) { margin-right:.8em; }

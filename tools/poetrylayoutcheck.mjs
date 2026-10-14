@@ -117,11 +117,12 @@ try {
     if (locale === 'ja') {
       // A10 now has an annotated vertical reading, so its canonical heading
       // is intentionally clipped rather than split into flow-title columns.
-      // Verify the displayed kanbun heading instead of counting hidden ones.
+      // The title is typeset, with its own marks, inside the kanbun frame.
       assert.equal(a10.columns, 0, 'marked A10 has a visually clipped source heading');
-      const markedTitle=page.locator('[data-poetry-text="jia-yi-a10-text"] .poetry-kanbun-heading');
-      await markedTitle.waitFor({state:'visible'});
-      assert.equal(await markedTitle.evaluate(el=>getComputedStyle(el).writingMode),'vertical-rl');
+      const frame=page.frameLocator('[data-poetry-text="jia-yi-a10-text"] [data-kanbun-frame]');
+      await frame.locator('.kanbun-title').first().waitFor({state:'visible'});
+      assert.equal(await frame.locator('.kanbun-title').count(), 3, 'A10 title: 中呂, 山坡羊, preface');
+      assert.equal(await frame.locator('.kanbun-preface .kaeriten').count(), 2, 'A10 preface 又過舊廬 carries 二・一');
     } else {
       assert.equal(a10.columns, 1, 'short unmarked A10 title should occupy one column');
     }
@@ -204,6 +205,7 @@ try {
       await disclosure.locator('summary').click();
       assert.ok(await disclosure.locator('.body').isVisible());
       assert.equal(await disclosure.locator('.body').textContent(), kundoku.texts[tid].body);
+      assert.equal(await disclosure.locator('.kundoku-title').textContent(), kundoku.texts[tid].title.join(' · '));
       coveredReadings.add(tid);
     }
     for (const width of [320, 1280]) {
