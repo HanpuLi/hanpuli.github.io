@@ -125,6 +125,7 @@ traditional:['Traditional Chinese','繁體中文','繁体中文','繁体字中�
 simplified:['Simplified Chinese','簡體中文','简体中文','簡体字中国語','Vereinfachtes Chinesisch','Chinois simplifié','Упрощённый китайский'],
 translations:['Add translations','加購譯文','加购译文','翻訳を追加','Übersetzungen hinzufügen','Ajouter des traductions','Добавить переводы'],
 translationsNote:['Choose any available translations. Each adds {price}.','可選多種已有譯文；每種加 {price}。','可选多种已有译文；每种加 {price}。','公開済みの翻訳を複数選べます。各 {price}。','Wählen Sie beliebige verfügbare Übersetzungen. Jeweils +{price}.','Choisissez les traductions disponibles. Chacune ajoute {price}.','Выберите доступные переводы. Каждый добавляет {price}.'],
+sizeDots:['{size} dots','{size} 點','{size} 点','{size} ドット','{size} Punkte','{size} points','{size} точек'],
 typefaceShopNote:['Pixel type is included. Website typefaces add {price}. Original Chinese in either script has the same base price.','點陣體已包含；網站字體加 {price}。原文簡繁同價。','点阵体已包含；网站字体加 {price}。原文简繁同价。','ドット書体は含まれます。サイト書体は +{price}。原文は繁体字・簡体字とも同価格です。','Pixelschrift ist enthalten. Website-Schriften kosten +{price}. Beide chinesischen Schreibweisen haben denselben Grundpreis.','La police pixel est comprise. Les polices du site ajoutent {price}. Les deux écritures chinoises ont le même prix de base.','Пиксельный шрифт включён. Шрифты сайта добавляют {price}. Обе формы китайского оригинала стоят одинаково.'],
 translationEn:['English','英語','英语','英語','Englisch','Anglais','Английский'],
 translationJa:['Japanese','日語','日语','日本語','Japanisch','Japonais','Японский'],
