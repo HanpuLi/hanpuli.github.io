@@ -305,7 +305,8 @@ function updateConfigCopy(){
   $('price-label').textContent=`${tr('標價')} / ${RECEIPT_CONFIG.currency}`;
   $('tender-label').textContent=`${tr('現金')} / ${RECEIPT_CONFIG.currency}`;
   $('paper-spec').textContent=`${PAPER_CONFIG.paperMm} mm / ${PAPER_CONFIG.printableDots} dots / 1 bit`;
-  $('typeface-note').textContent=templateText('TYPEFACE_NOTE_TEMPLATE',{bitmapSizes:sizes(TYPE_CONFIG.bitmapSizes),siteSizes:sizes(TYPE_CONFIG.siteSizes),addOn});
+  // The shop writes its own pricing note; the studio template keeps this one.
+  if($('typeface-note').dataset.owner!=='shop')$('typeface-note').textContent=templateText('TYPEFACE_NOTE_TEMPLATE',{bitmapSizes:sizes(TYPE_CONFIG.bitmapSizes),siteSizes:sizes(TYPE_CONFIG.siteSizes),addOn});
   $('tariff-note').textContent=templateText('TARIFF_NOTE_TEMPLATE',{version:TARIFF.version,ending,addOn});
   $('payment-note').textContent=templateText('PAYMENT_NOTE_TEMPLATE',{coinLimit:uiMoney(UK_CASH.coinOnlyMax)});
 }
