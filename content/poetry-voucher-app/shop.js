@@ -6,6 +6,7 @@
   let orderPageStatus=null;
   const el=id=>document.getElementById(id);
   const t=key=>SHOP_COPY[key]?.[SHOP_LANGS.indexOf(uiLocale)]||SHOP_COPY[key]?.[0]||key;
+  const counted=(key,count)=>{const forms=t(key).split('|'),rule=new Intl.PluralRules(uiLocale).select(count);return (forms.length>1?forms[{one:0,few:1}[rule]??2]:forms[0]).replace('{count}',count);};
   const node=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
   const button=(text,action,className='text-button')=>{const n=node('button',text,className);n.type='button';n.addEventListener('click',action);return n;};
   let retainedCustom=[],bag=[],editingId=null,editingLocale='en',busy=false,ready=false,storageOK=true,canNavigate=true,toastTimer,toastKey=null,editorStatusKey=null,checkoutStatusKey=null,orders=[],pendingOrder=null,pendingPlan=null,catalogueExpanded=false,previewTimer=null;
@@ -83,11 +84,14 @@
     if(filter&&filter!=='all'&&!el('shop-search').value.trim())url.searchParams.set('collection',filter);else url.searchParams.delete('collection');
     url.hash='';history.replaceState(null,'',url);
   }
+  // A long lyric title is a tune name plus a preface; only the tune name takes heading size.
+  function splitTitle(title){const cut=title.indexOf('\u00a0· ');return title.length>44&&cut>0&&!/[《「『]/.test(title.slice(0,cut))?[title.slice(0,cut),title.slice(cut+3)]:[title,''];}
   function productHeading(){
     if(!editionPage)return;
     const work=currentWork();if(!work)return;
     const title=localeTitle(work),shelf=work.shelf_labels?.[uiLocale]||work.collection;
-    el('edition-product-title').textContent=title;
+    const [head,preface]=splitTitle(title);
+    el('edition-product-title').textContent=head;el('edition-preface').textContent=preface;el('edition-preface').hidden=!preface;
     el('edition-collection').textContent=shelf;
     el('edition-back').href=backToCatalogue(!!editingId);
     el('edition-back').textContent=editingId?t('backToBag'):t('backToShelf').replace('{collection}',shelf);
@@ -101,7 +105,7 @@
     if(edit)params.set('edit','1');
     return 'edition.html?'+params.toString();
   }
-  function localeTitle(work){const title=work.translations?.[uiLocale]?.title||work.title;return work.part_id?`${title} · ${(work.edition_labels?.[uiLocale]||work.edition).split(' · ')[0]}`:title;}
+  function localeTitle(work){const title=work.translations?.[uiLocale]?.title||work.title,full=work.part_id?`${title} · ${(work.edition_labels?.[uiLocale]||work.edition).split(' · ')[0]}`:title;return full.replaceAll(' · ','\u00a0· ');}
   function catalogueFilters(){
     const select=el('shop-filter'),selected=select.value;
     const options=[['all',t('all')]],seen=new Set();
@@ -133,7 +137,7 @@
     picker.replaceChildren();
     for(const [index,group] of groups.entries()){
       const tile=node('button',undefined,'collection-tile');tile.type='button';
-      tile.append(node('span',String(index+1).padStart(2,'0'),'collection-no'),node('strong',group.title),node('span',t('poemCount').replace('{count}',group.count),'collection-count'));
+      tile.append(node('span',String(index+1).padStart(2,'0'),'collection-no'),node('strong',group.title),node('span',counted('poemCount',group.count),'collection-count'));
       tile.addEventListener('click',()=>{el('shop-search').value='';el('shop-filter').value=group.shelf;catalogueExpanded=false;catalogue();syncCollectionURL();el('current-collection').focus({preventScroll:true});el('catalogue-heading').scrollIntoView({block:'start'});});
       const first=works.find(work=>work.shelf===group.shelf),sample=node('img',undefined,'collection-sample');sample.alt='';sample.width=96;sample.height=120;sample.hidden=true;tile.append(sample);
       try{thumbnail(validateLine(defaultEdition(first)),sample);}catch{}
@@ -151,7 +155,7 @@
       count++;
       const card=node('article',undefined,'product-card'),head=node('div',undefined,'product-meta');
       head.append(node('span',work.authorial_label||work.edition_labels?.[uiLocale]||work.edition),node('span',work.shelf_labels?.[uiLocale]||work.collection));
-      const heading=node('h3',title),excerpt=node('p',(edition?.body||work.poem).split('\n').filter(Boolean).slice(0,3).join('\n'),'product-excerpt');
+      const heading=node('h3',title),excerpt=node('p',undefined,'product-excerpt');for(const verse of (edition?.body||work.poem).split('\n').filter(Boolean).slice(0,3))excerpt.append(node('span',verse,'excerpt-line'));
       if(!edition){heading.lang='zh-Hant-HK';excerpt.lang='zh-Hant-HK';}
       const amount=quotePoem(work.poem,[],'bitmap',false).price;
       const foot=node('div',undefined,'product-foot'),price=node('strong',t('priceFrom').replace('{price}',uiMoney(amount)),'product-price');
@@ -160,7 +164,7 @@
       heading.id='work-title-'+work.id;choose.id='work-choose-'+work.id;choose.setAttribute('aria-labelledby',choose.id+' '+heading.id);actions.append(choose);
       card.append(head,heading,excerpt,foot,actions);grid.append(card);
     }
-    el('catalogue-count').textContent=showWorks?String(count).padStart(2,'0')+' / '+String(works.length).padStart(2,'0'):t('collectionWorks').replace('{count}',works.length);
+    el('catalogue-count').textContent=showWorks?String(count).padStart(2,'0')+' / '+String(works.length).padStart(2,'0'):counted('collectionWorks',works.length);
     el('no-results').hidden=!showWorks||count>0;
   }
   function addDefault(work){editingId=null;insert(validateLine(defaultEdition(work)));}
@@ -212,8 +216,8 @@
   // translations. The native select stays the single source of truth.
   const CARD_SELECTS=['original-script','font','size'];
   function optionCardLabel(id,value){
-    if(id==='original-script')return [t(value==='zh-Hans'?'simplified':'traditional'),t('optionIncluded')];
-    if(id==='font')return [value==='site'?tr('網站字體'):t('typePixel'),value==='site'?'+'+uiMoney(TARIFF.addOn):t('optionIncluded')];
+    if(id==='original-script')return [t(value==='zh-Hans'?'simplified':'traditional'),''];
+    if(id==='font')return [value==='site'?tr('網站字體'):t('typePixel'),value==='site'?'+'+uiMoney(TARIFF.addOn):''];
     return [sizeName(Number(value)),''];
   }
   function syncOptionCards(){
@@ -270,7 +274,7 @@
   function lineSpecs(line){
     const script=line.workId?t(line.locale==='zh-Hans'?'simplified':'traditional'):languageName(line.locale);
     const specs=[[t('lineOriginal'),script]];
-    if(line.translations.length)specs.push([t('lineTranslations'),line.translations.map(languageName).join(/^(zh|ja)/.test(uiLocale)?'、':', ')]);
+    if(line.translations.length)specs.push([t('lineTranslations'),line.translations.map(code=>t('translation'+code[0].toUpperCase()+code.slice(1))).join(/^(zh|ja)/.test(uiLocale)?'、':', ')]);
     specs.push([t('lineType'),(line.font==='site'?tr('網站字體'):t('typePixel'))+' · '+sizeName(line.size)]);
     return specs;
   }
@@ -296,21 +300,21 @@
     el('bag-count').textContent=String(units());const container=el('bag-lines');container.replaceChildren();
     if(!bag.length)container.append(node('p',t('empty'),'empty-bag'));
     for(const line of bag){
-      const q=quote(line),row=node('article',undefined,'bag-line'),heading=node('h3',lineTitle(line)),details=specList(line),thumb=node('img',undefined,'bag-thumb'),body=node('div',undefined,'bag-line-body');
-      thumb.alt='';thumb.width=64;thumb.height=80;thumb.hidden=true;thumbnail(line,thumb);
+      const q=quote(line),row=node('article',undefined,'bag-line'),[head,preface]=splitTitle(lineTitle(line)),heading=node('h3',head),details=specList(line),thumb=node('img',undefined,'bag-thumb'),body=node('div',undefined,'bag-line-body');
+      thumb.alt='';thumb.width=96;thumb.height=120;thumb.hidden=true;thumbnail(line,thumb);
       heading.lang=displayLang(line);
       const charges=node('details',undefined,'bag-charges'),cost=node('summary',t('priceBreakdown'));charges.append(cost);for(const item of q.items)charges.append(node('span',`${tr(item.label)} ${uiMoney(itemAmount(item))}`));
       const actions=node('div',undefined,'bag-actions'),label=node('label',t('quantity')),input=node('input');input.type='number';input.min='1';input.max=String(MAX_UNITS);input.step='1';input.value=line.quantity;input.id='qty-'+line.id;input.setAttribute('aria-label',t('quantity')+' · '+lineTitle(line));
       input.addEventListener('change',()=>{const quantity=Number(input.value);if(!Number.isInteger(quantity)||quantity<1||units()-line.quantity+quantity>MAX_UNITS){input.value=line.quantity;notify('limit');return;}line.quantity=quantity;pendingOrder=null;pendingPlan=null;persist();renderBag(input.id);});label.append(input);
       actions.append(label,button(t('edit'),()=>editLine(line)),button(t('remove'),()=>{bag=bag.filter(x=>x.id!==line.id);pendingOrder=null;pendingPlan=null;persist();renderBag();notify('updated');el('to-checkout').focus();},'text-button remove-line'),node('strong',uiMoney(q.price*line.quantity),'line-total'));
-      body.append(heading,details,charges,actions);row.append(thumb,body);container.append(row);
+      body.append(heading);if(preface){const note=node('p',preface,'bag-preface');note.lang=heading.lang;body.append(note);}body.append(details,charges,actions);row.append(thumb,body);container.append(row);
     }
     el('bag-total').textContent=uiMoney(bag.reduce((sum,line)=>sum+quote(line).price*line.quantity,0));el('to-checkout').disabled=!bag.length||busy;
     el('storage-note').textContent=t(storageOK?'storage':'storageError');if(focusId)el(focusId)?.focus();
   }
   function renderCheckout(){
     const summary=el('checkout-summary');summary.replaceChildren();
-    for(const line of bag){const row=node('div',undefined,'checkout-line'),name=node('span',`${lineTitle(line)} × ${line.quantity}`);name.append(node('small',lineSummary(line),'micro'));row.append(name,node('strong',uiMoney(quote(line).price*line.quantity)));summary.append(row);}
+    for(const line of bag){const row=node('div',undefined,'checkout-line'),name=node('span',lineTitle(line));if(line.quantity>1)name.append(' ',node('span','× '+line.quantity,'line-qty'));name.append(node('small',lineSummary(line),'micro'));row.append(name,node('strong',uiMoney(quote(line).price*line.quantity)));summary.append(row);}
     el('checkout-total').textContent=el('bag-total').textContent;
   }
   const adapter=()=>window.poetryCheckoutAdapter;
@@ -468,9 +472,11 @@
     section.refreshReading();
     section.querySelectorAll('[data-shop]').forEach(n=>n.textContent=t(n.dataset.shop));
     section.querySelector('[data-order-field="title"]').textContent=t('order')+' '+order.ref;
-    section.querySelector('[data-order-field="lines"]').replaceChildren(...order.lines.map(line=>{const item=node('li'),name=node('span',`${lineTitle(line)} × ${line.quantity}`);name.lang=displayLang(line);name.append(node('small',lineSummary(line),'micro'));item.append(name,node('strong',uiMoney(line.unitPrice*line.quantity)));return item;}));
+    section.querySelector('[data-order-field="lines"]').replaceChildren(...order.lines.map(line=>{const item=node('li'),name=node('span',lineTitle(line));if(line.quantity>1)name.append(' ',node('span','× '+line.quantity,'line-qty'));name.lang=displayLang(line);name.append(node('small',lineSummary(line),'micro'));item.append(name,node('strong',uiMoney(line.unitPrice*line.quantity)));return item;}));
     section.querySelector('[data-order-field="meta"]').textContent=new Intl.DateTimeFormat(document.documentElement.lang,{dateStyle:'medium',timeStyle:'short',timeZone:'Europe/London'}).format(order.created)+' · '+uiMoney(order.total);
-    const payment=order.payment;section.querySelector('[data-order-field="payment"]').textContent=t('simulatedPayment')+' · '+t(payment.method==='card'?'card':'cash')+(payment.method==='cash'?` · ${t('received')} ${uiMoney(payment.tender)} · ${t('change')} ${uiMoney(payment.change)}`:'');
+    const payment=order.payment,paid=section.querySelector('[data-order-field="payment"]'),slip=(order.receiptMetadata||receiptMeta(order.ref));
+    const detail=payment.method==='card'?`${t('card')} ****${slip.cardEnding}`:`${t('cash')} · ${t('received')} ${uiMoney(payment.tender)} · ${t('change')} ${uiMoney(payment.change)}`;
+    paid.replaceChildren(document.createTextNode(t('simulatedPayment')),node('span',t('receiptShows').replace('{detail}',detail),'payment-receipt'));
     section.querySelector('.order-strip-proof figcaption').textContent=t('continuousEdition')+' / '+order.ref;
     section.querySelectorAll('.order-strip-proof img').forEach((img,i)=>img.alt=i?'':t('continuousEdition')+' '+order.ref);
   }
@@ -514,6 +520,10 @@
     // Keep the choices beside the long paper while they fit above the purchase bar.
     const controls=document.querySelector('.controls'),bar=document.querySelector('.editor-actions');
     const fit=()=>controls.classList.toggle('is-sticky',innerWidth>780&&controls.offsetHeight+24+bar.offsetHeight+16<=innerHeight);
+    // Opening a fold may release the sticky column; keep the clicked heading under the pointer.
+    let anchor=null;
+    controls.addEventListener('click',event=>{const summary=event.target.closest('summary');if(summary)anchor={node:summary,top:summary.getBoundingClientRect().top};},true);
+    controls.addEventListener('toggle',()=>{if(!anchor)return;const {node,top}=anchor;anchor=null;fit();const moved=node.getBoundingClientRect().top-top;if(Math.abs(moved)>1)scrollBy({top:moved,behavior:'instant'});},true);
     new ResizeObserver(fit).observe(controls);addEventListener('resize',fit);fit();
   }
   const initialise=()=>{
