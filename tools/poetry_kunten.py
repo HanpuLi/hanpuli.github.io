@@ -1,7 +1,8 @@
-"""Reviewed kanbun marks and standalone, independently licensed visual readers.
+"""Reviewed kanbun marks and standalone sandboxed visual readers.
 
 The canonical Chinese text stays in the portfolio document. This builds an
-isolated HTML presentation with the unmodified AGPL kanbunHTML renderer.
+isolated HTML presentation with the site's own vertical kanbun typesetter
+(assets/kanbun-viewer/kanbun-render.js).
 No marks are inferred from Japanese translations.
 """
 from __future__ import annotations
@@ -21,7 +22,7 @@ RETURNS = set("レ一二三四五六七八九十上下甲乙丙丁天地人") | 
 }
 MARKUP_CHARS = set("(){}[]‹›«»⦉⦊⌊⌋‘’“”")
 BASE = Path("assets/kanbun-viewer")
-SOURCE_FILES = ("vendor/kanbun.js", "vendor/kanbun.css", "LICENSE-AGPL-3.0")
+SOURCE_FILES = ("kanbun-render.js", "kanbun-render.css", "viewer.js", "viewer.css")
 
 
 def esc(value: str) -> str:
@@ -131,10 +132,10 @@ class Kunten:
 
     def page(self, tid: str) -> str:
         source = self.library.edition(tid, "zh")["body"]
-        # Upstream convertKanbunDiv converts each direct child paragraph and
-        # expects an HTML-escaped annotated string, not already-rendered HTML.
-        # Preserve original line and stanza boundaries for the established
-        # vertical typesetter; it handles each stanza's immediate paragraphs.
+        # convertKanbunDiv converts each direct child paragraph and expects
+        # an HTML-escaped annotated string, not already-rendered HTML.
+        # Preserve original line and stanza boundaries for the vertical
+        # typesetter; it handles each stanza's immediate paragraphs.
         stanzas = []
         for stanza in self.annotated(tid).split("\n\n"):
             lines = "".join(
@@ -155,13 +156,13 @@ class Kunten:
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>漢文訓点 · {esc(tid)}</title>
-<link rel="stylesheet" href="../vendor/kanbun.css">
+<link rel="stylesheet" href="../kanbun-render.css">
 <link rel="stylesheet" href="../viewer.css">
-<script defer src="../vendor/kanbun.js"></script>
+<script defer src="../kanbun-render.js"></script>
 <script defer src="../viewer.js"></script>
 </head>
 <body data-kanbun-text="{esc(tid)}">
-<main class="kanbun betagumi okurigana-sinking split-touching-kana" id="kanbun-display" aria-hidden="true">
+<main class="kanbun" id="kanbun-display" aria-hidden="true">
 {paragraphs}
 </main>
 <script type="application/json" id="canonical-kanbun-data">{source_json}</script>
@@ -174,7 +175,7 @@ class Kunten:
         target = self.library.root / BASE
         for required in SOURCE_FILES:
             if not (target / required).is_file():
-                raise ValueError("Kanbun viewer vendor asset missing: " + required)
+                raise ValueError("Kanbun viewer asset missing: " + required)
         expected = {tid + '.html' for tid in self.texts}
         existing = {page.name for page in (target / 'works').glob('*.html')}
         obsolete = sorted(existing - expected)

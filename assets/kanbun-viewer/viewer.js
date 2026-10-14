@@ -1,6 +1,5 @@
-/* A standalone kanbunHTML presentation document.
- * Copyright 2026 Hanpu Li, licensed under AGPL-3.0-or-later.
- * Source: /assets/kanbun-viewer/ and vendor attribution in NOTICE.md.
+/* A standalone kanbun presentation document.
+ * Copyright 2026 Hanpu Li. Typesetting is in kanbun-render.js.
  */
 (() => {
   'use strict';
@@ -31,9 +30,8 @@
   let lastWidth = 0;
   function measure() {
     // Measure actual painted DOM boxes, not a width guessed from the number
-    // of characters or a fixed amount of pseudo-ruby padding. The upstream
-    // renderer owns its kanji/reading cells; some of their descendants can
-    // protrude beyond the root cell's border box.
+    // of characters or a fixed amount of pseudo-ruby padding. Reading
+    // cells sit in side tracks of each .unit and are measured directly.
     const content = [node, ...node.querySelectorAll(
       '.unit,.kanbun-stanza,.kanji,.furigana,.okurigana,.kaeriten,.saidoku,.punctuation'
     )];

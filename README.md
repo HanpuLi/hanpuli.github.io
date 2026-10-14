@@ -36,11 +36,10 @@ are centred without centring or rewriting the individual authored lines.
 `npm run qa:poetry-layout` exercises these behaviours in Chromium;
 `POETRY_LAYOUT_ENGINE=webkit npm run qa:poetry-layout` checks WebKit as well.
 An experimental Japanese kanbun display layer is available only on reviewed
-text versions (all 29 classical texts now have source-aligned editorial pilot marks). It uses an independently sandboxed kanbunHTML
-visual document with the unmodified Chinese source available to assistive
+text versions (all 29 classical texts now have source-aligned editorial pilot marks). It uses a sandboxed vertical kanbun
+visual document (the site's own typesetter) with the unmodified Chinese source available to assistive
 technology, the clipboard and script-disabled readers. See
-`docs/poetry-kunten-renderer.md`. The AGPL-licensed viewer is not cleared for
-public deployment until its licence boundary and full text coverage are reviewed.
+`docs/poetry-kunten-renderer.md`.
 Run `npm run qa:poetry-kunten` for its dedicated browser and fallback checks.
 
 ## Local checks

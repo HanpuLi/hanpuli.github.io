@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Browser behaviour of the independently sandboxed kanbunHTML reader.
+// Browser behaviour of the sandboxed kanbun reader.
 // Site-wide poetrylayoutcheck still tests all other 29 Japanese readings.
 import assert from 'node:assert/strict';
 import {createServer} from 'node:http';

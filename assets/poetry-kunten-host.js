@@ -1,5 +1,5 @@
 /* A separate, portfolio-owned controller for a sandboxed kanbun viewer.
- * The iframe runs the unmodified AGPL kanbunHTML module; this host controller
+ * The iframe runs the site's kanbun typesetter; this host controller
  * exchanges only data and dimensions by postMessage.
  */
 (() => {

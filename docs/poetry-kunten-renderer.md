@@ -20,10 +20,14 @@ poetry-kunten-collation.md for coverage, uncertainties and textual decisions.
 - tools/poetry_kunten.py builds one standalone, noindex HTML presentation
   document per reviewed work inside assets/kanbun-viewer/works/. It preserves
   paragraph and stanza source boundaries, and passes textual reading marks
-  in the syntax understood by the upstream renderer.
-- assets/kanbun-viewer/vendor/kanbun.js and vendor/kanbun.css are exact
-  copies of untunt/kanbunHTML revision 814cb25. The isolated viewer uses
-  its native betagumi (solid-setting) mode, including split-touching-kana.
+  in the manuscript syntax of tools/poetry_kunten_manuscript.py.
+- assets/kanbun-viewer/kanbun-render.js and kanbun-render.css are the
+  site's own vertical typesetter (2026-10-14; it replaced a vendored
+  third-party renderer). Each Han character is one .unit with a fixed
+  three-track grid: left side (再読 reading, return mark), character and
+  punctuation, right side (furigana, okurigana sinking into the lower
+  half). Tracks never share horizontal space and rows are auto-sized, so
+  readings cannot be drawn over a character or each other.
 - assets/kanbun-viewer/viewer.js is a separately sandboxed document
   controller. It sends only the manuscript ID, source checksum and measured
   viewport dimensions to the host. There are no third-party network calls.
@@ -42,24 +46,12 @@ The Japanese user interface initially requests marked reading *for reviewed
 texts only*, but a reader may select 白文, switch to horizontal layout, or
 enable simplified reading. No-script browsers always see the original.
 
-## Licensing and deployment gate
+## Licensing
 
-kanbunHTML is AGPL-3.0. Exact upstream file SHA-256 hashes and its
-licence are recorded in assets/kanbun-viewer/NOTICE.md. The isolated
-viewer programs and generated structural template carry AGPL terms;
-original Chinese poems, authored Japanese readings and editorial content
-embedded as data retain their separate literary copyright. A generated
-HTML file can contain code and literary material with different rights:
-the reader must not infer that the author's text is newly AGPL-licensed.
-The parent portfolio is not wholesale relicensed here.
-
-Whether a distributed parent and frame are separate works, given their
-particular communication and usage, is a legal conclusion rather than a
-property established by sandbox. Do not publish the AGPL components
-before compatibility with the site's existing licensed and unlicensed
-parts has been reviewed. See the GNU licence FAQ on aggregations and
-combining programs. The TeX alternative gckanbun is MIT licensed but
-its SVG output is paths-only and requires a separate accessible text.
+All renderer code (kanbun-render.js/.css, viewer.js/.css, the generated
+page template) is the site's own code; no third-party renderer is
+distributed. The poems, Japanese readings and editorial marks embedded
+as data are the author's literary works; see README.md.
 
 ## Tested locally
 

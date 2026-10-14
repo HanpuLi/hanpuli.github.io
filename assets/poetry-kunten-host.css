@@ -1,5 +1,4 @@
-/* Portfolio-owned host styles for an isolated kanbunHTML visual reader.
-   No third-party renderer code is included in the host. */
+/* Portfolio-owned host styles for an isolated kanbun visual reader. */
 .poetry-kunten-option {
   display:inline-flex;align-items:center;gap:.5rem;
   min-height:44px;margin-inline-start:.5rem;
