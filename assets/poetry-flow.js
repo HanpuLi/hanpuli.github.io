@@ -69,8 +69,18 @@ window.PoetryFlow = (() => {
 
   function layout(record) {
     const {composition, title, body, titleText} = record;
+    if (composition.parentElement?.classList.contains('poetry-kanbun-showing')) {
+      clear(record);
+      return;
+    }
     let stanzas = record.stanzas;
-    if (!stanzas.length || getComputedStyle(stanzas[0]).writingMode !== 'vertical-rl') {
+    // Long verses are split into cloned bands. The immutable originals in
+    // record.stanzas are then detached; computed style on a detached node
+    // reverts to horizontal-tb, making successive reflows oscillate between
+    // split and unsplit states. Inspect an attached displayed stanza instead.
+    const current = body.querySelector('.poetry-stanza');
+    if (!stanzas.length || !current ||
+        getComputedStyle(current).writingMode !== 'vertical-rl') {
       clear(record); return;
     }
     const verticalTitle = getComputedStyle(title).writingMode === 'vertical-rl';

@@ -1,0 +1,70 @@
+/* Portfolio-owned host styles for an isolated kanbun visual reader. */
+.poetry-kunten-option {
+  display:inline-flex;align-items:center;gap:.5rem;
+  min-height:44px;margin-inline-start:.5rem;
+  font:.75rem/1.7 var(--mono);color:var(--muted);cursor:pointer;
+}
+.poetry-kunten-option input { margin:0;width:1.15rem;height:1.15rem;accent-color:var(--ink); }
+.poetry-kunten-option:has(input:checked){ color:var(--ink); }
+.poetry-kanbun-local-control {
+  display:flex;justify-content:center;align-items:center;margin:.4rem 0 1rem;
+}
+.poetry-kanbun-local-control[hidden] {display:none;}
+.poetry-kanbun-local-control button {
+  border:0;border-bottom:1px solid currentColor;background:transparent;
+  font:.74rem/1.6 var(--mono);color:var(--muted);
+  cursor:pointer;min-height:44px;padding:.5rem .3rem;
+}
+.poetry-kanbun-local-control button:hover {color:var(--ink);}
+.poetry-kanbun-stage[hidden] { display:none!important; }
+.poetry-kanbun-stage:not([data-kanbun-ready="true"]):not([hidden]) {
+  position:absolute!important;left:-10000px!important;top:0!important;
+  width:100px!important;height:1px!important;
+  overflow:visible!important;opacity:0!important;pointer-events:none!important;
+}
+.poetry-page .poetry-kanbun-showing .poetry-composition {
+  /* Maintain one accessible, copyable Chinese original, without creating
+     phantom glyph columns or hiding text from assistive technology. */
+  position:absolute!important;
+  width:1px!important;height:1px!important;
+  margin:-1px!important;padding:0!important;
+  overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;
+}
+.poetry-page .poetry-kanbun-stage {
+  width:100%;max-width:100%;margin:0 auto;
+  text-align:center;overflow:visible;
+}
+.poetry-page .poetry-kanbun-display {
+  display:flex;flex-flow:row-reverse nowrap;
+  align-items:flex-start;justify-content:center;
+  gap:clamp(12px,2vw,26px);
+  max-width:100%; margin-inline:auto;
+}
+.poetry-page .poetry-kanbun-heading {
+  writing-mode:vertical-rl;text-orientation:mixed;
+  font-size:1.12rem;line-height:1.55;font-weight:400;
+  letter-spacing:.025em;max-height:28em;
+  white-space:normal; flex:0 1 auto; overflow-wrap:anywhere;
+}
+.poetry-page .poetry-kanbun-frame {
+  display:block;flex:0 0 auto;
+  border:0;background:transparent;overflow:hidden;
+  width:90px;height:600px;max-width:100%;
+  pointer-events:auto;
+}
+.poetry-page .poetry-kanbun-tools {
+  display:flex;gap:.8rem 1.4rem;justify-content:center;
+  align-items:center;flex-wrap:wrap;margin:.4rem auto 1rem;
+  font:.72rem/1.5 var(--mono);color:var(--muted);
+}
+.poetry-page .poetry-kanbun-tools button {
+  min-height:44px;border:0;border-bottom:1px solid currentColor;
+  padding:.5rem .25rem;background:transparent;color:inherit;
+  font:inherit;cursor:pointer;
+}
+.poetry-page .poetry-kanbun-tools button:hover {color:var(--ink);}
+.poetry-page .poetry-kanbun-tools a {padding:.4rem 0;overflow-wrap:anywhere;}
+@media(max-width:620px){
+  .poetry-page .poetry-kanbun-heading {font-size:1rem;}
+  .poetry-page .poetry-kanbun-display {gap:12px;}
+}
