@@ -14,6 +14,8 @@
     const stanzas = node.querySelectorAll('[data-kanbun-stanza]');
     if (!stanzas.length) throw Error('Missing kanbun stanza');
     stanzas.forEach(stanza=>convertKanbunDiv(stanza));
+    const heading = node.querySelector('[data-kanbun-heading]');
+    if (heading) convertKanbunDiv(heading);
   } catch {
     parent.postMessage({type:'hanpu-kanbun-viewer-v1',state:'error',
                         tid:document.body.dataset.kanbunText}, '*');
@@ -33,7 +35,7 @@
     // of characters or a fixed amount of pseudo-ruby padding. Reading
     // cells sit in side tracks of each .unit and are measured directly.
     const content = [node, ...node.querySelectorAll(
-      '.unit,.kanbun-stanza,.kanji,.furigana,.okurigana,.kaeriten,.saidoku,.punctuation'
+      '.unit,.kanbun-heading,.kanbun-body,.kanbun-stanza,.kanji,.furigana,.okurigana,.kaeriten,.saidoku,.punctuation'
     )];
     let right = 0;
     let bottom = 0;

@@ -23,6 +23,8 @@ RETURNS = set("レ一二三四五六七八九十上下甲乙丙丁天地人") | 
 }
 MARKUP_CHARS = set("(){}[]‹›«»⦉⦊⌊⌋‘’“”\u2010")
 BASE = Path("assets/kanbun-viewer")
+TITLE_COLUMN = 12  # Han characters in a single title column
+PREFACE_COLUMN = 14  # Han characters in one column of a clause-broken preface
 SOURCE_FILES = ("kanbun-render.js", "kanbun-render.css", "viewer.js", "viewer.css")
 
 
@@ -82,6 +84,11 @@ def check_marks(tid: str, source: str, marks: list[dict]) -> None:
             raise ValueError("Unpaired 二 point: " + tid)
         start += len(line)
 
+
+
+def han_count(annotated: str) -> int:
+    plain = re.sub(r"[({\[‹«][^)}\]›»]*[)}\]›»]", "", annotated)
+    return sum("\u3400" <= c <= "\u9fff" for c in plain)
 
 
 def annotate(source: str, marks: list[dict]) -> str:
@@ -158,7 +165,14 @@ class Kunten:
     def href(self, tid: str) -> str:
         if tid not in self.texts:
             raise ValueError("Unreviewed kanbun text: " + tid)
-        return f"/assets/kanbun-viewer/works/{tid}.html"
+        # Versioned by content: a cached old frame beside a new host page
+        # showed neither the old outer title nor the new framed one.
+        digest = hashlib.sha256(self.page(tid).encode("utf-8")).hexdigest()[:12]
+        return f"/assets/kanbun-viewer/works/{tid}.html?v={digest}"
+
+    def asset(self, name: str) -> str:
+        data = (self.library.root / BASE / name).read_bytes()
+        return f"../{name}?v={hashlib.sha256(data).hexdigest()[:12]}"
 
     def page(self, tid: str) -> str:
         source = self.library.edition(tid, "zh")["body"]
@@ -167,22 +181,39 @@ class Kunten:
         # Preserve original line and stanza boundaries for the vertical
         # typesetter; it handles each stanza's immediate paragraphs.
         # The title opens the first stanza as its own columns, as on a
-        # printed kanbun page: the tune name, then each preface or version
-        # note broken after its clause punctuation.
-        heading = "".join(
-            f'<p class="kanbun-title{" kanbun-preface" if n else ""}">{esc(column)}</p>'
-            for n, part in enumerate(self.annotated_title(tid))
-            for column in re.split(r"(?<=[，。])", part) if column
-        )
+        # printed kanbun page. A short unpunctuated part (無題 · 臨江仙,
+        # 滿庭芳 · 遙思楚潭) shares the tune name's column; a preface with
+        # clauses is set smaller and lower, broken only after a ，/。.
+        columns: list[tuple[str, str]] = []
+        for n, part in enumerate(self.annotated_title(tid)):
+            # Clauses are packed into as few preface columns as fit, so a
+            # long preface does not strand a short last clause.
+            pieces: list[str] = []
+            for clause in (c for c in re.split(r"(?<=[，。])", part) if c):
+                if pieces and han_count(pieces[-1] + clause) <= PREFACE_COLUMN:
+                    pieces[-1] += clause
+                else:
+                    pieces.append(clause)
+            if (n and len(pieces) == 1 and columns[-1][0] == "kanbun-title"
+                    and han_count(columns[-1][1] + part) <= TITLE_COLUMN):
+                columns[-1] = ("kanbun-title", columns[-1][1] + "·" + part)
+            else:
+                kind = "kanbun-title" + (" kanbun-preface" if n else "")
+                columns += [(kind, piece) for piece in pieces]
+        heading = ('<div class="kanbun-heading" data-kanbun-heading>'
+                   + "".join(f'<p class="{kind}">{esc(text)}</p>' for kind, text in columns)
+                   + '</div>')
         stanzas = []
-        for n, stanza in enumerate(self.annotated(tid).split("\n\n")):
-            lines = (heading if n == 0 else "") + "".join(
+        for stanza in self.annotated(tid).split("\n\n"):
+            lines = "".join(
                 f"<p>{esc(line)}</p>" for line in stanza.splitlines()
                 if line.strip()
             )
             if lines:
                 stanzas.append(f'<div class="kanbun-stanza" data-kanbun-stanza>{lines}</div>')
-        paragraphs = "".join(stanzas)
+        # The heading is a separate right-hand block, so every stanza band
+        # starts at the same edge left of it rather than under the title.
+        paragraphs = heading + '<div class="kanbun-body">' + "".join(stanzas) + '</div>'
         source_json = json.dumps(
             {"tid": tid, "body": source, "sha256": self.texts[tid]["source_body_sha256"]},
             ensure_ascii=False, separators=(",", ":"),
@@ -194,10 +225,10 @@ class Kunten:
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>漢文訓点 · {esc(tid)}</title>
-<link rel="stylesheet" href="../kanbun-render.css">
-<link rel="stylesheet" href="../viewer.css">
-<script defer src="../kanbun-render.js"></script>
-<script defer src="../viewer.js"></script>
+<link rel="stylesheet" href="{self.asset('kanbun-render.css')}">
+<link rel="stylesheet" href="{self.asset('viewer.css')}">
+<script defer src="{self.asset('kanbun-render.js')}"></script>
+<script defer src="{self.asset('viewer.js')}"></script>
 </head>
 <body data-kanbun-text="{esc(tid)}">
 <main class="kanbun" id="kanbun-display" aria-hidden="true">

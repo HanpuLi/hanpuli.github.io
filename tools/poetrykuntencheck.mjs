@@ -58,8 +58,8 @@ try {
         const body = '#kanbun-display p:not(.kanbun-title)';
         assert.equal(await renderer.locator(body+' .unit').count(),16);
         assert.equal(await renderer.locator(body+' .kaeriten').count(),3);
-        // 乙五《無題 · 十六字令》: two title columns before the poem.
-        assert.deepEqual(await renderer.locator('#kanbun-display .kanbun-title').allTextContents(),['無題','十六字令']);
+        // 乙五《無題 · 十六字令》: one short title column beside the poem.
+        assert.deepEqual(await renderer.locator('#kanbun-display .kanbun-title').allTextContents(),['無題·十六字令']);
         // A one-line poem must remain in one vertical character column.
         const columns = await renderer.locator(body+' .kanji').evaluateAll(nodes =>
           [...new Set(nodes.map(el=>Math.round(el.getBoundingClientRect().x)))]

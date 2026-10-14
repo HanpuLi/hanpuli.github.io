@@ -20,9 +20,11 @@ poetry-kunten-collation.md for coverage, uncertainties and textual decisions.
 - Titles are read text too (2026-10-14). Each manuscript and 書き下し
   entry carries a `title` list, one item per part of the 《…》 title
   (tune name, preface, version note; a sequence label such as 甲四 is
-  navigation and is not read). The viewer sets the title as the first
-  columns of the first stanza, prefaces smaller and lower, broken after
-  each ，/。; the 書き下し disclosure prints the read title above the body.
+  navigation and is not read). The viewer sets the title as a right-hand
+  block beside (or, when narrow, above) all stanzas, so every stanza starts
+  at the same edge. Short unpunctuated parts share the tune name's column
+  (≤12 Han); prefaces are smaller and lower, clauses packed into columns of
+  ≤14 Han. The 書き下し disclosure prints the read title above the body.
 - tools/poetry_kunten.py builds one standalone, noindex HTML presentation
   document per reviewed work inside assets/kanbun-viewer/works/. It preserves
   paragraph and stanza source boundaries, and passes textual reading marks

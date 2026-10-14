@@ -39,7 +39,7 @@ body { padding:12px 15px; box-sizing:content-box; }
 #kanbun-display.kanbun {
   margin:0; padding:0;
   width:max-content; max-width:var(--kanbun-content-cap, 1000px);
-  height:auto; display:flex;flex-direction:column;
+  height:auto; display:flex;flex-flow:row-reverse wrap;align-items:flex-start;row-gap:20px;
   writing-mode:horizontal-tb; text-orientation:mixed;
   font-family:"Shippori Mincho", "Yu Mincho", YuMincho, serif;
   font-size:23px; font-weight:400; line-height:1;
@@ -60,8 +60,18 @@ body { padding:12px 15px; box-sizing:content-box; }
 @media(prefers-color-scheme:dark){
   html,body {color:#eae7e1;background:transparent;}
 }
-/* The title opens the first stanza: tune name at full height, prefaces
-   smaller and set lower, then a wider gap before the poem's first line. */
+/* The title is its own right-hand block: tune name at full height,
+   clause-broken prefaces smaller and set lower. Every stanza band starts
+   at the same edge, so a second stanza never sits under the title. */
+#kanbun-display.kanbun .kanbun-heading {
+  display:flex; flex-flow:row-reverse wrap; align-items:flex-start;
+  align-content:flex-start; column-gap:.3em; row-gap:14px;
+  flex:0 1 auto; min-width:0; max-width:100%; margin-left:.8em;
+}
+/* Beside the title when about four columns fit; otherwise the whole body
+   moves below it, still flush to one right-hand edge. */
+#kanbun-display.kanbun .kanbun-body {
+  display:flex; flex-direction:column; flex:1 1 0; min-width:min(100%,9em);
+}
 #kanbun-display.kanbun p.kanbun-title { font-size:.86em; }
 #kanbun-display.kanbun p.kanbun-preface { font-size:.74em; padding-top:1.4em; }
-#kanbun-display.kanbun p.kanbun-title + p:not(.kanbun-title) { margin-right:.8em; }
