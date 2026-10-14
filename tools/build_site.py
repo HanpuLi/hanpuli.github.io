@@ -1495,7 +1495,7 @@ def build(check: bool = False) -> list[Path]:
             swap_once(b'/poetry-voucher/shop.html">\n<link rel="stylesheet"', b'/poetry-voucher/edition.html">\n<link rel="stylesheet"')
             swap_once(b'<main id="shop" tabindex="-1">', b'<div id="shop" hidden>')
             swap_once(b'</main>\n<dialog id="product-editor" aria-labelledby="editor-heading"><button class="dialog-close" type="button" data-close="product-editor" data-shop="close">Close</button>',
-                      b'</div>\n<main id="product-editor" aria-labelledby="edition-product-title" tabindex="-1"><nav class="edition-breadcrumb" data-shop-label="productNav" aria-label="Product"><a id="edition-back" href="shop.html">&larr; Poetry Voucher</a></nav><header class="edition-lead"><p class="eyebrow" id="edition-collection">Poetry Voucher</p><h1 id="edition-product-title">Poetry Voucher</h1><p id="edition-editing" class="edition-editing" data-shop="editingNotice" hidden>Editing an edition in your bag</p></header>')
+                      b'</div>\n<main id="product-editor" aria-labelledby="edition-product-title" tabindex="-1"><nav class="edition-breadcrumb" data-shop-label="productNav" aria-label="Product"><a id="edition-back" href="shop.html">&larr; Poetry Voucher</a></nav><header class="edition-lead"><p class="eyebrow" id="edition-collection">Poetry Voucher</p><h1 id="edition-product-title">Poetry Voucher</h1><p id="edition-from" class="edition-from"></p><p id="edition-editing" class="edition-editing" data-shop="editingNotice" hidden>Editing an edition in your bag</p></header>')
             swap_once(b'</div></dialog>\n<dialog id="bag-dialog"', b'</div></main>\n<dialog id="bag-dialog"')
             # The first product view is the poem itself, not a squeezed two-column
             # receipt. Receipt, full strip and text remain selectable on demand.
@@ -1506,11 +1506,11 @@ def build(check: bool = False) -> list[Path]:
             # Proofs flow at their natural length, so they are not scroll regions
             # and need neither tabindex nor a second label beside the image alt.
             swap_once(b'<div id="pair-view" class="proof-desk">',
-                      b'<div id="voucher-view" class="proof-desk single"><figure><div class="paper"><img id="voucher-hero-image" src="sample-voucher.png" alt="Poetry voucher" hidden></div></figure></div><div id="pair-view" class="proof-desk" hidden>')
+                      b'<div id="voucher-view" class="proof-desk single"><figure><div class="paper"><img id="voucher-hero-image" src="sample-voucher.png" alt="Poetry voucher" hidden></div></figure><button id="voucher-expand" class="voucher-expand" type="button" aria-expanded="false" data-shop="viewWhole">View the whole voucher</button></div><div id="pair-view" class="proof-desk" hidden>')
             swap_once(b'<div class="export-bar">',
-                      b'<p class="edition-delivery" data-shop="editionDelivery">Choose how this poem is printed. The receipt is finalised at checkout. Nothing is charged or shipped.</p><div class="export-bar">')
+                      b'<p class="edition-delivery" data-shop="editionDelivery">Choose how this poem is printed. The receipt is finalised at checkout.</p><div class="export-bar">')
             swap_once(b'<strong id="editor-price"></strong>',
-                      b'<strong id="editor-price"></strong><span class="edition-price-note" data-shop="fictionalPrice">Fictional price</span>')
+                      b'<strong id="editor-price"></strong><span id="edition-summary" class="edition-summary"></span>')
             # Sequence numbers belong to the catalogue / bag / till / order flow.
             # The product page has a single step, so it carries no number at all.
             swap_once(b'<legend><span aria-hidden="true">02</span> <span data-shop="stageLayout">', b'<legend><span data-shop="stageLayout">')
@@ -1521,6 +1521,12 @@ def build(check: bool = False) -> list[Path]:
             proof = data[proof_start:proof_end]
             data = data[:data.rindex(b'\n', 0, proof_start)] + data[proof_end:]
             swap_once(b'<section class="controls"', proof + b'\n    <section class="controls"')
+            # Choices come first on the product page; reading the whole poem follows them.
+            reading_start = data.index(b'<details id="shop-reading"')
+            reading_end = data.index(b'<label for="title">', reading_start)
+            reading = data[reading_start:reading_end]
+            data = data[:reading_start] + data[reading_end:]
+            swap_once(b'<details class="receipt-details">', reading + b'<details class="receipt-details">')
             # The page has one main landmark and keeps its bag / checkout dialogs.
         if not target.exists() or target.read_bytes() != data:
             changed.append(target)

@@ -17,6 +17,8 @@ try{
   const context=await browser.newContext({viewport:{width:390,height:844},locale:lang});
   const page=await context.newPage();page.on('pageerror',e=>errors.push(lang+': '+e.message));
   await page.goto(`${base}/poetry-voucher/shop.html?lang=${lang}`);
+  if(lang==='en'){await page.locator('.collection-sample').first().waitFor({state:'visible',timeout:30000});assert(await page.locator('.collection-sample').first().evaluate(img=>img.naturalWidth===384),'collection tiles show a rendered voucher');
+   assert(await page.locator('.collection-tile').first().evaluate(n=>n.getBoundingClientRect().top<innerHeight),'first collection visible on the first phone screen');}
   await page.locator('.collection-tile').first().click();
   const choose=page.locator('.product-card .choose-button').first();
   assert.equal(await choose.evaluate(n=>n.tagName),'A','product cards are real links (new tab, share)');
@@ -32,7 +34,23 @@ try{
   assert.equal(await page.locator('#pair-view').isHidden(),true,'single poem paper first');
   assert(await page.locator('#voucher-hero-image').evaluate(img=>img.naturalWidth>0));
   assert.equal(await page.locator('#original-script').inputValue(),lang==='zh-Hans'?'zh-Hans':'zh-Hant');
-  assert.equal(await page.locator('#translation-options input:checked').count(),['en','ja','de','fr','ru'].includes(lang)?1:0);
+  assert.equal(await page.locator('#translation-options input:checked').count(),0,`${lang}: no paid translation is preselected`);
+  // Apple Store audit 2026-10-14: price directly under the title, each option shows its cost.
+  const lead=await page.evaluate(()=>{const h=document.querySelector('#edition-product-title').getBoundingClientRect(),p=document.querySelector('#edition-from').getBoundingClientRect();return {gap:p.top-h.bottom,text:document.querySelector('#edition-from').textContent};});
+  assert(lead.text.includes(await page.locator('#editor-price').innerText()),`${lang}: starting price under the title (${lead.text})`);
+  assert(lead.gap>=0&&lead.gap<40,`${lang}: price sits directly under the title`);
+  assert.equal(await page.locator('#translation-options .option-price').count(),5);
+  assert.equal(await page.locator('.option-cards').count(),3,`${lang}: script, typeface and size are cards`);
+  assert((await page.locator('#edition-summary').textContent()).length>0,`${lang}: purchase bar summarises the edition (shown from 561px)`);
+  assert.equal(await page.locator('[data-shop="fictionalPrice"]').count(),0,`${lang}: no extra fiction label on the product page`);
+  // Phone: the first choice is reachable without scrolling past the whole voucher.
+  const firstChoice=await page.locator('label[for="original-script"]').evaluate(n=>n.getBoundingClientRect().top+scrollY);
+  assert(firstChoice<=844+200,`${lang}: first choice within ~1 screen on a phone (${Math.round(firstChoice)})`);
+  const clipped=await page.locator('#voucher-view .paper').evaluate(n=>n.getBoundingClientRect().height);
+  await page.locator('#voucher-expand').click();
+  assert.equal(await page.locator('#voucher-expand').getAttribute('aria-expanded'),'true');
+  assert(await page.locator('#voucher-view .paper').evaluate((n,h)=>n.getBoundingClientRect().height>h+100,clipped),`${lang}: whole voucher expands in the page`);
+  await page.locator('#voucher-expand').click();await page.evaluate(()=>scrollTo(0,0));
   assert(await page.locator('#edition-product-title').innerText());
   assert(await page.locator('#editor-price').innerText());
   // Audit 2026-10-14: the paper is visible on arrival, the page is not trapped in
@@ -71,9 +89,11 @@ try{
   const result=await new AxeBuilder({page}).analyze();
   assert.deepEqual(result.violations.map(v=>({id:v.id,target:v.nodes.map(n=>n.target)})),[],lang+' product axe');
   await page.locator('#save-line').click();
-  await page.waitForURL(/\/poetry-voucher\/shop\.html\?/);
   await page.locator('#bag-dialog').waitFor({state:'visible',timeout:30000});
-  assert(await page.locator('#bag-dialog').isVisible(),'selection returns with real bag review');
+  assert.equal(new URL(page.url()).pathname,'/poetry-voucher/edition.html','adding opens the bag on the product page');
+  await page.locator('.bag-thumb').waitFor({state:'visible',timeout:30000});
+  assert(await page.locator('.bag-thumb').evaluate(img=>img.naturalWidth===384),'bag shows the rendered voucher');
+  assert.equal(await page.locator('.bag-line dl.line-specs dt').count(),2,'bag lists original and type');
   assert.equal(await page.locator('#bag-count').textContent(),'1');
   await page.locator('.bag-line').getByRole('button',{name:/Edit|編輯|编辑|編集|Bearbeiten|Modifier|Изменить/}).click();
   await page.waitForURL(/\/poetry-voucher\/edition\.html\?/);
@@ -88,8 +108,8 @@ try{
   await page.locator('.advanced-type summary').click();
   await page.locator('#font').selectOption('site');
   await page.locator('#save-line').click();
-  await page.waitForURL(/\/poetry-voucher\/shop\.html\?/);
   await page.locator('#bag-dialog').waitFor({state:'visible',timeout:30000});
+  assert.equal(new URL(page.url()).searchParams.has('edit'),false,'saved edit leaves edit mode');
   assert.equal(await page.locator('.bag-line').count(),1,'editing must not duplicate a selection');
   const saved=await page.evaluate(()=>poetryShop.snapshot().bag);
   assert.equal(saved[0].font,'site');
@@ -98,9 +118,27 @@ try{
   await context.close();
  }
  const context=await browser.newContext({viewport:{width:390,height:844}}),page=await context.newPage();
+ // The configured edition lives in the URL: shareable, reloadable, validated.
+ await page.goto(base+'/poetry-voucher/edition.html?lang=en&work=jia-yi-b3-text&tr=ja,xx&type=site&size=26');
+ await page.locator('#voucher-hero-image').waitFor({state:'visible'});
+ assert.deepEqual(await page.evaluate(()=>[[...document.querySelectorAll('#translation-options input:checked')].map(i=>i.value),font.value,size.value]),[['ja'],'site','26'],'edition restored from URL');
+ await page.locator('.advanced-type summary').click();await page.locator('#font-cards input[value="bitmap"]').check();
+ let shared=new URL(page.url()).searchParams;
+ assert.equal(await page.locator('#font').inputValue(),'bitmap');assert.equal(shared.get('type'),null);assert.equal(shared.get('size'),null);assert.equal(shared.get('tr'),'ja');
+ await page.locator('#translation-options input[value="ja"]').uncheck();
+ assert.equal(new URL(page.url()).searchParams.get('tr'),null,'default edition has a clean URL');
  await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=jia-yi-b3-text');
  await page.waitForURL(/\/poetry-voucher\/edition\.html\?/);
  assert.equal(new URL(page.url()).searchParams.get('work'),'jia-yi-b3-text','old product URLs redirect');
+ await page.goto(base+'/poetry-voucher/edition.html?lang=en&work=jia-yi-b3-text');
+ await page.locator('#voucher-hero-image').waitFor({state:'visible'});
+ // After adding, Continue browsing returns to the card that was chosen.
+ await page.locator('#save-line').click();await page.locator('#bag-dialog').waitFor({state:'visible'});
+ await page.locator('#bag-dialog [data-shop="continue"]').click();
+ await page.waitForURL(/\/poetry-voucher\/shop\.html\?.*#work-choose-jia-yi-b3-text$/);
+ await page.waitForFunction(()=>document.activeElement?.id==='work-choose-jia-yi-b3-text',{},{timeout:30000});
+ assert(await page.evaluate(()=>{const r=document.activeElement.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight;}),'continue browsing restores the chosen card into view');
+ assert.equal(await page.locator('#bag-dialog').isVisible(),false);
  await page.goto(base+'/poetry-voucher/edition.html?lang=en&work=jia-yi-b3-text');
  await page.locator('#voucher-hero-image').waitFor({state:'visible'});
  // Leaving a product returns to its shelf, focused on the card that was chosen.
@@ -115,10 +153,11 @@ try{
  assert.equal(new URL(page.url()).searchParams.get('work'),'jia-yi-b3-text');
  assert.notEqual(await page.locator('#edition-product-title').innerText(),initial,'localised title switches without losing work');
  await page.locator('#save-line').click();
- await page.waitForURL(/\/poetry-voucher\/shop\.html\?/);
+ await page.locator('#bag-dialog').waitFor({state:'visible'});
  await page.locator('#to-checkout').click();await page.locator('#place-order').click();
  await page.waitForURL(/\/poetry-voucher\/order\.html\?/,{timeout:40000});
  await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1);
+ assert.equal(await page.locator('.order-lines li').count(),1,'order summary lists the edition');
  const download=page.waitForEvent('download');await page.locator('.order-record [data-shop="orderPdf"]').click();
  assert((await readFile(await(await download).path())).toString('latin1').startsWith('%PDF-1.4'));
  console.log('Deep link, in-place locale selection, issued frozen PDF OK');
@@ -140,8 +179,7 @@ try{
   await restricted.locator('#voucher-hero-image').waitFor({state:'visible'});
   await restricted.locator('#save-line').click();
   if(mode==='local'){
-   await restricted.waitForURL(url=>url.pathname.endsWith('/poetry-voucher/shop.html'));
-   // The bag is restored once the catalogue has loaded; wait for that rather than racing it.
+   assert.equal(new URL(restricted.url()).pathname,'/poetry-voucher/edition.html');
    await restricted.waitForFunction(()=>window.poetryShop?.snapshot().bag.length===1,{},{timeout:30000}).catch(()=>{});
    assert.equal((await restricted.evaluate(()=>poetryShop.snapshot())).bag.length,1,'session storage keeps bag');
    await restricted.locator('#bag-dialog').waitFor({state:'visible',timeout:30000});

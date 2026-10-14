@@ -35,7 +35,7 @@ try{
   await page.locator('#browse-all').click();await page.locator('.product-card .choose-button').first().click();await page.waitForURL(/\/poetry-voucher\/edition\.html\?/);await page.locator('#shop-reading').evaluate(el=>el.open=true);assert.equal(await page.locator('#shop-reading-title').textContent(),expected.title);assert.equal(await page.locator('#shop-reading-text').textContent(),expected.body);
   await page.locator('.advanced-type summary').click();await page.locator('#font').selectOption('site');await page.locator('#original-script').selectOption(lang==='zh-Hans'?'zh-Hans':'zh-Hant');
   if(['en','ja','de','fr','ru'].includes(lang))await page.locator(`#translation-options input[value="${lang}"]`).check();
-  await page.locator('#save-line').click();await page.waitForURL(/\/poetry-voucher\/shop\.html\?/);assert(await page.locator('#bag-dialog').isVisible());
+  await page.locator('#save-line').click();await page.locator('#bag-dialog').waitFor({state:'visible',timeout:30000});
   assert.equal(await page.locator('.bag-line h3').textContent(),expected.title);await page.locator('.bag-line input[type=number]').fill('2');await page.locator('.bag-line input[type=number]').press('Tab');
   await page.locator('#to-checkout').click();assert((await page.locator('#checkout-summary').textContent()).includes(expected.title));assert.equal(await page.locator('#place-order').textContent(),copy.SHOP_COPY.place[index]);
   const a11y=await new AxeBuilder({page}).analyze();assert.deepEqual(a11y.violations.map(v=>({id:v.id,target:v.nodes.map(n=>n.target)})),[],lang+' checkout axe');
