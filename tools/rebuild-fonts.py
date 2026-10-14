@@ -3,6 +3,8 @@
 
 页面文字改动后运行:
     uv run --with fonttools --with brotli python tools/rebuild-fonts.py
+仅补全已生成网站的 Shippori 字形（不重建中文缺字补丁）:
+    uv run --with fonttools --with brotli python tools/rebuild-fonts.py --shippori-only
 
 全站繁简中文的一点明子集由 tools/rebuild-chinese-fonts.py 维护。
 Shippori 保留日文字形，不接管中文主字体。
@@ -143,6 +145,13 @@ subprocess.run([sys.executable, "-m", "fontTools.subset", SP,
                 "--no-hinting", "--desubroutinize"], check=True)
 os.remove(txt)
 print(f"{len(main_chars)} 正文字 → {OUT} ({os.path.getsize(OUT)//1024} KB)")
+
+# A kanbun-only typography change requires the Shippori subset but must not
+# silently mutate unrelated Chinese fallback fonts. The default full rebuild
+# retains the original strict gap-font unicode-range verification.
+if "--shippori-only" in sys.argv[1:]:
+    print("Shippori-only rebuild: Chinese fallback fonts left untouched")
+    raise SystemExit(0)
 
 if missing:
     subprocess.run([sys.executable, "-m", "fontTools.subset", IM,

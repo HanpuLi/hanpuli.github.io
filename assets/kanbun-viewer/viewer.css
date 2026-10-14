@@ -1,6 +1,32 @@
 /* Isolated visual reader for kanbunHTML.
  * This stylesheet is part of the kanbun-viewer AGPL-3.0 subprogram.
  * It does not style or modify the portfolio document. */
+/* Each sandbox frame is a separate font-loading document: the host page's
+   @font-face declarations do not cross into it. Reuse the site's already
+   distributed Japanese and Chinese webfonts; leave kanbunHTML's grid intact. */
+@font-face {
+  font-family:"Shippori Mincho";
+  src:url("../fonts/shippori-mincho-subset.woff2") format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+@font-face {
+  font-family:"Shippori Common";
+  src:url("../fonts/shippori-mincho-common.woff2") format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+  unicode-range:U+51FD,U+65E5,U+674E,U+749E,U+7559,U+7E41,U+8A5E,U+8B49;
+}
+@font-face {
+  font-family:"Hanpu Chinese";
+  src:url("../fonts/hanpu-chinese.woff2") format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+.kanbun,
+.kanbun:lang(ja),
+.kanbun :lang(ja),
+.kanbun .dash,
+.kanbun .ellipsis {
+  font-family:"Shippori Common","Shippori Mincho","Hanpu Chinese",serif;
+}
 :root { color-scheme:light dark; }
 html, body {
   margin:0; padding:0; overflow:hidden; width:max-content;

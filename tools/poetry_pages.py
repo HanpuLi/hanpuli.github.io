@@ -276,7 +276,9 @@ class Pages:
                         f'<div class="poem-version kundoku"><div class="body">'
                         f'{esc(self.kundoku.body(tid))}</div>{note_html}</div></details>')
             if tid in self.kunten.texts:
-                editorial = self.kunten.texts[tid].get('notes', [])
+                # Public notes are edited prose, not the much longer
+                # internal collation/audit record in kunten.json.
+                editorial = self.kunten.reader_notes[tid]
                 if editorial:
                     body = ''.join(f'<li>{esc(note)}</li>' for note in editorial)
                     rows.append(f'<details class="poetry-kunten-notes" lang="ja" '

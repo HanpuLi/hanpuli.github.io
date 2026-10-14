@@ -12,7 +12,7 @@
     "qa:first-love": "python3 tools/firstlovecheck.py",
     "qa:voucher": "node tools/vouchertypecheck.mjs",
     "qa:404": "node tools/notfoundcheck.mjs",
-    "qa": "npm run qa:poetry-library && npm run qa:poetry-kunten-manuscript && npm run qa:poetry-layout && npm run qa:poetry-kunten && npm run qa:poetry-kunten-multiline && npm run qa:poetry-kunten-zoom && npm run qa:summer-translations && npm run qa:html && npm run qa:first-love && npm run qa:voucher && npm run qa:order-core && npm run qa:shop && npm run qa:shop-locales && npm run qa:poetry-migration && npm run qa:author-shop && npm run qa:h10-print && npm run qa:tuner && npm run qa:browser && npm run qa:a11y-functional && npm run qa:editorial && npm run qa:404 && npm run qa:about && npm run qa:fonts && npm run qa:wrap",
+    "qa": "npm run qa:poetry-library && npm run qa:poetry-kunten-manuscript && npm run qa:poetry-kunten-reader && npm run qa:poetry-kunten-lines && npm run qa:poetry-layout && npm run qa:poetry-kunten && npm run qa:poetry-kunten-multiline && npm run qa:poetry-kunten-zoom && npm run qa:summer-translations && npm run qa:html && npm run qa:first-love && npm run qa:voucher && npm run qa:order-core && npm run qa:shop && npm run qa:shop-locales && npm run qa:poetry-migration && npm run qa:author-shop && npm run qa:h10-print && npm run qa:tuner && npm run qa:browser && npm run qa:a11y-functional && npm run qa:editorial && npm run qa:404 && npm run qa:about && npm run qa:fonts && npm run qa:wrap",
     "qa:editorial": "node tools/editorialcheck.mjs",
     "qa:shop": "node tools/shopcheck.mjs",
     "qa:shop-locales": "node tools/shoplocalecheck.mjs",
@@ -28,6 +28,8 @@
     "qa:summer-translations": "node tools/summertranslationcheck.mjs",
     "qa:poetry-layout": "node tools/poetrylayoutcheck.mjs",
     "qa:poetry-kunten-manuscript": "python3 tools/poetry_kunten_manuscript.py",
+    "qa:poetry-kunten-reader": "python3 tools/poetrykuntenreadercheck.py",
+    "qa:poetry-kunten-lines": "python3 tools/poetrykuntenlinecheck.py",
     "qa:poetry-kunten": "node tools/poetrykuntencheck.mjs",
     "qa:poetry-kunten-multiline": "node tools/poetrykuntenmultilinecheck.mjs",
     "qa:poetry-kunten-zoom": "node tools/poetrykuntenzoomcheck.mjs"

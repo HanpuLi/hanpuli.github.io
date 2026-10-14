@@ -44,9 +44,13 @@ enable simplified reading. No-script browsers always see the original.
 
 ## Licensing and deployment gate
 
-kanbunHTML is AGPL-3.0. Exact upstream file SHA-256 hashes and the licence
-are recorded in assets/kanbun-viewer/NOTICE.md. The isolated viewer JS,
-CSS and generated viewer documents are supplied under AGPL-3.0-or-later.
+kanbunHTML is AGPL-3.0. Exact upstream file SHA-256 hashes and its
+licence are recorded in assets/kanbun-viewer/NOTICE.md. The isolated
+viewer programs and generated structural template carry AGPL terms;
+original Chinese poems, authored Japanese readings and editorial content
+embedded as data retain their separate literary copyright. A generated
+HTML file can contain code and literary material with different rights:
+the reader must not infer that the author's text is newly AGPL-licensed.
 The parent portfolio is not wholesale relicensed here.
 
 Whether a distributed parent and frame are separate works, given their

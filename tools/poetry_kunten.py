@@ -35,6 +35,17 @@ class Kunten:
         if self.data.get("schema") != 1 or self.data.get("language") != "ja":
             raise ValueError("Unsupported kunten schema")
         self.texts: dict[str, Any] = self.data["texts"]
+        reader_data = read(library.content / "poetry/kunten-reader-notes.json")
+        if reader_data.get("schema") != 1 or reader_data.get("language") != "ja":
+            raise ValueError("Unsupported kanbun reader-note schema")
+        self.reader_notes: dict[str, list[str]] = reader_data["texts"]
+        if set(self.reader_notes) != set(self.texts):
+            raise ValueError("Reader-facing kanbun glosses must cover each annotated text")
+        for tid, notes in self.reader_notes.items():
+            if (not isinstance(notes, list) or not 1 <= len(notes) <= 3
+                    or any(not isinstance(n, str) or not 8 <= len(n) <= 250
+                           for n in notes)):
+                raise ValueError("Invalid concise kanbun reader gloss: " + tid)
         for tid, entry in self.texts.items():
             if tid not in library.texts or library.work_for_text(tid)["form"] not in ("ci", "shi", "qu"):
                 raise ValueError("Nonclassical or unknown kanbun ID: " + tid)
