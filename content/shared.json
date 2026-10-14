@@ -18,6 +18,14 @@
     }
   },
   "writing": {
-    "first_love_verification_url": "https://github.com/HanpuLi/first-love-verification"
+    "first_love_verification_url": "https://github.com/HanpuLi/first-love-verification",
+    "first_love_data": {
+      "title": "Verification materials: First Love (Miike Takashi, 2019)",
+      "version": "v2026.10.14",
+      "concept_doi_url": "https://doi.org/10.5281/zenodo.23355093",
+      "version_doi": "10.5281/zenodo.23355094",
+      "repository_url": "https://github.com/HanpuLi/first-love-verification",
+      "license_url": "https://opensource.org/licenses/MIT"
+    }
   }
 }

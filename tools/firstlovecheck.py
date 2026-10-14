@@ -94,6 +94,8 @@ def main() -> int:
                 '<script type="application/ld+json">',
                 '"@type":"Article"',
                 '"author":{"@id":"https://hanpuli.github.io/#person"}',
+                '"@type":"SoftwareSourceCode"',
+                '<a href="https://doi.org/10.5281/zenodo.23355093">',
             )
             for marker in seo_markers:
                 if marker not in source:
