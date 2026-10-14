@@ -250,7 +250,7 @@ class Pages:
                 f'title="漢文訓点（{esc(source_title)}）" tabindex="-1" aria-hidden="true" '
                 f'sandbox="allow-scripts" loading="eager" src="{esc(self.kunten.href(tid))}">'
                 '</iframe></div><div class="poetry-kanbun-tools">'
-                '<button type="button" data-kanbun-copy>原文をコピー</button>'
+                '<button type="button" data-kanbun-copy aria-live="polite">原文をコピー</button>'
                 '</div></div>'
             )
             rows.append('</section>')
