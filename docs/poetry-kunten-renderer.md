@@ -17,6 +17,12 @@ poetry-kunten-collation.md for coverage, uncertainties and textual decisions.
   source-text SHA-256 and zero-based Unicode codepoint positions, not visual
   layout coordinates. A stale source, unsupported annotation or misplaced
   marker causes the generator to fail.
+- Titles are read text too (2026-10-14). Each manuscript and 書き下し
+  entry carries a `title` list, one item per part of the 《…》 title
+  (tune name, preface, version note; a sequence label such as 甲四 is
+  navigation and is not read). The viewer sets the title as the first
+  columns of the first stanza, prefaces smaller and lower, broken after
+  each ，/。; the 書き下し disclosure prints the read title above the body.
 - tools/poetry_kunten.py builds one standalone, noindex HTML presentation
   document per reviewed work inside assets/kanbun-viewer/works/. It preserves
   paragraph and stanza source boundaries, and passes textual reading marks

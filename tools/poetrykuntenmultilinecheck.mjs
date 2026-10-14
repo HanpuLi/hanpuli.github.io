@@ -39,9 +39,14 @@ let verified=0, wrapped=0,stanzasVerified=0;
 const inspect=async (frame, expected) => {
   return frame.locator('#kanbun-display').evaluate(el=>{
     const rect=el.getBoundingClientRect();
-    const lines=[...el.querySelectorAll('p')];
+    // Title columns are checked for collisions with everything else, but
+    // the authored-line, glyph and mark counts below belong to the body.
+    const lines=[...el.querySelectorAll('p:not(.kanbun-title)')];
+    const titles=[...el.querySelectorAll('p.kanbun-title')];
     const units=[...el.querySelectorAll('.unit')];
     const chars=[...el.querySelectorAll('.kanji')];
+    const han=nodes=>nodes.flatMap(p=>[...p.querySelectorAll('.kanji')]).map(n=>n.textContent)
+      .filter(value=>/\p{Script=Han}/u.test(value)).join('');
     const notes=[...el.querySelectorAll('.furigana,.okurigana,.kaeriten,.saidoku')];
     const intersection=(a,b)=>Math.max(0,Math.min(a.right,b.right)-Math.max(a.left,b.left))*
       Math.max(0,Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top));
@@ -55,14 +60,14 @@ const inspect=async (frame, expected) => {
     for(let i=0;i<notes.length;i++)for(let j=i+1;j<notes.length;j++)
       if(intersection(notes[i].getBoundingClientRect(),notes[j].getBoundingClientRect())>1)
         errors.push('two markers collide '+notes[i].textContent+' '+notes[j].textContent);
-    for(const p of lines){
+    for(const p of [...titles,...lines]){
       const b=p.getBoundingClientRect();
       if(b.left<-1 || b.right>innerWidth+1)errors.push('authored line clipped');
     }
     return {
-      glyphs:chars.length,renderedHan:chars.map(n=>n.textContent)
-        .filter(value=>/\p{Script=Han}/u.test(value)).join(''),
-      returnMarks:el.querySelectorAll('.kaeriten').length,
+      glyphs:chars.length,renderedHan:han(lines),titleHan:han(titles),
+      returnMarks:lines.reduce((n,p)=>n+p.querySelectorAll('.kaeriten').length,0),
+      titleReturnMarks:titles.reduce((n,p)=>n+p.querySelectorAll('.kaeriten').length,0),
       stanzaCount:el.querySelectorAll('[data-kanbun-stanza]').length,lineCount:lines.length,
       bands:[...new Set(lines.map(n=>Math.round(n.getBoundingClientRect().y)))].length,
       contentRight:rect.right,scroll:document.documentElement.scrollWidth-innerWidth,
@@ -110,6 +115,11 @@ try{
           assert.equal(geometry.renderedHan,expectedHan,
             tid+': altered original Han glyph sequence');
           assert.equal(geometry.returnMarks,entry.marks.filter(m=>m.kaeriten).length);
+          const sourceTitle=await article.locator('.source h2').getAttribute('data-poetry-title');
+          assert.equal(geometry.titleHan,[...sourceTitle].filter(c=>/\p{Script=Han}/u.test(c)).join(''),
+            tid+': title not typeset in full');
+          assert.equal(geometry.titleReturnMarks,entry.title.flat().filter(m=>m.kaeriten).length,
+            tid+': title return marks');
           const expectedStanzas=source.split('\n\n').filter(s=>s.trim()).length;
           const expectedLines=source.split('\n').filter(s=>s.trim()).length;
           assert.equal(geometry.stanzaCount,expectedStanzas,tid+': lost authored stanza');

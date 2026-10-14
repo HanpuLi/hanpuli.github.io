@@ -23,12 +23,6 @@
   gap:clamp(12px,2vw,26px);
   max-width:100%; margin-inline:auto;
 }
-.poetry-page .poetry-kanbun-heading {
-  writing-mode:vertical-rl;text-orientation:mixed;
-  font-size:1.12rem;line-height:1.55;font-weight:400;
-  letter-spacing:.025em;max-height:28em;
-  white-space:normal; flex:0 1 auto; overflow-wrap:anywhere;
-}
 .poetry-page .poetry-kanbun-frame {
   display:block;flex:0 0 auto;
   border:0;background:transparent;overflow:hidden;
@@ -48,6 +42,5 @@
 .poetry-page .poetry-kanbun-tools button:hover {color:var(--ink);}
 .poetry-page .poetry-kanbun-tools a {padding:.4rem 0;overflow-wrap:anywhere;}
 @media(max-width:620px){
-  .poetry-page .poetry-kanbun-heading {font-size:1rem;}
   .poetry-page .poetry-kanbun-display {gap:12px;}
 }

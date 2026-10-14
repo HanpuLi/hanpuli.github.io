@@ -15,7 +15,7 @@ from pathlib import Path
 
 from poetry_library import Library, read
 from poetry_kunten import Kunten
-from poetry_kundoku import Kundoku
+from poetry_kundoku import Kundoku, title_parts
 
 OPEN = {"(": (")", "furigana"), "{": ("}", "okurigana"),
         "[": ("]", "kaeriten"), "‹": ("›", "saidoku_furigana"),
@@ -111,6 +111,11 @@ def trace_simple_returns(phrase: str, points: dict[int, str],
 
 
 def main() -> None:
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--write", action="store_true",
+                        help="recompile content/poetry/kunten.json from the manuscripts")
+    write = parser.parse_args().write
     root = Path(__file__).resolve().parent.parent
     lib = Library(root)
     entries = read(root / "content/poetry/kunten-manuscripts.json")["texts"]
@@ -125,14 +130,26 @@ def main() -> None:
             "source_body_sha256": hashlib.sha256(source.encode("utf8")).hexdigest(),
             "status": "pilot-reviewed", "marks": compile_manuscript(source, entry["annotated"]),
         }
+        parts = title_parts(lib.edition(tid, "zh")["title"])
+        if len(entry.get("title", [])) != len(parts):
+            raise ValueError("Manuscript must annotate each part of the title: " + tid)
+        expected["title"] = [compile_manuscript(part, marked)
+                             for part, marked in zip(parts, entry["title"])]
         if "notes" in persisted[tid]:
             expected["notes"] = entry.get("notes", [])
         elif entry.get("notes"):
             raise ValueError("Missing compiled notes: " + tid)
         # Editing the manuscript without regenerating the compiled edition
         # must block the site build / release.
-        if persisted[tid] != expected:
+        if write:
+            persisted[tid] = expected
+        elif persisted[tid] != expected:
             raise ValueError("Stale or different compiled annotations: " + tid)
+    if write:
+        path = root / "content/poetry/kunten.json"
+        data = read(path)
+        data["texts"] = persisted
+        path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     # The author's explicit modern/semantic exceptions must never acquire
     # plausible-looking historical 返り点 merely to fill the annotation grid.
     for tid, phrase, note_keyword in (
@@ -226,6 +243,21 @@ def main() -> None:
         actual = trace_simple_returns(phrase, points)
         if actual != reading_order:
             raise ValueError(f"Wrong glyph return order for {tid} {phrase}: {actual!r}")
+
+    # Titles and prefaces are read too (2026-10-14). 上・下 spans are
+    # outside this tracer; their orders were checked by hand.
+    for tid, part, reading_order in (
+        ("jia-yi-b6-text", 0, "某寄所得"),
+        ("jia-yi-a6-text", 1, "篋中故鑰銅花眼滿，往還書字追念，悵然作有"),
+        ("jia-yi-b7-text", 1, "篋檢舊稿得，復攜不，悉以某寄，並題"),
+        ("manjianghong-2022-sewn-202610", 1, "沮攔望約當是應"),
+    ):
+        phrase = title_parts(lib.edition(tid, "zh")["title"])[part]
+        marks = persisted[tid]["title"][part]
+        points = {m["position"]: m["kaeriten"] for m in marks if "kaeriten" in m}
+        gofu = frozenset(m["position"] for m in marks if m.get("gofu"))
+        if trace_simple_returns(phrase, points, gofu) != reading_order:
+            raise ValueError(f"Wrong title return order for {tid}: {phrase}")
 
     # The 読点 after 作 in 朝中措 does not terminate the syntactic return
     # to the two-character predicate's resulting silver-bell resonance.

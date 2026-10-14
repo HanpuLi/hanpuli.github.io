@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 
 from poetry_library import Library, read
+from poetry_kundoku import title_parts
 
 KANA = re.compile(r"^[\u3040-\u309f\u30a0-\u30ffー]+$")
 RETURNS = set("レ一二三四五六七八九十上下甲乙丙丁天地人") | {
@@ -27,6 +28,83 @@ SOURCE_FILES = ("kanbun-render.js", "kanbun-render.css", "viewer.js", "viewer.cs
 
 def esc(value: str) -> str:
     return html.escape(value, quote=True)
+
+
+def check_marks(tid: str, source: str, marks: list[dict]) -> None:
+    prev = -1
+    for mark in marks:
+        i = mark["position"]
+        if type(i) is not int or i <= prev or i >= len(source):
+            raise ValueError("Non-unique or unordered kanbun position: " + tid)
+        prev = i
+        if mark["char"] != source[i] or source[i].isspace() or source[i] in "。，、！？；：":
+            raise ValueError("Kanbun mark detached from Chinese character: " + tid)
+        allowed = {"position", "char", "furigana", "okurigana",
+                   "saidoku_furigana", "saidoku_okurigana", "kaeriten",
+                   "gofu"}
+        if set(mark) - allowed:
+            raise ValueError("Unknown kanbun mark type: " + tid)
+        if not any(k in mark for k in allowed - {"position", "char"}):
+            raise ValueError("Empty mark: " + tid)
+        for field in ("furigana", "okurigana", "saidoku_furigana",
+                      "saidoku_okurigana"):
+            if field in mark and not KANA.fullmatch(mark[field]):
+                raise ValueError("Malformed kana in " + tid)
+        # A second reading may be a single kana (未…ず) with no
+        # separate okurigana; okurigana alone has nothing to attach to.
+        if "saidoku_okurigana" in mark and "saidoku_furigana" not in mark:
+            raise ValueError("Incomplete saidokumoji pair: " + tid)
+        if "gofu" in mark and (mark["gofu"] is not True or i + 1 >= len(source)
+                               or not "\u4e00" <= source[i + 1] <= "\u9fff"):
+            raise ValueError("合符 must join two adjacent characters: " + tid)
+        if "kaeriten" in mark and mark["kaeriten"] not in RETURNS:
+            raise ValueError("Unsupported return mark in " + tid)
+        if mark.get("kaeriten") == "レ":
+            if i + 1 >= len(source) or source[i + 1].isspace() or source[i + 1] in "，。、！？；：":
+                raise ValueError("レ point has no adjacent character: " + tid)
+
+    # Ordinary 二 / 一 points must balance within an authored line.
+    # Do not split at commas: e.g. 朝中措「便作，銀磬微鳴」
+    # intentionally carries a returned clause across a caesura.
+    pairs = {mark["position"]: mark.get("kaeriten") for mark in marks}
+    start = 0
+    for line in source.splitlines(keepends=True):
+        stack: list[int] = []
+        for position in range(start, start + len(line)):
+            point = pairs.get(position)
+            if point == "二":
+                stack.append(position)
+            elif point in ("一", "一レ"):
+                if not stack:
+                    raise ValueError("Orphan 一 point: " + tid)
+                stack.pop()
+        if stack:
+            raise ValueError("Unpaired 二 point: " + tid)
+        start += len(line)
+
+
+
+def annotate(source: str, marks: list[dict]) -> str:
+    by_position = {m["position"]: m for m in marks}
+    result = []
+    for i, char in enumerate(source):
+        result.append(char)
+        mark = by_position.get(i)
+        if mark is None:
+            continue
+        if mark.get("furigana"):
+            result.append("(" + mark["furigana"] + ")")
+        if mark.get("okurigana"):
+            result.append("{" + mark["okurigana"] + "}")
+        if mark.get("saidoku_furigana"):
+            result.append("‹" + mark["saidoku_furigana"] + "›")
+        if mark.get("saidoku_okurigana"):
+            result.append("«" + mark["saidoku_okurigana"] + "»")
+        if mark.get("kaeriten"):
+            result.append("[" + mark["kaeriten"] + "]")
+        if mark.get("gofu"):
+            result.append("\u2010")
+    return "".join(result)
 
 
 class Kunten:
@@ -58,81 +136,24 @@ class Kunten:
                 raise ValueError("Unapproved kanbun display status: " + tid)
             if any(c in MARKUP_CHARS for c in source):
                 raise ValueError("Kanbun renderer special syntax in original: " + tid)
-            if set(entry) - {"source_body_sha256", "status", "marks", "notes"}:
+            if set(entry) - {"source_body_sha256", "status", "marks", "title", "notes"}:
                 raise ValueError("Unexpected kanbun metadata: " + tid)
-            prev = -1
-            for mark in entry["marks"]:
-                i = mark["position"]
-                if type(i) is not int or i <= prev or i >= len(source):
-                    raise ValueError("Non-unique or unordered kanbun position: " + tid)
-                prev = i
-                if mark["char"] != source[i] or source[i].isspace() or source[i] in "。，、！？；：":
-                    raise ValueError("Kanbun mark detached from Chinese character: " + tid)
-                allowed = {"position", "char", "furigana", "okurigana",
-                           "saidoku_furigana", "saidoku_okurigana", "kaeriten",
-                           "gofu"}
-                if set(mark) - allowed:
-                    raise ValueError("Unknown kanbun mark type: " + tid)
-                if not any(k in mark for k in allowed - {"position", "char"}):
-                    raise ValueError("Empty mark: " + tid)
-                for field in ("furigana", "okurigana", "saidoku_furigana",
-                              "saidoku_okurigana"):
-                    if field in mark and not KANA.fullmatch(mark[field]):
-                        raise ValueError("Malformed kana in " + tid)
-                # A second reading may be a single kana (未…ず) with no
-                # separate okurigana; okurigana alone has nothing to attach to.
-                if "saidoku_okurigana" in mark and "saidoku_furigana" not in mark:
-                    raise ValueError("Incomplete saidokumoji pair: " + tid)
-                if "gofu" in mark and (mark["gofu"] is not True or i + 1 >= len(source)
-                                       or not "\u4e00" <= source[i + 1] <= "\u9fff"):
-                    raise ValueError("合符 must join two adjacent characters: " + tid)
-                if "kaeriten" in mark and mark["kaeriten"] not in RETURNS:
-                    raise ValueError("Unsupported return mark in " + tid)
-                if mark.get("kaeriten") == "レ":
-                    if i + 1 >= len(source) or source[i + 1].isspace() or source[i + 1] in "，。、！？；：":
-                        raise ValueError("レ point has no adjacent character: " + tid)
-
-            # Ordinary 二 / 一 points must balance within an authored line.
-            # Do not split at commas: e.g. 朝中措「便作，銀磬微鳴」
-            # intentionally carries a returned clause across a caesura.
-            pairs = {mark["position"]: mark.get("kaeriten") for mark in entry["marks"]}
-            start = 0
-            for line in source.splitlines(keepends=True):
-                stack: list[int] = []
-                for position in range(start, start + len(line)):
-                    point = pairs.get(position)
-                    if point == "二":
-                        stack.append(position)
-                    elif point in ("一", "一レ"):
-                        if not stack:
-                            raise ValueError("Orphan 一 point: " + tid)
-                        stack.pop()
-                if stack:
-                    raise ValueError("Unpaired 二 point: " + tid)
-                start += len(line)
+            check_marks(tid, source, entry["marks"])
+            title = entry.get("title")
+            parts = title_parts(library.edition(tid, "zh")["title"])
+            if not isinstance(title, list) or len(title) != len(parts):
+                raise ValueError("Kanbun marks must cover each part of the title: " + tid)
+            for part, marks in zip(parts, title):
+                if any(c in MARKUP_CHARS for c in part):
+                    raise ValueError("Kanbun renderer special syntax in title: " + tid)
+                check_marks(tid, part, marks)
 
     def annotated(self, tid: str) -> str:
-        source = self.library.edition(tid, "zh")["body"]
-        marks = {m["position"]: m for m in self.texts[tid]["marks"]}
-        result = []
-        for i, char in enumerate(source):
-            result.append(char)
-            mark = marks.get(i)
-            if mark is None:
-                continue
-            if mark.get("furigana"):
-                result.append("(" + mark["furigana"] + ")")
-            if mark.get("okurigana"):
-                result.append("{" + mark["okurigana"] + "}")
-            if mark.get("saidoku_furigana"):
-                result.append("‹" + mark["saidoku_furigana"] + "›")
-            if mark.get("saidoku_okurigana"):
-                result.append("«" + mark["saidoku_okurigana"] + "»")
-            if mark.get("kaeriten"):
-                result.append("[" + mark["kaeriten"] + "]")
-            if mark.get("gofu"):
-                result.append("\u2010")
-        return "".join(result)
+        return annotate(self.library.edition(tid, "zh")["body"], self.texts[tid]["marks"])
+
+    def annotated_title(self, tid: str) -> list[str]:
+        parts = title_parts(self.library.edition(tid, "zh")["title"])
+        return [annotate(part, marks) for part, marks in zip(parts, self.texts[tid]["title"])]
 
     def href(self, tid: str) -> str:
         if tid not in self.texts:
@@ -145,9 +166,17 @@ class Kunten:
         # an HTML-escaped annotated string, not already-rendered HTML.
         # Preserve original line and stanza boundaries for the vertical
         # typesetter; it handles each stanza's immediate paragraphs.
+        # The title opens the first stanza as its own columns, as on a
+        # printed kanbun page: the tune name, then each preface or version
+        # note broken after its clause punctuation.
+        heading = "".join(
+            f'<p class="kanbun-title{" kanbun-preface" if n else ""}">{esc(column)}</p>'
+            for n, part in enumerate(self.annotated_title(tid))
+            for column in re.split(r"(?<=[，。])", part) if column
+        )
         stanzas = []
-        for stanza in self.annotated(tid).split("\n\n"):
-            lines = "".join(
+        for n, stanza in enumerate(self.annotated(tid).split("\n\n")):
+            lines = (heading if n == 0 else "") + "".join(
                 f"<p>{esc(line)}</p>" for line in stanza.splitlines()
                 if line.strip()
             )

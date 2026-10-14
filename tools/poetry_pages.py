@@ -244,7 +244,6 @@ class Pages:
                 f'<div class="poetry-kanbun-stage" lang="ja" hidden data-poetry-kanbun-viewer="{esc(tid)}" '
                 f'data-kanbun-sha256="{esc(digest)}">'
                 '<div class="poetry-kanbun-display" aria-hidden="true">'
-                f'<span class="poetry-kanbun-heading">{esc(source_title)}</span>'
                 f'<iframe class="poetry-kanbun-frame" data-kanbun-frame '
                 f'title="漢文訓点（{esc(source_title)}）" tabindex="-1" aria-hidden="true" '
                 f'sandbox="allow-scripts" loading="eager" src="{esc(self.kunten.href(tid))}">'
@@ -282,7 +281,8 @@ class Pages:
                          + '</ul>') if notes else ''
             rows.append(f'<details class="poetry-kundoku" lang="ja" data-poetry-kundoku="{esc(tid)}">'
                         f'<summary>{esc(self.kundoku.label)}</summary>'
-                        f'<div class="poem-version kundoku"><div class="body">'
+                        f'<div class="poem-version kundoku">'
+                        f'<p class="kundoku-title">{esc(self.kundoku.title(tid))}</p><div class="body">'
                         f'{esc(self.kundoku.body(tid))}</div>{note_html}</div></details>')
             if tid in self.kunten.texts:
                 # Public notes are edited prose, not the much longer

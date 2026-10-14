@@ -76,6 +76,10 @@
           "okurigana": "タレ"
         }
       ],
+      "title": [
+        [],
+        []
+      ],
       "notes": [
         "「天寒了」は寒さが既に到来した状態を表す。「寒くなりぬ」はこの文脈に即した編者の書き下し。"
       ]
@@ -328,6 +332,85 @@
           "kaeriten": "一"
         }
       ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "檢",
+            "okurigana": "シテ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 1,
+            "char": "篋",
+            "okurigana": "ヲ"
+          },
+          {
+            "position": 2,
+            "char": "得",
+            "okurigana": "テ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 4,
+            "char": "稿",
+            "okurigana": "ヲ",
+            "kaeriten": "一"
+          },
+          {
+            "position": 6,
+            "char": "不",
+            "okurigana": "ズ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 7,
+            "char": "復",
+            "furigana": "ま",
+            "okurigana": "タ"
+          },
+          {
+            "position": 8,
+            "char": "攜",
+            "okurigana": "ヘ",
+            "kaeriten": "一"
+          },
+          {
+            "position": 10,
+            "char": "悉",
+            "furigana": "ことごと",
+            "okurigana": "ク"
+          },
+          {
+            "position": 11,
+            "char": "以",
+            "okurigana": "テ"
+          },
+          {
+            "position": 12,
+            "char": "寄",
+            "okurigana": "セ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 13,
+            "char": "某",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 15,
+            "char": "並",
+            "furigana": "なら",
+            "okurigana": "ビニ"
+          },
+          {
+            "position": 16,
+            "char": "題",
+            "okurigana": "ス"
+          }
+        ]
+      ],
       "notes": [
         "「夜深方得眠」は、夜が深くなって初めて眠れたこと。「方」はこの時間的関係を示す。"
       ]
@@ -508,6 +591,9 @@
           "okurigana": "ヲ",
           "kaeriten": "一"
         }
+      ],
+      "title": [
+        []
       ],
       "notes": [
         "「挹來便作」は、唇辺の鳳語を汲み取って銀磬の微かな響きに譬える句。読点を挟んでも「作」は後の「鳴」に及ぶ。"
@@ -743,6 +829,66 @@
           "okurigana": "ヲ"
         }
       ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "曩",
+            "furigana": "さき",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 1,
+            "char": "與",
+            "furigana": "と",
+            "kaeriten": "二"
+          },
+          {
+            "position": 3,
+            "char": "硯",
+            "kaeriten": "一"
+          },
+          {
+            "position": 5,
+            "char": "坐",
+            "okurigana": "スルコト"
+          },
+          {
+            "position": 13,
+            "char": "寖",
+            "furigana": "やうや",
+            "okurigana": "ク"
+          },
+          {
+            "position": 14,
+            "char": "薄",
+            "okurigana": "ク"
+          },
+          {
+            "position": 16,
+            "char": "久",
+            "okurigana": "シクシテ"
+          },
+          {
+            "position": 17,
+            "char": "乃",
+            "furigana": "すなは",
+            "okurigana": "チ"
+          },
+          {
+            "position": 18,
+            "char": "自",
+            "furigana": "みづか",
+            "okurigana": "ラ"
+          },
+          {
+            "position": 19,
+            "char": "定",
+            "okurigana": "ム"
+          }
+        ]
+      ],
       "notes": [
         "「孤燈紅淚」は「孤灯の紅涙」とし、商量の場の景とした。「共商量」の主語は原文に明示されない。",
         "「逢人怕説西窗」は「人に逢えば」と「西窓を説くを怕る」の重層返読。",
@@ -966,6 +1112,50 @@
           "char": "温",
           "okurigana": "カシ"
         }
+      ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "卿",
+            "furigana": "けい"
+          },
+          {
+            "position": 1,
+            "char": "贈",
+            "okurigana": "リ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 2,
+            "char": "鑰",
+            "furigana": "かぎ",
+            "okurigana": "ヲ"
+          },
+          {
+            "position": 4,
+            "char": "附",
+            "okurigana": "シ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 7,
+            "char": "字",
+            "okurigana": "ヲ",
+            "kaeriten": "一"
+          },
+          {
+            "position": 10,
+            "char": "下",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 12,
+            "char": "讀",
+            "okurigana": "ス"
+          }
+        ]
       ],
       "notes": [
         "甲三「春封浅」は封書の封と文言の浅さの二重性を保持する。",
@@ -1199,6 +1389,54 @@
           "okurigana": "ノ"
         }
       ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "與",
+            "furigana": "と",
+            "kaeriten": "二"
+          },
+          {
+            "position": 2,
+            "char": "硯",
+            "kaeriten": "一"
+          },
+          {
+            "position": 4,
+            "char": "下",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 6,
+            "char": "坐",
+            "okurigana": "シ"
+          },
+          {
+            "position": 8,
+            "char": "侵",
+            "okurigana": "シテ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 9,
+            "char": "曉",
+            "okurigana": "ヲ"
+          },
+          {
+            "position": 10,
+            "char": "方",
+            "furigana": "はじ",
+            "okurigana": "メテ"
+          },
+          {
+            "position": 11,
+            "char": "別",
+            "okurigana": "ル"
+          }
+        ]
+      ],
       "notes": [
         "「有誰知」は反語的。誰も実際に知ると断定しない。",
         "「孤燈紅淚」の灯は「共商量」の第三の会話者ではない。",
@@ -1407,6 +1645,10 @@
           "char": "花",
           "okurigana": "ノ"
         }
+      ],
+      "title": [
+        [],
+        []
       ],
       "notes": [
         "「同攜花徑」から手を繋いだ姿勢を確定しない。「攜」は連れ立つ意とする。",
@@ -1624,6 +1866,69 @@
           "char": "聞",
           "okurigana": "ク"
         }
+      ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "分",
+            "okurigana": "カチテ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 1,
+            "char": "蕙",
+            "okurigana": "ヲ"
+          },
+          {
+            "position": 2,
+            "char": "寄",
+            "okurigana": "ス",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 3,
+            "char": "某",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 5,
+            "char": "憶",
+            "okurigana": "ヒ",
+            "kaeriten": "下"
+          },
+          {
+            "position": 7,
+            "char": "贈",
+            "okurigana": "ラレシ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 9,
+            "char": "蓀",
+            "furigana": "そん",
+            "okurigana": "ヲ",
+            "kaeriten": "一"
+          },
+          {
+            "position": 10,
+            "char": "時",
+            "okurigana": "ヲ",
+            "kaeriten": "上"
+          },
+          {
+            "position": 13,
+            "char": "然",
+            "okurigana": "トシテ"
+          },
+          {
+            "position": 14,
+            "char": "有",
+            "okurigana": "リ",
+            "kaeriten": "レ"
+          }
+        ]
       ],
       "notes": [
         "「西窗青幾度」は西窓が何度も春の緑に染まる意。「青」は青色と固定しない。",
@@ -1851,6 +2156,10 @@
           "char": "靜",
           "okurigana": "カナリ"
         }
+      ],
+      "title": [
+        [],
+        []
       ],
       "notes": [
         "「欲喚還休」は呼びかけようとして止める動作のみ。止めた理由を補わない。",
@@ -2096,6 +2405,65 @@
           "char": "斑",
           "okurigana": "ナリ"
         }
+      ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "記",
+            "okurigana": "ス",
+            "kaeriten": "下"
+          },
+          {
+            "position": 3,
+            "char": "扶",
+            "okurigana": "ケテ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 4,
+            "char": "靨",
+            "okurigana": "ヲ"
+          },
+          {
+            "position": 5,
+            "char": "登",
+            "okurigana": "リ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 6,
+            "char": "樓",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 8,
+            "char": "夤",
+            "furigana": "いん"
+          },
+          {
+            "position": 11,
+            "char": "問",
+            "okurigana": "ヒテ"
+          },
+          {
+            "position": 13,
+            "char": "始",
+            "okurigana": "メテ"
+          },
+          {
+            "position": 14,
+            "char": "無",
+            "okurigana": "キヲ",
+            "kaeriten": "上レ"
+          },
+          {
+            "position": 15,
+            "char": "避",
+            "okurigana": "クル"
+          }
+        ]
       ],
       "notes": [
         "「那夜誰分賓主」は過去の問いであり、双方の認識が一致していたとの断定を避ける。",
@@ -2426,6 +2794,27 @@
           "okurigana": "ハル"
         }
       ],
+      "title": [
+        [
+          {
+            "position": 0,
+            "char": "夜",
+            "furigana": "よる"
+          },
+          {
+            "position": 1,
+            "char": "聞",
+            "okurigana": "ク",
+            "kaeriten": "二"
+          },
+          {
+            "position": 3,
+            "char": "曲",
+            "okurigana": "ヲ",
+            "kaeriten": "一"
+          }
+        ]
+      ],
       "notes": [
         "「昔我今何在」は過去と現在の一人称を含む。誰が誰と会話したかを補わない。",
         "「側耳疑相答」は返答があったかの疑問であって、交互の応答が成立したという叙述ではない。",
@@ -2656,6 +3045,9 @@
           "okurigana": "ヲ",
           "kaeriten": "一"
         }
+      ],
+      "title": [
+        []
       ],
       "notes": [
         "「炭冰摧過後」は炭と氷による損傷を受けた主体が省略されている。炭と氷自体が壊れたわけではない。",
@@ -2900,6 +3292,154 @@
           "char": "難",
           "okurigana": "シ"
         }
+      ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "得",
+            "okurigana": "テ",
+            "kaeriten": "下"
+          },
+          {
+            "position": 1,
+            "char": "某",
+            "okurigana": "ノ"
+          },
+          {
+            "position": 2,
+            "char": "所",
+            "okurigana": "ノ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 3,
+            "char": "寄",
+            "okurigana": "スル",
+            "kaeriten": "一"
+          },
+          {
+            "position": 5,
+            "char": "稿",
+            "okurigana": "ヲ",
+            "kaeriten": "上"
+          },
+          {
+            "position": 8,
+            "char": "下",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 9,
+            "char": "讀",
+            "okurigana": "ミ"
+          },
+          {
+            "position": 10,
+            "char": "竟",
+            "furigana": "を",
+            "okurigana": "ヘ"
+          },
+          {
+            "position": 12,
+            "char": "與",
+            "furigana": "と",
+            "kaeriten": "三"
+          },
+          {
+            "position": 14,
+            "char": "中",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 15,
+            "char": "所",
+            "kaeriten": "二"
+          },
+          {
+            "position": 16,
+            "char": "存",
+            "okurigana": "スル",
+            "kaeriten": "一"
+          },
+          {
+            "position": 17,
+            "char": "合",
+            "okurigana": "ハセ"
+          },
+          {
+            "position": 18,
+            "char": "編",
+            "okurigana": "ミ"
+          },
+          {
+            "position": 20,
+            "char": "第",
+            "furigana": "だい",
+            "okurigana": "ス",
+            "kaeriten": "二"
+          },
+          {
+            "position": 21,
+            "char": "其",
+            "okurigana": "ノ"
+          },
+          {
+            "position": 23,
+            "char": "乙",
+            "okurigana": "ヲ",
+            "kaeriten": "一"
+          },
+          {
+            "position": 26,
+            "char": "成",
+            "okurigana": "リテ"
+          },
+          {
+            "position": 29,
+            "char": "至",
+            "okurigana": "レバ"
+          },
+          {
+            "position": 30,
+            "char": "輒",
+            "furigana": "すなは",
+            "okurigana": "チ"
+          },
+          {
+            "position": 31,
+            "char": "出",
+            "okurigana": "ダシテ"
+          },
+          {
+            "position": 32,
+            "char": "以",
+            "okurigana": "テ"
+          },
+          {
+            "position": 34,
+            "char": "示",
+            "okurigana": "シ"
+          },
+          {
+            "position": 36,
+            "char": "題",
+            "okurigana": "ス",
+            "kaeriten": "二"
+          },
+          {
+            "position": 37,
+            "char": "其",
+            "okurigana": "ノ"
+          },
+          {
+            "position": 38,
+            "char": "尾",
+            "okurigana": "ニ",
+            "kaeriten": "一"
+          }
+        ]
       ],
       "notes": [
         "「舊時燈影各成篇」は二つの語りが各々独立していたことを残す。一致・相互承認を新しく立証しない。",
@@ -3167,6 +3707,65 @@
           "char": "墀",
           "okurigana": "ニ"
         }
+      ],
+      "title": [
+        [],
+        [
+          {
+            "position": 2,
+            "char": "扶",
+            "okurigana": "ケテ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 3,
+            "char": "靨",
+            "okurigana": "ヲ"
+          },
+          {
+            "position": 4,
+            "char": "登",
+            "okurigana": "リ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 5,
+            "char": "樓",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 7,
+            "char": "夤",
+            "furigana": "いん"
+          },
+          {
+            "position": 9,
+            "char": "同",
+            "furigana": "とも",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 10,
+            "char": "倚",
+            "okurigana": "リ"
+          },
+          {
+            "position": 13,
+            "char": "問",
+            "okurigana": "フモ"
+          },
+          {
+            "position": 14,
+            "char": "不",
+            "okurigana": "ズ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 15,
+            "char": "避",
+            "okurigana": "ケ"
+          }
+        ]
       ],
       "notes": [
         "「沈醉曾扶相並倚」の扶け手と支えられる者は原文から一意に決定できない。相扶けたとも、片方が一方を支えたとも決めず、扶けつつとした。",
@@ -3776,6 +4375,32 @@
           "kaeriten": "一"
         }
       ],
+      "title": [
+        [
+          {
+            "position": 0,
+            "char": "得",
+            "okurigana": "タリ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 1,
+            "char": "某",
+            "okurigana": "ノ"
+          },
+          {
+            "position": 2,
+            "char": "所",
+            "okurigana": "ヲ",
+            "kaeriten": "一レ"
+          },
+          {
+            "position": 3,
+            "char": "寄",
+            "okurigana": "スル"
+          }
+        ]
+      ],
       "notes": [
         "五段の原文の行順・節境界を保つ。段の再配置や外部で構成した書簡を補わない。",
         "「幾度誤春痕」は春の時節と痕跡が狂うことを含み、単なる園芸の失敗として要約しない。",
@@ -3993,6 +4618,23 @@
           "okurigana": "クヲ",
           "kaeriten": "一"
         }
+      ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "喚",
+            "furigana": "よ",
+            "okurigana": "ビ"
+          },
+          {
+            "position": 1,
+            "char": "回",
+            "furigana": "かへ",
+            "okurigana": "ス"
+          }
+        ]
       ],
       "notes": [
         "「空衣」は着用者のいない衣であって、誰が脱いだのかを決めない。",
@@ -4227,6 +4869,10 @@
           "kaeriten": "一"
         }
       ],
+      "title": [
+        [],
+        []
+      ],
       "notes": [
         "「未緘還自疊」手紙がまだ封じられていないまま折られる。鑰を開くことではない。",
         "「恐花為我辭根」花が自分のために根を去るのを恐れる。何者が花を折ったかを確定しない。",
@@ -4431,6 +5077,70 @@
           "char": "青",
           "okurigana": "シ"
         }
+      ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "篋",
+            "furigana": "けふ"
+          },
+          {
+            "position": 1,
+            "char": "中",
+            "okurigana": "ノ"
+          },
+          {
+            "position": 3,
+            "char": "鑰",
+            "furigana": "やく"
+          },
+          {
+            "position": 6,
+            "char": "滿",
+            "okurigana": "ツ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 7,
+            "char": "眼",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 9,
+            "char": "追",
+            "kaeriten": "二",
+            "gofu": true
+          },
+          {
+            "position": 10,
+            "char": "念",
+            "okurigana": "シ"
+          },
+          {
+            "position": 12,
+            "char": "還",
+            "okurigana": "ノ"
+          },
+          {
+            "position": 14,
+            "char": "字",
+            "okurigana": "ヲ",
+            "kaeriten": "一"
+          },
+          {
+            "position": 17,
+            "char": "然",
+            "okurigana": "トシテ"
+          },
+          {
+            "position": 18,
+            "char": "有",
+            "okurigana": "リ",
+            "kaeriten": "レ"
+          }
+        ]
       ],
       "notes": [
         "「避卻鴛鴦字」は鴛鴦という表現を避ける行為とした。卻は結果方向を含む補語で古漢文の置き字と断言しない。",
@@ -4665,6 +5375,9 @@
           "okurigana": "ニセヨ"
         }
       ],
+      "title": [
+        []
+      ],
       "notes": [
         "「重簾」の重はzhòng、重量を表し、幾層もの幕ではない。",
         "「夜將殘」は夜の残り少なく明けようとする意。字旁「殘リ少ナカラントス」は表意的な編集訓。「夜がこれから残存する」の意味ではない。",
@@ -4890,6 +5603,41 @@
           "char": "成",
           "okurigana": "ラ"
         }
+      ],
+      "title": [
+        [],
+        [
+          {
+            "position": 3,
+            "char": "下",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 4,
+            "char": "試",
+            "okurigana": "ミ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 5,
+            "char": "筆",
+            "okurigana": "ヲ"
+          },
+          {
+            "position": 7,
+            "char": "未",
+            "furigana": "いま",
+            "okurigana": "ダ",
+            "saidoku_furigana": "ず",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 8,
+            "char": "竟",
+            "furigana": "を",
+            "okurigana": "ヘ"
+          }
+        ]
       ],
       "notes": [
         "「蘸得毫端黑」の得は結果補語を標示する現代的語法。書き下しに従い「蘸し得て」と読むが、得を伝統的な漢文の置き字とは主張しない。",
@@ -5224,6 +5972,10 @@
           "okurigana": "ヲ"
         }
       ],
+      "title": [
+        [],
+        []
+      ],
       "notes": [
         "「緘淺」の浅は物理的な封と文面の浅さの両義を持つ。浅い人間関係という実証事実へ置き換えない。",
         "「忽燈前小影」の小影の人物を確定しない。「別處温言」の『別處』にも他人の名前を付けない。",
@@ -5517,6 +6269,9 @@
           "okurigana": "レムヲ",
           "kaeriten": "一"
         }
+      ],
+      "title": [
+        []
       ],
       "notes": [
         "「星師」は作者の『星城』の用語。地名の明示的確定は避ける。",
@@ -5830,6 +6585,9 @@
           "okurigana": "ニ",
           "kaeriten": "一"
         }
+      ],
+      "title": [
+        []
       ],
       "notes": [
         "「然金爐／化紙」は焚くことと追悼の連鎖。「然」は燃やす意の文脈訓であり『しかり』ではない。",
@@ -6164,6 +6922,29 @@
           "okurigana": "ヲ",
           "kaeriten": "一"
         }
+      ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "遙",
+            "furigana": "はる",
+            "okurigana": "カニ"
+          },
+          {
+            "position": 1,
+            "char": "思",
+            "okurigana": "フ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 3,
+            "char": "潭",
+            "okurigana": "ヲ",
+            "kaeriten": "一"
+          }
+        ]
       ],
       "notes": [
         "「辭顏」は人名であり字面の『辞して顔を…』ではない。版では発音を強制せず人名として残す。",
@@ -6529,6 +7310,55 @@
           "kaeriten": "一"
         }
       ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "望",
+            "okurigana": "ムモ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 1,
+            "char": "沮",
+            "furigana": "そ"
+          },
+          {
+            "position": 2,
+            "char": "攔",
+            "furigana": "らん",
+            "okurigana": "セント",
+            "kaeriten": "一"
+          },
+          {
+            "position": 3,
+            "char": "約",
+            "furigana": "おほむ",
+            "okurigana": "ネ"
+          },
+          {
+            "position": 4,
+            "char": "當",
+            "furigana": "まさ",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 5,
+            "char": "應",
+            "furigana": "まさ",
+            "okurigana": "ニ",
+            "saidoku_furigana": "べ",
+            "saidoku_okurigana": "シ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 6,
+            "char": "是",
+            "okurigana": "ナル"
+          }
+        ]
+      ],
       "notes": [
         "「舊隙才縫」は縫い終えた直後を表す。発話時より以前の成果と混同しない。",
         "「門欲掩、卻翻簾影」は逆接の構造。人の行為と春風の作用を曖昧なまま保つ。",
@@ -6890,6 +7720,56 @@
           "char": "息",
           "okurigana": "マ"
         }
+      ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "望",
+            "okurigana": "ムモ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 1,
+            "char": "沮",
+            "furigana": "そ"
+          },
+          {
+            "position": 2,
+            "char": "攔",
+            "furigana": "らん",
+            "okurigana": "セント",
+            "kaeriten": "一"
+          },
+          {
+            "position": 3,
+            "char": "約",
+            "furigana": "おほむ",
+            "okurigana": "ネ"
+          },
+          {
+            "position": 4,
+            "char": "當",
+            "furigana": "まさ",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 5,
+            "char": "應",
+            "furigana": "まさ",
+            "okurigana": "ニ",
+            "saidoku_furigana": "べ",
+            "saidoku_okurigana": "シ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 6,
+            "char": "是",
+            "okurigana": "ナル"
+          }
+        ],
+        []
       ],
       "notes": [
         "「劣衿將去，又迎嘉客」は去る者と来る者の対置。劣衿を特定人物に一意に固定しない。",
@@ -7271,6 +8151,69 @@
           "okurigana": "ノ"
         }
       ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "重",
+            "kaeriten": "二",
+            "gofu": true
+          },
+          {
+            "position": 1,
+            "char": "讀",
+            "okurigana": "シ"
+          },
+          {
+            "position": 3,
+            "char": "作",
+            "okurigana": "ヲ",
+            "kaeriten": "一"
+          },
+          {
+            "position": 5,
+            "char": "憶",
+            "okurigana": "フ",
+            "kaeriten": "下"
+          },
+          {
+            "position": 6,
+            "char": "經",
+            "okurigana": "テ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 7,
+            "char": "年",
+            "okurigana": "ヲ"
+          },
+          {
+            "position": 8,
+            "char": "復",
+            "furigana": "ま",
+            "okurigana": "タ"
+          },
+          {
+            "position": 9,
+            "char": "通",
+            "okurigana": "ゼシ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 11,
+            "char": "問",
+            "okurigana": "ヲ",
+            "kaeriten": "一"
+          },
+          {
+            "position": 12,
+            "char": "事",
+            "okurigana": "ヲ",
+            "kaeriten": "上"
+          }
+        ]
+      ],
       "notes": [
         "「先認得當年心力」の得は結果・達成の補語。字旁を古典汉文の置字と偽らない。",
         "「曾細剖片言千轉」は旧い言辞の繰返し分析、実証として過去の主体の心意を固定しない。",
@@ -7501,6 +8444,30 @@
           "char": "誤",
           "okurigana": "レリ"
         }
+      ],
+      "title": [
+        [],
+        [],
+        [
+          {
+            "position": 0,
+            "char": "又",
+            "furigana": "ま",
+            "okurigana": "タ"
+          },
+          {
+            "position": 1,
+            "char": "過",
+            "okurigana": "グ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 3,
+            "char": "廬",
+            "okurigana": "ヲ",
+            "kaeriten": "一"
+          }
+        ]
       ],
       "notes": [
         "「認不真／卻認真」は現代中国語の不真=識別不確実と認真=本気で向き合うという語彙上の対立。前半は書き下しに従い「認むること真ならず」と不にレ点を付けて読むが、後半の熟語「認真」には返点を付けず音読（にんしん）とし、両義は別掲の書き下し文で説明する。",
@@ -7740,6 +8707,9 @@
           "char": "路",
           "okurigana": "ヲ"
         }
+      ],
+      "title": [
+        []
       ],
       "notes": [
         "「未消尺素」の「消（しょう）」は「要する」の意。作者の趣旨『手紙を必要としない』に従い、未を再読文字として「未だ尺素を消（しょう）せず」と返読する。「手紙がまだ消えていない」の意ではない。",
