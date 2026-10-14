@@ -6,14 +6,15 @@
   'use strict';
   const root = document.documentElement;
   const stages = [...document.querySelectorAll('[data-poetry-kanbun-viewer]')];
-  const checkbox = document.querySelector('[data-poetry-kunten-toggle]');
-  if (!stages.length || !checkbox) return;
+  // The three-way layout choice (poetry-layout.js) sets data-poetry-kunten-choice.
+  if (!stages.length || !document.querySelector('[data-poetry-kunten-choice]')) return;
   const storageKey = 'hanpuli.poetryKunten.v2';
   let preference = null;
   try { preference = localStorage.getItem(storageKey); } catch {}
   const override = new URL(location.href).searchParams.get('kunten');
   if (override === 'on' || override === 'off') preference = override;
-  checkbox.checked = preference !== 'off';
+  root.dataset.poetryKuntenMarks = preference === 'off' ? 'off' : 'on';
+  dispatchEvent(new Event('poetry-kunten-change'));
   const byWindow = new Map();
   for (const stage of stages) {
     const frame = stage.querySelector('iframe[data-kanbun-frame]');
@@ -23,7 +24,7 @@
   }
   let currentLayout = root.dataset.poetryLayout;
   function isActive() {
-    return checkbox.checked && root.dataset.poetryLayout === 'vertical' &&
+    return root.dataset.poetryKuntenMarks !== 'off' && root.dataset.poetryLayout === 'vertical' &&
            !root.hasAttribute('data-reading-simple');
   }
   function apply() {
@@ -31,13 +32,6 @@
     root.dataset.poetryKunten = on ? 'on' : 'off';
     for (const stage of stages) {
       const source = stage.closest('.poem-version.source');
-      const local = source?.querySelector('[data-poetry-kanbun-local-toggle]');
-      if (local) {
-        local.closest('.poetry-kanbun-local-control').hidden =
-          root.dataset.poetryLayout !== 'vertical' || root.hasAttribute('data-reading-simple');
-        local.setAttribute('aria-pressed',String(on));
-        local.textContent = on ? '白文を表示' : '訓点を表示';
-      }
       const show = on && stage.dataset.kanbunReady === 'true';
       // Keep an on-page, measurable iframe while it initializes; the
       // pre-ready stage is clipped and has no effect on the Chinese source.
@@ -47,20 +41,6 @@
     window.PoetryFlow?.schedule();
     currentLayout = root.dataset.poetryLayout;
   }
-  for (const stage of stages) {
-    const local = stage.closest('.poem-version.source')?.querySelector('[data-poetry-kanbun-local-toggle]');
-    local?.addEventListener('click', () => {
-      checkbox.checked = !checkbox.checked;
-      checkbox.dispatchEvent(new Event('change',{bubbles:true}));
-    });
-  }
-  checkbox.addEventListener('change', () => {
-    try { localStorage.setItem(storageKey, checkbox.checked ? 'on' : 'off'); } catch {}
-    const url = new URL(location.href);
-    url.searchParams.set('kunten',checkbox.checked?'on':'off');
-    history.replaceState(history.state,'',url);
-    apply();
-  });
   addEventListener('message', event => {
     const match = [...byWindow.values()].find(({frame}) => frame.contentWindow === event.source);
     if (!match) return;

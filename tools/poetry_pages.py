@@ -96,11 +96,13 @@ class Pages:
         ui = self.ui[locale]
         return (f'<div class="poetry-layout-controls" role="group" aria-label="{esc(ui["layout_label"])}" '
                 f'data-simple-label="{esc(ui["layout_simple"])}" hidden><span>{esc(ui["layout_label"])}</span>'
-                + ''.join(f'<button type="button" data-poetry-layout="{mode}" aria-pressed="false">{esc(ui[key])}</button>'
-                          for mode,key in [('horizontal','layout_horizontal'),('vertical','layout_vertical')])
-                + ('<label class="poetry-kunten-option">'
-                   '<input type="checkbox" data-poetry-kunten-toggle checked>訓点（試験）</label>'
-                   if locale=='ja' and kunten else '') + '</div>')
+                + ''.join(f'<button type="button" data-poetry-layout="{mode}"{choice} aria-pressed="false">{esc(label)}</button>'
+                          for mode,choice,label in ([('horizontal','',ui['layout_horizontal']),
+                                                     ('vertical',' data-poetry-kunten-choice="off"',ui['layout_vertical']),
+                                                     ('vertical',' data-poetry-kunten-choice="on"',ui['layout_vertical']+'＋訓点')]
+                                                    if locale=='ja' and kunten else
+                                                    [('horizontal','',ui['layout_horizontal']),('vertical','',ui['layout_vertical'])]))
+                + '</div>')
 
     def presentation_title(self, title: str, code: str | None, locale: str) -> tuple[str, str]:
         """Separate sequence labels for display without changing canonical editions."""
@@ -237,9 +239,6 @@ class Pages:
                     f'{esc(original["title"])}</h2><div class="body">{esc(original["body"])}</div>'
                     + ('' if with_kunten else '</section>'))
         if with_kunten:
-            rows.append('<div class="poetry-kanbun-local-control" lang="ja" hidden>'
-                        '<button type="button" data-poetry-kanbun-local-toggle aria-pressed="true">'
-                        '白文を表示</button></div>')
             digest = self.kunten.texts[tid]['source_body_sha256']
             rows.append(
                 f'<div class="poetry-kanbun-stage" lang="ja" hidden data-poetry-kanbun-viewer="{esc(tid)}" '

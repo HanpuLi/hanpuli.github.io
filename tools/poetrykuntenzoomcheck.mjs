@@ -42,7 +42,7 @@ try{
           document.documentElement.setAttribute('data-reading-large','');
         });
         await page.evaluate(async()=>document.fonts.ready);
-        const checkbox=page.locator('[data-poetry-kunten-toggle]');
+
         async function inspect(mode,iteration){
           const expectedVisible=mode==='on';
           await page.waitForFunction((visible)=>{
@@ -96,8 +96,8 @@ try{
           assert.deepEqual(exceptions,[],engineName+' JS exceptions');
         }
         await inspect('on','initial');
-        await checkbox.uncheck(); await inspect('off','toggle');
-        await checkbox.check(); await inspect('on','restore');
+        await page.locator('[data-poetry-kunten-choice="off"]').click(); await inspect('off','toggle');
+        await page.locator('[data-poetry-kunten-choice="on"]').click(); await inspect('on','restore');
         for(let i=0;i<4;i++){
           await page.evaluate(()=>window.PoetryFlow.schedule());
           await page.evaluate(()=>new Promise(ok=>requestAnimationFrame(
