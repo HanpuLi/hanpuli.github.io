@@ -1,21 +1,4 @@
 /* Portfolio-owned host styles for an isolated kanbun visual reader. */
-.poetry-kunten-option {
-  display:inline-flex;align-items:center;gap:.5rem;
-  min-height:44px;margin-inline-start:.5rem;
-  font:.75rem/1.7 var(--mono);color:var(--muted);cursor:pointer;
-}
-.poetry-kunten-option input { margin:0;width:1.15rem;height:1.15rem;accent-color:var(--ink); }
-.poetry-kunten-option:has(input:checked){ color:var(--ink); }
-.poetry-kanbun-local-control {
-  display:flex;justify-content:center;align-items:center;margin:.4rem 0 1rem;
-}
-.poetry-kanbun-local-control[hidden] {display:none;}
-.poetry-kanbun-local-control button {
-  border:0;border-bottom:1px solid currentColor;background:transparent;
-  font:.74rem/1.6 var(--mono);color:var(--muted);
-  cursor:pointer;min-height:44px;padding:.5rem .3rem;
-}
-.poetry-kanbun-local-control button:hover {color:var(--ink);}
 .poetry-kanbun-stage[hidden] { display:none!important; }
 .poetry-kanbun-stage:not([data-kanbun-ready="true"]):not([hidden]) {
   position:absolute!important;left:-10000px!important;top:0!important;

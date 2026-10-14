@@ -111,7 +111,7 @@ try {
     assert.equal(await page.locator('[data-poetry-notes]').count(), ['zh', 'zh-hans'].includes(locale) ? 17 : 0);
     const initial = locale === 'zh-hans' ? 'horizontal' : 'vertical';
     await inspect(page, expected, initial);
-    await page.locator('button[data-poetry-layout="vertical"]').click();
+    await page.locator(locale === 'ja' ? '[data-poetry-kunten-choice="on"]' : 'button[data-poetry-layout="vertical"]').click();
     const vertical = await inspect(page, expected, 'vertical');
     const a10 = vertical.articles.find(article => article.id === 'jia-yi-a10-text');
     if (locale === 'ja') {

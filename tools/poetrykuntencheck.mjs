@@ -51,7 +51,8 @@ try {
         assert.equal(await stage.getAttribute('data-kanbun-ready'),'true');
         assert.equal(await article.locator('.source .body').textContent(),original);
         assert.ok(await article.locator('.source').evaluate(el=>el.classList.contains('poetry-kanbun-showing')));
-        assert.equal(await page.locator('[data-poetry-kunten-toggle]').isChecked(),true);
+        assert.equal(await page.locator('[data-poetry-kunten-choice="on"]').getAttribute('aria-pressed'),'true');
+        assert.equal(await page.locator('[data-poetry-kunten-toggle],[data-poetry-kanbun-local-toggle]').count(),0,'one three-way choice, no second toggle');
         assert.equal(await iframe.getAttribute('sandbox'),'allow-scripts','viewer may not access parent DOM');
         const renderer = iframe.contentFrame();
         assert.equal(await renderer.locator('#kanbun-display .unit').count(),16);
@@ -133,31 +134,24 @@ try {
         } else {
           assert.equal(await page.evaluate(()=>window.__copiedOriginal),original);
         }
-        const checkbox = page.locator('[data-poetry-kunten-toggle]');
-        await checkbox.uncheck();
+        // 横書き / 縦書き / 縦書き＋訓点 is one choice; vertical without marks is the white text.
+        const plainVertical = page.locator('[data-poetry-kunten-choice="off"]'), marked = page.locator('[data-poetry-kunten-choice="on"]');
+        assert.equal(await marked.textContent(),'縦書き＋訓点');
+        await plainVertical.click();
         assert.ok(await stage.isHidden());
         assert.ok(!(await article.locator('.source').evaluate(el=>el.classList.contains('poetry-kanbun-showing'))));
+        assert.equal(await page.evaluate(()=>document.documentElement.dataset.poetryLayout),'vertical','white text stays vertical');
         assert.equal(await article.locator('.source .body').textContent(),original);
-        await checkbox.check();
+        assert.deepEqual(await page.locator('button[data-poetry-layout]').evaluateAll(bs=>bs.map(b=>b.getAttribute('aria-pressed'))),['false','true','false']);
+        assert.equal(new URL(page.url()).searchParams.get('kunten'),'off');
+        await marked.focus();
+        await page.keyboard.press('Enter');
         await stage.waitFor({state:'visible'});
-        const local = article.locator('[data-poetry-kanbun-local-toggle]');
-        assert.equal(await local.getAttribute('aria-pressed'),'true');
-        await local.click();
-        assert.ok(await stage.isHidden(),'Work-level control must show white text');
-        assert.equal(await local.getAttribute('aria-pressed'),'false');
-        assert.equal(await local.textContent(),'訓点を表示');
-        await local.click();
-        await stage.waitFor({state:'visible'});
-        assert.equal(await local.textContent(),'白文を表示');
-        await checkbox.focus();
-        await page.keyboard.press('Space');
-        assert.ok(await stage.isHidden(),'Keyboard Space must disable marks');
-        await page.keyboard.press('Space');
-        await stage.waitFor({state:'visible'});
+        assert.deepEqual(await page.locator('button[data-poetry-layout]').evaluateAll(bs=>bs.map(b=>b.getAttribute('aria-pressed'))),['false','false','true']);
         await page.locator('button[data-poetry-layout="horizontal"]').click();
         assert.ok(await stage.isHidden());
         assert.equal(await article.locator('.source .body').evaluate(el=>getComputedStyle(el).writingMode),'horizontal-tb');
-        await page.locator('button[data-poetry-layout="vertical"]').click();
+        await marked.click();
         await stage.waitFor({state:'visible'});
         await page.evaluate(()=>document.documentElement.setAttribute('data-reading-simple',''));
         assert.ok(await stage.isHidden());
@@ -177,8 +171,6 @@ try {
       const pArticle=plain.locator('[data-poetry-text="'+id+'"]');
       assert.equal(await pArticle.locator('.source .body').textContent(),original);
       assert.ok(await pArticle.locator('[data-poetry-kanbun-viewer]').isHidden());
-      assert.ok(await pArticle.locator('[data-poetry-kanbun-local-toggle]').isHidden(),
-        'Do not expose a nonfunctional local toggle in no-script mode');
       assert.ok(await pArticle.locator('.source .body').isVisible());
       await plain.close();
       const broken = await browser.newPage({viewport:{width:390,height:850}});

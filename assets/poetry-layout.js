@@ -35,6 +35,19 @@
   }
   if (['horizontal', 'vertical'].includes(requested)) preferred = requested;
 
+  // Japanese classical pages offer one three-way choice: horizontal,
+  // vertical, or vertical with kunten marks (owned by poetry-kunten-host.js).
+  function syncButtons() {
+    const simple = root.hasAttribute('data-reading-simple');
+    const layout = root.dataset.poetryLayout, marks = root.dataset.poetryKuntenMarks || 'on';
+    for (const button of controls.querySelectorAll('[data-poetry-layout]')) {
+      const choice = button.dataset.poetryKuntenChoice;
+      button.setAttribute('aria-pressed', String(button.dataset.poetryLayout === layout && (!choice || choice === marks)));
+      button.disabled = simple && button.dataset.poetryLayout === 'vertical';
+      button.title = button.disabled ? controls.dataset.simpleLabel : '';
+    }
+  }
+  addEventListener('poetry-kunten-change', syncButtons);
   function apply() {
     const simple = root.hasAttribute('data-reading-simple');
     const layout = simple ? 'horizontal' : preferred;
@@ -55,11 +68,7 @@
       } else body.textContent = text;
       PoetryFlow.update(composition, title, body);
     }
-    for (const button of controls.querySelectorAll('[data-poetry-layout]')) {
-      button.setAttribute('aria-pressed', String(button.dataset.poetryLayout === layout));
-      button.disabled = simple && button.dataset.poetryLayout === 'vertical';
-      button.title = button.disabled ? controls.dataset.simpleLabel : '';
-    }
+    syncButtons();
     dispatchEvent(new Event('poetry-layout-applied'));
   }
   controls.addEventListener('click', event => {
@@ -69,6 +78,12 @@
     try { localStorage.setItem(key, preferred); } catch { /* Storage is optional. */ }
     const url = new URL(location.href);
     url.searchParams.set('layout', preferred);
+    const marks = button.dataset.poetryKuntenChoice;
+    if (marks) {
+      root.dataset.poetryKuntenMarks = marks;
+      try { localStorage.setItem('hanpuli.poetryKunten.v2', marks); } catch { /* Storage is optional. */ }
+      url.searchParams.set('kunten', marks);
+    }
     history.replaceState(history.state, '', url);
     apply();
   });
