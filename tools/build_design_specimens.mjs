@@ -35,7 +35,7 @@ try{
  const page=await browser.newPage();
  const shop=await readFile(path.join(root,'poetry-voucher/shop.js'),'utf8');
  await page.route('**/poetry-voucher/shop.js*',r=>r.fulfill({contentType:'text/javascript',body:shop.replace('window.poetryShop=','window.__design={prepare,freezeOrder,continuousOrderPages,PagedPaper};window.poetryShop=')}));
- await page.goto(base+'/poetry-voucher/edition.html?lang=en&work=jia-yi-b3-text');await page.locator('#voucher-hero-image').waitFor({state:'visible'});await page.locator('.advanced-type summary').click();await page.locator('#translation-options input[value="en"]').uncheck();await page.locator('#font').selectOption('bitmap');await page.locator('#size').selectOption('24');await page.locator('#save-line').click();await page.waitForURL(/\/poetry-voucher\/shop\.html\?/);await page.waitForFunction(()=>window.poetryShop?.snapshot().bag.length===1);
+ await page.goto(base+'/poetry-voucher/edition.html?lang=en&work=jia-yi-b3-text');await page.locator('#voucher-hero-image').waitFor({state:'visible'});await page.locator('.advanced-type summary').click();await page.locator('#translation-options input[value="en"]').uncheck();await page.locator('#font').selectOption('bitmap');await page.locator('#size').selectOption('24');await page.locator('#save-line').click();await page.locator('#bag-dialog').waitFor({state:'visible'});await page.waitForFunction(()=>window.poetryShop?.snapshot().bag.length===1);
  const output=await page.evaluate(async()=>{
   // freezeOrder normally assigns a random line UUID. Fix the fixture's line
   // identity as well as its order identity so rebuilding CSS measurements is

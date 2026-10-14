@@ -21,8 +21,7 @@ const add=async(id,{script=null,translations=null,font=null,size=null}={})=>{
   if(translations.includes(language))await input.check();else await input.uncheck();
  }
  if(font||size){await page.locator('.advanced-type summary').click();if(font)await page.locator('#font').selectOption(font);if(size)await page.locator('#size').selectOption(String(size));}
- await page.locator('#save-line').click();await page.waitForURL(/\/poetry-voucher\/shop\.html\?/,{timeout:30000});
- assert(await page.locator('#bag-dialog').isVisible());
+ await page.locator('#save-line').click();await page.locator('#bag-dialog').waitFor({state:'visible',timeout:30000});
  await page.locator('[data-close="bag-dialog"]').first().click();
 };
 const issue=async(p=page)=>{
@@ -97,7 +96,7 @@ try{
   await stress.goto(base+'/poetry-voucher/edition.html?lang=en&work='+encodeURIComponent(id));
   await stress.locator('#voucher-hero-image').waitFor({state:'visible'});
   await stress.locator('#save-line').click();
-  if(i<24){await stress.waitForURL(/\/poetry-voucher\/shop\.html\?/);assert(await stress.locator('#bag-dialog').isVisible());}
+  if(i<24)await stress.locator('#bag-dialog').waitFor({state:'visible',timeout:30000});
  }
  assert.equal((await state(stress)).bag.reduce((s,item)=>s+item.quantity,0),24);
  assert.equal(await stress.locator('body').getAttribute('data-page'),'edition','25th voucher rejected on product page');

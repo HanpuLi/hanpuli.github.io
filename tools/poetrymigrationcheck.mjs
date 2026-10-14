@@ -129,7 +129,7 @@ try{
   await page.locator('.advanced-type summary').click();
   await page.locator('#font').selectOption('site');
   await page.locator('#translation-options input[value="en"]').check();
-  await page.locator('#save-line').click();await page.waitForURL(/\/poetry-voucher\/shop\.html\?/);assert(await page.locator('#bag-dialog').isVisible());
+  await page.locator('#save-line').click();await page.locator('#bag-dialog').waitFor({state:'visible',timeout:30000});
   await page.locator('#to-checkout').click();await page.locator('#place-order').click();
   await page.waitForURL(/\/poetry-voucher\/order\.html\?/, {timeout:45000});
   await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1,null,{timeout:45000});
