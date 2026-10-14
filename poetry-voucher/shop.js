@@ -135,6 +135,8 @@
       const tile=node('button',undefined,'collection-tile');tile.type='button';
       tile.append(node('span',String(index+1).padStart(2,'0'),'collection-no'),node('strong',group.title),node('span',t('poemCount').replace('{count}',group.count),'collection-count'));
       tile.addEventListener('click',()=>{el('shop-search').value='';el('shop-filter').value=group.shelf;catalogueExpanded=false;catalogue();syncCollectionURL();el('current-collection').focus({preventScroll:true});el('catalogue-heading').scrollIntoView({block:'start'});});
+      const first=works.find(work=>work.shelf===group.shelf),sample=node('img',undefined,'collection-sample');sample.alt='';sample.width=96;sample.height=120;sample.hidden=true;tile.append(sample);
+      try{thumbnail(validateLine(defaultEdition(first)),sample);}catch{}
       picker.append(tile);
     }
     const showWorks=!!search||filter!=='all'||catalogueExpanded;
@@ -206,13 +208,61 @@
     try{sessionStorage.setItem(EDIT_KEY,JSON.stringify({workId:line.workId,line}));}catch{notify('storageBlocked');return;}
     location.assign(editionLink(line.workId,true));
   }
-  function editorPrice(){editorReading();for(const option of el('size').options)option.textContent=sizeName(Number(option.value));if(editionPage){const w=currentWork();if(w)el('edition-summary').textContent=lineSummary({workId:w.id,locale:el('original-script').value,translations:[...document.querySelectorAll('#translation-options input:checked')].map(input=>input.value),font:el('font').value,size:Number(el('size').value)});}el('typeface-note').dataset.owner='shop';el('typeface-note').textContent=t('typefaceShopNote').replace('{price}',uiMoney(TARIFF.addOn));try{el('editor-price').textContent=uiMoney(updatePrice().price);}catch{el('editor-price').textContent='—';}}
+  // Product page: every choice is a card with its price difference, as for
+  // translations. The native select stays the single source of truth.
+  const CARD_SELECTS=['original-script','font','size'];
+  function optionCardLabel(id,value){
+    if(id==='original-script')return [t(value==='zh-Hans'?'simplified':'traditional'),t('optionIncluded')];
+    if(id==='font')return [value==='site'?tr('網站字體'):t('typePixel'),value==='site'?'+'+uiMoney(TARIFF.addOn):t('optionIncluded')];
+    return [sizeName(Number(value)),''];
+  }
+  function syncOptionCards(){
+    if(!editionPage)return;
+    for(const id of CARD_SELECTS){
+      const select=el(id),label=document.querySelector(`label[for="${id}"]`);let group=el(id+'-cards');
+      if(!group){
+        group=node('div',undefined,'option-cards');group.id=id+'-cards';group.setAttribute('role','radiogroup');
+        label.id ||= id+'-label';group.setAttribute('aria-labelledby',label.id);
+        select.after(group);select.tabIndex=-1;select.setAttribute('aria-hidden','true');select.classList.add('card-source');
+      }
+      const values=[...select.options].map(option=>option.value);
+      if(group.dataset.values!==values.join()){
+        group.dataset.values=values.join();group.replaceChildren();
+        for(const value of values){
+          const card=node('label',undefined,'option-card'),input=node('input'),name=node('span',undefined,'option-name'),price=node('span',undefined,'option-price');
+          input.type='radio';input.name=id+'-choice';input.value=value;
+          input.addEventListener('input',event=>{event.stopPropagation();if(!input.checked)return;select.value=value;select.dispatchEvent(new Event('input',{bubbles:true}));select.dispatchEvent(new Event('change',{bubbles:true}));});
+          card.append(input,name,price);group.append(card);
+        }
+      }
+      for(const card of group.children){const input=card.querySelector('input'),[name,price]=optionCardLabel(id,input.value);card.querySelector('.option-name').textContent=name;card.querySelector('.option-price').textContent=price;input.checked=input.value===select.value;}
+    }
+  }
+  // The configured edition lives in the product URL, so it can be shared, reloaded and revisited.
+  function syncEditionURL(){
+    if(!editionPage||editingId||!urlStateReady)return;
+    const url=new URL(location.href),w=currentWork();if(!w)return;
+    const translations=[...document.querySelectorAll('#translation-options input:checked')].map(input=>input.value);
+    const state={script:el('original-script').value==='zh-Hans'?'hans':null,tr:translations.join(',')||null,type:el('font').value==='site'?'site':null,size:Number(el('size').value)!==TYPE_CONFIG.defaultSize?el('size').value:null};
+    for(const [key,value] of Object.entries(state)){if(value)url.searchParams.set(key,value);else url.searchParams.delete(key);}
+    if(url.href!==location.href)history.replaceState(null,'',url);
+  }
+  let urlStateReady=false;
+  function applyEditionURL(work,params){
+    if(params.get('script')==='hans'&&work.translations?.['zh-Hans']){el('original-script').value='zh-Hans';el('original-script').dispatchEvent(new Event('change',{bubbles:true}));}
+    const wanted=new Set((params.get('tr')||'').split(','));
+    document.querySelectorAll('#translation-options input').forEach(input=>{if(wanted.has(input.value)&&!input.disabled&&work.translations?.[input.value])input.checked=true;});
+    if(params.get('type')==='site'){el('font').value='site';syncTypeSize();}
+    const size=Number(params.get('size'));if(typeSizes(el('font').value).includes(size))el('size').value=String(size);
+    urlStateReady=true;dirty();editorPrice();schedulePreview();
+  }
+  function editorPrice(){editorReading();syncOptionCards();syncEditionURL();for(const option of el('size').options)option.textContent=sizeName(Number(option.value));if(editionPage){const w=currentWork();if(w)el('edition-summary').textContent=lineSummary({workId:w.id,locale:el('original-script').value,translations:[...document.querySelectorAll('#translation-options input:checked')].map(input=>input.value),font:el('font').value,size:Number(el('size').value)});}el('typeface-note').dataset.owner='shop';el('typeface-note').textContent=t('typefaceShopNote').replace('{price}',uiMoney(TARIFF.addOn));try{el('editor-price').textContent=uiMoney(updatePrice().price);}catch{el('editor-price').textContent='—';}}
   function saveEditor(){
     if(editionPage&&!canNavigate){notify('storageBlocked');return;}
     const w=currentWork(),original=unchanged(w);
     if(!original){notify('authorOnly');return;}
     if(!el('title').value.trim()||!el('poem').value.trim()){notify('required');return;}
-    try{const line=validateLine({workId:original?w.id:null,title:el('title').value.trim(),author:el('author').value,poem:el('poem').value.replace(/\r\n?/g,'\n'),locale:original?el('original-script').value:editingLocale,translations:original?[...document.querySelectorAll('#translation-options input:checked')].map(input=>input.value):[],font:el('font').value,size:Number(el('size').value),quantity:1});if(insert(line)){if(editionPage){try{sessionStorage.removeItem(EDIT_KEY);}catch{}const url=new URL(location.href);if(url.searchParams.has('edit')){url.searchParams.delete('edit');history.replaceState(null,'',url);}el('save-line').textContent=t('add');productHeading();show('bag-dialog');}else close('product-editor');}}
+    try{const line=validateLine({workId:original?w.id:null,title:el('title').value.trim(),author:el('author').value,poem:el('poem').value.replace(/\r\n?/g,'\n'),locale:original?el('original-script').value:editingLocale,translations:original?[...document.querySelectorAll('#translation-options input:checked')].map(input=>input.value):[],font:el('font').value,size:Number(el('size').value),quantity:1});if(insert(line)){if(editionPage){try{sessionStorage.removeItem(EDIT_KEY);}catch{}const url=new URL(location.href);if(url.searchParams.has('edit')){url.searchParams.delete('edit');history.replaceState(null,'',url);}el('save-line').textContent=t('add');urlStateReady=true;productHeading();editorPrice();show('bag-dialog');}else close('product-editor');}}
     catch{notify('invalid');}
   }
   // Dot counts are printer settings; readers choose a named size.
@@ -393,7 +443,8 @@
       const printStatus=node('span',undefined,'h10-print-status micro');printStatus.setAttribute('role','status');
       window.h10OrderPrinter?.add(h10Print,order,result);
       const textLink=node('a',t('textDownload'),'download-link'),readLink=node('a',t('readOrder'),'download-link');textLink.dataset.shop='textDownload';readLink.dataset.shop='readOrder';readLink.href='#reading-'+order.ref;textLink.download='poetry-order-'+order.ref+'-reading.html';
-      heading.append(title,meta,payment,fullLink,h10Print,printStatus,textLink,readLink,hint);
+      const lines=node('ul',undefined,'order-lines');lines.dataset.orderField='lines';
+      heading.append(title,meta,payment,lines,fullLink,h10Print,printStatus,textLink,readLink,hint);
       section.refreshReading=()=>{
         const reading=OrderReading.view(order,result,t,uiMoney);reading.id='reading-'+order.ref;
         section.querySelector('.order-text-copy')?.remove();section.append(reading);
@@ -417,6 +468,7 @@
     section.refreshReading();
     section.querySelectorAll('[data-shop]').forEach(n=>n.textContent=t(n.dataset.shop));
     section.querySelector('[data-order-field="title"]').textContent=t('order')+' '+order.ref;
+    section.querySelector('[data-order-field="lines"]').replaceChildren(...order.lines.map(line=>{const item=node('li'),name=node('span',`${lineTitle(line)} × ${line.quantity}`);name.lang=displayLang(line);name.append(node('small',lineSummary(line),'micro'));item.append(name,node('strong',uiMoney(line.unitPrice*line.quantity)));return item;}));
     section.querySelector('[data-order-field="meta"]').textContent=new Intl.DateTimeFormat(document.documentElement.lang,{dateStyle:'medium',timeStyle:'short',timeZone:'Europe/London'}).format(order.created)+' · '+uiMoney(order.total);
     const payment=order.payment;section.querySelector('[data-order-field="payment"]').textContent=t('simulatedPayment')+' · '+t(payment.method==='card'?'card':'cash')+(payment.method==='cash'?` · ${t('received')} ${uiMoney(payment.tender)} · ${t('change')} ${uiMoney(payment.change)}`:'');
     section.querySelector('.order-strip-proof figcaption').textContent=t('continuousEdition')+' / '+order.ref;
@@ -477,7 +529,7 @@
           if(selected?.workId===work.id)line=bag.find(item=>keyOf(item)===keyOf(selected.line))||null;
         }catch{}
       }
-      openEditor(work.id,line);return;
+      openEditor(work.id,line);if(!line)applyEditionURL(work,params);return;
     }
     const collection=params.get('collection');
     if(collection&&[...el('shop-filter').options].some(o=>o.value===collection)){
