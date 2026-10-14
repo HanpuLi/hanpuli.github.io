@@ -16,6 +16,7 @@
 <script src="/assets/accessibility.js"></script>
 <script defer src="/assets/profile-credit.js"></script>
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/poetry.css">
 {{STRUCTURED_DATA}}
 </head>
 <body class="shi-page summer-poem-page locale-{{LOCALE}}">
@@ -35,6 +36,7 @@
   </header>
   <main id="summer-main" tabindex="-1">
     <h1 class="visually-hidden" lang="{{SUMMER_TEXT_LANG}}">{{SUMMER_TITLE}}</h1>
+    {{SUMMER_BREADCRUMBS}}
     <div class="summer-context">
       <p class="summer-kicker">{{SUMMER_ARCHIVE_LABEL}}</p>
       <p class="summer-date">{{SUMMER_DATE}}</p>
@@ -43,6 +45,8 @@
     <article class="summer-reading" lang="{{SUMMER_TEXT_LANG}}">
       {{SUMMER_BODY}}
     </article>
+    {{SUMMER_PAPER_LINK}}
+    {{SUMMER_SEQUENCE}}
     <p class="summer-back"><a href="{{SHI_HREF}}">{{SUMMER_BACK_LABEL}}</a></p>
   </main>
   <footer class="page-footer">

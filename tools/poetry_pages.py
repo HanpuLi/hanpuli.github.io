@@ -10,6 +10,7 @@ from urllib.parse import urlencode
 
 from poetry_library import Library, LANGS, SHOP_LANGS, read
 from poetry_kundoku import Kundoku
+from poetry_kunten import Kunten
 from poetry_reading_aids import ReadingAids
 
 
@@ -32,6 +33,7 @@ class Pages:
         self.base = base
         self.lib = Library(base.ROOT)
         self.kundoku = Kundoku(self.lib)
+        self.kunten = Kunten(self.lib)
         self.reading_aids = ReadingAids(self.lib)
         self.ui = read(base.CONTENT / 'poetry/ui.json')
         self.template = (base.TEMPLATES / 'poetry.html').read_text(encoding='utf-8')
@@ -68,6 +70,9 @@ class Pages:
                     description=description,url=canonical,image_url=image)
         social = b.social_meta_html(locale_id=locale,title=title,description=description,url=canonical,
                     image_url=image,image_alt=title,width=1200,height=630,image_type='image/png',og_type='article')
+        if locale == 'ja' and 'data-poetry-kanbun-viewer=' in content:
+            extra_head += ('<link rel="stylesheet" href="/assets/poetry-kunten-host.css">'
+                           '<script defer src="/assets/poetry-kunten-host.js"></script>')
         values = {
             'HTML_LANG':b.LANG_BY_ID[locale]['html_lang'], 'LOCALE':locale,
             'POETRY_TITLE':esc(title), 'POETRY_DESCRIPTION':esc(description),
@@ -81,18 +86,21 @@ class Pages:
             'LANG_SWITCHER':self.languages(route,locale), 'READING_TOOLS':b.reading_tools(copy),
             'POETRY_BREADCRUMBS':breadcrumbs, 'POETRY_HEADING':esc(heading),
             'POETRY_INTRO':intro, 'POETRY_SWITCHER':switcher, 'POETRY_CONTENT':content,
-            'POETRY_LAYOUT_CONTROL':self.layout_controls(locale) if 'data-poetry-classical' in content else '',
+            'POETRY_LAYOUT_CONTROL':self.layout_controls(locale, kunten='data-poetry-kanbun-viewer=' in content) if 'data-poetry-classical' in content else '',
             'POETRY_INDEX':self.lib.path('',locale), 'POETRY_BACK':esc(ui['back']),
             'ABOUT_HREF':b.page_path(locale,'about'), 'ABOUT_LINK_LABEL':esc(b.ABOUT_SITE[locale]['footer_link']),
         }
         return b.render_template(self.template,copy,values)
 
-    def layout_controls(self, locale: str) -> str:
+    def layout_controls(self, locale: str, *, kunten: bool = False) -> str:
         ui = self.ui[locale]
         return (f'<div class="poetry-layout-controls" role="group" aria-label="{esc(ui["layout_label"])}" '
                 f'data-simple-label="{esc(ui["layout_simple"])}" hidden><span>{esc(ui["layout_label"])}</span>'
                 + ''.join(f'<button type="button" data-poetry-layout="{mode}" aria-pressed="false">{esc(ui[key])}</button>'
-                          for mode,key in [('horizontal','layout_horizontal'),('vertical','layout_vertical')]) + '</div>')
+                          for mode,key in [('horizontal','layout_horizontal'),('vertical','layout_vertical')])
+                + ('<label class="poetry-kunten-option">'
+                   '<input type="checkbox" data-poetry-kunten-toggle checked>訓点（試験）</label>'
+                   if locale=='ja' and kunten else '') + '</div>')
 
     def presentation_title(self, title: str, code: str | None, locale: str) -> tuple[str, str]:
         """Separate sequence labels for display without changing canonical editions."""
@@ -197,6 +205,17 @@ class Pages:
         nav_label=ui['by_work']+' · '+(lib.works[wid]['authorial_label'] or lib.title(wid,locale))
         return '<nav class="poetry-sequence-nav" aria-label="'+esc(nav_label)+'">'+''.join(links)+'</nav>'
 
+    def paper_link(self, offer_id: str, locale: str) -> str:
+        href='/poetry-voucher/shop.html?'+urlencode({'lang':SHOP_LANGS[locale],'work':offer_id})
+        return f'<p class="poetry-paper-link"><a href="{esc(href)}">{esc(self.ui[locale]["voucher"])}</a></p>'
+
+    def mirrored_frame(self, wid: str, locale: str) -> dict[str, str]:
+        """Shared navigation and paper link for a work whose body keeps its own authored layout."""
+        offers = dict.fromkeys(tid for vid in self.lib.works[wid]['versions']
+                               for tid in [vid, *self.lib.versions[vid]['parts']] if tid in self.lib.offers)
+        return {'breadcrumbs': self.breadcrumbs(locale, wid), 'sequence': self.sequence_nav(wid, locale),
+                'paper': ''.join(self.paper_link(tid, locale) for tid in offers)}
+
     def text_html(self, tid: str, locale: str, *, single: bool = False) -> str:
         lib, ui = self.lib, self.ui[locale]
         text, work = lib.texts[tid], lib.work_for_text(tid)
@@ -213,7 +232,28 @@ class Pages:
         attrs = (' data-poetry-classical' if classical else '') + (f' data-poetry-label="{esc(label)}"' if label else '')
         rows = [f'<article class="poem reader-poem" id="{esc(fragment)}" data-poetry-text="{esc(tid)}"{attrs}>',self.metadata(work,version,locale),f'<div class="{pair}">',f'<section class="poem-version source" lang="{tag}">']
         title_class = ' class="visually-hidden"' if single and not translation else ''
-        rows.append(f'<h2{title_class} data-poetry-title="{esc(source_title)}">{esc(original["title"])}</h2><div class="body">{esc(original["body"])}</div></section>')
+        with_kunten = locale == 'ja' and classical and tid in self.kunten.texts
+        rows.append(f'<h2{title_class} data-poetry-title="{esc(source_title)}">'
+                    f'{esc(original["title"])}</h2><div class="body">{esc(original["body"])}</div>'
+                    + ('' if with_kunten else '</section>'))
+        if with_kunten:
+            rows.append('<div class="poetry-kanbun-local-control" lang="ja" hidden>'
+                        '<button type="button" data-poetry-kanbun-local-toggle aria-pressed="true">'
+                        '白文を表示</button></div>')
+            digest = self.kunten.texts[tid]['source_body_sha256']
+            rows.append(
+                f'<div class="poetry-kanbun-stage" lang="ja" hidden data-poetry-kanbun-viewer="{esc(tid)}" '
+                f'data-kanbun-sha256="{esc(digest)}">'
+                '<div class="poetry-kanbun-display" aria-hidden="true">'
+                f'<span class="poetry-kanbun-heading">{esc(source_title)}</span>'
+                f'<iframe class="poetry-kanbun-frame" data-kanbun-frame '
+                f'title="漢文訓点（{esc(source_title)}）" tabindex="-1" aria-hidden="true" '
+                f'sandbox="allow-scripts" loading="eager" src="{esc(self.kunten.href(tid))}">'
+                '</iframe></div><div class="poetry-kanbun-tools">'
+                '<button type="button" data-kanbun-copy>原文をコピー</button>'
+                '</div></div>'
+            )
+            rows.append('</section>')
         if translation:
             code = work['authorial_label']
             title = (code+' · ' if code else '') + translation['title']
@@ -245,9 +285,22 @@ class Pages:
                         f'<summary>{esc(self.kundoku.label)}</summary>'
                         f'<div class="poem-version kundoku"><div class="body">'
                         f'{esc(self.kundoku.body(tid))}</div>{note_html}</div></details>')
-        if tid in lib.offers:
-            href='/poetry-voucher/shop.html?'+urlencode({'lang':SHOP_LANGS[locale],'work':tid})
-            rows.append(f'<p class="poetry-paper-link"><a href="{esc(href)}">{esc(ui["voucher"])}</a></p>')
+            if tid in self.kunten.texts:
+                # Public notes are edited prose, not the much longer
+                # internal collation/audit record in kunten.json.
+                editorial = self.kunten.reader_notes[tid]
+                if editorial:
+                    body = ''.join(f'<li>{esc(note)}</li>' for note in editorial)
+                    rows.append(f'<details class="poetry-kunten-notes" lang="ja" '
+                                f'data-poetry-kunten-notes="{esc(tid)}">'
+                                '<summary>訓点校注（編集）</summary>'
+                                f'<div class="poem-version kundoku"><ul class="kundoku-notes">{body}</ul>'
+                                '</div></details>')
+        # A whole-version paper edition is linked once, after its last part.
+        offer_id = tid if tid in lib.offers else (
+            version['id'] if version['id'] in lib.offers and tid == version['parts'][-1] else None)
+        if offer_id:
+            rows.append(self.paper_link(offer_id, locale))
         rows.append('</article>')
         return '\n'.join(rows)
 

@@ -1,0 +1,7753 @@
+{
+  "schema": 1,
+  "language": "ja",
+  "note": "Positions are zero-based Unicode character offsets in the exact Traditional Chinese source. Add only hand-reviewed character-level marks; the original remains unchanged.",
+  "texts": {
+    "jia-yi-b5-text": {
+      "source_body_sha256": "fda398b1d224751a130a36e90eea2c9c76bf28adbdac6db5cf7840bed40ba2db",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 2,
+          "char": "鑰",
+          "furigana": "かぎ"
+        },
+        {
+          "position": 4,
+          "char": "新",
+          "furigana": "あら",
+          "okurigana": "タニ"
+        },
+        {
+          "position": 5,
+          "char": "裁",
+          "okurigana": "シテ"
+        },
+        {
+          "position": 6,
+          "char": "付",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 8,
+          "char": "中",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 11,
+          "char": "寒",
+          "furigana": "さむ",
+          "okurigana": "クナリ"
+        },
+        {
+          "position": 12,
+          "char": "了",
+          "furigana": "ぬ"
+        },
+        {
+          "position": 14,
+          "char": "加",
+          "furigana": "くわ",
+          "okurigana": "ヘ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 15,
+          "char": "飯",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 16,
+          "char": "且",
+          "furigana": "か",
+          "okurigana": "ツ"
+        },
+        {
+          "position": 17,
+          "char": "從",
+          "furigana": "しょう"
+        },
+        {
+          "position": 18,
+          "char": "容",
+          "furigana": "よう",
+          "okurigana": "タレ"
+        }
+      ],
+      "notes": [
+        "「天寒了」は寒さが既に到来した状態を表す。「寒くなりぬ」はこの文脈に即した編者の書き下し。"
+      ]
+    },
+    "jia-yi-b7-text": {
+      "source_body_sha256": "ad7cae4062a7635a8e858f1404a114d7a05308d2fc35953db344bf3a7ea94e70",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "下",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 2,
+          "char": "讀",
+          "okurigana": "ミ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 4,
+          "char": "詞",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 7,
+          "char": "深",
+          "okurigana": "クシテ"
+        },
+        {
+          "position": 8,
+          "char": "方",
+          "furigana": "はじ",
+          "okurigana": "メテ"
+        },
+        {
+          "position": 9,
+          "char": "得",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 10,
+          "char": "眠",
+          "okurigana": "ルヲ"
+        },
+        {
+          "position": 14,
+          "char": "時",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 15,
+          "char": "渾",
+          "okurigana": "テ"
+        },
+        {
+          "position": 16,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 17,
+          "char": "異",
+          "okurigana": "ナラ"
+        },
+        {
+          "position": 20,
+          "char": "事",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 21,
+          "char": "付",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 23,
+          "char": "年",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 26,
+          "char": "我",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 27,
+          "char": "又",
+          "okurigana": "タ"
+        },
+        {
+          "position": 28,
+          "char": "移",
+          "okurigana": "リ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 30,
+          "char": "處",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 32,
+          "char": "君",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 33,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 34,
+          "char": "理",
+          "furigana": "おさ",
+          "okurigana": "ム",
+          "kaeriten": "二"
+        },
+        {
+          "position": 36,
+          "char": "篇",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 40,
+          "char": "兒",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 41,
+          "char": "催",
+          "okurigana": "シ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 42,
+          "char": "入",
+          "okurigana": "ルヲ",
+          "kaeriten": "一レ"
+        },
+        {
+          "position": 43,
+          "char": "夢",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 46,
+          "char": "草",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 47,
+          "char": "立",
+          "okurigana": "ツ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 49,
+          "char": "前",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 52,
+          "char": "莫",
+          "okurigana": "カレ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 53,
+          "char": "攀",
+          "okurigana": "ズルコト",
+          "kaeriten": "二"
+        },
+        {
+          "position": 55,
+          "char": "前",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 56,
+          "char": "柳",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 58,
+          "char": "莫",
+          "okurigana": "カレ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 59,
+          "char": "數",
+          "furigana": "かぞ",
+          "okurigana": "フルコト",
+          "kaeriten": "二"
+        },
+        {
+          "position": 61,
+          "char": "花",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 62,
+          "char": "天",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 66,
+          "char": "川",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 68,
+          "char": "自",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 69,
+          "char": "渡",
+          "okurigana": "リ"
+        },
+        {
+          "position": 72,
+          "char": "自",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 73,
+          "char": "有",
+          "okurigana": "リ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 74,
+          "char": "歸",
+          "okurigana": "ル"
+        },
+        {
+          "position": 75,
+          "char": "邊",
+          "kaeriten": "一"
+        }
+      ],
+      "notes": [
+        "「夜深方得眠」は、夜が深くなって初めて眠れたこと。「方」はこの時間的関係を示す。"
+      ]
+    },
+    "chaozhongcuo-20181023-revised-202610": {
+      "source_body_sha256": "3242d799d4a815561f5d45a727d54f9a13ef3b4a98cec5af32c29d6fdebc2802",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 0,
+          "char": "鷦",
+          "furigana": "しょう"
+        },
+        {
+          "position": 1,
+          "char": "金",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 2,
+          "char": "梳",
+          "furigana": "くしけず",
+          "okurigana": "リテ"
+        },
+        {
+          "position": 3,
+          "char": "作",
+          "furigana": "な",
+          "okurigana": "リ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 5,
+          "char": "香",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 6,
+          "char": "英",
+          "okurigana": "ト",
+          "kaeriten": "一"
+        },
+        {
+          "position": 8,
+          "char": "香",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 9,
+          "char": "到",
+          "okurigana": "リテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 11,
+          "char": "中",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 12,
+          "char": "停",
+          "furigana": "と",
+          "okurigana": "マル"
+        },
+        {
+          "position": 15,
+          "char": "偶",
+          "okurigana": "トシテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 16,
+          "char": "影",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 18,
+          "char": "前",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 19,
+          "char": "欲",
+          "okurigana": "スレバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 20,
+          "char": "並",
+          "okurigana": "バント"
+        },
+        {
+          "position": 23,
+          "char": "絲",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 26,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 27,
+          "char": "縈",
+          "furigana": "まとわ",
+          "okurigana": "ル"
+        },
+        {
+          "position": 32,
+          "char": "邊",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 36,
+          "char": "挹",
+          "furigana": "く",
+          "okurigana": "ミ"
+        },
+        {
+          "position": 37,
+          "char": "來",
+          "okurigana": "タリテ"
+        },
+        {
+          "position": 38,
+          "char": "便",
+          "okurigana": "チ"
+        },
+        {
+          "position": 39,
+          "char": "作",
+          "furigana": "な",
+          "okurigana": "ル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 42,
+          "char": "磬",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 43,
+          "char": "微",
+          "furigana": "かす",
+          "okurigana": "カニ"
+        },
+        {
+          "position": 44,
+          "char": "鳴",
+          "okurigana": "ルト",
+          "kaeriten": "一"
+        },
+        {
+          "position": 50,
+          "char": "明",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 52,
+          "char": "刺",
+          "okurigana": "アリ"
+        },
+        {
+          "position": 56,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 57,
+          "char": "護",
+          "okurigana": "ル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 59,
+          "char": "聲",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        }
+      ],
+      "notes": [
+        "「挹來便作」は、唇辺の鳳語を汲み取って銀磬の微かな響きに譬える句。読点を挟んでも「作」は後の「鳴」に及ぶ。"
+      ]
+    },
+    "jia-yi-a4-text": {
+      "source_body_sha256": "077941e2c91c381fbcb08d55c9759a7b8cf6fd45652e7a1f084823f54a75522f",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 0,
+          "char": "曾",
+          "okurigana": "テ"
+        },
+        {
+          "position": 1,
+          "char": "共",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 3,
+          "char": "廊",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 5,
+          "char": "坐",
+          "okurigana": "シ"
+        },
+        {
+          "position": 9,
+          "char": "只",
+          "okurigana": "ダ"
+        },
+        {
+          "position": 10,
+          "char": "道",
+          "furigana": "い",
+          "okurigana": "フ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 12,
+          "char": "常",
+          "okurigana": "ト",
+          "kaeriten": "一"
+        },
+        {
+          "position": 16,
+          "char": "燈",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 19,
+          "char": "共",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 21,
+          "char": "量",
+          "okurigana": "ス"
+        },
+        {
+          "position": 24,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 25,
+          "char": "知",
+          "okurigana": "ラ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 27,
+          "char": "已",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 28,
+          "char": "半",
+          "okurigana": "バナルヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 30,
+          "char": "但",
+          "okurigana": "ダ"
+        },
+        {
+          "position": 31,
+          "char": "覺",
+          "okurigana": "ユ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 33,
+          "char": "初",
+          "okurigana": "メテ"
+        },
+        {
+          "position": 34,
+          "char": "長",
+          "okurigana": "キヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 41,
+          "char": "書",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 42,
+          "char": "都",
+          "okurigana": "テ"
+        },
+        {
+          "position": 43,
+          "char": "杳",
+          "okurigana": "トシテ"
+        },
+        {
+          "position": 45,
+          "char": "逢",
+          "okurigana": "ヘバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 46,
+          "char": "人",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 47,
+          "char": "怕",
+          "okurigana": "ル",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 48,
+          "char": "説",
+          "okurigana": "クヲ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 50,
+          "char": "窗",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 53,
+          "char": "偶",
+          "okurigana": "タマ"
+        },
+        {
+          "position": 54,
+          "char": "因",
+          "okurigana": "リテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 56,
+          "char": "夢",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 57,
+          "char": "溯",
+          "okurigana": "ル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 59,
+          "char": "光",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 62,
+          "char": "思",
+          "okurigana": "ヘバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 63,
+          "char": "忘",
+          "okurigana": "レント"
+        },
+        {
+          "position": 64,
+          "char": "還",
+          "okurigana": "タ"
+        },
+        {
+          "position": 65,
+          "char": "入",
+          "okurigana": "リ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 66,
+          "char": "枕",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 68,
+          "char": "避",
+          "okurigana": "クレバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 69,
+          "char": "跡",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 70,
+          "char": "反",
+          "okurigana": "ツテ"
+        },
+        {
+          "position": 71,
+          "char": "成",
+          "okurigana": "ス",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 72,
+          "char": "雙",
+          "okurigana": "ヲ"
+        }
+      ],
+      "notes": [
+        "「孤燈紅淚」は「孤灯の紅涙」とし、商量の場の景とした。「共商量」の主語は原文に明示されない。",
+        "「逢人怕説西窗」は「人に逢えば」と「西窓を説くを怕る」の重層返読。",
+        "「思忘／避跡」の反転は動詞 + 一字目的語にレ点を用いる。",
+        "「曾共虛廊默坐」は「曾て共に虚廊に黙坐し」と字順のまま読む。副詞「共」に返点を付けない。"
+      ]
+    },
+    "jia-yi-a3-text": {
+      "source_body_sha256": "232d5095093dd785ff40a180c85e638e5e7c9149e7224ae6059d6074324b9b07",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 0,
+          "char": "鑰",
+          "furigana": "かぎ"
+        },
+        {
+          "position": 2,
+          "char": "新",
+          "okurigana": "タニ"
+        },
+        {
+          "position": 3,
+          "char": "裁",
+          "okurigana": "シテ"
+        },
+        {
+          "position": 5,
+          "char": "自",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 6,
+          "char": "珍",
+          "okurigana": "シミ"
+        },
+        {
+          "position": 8,
+          "char": "提",
+          "okurigana": "ゲ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 9,
+          "char": "毫",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 10,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ざ",
+          "saidoku_okurigana": "ルニ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 11,
+          "char": "寫",
+          "okurigana": "サ"
+        },
+        {
+          "position": 12,
+          "char": "已",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 14,
+          "char": "巡",
+          "okurigana": "ス"
+        },
+        {
+          "position": 17,
+          "char": "拆",
+          "furigana": "ひら",
+          "okurigana": "キ"
+        },
+        {
+          "position": 18,
+          "char": "來",
+          "okurigana": "タレバ"
+        },
+        {
+          "position": 19,
+          "char": "只",
+          "okurigana": "ダ"
+        },
+        {
+          "position": 20,
+          "char": "有",
+          "okurigana": "リ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 22,
+          "char": "行",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 23,
+          "char": "字",
+          "kaeriten": "一"
+        },
+        {
+          "position": 26,
+          "char": "晌",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 28,
+          "char": "繆",
+          "okurigana": "シ"
+        },
+        {
+          "position": 30,
+          "char": "晌",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 31,
+          "char": "嗔",
+          "furigana": "いか",
+          "okurigana": "ル"
+        },
+        {
+          "position": 36,
+          "char": "欲",
+          "okurigana": "シ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 37,
+          "char": "墜",
+          "okurigana": "チント"
+        },
+        {
+          "position": 40,
+          "char": "初",
+          "okurigana": "メテ"
+        },
+        {
+          "position": 41,
+          "char": "勻",
+          "furigana": "ひと",
+          "okurigana": "シ"
+        },
+        {
+          "position": 46,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ず",
+          "kaeriten": "三"
+        },
+        {
+          "position": 47,
+          "char": "敢",
+          "okurigana": "ヘテ"
+        },
+        {
+          "position": 48,
+          "char": "喚",
+          "okurigana": "バ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 50,
+          "char": "真",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 54,
+          "char": "前",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 56,
+          "char": "暖",
+          "okurigana": "カク"
+        },
+        {
+          "position": 57,
+          "char": "春",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 59,
+          "char": "淺",
+          "okurigana": "ク"
+        },
+        {
+          "position": 61,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 62,
+          "char": "有",
+          "okurigana": "リテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 64,
+          "char": "香",
+          "kaeriten": "一"
+        },
+        {
+          "position": 65,
+          "char": "繞",
+          "okurigana": "リ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 66,
+          "char": "指",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 67,
+          "char": "温",
+          "okurigana": "カシ"
+        }
+      ],
+      "notes": [
+        "甲三「春封浅」は封書の封と文言の浅さの二重性を保持する。",
+        "「未寫」「未敢」は再読文字として、二度目の読みを漢字の左側に置く。",
+        "「拆來」の動作は手紙に及ぶ。鑰を開くとはしない。"
+      ]
+    },
+    "jia-yi-a1-text": {
+      "source_body_sha256": "b160d95ab9301eab26d511c8ce71672cfe54641618ba4d46d3ae1e73e9f42c5a",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "度",
+          "okurigana": "カ"
+        },
+        {
+          "position": 3,
+          "char": "宵",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 4,
+          "char": "同",
+          "okurigana": "ジク"
+        },
+        {
+          "position": 6,
+          "char": "坐",
+          "okurigana": "シ"
+        },
+        {
+          "position": 9,
+          "char": "燈",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 12,
+          "char": "垂",
+          "okurigana": "ルルコト"
+        },
+        {
+          "position": 13,
+          "char": "遲",
+          "okurigana": "シ"
+        },
+        {
+          "position": 17,
+          "char": "秋",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 20,
+          "char": "有",
+          "okurigana": "ラン",
+          "kaeriten": "二"
+        },
+        {
+          "position": 21,
+          "char": "誰",
+          "okurigana": "カ"
+        },
+        {
+          "position": 22,
+          "char": "知",
+          "okurigana": "ル",
+          "kaeriten": "一"
+        },
+        {
+          "position": 25,
+          "char": "啓",
+          "okurigana": "ケバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 26,
+          "char": "窗",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 28,
+          "char": "欲",
+          "okurigana": "シ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 29,
+          "char": "墜",
+          "okurigana": "チント"
+        },
+        {
+          "position": 31,
+          "char": "光",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 32,
+          "char": "落",
+          "okurigana": "ツ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 34,
+          "char": "人",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 35,
+          "char": "衣",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 39,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 40,
+          "char": "語",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 41,
+          "char": "各",
+          "okurigana": "オノ"
+        },
+        {
+          "position": 42,
+          "char": "含",
+          "okurigana": "ミ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 44,
+          "char": "限",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 45,
+          "char": "思",
+          "okurigana": "ヒヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 48,
+          "char": "今",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 49,
+          "char": "惟",
+          "okurigana": "ダ"
+        },
+        {
+          "position": 50,
+          "char": "道",
+          "furigana": "い",
+          "okurigana": "フ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 52,
+          "char": "期",
+          "okurigana": "スト",
+          "kaeriten": "一"
+        },
+        {
+          "position": 56,
+          "char": "闌",
+          "okurigana": "ケテ"
+        },
+        {
+          "position": 57,
+          "char": "暗",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 58,
+          "char": "忘",
+          "okurigana": "ル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 60,
+          "char": "聲",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 61,
+          "char": "移",
+          "okurigana": "ルヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 64,
+          "char": "慵",
+          "furigana": "ものう",
+          "okurigana": "クナリテ"
+        },
+        {
+          "position": 66,
+          "char": "還",
+          "okurigana": "タ"
+        },
+        {
+          "position": 67,
+          "char": "指",
+          "okurigana": "ス",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 68,
+          "char": "日",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 71,
+          "char": "日",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 72,
+          "char": "又",
+          "okurigana": "タ"
+        },
+        {
+          "position": 73,
+          "char": "今",
+          "okurigana": "ノ"
+        }
+      ],
+      "notes": [
+        "「有誰知」は反語的。誰も実際に知ると断定しない。",
+        "「孤燈紅淚」の灯は「共商量」の第三の会話者ではない。",
+        "「慵來」は文語への逐語的な対応が難しく、来の読法を字旁で固定しない。書き下し文は「慵くなりて」。"
+      ]
+    },
+    "jia-yi-b1-text": {
+      "source_body_sha256": "13c9207617140f344449e2ad99058659de3c3b645ae155c31ddf49fc2ff8fee2",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "廊",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 3,
+          "char": "好",
+          "okurigana": "ク"
+        },
+        {
+          "position": 5,
+          "char": "初",
+          "okurigana": "メテ"
+        },
+        {
+          "position": 6,
+          "char": "定",
+          "okurigana": "マリ"
+        },
+        {
+          "position": 8,
+          "char": "同",
+          "okurigana": "ジク"
+        },
+        {
+          "position": 9,
+          "char": "攜",
+          "okurigana": "ヘテ"
+        },
+        {
+          "position": 11,
+          "char": "徑",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 13,
+          "char": "遲",
+          "okurigana": "タリ"
+        },
+        {
+          "position": 17,
+          "char": "前",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 20,
+          "char": "兩",
+          "okurigana": "ツナガラ"
+        },
+        {
+          "position": 21,
+          "char": "無",
+          "okurigana": "シ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 22,
+          "char": "疑",
+          "okurigana": "ヒ"
+        },
+        {
+          "position": 26,
+          "char": "衾",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 27,
+          "char": "隨",
+          "okurigana": "ヒテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 28,
+          "char": "手",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 29,
+          "char": "與",
+          "okurigana": "フ"
+        },
+        {
+          "position": 33,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 34,
+          "char": "須",
+          "furigana": "もち",
+          "okurigana": "ヰ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 35,
+          "char": "知",
+          "okurigana": "ルヲ"
+        },
+        {
+          "position": 40,
+          "char": "散",
+          "okurigana": "ズルハ"
+        },
+        {
+          "position": 41,
+          "char": "非",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 42,
+          "char": "因",
+          "okurigana": "ルニ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 43,
+          "char": "誰",
+          "okurigana": "カ"
+        },
+        {
+          "position": 44,
+          "char": "獨",
+          "okurigana": "リ"
+        },
+        {
+          "position": 45,
+          "char": "在",
+          "okurigana": "ルニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 48,
+          "char": "人",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 50,
+          "char": "自",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 52,
+          "char": "依",
+          "okurigana": "ル"
+        },
+        {
+          "position": 55,
+          "char": "席",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 56,
+          "char": "旁",
+          "okurigana": "ラニ"
+        },
+        {
+          "position": 57,
+          "char": "偶",
+          "okurigana": "タマ"
+        },
+        {
+          "position": 58,
+          "char": "坐",
+          "okurigana": "シテ"
+        },
+        {
+          "position": 59,
+          "char": "共",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 61,
+          "char": "棲",
+          "okurigana": "ム"
+        },
+        {
+          "position": 65,
+          "char": "殘",
+          "okurigana": "リテ"
+        },
+        {
+          "position": 68,
+          "char": "上",
+          "okurigana": "リ"
+        },
+        {
+          "position": 71,
+          "char": "過",
+          "okurigana": "ギテ"
+        },
+        {
+          "position": 73,
+          "char": "花",
+          "okurigana": "ノ"
+        }
+      ],
+      "notes": [
+        "「同攜花徑」から手を繋いだ姿勢を確定しない。「攜」は連れ立つ意とする。",
+        "「客散非因誰獨在」は客の散った理由についての否定であり、二人の関係を否定する事実とはならない。",
+        "「今日不須知」は再読「須」を機械的にあてない。「知るを須いず」と訓じる。"
+      ]
+    },
+    "jia-yi-a7-text": {
+      "source_body_sha256": "9f9af432ea50debefb1ef372bc9412c7bca86160affafcc88d7df6b89f9bd8bc",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 0,
+          "char": "手",
+          "okurigana": "ヅカラ"
+        },
+        {
+          "position": 1,
+          "char": "分",
+          "okurigana": "ケ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 3,
+          "char": "蕙",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 4,
+          "char": "移",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 6,
+          "char": "種",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 10,
+          "char": "可",
+          "furigana": "べ",
+          "okurigana": "キカ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 11,
+          "char": "記",
+          "furigana": "き",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 13,
+          "char": "温",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 19,
+          "char": "指",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 20,
+          "char": "贈",
+          "okurigana": "ル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 22,
+          "char": "蓀",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 25,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 26,
+          "char": "知",
+          "okurigana": "ラ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 28,
+          "char": "已",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 29,
+          "char": "定",
+          "okurigana": "マルヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 31,
+          "char": "空",
+          "okurigana": "シク"
+        },
+        {
+          "position": 32,
+          "char": "自",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 33,
+          "char": "換",
+          "okurigana": "フ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 35,
+          "char": "痕",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 42,
+          "char": "窗",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 43,
+          "char": "青",
+          "okurigana": "シ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 45,
+          "char": "度",
+          "okurigana": "カ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 47,
+          "char": "也",
+          "okurigana": "タ"
+        },
+        {
+          "position": 48,
+          "char": "應",
+          "furigana": "まさ",
+          "okurigana": "ニ",
+          "saidoku_furigana": "べ",
+          "saidoku_okurigana": "シ",
+          "kaeriten": "三"
+        },
+        {
+          "position": 49,
+          "char": "灌",
+          "kaeriten": "二",
+          "gofu": true
+        },
+        {
+          "position": 50,
+          "char": "溉",
+          "okurigana": "ス"
+        },
+        {
+          "position": 52,
+          "char": "昏",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 58,
+          "char": "自",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 59,
+          "char": "長",
+          "okurigana": "ズ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 61,
+          "char": "輪",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 65,
+          "char": "然",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 66,
+          "char": "風",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 67,
+          "char": "過",
+          "okurigana": "グル"
+        },
+        {
+          "position": 71,
+          "char": "約",
+          "okurigana": "トシテ"
+        },
+        {
+          "position": 73,
+          "char": "香",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 74,
+          "char": "聞",
+          "okurigana": "ク"
+        }
+      ],
+      "notes": [
+        "「西窗青幾度」は西窓が何度も春の緑に染まる意。「青」は青色と固定しない。",
+        "「也應灌溉朝昏」は推量・期待であり、事実として朝夕の水遣りが確認できたわけではない。再読の「應」は義務命令だけを意味しない。",
+        "「可記」の可は可能の「記し得るか」。",
+        "「也應灌溉朝昏」は朝夕に灌漑しているだろうという推量。「灌溉」は複合述語として合符で結び、目的語「朝昏」から返読して再読の「應」に返る（三二一点）。"
+      ]
+    },
+    "jia-yi-b2-text": {
+      "source_body_sha256": "29c41cb5fdb12fbbcccf7ffad20624b10b09a85a06ac222e8962cbd00968a25f",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "室",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 2,
+          "char": "香",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 3,
+          "char": "温",
+          "okurigana": "カク"
+        },
+        {
+          "position": 6,
+          "char": "痕",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 7,
+          "char": "影",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 8,
+          "char": "並",
+          "okurigana": "ブ"
+        },
+        {
+          "position": 12,
+          "char": "聲",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 13,
+          "char": "沉",
+          "okurigana": "ミ",
+          "kaeriten": "二",
+          "gofu": true
+        },
+        {
+          "position": 14,
+          "char": "入",
+          "okurigana": "ル"
+        },
+        {
+          "position": 16,
+          "char": "間",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 17,
+          "char": "暝",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 20,
+          "char": "隔",
+          "okurigana": "テテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 21,
+          "char": "簾",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 24,
+          "char": "欲",
+          "okurigana": "シ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 25,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 26,
+          "char": "寒",
+          "okurigana": "カラント",
+          "kaeriten": "一"
+        },
+        {
+          "position": 28,
+          "char": "有",
+          "okurigana": "リテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 31,
+          "char": "處",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 32,
+          "char": "衣",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 34,
+          "char": "冷",
+          "okurigana": "タシ"
+        },
+        {
+          "position": 38,
+          "char": "欲",
+          "okurigana": "シテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 39,
+          "char": "喚",
+          "okurigana": "バント"
+        },
+        {
+          "position": 40,
+          "char": "還",
+          "okurigana": "タ"
+        },
+        {
+          "position": 41,
+          "char": "休",
+          "okurigana": "ミ"
+        },
+        {
+          "position": 43,
+          "char": "歡",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 44,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 45,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ず",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 46,
+          "char": "省",
+          "furigana": "さと",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 50,
+          "char": "明",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 52,
+          "char": "水",
+          "okurigana": "アリテ"
+        },
+        {
+          "position": 53,
+          "char": "無",
+          "okurigana": "シ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 55,
+          "char": "艇",
+          "kaeriten": "一"
+        },
+        {
+          "position": 60,
+          "char": "散",
+          "okurigana": "ジ"
+        },
+        {
+          "position": 61,
+          "char": "盡",
+          "okurigana": "クシテ"
+        },
+        {
+          "position": 62,
+          "char": "各",
+          "okurigana": "オノ"
+        },
+        {
+          "position": 63,
+          "char": "歸",
+          "okurigana": "ル"
+        },
+        {
+          "position": 68,
+          "char": "獨",
+          "okurigana": "リ"
+        },
+        {
+          "position": 69,
+          "char": "照",
+          "okurigana": "ラシテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 71,
+          "char": "庭",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 72,
+          "char": "靜",
+          "okurigana": "カナリ"
+        }
+      ],
+      "notes": [
+        "「欲喚還休」は呼びかけようとして止める動作のみ。止めた理由を補わない。",
+        "「歡」は思い人、「未省」はまだ悟らないの意。思い人がその場にいる等を追加しない。",
+        "「燈色欲先寒」の「欲」は擬人的欲求の事実を述べない。寒色へ向かう見かけを保持する。"
+      ]
+    },
+    "jia-yi-a5-text": {
+      "source_body_sha256": "a2486f26540388355393b07e7209df68dd5f7812c5f122af3cc01f15068ac5ab",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 0,
+          "char": "那",
+          "furigana": "か",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 2,
+          "char": "誰",
+          "okurigana": "カ"
+        },
+        {
+          "position": 3,
+          "char": "分",
+          "okurigana": "カチシ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 5,
+          "char": "主",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 7,
+          "char": "並",
+          "okurigana": "ベ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 8,
+          "char": "肩",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 9,
+          "char": "同",
+          "okurigana": "ジク"
+        },
+        {
+          "position": 10,
+          "char": "倚",
+          "okurigana": "リテ"
+        },
+        {
+          "position": 12,
+          "char": "闌",
+          "okurigana": "ク"
+        },
+        {
+          "position": 15,
+          "char": "當",
+          "okurigana": "タリ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 16,
+          "char": "筵",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 18,
+          "char": "問",
+          "okurigana": "フモ"
+        },
+        {
+          "position": 19,
+          "char": "不",
+          "kaeriten": "二"
+        },
+        {
+          "position": 20,
+          "char": "曾",
+          "okurigana": "テ"
+        },
+        {
+          "position": 21,
+          "char": "瞞",
+          "okurigana": "カ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 25,
+          "char": "泥",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 26,
+          "char": "誰",
+          "okurigana": "カ"
+        },
+        {
+          "position": 27,
+          "char": "去",
+          "okurigana": "リシ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 28,
+          "char": "早",
+          "okurigana": "ク"
+        },
+        {
+          "position": 30,
+          "char": "此",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 31,
+          "char": "後",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 32,
+          "char": "各",
+          "okurigana": "オノ"
+        },
+        {
+          "position": 39,
+          "char": "處",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 41,
+          "char": "辰",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 42,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ず",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 43,
+          "char": "改",
+          "okurigana": "マラ"
+        },
+        {
+          "position": 46,
+          "char": "間",
+          "furigana": "じんかん",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 47,
+          "char": "幾",
+          "furigana": "いく",
+          "okurigana": "タビカ"
+        },
+        {
+          "position": 48,
+          "char": "換",
+          "okurigana": "フ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 50,
+          "char": "年",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 54,
+          "char": "潮",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 55,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 56,
+          "char": "帶",
+          "okurigana": "ブ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 58,
+          "char": "時",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 59,
+          "char": "顏",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 62,
+          "char": "思",
+          "okurigana": "ヒテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 63,
+          "char": "忘",
+          "okurigana": "レント"
+        },
+        {
+          "position": 64,
+          "char": "成",
+          "okurigana": "シ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 65,
+          "char": "此",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 66,
+          "char": "闋",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 69,
+          "char": "對",
+          "okurigana": "スレバ"
+        },
+        {
+          "position": 71,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 72,
+          "char": "斑",
+          "okurigana": "ナリ"
+        }
+      ],
+      "notes": [
+        "「那夜誰分賓主」は過去の問いであり、双方の認識が一致していたとの断定を避ける。",
+        "「雪泥誰去早」は「誰か早く去りし」と訓ずるが、主体の特定をしない。",
+        "「不曾瞞」は過去の場における否認であり、言わなかった内容を補わない。",
+        "「別處星辰未改」の「未」は再読文字で処理する。"
+      ]
+    },
+    "jia-yi-a8-text": {
+      "source_body_sha256": "6d0e7e6a533e685c2f2d6974f91f40d7f2b9b134e3fd768fe3fe99fdf8be7e7b",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 3,
+          "char": "下",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 4,
+          "char": "別",
+          "okurigana": "レ"
+        },
+        {
+          "position": 6,
+          "char": "今",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 7,
+          "char": "作",
+          "okurigana": "ル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 9,
+          "char": "前",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 10,
+          "char": "雨",
+          "okurigana": "ト",
+          "kaeriten": "一"
+        },
+        {
+          "position": 13,
+          "char": "怕",
+          "okurigana": "レ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 14,
+          "char": "聽",
+          "okurigana": "クヲ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 16,
+          "char": "時",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 17,
+          "char": "曲",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 21,
+          "char": "催",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 22,
+          "char": "天",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 23,
+          "char": "曙",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 27,
+          "char": "音",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 28,
+          "char": "不",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 29,
+          "char": "肯",
+          "okurigana": "ンゼ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 30,
+          "char": "絕",
+          "okurigana": "ユルヲ"
+        },
+        {
+          "position": 32,
+          "char": "繞",
+          "okurigana": "リテ"
+        },
+        {
+          "position": 33,
+          "char": "作",
+          "okurigana": "ル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 35,
+          "char": "腸",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 36,
+          "char": "縷",
+          "okurigana": "ト",
+          "kaeriten": "一"
+        },
+        {
+          "position": 41,
+          "char": "寒",
+          "okurigana": "ク"
+        },
+        {
+          "position": 42,
+          "char": "在",
+          "okurigana": "リ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 43,
+          "char": "壁",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 45,
+          "char": "照",
+          "okurigana": "ラスハ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 46,
+          "char": "壁",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 47,
+          "char": "如",
+          "okurigana": "シ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 48,
+          "char": "照",
+          "okurigana": "ラスガ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 49,
+          "char": "汝",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 53,
+          "char": "昔",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 54,
+          "char": "我",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 56,
+          "char": "何",
+          "furigana": "いづ",
+          "okurigana": "クニカ"
+        },
+        {
+          "position": 57,
+          "char": "在",
+          "okurigana": "ル"
+        },
+        {
+          "position": 60,
+          "char": "影",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 61,
+          "char": "各",
+          "okurigana": "オノ"
+        },
+        {
+          "position": 63,
+          "char": "然",
+          "okurigana": "タリ"
+        },
+        {
+          "position": 66,
+          "char": "推",
+          "okurigana": "セバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 67,
+          "char": "窗",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 68,
+          "char": "山",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 69,
+          "char": "似",
+          "okurigana": "テ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 70,
+          "char": "海",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 73,
+          "char": "古",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 79,
+          "char": "此",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 81,
+          "char": "殊",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 82,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ず",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 83,
+          "char": "已",
+          "furigana": "や",
+          "okurigana": "マ"
+        },
+        {
+          "position": 86,
+          "char": "世",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 87,
+          "char": "不",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 88,
+          "char": "知",
+          "okurigana": "ラ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 89,
+          "char": "年",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 92,
+          "char": "側",
+          "furigana": "そばだ",
+          "okurigana": "テ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 93,
+          "char": "耳",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 94,
+          "char": "疑",
+          "okurigana": "フ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 96,
+          "char": "答",
+          "okurigana": "フカト",
+          "kaeriten": "一"
+        },
+        {
+          "position": 99,
+          "char": "音",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 100,
+          "char": "何",
+          "furigana": "いづ",
+          "okurigana": "レノ"
+        },
+        {
+          "position": 101,
+          "char": "處",
+          "okurigana": "ニカ"
+        },
+        {
+          "position": 102,
+          "char": "傳",
+          "okurigana": "ハル"
+        }
+      ],
+      "notes": [
+        "「昔我今何在」は過去と現在の一人称を含む。誰が誰と会話したかを補わない。",
+        "「側耳疑相答」は返答があったかの疑問であって、交互の応答が成立したという叙述ではない。",
+        "「未已」は尽きないこと。「未」は簡略化したレ点表記を採り、教科書の再読定型と同一視しない。"
+      ]
+    },
+    "linjiangxian-20180108-revised-202610": {
+      "source_body_sha256": "e4aa6daa823dbc01817737d921c417860ad6c7df6c81fe5b4aa059feda18d612",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 3,
+          "char": "梅",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 4,
+          "char": "無",
+          "okurigana": "ク",
+          "kaeriten": "二"
+        },
+        {
+          "position": 6,
+          "char": "譜",
+          "kaeriten": "一"
+        },
+        {
+          "position": 9,
+          "char": "來",
+          "okurigana": "タルモ"
+        },
+        {
+          "position": 10,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ず",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 11,
+          "char": "皺",
+          "okurigana": "メ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 13,
+          "char": "流",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 17,
+          "char": "前",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 18,
+          "char": "欲",
+          "okurigana": "スレバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 19,
+          "char": "去",
+          "okurigana": "ラント"
+        },
+        {
+          "position": 21,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 22,
+          "char": "留",
+          "okurigana": "マル"
+        },
+        {
+          "position": 25,
+          "char": "緣",
+          "okurigana": "モ"
+        },
+        {
+          "position": 26,
+          "char": "愁",
+          "okurigana": "ヒモ"
+        },
+        {
+          "position": 27,
+          "char": "都",
+          "okurigana": "テ"
+        },
+        {
+          "position": 28,
+          "char": "不",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 29,
+          "char": "守",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 31,
+          "char": "只",
+          "okurigana": "ダ"
+        },
+        {
+          "position": 32,
+          "char": "道",
+          "okurigana": "フ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 34,
+          "char": "家",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 35,
+          "char": "秋",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 42,
+          "char": "萊",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 44,
+          "char": "已",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 45,
+          "char": "遠",
+          "okurigana": "ク"
+        },
+        {
+          "position": 48,
+          "char": "驄",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 49,
+          "char": "且",
+          "furigana": "しばら",
+          "okurigana": "ク"
+        },
+        {
+          "position": 50,
+          "char": "繫",
+          "okurigana": "グ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 52,
+          "char": "樓",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 57,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ざ",
+          "saidoku_okurigana": "レバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 58,
+          "char": "至",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 59,
+          "char": "不",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 60,
+          "char": "題",
+          "okurigana": "セ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 61,
+          "char": "愁",
+          "okurigana": "ヒヲ"
+        },
+        {
+          "position": 65,
+          "char": "冰",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 66,
+          "char": "摧",
+          "furigana": "くだ",
+          "okurigana": "カレシ"
+        },
+        {
+          "position": 70,
+          "char": "吟",
+          "okurigana": "ジ"
+        },
+        {
+          "position": 71,
+          "char": "捻",
+          "okurigana": "リテ"
+        },
+        {
+          "position": 72,
+          "char": "憶",
+          "okurigana": "フ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 73,
+          "char": "君",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 74,
+          "char": "眸",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        }
+      ],
+      "notes": [
+        "「炭冰摧過後」は炭と氷による損傷を受けた主体が省略されている。炭と氷自体が壊れたわけではない。",
+        "「吟捻」は吟じる／捻る表現の重ね合わせであって、一貫した器楽演奏と断定しない。",
+        "「青驄」は青毛または芦毛の馬の古典的語で、繫ぐ行為が記される。",
+        "「只道別家秋」は相手への言葉であり、無関心を断定しない。",
+        "「摧過後」の過は経過・完了を示し、「摧かれし後」の過去の助動詞「し」に読み込む。"
+      ]
+    },
+    "jia-yi-a9-text": {
+      "source_body_sha256": "a6dee35d21767f6f620d9caefb473ce02606d3699ac6684417bba3b4536fdb8b",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "疊",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 3,
+          "char": "箋",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 4,
+          "char": "展",
+          "okurigana": "ベ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 6,
+          "char": "前",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 9,
+          "char": "時",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 11,
+          "char": "影",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 12,
+          "char": "各",
+          "okurigana": "オノ"
+        },
+        {
+          "position": 13,
+          "char": "成",
+          "okurigana": "ス",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 14,
+          "char": "篇",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 17,
+          "char": "親",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 18,
+          "char": "將",
+          "furigana": "も",
+          "okurigana": "ツテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 20,
+          "char": "線",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 21,
+          "char": "縫",
+          "okurigana": "ヒ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 22,
+          "char": "卿",
+          "okurigana": "ト"
+        },
+        {
+          "position": 23,
+          "char": "我",
+          "okurigana": "トヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 25,
+          "char": "留",
+          "okurigana": "メ"
+        },
+        {
+          "position": 26,
+          "char": "得",
+          "furigana": "え",
+          "okurigana": "テ"
+        },
+        {
+          "position": 28,
+          "char": "鴦",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 29,
+          "char": "傍",
+          "okurigana": "ヒテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 30,
+          "char": "脊",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 31,
+          "char": "眠",
+          "okurigana": "ラシム"
+        },
+        {
+          "position": 36,
+          "char": "一",
+          "okurigana": "タビ"
+        },
+        {
+          "position": 37,
+          "char": "哂",
+          "okurigana": "ヒ"
+        },
+        {
+          "position": 39,
+          "char": "語",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 40,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 41,
+          "char": "慳",
+          "furigana": "やぶさ",
+          "okurigana": "カナリ"
+        },
+        {
+          "position": 45,
+          "char": "中",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 47,
+          "char": "字",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 48,
+          "char": "只",
+          "okurigana": "ダ"
+        },
+        {
+          "position": 49,
+          "char": "加",
+          "furigana": "くは",
+          "okurigana": "ヘヨト",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 50,
+          "char": "餐",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 54,
+          "char": "言",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 55,
+          "char": "怕",
+          "okurigana": "レ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 56,
+          "char": "誤",
+          "okurigana": "リヲ"
+        },
+        {
+          "position": 58,
+          "char": "重",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 59,
+          "char": "掩",
+          "okurigana": "ヒ"
+        },
+        {
+          "position": 61,
+          "char": "欲",
+          "okurigana": "シテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 62,
+          "char": "喚",
+          "okurigana": "バント"
+        },
+        {
+          "position": 63,
+          "char": "還",
+          "okurigana": "タ"
+        },
+        {
+          "position": 64,
+          "char": "休",
+          "okurigana": "ミ"
+        },
+        {
+          "position": 65,
+          "char": "欲",
+          "okurigana": "スルモ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 66,
+          "char": "喚",
+          "okurigana": "バント"
+        },
+        {
+          "position": 67,
+          "char": "難",
+          "okurigana": "シ"
+        }
+      ],
+      "notes": [
+        "「舊時燈影各成篇」は二つの語りが各々独立していたことを残す。一致・相互承認を新しく立証しない。",
+        "「賓一哂，語猶慳」は話者の帰属を一人に確定せず、一笑と寡言の緊張を保つ。",
+        "「箋中淺字只加餐／深言怕誤／欲喚還休」は乙四・乙二の既出語を甲九の話者が読み直したもの。返り点・読みは双方向の愛の客観的確認ではない。",
+        "「留得」の得は結果補語的であり、伝統的な漢文の置き字であるとの一般的主張はしない。ここでは解釈的に「得て」とした。",
+        "「鴛鴦傍脊眠」は縫い合わされた古い文面の背に寄り添わせる造形として読み、現実の共寝という事実にしない。"
+      ]
+    },
+    "jia-yi-a2-text": {
+      "source_body_sha256": "94b45df8f1367ce075de0cb4e5fbea554f08121b6618174deee2cf5a5e93a9c3",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "醉",
+          "okurigana": "シテ"
+        },
+        {
+          "position": 2,
+          "char": "曾",
+          "okurigana": "テ"
+        },
+        {
+          "position": 3,
+          "char": "扶",
+          "okurigana": "ケテ"
+        },
+        {
+          "position": 5,
+          "char": "並",
+          "okurigana": "ビテ"
+        },
+        {
+          "position": 6,
+          "char": "倚",
+          "okurigana": "リ"
+        },
+        {
+          "position": 8,
+          "char": "登",
+          "okurigana": "リテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 9,
+          "char": "樓",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 10,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ず",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 11,
+          "char": "肯",
+          "okurigana": "ンゼ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 12,
+          "char": "人",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 13,
+          "char": "知",
+          "okurigana": "ルヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 17,
+          "char": "宵",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 20,
+          "char": "漸",
+          "okurigana": "ク"
+        },
+        {
+          "position": 22,
+          "char": "離",
+          "okurigana": "タリ"
+        },
+        {
+          "position": 26,
+          "char": "殘",
+          "okurigana": "リテ"
+        },
+        {
+          "position": 27,
+          "char": "催",
+          "okurigana": "シ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 29,
+          "char": "色",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 31,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 32,
+          "char": "帶",
+          "okurigana": "ブ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 34,
+          "char": "邊",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 35,
+          "char": "緋",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 39,
+          "char": "同",
+          "okurigana": "ジク"
+        },
+        {
+          "position": 40,
+          "char": "擁",
+          "okurigana": "シテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 42,
+          "char": "衾",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 43,
+          "char": "還",
+          "okurigana": "タ"
+        },
+        {
+          "position": 44,
+          "char": "細",
+          "okurigana": "カニ"
+        },
+        {
+          "position": 45,
+          "char": "話",
+          "okurigana": "シ"
+        },
+        {
+          "position": 47,
+          "char": "當",
+          "okurigana": "タリテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 48,
+          "char": "筵",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 49,
+          "char": "曾",
+          "okurigana": "テ"
+        },
+        {
+          "position": 50,
+          "char": "許",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 52,
+          "char": "期",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 55,
+          "char": "醒",
+          "okurigana": "メ"
+        },
+        {
+          "position": 56,
+          "char": "來",
+          "okurigana": "タリテ"
+        },
+        {
+          "position": 57,
+          "char": "可",
+          "furigana": "べ",
+          "okurigana": "キカ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 58,
+          "char": "認",
+          "okurigana": "ム",
+          "kaeriten": "二"
+        },
+        {
+          "position": 60,
+          "char": "中",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 61,
+          "char": "辭",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 65,
+          "char": "霞",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 66,
+          "char": "渾",
+          "okurigana": "テ"
+        },
+        {
+          "position": 67,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ず",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 68,
+          "char": "記",
+          "furigana": "き",
+          "okurigana": "セ"
+        },
+        {
+          "position": 71,
+          "char": "霧",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 72,
+          "char": "已",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 73,
+          "char": "盈",
+          "okurigana": "ツ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 74,
+          "char": "墀",
+          "okurigana": "ニ"
+        }
+      ],
+      "notes": [
+        "「沈醉曾扶相並倚」の扶け手と支えられる者は原文から一意に決定できない。相扶けたとも、片方が一方を支えたとも決めず、扶けつつとした。",
+        "「登樓未肯人知」は人に知られることを肯んじなかったという否定である。具体的な人名や隠した事柄を補わない。",
+        "「當筵曾許心期」は心の期したことを許した／約した記憶であり、生涯の誓いという内容を付け加えない。",
+        "「朝霞渾未記」は受け身の『記されず』。朝霞が主体として記録を行ったとの読みにしない。"
+      ]
+    },
+    "jia-yi-b6-text": {
+      "source_body_sha256": "5e65a9328ee459c4124de64508c78ebfedfd1015e625d1ce22b33ad849f90a7c",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "盆",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 2,
+          "char": "移",
+          "okurigana": "シ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 4,
+          "char": "草",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 7,
+          "char": "度",
+          "okurigana": "カ"
+        },
+        {
+          "position": 8,
+          "char": "誤",
+          "okurigana": "ル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 10,
+          "char": "痕",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 14,
+          "char": "圃",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 15,
+          "char": "分",
+          "okurigana": "カチ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 17,
+          "char": "種",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 20,
+          "char": "人",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 21,
+          "char": "折",
+          "okurigana": "ル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 23,
+          "char": "根",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 27,
+          "char": "虛",
+          "okurigana": "シク"
+        },
+        {
+          "position": 28,
+          "char": "留",
+          "okurigana": "メ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 30,
+          "char": "土",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 33,
+          "char": "掩",
+          "okurigana": "ハレテ"
+        },
+        {
+          "position": 34,
+          "char": "各",
+          "okurigana": "オノ"
+        },
+        {
+          "position": 41,
+          "char": "遷",
+          "okurigana": "リ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 43,
+          "char": "邑",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 45,
+          "char": "經",
+          "okurigana": "テ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 46,
+          "char": "年",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 47,
+          "char": "異",
+          "okurigana": "ナル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 49,
+          "char": "園",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 54,
+          "char": "空",
+          "okurigana": "シクシテ"
+        },
+        {
+          "position": 55,
+          "char": "行",
+          "okurigana": "クコト"
+        },
+        {
+          "position": 56,
+          "char": "愈",
+          "furigana": "いよいよ"
+        },
+        {
+          "position": 57,
+          "char": "遠",
+          "okurigana": "ク"
+        },
+        {
+          "position": 59,
+          "char": "塵",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 60,
+          "char": "積",
+          "okurigana": "モルコト"
+        },
+        {
+          "position": 61,
+          "char": "逐",
+          "okurigana": "ヒテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 62,
+          "char": "年",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 63,
+          "char": "增",
+          "okurigana": "ス"
+        },
+        {
+          "position": 67,
+          "char": "碎",
+          "okurigana": "ケテ"
+        },
+        {
+          "position": 68,
+          "char": "無",
+          "okurigana": "ク",
+          "kaeriten": "二"
+        },
+        {
+          "position": 70,
+          "char": "瓦",
+          "kaeriten": "一"
+        },
+        {
+          "position": 73,
+          "char": "根",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 74,
+          "char": "失",
+          "okurigana": "フ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 75,
+          "char": "所",
+          "okurigana": "ヲ",
+          "kaeriten": "一レ"
+        },
+        {
+          "position": 76,
+          "char": "憑",
+          "okurigana": "ル"
+        },
+        {
+          "position": 80,
+          "char": "啟",
+          "okurigana": "キテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 81,
+          "char": "緘",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 82,
+          "char": "留",
+          "okurigana": "メ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 84,
+          "char": "印",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 86,
+          "char": "手",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 87,
+          "char": "尚",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 88,
+          "char": "帶",
+          "okurigana": "ブ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 90,
+          "char": "泥",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 94,
+          "char": "女",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 95,
+          "char": "描",
+          "furigana": "なぞ",
+          "okurigana": "リ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 97,
+          "char": "帖",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 100,
+          "char": "花",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 101,
+          "char": "落",
+          "okurigana": "チテ"
+        },
+        {
+          "position": 102,
+          "char": "漸",
+          "okurigana": "ク"
+        },
+        {
+          "position": 103,
+          "char": "稀",
+          "okurigana": "ナリ"
+        },
+        {
+          "position": 108,
+          "char": "廊",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 110,
+          "char": "正",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 111,
+          "char": "好",
+          "okurigana": "ク"
+        },
+        {
+          "position": 114,
+          "char": "下",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 115,
+          "char": "話",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 117,
+          "char": "繆",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 120,
+          "char": "君",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 121,
+          "char": "書",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 123,
+          "char": "里",
+          "okurigana": "ヨリ"
+        },
+        {
+          "position": 124,
+          "char": "至",
+          "okurigana": "リ"
+        },
+        {
+          "position": 128,
+          "char": "是",
+          "okurigana": "レ"
+        },
+        {
+          "position": 133,
+          "char": "展",
+          "okurigana": "ケバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 134,
+          "char": "卷",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 136,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 137,
+          "char": "遠",
+          "okurigana": "ク"
+        },
+        {
+          "position": 139,
+          "char": "擱",
+          "okurigana": "クモ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 140,
+          "char": "筆",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 141,
+          "char": "無",
+          "okurigana": "シ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 142,
+          "char": "可",
+          "furigana": "べ",
+          "okurigana": "キ",
+          "kaeriten": "一レ"
+        },
+        {
+          "position": 143,
+          "char": "酬",
+          "okurigana": "フ"
+        },
+        {
+          "position": 146,
+          "char": "非",
+          "okurigana": "ズ",
+          "kaeriten": "三"
+        },
+        {
+          "position": 147,
+          "char": "是",
+          "okurigana": "レ"
+        },
+        {
+          "position": 148,
+          "char": "無",
+          "okurigana": "キニ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 150,
+          "char": "字",
+          "okurigana": "モ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 153,
+          "char": "過",
+          "okurigana": "ギテ"
+        },
+        {
+          "position": 156,
+          "char": "休",
+          "okurigana": "ム"
+        },
+        {
+          "position": 160,
+          "char": "掩",
+          "okurigana": "ヘバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 161,
+          "char": "卷",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 163,
+          "char": "將",
+          "furigana": "まさ",
+          "okurigana": "ニ",
+          "saidoku_furigana": "し",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 164,
+          "char": "暮",
+          "okurigana": "レント"
+        },
+        {
+          "position": 167,
+          "char": "女",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 168,
+          "char": "索",
+          "okurigana": "ム",
+          "kaeriten": "二"
+        },
+        {
+          "position": 170,
+          "char": "詩",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 174,
+          "char": "盆",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 177,
+          "char": "盡",
+          "okurigana": "クルモ"
+        },
+        {
+          "position": 180,
+          "char": "至",
+          "okurigana": "レバ"
+        },
+        {
+          "position": 181,
+          "char": "又",
+          "okurigana": "タ"
+        },
+        {
+          "position": 182,
+          "char": "生",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 183,
+          "char": "枝",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 186,
+          "char": "澆",
+          "okurigana": "グコト",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 187,
+          "char": "水",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 188,
+          "char": "成",
+          "okurigana": "リ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 190,
+          "char": "事",
+          "okurigana": "ト",
+          "kaeriten": "一"
+        },
+        {
+          "position": 193,
+          "char": "心",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 194,
+          "char": "終",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 195,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 196,
+          "char": "移",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 199,
+          "char": "君",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 200,
+          "char": "舟",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 201,
+          "char": "向",
+          "okurigana": "ヒ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 203,
+          "char": "海",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 205,
+          "char": "我",
+          "okurigana": "モ"
+        },
+        {
+          "position": 206,
+          "char": "亦",
+          "okurigana": "タ"
+        },
+        {
+          "position": 207,
+          "char": "有",
+          "okurigana": "リ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 209,
+          "char": "涯",
+          "kaeriten": "一"
+        }
+      ],
+      "notes": [
+        "五段の原文の行順・節境界を保つ。段の再配置や外部で構成した書簡を補わない。",
+        "「幾度誤春痕」は春の時節と痕跡が狂うことを含み、単なる園芸の失敗として要約しない。",
+        "「窗虛留寸土」は窓辺に空きがあり少量の土をとどめること。「窓下」に移動させない。",
+        "「稚女描新帖」は新しい字帖をなぞる習字。普通のノートではない。",
+        "「啟緘留指印」は開封の際に指の痕が残ったこと。意図的な押印を推定しない。",
+        "「擱筆無可酬」は十分な返答ができないこと、「一字もない」ことではない。",
+        "「殘根失所憑」の「所憑」は名詞句を作る構造で、返点の一二点は編集上の便宜。読みの自然さを再検討する。",
+        "「非是無一字」は二重の否定句。返読を目視で校合し、一字もなかったと反転させない。",
+        "「我亦有天涯」は語り手自身にも広がりがあること。相手を忘れたと決めつけない。",
+        "「殘根失所憑」は「残根は憑る所を失う」。所レ憑を名詞句「憑る所」とし、失二所レ憑一で目的語全体を返読する。",
+        "「非是無一字」は「是れ一字も無きに非ず」。否定の重なりを非三是無二一字一で示す。"
+      ]
+    },
+    "yingtianchang-20261008-text": {
+      "source_body_sha256": "abf7f22d1d630368513f83dd2e4dd72b43a1f1602d0372fc201109ffc5aef03d",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 0,
+          "char": "喚",
+          "okurigana": "ビ"
+        },
+        {
+          "position": 1,
+          "char": "回",
+          "furigana": "かえ",
+          "okurigana": "シテ"
+        },
+        {
+          "position": 2,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 3,
+          "char": "把",
+          "okurigana": "リテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 5,
+          "char": "衣",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 6,
+          "char": "理",
+          "okurigana": "ム"
+        },
+        {
+          "position": 10,
+          "char": "口",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 12,
+          "char": "溫",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 13,
+          "char": "留",
+          "okurigana": "マル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 15,
+          "char": "指",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 18,
+          "char": "掩",
+          "okurigana": "ヒ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 19,
+          "char": "門",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 20,
+          "char": "初",
+          "okurigana": "ムレバ"
+        },
+        {
+          "position": 23,
+          "char": "又",
+          "okurigana": "タ"
+        },
+        {
+          "position": 24,
+          "char": "起",
+          "okurigana": "コル"
+        },
+        {
+          "position": 27,
+          "char": "聽",
+          "okurigana": "キ",
+          "kaeriten": "二",
+          "gofu": true
+        },
+        {
+          "position": 28,
+          "char": "盡",
+          "okurigana": "クシテ"
+        },
+        {
+          "position": 30,
+          "char": "聲",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 31,
+          "char": "偏",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 32,
+          "char": "側",
+          "furigana": "そばだ",
+          "okurigana": "ツ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 33,
+          "char": "耳",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 38,
+          "char": "微",
+          "okurigana": "カニ"
+        },
+        {
+          "position": 39,
+          "char": "蜷",
+          "furigana": "かが",
+          "okurigana": "マリ"
+        },
+        {
+          "position": 41,
+          "char": "杯",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 42,
+          "char": "倒",
+          "furigana": "さか",
+          "okurigana": "シマニ"
+        },
+        {
+          "position": 43,
+          "char": "置",
+          "okurigana": "カレ"
+        },
+        {
+          "position": 47,
+          "char": "底",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 48,
+          "char": "尚",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 49,
+          "char": "留",
+          "okurigana": "ム",
+          "kaeriten": "二"
+        },
+        {
+          "position": 51,
+          "char": "齒",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 54,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 55,
+          "char": "許",
+          "okurigana": "サ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 56,
+          "char": "指",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 57,
+          "char": "溫",
+          "furigana": "ぬく",
+          "okurigana": "モリノ"
+        },
+        {
+          "position": 58,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 59,
+          "char": "退",
+          "okurigana": "クヲ",
+          "kaeriten": "一"
+        }
+      ],
+      "notes": [
+        "「空衣」は着用者のいない衣であって、誰が脱いだのかを決めない。",
+        "「袖口餘溫留在指」は指に余熱が残る事態であり、袖が能動的に何かを保存する意志を持つわけではない。",
+        "「匙底」は匙の底。残齒は残存・破損の両義を認め、誰の歯かも確定しない。",
+        "末行「土木火金水」は作者の列記。五行の教義を加筆して説明しない。",
+        "「聽盡無聲」は「無声を聴き尽くす」。聽盡は複合述語として合符で結び、「無聲」全体から二一点で返読する。",
+        "「倒しま（さかしま）」は上下が逆の状態を表す語。『全文全訳古語辞典』「戈を倒しまにす」などに例がある。杯は倒しまに置かれている。",
+        "「留在指」の在は処所を示す介詞で「於」に等しく、置き字として読まない（「指に留まる」）。"
+      ]
+    },
+    "jia-yi-b3-text": {
+      "source_body_sha256": "554484c69bb3a9885846914a32ed2d9367f4bafd086a292568c300bbee752ed7",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "暗",
+          "okurigana": "ク"
+        },
+        {
+          "position": 3,
+          "char": "寒",
+          "okurigana": "ク"
+        },
+        {
+          "position": 6,
+          "char": "瘦",
+          "okurigana": "セ"
+        },
+        {
+          "position": 9,
+          "char": "酲",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 10,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 11,
+          "char": "帶",
+          "okurigana": "ブ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 13,
+          "char": "温",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 17,
+          "char": "停",
+          "okurigana": "マリ"
+        },
+        {
+          "position": 19,
+          "char": "澀",
+          "okurigana": "リ"
+        },
+        {
+          "position": 21,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 22,
+          "char": "吞",
+          "okurigana": "ム"
+        },
+        {
+          "position": 25,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ず",
+          "saidoku_okurigana": "シテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 26,
+          "char": "緘",
+          "okurigana": "セ"
+        },
+        {
+          "position": 27,
+          "char": "還",
+          "okurigana": "タ"
+        },
+        {
+          "position": 28,
+          "char": "自",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 29,
+          "char": "疊",
+          "okurigana": "ミ"
+        },
+        {
+          "position": 32,
+          "char": "折",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 34,
+          "char": "重",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 39,
+          "char": "不",
+          "furigana": "あら",
+          "okurigana": "ズ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 40,
+          "char": "是",
+          "okurigana": "レ"
+        },
+        {
+          "position": 42,
+          "char": "風",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 43,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 44,
+          "char": "折",
+          "okurigana": "リ"
+        },
+        {
+          "position": 45,
+          "char": "取",
+          "okurigana": "ルニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 47,
+          "char": "恐",
+          "okurigana": "ル",
+          "kaeriten": "三"
+        },
+        {
+          "position": 48,
+          "char": "花",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 49,
+          "char": "為",
+          "okurigana": "ニ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 50,
+          "char": "我",
+          "okurigana": "ガ"
+        },
+        {
+          "position": 51,
+          "char": "辭",
+          "okurigana": "スルヲ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 52,
+          "char": "根",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 59,
+          "char": "莫",
+          "okurigana": "カレ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 60,
+          "char": "輕",
+          "furigana": "かるがる",
+          "okurigana": "シク"
+        },
+        {
+          "position": 61,
+          "char": "論",
+          "okurigana": "ズルコト",
+          "kaeriten": "一"
+        },
+        {
+          "position": 65,
+          "char": "逢",
+          "okurigana": "フモ"
+        },
+        {
+          "position": 66,
+          "char": "原",
+          "okurigana": "ヨリ"
+        },
+        {
+          "position": 67,
+          "char": "是",
+          "okurigana": "レ"
+        },
+        {
+          "position": 70,
+          "char": "客",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 71,
+          "char": "受",
+          "okurigana": "ク",
+          "kaeriten": "二"
+        },
+        {
+          "position": 73,
+          "char": "家",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 74,
+          "char": "恩",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        }
+      ],
+      "notes": [
+        "「未緘還自疊」手紙がまだ封じられていないまま折られる。鑰を開くことではない。",
+        "「恐花為我辭根」花が自分のために根を去るのを恐れる。何者が花を折ったかを確定しない。",
+        "「新痕舊鑰莫輕論」は新しい痕の実体を特定しない。莫＋複字の否定は無理なレ点を省略。",
+        "「不是東風先折取」は近現代寄りの不是構文だが、書き下し「是れ東風の先ず折り取るにあらず」に合わせ、不に二点・取に一点を付けて否定を句全体に及ぼす編集訓。",
+        "「恐花為我辭根」は花→我のため→根→辞→恐の入れ子返読として三二一を用いる試校。動作の主体・動機を本文以上に確定しない。"
+      ]
+    },
+    "jia-yi-a6-text": {
+      "source_body_sha256": "78fc99fb42ce8d79035a1b1d0cd82677cb256b36ec295e9bd969ec4e22e1093d",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "鑰",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 2,
+          "char": "經",
+          "okurigana": "テ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 3,
+          "char": "年",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 5,
+          "char": "暗",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 6,
+          "char": "生",
+          "okurigana": "ジ"
+        },
+        {
+          "position": 9,
+          "char": "箋",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 10,
+          "char": "翻",
+          "okurigana": "シ"
+        },
+        {
+          "position": 11,
+          "char": "罷",
+          "furigana": "や",
+          "okurigana": "ミテ"
+        },
+        {
+          "position": 13,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 14,
+          "char": "明",
+          "okurigana": "ラカナリ"
+        },
+        {
+          "position": 19,
+          "char": "避",
+          "okurigana": "ケシニ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 22,
+          "char": "鴦",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 23,
+          "char": "字",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 25,
+          "char": "卻",
+          "okurigana": "ツテ"
+        },
+        {
+          "position": 26,
+          "char": "把",
+          "okurigana": "リテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 28,
+          "char": "鴦",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 29,
+          "char": "寫",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 31,
+          "char": "層",
+          "okurigana": "ニモ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 37,
+          "char": "冷",
+          "okurigana": "タク"
+        },
+        {
+          "position": 40,
+          "char": "霜",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 41,
+          "char": "驚",
+          "okurigana": "ク"
+        },
+        {
+          "position": 47,
+          "char": "裏",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 48,
+          "char": "喚",
+          "okurigana": "バン",
+          "kaeriten": "二"
+        },
+        {
+          "position": 49,
+          "char": "誰",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 50,
+          "char": "名",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 54,
+          "char": "看",
+          "okurigana": "レバ"
+        },
+        {
+          "position": 55,
+          "char": "似",
+          "okurigana": "テ",
+          "kaeriten": "三"
+        },
+        {
+          "position": 56,
+          "char": "隔",
+          "okurigana": "ツルニ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 58,
+          "char": "生",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 59,
+          "char": "事",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 61,
+          "char": "齧",
+          "furigana": "かじ",
+          "okurigana": "リ",
+          "kaeriten": "二",
+          "gofu": true
+        },
+        {
+          "position": 62,
+          "char": "盡",
+          "okurigana": "クスモ"
+        },
+        {
+          "position": 64,
+          "char": "根",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 66,
+          "char": "又",
+          "okurigana": "タ"
+        },
+        {
+          "position": 67,
+          "char": "青",
+          "okurigana": "シ"
+        }
+      ],
+      "notes": [
+        "「避卻鴛鴦字」は鴛鴦という表現を避ける行為とした。卻は結果方向を含む補語で古漢文の置き字と断言しない。",
+        "「畫裏」は画像の中の人物の名を指す。画材そのものとは限らない。",
+        "「痴根草又青」は齧り尽くした後にまた生じる緑の対比を保持。",
+        "「卻把鴛鴦寫幾層」は近現代中国語の把構文を含むが、書き下し「鴛鴦を把りて」に合わせ、把を他動詞として二一点で返読する編集訓。",
+        "「相看似隔前生事」は「前生の事→隔→似」の順で読むため、三二一点を用いる編集訓。読序の対象は前生事全体。",
+        "「齧盡痴根／草又青」は痴根と草を分ける。齧盡は複合結果動詞として合符で結び、痴根から返読する。"
+      ]
+    },
+    "linjiangxian-20260909-text": {
+      "source_body_sha256": "d039fe0c395d5f52861daa107a3fafc4553a9e2f539b3c9c1d0ffa1c90973613",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 3,
+          "char": "宵",
+          "okurigana": "カ"
+        },
+        {
+          "position": 4,
+          "char": "長",
+          "okurigana": "ク"
+        },
+        {
+          "position": 5,
+          "char": "共",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 6,
+          "char": "話",
+          "okurigana": "シ"
+        },
+        {
+          "position": 10,
+          "char": "初",
+          "okurigana": "メテ"
+        },
+        {
+          "position": 11,
+          "char": "濕",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 13,
+          "char": "干",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 17,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 18,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ざ",
+          "saidoku_okurigana": "ルニ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 19,
+          "char": "了",
+          "okurigana": "ハラ"
+        },
+        {
+          "position": 21,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 22,
+          "char": "安",
+          "okurigana": "シ"
+        },
+        {
+          "position": 26,
+          "char": "深",
+          "okurigana": "クシテ"
+        },
+        {
+          "position": 27,
+          "char": "渾",
+          "okurigana": "テ"
+        },
+        {
+          "position": 28,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 29,
+          "char": "覺",
+          "okurigana": "エ"
+        },
+        {
+          "position": 32,
+          "char": "上",
+          "okurigana": "リテ"
+        },
+        {
+          "position": 34,
+          "char": "將",
+          "furigana": "まさ",
+          "okurigana": "ニ",
+          "saidoku_furigana": "す",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 35,
+          "char": "殘",
+          "okurigana": "ラント"
+        },
+        {
+          "position": 41,
+          "char": "重",
+          "furigana": "おも",
+          "okurigana": "キ"
+        },
+        {
+          "position": 42,
+          "char": "簾",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 43,
+          "char": "垂",
+          "okurigana": "レ",
+          "kaeriten": "レ",
+          "gofu": true
+        },
+        {
+          "position": 44,
+          "char": "到",
+          "okurigana": "リ"
+        },
+        {
+          "position": 45,
+          "char": "地",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 47,
+          "char": "垂",
+          "okurigana": "レ"
+        },
+        {
+          "position": 48,
+          "char": "來",
+          "okurigana": "タルコト"
+        },
+        {
+          "position": 49,
+          "char": "一",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 50,
+          "char": "似",
+          "okurigana": "タリ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 52,
+          "char": "前",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 55,
+          "char": "手",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 56,
+          "char": "臨",
+          "okurigana": "ミテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 58,
+          "char": "畔",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 59,
+          "char": "數",
+          "okurigana": "タビ"
+        },
+        {
+          "position": 61,
+          "char": "旋",
+          "okurigana": "ス"
+        },
+        {
+          "position": 67,
+          "char": "或",
+          "okurigana": "イハ"
+        },
+        {
+          "position": 68,
+          "char": "緊",
+          "furigana": "きび",
+          "okurigana": "カラン"
+        },
+        {
+          "position": 70,
+          "char": "窗",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 71,
+          "char": "且",
+          "furigana": "しばら",
+          "okurigana": "ク"
+        },
+        {
+          "position": 72,
+          "char": "掩",
+          "okurigana": "ヒテ"
+        },
+        {
+          "position": 74,
+          "char": "全",
+          "okurigana": "ニセヨ"
+        }
+      ],
+      "notes": [
+        "「重簾」の重はzhòng、重量を表し、幾層もの幕ではない。",
+        "「夜將殘」は夜の残り少なく明けようとする意。字旁「殘リ少ナカラントス」は表意的な編集訓。「夜がこれから残存する」の意味ではない。",
+        "「手臨燈畔數迴旋」は手の主を決めない。「明朝風或緊」は風が強まる可能性だけ。",
+        "「垂到地」は重い簾が地まで届く方向・結果表現。「垂到」は複合述語として合符で結び、「地」からレ点で返読して「地に垂れ到り」と読む。後続の「垂來」は「垂れ来たる」と続ける。"
+      ]
+    },
+    "zhegutian-20260909-text": {
+      "source_body_sha256": "045259255504fac59f2dfd62b32daefe3aff5693c5bc525fd230af2ada086dc0",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "夕",
+          "okurigana": "カ"
+        },
+        {
+          "position": 3,
+          "char": "前",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 4,
+          "char": "共",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 5,
+          "char": "剪",
+          "okurigana": "リ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 6,
+          "char": "燈",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 9,
+          "char": "生",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 10,
+          "char": "話",
+          "okurigana": "シ"
+        },
+        {
+          "position": 11,
+          "char": "到",
+          "okurigana": "レバ"
+        },
+        {
+          "position": 12,
+          "char": "又",
+          "okurigana": "タ"
+        },
+        {
+          "position": 17,
+          "char": "從",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 18,
+          "char": "頭",
+          "okurigana": "ヨリ"
+        },
+        {
+          "position": 19,
+          "char": "説",
+          "okurigana": "キ"
+        },
+        {
+          "position": 20,
+          "char": "盡",
+          "okurigana": "クスモ"
+        },
+        {
+          "position": 21,
+          "char": "還",
+          "okurigana": "タ"
+        },
+        {
+          "position": 22,
+          "char": "存",
+          "okurigana": "シ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 23,
+          "char": "半",
+          "okurigana": "バヲ"
+        },
+        {
+          "position": 25,
+          "char": "且",
+          "furigana": "しばら",
+          "okurigana": "ク"
+        },
+        {
+          "position": 26,
+          "char": "任",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 27,
+          "char": "宵",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 28,
+          "char": "深",
+          "okurigana": "ク"
+        },
+        {
+          "position": 30,
+          "char": "自",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 31,
+          "char": "凝",
+          "okurigana": "ルニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 36,
+          "char": "漸",
+          "okurigana": "ク"
+        },
+        {
+          "position": 37,
+          "char": "杳",
+          "okurigana": "トシテ"
+        },
+        {
+          "position": 40,
+          "char": "初",
+          "okurigana": "メテ"
+        },
+        {
+          "position": 41,
+          "char": "零",
+          "okurigana": "ル"
+        },
+        {
+          "position": 43,
+          "char": "獨",
+          "okurigana": "リ"
+        },
+        {
+          "position": 44,
+          "char": "餘",
+          "okurigana": "ス",
+          "kaeriten": "三"
+        },
+        {
+          "position": 46,
+          "char": "語",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 47,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ざ",
+          "saidoku_okurigana": "ルヲ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 49,
+          "char": "明",
+          "okurigana": "ナラ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 53,
+          "char": "頻",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 54,
+          "char": "蘸",
+          "furigana": "ひた",
+          "okurigana": "シ"
+        },
+        {
+          "position": 55,
+          "char": "得",
+          "okurigana": "テ"
+        },
+        {
+          "position": 58,
+          "char": "黑",
+          "okurigana": "ク"
+        },
+        {
+          "position": 61,
+          "char": "至",
+          "okurigana": "ル",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 62,
+          "char": "濃",
+          "okurigana": "キニ"
+        },
+        {
+          "position": 64,
+          "char": "偏",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 65,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 66,
+          "char": "成",
+          "okurigana": "ラ"
+        }
+      ],
+      "notes": [
+        "「蘸得毫端黑」の得は結果補語を標示する現代的語法。書き下しに従い「蘸し得て」と読むが、得を伝統的な漢文の置き字とは主張しない。",
+        "「獨餘一語」は一つの発語・言葉であり、印刷された一行とは限らない。",
+        "「硯」は硯台。文語の訓みによる墨の濃さと書けない逆説を保つ。"
+      ]
+    },
+    "jia-yi-b4-text": {
+      "source_body_sha256": "eacb763162bea211df5c11ae11daf8eaf3b847c37fecc58921c664badb2b9fe7",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "銅",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 3,
+          "char": "樣",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 6,
+          "char": "欲",
+          "okurigana": "シテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 7,
+          "char": "封",
+          "okurigana": "ゼント"
+        },
+        {
+          "position": 8,
+          "char": "還",
+          "okurigana": "タ"
+        },
+        {
+          "position": 9,
+          "char": "止",
+          "okurigana": "マリ"
+        },
+        {
+          "position": 12,
+          "char": "熱",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 14,
+          "char": "間",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 15,
+          "char": "彈",
+          "okurigana": "ム"
+        },
+        {
+          "position": 18,
+          "char": "忽",
+          "okurigana": "チ"
+        },
+        {
+          "position": 20,
+          "char": "前",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 25,
+          "char": "淺",
+          "okurigana": "ク"
+        },
+        {
+          "position": 27,
+          "char": "微",
+          "okurigana": "カニ"
+        },
+        {
+          "position": 30,
+          "char": "晌",
+          "okurigana": "ニシテ"
+        },
+        {
+          "position": 31,
+          "char": "已",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 33,
+          "char": "然",
+          "okurigana": "タリ"
+        },
+        {
+          "position": 37,
+          "char": "繆",
+          "okurigana": "スルコト"
+        },
+        {
+          "position": 41,
+          "char": "轉",
+          "okurigana": "タ"
+        },
+        {
+          "position": 42,
+          "char": "覺",
+          "okurigana": "ユ"
+        },
+        {
+          "position": 43,
+          "char": "是",
+          "okurigana": "レ"
+        },
+        {
+          "position": 46,
+          "char": "處",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 48,
+          "char": "言",
+          "okurigana": "ナルヲ"
+        },
+        {
+          "position": 51,
+          "char": "空",
+          "okurigana": "シク"
+        },
+        {
+          "position": 52,
+          "char": "鑄",
+          "furigana": "い"
+        },
+        {
+          "position": 53,
+          "char": "得",
+          "okurigana": "タリ"
+        },
+        {
+          "position": 56,
+          "char": "模",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 60,
+          "char": "紋",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 61,
+          "char": "疊",
+          "furigana": "かさ",
+          "okurigana": "ナリテ"
+        },
+        {
+          "position": 62,
+          "char": "總",
+          "okurigana": "テ"
+        },
+        {
+          "position": 64,
+          "char": "沿",
+          "okurigana": "フ"
+        },
+        {
+          "position": 69,
+          "char": "闌",
+          "okurigana": "ク"
+        },
+        {
+          "position": 74,
+          "char": "自",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 75,
+          "char": "拭",
+          "okurigana": "ヒ"
+        },
+        {
+          "position": 79,
+          "char": "重",
+          "okurigana": "ネテ"
+        },
+        {
+          "position": 80,
+          "char": "挑",
+          "furigana": "かか",
+          "okurigana": "グ"
+        },
+        {
+          "position": 82,
+          "char": "奈",
+          "furigana": "いかん",
+          "okurigana": "セン",
+          "kaeriten": "二"
+        },
+        {
+          "position": 84,
+          "char": "長",
+          "okurigana": "ク"
+        },
+        {
+          "position": 86,
+          "char": "短",
+          "okurigana": "キヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 89,
+          "char": "謄",
+          "okurigana": "シテ"
+        },
+        {
+          "position": 90,
+          "char": "復",
+          "okurigana": "タ"
+        },
+        {
+          "position": 91,
+          "char": "塗",
+          "okurigana": "リ"
+        },
+        {
+          "position": 94,
+          "char": "言",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 95,
+          "char": "怕",
+          "okurigana": "レ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 96,
+          "char": "誤",
+          "okurigana": "リヲ"
+        },
+        {
+          "position": 99,
+          "char": "字",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 100,
+          "char": "偏",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 101,
+          "char": "安",
+          "okurigana": "シ"
+        },
+        {
+          "position": 107,
+          "char": "色",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 108,
+          "char": "經",
+          "okurigana": "バ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 109,
+          "char": "他",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 110,
+          "char": "手",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 112,
+          "char": "便",
+          "okurigana": "チ"
+        },
+        {
+          "position": 113,
+          "char": "認",
+          "okurigana": "メテ"
+        },
+        {
+          "position": 114,
+          "char": "作",
+          "okurigana": "サン",
+          "kaeriten": "二"
+        },
+        {
+          "position": 118,
+          "char": "窮",
+          "okurigana": "ムト",
+          "kaeriten": "一レ"
+        },
+        {
+          "position": 119,
+          "char": "年",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 123,
+          "char": "滅",
+          "okurigana": "シテ"
+        },
+        {
+          "position": 127,
+          "char": "寧",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 128,
+          "char": "只",
+          "okurigana": "ダ"
+        },
+        {
+          "position": 129,
+          "char": "是",
+          "okurigana": "レ"
+        },
+        {
+          "position": 130,
+          "char": "加",
+          "okurigana": "ヘヨト",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 131,
+          "char": "餐",
+          "okurigana": "ヲ"
+        }
+      ],
+      "notes": [
+        "「緘淺」の浅は物理的な封と文面の浅さの両義を持つ。浅い人間関係という実証事実へ置き換えない。",
+        "「忽燈前小影」の小影の人物を確定しない。「別處温言」の『別處』にも他人の名前を付けない。",
+        "「一諾窮年」は翌朝鍵を受けた第三者の解釈予期。客観的な終生の誓いとはしない。",
+        "「空鑄得舊模新鑰」は結果補語得を含むので、見た目に合うだけの古典返点へ無理に直さない。",
+        "「奈宵長箋短」は反語的な構文であり二／一は仮の編集上の訓点。",
+        "「空鑄得舊模新鑰」は「旧模の新鑰を空しく鋳得たり」と読む。得は結果補語であり、伝統漢文の固定した一字訓として扱わない。",
+        "「認作、一諾窮年」は「一諾年を窮むと作さん」という将来の解釈。認は「認めて」と順に読み、作は読点を越えて「一諾窮年」全体の後に返る。"
+      ]
+    },
+    "linjiangxianyin-20191028-revised-202610": {
+      "source_body_sha256": "b7f18f5c5f4d5c02f6f1a9f961379b2c5757ce073313a65d106ed79232b400a8",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "裂",
+          "okurigana": "ケ"
+        },
+        {
+          "position": 4,
+          "char": "散",
+          "okurigana": "ジ"
+        },
+        {
+          "position": 7,
+          "char": "垂",
+          "okurigana": "レ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 8,
+          "char": "晚",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 10,
+          "char": "暫",
+          "okurigana": "ク"
+        },
+        {
+          "position": 11,
+          "char": "偷",
+          "okurigana": "ム",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 12,
+          "char": "安",
+          "okurigana": "キヲ"
+        },
+        {
+          "position": 16,
+          "char": "師",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 17,
+          "char": "不",
+          "furigana": "あら",
+          "okurigana": "ズ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 18,
+          "char": "復",
+          "okurigana": "タ"
+        },
+        {
+          "position": 20,
+          "char": "年",
+          "okurigana": "ハ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 23,
+          "char": "任",
+          "okurigana": "セ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 26,
+          "char": "吞",
+          "okurigana": "ムニ",
+          "kaeriten": "一レ"
+        },
+        {
+          "position": 27,
+          "char": "影",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 29,
+          "char": "剩",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 31,
+          "char": "夢",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 33,
+          "char": "桓",
+          "okurigana": "スルヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 37,
+          "char": "庭",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 41,
+          "char": "折",
+          "okurigana": "レシ"
+        },
+        {
+          "position": 42,
+          "char": "處",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 43,
+          "char": "尚",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 44,
+          "char": "溫",
+          "okurigana": "カケレド"
+        },
+        {
+          "position": 46,
+          "char": "偏",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 47,
+          "char": "倚",
+          "okurigana": "ル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 50,
+          "char": "山",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 55,
+          "char": "山",
+          "okurigana": "ヨリ"
+        },
+        {
+          "position": 56,
+          "char": "別",
+          "okurigana": "レ"
+        },
+        {
+          "position": 57,
+          "char": "來",
+          "okurigana": "タリテ"
+        },
+        {
+          "position": 58,
+          "char": "無",
+          "okurigana": "ク",
+          "kaeriten": "二"
+        },
+        {
+          "position": 59,
+          "char": "去",
+          "furigana": "ゆ",
+          "okurigana": "ク"
+        },
+        {
+          "position": 60,
+          "char": "處",
+          "kaeriten": "一"
+        },
+        {
+          "position": 63,
+          "char": "階",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 64,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 65,
+          "char": "認",
+          "okurigana": "メ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 66,
+          "char": "人",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 67,
+          "char": "還",
+          "okurigana": "ルヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 70,
+          "char": "度",
+          "okurigana": "リ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 71,
+          "char": "鐵",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 73,
+          "char": "礄",
+          "furigana": "いし",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 74,
+          "char": "路",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 76,
+          "char": "更",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 80,
+          "char": "潺",
+          "okurigana": "タリ"
+        },
+        {
+          "position": 83,
+          "char": "拋",
+          "okurigana": "ツモ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 85,
+          "char": "血",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 86,
+          "char": "縷",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 87,
+          "char": "滿",
+          "okurigana": "チ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 88,
+          "char": "指",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 90,
+          "char": "待",
+          "okurigana": "ツ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 92,
+          "char": "世",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 93,
+          "char": "兩",
+          "okurigana": "ツナガラ"
+        },
+        {
+          "position": 95,
+          "char": "憐",
+          "okurigana": "レムヲ",
+          "kaeriten": "一"
+        }
+      ],
+      "notes": [
+        "「星師」は作者の『星城』の用語。地名の明示的確定は避ける。",
+        "「鐵城礄路」は『鉄の城、石の路』と訓じる作者の用字。礄=いしは辞書の確立した訓読とは認定しない。",
+        "「殘血縷滿指」は放り投げても糸が指に残る逆説。完全に捨てたとは断言しない。",
+        "「任舊牆吞影」と「剩歸夢盤桓」は二つの異なる論理節であり同一施事を強制しない。"
+      ]
+    },
+    "fengrusong-20181102-revised-202610": {
+      "source_body_sha256": "daf4a83ba03b4edee117b0316474d33f157c41c0b2373ef4973e150e459be81b",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 2,
+          "char": "欲",
+          "okurigana": "シテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 3,
+          "char": "雪",
+          "okurigana": "フラント"
+        },
+        {
+          "position": 4,
+          "char": "已",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 5,
+          "char": "凝",
+          "okurigana": "ラシ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 6,
+          "char": "霜",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 8,
+          "char": "依",
+          "okurigana": "リテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 9,
+          "char": "舊",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 15,
+          "char": "暉",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 16,
+          "char": "落",
+          "okurigana": "チテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 17,
+          "char": "甓",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 18,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 19,
+          "char": "難",
+          "okurigana": "ク",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 20,
+          "char": "去",
+          "okurigana": "リ"
+        },
+        {
+          "position": 22,
+          "char": "然",
+          "furigana": "も",
+          "okurigana": "ヤシ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 24,
+          "char": "爐",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 26,
+          "char": "待",
+          "okurigana": "チテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 27,
+          "char": "子",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 29,
+          "char": "長",
+          "okurigana": "シ"
+        },
+        {
+          "position": 33,
+          "char": "里",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 34,
+          "char": "行",
+          "okurigana": "キ"
+        },
+        {
+          "position": 35,
+          "char": "來",
+          "okurigana": "タリテ"
+        },
+        {
+          "position": 36,
+          "char": "至",
+          "okurigana": "リ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 37,
+          "char": "此",
+          "furigana": "ここ",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 40,
+          "char": "丘",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 42,
+          "char": "可",
+          "furigana": "べ",
+          "okurigana": "シ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 43,
+          "char": "成",
+          "okurigana": "ス",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 44,
+          "char": "堂",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 49,
+          "char": "山",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 50,
+          "char": "橫",
+          "okurigana": "タヘ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 51,
+          "char": "影",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 52,
+          "char": "亂",
+          "okurigana": "シ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 54,
+          "char": "光",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 56,
+          "char": "燼",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 57,
+          "char": "處",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 63,
+          "char": "枯",
+          "okurigana": "レ"
+        },
+        {
+          "position": 64,
+          "char": "化",
+          "okurigana": "シテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 65,
+          "char": "紙",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 66,
+          "char": "容",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 67,
+          "char": "人",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 68,
+          "char": "念",
+          "okurigana": "フヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 70,
+          "char": "料",
+          "okurigana": "ルニ"
+        },
+        {
+          "position": 71,
+          "char": "經",
+          "okurigana": "レバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 72,
+          "char": "年",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 74,
+          "char": "應",
+          "furigana": "まさ",
+          "okurigana": "ニ",
+          "saidoku_furigana": "べ",
+          "saidoku_okurigana": "シ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 75,
+          "char": "易",
+          "okurigana": "カル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 77,
+          "char": "忘",
+          "okurigana": "シ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 81,
+          "char": "藥",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 82,
+          "char": "更",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 83,
+          "char": "添",
+          "okurigana": "ヘ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 85,
+          "char": "雨",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 88,
+          "char": "筋",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 89,
+          "char": "暗",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 90,
+          "char": "觸",
+          "okurigana": "ル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 92,
+          "char": "章",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        }
+      ],
+      "notes": [
+        "「然金爐／化紙」は焚くことと追悼の連鎖。「然」は燃やす意の文脈訓であり『しかり』ではない。",
+        "「雁丘」と遺燼は弔いを帯びる。一般的な恋愛語へ平準化しない。",
+        "「料經年、應易遷忘」の料は推量であり忘却が完了したとの主張ではない。",
+        "「玉筋」は身体部位を特定できない。龍章も人物名へ単純に還元しない。",
+        "「然金爐」は金爐に火を熾す意で、「火」は書き下しの補読。「雁丘今可成堂」の「べし」は可能・見込みを表す。"
+      ]
+    },
+    "mantingfang-20191219-revised-202610": {
+      "source_body_sha256": "c337a689bd21b02741261d4a76208fe6c272abc7e6dddc1e62bc5faa06b32af8",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 2,
+          "char": "初",
+          "okurigana": "メテ"
+        },
+        {
+          "position": 3,
+          "char": "停",
+          "okurigana": "マリ"
+        },
+        {
+          "position": 5,
+          "char": "雨",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 6,
+          "char": "梳",
+          "okurigana": "リ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 8,
+          "char": "蕣",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 12,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 13,
+          "char": "識",
+          "okurigana": "ル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 14,
+          "char": "眉",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 15,
+          "char": "彎",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 20,
+          "char": "低",
+          "okurigana": "ク"
+        },
+        {
+          "position": 21,
+          "char": "喚",
+          "okurigana": "ビ"
+        },
+        {
+          "position": 23,
+          "char": "驚",
+          "okurigana": "カシ",
+          "kaeriten": "二",
+          "gofu": true
+        },
+        {
+          "position": 24,
+          "char": "散",
+          "okurigana": "ズ"
+        },
+        {
+          "position": 26,
+          "char": "中",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 27,
+          "char": "弦",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 32,
+          "char": "新",
+          "okurigana": "タニ"
+        },
+        {
+          "position": 33,
+          "char": "添",
+          "okurigana": "ヘ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 35,
+          "char": "息",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 38,
+          "char": "微",
+          "okurigana": "トシテ"
+        },
+        {
+          "position": 39,
+          "char": "顫",
+          "okurigana": "ヘ"
+        },
+        {
+          "position": 41,
+          "char": "欲",
+          "okurigana": "ス",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 42,
+          "char": "出",
+          "okurigana": "デント",
+          "kaeriten": "二"
+        },
+        {
+          "position": 44,
+          "char": "間",
+          "okurigana": "ヨリ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 48,
+          "char": "逢",
+          "okurigana": "フ"
+        },
+        {
+          "position": 52,
+          "char": "溫",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 53,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ず",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 54,
+          "char": "定",
+          "okurigana": "マラ"
+        },
+        {
+          "position": 57,
+          "char": "近",
+          "okurigana": "クシテ"
+        },
+        {
+          "position": 60,
+          "char": "寬",
+          "okurigana": "シ"
+        },
+        {
+          "position": 68,
+          "char": "已",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 69,
+          "char": "熟",
+          "okurigana": "シ"
+        },
+        {
+          "position": 71,
+          "char": "臨",
+          "okurigana": "メバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 72,
+          "char": "唇",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 73,
+          "char": "卻",
+          "okurigana": "ツテ"
+        },
+        {
+          "position": 74,
+          "char": "緩",
+          "okurigana": "ヤカニ"
+        },
+        {
+          "position": 77,
+          "char": "底",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 78,
+          "char": "生",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 82,
+          "char": "把",
+          "okurigana": "リ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 84,
+          "char": "里",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 86,
+          "char": "山",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 88,
+          "char": "盡",
+          "okurigana": "ク"
+        },
+        {
+          "position": 89,
+          "char": "斂",
+          "okurigana": "ム",
+          "kaeriten": "二"
+        },
+        {
+          "position": 91,
+          "char": "前",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 95,
+          "char": "月",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 98,
+          "char": "忽",
+          "okurigana": "チ"
+        },
+        {
+          "position": 99,
+          "char": "薄",
+          "okurigana": "ク"
+        },
+        {
+          "position": 101,
+          "char": "回",
+          "okurigana": "ス",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 102,
+          "char": "眸",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 105,
+          "char": "指",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 106,
+          "char": "過",
+          "okurigana": "グ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 108,
+          "char": "山",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 111,
+          "char": "從",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 112,
+          "char": "頭",
+          "okurigana": "ヨリ"
+        },
+        {
+          "position": 113,
+          "char": "認",
+          "okurigana": "メ"
+        },
+        {
+          "position": 115,
+          "char": "詩",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 116,
+          "char": "還",
+          "okurigana": "タ"
+        },
+        {
+          "position": 121,
+          "char": "影",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 122,
+          "char": "壓",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 124,
+          "char": "邊",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        }
+      ],
+      "notes": [
+        "「辭顏」は人名であり字面の『辞して顔を…』ではない。版では発音を強制せず人名として残す。",
+        "「墨跡新添氣息／欲出行間」は墨跡の出現しようとする動きで、紙から実際に脱出したとはしない。",
+        "「驚散夢中弦」は夢の弦が散る比喩、現実の弦が切断された事実はない。",
+        "「指過眉山」は眉の上を指が通る意。特定地名への指差しではない。",
+        "「雙影壓箋邊」は二つの影。鏡像ではない。",
+        "「指過眉山」の眉山は二字で一組の目的語。指の通る眉の像を保つため「過二眉山一」に改めた。地名を指す所作ではない。",
+        "「驚散夢中弦」は「夢中の弦を驚かし散ず」。驚散は複合述語として合符で結び、目的語「夢中弦」から二一点で返読する。"
+      ]
+    },
+    "manjianghong-2022-sewn-202610": {
+      "source_body_sha256": "1766d6bb016603e3c4224cc6ccf240506f5776a28d75576c482bcdd7af1300c7",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 2,
+          "char": "才",
+          "furigana": "わづ",
+          "okurigana": "カニ"
+        },
+        {
+          "position": 3,
+          "char": "縫",
+          "okurigana": "ヘバ"
+        },
+        {
+          "position": 7,
+          "char": "又",
+          "okurigana": "タ"
+        },
+        {
+          "position": 10,
+          "char": "勤",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 11,
+          "char": "留",
+          "okurigana": "ム",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 12,
+          "char": "客",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 16,
+          "char": "欲",
+          "okurigana": "スレバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 17,
+          "char": "掩",
+          "okurigana": "ハレント"
+        },
+        {
+          "position": 19,
+          "char": "卻",
+          "okurigana": "ツテ"
+        },
+        {
+          "position": 20,
+          "char": "翻",
+          "okurigana": "シ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 22,
+          "char": "影",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 24,
+          "char": "放",
+          "okurigana": "ツ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 25,
+          "char": "春",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 26,
+          "char": "偷",
+          "okurigana": "カニ"
+        },
+        {
+          "position": 27,
+          "char": "入",
+          "okurigana": "ルヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 30,
+          "char": "瘦",
+          "kaeriten": "二",
+          "gofu": true
+        },
+        {
+          "position": 31,
+          "char": "損",
+          "okurigana": "スルモ"
+        },
+        {
+          "position": 33,
+          "char": "圍",
+          "kaeriten": "一"
+        },
+        {
+          "position": 35,
+          "char": "尚",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 36,
+          "char": "窄",
+          "okurigana": "ク"
+        },
+        {
+          "position": 39,
+          "char": "痕",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 40,
+          "char": "都",
+          "okurigana": "テ"
+        },
+        {
+          "position": 41,
+          "char": "向",
+          "okurigana": "カヒテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 43,
+          "char": "膚",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 44,
+          "char": "積",
+          "okurigana": "モル"
+        },
+        {
+          "position": 47,
+          "char": "算",
+          "okurigana": "シ",
+          "kaeriten": "三"
+        },
+        {
+          "position": 48,
+          "char": "歸",
+          "okurigana": "リ"
+        },
+        {
+          "position": 49,
+          "char": "來",
+          "okurigana": "タレバ"
+        },
+        {
+          "position": 51,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 52,
+          "char": "有",
+          "okurigana": "リト",
+          "kaeriten": "二"
+        },
+        {
+          "position": 54,
+          "char": "針",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 55,
+          "char": "留",
+          "okurigana": "マル",
+          "kaeriten": "一"
+        },
+        {
+          "position": 57,
+          "char": "縫",
+          "okurigana": "フ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 59,
+          "char": "隙",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 64,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ず",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 65,
+          "char": "冷",
+          "okurigana": "エ"
+        },
+        {
+          "position": 68,
+          "char": "已",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 69,
+          "char": "易",
+          "okurigana": "ハル"
+        },
+        {
+          "position": 72,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 73,
+          "char": "閉",
+          "okurigana": "ヂ"
+        },
+        {
+          "position": 76,
+          "char": "偏",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 77,
+          "char": "急",
+          "okurigana": "ナリ"
+        },
+        {
+          "position": 80,
+          "char": "更",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 81,
+          "char": "何",
+          "okurigana": "ゾ"
+        },
+        {
+          "position": 82,
+          "char": "須",
+          "furigana": "もち",
+          "okurigana": "ヰン",
+          "kaeriten": "二"
+        },
+        {
+          "position": 84,
+          "char": "擇",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 86,
+          "char": "過",
+          "okurigana": "グレバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 87,
+          "char": "門",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 93,
+          "char": "景",
+          "okurigana": "ト"
+        },
+        {
+          "position": 95,
+          "char": "柯",
+          "okurigana": "トハ"
+        },
+        {
+          "position": 96,
+          "char": "違",
+          "furigana": "たが",
+          "okurigana": "ヒ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 98,
+          "char": "識",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 101,
+          "char": "城",
+          "okurigana": "ト"
+        },
+        {
+          "position": 103,
+          "char": "禮",
+          "okurigana": "トハ"
+        },
+        {
+          "position": 104,
+          "char": "宜",
+          "furigana": "よろ",
+          "okurigana": "シク",
+          "saidoku_furigana": "べ",
+          "saidoku_okurigana": "シ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 105,
+          "char": "同",
+          "okurigana": "ジクス",
+          "kaeriten": "一レ"
+        },
+        {
+          "position": 106,
+          "char": "席",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 109,
+          "char": "看",
+          "okurigana": "レバ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 111,
+          "char": "場",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 115,
+          "char": "又",
+          "okurigana": "タ"
+        },
+        {
+          "position": 117,
+          "char": "全",
+          "okurigana": "ニシテ"
+        },
+        {
+          "position": 119,
+          "char": "無",
+          "okurigana": "シ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 121,
+          "char": "跡",
+          "kaeriten": "一"
+        }
+      ],
+      "notes": [
+        "「舊隙才縫」は縫い終えた直後を表す。発話時より以前の成果と混同しない。",
+        "「門欲掩、卻翻簾影」は逆接の構造。人の行為と春風の作用を曖昧なまま保つ。",
+        "「初景寒柯違業識」は二組の語の対置で、業識との不和。両語を史実上の人物の交流に置き換えない。",
+        "「豐城元禮宜同席」の宜は規範／期待の意であり、実際に共席したことの証明ではない。",
+        "「算歸來」は判断の表明。「舊針」が何を証明するかを決定しない。",
+        "「縫新隙」「須揀擇」「看收場」はいずれも二字の目的語を受ける。レ点では第一字しか返読できないため、二／一に改めた。",
+        "「初景と寒柯とは業識に相容れず」。「初景」「寒柯」は並列の話題で、「違」を「あひいれず」と読むのは両者と業識の不和を示す編者の義訓。"
+      ]
+    },
+    "manjianghong-2022-echo-202610": {
+      "source_body_sha256": "143780c998ba6e889061809c79f2ce384f420a5ce4b6d7af2a7fa2dc3009f78d",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "盡",
+          "okurigana": "キ"
+        },
+        {
+          "position": 3,
+          "char": "回",
+          "okurigana": "リ"
+        },
+        {
+          "position": 5,
+          "char": "催",
+          "okurigana": "ス",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 6,
+          "char": "曉",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 11,
+          "char": "仍",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 12,
+          "char": "塞",
+          "okurigana": "ガル"
+        },
+        {
+          "position": 16,
+          "char": "欲",
+          "okurigana": "スレバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 17,
+          "char": "掩",
+          "okurigana": "ハレント"
+        },
+        {
+          "position": 21,
+          "char": "將",
+          "furigana": "まさ",
+          "okurigana": "ニ",
+          "saidoku_furigana": "し",
+          "saidoku_okurigana": "テ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 22,
+          "char": "去",
+          "okurigana": "ラント"
+        },
+        {
+          "position": 24,
+          "char": "又",
+          "okurigana": "タ"
+        },
+        {
+          "position": 25,
+          "char": "迎",
+          "okurigana": "フ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 27,
+          "char": "客",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 31,
+          "char": "事",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 32,
+          "char": "還",
+          "okurigana": "タ"
+        },
+        {
+          "position": 33,
+          "char": "從",
+          "kaeriten": "二"
+        },
+        {
+          "position": 35,
+          "char": "曆",
+          "okurigana": "ヨリ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 36,
+          "char": "出",
+          "okurigana": "デ"
+        },
+        {
+          "position": 39,
+          "char": "前",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 41,
+          "char": "雨",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 42,
+          "char": "渾",
+          "okurigana": "テ"
+        },
+        {
+          "position": 43,
+          "char": "成",
+          "okurigana": "ル",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 44,
+          "char": "笛",
+          "okurigana": "ト"
+        },
+        {
+          "position": 47,
+          "char": "算",
+          "okurigana": "スレド",
+          "kaeriten": "三"
+        },
+        {
+          "position": 49,
+          "char": "光",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 51,
+          "char": "只",
+          "okurigana": "ダ"
+        },
+        {
+          "position": 52,
+          "char": "在",
+          "okurigana": "リト",
+          "kaeriten": "二"
+        },
+        {
+          "position": 54,
+          "char": "聲",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 55,
+          "char": "中",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 58,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 59,
+          "char": "積",
+          "okurigana": "ム"
+        },
+        {
+          "position": 64,
+          "char": "空",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 67,
+          "char": "留",
+          "okurigana": "ム",
+          "kaeriten": "二"
+        },
+        {
+          "position": 69,
+          "char": "色",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 71,
+          "char": "光",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 72,
+          "char": "易",
+          "okurigana": "ク",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 73,
+          "char": "轉",
+          "okurigana": "ジ"
+        },
+        {
+          "position": 75,
+          "char": "痕",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 76,
+          "char": "難",
+          "okurigana": "シ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 77,
+          "char": "拭",
+          "okurigana": "ヒ"
+        },
+        {
+          "position": 80,
+          "char": "縱",
+          "furigana": "たと",
+          "okurigana": "ヒ"
+        },
+        {
+          "position": 83,
+          "char": "屢",
+          "okurigana": "シバ"
+        },
+        {
+          "position": 84,
+          "char": "換",
+          "okurigana": "ハレド"
+        },
+        {
+          "position": 86,
+          "char": "總",
+          "okurigana": "テ"
+        },
+        {
+          "position": 87,
+          "char": "稱",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 89,
+          "char": "璧",
+          "okurigana": "ト",
+          "kaeriten": "一"
+        },
+        {
+          "position": 93,
+          "char": "景",
+          "okurigana": "ト"
+        },
+        {
+          "position": 95,
+          "char": "柯",
+          "okurigana": "トハ"
+        },
+        {
+          "position": 96,
+          "char": "違",
+          "furigana": "たが",
+          "okurigana": "ヒ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 98,
+          "char": "識",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 101,
+          "char": "城",
+          "okurigana": "ト"
+        },
+        {
+          "position": 103,
+          "char": "禮",
+          "okurigana": "トハ"
+        },
+        {
+          "position": 104,
+          "char": "宜",
+          "furigana": "よろ",
+          "okurigana": "シク",
+          "saidoku_furigana": "べ",
+          "saidoku_okurigana": "シ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 105,
+          "char": "同",
+          "okurigana": "ジクス",
+          "kaeriten": "一レ"
+        },
+        {
+          "position": 106,
+          "char": "席",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 110,
+          "char": "山",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 111,
+          "char": "塗",
+          "furigana": "ふさ",
+          "okurigana": "ガリ"
+        },
+        {
+          "position": 114,
+          "char": "影",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 115,
+          "char": "祭",
+          "okurigana": "リ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 117,
+          "char": "華",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 119,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 120,
+          "char": "無",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 121,
+          "char": "息",
+          "okurigana": "マ"
+        }
+      ],
+      "notes": [
+        "「劣衿將去，又迎嘉客」は去る者と来る者の対置。劣衿を特定人物に一意に固定しない。",
+        "「舊事還從新曆出」古い事の再現に新しい暦が関わる。時間の矛盾と反復を保つ。",
+        "「初景寒柯違業識／豐城元禮宜同席」は縫補稿と共有する反復句。互いを独立した作品として校読する。",
+        "「曉山塗」の塗は作者が遮断／塞がる意で用いる語彙上の編集訓。辞書訓の確定ではない。",
+        "「空空雪」は形象の繰返しを保存し、物理的な特定の雪景と断定しない。",
+        "「初景と寒柯とは業識に相容れず」。「初景」「寒柯」は並列の話題で、「違」を「あひいれず」と読むのは両者と業識の不和を示す編者の義訓。"
+      ]
+    },
+    "manjianghong-rereading-202610-text": {
+      "source_body_sha256": "22da84361b21397c5b70a9665f1763d333cf60e3f586bcff4fe3efa4b0ed94d4",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "闋",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 2,
+          "char": "重",
+          "okurigana": "ネテ"
+        },
+        {
+          "position": 3,
+          "char": "翻",
+          "okurigana": "シ"
+        },
+        {
+          "position": 5,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 6,
+          "char": "認",
+          "okurigana": "メ"
+        },
+        {
+          "position": 7,
+          "char": "得",
+          "okurigana": "タリ"
+        },
+        {
+          "position": 10,
+          "char": "年",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 12,
+          "char": "力",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 15,
+          "char": "曾",
+          "okurigana": "テ"
+        },
+        {
+          "position": 16,
+          "char": "細",
+          "okurigana": "カニ"
+        },
+        {
+          "position": 17,
+          "char": "剖",
+          "furigana": "わか",
+          "okurigana": "チ"
+        },
+        {
+          "position": 20,
+          "char": "言",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 21,
+          "char": "千",
+          "okurigana": "タビ"
+        },
+        {
+          "position": 22,
+          "char": "轉",
+          "okurigana": "ジ"
+        },
+        {
+          "position": 25,
+          "char": "微",
+          "okurigana": "カニ"
+        },
+        {
+          "position": 27,
+          "char": "澀",
+          "okurigana": "シ"
+        },
+        {
+          "position": 30,
+          "char": "鎖",
+          "okurigana": "シ",
+          "kaeriten": "二",
+          "gofu": true
+        },
+        {
+          "position": 31,
+          "char": "盡",
+          "okurigana": "クシテ"
+        },
+        {
+          "position": 33,
+          "char": "門",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 34,
+          "char": "身",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 35,
+          "char": "作",
+          "okurigana": "シ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 36,
+          "char": "鎖",
+          "okurigana": "ト"
+        },
+        {
+          "position": 38,
+          "char": "翻",
+          "okurigana": "セバ"
+        },
+        {
+          "position": 41,
+          "char": "語",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 42,
+          "char": "都",
+          "okurigana": "テ"
+        },
+        {
+          "position": 43,
+          "char": "成",
+          "okurigana": "ル",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 44,
+          "char": "棘",
+          "okurigana": "ト"
+        },
+        {
+          "position": 47,
+          "char": "縱",
+          "furigana": "たと",
+          "okurigana": "ヒ"
+        },
+        {
+          "position": 49,
+          "char": "寧",
+          "okurigana": "ナルモ"
+        },
+        {
+          "position": 53,
+          "char": "已",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 55,
+          "char": "深",
+          "okurigana": "ク"
+        },
+        {
+          "position": 59,
+          "char": "隔",
+          "okurigana": "タル"
+        },
+        {
+          "position": 64,
+          "char": "復",
+          "okurigana": "タ"
+        },
+        {
+          "position": 65,
+          "char": "見",
+          "okurigana": "エ"
+        },
+        {
+          "position": 68,
+          "char": "乍",
+          "okurigana": "チ"
+        },
+        {
+          "position": 69,
+          "char": "濕",
+          "okurigana": "ル"
+        },
+        {
+          "position": 71,
+          "char": "言",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 72,
+          "char": "可",
+          "furigana": "べ",
+          "okurigana": "ク",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 73,
+          "char": "續",
+          "furigana": "つ",
+          "okurigana": "グ"
+        },
+        {
+          "position": 75,
+          "char": "時",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 76,
+          "char": "難",
+          "okurigana": "シ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 77,
+          "char": "逆",
+          "okurigana": "ニシ"
+        },
+        {
+          "position": 80,
+          "char": "任",
+          "okurigana": "セ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 82,
+          "char": "書",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 83,
+          "char": "又",
+          "okurigana": "タ"
+        },
+        {
+          "position": 84,
+          "char": "杳",
+          "okurigana": "タルニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 86,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 87,
+          "char": "催",
+          "okurigana": "サ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 89,
+          "char": "息",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 92,
+          "char": "字",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 93,
+          "char": "入",
+          "okurigana": "リテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 95,
+          "char": "輪",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 96,
+          "char": "方",
+          "furigana": "はじ",
+          "okurigana": "メテ"
+        },
+        {
+          "position": 97,
+          "char": "有",
+          "okurigana": "リ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 98,
+          "char": "響",
+          "okurigana": "キ"
+        },
+        {
+          "position": 100,
+          "char": "痕",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 101,
+          "char": "藏",
+          "okurigana": "レテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 103,
+          "char": "理",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 104,
+          "char": "猶",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 105,
+          "char": "能",
+          "okurigana": "ク"
+        },
+        {
+          "position": 106,
+          "char": "識",
+          "okurigana": "ル"
+        },
+        {
+          "position": 109,
+          "char": "聽",
+          "okurigana": "キ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 110,
+          "char": "鐘",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 111,
+          "char": "回",
+          "okurigana": "ルヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 114,
+          "char": "影",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 115,
+          "char": "過",
+          "okurigana": "グ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 117,
+          "char": "柯",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 120,
+          "char": "常",
+          "okurigana": "ノ"
+        }
+      ],
+      "notes": [
+        "「先認得當年心力」の得は結果・達成の補語。字旁を古典汉文の置字と偽らない。",
+        "「曾細剖片言千轉」は旧い言辞の繰返し分析、実証として過去の主体の心意を固定しない。",
+        "「言可續，時難逆」は継続可能性と時間不可逆の対置。「再会が成立した」と読まない。",
+        "「字入年輪方有響」は熟して初めて響きが出ること。『方』の開始局面を保存。",
+        "「名復見」は名が再び見えるという観察で、関係修復の完成を意味しない。",
+        "「言可續」の「可」は継続の可能性を表し、「継ぎ得」と補読する。字旁の「う」はこの句の編集訓である。",
+        "「鎖盡諸門」は「諸門を鎖し尽くす」。鎖盡は複合述語として合符で結び、「諸門」から二一点で返読する。"
+      ]
+    },
+    "jia-yi-a10-text": {
+      "source_body_sha256": "da0668b81d0a3722a314b59259a05ff7bb490f275f05f0c1064dc969bbf67338",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 0,
+          "char": "風",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 1,
+          "char": "迎",
+          "okurigana": "ヘ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 2,
+          "char": "面",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 4,
+          "char": "人",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 5,
+          "char": "立",
+          "okurigana": "ツ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 6,
+          "char": "此",
+          "furigana": "ここ",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 11,
+          "char": "一",
+          "okurigana": "タビ"
+        },
+        {
+          "position": 12,
+          "char": "動",
+          "okurigana": "ケバ"
+        },
+        {
+          "position": 14,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 15,
+          "char": "至",
+          "okurigana": "ル"
+        },
+        {
+          "position": 18,
+          "char": "認",
+          "okurigana": "ムルコト"
+        },
+        {
+          "position": 19,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 20,
+          "char": "真",
+          "okurigana": "ナラ"
+        },
+        {
+          "position": 22,
+          "char": "卻",
+          "okurigana": "ツテ"
+        },
+        {
+          "position": 23,
+          "char": "認",
+          "furigana": "にん"
+        },
+        {
+          "position": 24,
+          "char": "真",
+          "furigana": "しん",
+          "okurigana": "ナリ"
+        },
+        {
+          "position": 27,
+          "char": "繞",
+          "okurigana": "リ"
+        },
+        {
+          "position": 28,
+          "char": "來",
+          "okurigana": "タリ"
+        },
+        {
+          "position": 29,
+          "char": "繞",
+          "okurigana": "リ"
+        },
+        {
+          "position": 30,
+          "char": "去",
+          "okurigana": "リテ"
+        },
+        {
+          "position": 32,
+          "char": "角",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 33,
+          "char": "立",
+          "okurigana": "ツ"
+        },
+        {
+          "position": 36,
+          "char": "廿",
+          "furigana": "にじふ"
+        },
+        {
+          "position": 37,
+          "char": "年",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 39,
+          "char": "霜",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 40,
+          "char": "渾",
+          "okurigana": "テ"
+        },
+        {
+          "position": 41,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 42,
+          "char": "記",
+          "furigana": "き",
+          "okurigana": "セ"
+        },
+        {
+          "position": 45,
+          "char": "這",
+          "furigana": "こ",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 46,
+          "char": "點",
+          "furigana": "てん"
+        },
+        {
+          "position": 47,
+          "char": "子",
+          "furigana": "し",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 50,
+          "char": "偏",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 51,
+          "char": "惦",
+          "furigana": "てん"
+        },
+        {
+          "position": 52,
+          "char": "記",
+          "furigana": "き",
+          "okurigana": "ス"
+        },
+        {
+          "position": 56,
+          "char": "遲",
+          "okurigana": "キハ"
+        },
+        {
+          "position": 58,
+          "char": "是",
+          "okurigana": "レ"
+        },
+        {
+          "position": 59,
+          "char": "誤",
+          "okurigana": "レリ"
+        },
+        {
+          "position": 63,
+          "char": "歸",
+          "okurigana": "ルモ"
+        },
+        {
+          "position": 65,
+          "char": "也",
+          "furigana": "ま",
+          "okurigana": "タ"
+        },
+        {
+          "position": 66,
+          "char": "是",
+          "okurigana": "レ"
+        },
+        {
+          "position": 67,
+          "char": "誤",
+          "okurigana": "レリ"
+        }
+      ],
+      "notes": [
+        "「認不真／卻認真」は現代中国語の不真=識別不確実と認真=本気で向き合うという語彙上の対立。前半は書き下しに従い「認むること真ならず」と不にレ点を付けて読むが、後半の熟語「認真」には返点を付けず音読（にんしん）とし、両義は別掲の書き下し文で説明する。",
+        "「這點子」「了」は近現代の口語表現。ここに訓点がないことは校正漏れではなく、歴史的訓法を捏造しない編集方針。",
+        "「廿年」は二十年を表す。風霜を覚えていないとの言い方は個人の記憶の断定で、他者を特定しない。",
+        "「遲，是誤了／歸，也是誤了」は遅れも帰還も誤りだったとの自省で、何が誤った具体的行為なのかを外から補わない。"
+      ]
+    },
+    "queqiaoxian-20181222-revised-202610": {
+      "source_body_sha256": "a1c354b984efe0f7adb977a4e6a401586e05411a798433f450378bcf4dae2532",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 0,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ず",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 1,
+          "char": "消",
+          "furigana": "せう",
+          "okurigana": "セ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 3,
+          "char": "素",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 5,
+          "char": "自",
+          "okurigana": "ラ"
+        },
+        {
+          "position": 6,
+          "char": "珍",
+          "okurigana": "シム",
+          "kaeriten": "二"
+        },
+        {
+          "position": 8,
+          "char": "物",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 11,
+          "char": "上",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 13,
+          "char": "常",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 19,
+          "char": "荑",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 20,
+          "char": "傷",
+          "okurigana": "アル"
+        },
+        {
+          "position": 22,
+          "char": "竟",
+          "furigana": "つひ",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 23,
+          "char": "唇",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 24,
+          "char": "濡",
+          "okurigana": "レ"
+        },
+        {
+          "position": 26,
+          "char": "經",
+          "okurigana": "タル",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 27,
+          "char": "年",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 30,
+          "char": "還",
+          "okurigana": "タ"
+        },
+        {
+          "position": 31,
+          "char": "留",
+          "okurigana": "ムル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 33,
+          "char": "許",
+          "okurigana": "ヲカ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 37,
+          "char": "聞",
+          "okurigana": "キ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 38,
+          "char": "人",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 39,
+          "char": "道",
+          "okurigana": "フヲ",
+          "kaeriten": "一レ"
+        },
+        {
+          "position": 40,
+          "char": "好",
+          "okurigana": "シト"
+        },
+        {
+          "position": 42,
+          "char": "隨",
+          "okurigana": "ヒテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 43,
+          "char": "人",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 44,
+          "char": "道",
+          "okurigana": "フ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 45,
+          "char": "好",
+          "okurigana": "シト"
+        },
+        {
+          "position": 50,
+          "char": "鳴",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 51,
+          "char": "何",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 52,
+          "char": "故",
+          "okurigana": "ゾ"
+        },
+        {
+          "position": 55,
+          "char": "逢",
+          "okurigana": "ヘバ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 56,
+          "char": "君",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 57,
+          "char": "仍",
+          "okurigana": "ホ"
+        },
+        {
+          "position": 58,
+          "char": "問",
+          "okurigana": "フ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 60,
+          "char": "來",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 61,
+          "char": "安",
+          "okurigana": "キヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 63,
+          "char": "說",
+          "okurigana": "キ"
+        },
+        {
+          "position": 64,
+          "char": "罷",
+          "furigana": "や",
+          "okurigana": "ミテ"
+        },
+        {
+          "position": 67,
+          "char": "回",
+          "okurigana": "ラシ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 68,
+          "char": "身",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 69,
+          "char": "讓",
+          "okurigana": "ル",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 70,
+          "char": "路",
+          "okurigana": "ヲ"
+        }
+      ],
+      "notes": [
+        "「未消尺素」の「消（しょう）」は「要する」の意。作者の趣旨『手紙を必要としない』に従い、未を再読文字として「未だ尺素を消（しょう）せず」と返読する。「手紙がまだ消えていない」の意ではない。",
+        "「柔荑傷處竟唇濡」では唇が傷に触れた意外さを竟で示す。唇の持ち主を作者以上に指定しない。",
+        "「瓦釜雷鳴何故」は疑問として維持し、作者の正当な評価へ変換しない。",
+        "「說罷了」の了は口語結果表現。伝統的な再読文字との同一視はしない。",
+        "全体は作者の現代創作を古典日本語に編集的に読み直したもので、歴史的伝本に対して付けられた校訂点ではない。"
+      ]
+    }
+  }
+}

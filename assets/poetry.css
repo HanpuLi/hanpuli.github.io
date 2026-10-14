@@ -26,11 +26,11 @@
 .poetry-dates { color:var(--muted); font: .7rem/1.7 var(--mono); margin:0 0 1.5rem; }
 .poetry-paper-link { margin:1.5rem 0 .5rem; font: .7rem/1.6 var(--mono); }
 .poetry-paper-link a { display:inline-block; min-height:44px; padding:.7rem 0; }
-.poetry-kundoku { margin-top:1.5rem; }
-.poetry-kundoku > summary { width:fit-content; min-height:44px; padding:.7rem 0; color:var(--muted); font:.75rem/1.7 var(--mono); cursor:pointer; }
-.poetry-kundoku > summary:hover, .poetry-kundoku[open] > summary { color:var(--ink); }
-.poetry-kundoku .kundoku { padding-block:1rem .5rem; }
-.poetry-kundoku .body { text-align:start; }
+.poetry-kundoku, .poetry-kunten-notes { margin-top:1.5rem; }
+:is(.poetry-kundoku, .poetry-kunten-notes) > summary { width:fit-content; min-height:44px; padding:.7rem 0; color:var(--muted); font:.75rem/1.7 var(--mono); cursor:pointer; }
+:is(.poetry-kundoku, .poetry-kunten-notes) > summary:hover, :is(.poetry-kundoku, .poetry-kunten-notes)[open] > summary { color:var(--ink); }
+:is(.poetry-kundoku, .poetry-kunten-notes) .kundoku { padding-block:1rem .5rem; }
+:is(.poetry-kundoku, .poetry-kunten-notes) .body { text-align:start; }
 .kundoku-notes { margin:1.25rem 0 0; padding-left:1.3em; color:var(--muted); font-size:.8rem; line-height:1.8; }
 .poetry-reading-aids { max-width:42rem; margin:1.5rem auto 0; border-block:1px solid var(--line); }
 .poetry-reading-aid + .poetry-reading-aid { border-top:1px solid var(--line); }

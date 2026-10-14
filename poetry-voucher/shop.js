@@ -256,9 +256,9 @@
     constructor(identity){super();this.pages=[];this.identity=identity;this.transcript=[];}
     ensure(height){
       // Reserve a footer before laying out any content; short, single-page works stay unmarked.
-      if(this.y+height<=PAPER_CONFIG.contentMaxDots-80)return;
+      if(this.y+height<=PAPER_CONFIG.contentMaxDots-80){this.grow(this.y+height+600);return;}
       this.pages.push(super.finish());
-      this.c=canvas(PAPER_CONFIG.printableDots,PAPER_CONFIG.canvasMaxDots);this.x=this.c.getContext('2d');this.y=PAPER_CONFIG.receiptInsetDots;
+      this.c=canvas(PAPER_CONFIG.printableDots,PAPER_CONFIG.initialCanvasDots);this.x=this.c.getContext('2d');this.y=PAPER_CONFIG.receiptInsetDots;
       if(this.identity){
         super.till(this.identity.kind+' CONT. '+(this.pages.length+1));
         super.till(this.identity.ref);super.till('-'.repeat(RECEIPT_CONFIG.lineChars));

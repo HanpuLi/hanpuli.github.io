@@ -1,0 +1,50 @@
+/* Vertical kanbun typesetting. Copyright 2026 Hanpu Li; site code.
+ * Each authored line is one physical column of .unit cells:
+ *
+ *   left side    character   right side
+ *   saidoku      字          furigana
+ *   kaeriten     punctuation okurigana
+ *
+ * The three tracks never share horizontal space, so readings cannot be
+ * drawn over a character. Rows are auto-sized: long readings lengthen
+ * their own cell instead of running into the next character. */
+.kanbun .kanbun-line {
+  display:flex; flex-direction:column; align-items:center;
+  writing-mode:horizontal-tb;
+}
+.kanbun .unit {
+  display:grid;
+  grid-template-columns:.48em 1em .55em;
+  grid-template-rows:.5em .5em minmax(.22em,auto);
+  line-height:1;
+}
+.kanbun .kanji {
+  grid-column:2; grid-row:1 / 3;
+  width:1em; height:1em; text-align:center;
+}
+.kanbun .punctuation {
+  grid-column:2; grid-row:3;
+  writing-mode:vertical-rl; height:1em; width:1em;
+}
+.kanbun .side {
+  display:flex; flex-direction:column;
+  font-size:.5em; line-height:1;
+}
+.kanbun .side-right { grid-column:3; grid-row:1 / -1; padding-left:.08em; }
+.kanbun .side-right.side-sunk { grid-row:2 / -1; }
+.kanbun .side-left { grid-column:1; grid-row:2 / -1; align-items:flex-end; padding-right:.08em; }
+.kanbun .side-left.side-gap { grid-row:3 / -1; }
+.kanbun .furigana,
+.kanbun .okurigana,
+.kanbun .saidoku,
+.kanbun .kaeriten {
+  writing-mode:vertical-rl; text-orientation:upright;
+  width:1em; white-space:nowrap;
+}
+.kanbun .kaeriten { font-size:.86em; }
+/* 合符: a short rule in the gap joining a two-character word. */
+.kanbun .unit.gofu::after {
+  content:""; grid-column:2; grid-row:3;
+  justify-self:center; width:0; border-left:1px solid currentColor;
+  margin-top:-.04em; margin-bottom:-.04em;
+}

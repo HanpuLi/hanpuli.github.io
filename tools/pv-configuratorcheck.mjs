@@ -19,7 +19,7 @@ try{
   for(let attempt=0;attempt<3;attempt++){
    failures.length=0;errors.length=0;
    await page.goto(base+'/poetry-voucher/shop.html?lang='+lang);
-   try{await page.waitForFunction(()=>window.poetryShop&&document.querySelectorAll('.product-card').length===33,null,{timeout:8000});loaded=true;break;}
+   try{await page.waitForFunction(()=>window.poetryShop&&document.querySelectorAll('.product-card').length===32,null,{timeout:8000});loaded=true;break;}
    catch(error){
     if(!failures.some(value=>value.startsWith(base+'/')))throw error;
     console.warn(lang+': retry after localhost resource failure '+failures.slice(0,2).join('; '));
@@ -28,7 +28,7 @@ try{
   }
   assert(loaded,'all shop scripts loaded');
   assert.equal(await page.locator('.collection-tile').count(),4,'collection-first choice');
-  assert(await page.locator('#product-grid').isHidden(),'33 works should not overwhelm the first visit');
+  assert(await page.locator('#product-grid').isHidden(),'32 works should not overwhelm the first visit');
   assert(await page.locator('.shop-how').isVisible(),'payment/delivery explained before catalogue');
   assert(await page.locator('.studio-nav [data-order-link]').isHidden(),'no dead-end orders link before issuing a voucher');
   await page.locator('.collection-tile').first().click();
@@ -74,7 +74,7 @@ try{
   assert((await readFile(await result.path())).toString('latin1').startsWith('%PDF-1.4'));
   assert.equal(errors.length,0,'page errors: '+errors.join('; '));
   await page.locator('#keep-shopping').click();
-  await page.locator('#browse-all').click();assert.equal(await page.locator('.product-card:visible').count(),33);
+  await page.locator('#browse-all').click();assert.equal(await page.locator('.product-card:visible').count(),32);
   await page.locator('#back-to-collections').click();assert(await page.locator('.collection-tile').first().isVisible());assert(await page.locator('.collection-tile').first().evaluate(el=>document.activeElement===el),'return focus to collection choices');
   await context.close();console.log(lang+': grouped catalogue, default edition, live proof, advanced typography, fictional purchase, PDF and collection return OK');
  }

@@ -48,7 +48,10 @@ try{
   // This paragraph may be replaced by the regional profile response after
   // load. Observe the settled copy instead of pairing old text with new paint.
   if(route.endsWith('/about.html'))await page.waitForLoadState('networkidle');
-  await page.evaluate(async()=>{const style=document.createElement('style');style.textContent='*{content-visibility:visible !important}';document.head.append(style);await document.fonts.ready;});
+  await page.evaluate(async()=>{const style=document.createElement('style');style.textContent='*{content-visibility:visible !important}';document.head.append(style);await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});
+  // The isolated kanbun renderer packs its lines after fonts arrive. Audit
+  // settled glyph nodes, not nodes that are being replaced during reflow.
+  if (route.startsWith('/assets/kanbun-viewer/works/')) await page.waitForTimeout(450);
   assert.deepEqual(bad,[],route+': missing resources');
   const targets=await page.evaluate(()=>{
     let i=0; const out=[];
@@ -76,7 +79,12 @@ try{
   for(const t of targets){
     const result=await client.send('DOM.querySelector',{nodeId:doc,selector:'[data-font-audit="'+t.id+'"]'});
     if(!result.nodeId)continue;
-    const {fonts}=await client.send('CSS.getPlatformFontsForNode',{nodeId:result.nodeId});
+    let fonts;
+    try {
+      ({fonts}=await client.send('CSS.getPlatformFontsForNode',{nodeId:result.nodeId}));
+    } catch (error) {
+      throw new Error('font probe node changed at '+route+' ['+t.id+'] '+JSON.stringify(t.text)+': '+String(error));
+    }
     if(!fonts.length){if(!t.insideReading)missing.push({route,...t});continue;}
     for(const f of fonts){
       const key=f.familyName+'|'+f.isCustomFont;
