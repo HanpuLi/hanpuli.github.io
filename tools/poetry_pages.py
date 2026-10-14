@@ -205,6 +205,17 @@ class Pages:
         nav_label=ui['by_work']+' · '+(lib.works[wid]['authorial_label'] or lib.title(wid,locale))
         return '<nav class="poetry-sequence-nav" aria-label="'+esc(nav_label)+'">'+''.join(links)+'</nav>'
 
+    def paper_link(self, offer_id: str, locale: str) -> str:
+        href='/poetry-voucher/shop.html?'+urlencode({'lang':SHOP_LANGS[locale],'work':offer_id})
+        return f'<p class="poetry-paper-link"><a href="{esc(href)}">{esc(self.ui[locale]["voucher"])}</a></p>'
+
+    def mirrored_frame(self, wid: str, locale: str) -> dict[str, str]:
+        """Shared navigation and paper link for a work whose body keeps its own authored layout."""
+        offers = dict.fromkeys(tid for vid in self.lib.works[wid]['versions']
+                               for tid in [vid, *self.lib.versions[vid]['parts']] if tid in self.lib.offers)
+        return {'breadcrumbs': self.breadcrumbs(locale, wid), 'sequence': self.sequence_nav(wid, locale),
+                'paper': ''.join(self.paper_link(tid, locale) for tid in offers)}
+
     def text_html(self, tid: str, locale: str, *, single: bool = False) -> str:
         lib, ui = self.lib, self.ui[locale]
         text, work = lib.texts[tid], lib.work_for_text(tid)
@@ -285,9 +296,11 @@ class Pages:
                                 '<summary>訓点校注（編集）</summary>'
                                 f'<div class="poem-version kundoku"><ul class="kundoku-notes">{body}</ul>'
                                 '</div></details>')
-        if tid in lib.offers:
-            href='/poetry-voucher/shop.html?'+urlencode({'lang':SHOP_LANGS[locale],'work':tid})
-            rows.append(f'<p class="poetry-paper-link"><a href="{esc(href)}">{esc(ui["voucher"])}</a></p>')
+        # A whole-version paper edition is linked once, after its last part.
+        offer_id = tid if tid in lib.offers else (
+            version['id'] if version['id'] in lib.offers and tid == version['parts'][-1] else None)
+        if offer_id:
+            rows.append(self.paper_link(offer_id, locale))
         rows.append('</article>')
         return '\n'.join(rows)
 

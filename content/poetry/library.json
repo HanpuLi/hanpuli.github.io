@@ -2538,34 +2538,24 @@
       ]
     },
     {
-      "id": "roof-splits-draft-1-part-1",
-      "text": "roof-splits-draft-1-part-1",
-      "receipt_code": "ROOF 1.1",
+      "id": "roof-splits-draft-1",
+      "version": "roof-splits-draft-1",
+      "receipt_code": "ROOF 1",
       "legacy_ids": [
-        "shi-d1-1"
-      ]
-    },
-    {
-      "id": "roof-splits-draft-1-part-2",
-      "text": "roof-splits-draft-1-part-2",
-      "receipt_code": "ROOF 1.2",
-      "legacy_ids": [
+        "roof-splits-draft-1-part-1",
+        "roof-splits-draft-1-part-2",
+        "shi-d1-1",
         "shi-d1-2"
       ]
     },
     {
-      "id": "roof-splits-draft-2-part-1",
-      "text": "roof-splits-draft-2-part-1",
-      "receipt_code": "ROOF 2.1",
+      "id": "roof-splits-draft-2",
+      "version": "roof-splits-draft-2",
+      "receipt_code": "ROOF 2",
       "legacy_ids": [
-        "shi-d2-1"
-      ]
-    },
-    {
-      "id": "roof-splits-draft-2-part-2",
-      "text": "roof-splits-draft-2-part-2",
-      "receipt_code": "ROOF 2.2",
-      "legacy_ids": [
+        "roof-splits-draft-2-part-1",
+        "roof-splits-draft-2-part-2",
+        "shi-d2-1",
         "shi-d2-2"
       ]
     },
@@ -2573,6 +2563,12 @@
       "id": "yingtianchang-20261008-text",
       "text": "yingtianchang-20261008-text",
       "receipt_code": "YINGTIANCHANG 2026",
+      "legacy_ids": []
+    },
+    {
+      "id": "summer-2017-revised-20261008",
+      "text": "summer-2017-revised-20261008",
+      "receipt_code": "SUMMER 2017",
       "legacy_ids": []
     }
   ],
@@ -2636,10 +2632,14 @@
       "ci-w9": "manjianghong-2022-echo-202610",
       "ci-w10": "manjianghong-rereading-202610-text",
       "ci-w12": "queqiaoxian-20181222-revised-202610",
-      "shi-d1-1": "roof-splits-draft-1-part-1",
-      "shi-d1-2": "roof-splits-draft-1-part-2",
-      "shi-d2-1": "roof-splits-draft-2-part-1",
-      "shi-d2-2": "roof-splits-draft-2-part-2"
+      "shi-d1-1": "roof-splits-draft-1",
+      "shi-d1-2": "roof-splits-draft-1",
+      "shi-d2-1": "roof-splits-draft-2",
+      "shi-d2-2": "roof-splits-draft-2",
+      "roof-splits-draft-1-part-1": "roof-splits-draft-1",
+      "roof-splits-draft-1-part-2": "roof-splits-draft-1",
+      "roof-splits-draft-2-part-1": "roof-splits-draft-2",
+      "roof-splits-draft-2-part-2": "roof-splits-draft-2"
     },
     "source_titles": {
       "a1": {
