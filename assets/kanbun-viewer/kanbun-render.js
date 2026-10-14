@@ -4,7 +4,8 @@
  * Input: each direct <p> child of a stanza holds one authored line as
  * plain text in the manuscript syntax compiled by
  * tools/poetry_kunten_manuscript.py:
- *   字(furigana){okurigana}‹saidoku-furigana›«saidoku-okurigana»[kaeriten]
+ *   字(furigana){okurigana}‹saidoku-furigana›«saidoku-okurigana»[kaeriten]‐
+ * where a trailing ‐ (U+2010) is a 合符 joining the character to the next.
  * Every Han character becomes one .unit; punctuation joins the unit of
  * the character it follows. Readings sit in fixed side columns, so no
  * annotation can be laid over a character or another annotation; a unit
@@ -23,7 +24,11 @@
     let current = null;
     for (let i = 0; i < text.length; i++) {
       const ch = text[i];
-      if (OPEN[ch]) {
+      if (ch === '\u2010') {
+        if (!current || !current.kanji || current.gofu)
+          throw Error('Malformed 合符 at ' + i);
+        current.gofu = true;
+      } else if (OPEN[ch]) {
         const [closer, key] = OPEN[ch];
         const end = text.indexOf(closer, i + 1);
         if (!current || !current.kanji || end < i + 2 || current[key])
@@ -52,7 +57,7 @@
   }
 
   function render(unit) {
-    const node = span('unit');
+    const node = span(unit.gofu ? 'unit gofu' : 'unit');
     if (unit.kanji) node.append(span('kanji', unit.kanji));
     if (unit.punctuation) node.append(span('punctuation', unit.punctuation));
     if (unit.furigana || unit.okurigana) {

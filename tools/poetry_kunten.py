@@ -20,7 +20,7 @@ KANA = re.compile(r"^[\u3040-\u309f\u30a0-\u30ffー]+$")
 RETURNS = set("レ一二三四五六七八九十上下甲乙丙丁天地人") | {
     character + "レ" for character in "一二三四五六七八九十上下甲乙丙丁天地人"
 }
-MARKUP_CHARS = set("(){}[]‹›«»⦉⦊⌊⌋‘’“”")
+MARKUP_CHARS = set("(){}[]‹›«»⦉⦊⌊⌋‘’“”\u2010")
 BASE = Path("assets/kanbun-viewer")
 SOURCE_FILES = ("kanbun-render.js", "kanbun-render.css", "viewer.js", "viewer.css")
 
@@ -69,7 +69,8 @@ class Kunten:
                 if mark["char"] != source[i] or source[i].isspace() or source[i] in "。，、！？；：":
                     raise ValueError("Kanbun mark detached from Chinese character: " + tid)
                 allowed = {"position", "char", "furigana", "okurigana",
-                           "saidoku_furigana", "saidoku_okurigana", "kaeriten"}
+                           "saidoku_furigana", "saidoku_okurigana", "kaeriten",
+                           "gofu"}
                 if set(mark) - allowed:
                     raise ValueError("Unknown kanbun mark type: " + tid)
                 if not any(k in mark for k in allowed - {"position", "char"}):
@@ -78,8 +79,13 @@ class Kunten:
                               "saidoku_okurigana"):
                     if field in mark and not KANA.fullmatch(mark[field]):
                         raise ValueError("Malformed kana in " + tid)
-                if ("saidoku_furigana" in mark) != ("saidoku_okurigana" in mark):
+                # A second reading may be a single kana (未…ず) with no
+                # separate okurigana; okurigana alone has nothing to attach to.
+                if "saidoku_okurigana" in mark and "saidoku_furigana" not in mark:
                     raise ValueError("Incomplete saidokumoji pair: " + tid)
+                if "gofu" in mark and (mark["gofu"] is not True or i + 1 >= len(source)
+                                       or not "\u4e00" <= source[i + 1] <= "\u9fff"):
+                    raise ValueError("合符 must join two adjacent characters: " + tid)
                 if "kaeriten" in mark and mark["kaeriten"] not in RETURNS:
                     raise ValueError("Unsupported return mark in " + tid)
                 if mark.get("kaeriten") == "レ":
@@ -97,7 +103,7 @@ class Kunten:
                     point = pairs.get(position)
                     if point == "二":
                         stack.append(position)
-                    elif point == "一":
+                    elif point in ("一", "一レ"):
                         if not stack:
                             raise ValueError("Orphan 一 point: " + tid)
                         stack.pop()
@@ -120,9 +126,12 @@ class Kunten:
                 result.append("{" + mark["okurigana"] + "}")
             if mark.get("saidoku_furigana"):
                 result.append("‹" + mark["saidoku_furigana"] + "›")
+            if mark.get("saidoku_okurigana"):
                 result.append("«" + mark["saidoku_okurigana"] + "»")
             if mark.get("kaeriten"):
                 result.append("[" + mark["kaeriten"] + "]")
+            if mark.get("gofu"):
+                result.append("\u2010")
         return "".join(result)
 
     def href(self, tid: str) -> str:

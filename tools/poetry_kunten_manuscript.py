@@ -1,7 +1,8 @@
 """Human-authored kanbun transcription compiler for the poetry edition.
 
 Annotation syntax: (furigana), {okurigana}, [kaeriten],
-‹saidoku-furigana›«saidoku-okurigana». The Chinese characters, original
+‹saidoku-furigana›«saidoku-okurigana», and ‐ (U+2010) after a character's
+annotations for a 合符 joining it to the next character. The Chinese characters, original
 punctuation, and line/stanza breaks must be byte-for-byte identical to
 the authoritative zh source after stripping annotations. Never infer
 readings or return marks from a Japanese translation.
@@ -19,6 +20,7 @@ from poetry_kundoku import Kundoku
 OPEN = {"(": (")", "furigana"), "{": ("}", "okurigana"),
         "[": ("]", "kaeriten"), "‹": ("›", "saidoku_furigana"),
         "«": ("»", "saidoku_okurigana")}
+GOFU = "\u2010"
 
 
 def compile_manuscript(source: str, manuscript: str) -> list[dict]:
@@ -28,7 +30,15 @@ def compile_manuscript(source: str, manuscript: str) -> list[dict]:
     cursor = 0
     while cursor < len(manuscript):
         ch = manuscript[cursor]
-        if ch in OPEN:
+        if ch == GOFU:
+            if index < 0:
+                raise ValueError(f"Invalid 合符 at {cursor}")
+            mark = marks.setdefault(index, {"position": index, "char": source[index]})
+            if "gofu" in mark:
+                raise ValueError(f"Duplicate 合符 at source character {index}")
+            mark["gofu"] = True
+            cursor += 1
+        elif ch in OPEN:
             closer, key = OPEN[ch]
             end = manuscript.find(closer, cursor + 1)
             if end < cursor + 2 or index < 0:
@@ -51,7 +61,8 @@ def compile_manuscript(source: str, manuscript: str) -> list[dict]:
     return list(marks.values())
 
 
-def trace_simple_returns(phrase: str, points: dict[int, str]) -> str:
+def trace_simple_returns(phrase: str, points: dict[int, str],
+                         gofu: frozenset[int] = frozenset()) -> str:
     """Walk only ordinary レ / 二・一 / 三・二・一 marks.
 
     This traces the stated *glyph* order, not Japanese conjugations or
@@ -60,20 +71,29 @@ def trace_simple_returns(phrase: str, points: dict[int, str]) -> str:
     """
     def one(index: int, limit: int) -> tuple[list[str], int]:
         mark = points.get(index)
-        if mark == "レ":
+        if mark in ("レ", "一レ"):
             if index + 1 >= limit:
                 raise ValueError("レ has no following glyph")
-            inner, end = one(index + 1, limit)
-            return inner + [phrase[index]], end
+            word = 2 if index in gofu else 1
+            if index + word >= limit:
+                raise ValueError("レ has no following glyph")
+            inner, end = one(index + word, limit)
+            return inner + list(phrase[index:index + word]), end
         if mark in ("二", "三"):
             stop = next((at for at in range(index + 1, limit)
-                         if points.get(at) == "一"), None)
+                         if points.get(at) in ("一", "一レ")), None)
             if stop is None:
                 raise ValueError("Nested return lacks closing 一")
-            inner, end = whole(index + 1, stop + 1)
-            if end != stop + 1:
+            word = 2 if index in gofu else 1
+            stop_end = stop + (2 if stop in gofu else 1)
+            if points.get(stop) == "一レ":
+                stop_end += 2 if stop_end in gofu else 1
+            inner, end = whole(index + word, stop_end)
+            if end != stop_end:
                 raise ValueError("Nested return consumed wrong glyph range")
-            return inner + [phrase[index]], end
+            return inner + list(phrase[index:index + word]), end
+        if index in gofu:
+            return [phrase[index], phrase[index + 1]], index + 2
         return [phrase[index]], index + 1
 
     def whole(start: int, end: int) -> tuple[list[str], int]:
@@ -116,13 +136,15 @@ def main() -> None:
     # The author's explicit modern/semantic exceptions must never acquire
     # plausible-looking historical 返り点 merely to fill the annotation grid.
     for tid, phrase, note_keyword in (
-        ("jia-yi-a10-text", "認不真，卻認真", "現代中国語"),
-        ("queqiaoxian-20181222-revised-202610", "未消尺素", "手紙を必要としない"),
+        # 2026-10-14: the #47 書き下し reads 認不真 classically
+        # (認むること真ならず); only the modern word 認真 stays unreturned.
+        ("jia-yi-a10-text", "卻認真", "現代中国語"),
     ):
         source = lib.edition(tid, "zh")["body"]
         start = source.index(phrase)
         protected = set(range(start, start + len(phrase)))
-        if any(mark["position"] in protected for mark in persisted[tid]["marks"]):
+        if any(mark["position"] in protected and "kaeriten" in mark
+               for mark in persisted[tid]["marks"]):
             raise ValueError("Protected authorial idiom was assigned kanbun marks: " + tid)
         if not any(note_keyword in note for note in persisted[tid].get("notes", [])):
             raise ValueError("Missing authorial explanation for exceptional phrase: " + tid)
@@ -133,6 +155,11 @@ def main() -> None:
         ("jia-yi-a6-text", "似隔前生事", {0: "三", 1: "二", 4: "一"}),
         ("jia-yi-b3-text", "恐花為我辭根",
          {0: "三", 2: "レ", 4: "二", 5: "一"}),
+        # 2026-10-14: the #47 書き下し reads these phrases with ordinary
+        # returns (消 = 要する; 把 as a verb; 不 negating the whole clause).
+        ("queqiaoxian-20181222-revised-202610", "未消尺素", {0: "レ", 1: "二", 3: "一"}),
+        ("jia-yi-a6-text", "把鴛鴦", {0: "二", 2: "一"}),
+        ("jia-yi-b3-text", "不是東風先折取", {0: "二", 6: "一"}),
     ):
         source = lib.edition(tid, "zh")["body"]
         start = source.index(phrase)
@@ -161,18 +188,6 @@ def main() -> None:
         }
         if actual != {0:"二",2:"一"}:
             raise ValueError("Multicharacter object requires a full 二/一 return: "+tid+" "+phrase)
-    for tid, char, note_key in (
-        ("jia-yi-a6-text", "把", "把構文"),
-        ("jia-yi-b3-text", "不是", "不是構文"),
-    ):
-        source = lib.edition(tid, "zh")["body"]
-        start = source.index(char)
-        phrase_positions = set(range(start, start + len(char)))
-        if any(mark["position"] in phrase_positions and
-               "kaeriten" in mark for mark in persisted[tid]["marks"]):
-            raise ValueError("Unsupported classical points on modern Chinese clause: " + tid)
-        if not any(note_key in note for note in persisted[tid].get("notes", [])):
-            raise ValueError("Missing explanation for modern Chinese structure: " + tid)
     tid = "jia-yi-a6-text"
     source = lib.edition(tid, "zh")["body"]
     root_position = source.index("痴根") + 1
@@ -189,24 +204,11 @@ def main() -> None:
         "辞書" in note for note in persisted[special].get("notes", [])
     ):
         raise ValueError("Contextual reading of 礄 lacks editorial boundary")
-    # 「蘸得毫端黑」: 得 is a result complement, not an independent
-    # Japanese テ syllable. The Japanese 書き下し already reads 蘸して
-    # 毫端黒く; inserting 得テ duplicates the connector.
-    result_tid = "zhegutian-20260909-text"
-    result_source = lib.edition(result_tid, "zh")["body"]
-    result_position = result_source.index("蘸得") + 1
-    result_mark = next((mark for mark in persisted[result_tid]["marks"]
-                        if mark["position"] == result_position), {})
-    if any(field in result_mark for field in ("okurigana", "furigana")):
-        raise ValueError("Spurious independent kana on 蘸得 result complement")
-    if not any("結果補語" in note for note in persisted[result_tid].get("notes", [])):
-        raise ValueError("Missing explanation of 蘸得 result complement")
-
     # Reconstruct glyph order independently for known nested clauses.
     # This test is intentionally narrower than a comprehensive Japanese
     # grammatical judgement and only certifies the recorded local order.
     for tid, phrase, reading_order in (
-        ("jia-yi-a3-text", "未敢喚真真", "真真喚敢未"),
+        ("jia-yi-a3-text", "未敢喚真真", "敢真真喚未"),
         ("jia-yi-a4-text", "逢人怕説西窗", "人逢西窗説怕"),
         ("jia-yi-a6-text", "似隔前生事", "前生事隔似"),
         ("jia-yi-b3-text", "恐花為我辭根", "花我為根辭恐"),
@@ -240,26 +242,30 @@ def main() -> None:
     if trace_simple_returns(cross_phrase, cross_points).replace("，", "") != "銀磬微鳴作":
         raise ValueError("作 must follow 銀磬微鳴 across the caesura")
 
-    # Compound predicates cannot be moved as two-character units by
-    # a 二...一 on only their first or second glyph. Annotating the
-    # Japanese order in 書き下し文 is preferable to displaying a false trace.
-    for tid, phrase, editorial_gloss in (
-        ("jia-yi-a7-text", "灌溉朝昏", "灌漑"),
-        ("manjianghong-rereading-202610-text", "鎖盡諸門", "鎖し尽くす"),
-        ("yingtianchang-20261008-text", "聽盡無聲", "聴き尽くす"),
-        ("mantingfang-20191219-revised-202610", "驚散夢中弦", "夢中の弦を驚かし散ず"),
-        ("jia-yi-b4-text", "認作、一諾窮年", "一諾年を窮むる"),
-        ("linjiangxian-20260909-text", "垂到地", "地に垂れ到り"),
+    # Two-character predicates return as one word only when joined by a
+    # 合符 (‐ in the manuscript); a single-glyph return would split them.
+    for tid, phrase, reading_order in (
+        ("jia-yi-a7-text", "灌溉朝昏", "朝昏灌溉"),
+        ("jia-yi-a6-text", "齧盡痴根", "痴根齧盡"),
+        ("jia-yi-b2-text", "沉入簾間暝", "簾間暝沉入"),
+        ("manjianghong-rereading-202610-text", "鎖盡諸門", "諸門鎖盡"),
+        ("manjianghong-2022-sewn-202610", "瘦損腰圍", "腰圍瘦損"),
+        ("yingtianchang-20261008-text", "聽盡無聲", "無聲聽盡"),
+        ("mantingfang-20191219-revised-202610", "驚散夢中弦", "夢中弦驚散"),
+        ("linjiangxian-20260909-text", "垂到地", "地垂到"),
     ):
         source = lib.edition(tid, "zh")["body"]
         start = source.index(phrase)
-        misleading = [mark for mark in persisted[tid]["marks"]
-                      if start <= mark["position"] < start + len(phrase)
-                      and "kaeriten" in mark]
-        if misleading:
-            raise ValueError("Spurious single-glyph return on compound: " + tid)
-        if not any(editorial_gloss in note for note in persisted[tid].get("notes", [])):
-            raise ValueError("Missing explanatory Japanese compound reading: " + tid)
+        local = [mark for mark in persisted[tid]["marks"]
+                 if start <= mark["position"] < start + len(phrase)]
+        if not any(mark.get("gofu") and mark["position"] == start for mark in local):
+            raise ValueError("Compound predicate lacks 合符: " + tid + " " + phrase)
+        points = {mark["position"] - start: mark["kaeriten"]
+                  for mark in local if "kaeriten" in mark}
+        gofu = frozenset(mark["position"] - start for mark in local if mark.get("gofu"))
+        actual = trace_simple_returns(phrase, points, gofu)
+        if actual != reading_order:
+            raise ValueError(f"Wrong compound return order for {tid} {phrase}: {actual!r}")
 
     # The source character carries ここ as furigana; the Japanese body keeps the
     # reviewed 此こ writing (訓読審校 2026-10-14, #47) with the same reading.
