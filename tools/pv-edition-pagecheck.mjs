@@ -50,6 +50,7 @@ try{
   assert.deepEqual(result.violations.map(v=>({id:v.id,target:v.nodes.map(n=>n.target)})),[],lang+' product axe');
   await page.locator('#save-line').click();
   await page.waitForURL(/\/poetry-voucher\/shop\.html\?/);
+  await page.locator('#bag-dialog').waitFor({state:'visible',timeout:30000});
   assert(await page.locator('#bag-dialog').isVisible(),'selection returns with real bag review');
   assert.equal(await page.locator('#bag-count').textContent(),'1');
   await page.locator('.bag-line').getByRole('button',{name:/Edit|編輯|编辑|編集|Bearbeiten|Modifier|Изменить/}).click();
@@ -66,7 +67,7 @@ try{
   await page.locator('#font').selectOption('site');
   await page.locator('#save-line').click();
   await page.waitForURL(/\/poetry-voucher\/shop\.html\?/);
-  assert(await page.locator('#bag-dialog').isVisible());
+  await page.locator('#bag-dialog').waitFor({state:'visible',timeout:30000});
   assert.equal(await page.locator('.bag-line').count(),1,'editing must not duplicate a selection');
   const saved=await page.evaluate(()=>poetryShop.snapshot().bag);
   assert.equal(saved[0].font,'site');
@@ -111,8 +112,10 @@ try{
   await restricted.locator('#save-line').click();
   if(mode==='local'){
    await restricted.waitForURL(url=>url.pathname.endsWith('/poetry-voucher/shop.html'));
+   // The bag is restored once the catalogue has loaded; wait for that rather than racing it.
+   await restricted.waitForFunction(()=>window.poetryShop?.snapshot().bag.length===1,{},{timeout:30000}).catch(()=>{});
    assert.equal((await restricted.evaluate(()=>poetryShop.snapshot())).bag.length,1,'session storage keeps bag');
-   assert(await restricted.locator('#bag-dialog').isVisible(),'bag opens with session fallback');
+   await restricted.locator('#bag-dialog').waitFor({state:'visible',timeout:30000});
    assert((await restricted.locator('#storage-note').innerText()).includes('tab'),'storage limitation disclosed');
   }else{
    assert.equal(new URL(restricted.url()).pathname,'/poetry-voucher/edition.html','refuse irreversible navigation without either storage');
