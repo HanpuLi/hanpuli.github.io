@@ -86,17 +86,17 @@ try{
   console.log('poetrymigrationcheck: catalogue/readers, seventeen-member cycle, two-version/two-part work, old routes and no-JS recovery passed.');
   // Legacy selection URLs and baskets use aliases. Stored issued orders do not.
   await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=ci-w12');await ready(page);
-  await page.waitForFunction(()=>document.querySelector('#product-editor').open);
+  await page.waitForURL(/\/poetry-voucher\/edition\.html\?/);await page.locator('#voucher-hero-image').waitFor({state:'visible'});
   assert.equal(await page.locator('#work').inputValue(),target);
   assert.equal(new URL(await page.locator('#source-note a').getAttribute('href'),base).pathname,'/poetry/queqiaoxian-20181222/');
-  await page.locator('[data-close="product-editor"]').click();
+  await page.locator('#edition-back').click();
   for(const shelf of ['jia-yi','september-2026','roof-splits','individual']){
     await page.locator('#shop-filter').selectOption(shelf);
     assert.equal(await page.locator('.product-card').count(),catalogue.works.filter(w=>w.shelf===shelf).length);
   }
   await page.locator('#shop-filter').selectOption('all');
   assert(!/\bW\d+\b/.test(await page.locator('#product-grid').innerText()));
-  await page.evaluate(old=>localStorage.setItem('poetry-voucher-bag-v1',JSON.stringify({version:1,lines:[{id:'old-selection',workId:old.id,title:old.title,author:old.author,poem:old.poem,locale:'zh-Hant',translations:['en'],font:'site',size:24,quantity:2}]})),old);
+  await page.evaluate(old=>{sessionStorage.removeItem('poetry-voucher-bag-v1');localStorage.setItem('poetry-voucher-bag-v1',JSON.stringify({version:1,lines:[{id:'old-selection',workId:old.id,title:old.title,author:old.author,poem:old.poem,locale:'zh-Hant',translations:['en'],font:'site',size:24,quantity:2}]}));},old);
   await page.goto(base+'/poetry-voucher/shop.html?lang=en');await ready(page);
   const basket=(await snapshot(page)).bag;
   assert.equal(basket.length,1);assert.equal(basket[0].workId,target);assert.equal(basket[0].quantity,2);assert.equal(basket[0].poem,old.poem);
@@ -123,13 +123,13 @@ try{
   assert((await page.locator('.order-reading').innerText()).includes('W12-'+historical.order.ref+'-01'));
   console.log('poetrymigrationcheck: old selection URL and basket migrated; historical order identity, text hash, amount and stored bytes unchanged.');
   // A genuinely new virtual checkout must freeze only the current edition labels.
-  await page.evaluate(()=>localStorage.removeItem('poetry-voucher-bag-v1'));
+  await page.evaluate(()=>{localStorage.removeItem('poetry-voucher-bag-v1');sessionStorage.removeItem('poetry-voucher-bag-v1');});
   await page.goto(base+'/poetry-voucher/shop.html?lang=en&work='+target);await ready(page);
-  await page.waitForFunction(()=>document.querySelector('#product-editor').open);
+  await page.waitForURL(/\/poetry-voucher\/edition\.html\?/);await page.locator('#voucher-hero-image').waitFor({state:'visible'});
   await page.locator('.advanced-type summary').click();
   await page.locator('#font').selectOption('site');
   await page.locator('#translation-options input[value="en"]').check();
-  await page.locator('#save-line').click();await page.locator('#open-bag').click();
+  await page.locator('#save-line').click();await page.waitForURL(/\/poetry-voucher\/shop\.html\?/);assert(await page.locator('#bag-dialog').isVisible());
   await page.locator('#to-checkout').click();await page.locator('#place-order').click();
   await page.waitForURL(/\/poetry-voucher\/order\.html\?/, {timeout:45000});
   await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1,null,{timeout:45000});

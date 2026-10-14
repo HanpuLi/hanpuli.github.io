@@ -22,7 +22,7 @@ const localeRows=[
 ['現金 · 紙幣硬幣混合支付','Cash · notes and coins','现金 · 纸币硬币混合支付','現金 · 紙幣と硬貨','Bargeld · Banknoten und Münzen','Espèces · billets et pièces','Наличные · банкноты и монеты'],
 ['生成時自動抽取付款場景。','A payment scene is drawn automatically when you generate.','生成时自动抽取付款场景。','生成時に支払い場面を自動抽選します。','Beim Erstellen wird automatisch eine Zahlungsszene ausgelost.','Un scénario de paiement est tiré au sort à la génération.','При создании автоматически выбирается сценарий оплаты.'],
 ['PAYMENT_NOTE_TEMPLATE','Each generation randomly assigns card, notes, coins or mixed cash; no coins-only scenes above {coinLimit}. Cash always covers the total, with change in circulating denominations. Language changes do not redraw. All transactions are fictional.','每次生成随机安排刷卡、纸币、硬币或混合现金；超过 {coinLimit} 不安排纯硬币。现金足额，找零使用流通面额。切换语言不重抽；全部为虚构交易。','生成ごとにカード・紙幣・硬貨・混合現金を抽選します。{coinLimit} 超は硬貨のみを選びません。現金は足額で、お釣りは流通金種を使います。言語変更では再抽選しません。すべて架空取引です。','Jede Erstellung lost Karte, Banknoten, Münzen oder gemischtes Bargeld aus. Über {coinLimit} gibt es keine reine Münzzahlung. Bargeld reicht immer; Wechselgeld nutzt umlaufende Stückelungen. Sprachwechsel lost nicht neu aus. Alle Zahlungen sind fiktiv.','Chaque génération tire au sort carte, billets, pièces ou espèces mixtes. Pas de pièces seules au-delà de {coinLimit}. Les espèces couvrent le total, avec monnaie courante. Changer de langue ne relance pas le tirage. Toutes les transactions sont fictives.','При каждом создании выбираются карта, банкноты, монеты или смешанные наличные. Свыше {coinLimit} режим только с монетами не используется. Наличных всегда достаточно, сдача — обращающимися номиналами. Смена языка не меняет выбор. Все сделки вымышлены.'],
-['虛構交易小票，並非購物憑證','Fictional transaction receipt, not proof of purchase','虚构交易小票，并非购物凭证','架空取引のレシート、購入証明ではありません','Fiktiver Beleg, kein Kaufnachweis','Reçu fictif, sans valeur de preuve d’achat','Вымышленный чек, не подтверждение покупки'],
+['虛構交易小票，並非購物憑證','Fictional transaction receipt, not proof of purchase','虚构交易小票，并非购物凭证','架空取引のレシート、購入証明ではありません','Fiktiver Beleg, kein Kaufnachweis','Ticket fictif, sans valeur de preuve d’achat','Вымышленный чек, не подтверждение покупки'],
 ['現金 · 自動紙幣','Cash · automatic banknotes','现金 · 自动纸币','現金 · 紙幣自動選択','Bargeld · automatische Banknoten','Espèces · billets automatiques','Наличные · автоматический выбор банкнот'],
 ['刷卡 · 模擬交易','Card · simulated transaction','刷卡 · 模拟交易','カード · 模擬取引','Karte · simulierte Zahlung','Carte · transaction simulée','Карта · имитация оплаты'],
 ['支付現金','Cash tendered','支付现金','支払い現金','Gezahltes Bargeld','Espèces remises','Внесённые наличные'],
@@ -69,7 +69,7 @@ const localeRows=[
 ['讀原文','Read the text','读原文','本文を読む','Text lesen','Lire le texte','Читать текст'],
 ['01 — RECEIPT / 小票','01 — RECEIPT','01 — 小票','01 — レシート','01 — KASSENBON','01 — TICKET','01 — ЧЕК'],
 ['02 — VOUCHER / 詩券','02 — POETRY VOUCHER','02 — 诗券','02 — 詩券','02 — GEDICHTBON','02 — BON POÉTIQUE','02 — ПОЭТИЧЕСКИЙ ТАЛОН'],
-['RECEIPT + VOUCHER / 連續紙條','RECEIPT + VOUCHER / FULL STRIP','小票 + 诗券 / 连续纸条','レシート + 詩券 / 紙全体','KASSENBON + GEDICHT / GESAMTER STREIFEN','TICKET + BON / BANDE ENTIÈRE','ЧЕК + ТАЛОН / ПОЛНАЯ ЛЕНТА'],
+['RECEIPT + VOUCHER / 連續紙條','RECEIPT + VOUCHER / FULL STRIP','小票 + 诗券 / 连续纸条','レシート + 詩券 / 連続紙','KASSENBON + GEDICHTBON / GESAMTER STREIFEN','TICKET + BON / BANDE ENTIÈRE','ЧЕК + ТАЛОН / ПОЛНАЯ ЛЕНТА'],
 ['詩券排版；可切換讀原文取得文字版','Poetry voucher; choose Read the text for an accessible version','诗券排版；可切换读原文查看文字版','詩券のレイアウト。本文表示で文字を読めます','Gedichtbon; Textansicht für barrierefreies Lesen','Bon poétique ; choisir la vue texte pour une lecture accessible','Вёрстка талона; текст доступен в режиме чтения'],
 ['小票、CUT HERE 分隔及完整詩券','Receipt, CUT HERE separator and complete poetry voucher','小票、CUT HERE 分隔及完整诗券','レシート、切り取り線、詩券全体','Kassenbon, Schnittlinie und vollständiger Gedichtbon','Ticket, ligne de découpe et bon poétique complet','Чек, линия отреза и полный поэтический талон'],
 ['下載數位作品','Download your edition','下载数字作品','作品をダウンロード','Ausgabe herunterladen','Télécharger l’édition','Скачать экземпляр'],
@@ -117,6 +117,9 @@ const traditionalOverrides={
   'AUTHOR EDITION':'作者版本',
   'READER EDITION':'訪客版本',
   'DIGITAL PROOF':'數位校樣',
+  '01 — RECEIPT / 小票':'01 — 小票',
+  '02 — VOUCHER / 詩券':'02 — 詩券',
+  'RECEIPT + VOUCHER / 連續紙條':'小票 + 詩券 / 連續紙條',
   'BROWSER GENERATED · H10S PRINT ONLY FROM PAIRED TERMINAL':'瀏覽器本地製作 · 僅可從已配對終端列印到 H10S',
   'TYPEFACE_NOTE_TEMPLATE':'各語言的點陣字體均預設包含，使用 {bitmapSizes} 點整倍字形。網站字體 +{addOn}，包含 EB Garamond 與網站的中日文字體，提供 {siteSizes} 點。附加已發表譯文或簡體字版本 +{addOn}，僅提供已有對應版本的作品。',
   'TARIFF_NOTE_TEMPLATE':'{version}：原文按字數、非空行和分節加權，向上調至最近的 {ending} 結尾價格。標點、空格、題名及署名不計字數。網站字體、已發表譯文或簡體字版本及自選內容各加 {addOn}；自寫或修改原作即屬自選內容。附加版本不重複計字費，各商品相加為總價。',
@@ -152,6 +155,9 @@ function applyLocale(){
   document.documentElement.lang=htmlLang;
   document.documentElement.dataset.uiLocale=uiLocale;
   localeNav.querySelectorAll('[data-locale]').forEach(link=>{
+    // Keep the work / collection in the link so a new tab opens the same page.
+    const target=new URL(location.href);target.searchParams.set('lang',link.dataset.locale);target.hash='';
+    link.href=target.pathname+target.search;
     const current=link.dataset.locale===uiLocale;
     link.classList.toggle('current',current);
     if(current)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');

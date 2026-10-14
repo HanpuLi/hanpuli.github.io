@@ -36,17 +36,19 @@ try{
   assert(await page.locator('#current-collection').evaluate(el=>document.activeElement===el),'focus follows the chosen collection');
   const cardPrice=await page.locator('.product-card .product-price').first().textContent();
   await page.locator('.product-card .choose-button').first().click();
+  await page.waitForURL(/\/poetry-voucher\/edition\.html\?/);
   assert(await page.locator('#product-editor').isVisible());
+  assert.equal(await page.locator('#product-editor').evaluate(el=>el.tagName),'MAIN');
   assert(await page.locator('.advanced-type').evaluate(el=>!el.open),'technical settings collapsed');
   assert.equal(await page.locator('#original-script').inputValue(),'zh-Hant');
   assert.equal(await page.locator('#translation-options input:checked').count(),lang==='en'||lang==='fr'?1:0);
-  await page.waitForFunction(()=>{const img=document.querySelector('#full-image');return img&&!img.hidden&&img.naturalWidth>0;},{timeout:30000});
-  assert(await page.locator('#pair-view').isVisible(),'receipt and poem proof must both be visible by default');assert(await page.locator('#receipt-image').isVisible(),'receipt preview visible');assert(await page.locator('#voucher-image').isVisible(),'poem preview visible');
+  await page.waitForFunction(()=>{const img=document.querySelector('#voucher-hero-image');return img&&!img.hidden&&img.naturalWidth>0;},{timeout:30000});
+  assert(await page.locator('#voucher-view').isVisible(),'poem voucher leads the product page');assert(await page.locator('#voucher-hero-image').isVisible(),'true paper proof visible');
   const editorPrice=await page.locator('#editor-price').textContent();
   assert.equal(cardPrice,editorPrice,'catalogue price matches configured defaults');
   await page.locator('.advanced-type summary').click();
   await page.locator('#font').selectOption('site');
-  await page.waitForFunction(()=>{const img=document.querySelector('#full-image');return img&&!img.hidden&&img.naturalWidth>0;},{timeout:30000});
+  await page.waitForFunction(()=>{const img=document.querySelector('#voucher-hero-image');return img&&!img.hidden&&img.naturalWidth>0;},{timeout:30000});
   if(lang==='en'){
     const a=await page.locator('#editor-price').textContent();
     await page.locator('#translation-options input[value="en"]').uncheck();
@@ -55,9 +57,8 @@ try{
     await page.locator('#translation-options input[value="en"]').check();
   }
   await page.screenshot({path:'/tmp/pv-config-'+lang+'.png'});
-  await page.locator('#save-line').click();assert.equal(await page.locator('#bag-count').textContent(),'1');
-  assert(await page.locator('#shop-status .toast-action').isVisible(),'bag continuation action is visible after choosing');
-  await page.locator('#shop-status .toast-action').click();
+  await page.locator('#save-line').click();await page.waitForURL(/\/poetry-voucher\/shop\.html\?/);assert.equal(await page.locator('#bag-count').textContent(),'1');
+  assert(await page.locator('#bag-dialog').isVisible(),'returning to a reviewed bag after adding');
   assert((await page.locator('.bag-footer').innerText()).includes(lang==='en'?'No money':'')||lang!=='en');
   await page.locator('#to-checkout').click();
   assert.equal(await page.locator('#checkout-dialog').isVisible(),true);

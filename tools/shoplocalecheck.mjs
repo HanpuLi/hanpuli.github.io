@@ -32,10 +32,10 @@ try{
   }
   assert(loaded,'shop scripts loaded');
   const expected=await page.evaluate(()=>{const w=works[0];return {title:w.translations?.[uiLocale]?.title||w.title,body:w.translations?.[uiLocale]?.body||w.poem};});
-  await page.locator('#browse-all').click();await page.locator('.product-card .choose-button').first().click();await page.locator('#shop-reading').evaluate(el=>el.open=true);assert.equal(await page.locator('#shop-reading-title').textContent(),expected.title);assert.equal(await page.locator('#shop-reading-text').textContent(),expected.body);
+  await page.locator('#browse-all').click();await page.locator('.product-card .choose-button').first().click();await page.waitForURL(/\/poetry-voucher\/edition\.html\?/);await page.locator('#shop-reading').evaluate(el=>el.open=true);assert.equal(await page.locator('#shop-reading-title').textContent(),expected.title);assert.equal(await page.locator('#shop-reading-text').textContent(),expected.body);
   await page.locator('.advanced-type summary').click();await page.locator('#font').selectOption('site');await page.locator('#original-script').selectOption(lang==='zh-Hans'?'zh-Hans':'zh-Hant');
   if(['en','ja','de','fr','ru'].includes(lang))await page.locator(`#translation-options input[value="${lang}"]`).check();
-  await page.locator('#save-line').click();await page.locator('#open-bag').click();
+  await page.locator('#save-line').click();await page.waitForURL(/\/poetry-voucher\/shop\.html\?/);assert(await page.locator('#bag-dialog').isVisible());
   assert.equal(await page.locator('.bag-line h3').textContent(),expected.title);await page.locator('.bag-line input[type=number]').fill('2');await page.locator('.bag-line input[type=number]').press('Tab');
   await page.locator('#to-checkout').click();assert((await page.locator('#checkout-summary').textContent()).includes(expected.title));assert.equal(await page.locator('#place-order').textContent(),copy.SHOP_COPY.place[index]);
   const a11y=await new AxeBuilder({page}).analyze();assert.deepEqual(a11y.violations.map(v=>({id:v.id,target:v.nodes.map(n=>n.target)})),[],lang+' checkout axe');
@@ -51,7 +51,7 @@ try{
   for(const width of [320,390,768,1440]){await page.setViewportSize({width,height:900});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),lang+' completed order overflow '+width);}
   await page.reload();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1);assert.equal((await page.evaluate(()=>poetryShop.snapshot().orders[0])).ref,snapshot.ref);
   await page.locator('#keep-shopping').click();await page.waitForFunction(count=>document.querySelectorAll('.product-card').length===count,catalogueSize);
-  assert.equal(await page.locator('#custom-work').count(),0);await page.locator('#browse-all').click();await page.locator('.product-card .choose-button').first().click();assert(await page.locator('#poem').evaluate(n=>n.readOnly));assert.equal(await page.locator('#work option[value=custom]').count(),0);await page.locator('[data-close="product-editor"]').click();
+  assert.equal(await page.locator('#custom-work').count(),0);await page.locator('#browse-all').click();await page.locator('.product-card .choose-button').first().click();await page.waitForURL(/\/poetry-voucher\/edition\.html\?/);assert(await page.locator('#poem').evaluate(n=>n.readOnly));assert.equal(await page.locator('#work option[value=custom]').count(),0);await page.locator('#edition-back').click();await page.waitForURL(/\/poetry-voucher\/shop\.html\?/);
   console.log(lang+': full reading, original script and translation selection, bag, checkout, real PDF download, order language switch and validation passed');await context.close();
  }
  const context=await browser.newContext({locale:'fr-FR'});const page=await context.newPage();await page.goto(base+'/poetry-voucher/shop.html');await page.waitForFunction(count=>document.querySelectorAll('.product-card').length===count,catalogueSize);assert.equal(await page.locator('html').getAttribute('data-ui-locale'),'fr');await context.close();

@@ -21,10 +21,12 @@ try{
   const context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage(),errors=[];
   page.on('pageerror',error=>errors.push(error.message));
   const loaded=async()=>{
-    await page.waitForURL(url=>url.pathname.endsWith('/shop.html'));
     await page.waitForFunction(count=>window.poetryShop&&document.querySelectorAll('.product-card').length===count,catalogueSize);
   };
-  const purchase=async()=>{await page.locator('#open-bag').click();await page.locator('#to-checkout').click();await page.locator('#place-order').click();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1,{},{timeout:60000});};
+  const purchase=async()=>{
+    // After an edition page saves, the shop reopens the bag once its catalogue loads; let that settle first.
+    await page.waitForLoadState('load');await page.locator('#bag-dialog').waitFor({state:'visible',timeout:15000}).catch(()=>{});
+    if(!(await page.locator('#bag-dialog').isVisible()))await page.locator('#open-bag').click();await page.locator('#to-checkout').click();await page.locator('#place-order').click();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1,{},{timeout:60000});};
   const file=async(selector,name)=>{const pending=page.waitForEvent('download');await page.locator(selector).click();const downloaded=await pending;const path=join(artifacts,name);await downloaded.saveAs(path);return readFile(path);};
   for(const lang of ['en','zh-Hant','zh-Hans','ja','de','fr','ru']){
     await page.goto(base+'/poetry-voucher/make.html?lang='+lang+'&work=custom');await loaded();
@@ -34,12 +36,12 @@ try{
   }
   results.push('Seven public Studio URLs redirect to the same-language author shop; no custom option.');
   await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=custom');await loaded();assert.equal(await page.locator('#product-editor').isVisible(),false);
-  await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=jia-yi-b3-text');await loaded();await page.waitForFunction(()=>document.querySelector('#product-editor').open);
+  await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=jia-yi-b3-text');await loaded();await page.waitForURL(/\/poetry-voucher\/edition\.html\?/);await page.locator('#voucher-hero-image').waitFor({state:'visible'});
   for(const id of ['title','author','poem'])assert(await page.locator('#'+id).evaluate(element=>element.readOnly));
   // A manipulated form is rejected even when readonly is bypassed with script.
   await page.locator('#poem').evaluate(element=>{element.value='Not the author poem';element.dispatchEvent(new Event('input',{bubbles:true}));});
   await page.locator('#save-line').click();assert.equal((await page.evaluate(()=>poetryShop.snapshot())).bag.length,0);
-  await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=jia-yi-b3-text');await loaded();await page.waitForFunction(()=>document.querySelector('#product-editor').open);
+  await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=jia-yi-b3-text');await loaded();await page.waitForURL(/\/poetry-voucher\/edition\.html\?/);await page.locator('#voucher-hero-image').waitFor({state:'visible'});
   await page.locator('.advanced-type summary').click();await page.locator('#font').selectOption('site');await page.locator('#translation-options input[value=en]').check();await page.locator('#save-line').click();await purchase();
   const order=await page.evaluate(()=>poetryShop.snapshot().orders[0]),orderUrl=page.url();
   assert.equal(order.total,697);assert.equal(order.lines[0].work.source_id,'B3');
@@ -69,6 +71,7 @@ try{
     const line={id:'historical-test-line',workId:null,work:null,title:'Reader <test>',author:'Test reader',poem,locale:'en',translations:[],font:'bitmap',size:24,quantity:1,unitPrice:q.price,items:q.items};
     old.lines=[line];old.items=q.items;old.total=q.price;old.units=1;old.payment=automaticPayment(old.total,0,0);
     sessionStorage.setItem('poetry-voucher-order-v1-'+old.ref,JSON.stringify(old));
+    sessionStorage.removeItem('poetry-voucher-bag-v1'); // Emulate upgrading an old local-only basket.
     localStorage.setItem('poetry-voucher-bag-v1',JSON.stringify({version:1,saveCustom:true,lines:[line]}));return old;
   },order);
   await page.goto(base+'/poetry-voucher/order.html?lang=en&order='+historical.ref);await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1);
@@ -78,7 +81,7 @@ try{
   const retained=await page.evaluate(()=>JSON.parse(localStorage.getItem('poetry-voucher-bag-v1')));assert.equal([...retained.lines,...(retained.retiredCustom||[])].find(line=>line.id==='historical-test-line').poem,historical.lines[0].poem);
   await page.reload();await loaded();assert.equal((await page.evaluate(()=>poetryShop.snapshot())).bag.length,0);
   results.push('Previously consented custom text is retained but not reissued; frozen historical reader orders remain readable and safely escaped.');
-  await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=jia-yi-b6-text');await loaded();await page.waitForFunction(()=>document.querySelector('#product-editor').open);
+  await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=jia-yi-b6-text');await loaded();await page.waitForURL(/\/poetry-voucher\/edition\.html\?/);await page.locator('#voucher-hero-image').waitFor({state:'visible'});
   await page.locator('.advanced-type summary').click();await page.locator('#size').selectOption('36');for(const lang of ['en','ja','de','fr','ru'])await page.locator(`#translation-options input[value=${lang}]`).check();await page.locator('#save-line').click();await purchase();
   // Revised B6: 160 characters, 16 source lines, 5 stanzas -> GBP 5.99;
   // five translations at GBP 1.99 each bring the current edition to GBP 15.94.

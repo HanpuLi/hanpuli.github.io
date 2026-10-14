@@ -1325,8 +1325,8 @@
       },
       "publication": {
         "schema": 1,
-        "renderer": "pv-render-1b4cc70dac16c530",
-        "renderer_sha256": "1b4cc70dac16c53089afa6393bd3a8096d24004f3f1e60b4e7c13e031a85895e",
+        "renderer": "pv-render-fcc018c89f766be8",
+        "renderer_sha256": "fcc018c89f766be81aa2a88e441f4f5817facec39f53bd10677f35b8f7ee30b7",
         "catalogue_sha256": "2ebfcd9869e01720ff7deb782d0a2bef744572bd5d8d25ff21aaf1397c4be697",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
@@ -1348,17 +1348,17 @@
           "assets/fonts/shippori-mincho-subset.woff2": "6bbc22c0cbc0becfcdb3e686a06d3b31596463cbf104a4646af53930a0a67736",
           "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
           "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
-          "content/poetry-voucher-app/accessibility.css": "70f3da8ceff863234e7564d094f5f94e39675d0655dc477482aadd05e076f3e0",
-          "content/poetry-voucher-app/gallery.js": "3416a0d867417aaedde8725b851731f7f4eb2515dd98dbce2464d77757e273bd",
+          "content/poetry-voucher-app/accessibility.css": "bae3f01375e791c836f606f1e32d16085413962177500c4e5ab3fe07d6ca1a14",
+          "content/poetry-voucher-app/gallery.js": "f470cddc63e8d604c6daeea9f6fc3024e2ecefa7f5add03d4ca4b2b0826b70f5",
           "content/poetry-voucher-app/h10-print.js": "0608cb1d261f9444b5e19b4f397477ee4a15c8bdc3644cd249f7d47acde94f79",
-          "content/poetry-voucher-app/i18n.js": "7734e8ae35742d1d366d5e062498d90298225e9b9640bac88a4340d732d0700a",
+          "content/poetry-voucher-app/i18n.js": "43f87866fbef971ec3341ecebda5ddd3a777935520b6ae691ce39374364a1d85",
           "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
           "content/poetry-voucher-app/order-reading.js": "bad98af82024d515e66ac811c7a5c1f5c17c0f2c88347e4e076668238fbea186",
-          "content/poetry-voucher-app/shop-copy.js": "71e76fe4cbebcfac78a34f90ca3f6bcc773a41d512b17dde2f81c29c835f6233",
-          "content/poetry-voucher-app/shop.css": "0eefb48fdb71b4314fedd21e1ddf948b63699a6e4b52db6d0c6e6ddf3d6ccf7e",
-          "content/poetry-voucher-app/shop.js": "cfc7bd57933a6a4da7b534d207c3840705c594e7eefdb107b22cfba4a8685abc",
+          "content/poetry-voucher-app/shop-copy.js": "4cbf476b20aeb249f1a3b6fe54e44a8af8f5cdd6337f25e77955c47bb08a0c7c",
+          "content/poetry-voucher-app/shop.css": "0f8ca6bc1944a9fb9fffa264c7f470b781ed81c2828a49ae4315e02cce5f1768",
+          "content/poetry-voucher-app/shop.js": "d5fe8e0d00f8f76ceedf7808b5837f8381c4ea43ac479fa42c42f5dee82ea257",
           "content/poetry-voucher-app/studio.css": "33ac719c94b56007588f12ff75387a0f5479d6bec73ee42da9290828f1d2fadd",
-          "templates/poetry-voucher-shop.html": "0fd6f2243c82debab98a1558ac2d6777a577f602150ee5e7dbed7dbea902bb63"
+          "templates/poetry-voucher-shop.html": "014dcfb4ed71bb91c832be8819d2e6e98c12d6f1e5a2dd3172743bb8f8e8053b"
         },
         "textSnapshotSha256": "f6e24f6ce9a034b4c44080f5784966afce008f97fafb74f9fa76617b3ab148b8"
       },
@@ -2008,8 +2008,8 @@
   },
   "inputs": {
     "assets/site.css": "3076d15bf31803b0af84e0670585d226db329f4ebc83a4e8a17392770b6422d6",
-    "content/poetry-voucher-app/gallery.js": "3416a0d867417aaedde8725b851731f7f4eb2515dd98dbce2464d77757e273bd",
-    "content/poetry-voucher-app/shop.js": "cfc7bd57933a6a4da7b534d207c3840705c594e7eefdb107b22cfba4a8685abc",
+    "content/poetry-voucher-app/gallery.js": "f470cddc63e8d604c6daeea9f6fc3024e2ecefa7f5add03d4ca4b2b0826b70f5",
+    "content/poetry-voucher-app/shop.js": "d5fe8e0d00f8f76ceedf7808b5837f8381c4ea43ac479fa42c42f5dee82ea257",
     "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
     "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
     "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",

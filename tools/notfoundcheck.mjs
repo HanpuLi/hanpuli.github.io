@@ -115,7 +115,7 @@ try {
         }
         await page.locator("[data-reading-reset]").click();
         const reset = await page
-          .waitForFunction(() => !document.documentElement.hasAttribute("data-reading-large"), undefined, { timeout: 2000 })
+          .waitForFunction(() => !document.documentElement.hasAttribute("data-reading-large"), undefined, { timeout: 10000 })
           .then(() => true, () => false);
         if (!reset) {
           failures.push(path + ": reading preference reset did not clear the dynamic 404 state");

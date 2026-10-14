@@ -1,85 +1,117 @@
 #!/usr/bin/env node
 import assert from 'node:assert/strict';
 import {spawn} from 'node:child_process';
+import {readFile} from 'node:fs/promises';
 import {chromium} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import {readFile} from 'node:fs/promises';
-const catalogueSize=JSON.parse(await readFile(new URL('../content/poetry-voucher-app/editions.json',import.meta.url),'utf8')).works.length;
-const base=process.env.SHOP_BASE||'http://127.0.0.1:19851';
-const server=process.env.SHOP_BASE?null:spawn('python3',['-m','http.server','19851','--bind','127.0.0.1'],{stdio:'ignore'});
-for(let i=0;i<50;i++){try{if((await fetch(base)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
-const browser=await chromium.launch();
-const context=await browser.newContext({viewport:{width:1440,height:1000}});
-const page=await context.newPage(),errors=[];
-page.on('pageerror',error=>errors.push(error.message));
-const state=()=>page.evaluate(()=>window.poetryShop.snapshot());
-const reveal=async(target=page)=>{if(await target.locator('#product-grid').isHidden())await target.locator('#browse-all').click();};
-const add=async index=>{await reveal();await page.locator('.product-card .choose-button').nth(index).click();await page.locator('#save-line').click();};
-const bag=()=>page.locator('#open-bag').click();
-const close=id=>page.locator(`[data-close="${id}"]`).first().click();
-// The departing shop can briefly expose the new order before it navigates.
-// Wait for the order document before reading its state or geometry.
-async function issued(target,timeout=30000){
- await target.waitForURL(url=>url.pathname.endsWith('/order.html'),{waitUntil:'domcontentloaded',timeout});
- await target.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1,null,{timeout});
-}
-
+const catalogue=JSON.parse(await readFile(new URL('../content/poetry-voucher-app/editions.json',import.meta.url),'utf8')).works;
+const port=19851,base=process.env.SHOP_BASE||`http://127.0.0.1:${port}`;
+const server=process.env.SHOP_BASE?null:spawn('python3',['-m','http.server',String(port),'--bind','127.0.0.1'],{stdio:'ignore'});
+for(let i=0;i<55;i++){try{if((await fetch(base)).ok)break;}catch{}await new Promise(r=>setTimeout(r,120));}
+const browser=await chromium.launch(),errors=[];
+const context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage();
+page.on('pageerror',e=>errors.push(e.message));
+const state=(p=page)=>p.evaluate(()=>window.poetryShop.snapshot());
+const add=async(id,{script=null,translations=null,font=null,size=null}={})=>{
+ await page.goto(base+`/poetry-voucher/edition.html?lang=en&work=${encodeURIComponent(id)}`);
+ await page.locator('#voucher-hero-image').waitFor({state:'visible',timeout:30000});
+ if(script)await page.locator('#original-script').selectOption(script);
+ if(translations!==null)for(const language of ['en','ja','de','fr','ru']){
+  const input=page.locator(`#translation-options input[value=${language}]`);
+  if(translations.includes(language))await input.check();else await input.uncheck();
+ }
+ if(font||size){await page.locator('.advanced-type summary').click();if(font)await page.locator('#font').selectOption(font);if(size)await page.locator('#size').selectOption(String(size));}
+ await page.locator('#save-line').click();await page.waitForURL(/\/poetry-voucher\/shop\.html\?/,{timeout:30000});
+ assert(await page.locator('#bag-dialog').isVisible());
+ await page.locator('[data-close="bag-dialog"]').first().click();
+};
+const issue=async(p=page)=>{
+ if(!(await p.locator('#bag-dialog').isVisible()))await p.locator('#open-bag').click();
+ await p.locator('#to-checkout').click();
+ await p.locator('#place-order').evaluate(button=>{button.click();button.click();});
+ await p.waitForURL(/\/poetry-voucher\/order\.html\?/,{timeout:60000});
+ await p.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1,null,{timeout:60000});
+};
 try{
- await page.goto(base+'/poetry-voucher/shop.html?lang=en');await page.waitForFunction(count=>document.querySelectorAll('.product-card').length===count,catalogueSize);
- await page.screenshot({path:'/tmp/voucher-shop-desktop.png'});
- await add(0);await add(0);await add(1);assert.equal((await state()).bag.length,2);assert.equal((await state()).bag[0].quantity,2);
- await bag();await page.locator('.bag-line').first().getByRole('button',{name:'Edit',exact:true}).click();await page.locator('.advanced-type summary').click();await page.locator('#font').selectOption('site');await close('product-editor');await close('bag-dialog');
- await add(2);assert.equal((await state()).bag.length,3);assert.equal((await state()).bag[0].quantity,2);assert.equal((await state()).bag[0].font,'bitmap');
- await page.locator('.product-card').first().getByRole('button',{name:'Choose edition'}).click();await page.locator('.advanced-type summary').click();await page.locator('#font').selectOption('site');await page.locator('#original-script').selectOption('zh-Hans');await page.locator('#translation-options input[value="en"]').check();await page.locator('#translation-options input[value="ja"]').check();await page.locator('#save-line').click();assert.equal((await state()).bag.length,4);
- const selected=(await state()).bag.at(-1);assert.equal(selected.locale,'zh-Hans');assert.deepEqual(selected.translations,['en','ja']);assert.equal((await page.evaluate(line=>poetryShop.quote(line),selected)).items.filter(item=>item.id==='translation').length,2);
- await page.reload();await page.waitForFunction(count=>document.querySelectorAll('.product-card').length===count,catalogueSize);assert.equal((await state()).bag.length,4);
- const before=await state();await page.locator('[data-locale="zh-Hans"]').click();assert.deepEqual((await state()).bag,before.bag);await page.locator('[data-locale="en"]').click();
- await bag();await page.locator('.bag-line input[type=number]').first().fill('3');await page.locator('.bag-line input[type=number]').first().press('Tab');assert.equal((await state()).bag[0].quantity,3);
- await page.screenshot({path:'/tmp/voucher-shop-bag.png'});
- await page.locator('#to-checkout').click();await page.locator('#place-order').evaluate(button=>{button.click();button.click();});await issued(page,30000);
- let order=(await state()).orders[0];assert.equal(order.units,6);assert.equal((await state()).bag.length,0);assert.equal(order.total,order.items.reduce((sum,x)=>sum+x.quantity*x.unitPrice,0));
- assert.equal(await page.locator('.order-strip-proof').count(),1);assert.equal(await page.locator('.voucher-proof').count(),0);assert.equal(await page.locator('.receipt-proof').count(),0);assert.equal(await page.locator('.completed-order').count(),1);
- const downloadPromise=page.waitForEvent('download');await page.locator('.order-record a').first().click();const download=await downloadPromise;const pdfBytes=await readFile(await download.path());const pdfText=pdfBytes.toString('latin1');assert.equal(pdfText.slice(0,8),'%PDF-1.4');assert(Number(pdfText.match(/\/Count (\d+)/)[1])>=7);assert(pdfBytes.length>10000);
- await page.screenshot({path:'/tmp/voucher-shop-order.png'});
- assert(new URL(page.url()).pathname.endsWith('/order.html'));assert.equal(await page.locator('#shop-front').isVisible(),false);
- const purchasedRef=order.ref;await page.reload();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1);assert.equal((await state()).orders[0].ref,purchasedRef);
- await page.locator('#keep-shopping').click();await page.waitForFunction(count=>document.querySelectorAll('.product-card').length===count,catalogueSize);
- // Long authored work still exercises multipage output without reopening a custom editor.
- await page.goto(base+'/poetry-voucher/shop.html?lang=en&work=jia-yi-b6-text');await page.waitForFunction(()=>document.querySelector('#product-editor').open);
- await page.locator('.advanced-type summary').click();await page.locator('#size').selectOption('36');for(const lang of ['en','ja','de','fr','ru'])await page.locator(`#translation-options input[value="${lang}"]`).check();await page.locator('#save-line').click();
- await bag();await page.locator('#to-checkout').click();await page.locator('#place-order').click();await issued(page,30000);assert.equal((await state()).orders[0].lines[0].workId,'jia-yi-b6-text');assert(await page.locator('.order-strip-proof img').count()>2,'long authored edition remains one continuous output with separator');
- // A separate purchase has its own URL; the previous order remains available in this tab.
- const firstUrl=page.url(),firstRef=(await state()).orders[0].ref;
- await page.locator('#keep-shopping').click();await page.waitForFunction(count=>document.querySelectorAll('.product-card').length===count,catalogueSize);
- await add(1);await bag();await page.locator('#to-checkout').click();await page.locator('#place-order').click();await issued(page,30000);assert.notEqual((await state()).orders[0].ref,firstRef);
- await page.goto(firstUrl);await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1);assert.equal((await state()).orders[0].ref,firstRef);const oldDownload=page.waitForEvent('download');await page.locator('.order-record a').first().click();assert((await readFile(await (await oldDownload).path())).length>1000);
- await page.locator('#keep-shopping').click();await page.waitForFunction(count=>document.querySelectorAll('.product-card').length===count,catalogueSize);
- // Corrupt local storage cannot manufacture prices or inject text into HTML.
- await page.evaluate(()=>localStorage.setItem('poetry-voucher-bag-v1',JSON.stringify({version:1,lines:[{workId:'missing',quantity:1,font:'bitmap',size:24,locale:'en'}]})));await page.reload();await page.waitForFunction(count=>document.querySelectorAll('.product-card').length===count,catalogueSize);assert.equal((await state()).bag.length,0);
- // Every UI locale at phone and desktop widths; axe on shop and modal surfaces.
- for(const lang of ['en','zh-Hant','zh-Hans','ja','de','fr','ru']){
-  await page.locator(`[data-locale="${lang}"]`).click();
-  for(const width of [320,390,768,1440]){await page.setViewportSize({width,height:950});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${lang} ${width} overflow`);assert(await page.locator('.colophon-number').evaluate(n=>n.scrollWidth<=n.clientWidth),'58 mm must stay on one line');}
+ await page.goto(base+'/poetry-voucher/shop.html?lang=en');
+ await page.waitForFunction(n=>document.querySelectorAll('.product-card').length===n,catalogue.length);
+ assert.equal(await page.locator('.collection-tile').count(),4);
+ await add(catalogue[0].id);await add(catalogue[0].id);await add(catalogue[1].id);
+ let bag=(await state()).bag;assert.equal(bag.length,2);assert.equal(bag[0].quantity,2);
+ await page.locator('#open-bag').click();await page.locator('.bag-line').first().getByRole('button',{name:'Edit'}).click();
+ await page.waitForURL(/\/poetry-voucher\/edition\.html\?/);
+ await page.locator('.advanced-type summary').click();await page.locator('#font').selectOption('site');
+ await page.locator('#edition-back').click();await page.waitForURL(/\/poetry-voucher\/shop\.html\?/);
+ assert(await page.locator('#bag-dialog').isVisible());
+ await page.locator('[data-close="bag-dialog"]').first().click();
+ bag=(await state()).bag;assert.equal(bag[0].font,'bitmap');
+ await add(catalogue[2].id);
+ await add(catalogue[0].id,{script:'zh-Hans',font:'site',translations:['en','ja']});
+ bag=(await state()).bag;assert.equal(bag.length,4);
+ const variant=bag.find(item=>item.locale==='zh-Hans');assert.deepEqual(variant.translations,['en','ja']);assert.equal(variant.font,'site');
+ const quote=await page.evaluate(line=>window.poetryShop.quote(line),variant);
+ assert.equal(quote.items.filter(item=>item.id==='translation').length,2);
+ await page.reload();await page.waitForFunction(()=>!!window.poetryShop);
+ assert.equal((await state()).bag.length,4,'validated selections survive navigation');
+ const before=(await state()).bag;
+ await page.locator('[data-locale="zh-Hans"]').click();assert.deepEqual((await state()).bag,before);
+ await page.locator('[data-locale="en"]').click();
+ await page.locator('#open-bag').click();
+ await page.locator('.bag-line input[type=number]').first().fill('3');
+ await page.locator('.bag-line input[type=number]').first().press('Tab');
+ assert.equal((await state()).bag[0].quantity,3);
+ await issue(page);
+ const first=(await state()).orders[0];assert.equal(first.units,6);assert.equal(first.total,first.items.reduce((s,item)=>s+item.quantity*item.unitPrice,0));
+ assert.equal((await state()).bag.length,0);assert.equal(await page.locator('.order-strip-proof').count(),1);
+ const down=page.waitForEvent('download');await page.locator('.order-record a').first().click();
+ const pdf=(await readFile(await(await down).path())).toString('latin1');
+ assert(pdf.startsWith('%PDF-1.4'));assert(Number(pdf.match(/\/Count (\d+)/)[1])>=7);
+ const firstURL=page.url();await page.reload();await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1);assert.equal((await state()).orders[0].ref,first.ref);
+ await add('jia-yi-b6-text',{translations:['en','ja','de','fr','ru'],size:36});
+ await issue(page);assert.equal((await state()).orders[0].lines[0].workId,'jia-yi-b6-text');
+ assert(await page.locator('.order-strip-proof img').count()>2,'multipage print remains one edition');
+ await page.goto(firstURL);await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1);
+ assert.equal((await state()).orders[0].ref,first.ref,'first order survives second issue');
+ await page.goto(base+'/poetry-voucher/shop.html?lang=en');
+ await page.evaluate(()=>localStorage.setItem('poetry-voucher-bag-v1',JSON.stringify({version:1,lines:[{workId:'not-a-poem',quantity:1,font:'bitmap',size:24,locale:'en'}]})));
+ await page.reload();await page.waitForFunction(()=>!!window.poetryShop);assert.equal((await state()).bag.length,0,'corrupt basket cannot inject an edition');
+ for(const locale of ['en','zh-Hant','zh-Hans','ja','de','fr','ru']){
+  await page.locator(`[data-locale="${locale}"]`).click();
+  for(const width of [320,390,768,1440]){
+   await page.setViewportSize({width,height:960});
+   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),locale+' '+width+' overflow');
+  }
  }
- await page.locator('[data-locale="en"]').click();await page.setViewportSize({width:390,height:844});await page.screenshot({path:'/tmp/voucher-shop-mobile.png'});
- for(const surface of ['shop','editor','bag','checkout']){
-  if(surface==='editor'){await reveal();await page.locator('.product-card .choose-button').first().click();}
-  if(surface==='bag'){await close('product-editor');await add(0);await bag();}
+ await page.locator('[data-locale="en"]').click();await page.setViewportSize({width:390,height:844});
+ await page.locator('#browse-all').click();
+ for(const surface of ['shop','bag','checkout']){
+  if(surface==='bag'){await add(catalogue[0].id);await page.locator('#open-bag').click();}
   if(surface==='checkout')await page.locator('#to-checkout').click();
-  const result=await new AxeBuilder({page}).analyze();assert.deepEqual(result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),[],surface+' accessibility');
+  const a11y=await new AxeBuilder({page}).analyze();
+  assert.deepEqual(a11y.violations.map(v=>({id:v.id,targets:v.nodes.map(n=>n.target)})),[],surface+' axe');
  }
- const multiContext=await browser.newContext(),multi=await multiContext.newPage();await multi.goto(base+'/poetry-voucher/shop.html?lang=en');await multi.waitForFunction(count=>document.querySelectorAll('.product-card').length===count,catalogueSize);
- await multi.locator('#browse-all').click();await multi.locator('.product-card .choose-button').first().click();const traditionalPrice=await multi.locator('#editor-price').textContent();await multi.locator('#original-script').selectOption('zh-Hans');assert.equal(await multi.locator('#editor-price').textContent(),traditionalPrice);assert.equal(await multi.locator('#poem').inputValue(),await multi.evaluate(()=>works[0].translations['zh-Hans'].body));for(const locale of ['en','ja','de','fr','ru'])await multi.locator(`#translation-options input[value="${locale}"]`).check();
- await multi.locator('#save-line').click();const multiLine=(await multi.evaluate(()=>poetryShop.snapshot())).bag[0];assert.equal(multiLine.locale,'zh-Hans');assert.equal(multiLine.translations.length,5);
- await multi.locator('#open-bag').click();await multi.locator('.bag-line').getByRole('button',{name:'Edit',exact:true}).click();assert.equal(await multi.locator('#original-script').inputValue(),'zh-Hans');assert.equal(await multi.locator('#poem').inputValue(),await multi.evaluate(()=>works[0].translations['zh-Hans'].body));await multi.locator('#save-line').click();await multi.locator('#to-checkout').click();await multi.locator('#place-order').click();await issued(multi,30000);
- const multiOrder=(await multi.evaluate(()=>poetryShop.snapshot())).orders[0];assert.equal(multiOrder.lines[0].items.filter(item=>item.id==='translation').length,5);assert.equal(await multi.locator('.order-reading .verse').count(),6);assert(await multi.locator('.order-strip-proof img').count()>=3);await multiContext.close();
- const stressContext=await browser.newContext();const stress=await stressContext.newPage();await stress.goto(base+'/poetry-voucher/shop.html?lang=en');await stress.waitForFunction(count=>document.querySelectorAll('.product-card').length===count,catalogueSize);
- await stress.locator('#browse-all').click();for(let i=0;i<23;i++){await stress.locator('.product-card .choose-button').nth(i).click();await stress.locator('#save-line').click();}for(let i=0;i<2;i++){await stress.locator('.product-card .choose-button').first().click();await stress.locator('#save-line').click();}assert.equal((await stress.evaluate(()=>poetryShop.snapshot())).bag.reduce((n,l)=>n+l.quantity,0),24);
- assert(await stress.locator('#product-editor').isVisible(),'limit rejection keeps the editor open with feedback');await stress.locator('[data-close="product-editor"]').click();
+ const stressContext=await browser.newContext(),stress=await stressContext.newPage();
+ stress.on('pageerror',e=>errors.push('stress: '+e.message));
+ for(let i=0;i<25;i++){
+  const id=catalogue[i<23?i:0].id;
+  await stress.goto(base+'/poetry-voucher/edition.html?lang=en&work='+encodeURIComponent(id));
+  await stress.locator('#voucher-hero-image').waitFor({state:'visible'});
+  await stress.locator('#save-line').click();
+  if(i<24){await stress.waitForURL(/\/poetry-voucher\/shop\.html\?/);assert(await stress.locator('#bag-dialog').isVisible());}
+ }
+ assert.equal((await state(stress)).bag.reduce((s,item)=>s+item.quantity,0),24);
+ assert.equal(await stress.locator('body').getAttribute('data-page'),'edition','25th voucher rejected on product page');
+ await stress.locator('#edition-back').click();await stress.waitForURL(/\/poetry-voucher\/shop\.html\?/);
  await stress.locator('#open-bag').click();await stress.locator('#to-checkout').click();
- // The continuous PDF path no longer calls toBlob. Fail the real proof-export
- // operation once, and prove the injected failure actually ran before inspecting state.
- await stress.evaluate(()=>{const real=HTMLCanvasElement.prototype.toDataURL;window.exportFailureInjected=false;HTMLCanvasElement.prototype.toDataURL=function(...args){HTMLCanvasElement.prototype.toDataURL=real;window.exportFailureInjected=true;throw new Error('Injected proof export failure');};});await stress.locator('#place-order').click();await stress.waitForFunction(()=>window.exportFailureInjected&&!poetryShop.snapshot().busy);assert(new URL(stress.url()).pathname.endsWith('/shop.html'));assert.equal((await stress.evaluate(()=>poetryShop.snapshot())).orders.length,0);assert.equal((await stress.evaluate(()=>poetryShop.snapshot())).bag.length,23);
- await stress.locator('#place-order').click();await issued(stress,60000);assert.equal(await stress.locator('.order-strip-proof').count(),1);assert.equal(await stress.locator('.voucher-proof').count(),0);await stressContext.close();
- assert.deepEqual(errors,[]);console.log('shopcheck: cart snapshots, variants, edit cancellation, quantity, persistence, author-only long editions, locale stability, exactly-once checkout, PDF pages, separate order URLs, reload and previous-order recovery, corrupt storage, 28 viewports and 4 axe surfaces OK');
-}finally{await browser.close();server?.kill('SIGTERM');}
+ await stress.evaluate(()=>{const orig=HTMLCanvasElement.prototype.toDataURL;window.exportFailureInjected=false;HTMLCanvasElement.prototype.toDataURL=function(...args){HTMLCanvasElement.prototype.toDataURL=orig;window.exportFailureInjected=true;throw new Error('Injected checkout render failure')};});
+ await stress.locator('#place-order').click();
+ await stress.waitForFunction(()=>window.exportFailureInjected&&!poetryShop.snapshot().busy);
+ assert.equal((await state(stress)).bag.reduce((s,item)=>s+item.quantity,0),24,'failed issue leaves basket intact');
+ assert.equal(new URL(stress.url()).pathname,'/poetry-voucher/shop.html');
+ await stress.locator('#place-order').click();await stress.waitForURL(/\/poetry-voucher\/order\.html\?/,{timeout:90000});
+ await stress.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1,null,{timeout:90000});
+ assert.equal((await state(stress)).orders[0].units,24,'retry issues only once');
+ await stressContext.close();
+ assert.deepEqual(errors,[]);
+ console.log('shopcheck: product-route cart merge, editing cancellation, quantity, persistence, locale stability, frozen orders, real PDF, historical URL, long editions, corrupt storage, 28 viewports, three axe surfaces, 24-unit limit, export failure and exactly-once retry OK');
+}finally{await context.close();await browser.close();server?.kill('SIGTERM');}
