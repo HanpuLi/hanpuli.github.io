@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="{{HTML_LANG}}" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
+<title>{{RESEARCH_META_TITLE}}</title>
+<meta name="description" content="{{RESEARCH_META_DESCRIPTION_ATTR}}">
+<link rel="canonical" href="{{CANONICAL_URL}}">
+{{HREFLANG_LINKS}}
+{{SOCIAL_META}}
+<meta name="theme-color" content="#f5f2eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
+{{ICON_LINKS}}
+{{FONT_PRELOADS}}
+<script src="{{ASSET_PREFIX}}assets/accessibility.js"></script>
+<script defer src="{{ASSET_PREFIX}}assets/profile-credit.js"></script>
+<link rel="stylesheet" href="{{ASSET_PREFIX}}assets/site.css">
+{{STRUCTURED_DATA}}
+</head>
+<body class="about-page contexts-page research-cv-page locale-{{LOCALE}}">
+<a class="skip-link" href="#main">{{common.skip_content}}</a>
+<div class="wrap">
+
+  <header class="page-topbar">
+    <a class="page-wordmark" href="{{HOME_HREF}}">{{PRIMARY_NAME}} <span lang="zh-Hant-HK">{{CHINESE_NAME}}</span></a>
+    <nav class="page-nav" aria-label="{{common.site_nav_label_attr}}">
+      {{PORTFOLIO_NAV}}
+    </nav>
+    <div class="page-utility">
+      <nav class="page-languages" aria-label="{{common.language_nav_label_attr}}">
+        {{LANG_SWITCHER}}
+      </nav>
+    </div>
+    {{READING_TOOLS}}
+  </header>
+
+  <main id="main" tabindex="-1">
+    <header class="about-hero contexts-hero">
+      <p class="about-eyebrow">{{RESEARCH_EYEBROW}}</p>
+      <h1>{{RESEARCH_TITLE}}</h1>
+      <div class="about-intro">
+        <p class="about-lede">{{RESEARCH_LEDE}}</p>
+        <p class="about-principle">{{RESEARCH_PRINCIPLE}}</p>
+        <p class="about-principle">{{RESEARCH_VERIFICATION_NOTE}}</p>
+      </div>
+    </header>
+
+{{RESEARCH_SECTIONS}}
+  </main>
+
+  <footer class="page-footer about-footer">
+    <p><a href="{{HOME_HREF}}">{{PRIMARY_NAME}}</a></p>
+    <p class="page-footer-context">{{RESEARCH_FOOTER_NOTE}} <span aria-hidden="true">·</span> <a href="{{CONTEXTS_HREF}}">{{RESEARCH_CONTEXTS_LABEL}}</a> <span aria-hidden="true">·</span> <a href="{{ABOUT_HREF}}">{{ABOUT_LINK_LABEL}}</a></p>
+  </footer>
+
+</div>
+</body>
+</html>

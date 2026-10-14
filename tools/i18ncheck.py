@@ -590,7 +590,7 @@ def main() -> int:
                         f"{essay_path.relative_to(ROOT)}: missing essay language link {href}"
                     )
 
-        for name in ("index.html", "ci.html", "shi.html", "about.html", "contexts.html", "404.html"):
+        for name in ("index.html", "ci.html", "shi.html", "about.html", "contexts.html", "research.html", "404.html"):
             path = folder / name
             if not path.exists():
                 errors.append(f"missing generated {path.relative_to(ROOT)}")

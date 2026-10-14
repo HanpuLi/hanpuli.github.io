@@ -308,7 +308,7 @@ def check_discovery(errors: list[str]) -> None:
         return f"{base_url}{prefix}/writing/first-love/"
 
     families: list[dict[str, str]] = []
-    for page in ("index", "about", "contexts", "poetry-voucher"):
+    for page in ("index", "about", "contexts", "research", "poetry-voucher"):
         families.append({language["id"]: standard_url(language["id"], page) for language in languages})
     from poetry_library import Library
     library=Library(ROOT)
