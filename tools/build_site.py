@@ -28,7 +28,7 @@ CONTENT = ROOT / "content"
 TEMPLATES = ROOT / "templates"
 TOKEN_RE = re.compile(r"{{([A-Za-z0-9_.]+)}}")
 ROOT_LOCALE = "en"
-PAGES = ("index", "ci", "shi", "about", "contexts", "404", "poetry-voucher")
+PAGES = ("index", "ci", "shi", "about", "contexts", "research", "404", "poetry-voucher")
 
 
 def load_json(path: Path) -> Any:
@@ -52,6 +52,7 @@ ESSAY_METADATA = {
 }
 ABOUT_SITE = load_json(CONTENT / "about-site.json")
 CONTEXTS = load_json(CONTENT / "contexts.json")
+RESEARCH = load_json(CONTENT / "research-cv.json")
 POETRY_VOUCHER = load_json(CONTENT / "poetry-voucher.json")
 CHINESE_LOCALES = {"zh", "zh-hans"}
 BASE_URL = IDENTITY["site_url"].rstrip("/")
@@ -64,6 +65,7 @@ SOCIAL_IMAGES = {
     "shi": ("assets/social/shi.png", 1200, 630, "image/png"),
     "about": ("assets/social/about.png", 1200, 630, "image/png"),
     "contexts": ("assets/social/contexts.png", 1200, 630, "image/png"),
+    "research": ("assets/social/contexts.png", 1200, 630, "image/png"),
     "poetry-voucher": ("assets/social/poetry-voucher.png", 1200, 630, "image/png"),
 }
 
@@ -447,6 +449,7 @@ def structured_data_html(
         type_map = {
             "about": "AboutPage",
             "contexts": "CollectionPage",
+            "research": "CollectionPage",
             "ci": "CollectionPage",
             "shi": "CollectionPage",
             "essay": "Article",
@@ -949,6 +952,14 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         social_alt = meta_title
         og_type = "website"
         page_kind = "about"
+    elif page == "research":
+        meta_title = RESEARCH[locale_id]["meta_title"]
+        meta_description = RESEARCH[locale_id]["meta_description"]
+        social_path, social_width, social_height, social_type = SOCIAL_IMAGES["research"]
+        social_image = f"{BASE_URL}/{social_path}"
+        social_alt = meta_title
+        og_type = "website"
+        page_kind = "research"
     elif page == "contexts":
         meta_title = CONTEXTS[locale_id]["meta_title"]
         meta_description = CONTEXTS[locale_id]["meta_description"]
@@ -1106,6 +1117,18 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "ABOUT_PRIVACY_TITLE": html.escape(about["privacy_title"]),
         "ABOUT_PRIVACY_BODY": html.escape(about["privacy_body"]),
         "ABOUT_SOURCE_LINK": html.escape(about["source_link"]),
+        "RESEARCH_HREF": page_path(locale_id, "research"),
+        "RESEARCH_LINK_LABEL": html.escape(RESEARCH[locale_id]["link_label"]),
+        "RESEARCH_TITLE": html.escape(RESEARCH[locale_id]["title"]),
+        "RESEARCH_META_TITLE": html.escape(RESEARCH[locale_id]["meta_title"]),
+        "RESEARCH_META_DESCRIPTION_ATTR": html.escape(RESEARCH[locale_id]["meta_description"],quote=True),
+        "RESEARCH_EYEBROW": html.escape(RESEARCH[locale_id]["eyebrow"]),
+        "RESEARCH_LEDE": html.escape(RESEARCH[locale_id]["lede"]),
+        "RESEARCH_PRINCIPLE": html.escape(RESEARCH[locale_id]["principle"]),
+        "RESEARCH_VERIFICATION_NOTE": html.escape(RESEARCH[locale_id]["verification_note"]),
+        "RESEARCH_SECTIONS": research_sections_html(locale_id),
+        "RESEARCH_CONTEXTS_LABEL": html.escape(RESEARCH[locale_id]["contexts_label"]),
+        "RESEARCH_FOOTER_NOTE": html.escape(RESEARCH[locale_id]["footer_note"]),
         "CONTEXTS_HREF": page_path(locale_id, "contexts"),
         "CONTEXTS_LINK_LABEL": html.escape(contexts["link_label"]),
         "CONTEXTS_META_TITLE": html.escape(contexts["meta_title"]),
@@ -1161,6 +1184,72 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
 
     }
 
+
+
+def research_sections_html(locale_id: str) -> str:
+    """A bounded, typed portfolio. Record status is deliberately separate from titles."""
+    c = RESEARCH[locale_id]
+    esc = html.escape
+    records = [
+        ("data", c["data_heading"], [
+            ("2026 · research software & data · Zenodo",
+             "Verification materials — First Love (Miike Takashi, 2019)",
+             "Reproducibility scripts, archived outputs and a 17-shot Cinemetrics sequence dataset. The DOI is for verification materials, not the unpublished film essay.",
+             [("Zenodo · concept DOI", "https://doi.org/10.5281/zenodo.23355093"),
+              ("source & methods", "https://github.com/HanpuLi/first-love-verification")]),
+            ("2026 · third-party database record",
+             "First Love: Cinemetrics sequence contribution",
+             "External database record of a 147.88-second sequence (17 shots after curation). One internal public cut marker still differs from the frame-checked source. This is not a peer-reviewed publication.",
+             [("Cinemetrics", "https://cinemetrics.uchicago.edu/movie/0d9aff11-65ef-4c3e-90e7-99cbde4649ca"),
+              ("independent audit", "https://github.com/HanpuLi/first-love-verification/tree/main/data/cinemetrics")]),
+            ("2026 · research software · fixed release",
+             "Shepperton Spatial Audit",
+             "Reproducible remote-sensing and planning-evidence pipeline for the completed first spatial phase of a broader study. Other planned chapters remain incomplete; re-execution depends in part on external Earth observation services.",
+             [("Zenodo · DOI 10.5281/zenodo.23373517", "https://doi.org/10.5281/zenodo.23373517"), ("v2026.09.19 source", "https://github.com/HanpuLi/shepperton-spatial-audit/releases/tag/v2026.09.19")]),
+            ("2026 · open-source software · fixed release",
+             "ScopeRail",
+             "Workspace-scoped macOS execution tools for files, processes, browser and accessibility interfaces. Public code release; no independent peer review is implied.",
+             [("Zenodo · DOI 10.5281/zenodo.23373880", "https://doi.org/10.5281/zenodo.23373880"), ("v0.2.2 source", "https://github.com/HanpuLi/scoperail/releases/tag/v0.2.2")]),
+        ]),
+        ("writing",c["writing_heading"],[
+            ("unpublished working study","False Secondary Contradictions: Giri, Ninjō, Patriarchal Capitalism, and Qualified Brechtian Disruption in Miike Takashi's First Love",
+             "Long-form study combining genre history, Marxist-feminist argument and computational close reading; only the abstract is published on this site.",
+             [("read abstract",page_path(locale_id,"index").rstrip("/") + "/writing/first-love/" if locale_id=="en" else f"/{locale_id}/writing/first-love/")]),
+            ("public essay · independent analysis","How Praise Assigns a Film to One Author",
+             "Critical study of Joanna Hogg's reception and collaborative authorship.",
+             [("read essay","/writing/hogg-auteur/" if locale_id=="en" else f"/{locale_id}/writing/hogg-auteur/")]),
+            ("public essay","From Gears to Gasp / Trainspotting",
+             "Film criticism on voice, space and neoliberal subject formation.",
+             [("read essay","/writing/trainspotting/" if locale_id=="en" else f"/{locale_id}/writing/trainspotting/")]),
+        ]),
+        ("education",c["education_heading"],[
+            ("awarded 16 September 2026","Graduate Diploma in Humanities and Social Sciences (Distinction)",
+             "Queen Mary University of London, School of the Arts. Official award title; not a master's degree.",[]),
+            ("awarded 9 July 2024","Diploma of Higher Education in English Language and Linguistics",
+             "University of York, 240 credits. Official qualification: DipHE.",[]),
+        ]),
+        ("creative",c["creative_heading"],[
+            ("independent artist publication · 2026","Poetry Voucher",
+             "A browser-based, fictional-checkout poetry edition system, with real paper specimens. Independent creative work, not assessed university coursework.",
+             [("project and physical editions","/poetry-voucher/" if locale_id=="en" else f"/{locale_id}/poetry-voucher/")]),
+        ]),
+    ]
+    out=[]
+    for key,heading,rows in records:
+        out += [f'    <section class="contexts-section research-section" id="research-{key}" aria-labelledby="research-heading-{key}">',
+                f'      <div class="section-head"><h2 id="research-heading-{key}">{esc(heading)}</h2></div>',
+                '      <div class="contexts-records">']
+        for status,title,body,links in rows:
+            link_html=' · '.join(f'<a href="{esc(url,quote=True)}">{esc(label)}</a>' for label,url in links)
+            out += ['        <article class="contexts-record research-record" lang="en-GB">',
+                    f'          <p class="contexts-date">{esc(status)}</p>',
+                    '          <div class="contexts-record-main">',
+                    f'            <h3>{esc(title)}</h3>',
+                    f'            <p class="contexts-detail">{esc(body)}</p>',
+                    f'            <p class="contexts-record-link">{link_html}</p>' if link_html else "",
+                    '          </div></article>']
+        out += ['      </div></section>']
+    return "\n".join(out)
 
 def render_page(locale_id: str, page: str, locale: dict[str, Any]) -> str:
     if page in {"ci", "shi"}:
@@ -1260,6 +1349,13 @@ def build(check: bool = False) -> list[Path]:
                 f"contexts schema mismatch for {lid}: "
                 f"missing={missing[:10]} extra={extra[:10]} type={mismatched[:10]}"
             )
+
+    if set(RESEARCH) != set(LANG_BY_ID):
+        raise BuildError("research locale mismatch")
+    reference = schema_signature(RESEARCH[ROOT_LOCALE])
+    for lid in LANG_BY_ID:
+        if schema_signature(RESEARCH[lid]) != reference:
+            raise BuildError(f"research schema mismatch: {lid}")
 
     if set(SUMMER_POEM["locales"]) != set(LANG_BY_ID):
         raise BuildError("summer poem: missing locale metadata")
@@ -1400,7 +1496,7 @@ def build(check: bool = False) -> list[Path]:
         rows.append("  </url>")
         return rows
 
-    standard_pages = ("index", "about", "contexts", "poetry-voucher")
+    standard_pages = ("index", "about", "contexts", "research", "poetry-voucher")
     standard_variants = {
         page: {language["id"]: absolute_url(language["id"], page) for language in LANGUAGES}
         for page in standard_pages
