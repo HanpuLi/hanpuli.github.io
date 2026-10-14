@@ -265,12 +265,12 @@ html[data-reading-large] .edition-page #product-editor :is(label[for=original-sc
 .edition-page #product-editor .translation-options legend+*{clear:both}
 .edition-page #product-editor .edition-summary{display:block;overflow:hidden;text-overflow:ellipsis;font:calc(12px*var(--edition-scale))/1.4 var(--serif);color:var(--muted)}
 .voucher-expand{display:none}
+/* Bottom-aligned sticky: short columns pin to the top, tall ones ride on the purchase bar; nothing jumps when a fold opens. */
 @media(min-width:781px){.edition-page #product-editor .controls.is-sticky{position:sticky;top:24px;align-self:start}}
 @media(max-width:780px){
  .edition-page #product-editor #voucher-view:not(.expanded) .paper{position:relative;max-height:min(44dvh,380px);overflow:hidden}
  .edition-page #product-editor #voucher-view:not(.expanded) .paper::after{content:"";position:absolute;inset:auto 0 0;height:72px;background:linear-gradient(#fff0,#fff)}
  .edition-page #product-editor #voucher-view{position:relative}
- .edition-page #product-editor #voucher-view:not(.expanded) .voucher-expand{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);margin:0}
  .edition-page #product-editor .workspace{gap:20px}
  .edition-page #product-editor .edition-delivery{margin-top:10px}
  .edition-page #product-editor .voucher-expand{display:block;min-height:44px;margin:14px auto 0;padding:8px 18px;white-space:nowrap;border:1px solid var(--ink);border-radius:0;background:var(--bg);color:var(--ink);font:calc(13px*var(--edition-scale))/1.4 var(--mono);cursor:pointer}
@@ -325,3 +325,119 @@ html[data-reading-large] .edition-page #product-editor :is(label[for=original-sc
 }
 .edition-page #product-editor .option-card .option-name{flex:1 1 auto;min-width:0}
 .edition-page #product-editor .option-card .option-price:empty{display:none}
+/* Polish after the Apple Store pass. */
+/* The full poem is an optional fourth fold, drawn like the type-and-size fold. */
+.edition-page #product-editor .shop-reading{margin:0;padding:22px 0;border:0;border-top:1px solid var(--line);background:none}
+.edition-page #product-editor .shop-reading>summary{display:flex;align-items:baseline;min-height:44px;list-style:none;cursor:pointer;font:calc(19px*var(--edition-scale))/1.45 var(--serif);color:var(--ink)}
+.edition-page #product-editor .shop-reading>summary::-webkit-details-marker{display:none}
+.edition-page #product-editor .shop-reading>summary::after{content:"+";margin-inline-start:auto;font:16px/1 var(--mono);color:var(--muted)}
+.edition-page #product-editor .shop-reading[open]>summary::after{content:"−"}
+.edition-page #product-editor .shop-reading .verse{max-height:none;overflow:visible}
+html[data-reading-large] .edition-page #product-editor .shop-reading>summary{font-size:calc(19px*var(--edition-scale))}
+/* Programmatic focus on arrival is for screen readers, not a visible ring. */
+/* tabindex=-1 targets are never reached by Tab, so they draw no ring. */
+.shop-page :is(#order-heading,#current-collection,main#product-editor)[tabindex="-1"]:focus{outline:none}
+@media(min-width:900px){
+ .completed-order>.order-proof-grid{display:block;justify-self:start;width:fit-content;max-width:100%;padding:32px 48px}
+ .completed-order .order-strip-proof{margin-inline:0}
+}
+/* Phone header on shop pages: two rows instead of three. */
+@media(max-width:560px){
+ .shop-page .studio-header{flex-wrap:wrap;row-gap:6px}
+ .shop-page .language-nav{order:1;flex:1 1 auto;width:auto;min-width:0;padding-top:6px}
+ .shop-page .studio-header .reading-tools{order:2;flex:0 0 auto;width:auto;margin:0;align-self:end}
+ .shop-page .reading-tools details{width:auto}
+ .shop-page .reading-tools summary{padding:6px 10px;min-height:44px}
+ .shop-page .reading-tools .reading-tools-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+ /* Open: the tools take their own row and the panel stays in the page flow. */
+ .shop-page .studio-header .reading-tools:has(details[open]){flex:0 0 100%;width:100%}
+ .shop-page .reading-tools details[open]{width:100%}
+}
+.edition-page #product-editor .shop-reading>summary{padding-inline-start:calc(12px*1.9 + 6px)}
+
+/* Aesthetic review 2026-10-14 (second pass). */
+/* One left axis for header, catalogue, product, order and footer. */
+.shop-page{--inset:max(24px,calc((100% - 1232px)/2));font-synthesis:none}
+.edition-page{--edition-inset:var(--inset)}
+.shop-page .studio-header{padding-inline:var(--inset)}
+.shop-page main#shop,.shop-page .order-section,.shop-page footer{max-width:none;padding-inline:var(--inset)}
+[data-page="order"] .order-section{padding-inline:var(--inset)}
+@media(max-width:560px){.shop-page{--inset:20px}}
+/* Cards: name on one line, price difference beneath; words never break mid-word. */
+.edition-page #product-editor :is(.option-card,.translation-grid label){overflow-wrap:normal;word-break:normal;hyphens:auto}
+.edition-page #product-editor .option-card,.edition-page #product-editor .translation-grid label{display:grid;grid-template-columns:18px minmax(0,1fr);column-gap:10px;row-gap:2px;align-items:center}
+.edition-page #product-editor :is(.option-card,.translation-grid label) input{grid-row:1 / span 2;align-self:center}
+.edition-page #product-editor :is(.option-card,.translation-grid label) .option-price{grid-column:2;margin:0}
+.edition-page #product-editor :is(.option-card,.translation-grid label)>span:not(.option-price){grid-column:2}
+/* Long lyric titles: tune name as heading, preface one step down. */
+.edition-page .edition-preface{margin:8px 0 0;max-width:60ch;font:calc(19px*var(--edition-scale))/1.6 var(--serif);color:var(--muted)}
+/* Paper: 1:1 printer dots when 384 fits, smooth scaling otherwise; never nearest-neighbour at a fraction. */
+.edition-page #product-editor .proof-desk figure{max-width:none}
+.edition-page #product-editor .proof-desk{container-type:inline-size}
+.edition-page #product-editor :is(#voucher-view,#full-view) .paper{width:min(100%,384px)}
+.edition-page #product-editor :is(#voucher-view,#full-view) .paper img{image-rendering:auto}
+@container (min-width:384px){.edition-page #product-editor :is(#voucher-view,#full-view) .paper{width:384px}.edition-page #product-editor :is(#voucher-view,#full-view) .paper img{image-rendering:pixelated}}
+.edition-page #product-editor .voucher-expand{margin:12px auto 0}
+/* Bar summary between phone and desktop widths. */
+@media(min-width:561px) and (max-width:780px){.edition-page #product-editor .editor-actions>div{flex:1 1 auto;min-width:0}.edition-page #product-editor .edition-summary{width:auto;min-width:0;max-width:100%}}
+/* Catalogue tools: the count gets its own line on phones. */
+@media(max-width:560px){#catalogue-count{flex-basis:100%;margin-inline-start:0;white-space:normal}.catalogue-tools label:nth-child(2){flex:1 1 100%}}
+/* Weights: EB Garamond has only 400. */
+.checkout-line strong,.bag-actions .line-total,.total-line strong{font-weight:400}
+.line-qty{white-space:nowrap;font:12px/1.6 var(--mono);color:var(--muted)}
+.payment-receipt{display:block;margin-top:2px;font:11px/1.6 var(--mono)}
+/* Primary buttons are centred, like the catalogue button. */
+.shop-page .primary{text-align:center}
+.order-heading h1,.collection-tile strong{text-wrap:balance}
+/* Focus: the card draws the ring, not card and button together. */
+.product-card .choose-button:focus-visible{outline:none}
+.product-card:has(.choose-button:focus-visible){outline:2px solid var(--accent);outline-offset:4px}
+@media(min-width:900px){.product-card:hover{background:none;box-shadow:inset 0 0 0 1px var(--line)}}
+/* One rule between tools and collections, not two. */
+.collection-picker{border-top:0;margin-top:0}
+@media(max-width:560px){.shop-page .studio-nav{border-top:0;padding-top:0}}
+/* Order strip: 1:1 dots beside the summary when there is room. */
+@media(min-width:900px){.completed-order .order-strip-proof>img{width:384px;max-width:100%;image-rendering:pixelated}.completed-order .order-strip-proof{max-width:384px}}
+/* Bag on phones: total and checkout stay in view; quantity and price share a line. */
+.bag-thumb{width:96px}
+.bag-line{grid-template-columns:96px minmax(0,1fr)}
+.bag-actions{align-items:baseline}
+@media(max-width:560px){
+ .bag-line{grid-template-columns:64px minmax(0,1fr);gap:0 14px}
+ .bag-thumb{width:64px}
+ .bag-actions{flex-wrap:wrap;gap:6px 14px}
+ .bag-actions label{width:auto}
+ .bag-actions .line-total{margin-inline-start:auto}
+ #bag-dialog .bag-footer{position:sticky;bottom:-20px;margin:0 -20px -20px;padding:12px 20px 20px;background:var(--bg);border-top:1px solid var(--ink)}
+ #bag-dialog .bag-footer .total-line{padding:4px 0}
+ #bag-dialog .bag-footer>.primary{margin:6px 0}
+ #bag-dialog #storage-note{display:none}
+}
+
+/* Toast: paper and ink like the rest of the shop, its action a centred button. */
+.shop-toast{display:flex;align-items:center;gap:16px;background:var(--bg);color:var(--ink);border:1px solid var(--ink);box-shadow:0 10px 34px #0000001f;font:14px/1.6 var(--serif);padding:12px 14px 12px 20px}
+.shop-toast .toast-action{display:inline-flex;align-items:center;justify-content:center;min-height:38px;margin:0;padding:0 16px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);font:13px/1 var(--serif);text-align:center;white-space:nowrap}
+.shop-toast .toast-action:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+/* Vertical rhythm: one line-height per role; CJK body text gets more air. */
+.shop-page{--lh-display:1.18;--lh-title:1.4;--lh-body:1.7;--lh-small:1.6;--lh-label:1.5}
+html:is([lang^="zh"],[lang="ja"]) .shop-page{--lh-title:1.5;--lh-body:1.85;--lh-small:1.75}
+.shop-page :is(.catalogue-top h2,.dialog-heading h2,.order-heading h1,.edition-lead h1,.total-line strong,#editor-price){line-height:var(--lh-display)}
+.shop-page :is(.product-card h3,.bag-line h3,.collection-navigation h3,.shop-reading h3,.collection-tile strong,.shop-colophon h2,.checkout-line>span,.order-lines li>span){line-height:var(--lh-title)}
+.edition-page #product-editor :is(label[for=original-script],.translation-options>legend,.advanced-type>summary,.shop-reading>summary){line-height:var(--lh-title)}
+.shop-page :is(.shop-intro p,.shop-colophon p,.payment-panel p,.line-specs,.edition-from,.edition-preface,.empty-bag,.order-record>p,#checkout-status){line-height:var(--lh-body)}
+.shop-page :is(.micro,.note,.line-specs dt,.order-lines small,.checkout-line small,.bag-charges,.payment-receipt,#storage-note){line-height:var(--lh-small)}
+.shop-page :is(.eyebrow,.collection-no,.collection-count,.product-meta,#catalogue-count,.line-qty){line-height:var(--lh-label)}
+.edition-page #product-editor :is(.option-card,.translation-grid label){line-height:1.35}
+/* Primary actions: one warm accent fill, centred; ink is for text and rules. */
+.shop-page :is(.primary,.toast-action){background:var(--accent);border-color:var(--accent);color:var(--bg);text-align:center}
+.shop-page :is(.primary,.toast-action):is(:hover,:focus-visible):not(:disabled){background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.shop-page .order-record>a.download-link:first-of-type{background:var(--accent);color:var(--bg)}
+.shop-page .order-record>a.download-link:first-of-type:hover{background:var(--ink);color:var(--bg)}
+.shop-page .edition-page .editor-actions .primary,.edition-page #product-editor .editor-actions .primary{display:inline-flex;align-items:center;justify-content:center}
+/* In a list every card is clickable, so its button is a quiet outline. */
+.product-card .choose-button{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.product-card:hover .choose-button,.product-card .choose-button:focus-visible{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.bag-preface{margin:-4px 0 10px;font:13px/var(--lh-small) var(--serif);color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.product-excerpt{white-space:normal;line-height:var(--lh-body)}
+.product-excerpt .excerpt-line{display:block;padding-inline-start:1em;text-indent:-1em}
+.product-excerpt .excerpt-line+.excerpt-line{margin-top:.15em}

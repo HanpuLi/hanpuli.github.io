@@ -36,11 +36,14 @@ try{
   assert.equal(await page.locator('#original-script').inputValue(),lang==='zh-Hans'?'zh-Hans':'zh-Hant');
   assert.equal(await page.locator('#translation-options input:checked').count(),0,`${lang}: no paid translation is preselected`);
   // Apple Store audit 2026-10-14: price directly under the title, each option shows its cost.
-  const lead=await page.evaluate(()=>{const h=document.querySelector('#edition-product-title').getBoundingClientRect(),p=document.querySelector('#edition-from').getBoundingClientRect();return {gap:p.top-h.bottom,text:document.querySelector('#edition-from').textContent};});
+  const lead=await page.evaluate(()=>{const pre=document.querySelector('#edition-preface'),h=(pre&&!pre.hidden?pre:document.querySelector('#edition-product-title')).getBoundingClientRect(),p=document.querySelector('#edition-from').getBoundingClientRect();return {gap:p.top-h.bottom,text:document.querySelector('#edition-from').textContent};});
   assert(lead.text.includes(await page.locator('#editor-price').innerText()),`${lang}: starting price under the title (${lead.text})`);
   assert(lead.gap>=0&&lead.gap<40,`${lang}: price sits directly under the title`);
   assert.equal(await page.locator('#translation-options .option-price').count(),5);
   assert.equal(await page.locator('.option-cards').count(),3,`${lang}: script, typeface and size are cards`);
+  // Aesthetic review 2026-10-14: option names never break inside a word on a phone.
+  const broken=await page.evaluate(()=>[...document.querySelectorAll('#original-script-cards .option-name,.translation-grid label>span:not(.option-price)')].filter(n=>{const lines=new Set([...n.getClientRects()].map(r=>Math.round(r.top))).size;return lines>n.textContent.trim().split(/\s+/).length||n.scrollWidth>n.clientWidth+1;}).map(n=>n.textContent));
+  assert.deepEqual(broken,[],`${lang}: option names wrap only between words`);
   assert((await page.locator('#edition-summary').textContent()).length>0,`${lang}: purchase bar summarises the edition (shown from 561px)`);
   assert.equal(await page.locator('[data-shop="fictionalPrice"]').count(),0,`${lang}: no extra fiction label on the product page`);
   // Phone: the first choice is reachable without scrolling past the whole voucher.
@@ -118,6 +121,17 @@ try{
   await context.close();
  }
  const context=await browser.newContext({viewport:{width:390,height:844}}),page=await context.newPage();
+ // Opening a fold never moves the heading the reader just clicked (1440 and 1024).
+ for(const [w,h] of [[1440,900],[1024,768]]){
+  await page.setViewportSize({width:w,height:h});await page.goto(base+'/poetry-voucher/edition.html?lang=en&work=jia-yi-a9-text');await page.locator('#voucher-hero-image').waitFor({state:'visible'});
+  await page.evaluate(()=>scrollTo(0,700));const fold=page.locator('.advanced-type summary'),before=await fold.evaluate(n=>n.getBoundingClientRect().top);
+  await fold.click();await page.waitForTimeout(150);
+  assert(Math.abs(await fold.evaluate(n=>n.getBoundingClientRect().top)-before)<=2,`${w}: opening type and size keeps its heading in place`);
+  // Printer dots are shown 1:1 or smoothly scaled, never nearest-neighbour at a fraction.
+  for(const width of [820,900,1024]){await page.setViewportSize({width,height:h});const r=await page.locator('#voucher-hero-image').evaluate(i=>({w:Math.round(i.getBoundingClientRect().width),mode:getComputedStyle(i).imageRendering}));assert(r.mode!=='pixelated'||r.w===384,`${width}: ${r.w}px ${r.mode}`);}
+  assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('body *')].filter(n=>n.checkVisibility()&&n.childNodes.length&&[...n.childNodes].some(c=>c.nodeType===3&&c.textContent.trim())&&/^EB/.test(getComputedStyle(n).fontFamily)&&Number(getComputedStyle(n).fontWeight)>=600).map(n=>n.tagName+'.'+n.className)),[],'no synthetic bold in EB Garamond');
+ }
+ await page.setViewportSize({width:390,height:844});
  // The configured edition lives in the URL: shareable, reloadable, validated.
  await page.goto(base+'/poetry-voucher/edition.html?lang=en&work=jia-yi-b3-text&tr=ja,xx&type=site&size=26');
  await page.locator('#voucher-hero-image').waitFor({state:'visible'});

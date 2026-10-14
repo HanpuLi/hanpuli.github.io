@@ -269,3 +269,5 @@ html[data-reading-simple] .pv-end{
 html[data-reading-simple] .pv-physical{display:block}
 html[data-reading-simple] .pv-physical-prints{margin-block:2rem}
 @media(max-width:760px){.pv-physical{grid-template-columns:1fr}.pv-physical-intro{max-inline-size:none}.pv-physical-body{max-inline-size:46ch}.pv-physical-provenance{grid-column:1}.pv-physical-prints{width:100%;max-inline-size:32rem}.pv-physical-prints figure:nth-child(2){padding-block-start:2.5rem}}
+#pv-title .pv-period{color:var(--accent);font-style:normal}
+#pv-title .pv-period{margin-inline-start:-.14em}
