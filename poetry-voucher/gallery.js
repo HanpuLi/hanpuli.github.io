@@ -248,22 +248,49 @@ function receiptItemRows(item,code){
   const lines=wrapTillField(description,RECEIPT_CONFIG.columns.description);
   return lines.map((line,index)=>receiptItemLine(index===0?quantity:'',line,index===0?rsp:'',index===0?amount:''));
 }
-function wrapText(text,measure,width=PAPER_CONFIG.bodyWidthDots){
-  const lines=[];let line='';
-  for(const char of [...text]){
-    if(measure(line+char)<=width||!line){line+=char;continue;}
-    // Prefer a Chinese clause boundary to leaving one or two glyphs orphaned.
-    const stops=[...line.matchAll(/[，。！？；：、]/g)];
-    const stop=stops.length?stops.at(-1).index+1:0;
-    if(stop&&stop<line.length&&measure(line.slice(0,stop))>=width*.35){
-      lines.push(line.slice(0,stop));line=line.slice(stop)+char;
-    }else if(char.charCodeAt(0)<256&&line.includes(' ')){
-      const split=line.lastIndexOf(' ');lines.push(line.slice(0,split));line=line.slice(split+1)+char;
-    }else if('，。！？；：、）》」』'.includes(char)&&[...line].length>1){
-      const letters=[...line];lines.push(letters.slice(0,-1).join(''));line=letters.at(-1)+char;
-    }else{lines.push(line);line=char;}
+// Line breaking for printed paper. Break preferences, in order: a clause mark or
+// a " · " separator (when the line is already a third full), a space, a slash in
+// a URL, then any CJK glyph boundary that respects kinsoku. A one- or two-glyph
+// CJK last line borrows from the line above.
+const WRAP_NO_START='，。！？；：、）》」』〉】・ー々ぁぃぅぇぉっゃゅょゎァィゥェォッャュョヮヵヶ.,;:!?)]}';
+const WRAP_NO_END='（《「『〈【([{';
+const WRAP_CLAUSE='，。！？；：、';
+const wrapCJK=char=>/[\u3000-\u30ff\u3400-\u9fff\uf900-\ufaff\uff00-\uffef]/.test(char);
+const wrapWord=char=>/[0-9A-Za-z\u00c0-\u024f\u0400-\u04ff'’\-_.#:%=&?]/.test(char);
+function wrapBreak(chars,start,end,measure,width){
+  const fits=i=>measure(chars.slice(start,i).join(''))>=width*.35;
+  let strong=0,space=0,slash=0,glyph=0;
+  for(let i=start+1;i<=end;i++){
+    const before=chars[i-1],after=chars[i];
+    if(WRAP_NO_START.includes(after))continue;
+    if((WRAP_CLAUSE.includes(before)||(before===' '&&chars[i-2]==='·'))&&fits(i))strong=i;
+    if(before===' ')space=i;
+    if(before==='/'&&after!=='/')slash=i;
+    if(!WRAP_NO_END.includes(before)&&!(wrapWord(before)&&wrapWord(after))&&(wrapCJK(before)||wrapCJK(after)))glyph=i;
   }
-  lines.push(line);return lines;
+  return strong||space||slash||glyph||end;
+}
+function wrapText(text,measure,width=PAPER_CONFIG.bodyWidthDots){
+  const chars=[...text],lines=[];let start=0;
+  while(start<chars.length){
+    let end=start+1;
+    while(end<chars.length&&measure(chars.slice(start,end+1).join(''))<=width)end++;
+    if(end>=chars.length){lines.push(chars.slice(start).join(''));break;}
+    const cut=wrapBreak(chars,start,end,measure,width);
+    lines.push(chars.slice(start,cut).join('').trimEnd());start=cut;
+    while(chars[start]===' ')start++;
+  }
+  // No CJK widow: pull glyphs down until the last line reads as a phrase.
+  if(lines.length>1){
+    let last=[...lines.at(-1)],prev=[...lines.at(-2)];
+    const body=letters=>letters.filter(char=>!WRAP_CLAUSE.includes(char)&&!WRAP_NO_START.includes(char)).length;
+    while(body(last)<3&&last.some(wrapCJK)&&!last.includes(' ')&&prev.length>4&&measure([prev.at(-1),...last].join(''))<=width){
+      last=[prev.pop(),...last];
+      if(!WRAP_NO_START.includes(last[0])&&!WRAP_NO_END.includes(prev.at(-1))&&body(last)>=3)break;
+    }
+    lines[lines.length-2]=prev.join('');lines[lines.length-1]=last.join('');
+  }
+  return lines;
 }
 function typeSizes(font){return font==='site'?TYPE_CONFIG.siteSizes:TYPE_CONFIG.bitmapSizes;}
 const bitmapFaces=Object.freeze({'zh-Hant':'FusionPixelZhHK','zh-Hans':'FusionPixelZhHans',ja:'FusionPixelJa',en:'FusionPixelLatin',de:'FusionPixelLatin',fr:'FusionPixelLatin',ru:'FusionPixelLatin'});
@@ -510,7 +537,7 @@ function renderVoucherBody(p,spec,voucher,bodyFont,translationFont){
   for(const line of spec.poem.split('\n')){if(line)p.text(line,spec.size,bodyFont);else p.space(18);}
   const translations=Array.isArray(spec.translations)?spec.translations:(spec.translation?[{locale:spec.translationLocale||'en',title:spec.translationTitle,body:spec.translation}]:[]);
   for(const translation of translations){const family=typeof translationFont==='function'?translationFont(translation.locale):translationFont;
-    p.space(14);p.text(translation.title||spec.work?.translations?.[translation.locale]?.title||'',TYPE_CONFIG.translation,family,false,24,true);p.space(6);
+    p.space(14);p.text(translation.title||spec.work?.translations?.[translation.locale]?.title||'',TYPE_CONFIG.translation,family,false,24,!/^(zh|ja)/.test(translation.locale));p.space(6);
     for(const line of translation.body.split('\n')){if(line)p.text(line,TYPE_CONFIG.translation,family,false,24);else p.space(10);}
   }
   p.space(14);

@@ -143,6 +143,18 @@ assert.equal(wrapped.join(''),line);
 assert.equal(wrapped[0],'燭暗蛩寒簾影瘦，');
 assert.equal(wrapped[1],'殘酲猶帶微温。');
 assert(wrapped.every(text=>text.length*24<=PAPER_CONFIG.bodyWidthDots));
+// Aesthetic review W20: break at a separator, never split a URL inside a word, no kinsoku violations, no CJK widow.
+const cjkMeasure=text=>[...text].length*24;
+const title=wrapText('甲九《鷓鴣天 · 得某所寄舊稿，燈下讀竟，與篋中所存合編》',cjkMeasure);
+assert(!title.some(line=>line.endsWith('舊')),title.join('|'));
+assert(title.every(line=>!'，。、）》'.includes(line[0])),title.join('|'));
+const url=wrapText('hanpuli.github.io/poetry/jia-yi/#jia-9',text=>text.length*14);
+assert(url.slice(0,-1).every(line=>line.endsWith('/')),url.join('|'));
+const ja=wrapText('灯の下で私たちは長いあいだ肩を寄せて寄りかかった。',cjkMeasure);
+assert([...ja.at(-1)].length>=4&&!'っゃゅょ。、'.includes(ja.at(-1)[0]),ja.join('|'));
+assert.equal(ja.join(''),'灯の下で私たちは長いあいだ肩を寄せて寄りかかった。');
+const latin=wrapText('Untitled · To the tune of Linjiangxian · Sitting with a fellow student by lamplight',text=>text.length*12);
+assert(latin.every(line=>!line.startsWith(' ')&&!line.endsWith(' ')),latin.join('|'));
 let scenes = 0;
 for (let price = 1; price <= 10000; price += 7) {
   for (const roll of [0, 0.499, 0.5, 0.749, 0.75, 0.899, 0.9, 0.999]) {
