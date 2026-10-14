@@ -10,10 +10,15 @@
   try {
     original = JSON.parse(record.textContent);
     if (!original.body || !original.tid || !original.sha256 ||
-        typeof convertKanbunDiv !== 'function') throw Error('Invalid viewer data');
+        typeof convertKanbunDiv !== 'function' ||
+        typeof flowKanbunColumns !== 'function' ||
+        typeof bandKanbunColumns !== 'function') throw Error('Invalid viewer data');
     const stanzas = node.querySelectorAll('[data-kanbun-stanza]');
     if (!stanzas.length) throw Error('Missing kanbun stanza');
     stanzas.forEach(stanza=>convertKanbunDiv(stanza));
+    const heading = node.querySelector('[data-kanbun-heading]');
+    if (heading) convertKanbunDiv(heading);
+    flowKanbunColumns(node);
   } catch {
     parent.postMessage({type:'hanpu-kanbun-viewer-v1',state:'error',
                         tid:document.body.dataset.kanbunText}, '*');
@@ -33,7 +38,7 @@
     // of characters or a fixed amount of pseudo-ruby padding. Reading
     // cells sit in side tracks of each .unit and are measured directly.
     const content = [node, ...node.querySelectorAll(
-      '.unit,.kanbun-stanza,.kanji,.furigana,.okurigana,.kaeriten,.saidoku,.punctuation'
+      '.unit,.kanbun-column,.kanbun-head,.kanbun-text,.kanbun-band,.kanji,.furigana,.okurigana,.kaeriten,.saidoku,.punctuation'
     )];
     let right = 0;
     let bottom = 0;
@@ -69,10 +74,14 @@
   addEventListener('message', event => {
     if (event.source !== parent || event.data?.type !== 'hanpu-kanbun-preferences-v1') return;
     const size = event.data.fontSize;
-    if (typeof size === 'number' && size >= 18 && size <= 42)
+    let relayout = false;
+    if (typeof size === 'number' && size >= 18 && size <= 42 &&
+        node.style.fontSize !== size + 'px') {
       node.style.fontSize = size + 'px';
-    // The host sends space available after the vertical title and gutters.
-    // A new constraint may reduce the number of columns per reading band,
+      relayout = true;
+    }
+    // The host sends the space available in its column. A new constraint
+    // may reduce the number of columns per reading band,
     // so reset the prior non-shrinking width before synchronous remeasurement.
     const cap = event.data.maxContentWidth;
     if (Number.isFinite(cap) && cap >= 100 && cap <= 1600) {
@@ -81,8 +90,10 @@
         node.style.setProperty('--kanbun-content-cap', value);
         lastWidth = 0;
         last = '';
+        relayout = true;
       }
     }
+    if (relayout) bandKanbunColumns(node);
     const foreground = event.data.foreground;
     if (typeof foreground === 'string' && foreground.length < 100 &&
         CSS.supports('color',foreground)) document.body.style.color = foreground;

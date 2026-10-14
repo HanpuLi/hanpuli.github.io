@@ -121,8 +121,13 @@ try {
       assert.equal(a10.columns, 0, 'marked A10 has a visually clipped source heading');
       const frame=page.frameLocator('[data-poetry-text="jia-yi-a10-text"] [data-kanbun-frame]');
       await frame.locator('.kanbun-title').first().waitFor({state:'visible'});
-      assert.equal(await frame.locator('.kanbun-title').count(), 3, 'A10 title: 中呂, 山坡羊, preface');
-      assert.equal(await frame.locator('.kanbun-preface .kaeriten').count(), 2, 'A10 preface 又過舊廬 carries 二・一');
+      // 中呂 · 山坡羊 · 又過舊廬 is short and unpunctuated: one column.
+      assert.equal(await frame.locator('.kanbun-title').count(), 1, 'A10 title shares one column');
+      assert.equal(await frame.locator('.kanbun-title .kaeriten').count(), 2, 'A10 preface 又過舊廬 carries 二・一');
+      // It is the first column at the top; the body begins in the next one.
+      assert.deepEqual(await frame.locator('.kanbun-column').evaluateAll(cols =>
+        cols.slice(0, 2).map(c => c.dataset.kanbunColumn + ':' + c.firstElementChild.textContent.slice(0, 1))),
+        ['title:中', 'body:風'], 'A10 title column, then the body in a fresh column');
     } else {
       assert.equal(a10.columns, 1, 'short unmarked A10 title should occupy one column');
     }

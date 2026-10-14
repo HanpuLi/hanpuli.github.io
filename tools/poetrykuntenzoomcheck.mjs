@@ -81,13 +81,19 @@ try{
               iframeRect=await frame.boundingBox();
               rendered=await frame.contentFrame().locator('#kanbun-display').evaluate(node=>{
                 const r=node.getBoundingClientRect();
+                const cells=[...node.querySelectorAll('.kanbun-column[data-kanbun-column="body"]')]
+                  .map(c=>c.children.length);
                 return {right:r.right,bottom:r.bottom,scrollX:document.documentElement.scrollWidth-innerWidth,
-                        scrollY:document.documentElement.scrollHeight-innerHeight};
+                        scrollY:document.documentElement.scrollHeight-innerHeight,cells};
               });
               if(iframeRect.width>=rendered.right+8&&iframeRect.height>=rendered.bottom+8)break;
               await page.waitForTimeout(200);
             }
             assert.ok(rendered.scrollX<=1,engineName+' '+width+': internal overflow');
+            // Zoom does not change the setting: one 句 a column.
+            const clauses=contentBefore.split(/[，。、！？；：]/u).filter(c=>/\p{Script=Han}/u.test(c))
+              .map(c=>[...c].filter(x=>/\p{Script=Han}/u.test(x)).length);
+            assert.deepEqual(rendered.cells,clauses,engineName+' '+width+': column per clause '+rendered.cells);
             assert.ok(iframeRect.width>=rendered.right+8,
               engineName+' '+width+': marked text clipped in iframe width');
             assert.ok(iframeRect.height>=rendered.bottom+8,
@@ -110,6 +116,6 @@ try{
     }finally{await browser.close();}
   }
   console.log('poetrykuntenzoomcheck: '+completed+' viewport/engine stress cases; '
-    +'200% font scale, 5-stanza frame geometry, 4 repeated flow passes, '
+    +'200% font scale, 5-stanza frame geometry, one 句 a column, 4 repeated flow passes, '
     +'source text, global toggle and no-overflow PASS');
 }finally{await new Promise(ok=>server.close(ok));}

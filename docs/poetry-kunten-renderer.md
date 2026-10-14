@@ -20,9 +20,24 @@ poetry-kunten-collation.md for coverage, uncertainties and textual decisions.
 - Titles are read text too (2026-10-14). Each manuscript and 書き下し
   entry carries a `title` list, one item per part of the 《…》 title
   (tune name, preface, version note; a sequence label such as 甲四 is
-  navigation and is not read). The viewer sets the title as the first
-  columns of the first stanza, prefaces smaller and lower, broken after
-  each ，/。; the 書き下し disclosure prints the read title above the body.
+  navigation and is not read). The 書き下し disclosure prints the read
+  title above the body.
+- Layout (2026-10-14): as in a Japanese 漢文 textbook. Each 句 is one
+  column from the top, broken after every clause-ending mark (，。、！？；：,
+  the mark staying with its character); there is no fixed column length.
+  One blank column separates stanzas (上下片). The title is a right-hand
+  block: the tune name in its own column (a short unpunctuated part such
+  as 無題 · 臨江仙 or 滿庭芳 · 遙思楚潭 shares it, ≤12 Han); a preface
+  set 低二格 in smaller type with proportionally shorter cells, a clause
+  a column, a clause of one or two characters joining the column before.
+  On narrow frames the body wraps into bands only between columns; every
+  band starts at the body's right edge, beside the title block, or below
+  it when fewer than four columns fit beside it; bands are separated by
+  space and a hairline, and a band ends at a stanza break when that costs
+  at most two columns. A cell is as tall as its own readings plus a gap,
+  so every reading stays beside its own character. The generated page
+  keeps the source title parts, stanzas and lines; kanbun-render.js
+  (flowKanbunColumns, bandKanbunColumns) sets them.
 - tools/poetry_kunten.py builds one standalone, noindex HTML presentation
   document per reviewed work inside assets/kanbun-viewer/works/. It preserves
   paragraph and stanza source boundaries, and passes textual reading marks
