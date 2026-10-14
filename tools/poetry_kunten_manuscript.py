@@ -110,12 +110,7 @@ def trace_simple_returns(phrase: str, points: dict[int, str],
     return "".join(glyphs)
 
 
-def main() -> None:
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--write", action="store_true",
-                        help="recompile content/poetry/kunten.json from the manuscripts")
-    write = parser.parse_args().write
+def main(write: bool = False) -> None:
     root = Path(__file__).resolve().parent.parent
     lib = Library(root)
     entries = read(root / "content/poetry/kunten-manuscripts.json")["texts"]
@@ -332,4 +327,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    # Parsed only here: build_site.py calls main() with its own argv.
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--write", action="store_true",
+                        help="recompile content/poetry/kunten.json from the manuscripts")
+    main(parser.parse_args().write)
