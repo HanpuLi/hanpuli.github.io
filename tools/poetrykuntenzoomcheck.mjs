@@ -72,12 +72,21 @@ try{
           assert.equal(await page.locator('[data-poetry-text="jia-yi-b6-text"] .source .body').textContent(),contentBefore);
           if(expectedVisible){
             const frame=stage.locator('iframe');
-            const iframeRect=await frame.boundingBox();
-            const rendered=await frame.contentFrame().locator('#kanbun-display').evaluate(node=>{
-              const r=node.getBoundingClientRect();
-              return {right:r.right,bottom:r.bottom,scrollX:document.documentElement.scrollWidth-innerWidth,
-                      scrollY:document.documentElement.scrollHeight-innerHeight};
-            });
+            // The frame reports its size to the host by postMessage, so a
+            // late font or reflow can briefly leave the host one message
+            // behind. Allow that handshake to settle; persistent clipping
+            // still fails below.
+            let iframeRect,rendered;
+            for(let attempt=0;attempt<25;attempt++){
+              iframeRect=await frame.boundingBox();
+              rendered=await frame.contentFrame().locator('#kanbun-display').evaluate(node=>{
+                const r=node.getBoundingClientRect();
+                return {right:r.right,bottom:r.bottom,scrollX:document.documentElement.scrollWidth-innerWidth,
+                        scrollY:document.documentElement.scrollHeight-innerHeight};
+              });
+              if(iframeRect.width>=rendered.right+8&&iframeRect.height>=rendered.bottom+8)break;
+              await page.waitForTimeout(200);
+            }
             assert.ok(rendered.scrollX<=1,engineName+' '+width+': internal overflow');
             assert.ok(iframeRect.width>=rendered.right+8,
               engineName+' '+width+': marked text clipped in iframe width');
