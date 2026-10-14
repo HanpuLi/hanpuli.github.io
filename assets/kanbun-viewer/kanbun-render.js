@@ -10,18 +10,19 @@
  * the character it follows. Readings sit in fixed side columns, so no
  * annotation can be laid over a character or another annotation.
  *
- * flowKanbunColumns then sets the units in the fixed 行款 of a printed
- * 詞集 / 和刻訓点本: every column holds COLUMN cells whatever the screen
- * width; the title (詞牌) has its own first column(s); a preface (小序)
- * is set 低二格 (INDENT empty cells, then COLUMN - INDENT cells) and runs
- * on; the body begins in a fresh column and runs on, an authored line
- * break being no column break; a new stanza (上下片) is marked by one
- * empty cell (空一格), or by the top of a column if it falls there.
  *
- * settleKanbunColumns keeps the grid: cells have one fixed pitch, and a
- * reading longer than its cell continues beside the next character, as
- * on a printed page. Only when it would meet that character's own reading
- * (or a full-size mark) is the next cell moved down, by just that much.
+ * flowKanbunColumns then sets the units as in a Japanese 漢文 textbook:
+ * one 句 per column, broken after each clause-ending mark, every column
+ * from the top; one blank column between stanzas (上下片). The title
+ * block keeps the top right: the tune name (詞牌) in its own column, a
+ * preface (小序) set 低二格 in smaller type, a clause a column (a clause
+ * of one or two characters joins the column before). bandKanbunColumns
+ * lays the body columns into bands, wrapping only between columns: every
+ * band shares the body's right edge, beside the title block or, when
+ * fewer than four columns fit there, below it.
+ *
+ * A cell is as tall as its own readings and keeps a gap below them, so
+ * every reading stays beside its own character.
  */
 (() => {
   'use strict';
@@ -101,8 +102,12 @@
     }
   }
 
-  const COLUMN = 12;
   const INDENT = 2;
+  const MIN_BODY_BAND = 4;
+  // A 句 longer than this wraps within itself (none does at present).
+  const LONGEST = 14;
+  // A band may end this many columns early to end at a stanza break.
+  const STANZA_PULL = 2;
 
   function column(kind, part) {
     const node = document.createElement('div');
@@ -113,109 +118,150 @@
     return node;
   }
 
-  // Replaces the converted heading and stanzas in root with one stream of
-  // .kanbun-column elements, right to left in reading order.
-  function flowKanbunColumns(root) {
-    const columns = [];
-    const heading = root.querySelector('[data-kanbun-heading]');
-    if (heading) {
-      [...heading.children].filter(p => p.tagName === 'P').forEach((p, part) => {
-        const preface = p.classList.contains('kanbun-preface');
-        const length = preface ? COLUMN - INDENT : COLUMN;
-        const units = [...p.children].filter(n => n.classList.contains('unit'));
-        for (let i = 0; i < units.length; i += length) {
-          const node = column(preface ? 'preface' : 'title', part);
-          if (preface)
-            for (let k = 0; k < INDENT; k++) node.append(span('kanbun-indent'));
-          node.append(...units.slice(i, i + length));
-          columns.push(node);
-        }
-      });
+  const ends = unit => !!unit.querySelector(':scope > .punctuation');
+  const han = units => units.filter(u => u.querySelector(':scope > .kanji')).length;
+
+  // Units into clauses: a clause ends with the unit carrying a mark.
+  function clauses(units) {
+    const out = [];
+    let current = [];
+    for (const unit of units) {
+      current.push(unit);
+      if (ends(unit) || current.length === LONGEST) {
+        out.push(current);
+        current = [];
+      }
     }
-    let current = null;
-    let fill = 0;
-    root.querySelectorAll('[data-kanbun-stanza]').forEach((stanza, s) => {
-      const units = [...stanza.querySelectorAll(':scope > p > .unit')];
-      units.forEach((unit, i) => {
-        if (s && !i) {
-          unit.dataset.kanbunStanzaStart = '';
-          if (fill > 0 && fill < COLUMN) {
-            current.append(span('kanbun-space'));
-            fill++;
-          }
-        }
-        if (!current || fill === COLUMN) {
-          current = column('body');
-          columns.push(current);
-          fill = 0;
-        }
-        current.append(unit);
-        fill++;
-      });
-    });
-    root.replaceChildren(...columns);
+    if (current.length) out.push(current);
+    return out;
   }
 
-  // How far down its own em box a mark is inked in vertical text:
-  // 。，、 sit in the upper half, a middle dot at the centre.
-  const inked = text => /^[。，、．]+$/.test(text) ? .5 : /^[·・]+$/.test(text) ? .56 : 1;
-
-  function settleKanbunColumns(root) {
-    const columns = [...root.querySelectorAll('.kanbun-column')];
-    for (const node of columns)
-      for (const cell of node.children) cell.style.marginTop = '';
-    // One read pass, then arithmetic: pushing a cell down moves every
-    // later cell of its column by the same amount.
-    const plans = columns.map(node => [...node.children].map(cell => {
-      const top = cell.getBoundingClientRect().top;
-      const extent = elements => {
-        let a = Infinity, b = -Infinity;
-        for (const element of elements) {
-          const r = element.getBoundingClientRect();
-          if (!r.height) continue;
-          a = Math.min(a, r.top - top);
-          b = Math.max(b, r.bottom - top);
-        }
-        return a < b ? [a, b] : null;
-      };
-      const centre = [...cell.querySelectorAll(':scope > .kanji')];
-      const mark = cell.querySelector(':scope > .punctuation');
-      const tracks = [
-        extent(cell.querySelectorAll(':scope > .side-right > *')),
-        extent(cell.querySelectorAll(':scope > .side-left > *')),
-        extent(centre),
-      ];
-      if (mark) {
-        const r = mark.getBoundingClientRect();
-        const bottom = r.top + r.height * inked(mark.textContent) - top;
-        tracks[2] = tracks[2] ? [tracks[2][0], Math.max(tracks[2][1], bottom)]
-                              : [r.top - top, bottom];
-      }
-      return {cell, top, size: parseFloat(getComputedStyle(cell).fontSize) || 16, tracks};
-    }));
-    for (const plan of plans) {
-      let shift = 0;
-      const last = [-Infinity, -Infinity, -Infinity];
-      for (const {cell, top, size, tracks} of plan) {
-        // Readings keep a hairline apart; a character's own side bearing
-        // already separates it from the mark above it.
-        const gap = .06 * size;
-        let push = 0;
-        tracks.forEach((t, k) => {
-          if (t) push = Math.max(push, last[k] + (k < 2 ? gap : 0) - (top + shift + t[0]));
-        });
-        if (push > .5) {
-          shift += push;
-          cell.style.marginTop = (push / size).toFixed(4) + 'em';
-        }
-        tracks.forEach((t, k) => {
-          if (t) last[k] = Math.max(last[k], top + shift + t[1]);
-        });
-      }
+  // Replaces the converted heading and stanzas in root with a title block
+  // (.kanbun-head) and a body block (.kanbun-text); the body's columns
+  // are made here and laid into bands by bandKanbunColumns.
+  function flowKanbunColumns(root) {
+    const parts = [];
+    const heading = root.querySelector('[data-kanbun-heading]');
+    if (heading) {
+      [...heading.children].filter(p => p.tagName === 'P').forEach(p => {
+        const units = [...p.children].filter(n => n.classList.contains('unit'));
+        parts.push({preface: p.classList.contains('kanbun-preface'),
+                    clauses: p.classList.contains('kanbun-preface') ? clauses(units) : [units]});
+      });
     }
+    root.kanbunTitle = parts;
+    const body = [];
+    root.querySelectorAll('[data-kanbun-stanza]').forEach((stanza, s) => {
+      const units = [...stanza.querySelectorAll(':scope > p > .unit')];
+      if (!units.length) return;
+      if (s) units[0].dataset.kanbunStanzaStart = '';
+      if (s && body.length) {
+        const gap = column('gap');
+        gap.setAttribute('aria-hidden', 'true');
+        body.push(gap);
+      }
+      for (const cells of clauses(units)) {
+        const node = column('body');
+        node.dataset.kanbunStanza = String(s);
+        node.append(...cells);
+        body.push(node);
+      }
+    });
+    const text = document.createElement('div');
+    text.className = 'kanbun-text';
+    root.kanbunBody = body;
+    root.replaceChildren(...(parts.length ? [setHead(parts, PACK[0])] : []), text);
+    bandKanbunColumns(root);
+  }
+
+  // Han characters a packed preface column may reach: a clause a column
+  // when there is room, short clauses sharing a column when the frame is
+  // too narrow for the title block in one row.
+  const PACK = [2, 10, 12, 14];
+
+  // The title block: the tune name (one column; the generator keeps it to
+  // twelve) and preface columns set 低二格, a clause a column, clauses
+  // packed together up to `pack` characters; a clause of one or two
+  // characters always joins the column before.
+  function setHead(parts, pack) {
+    const head = document.createElement('div');
+    head.className = 'kanbun-head';
+    parts.forEach(({preface, clauses}, part) => {
+      const groups = [];
+      for (const clause of clauses) {
+        const last = groups[groups.length - 1];
+        if (preface && last && (han(clause) <= 2 || han(last) + han(clause) <= pack))
+          last.push(...clause);
+        else groups.push([...clause]);
+      }
+      if (groups.length > 1 && han(groups[0]) <= 2) groups[1].unshift(...groups.shift());
+      for (const cells of groups) {
+        const node = column(preface ? 'preface' : 'title', part);
+        if (preface)
+          for (let k = 0; k < INDENT; k++) node.append(span('kanbun-indent'));
+        node.append(...cells);
+        head.append(node);
+      }
+    });
+    return head;
+  }
+
+  // Lays the body columns into bands right to left for root's current
+  // font size and width cap, wrapping only between columns. A band ends
+  // at a stanza break when that costs at most STANZA_PULL columns; a
+  // blank stanza column is not set at the edge of a band.
+  function bandKanbunColumns(root) {
+    const body = root.kanbunBody;
+    const text = root.querySelector(':scope > .kanbun-text');
+    if (!body || !text) return;
+    const size = parseFloat(getComputedStyle(root).fontSize) || 23;
+    const cap = parseFloat(root.style.getPropertyValue('--kanbun-content-cap')) || 1000;
+    const pitch = 2.15 * size; // column width 2.03em + gap .12em
+    let head = root.querySelector(':scope > .kanbun-head');
+    const fullWidth = Math.max(1, Math.floor((cap + .12 * size) / pitch));
+    if (head) {
+      // Keep the title block to one row where packing the preface can.
+      const parts = root.kanbunTitle;
+      let packed = setHead(parts, PACK[0]);
+      for (const pack of PACK.slice(1)) {
+        if (packed.children.length <= fullWidth) break;
+        packed = setHead(parts, pack);
+      }
+      head.replaceWith(packed);
+      head = packed;
+    }
+    const headColumns = head ? head.children.length : 0;
+    const headWidth = headColumns ? headColumns * pitch + .8 * size : 0;
+    const besideHead = Math.floor((cap - headWidth + .12 * size) / pitch);
+    const side = !headColumns || besideHead >= MIN_BODY_BAND;
+    const perBand = Math.max(1, side ? besideHead
+      : Math.floor((cap + .12 * size) / pitch));
+    root.dataset.kanbunLayout = side ? 'beside' : 'below';
+    const bands = [];
+    let start = 0;
+    while (start < body.length) {
+      while (body[start]?.dataset.kanbunColumn === 'gap') start++;
+      if (start >= body.length) break;
+      let take = Math.min(perBand, body.length - start);
+      if (start + take < body.length && body[start + take].dataset.kanbunColumn !== 'gap') {
+        for (let t = take - 1; t >= Math.max(1, take - STANZA_PULL); t--) {
+          if (body[start + t].dataset.kanbunColumn === 'gap') { take = t; break; }
+        }
+      }
+      let list = body.slice(start, start + take);
+      while (list.length && list[list.length - 1].dataset.kanbunColumn === 'gap') list.pop();
+      const band = document.createElement('div');
+      band.className = 'kanbun-band';
+      band.append(...list);
+      bands.push(band);
+      start += take;
+    }
+    const widest = Math.max(1, ...bands.map(b => b.children.length));
+    text.style.width = Math.ceil(widest * pitch - .12 * size) + 'px';
+    text.replaceChildren(...bands);
   }
 
   window.convertKanbunDiv = convertKanbunDiv;
   window.flowKanbunColumns = flowKanbunColumns;
-  window.settleKanbunColumns = settleKanbunColumns;
+  window.bandKanbunColumns = bandKanbunColumns;
 })();

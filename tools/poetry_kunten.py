@@ -23,7 +23,7 @@ RETURNS = set("レ一二三四五六七八九十上下甲乙丙丁天地人") | 
 }
 MARKUP_CHARS = set("(){}[]‹›«»⦉⦊⌊⌋‘’“”\u2010")
 BASE = Path("assets/kanbun-viewer")
-TITLE_COLUMN = 12  # Han characters in a single title column (the 行款)
+TITLE_COLUMN = 12  # Han characters in a single title column
 SOURCE_FILES = ("kanbun-render.js", "kanbun-render.css", "viewer.js", "viewer.css")
 
 
@@ -178,10 +178,9 @@ class Kunten:
         # convertKanbunDiv converts each direct child paragraph and expects
         # an HTML-escaped annotated string, not already-rendered HTML.
         # The page keeps the source structure (title parts, stanzas,
-        # authored lines); kanbun-render.js then re-flows the units into
-        # the fixed 行款 of a printed 詞集: 12 cells a column, the tune
-        # name first, the preface 低二格 and run on, the body in a fresh
-        # column with one empty cell between stanzas.
+        # authored lines); kanbun-render.js then sets the units as in a
+        # 漢文 textbook: one 句 a column, a blank column between stanzas,
+        # the tune name and a 低二格 preface as a right-hand title block.
         # A short unpunctuated part (無題 · 臨江仙, 滿庭芳 · 遙思楚潭)
         # shares the tune name's column; any other part is a preface.
         columns: list[tuple[str, str]] = []

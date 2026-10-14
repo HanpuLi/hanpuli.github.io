@@ -90,9 +90,10 @@ try{
               await page.waitForTimeout(200);
             }
             assert.ok(rendered.scrollX<=1,engineName+' '+width+': internal overflow');
-            // The 行款 does not change with zoom: 12 cells a body column.
-            assert.ok(rendered.cells.length>1 && rendered.cells.slice(0,-1).every(n=>n===12) &&
-              rendered.cells.at(-1)<=12,engineName+' '+width+': column length '+rendered.cells);
+            // Zoom does not change the setting: one 句 a column.
+            const clauses=contentBefore.split(/[，。、！？；：]/u).filter(c=>/\p{Script=Han}/u.test(c))
+              .map(c=>[...c].filter(x=>/\p{Script=Han}/u.test(x)).length);
+            assert.deepEqual(rendered.cells,clauses,engineName+' '+width+': column per clause '+rendered.cells);
             assert.ok(iframeRect.width>=rendered.right+8,
               engineName+' '+width+': marked text clipped in iframe width');
             assert.ok(iframeRect.height>=rendered.bottom+8,
@@ -115,6 +116,6 @@ try{
     }finally{await browser.close();}
   }
   console.log('poetrykuntenzoomcheck: '+completed+' viewport/engine stress cases; '
-    +'200% font scale, 5-stanza frame geometry, fixed 12-cell columns, 4 repeated flow passes, '
+    +'200% font scale, 5-stanza frame geometry, one 句 a column, 4 repeated flow passes, '
     +'source text, global toggle and no-overflow PASS');
 }finally{await new Promise(ok=>server.close(ok));}

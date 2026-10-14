@@ -41,10 +41,29 @@ body { padding:12px 15px; box-sizing:content-box; }
   margin:0; padding:0;
   width:max-content; max-width:var(--kanbun-content-cap, 1000px);
   height:auto; display:flex; flex-flow:row-reverse wrap; align-items:flex-start;
-  column-gap:.12em; row-gap:1.2em;
+  column-gap:.8em; row-gap:0;
   writing-mode:horizontal-tb; text-orientation:mixed;
   font-family:"Shippori Mincho", "Yu Mincho", YuMincho, serif;
   font-size:23px; font-weight:400; line-height:1;
+}
+/* The title block keeps the top right. The body sits to its left, every
+   band flush with the body's own right edge, or (when fewer than four
+   columns would fit beside it) starts in a band of its own below. */
+#kanbun-display .kanbun-head {
+  display:flex; flex-flow:row-reverse wrap; align-items:flex-start;
+  column-gap:.12em; row-gap:1.6em; flex:none; max-width:100%;
+}
+#kanbun-display .kanbun-text { flex:none; max-width:100%; }
+#kanbun-display[data-kanbun-layout="below"] .kanbun-text { flex-basis:100%; width:auto !important; }
+#kanbun-display .kanbun-band {
+  display:flex; flex-direction:row-reverse; align-items:flex-start; column-gap:.12em;
+}
+/* A band break reads as turning to the next half-leaf: clear space and a
+   hairline across the band. */
+#kanbun-display .kanbun-band + .kanbun-band,
+#kanbun-display[data-kanbun-layout="below"] .kanbun-text {
+  margin-top:.9em; padding-top:.9em;
+  border-top:1px solid color-mix(in srgb, currentColor 22%, transparent);
 }
 @media(prefers-color-scheme:dark){
   html,body {color:#eae7e1;background:transparent;}

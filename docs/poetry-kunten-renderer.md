@@ -22,24 +22,22 @@ poetry-kunten-collation.md for coverage, uncertainties and textual decisions.
   (tune name, preface, version note; a sequence label such as 甲四 is
   navigation and is not read). The 書き下し disclosure prints the read
   title above the body.
-- 行款 (2026-10-14). The viewer sets each work like a page of a printed
-  詞集 / 和刻訓点本. Every column holds exactly 12 character cells on
-  every screen width (a cell is one Han character with its punctuation,
-  okurigana and return marks); columns fill top to bottom, right to left.
-  The tune name has its own first column; a short unpunctuated part
-  (無題 · 臨江仙, 滿庭芳 · 遙思楚潭) shares it (≤12 Han). A preface is
-  set 低二格, smaller type on the same grid: two empty cells, then 10
-  cells a column, running on without clause breaks, so it ends level
-  with the body. The body begins in a fresh column and runs on; an
-  authored line break is not a column break. A new stanza (上下片) is
-  marked by one empty cell (空一格), or simply by the top of a column
-  when it falls there. Cells keep one pitch; a reading longer than its
-  cell continues beside the next character, which moves down only when
-  it would meet that reading. The whole stream of columns wraps into
-  right-aligned bands only when the frame is too narrow; on a desktop
-  most works are one band, like a single page. The generated page keeps
-  the source title parts, stanzas and lines; kanbun-render.js
-  (flowKanbunColumns, settleKanbunColumns) does the re-flow.
+- Layout (2026-10-14): as in a Japanese 漢文 textbook. Each 句 is one
+  column from the top, broken after every clause-ending mark (，。、！？；：,
+  the mark staying with its character); there is no fixed column length.
+  One blank column separates stanzas (上下片). The title is a right-hand
+  block: the tune name in its own column (a short unpunctuated part such
+  as 無題 · 臨江仙 or 滿庭芳 · 遙思楚潭 shares it, ≤12 Han); a preface
+  set 低二格 in smaller type with proportionally shorter cells, a clause
+  a column, a clause of one or two characters joining the column before.
+  On narrow frames the body wraps into bands only between columns; every
+  band starts at the body's right edge, beside the title block, or below
+  it when fewer than four columns fit beside it; bands are separated by
+  space and a hairline, and a band ends at a stanza break when that costs
+  at most two columns. A cell is as tall as its own readings plus a gap,
+  so every reading stays beside its own character. The generated page
+  keeps the source title parts, stanzas and lines; kanbun-render.js
+  (flowKanbunColumns, bandKanbunColumns) sets them.
 - tools/poetry_kunten.py builds one standalone, noindex HTML presentation
   document per reviewed work inside assets/kanbun-viewer/works/. It preserves
   paragraph and stanza source boundaries, and passes textual reading marks

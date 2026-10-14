@@ -60,13 +60,12 @@ try {
         assert.equal(await renderer.locator(body+' .kaeriten').count(),3);
         // 乙五《無題 · 十六字令》: one short title column beside the poem.
         assert.deepEqual(await renderer.locator('#kanbun-display .kanbun-title').allTextContents(),['無題·十六字令']);
-        // Fixed 行款: sixteen characters are one full column of twelve and
-        // a column of four, whatever the width, and never split further.
-        assert.deepEqual(await renderer.locator(body).evaluateAll(cols=>cols.map(c=>c.children.length)),[12,4]);
+        // One 句 a column: 銅。| 鑰齒新裁付掌中。| 天寒了，| 加飯且從容。
+        assert.deepEqual(await renderer.locator(body).evaluateAll(cols=>cols.map(c=>c.children.length)),[1,7,3,5]);
         const columns = await renderer.locator(body+' .kanji').evaluateAll(nodes =>
           [...new Set(nodes.map(el=>Math.round(el.getBoundingClientRect().x)))]
         );
-        assert.equal(columns.length,2,
+        assert.equal(columns.length,4,
           name+' '+width+': broken glyph columns '+JSON.stringify(columns));
         const collisions = await renderer.locator('#kanbun-display').evaluate(root=>{
           const bases = [...root.querySelectorAll('.kanji')];
