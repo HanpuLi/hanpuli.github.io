@@ -159,10 +159,10 @@
     ],
     "phonetics": {
       "kicker": "phonetics / phonology · process",
-      "title": "Acoustic analysis, beyond the brief",
-      "note": "A phonetics / phonology exercise extended beyond the required task: recording, inspecting the waveform and spectrogram, and making the analysis harder than it needed to be.",
-      "caption": "phonetics / phonology exercise · acoustic analysis",
-      "alt": "laptop showing a waveform and spectrogram beside a camera"
+      "title": "Acoustic analysis",
+      "note": "A Christmas assignment for Phonetics and Phonology: a recording of “Santa”, examined as waveform and spectrogram, with each segment annotated in Praat.",
+      "caption": "“Santa”: waveform and spectrogram",
+      "alt": "laptop showing the waveform and spectrogram of a recording in Adobe Audition, beside a shotgun microphone"
     },
     "york": {
       "title": "York / streets",
