@@ -1,6 +1,7 @@
 """Static catalogue, chronology, collection readers and independent work pages."""
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 import re
@@ -38,6 +39,10 @@ class Pages:
         self.ui = read(base.CONTENT / 'poetry/ui.json')
         self.template = (base.TEMPLATES / 'poetry.html').read_text(encoding='utf-8')
 
+    def fingerprinted(self, name: str) -> str:
+        data = (self.base.ROOT / 'assets' / name).read_bytes()
+        return f'/assets/{name}?v={hashlib.sha256(data).hexdigest()[:12]}'
+
     def languages(self, route: str, locale: str) -> str:
         result = []
         for language in self.base.LANGUAGES:
@@ -71,8 +76,10 @@ class Pages:
         social = b.social_meta_html(locale_id=locale,title=title,description=description,url=canonical,
                     image_url=image,image_alt=title,width=1200,height=630,image_type='image/png',og_type='article')
         if locale == 'ja' and 'data-poetry-kanbun-viewer=' in content:
-            extra_head += ('<link rel="stylesheet" href="/assets/poetry-kunten-host.css">'
-                           '<script defer src="/assets/poetry-kunten-host.js"></script>')
+            # Fingerprinted like the frames it drives: an installed iOS web app
+            # must not pair a fresh frame with a stale controller.
+            extra_head += (f'<link rel="stylesheet" href="{self.fingerprinted("poetry-kunten-host.css")}">'
+                           f'<script defer src="{self.fingerprinted("poetry-kunten-host.js")}"></script>')
         values = {
             'HTML_LANG':b.LANG_BY_ID[locale]['html_lang'], 'LOCALE':locale,
             'POETRY_TITLE':esc(title), 'POETRY_DESCRIPTION':esc(description),

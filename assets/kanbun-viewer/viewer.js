@@ -98,7 +98,10 @@
     if (typeof foreground === 'string' && foreground.length < 100 &&
         CSS.supports('color',foreground)) document.body.style.color = foreground;
     // An offscreen sandboxed iframe may have requestAnimationFrame suspended.
-    // The first handshake must not depend on animation frames.
+    // The first handshake must not depend on animation frames. The host also
+    // sends this message to ask again for a report it never accepted, so an
+    // explicit request is always answered, even with an unchanged size.
+    last = '';
     measure();
   });
   document.fonts.ready.then(() => {

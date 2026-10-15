@@ -20,7 +20,45 @@
     const frame = stage.querySelector('iframe[data-kanbun-frame]');
     const article = stage.closest('.reader-poem');
     if (!frame || !article) continue;
-    byWindow.set(frame.contentWindow, {frame, article, stage});
+    byWindow.set(frame.contentWindow, {frame, article, stage, pings:0, reloads:0, timer:0});
+  }
+  // A visual reader that never reports ready leaves the plain vertical
+  // source in place. That fallback is correct, but on iOS home-screen apps
+  // a frame occasionally loads without its typesetter (or never answers).
+  // Ask again, then reload the frame; a layout choice restarts the attempts.
+  const PING_MS = 1500;
+  const PINGS_BEFORE_RELOAD = 3;
+  const MAX_RELOADS = 2;
+  function reloadFrame(entry) {
+    if (entry.reloads >= MAX_RELOADS) return false;
+    entry.reloads += 1;
+    entry.pings = 0;
+    const url = new URL(entry.frame.getAttribute('src'), location.href);
+    url.searchParams.set('retry', String(entry.reloads));
+    entry.frame.src = url.pathname + url.search;
+    return true;
+  }
+  function watch(entry) {
+    clearTimeout(entry.timer);
+    entry.timer = setTimeout(() => {
+      if (!isActive() || entry.stage.dataset.kanbunReady === 'true') return;
+      if (entry.pings >= PINGS_BEFORE_RELOAD) {
+        if (reloadFrame(entry)) watch(entry);
+        return;
+      }
+      entry.pings += 1;
+      sendPreferences(entry);
+      watch(entry);
+    }, PING_MS);
+  }
+  function watchAll({restart = false} = {}) {
+    for (const entry of byWindow.values()) {
+      if (restart && entry.stage.dataset.kanbunReady !== 'true') {
+        entry.pings = 0;
+        entry.reloads = 0;
+      }
+      watch(entry);
+    }
   }
   let currentLayout = root.dataset.poetryLayout;
   function isActive() {
@@ -45,6 +83,7 @@
     const match = [...byWindow.values()].find(({frame}) => frame.contentWindow === event.source);
     if (!match) return;
     const {frame, article, stage} = match;
+    const entry = match;
     const msg = event.data;
     if (msg?.type !== 'hanpu-kanbun-viewer-v1' ||
         msg.tid !== article.dataset.poetryText ||
@@ -52,6 +91,8 @@
     if (msg.state === 'error') {
       stage.dataset.kanbunReady = 'false';
       apply(); // Canonical Chinese source remains visible.
+      // A missing typesetter script is usually transient; load the frame again.
+      if (isActive() && reloadFrame(entry)) watch(entry);
       return;
     }
     if (msg.state !== 'ready' ||
@@ -63,29 +104,33 @@
     frame.style.width = msg.width + 'px';
     frame.style.height = msg.height + 'px';
     stage.dataset.kanbunReady = 'true';
+    clearTimeout(entry.timer);
     apply();
   });
   function updateFontSizes() {
-    for (const {frame,article} of byWindow.values()) {
-      const reference = article.querySelector('.source .body');
-      if (!reference || !frame.contentWindow) continue;
-      const style = getComputedStyle(reference);
-      const size = Number.parseFloat(style.fontSize);
-      const section = article.querySelector('.poem-version.source');
-      const display = section?.querySelector('.poetry-kanbun-display');
-      const sectionWidth = section?.getBoundingClientRect().width || innerWidth;
-      const gap = Number.parseFloat(getComputedStyle(display).columnGap) || 12;
-      // Reserve 38px inside the iframe for glyph bounds/gutters, plus a
-      // safety margin. The title is typeset inside the frame.
-      const cap = Math.max(100,Math.floor(sectionWidth - gap - 44));
-      if (Number.isFinite(size))
-        frame.contentWindow.postMessage({
-          type:'hanpu-kanbun-preferences-v1',
-          fontSize:Math.max(20,Math.min(36,Math.round(size*1.35))),
-          foreground:style.color,
-          maxContentWidth:cap,
-        }, '*');
-    }
+    for (const entry of byWindow.values()) sendPreferences(entry);
+  }
+  // The viewer always answers a preferences message with its measurement,
+  // so this doubles as the request for a ready report.
+  function sendPreferences({frame,article}) {
+    const reference = article.querySelector('.source .body');
+    if (!reference || !frame.contentWindow) return;
+    const style = getComputedStyle(reference);
+    const size = Number.parseFloat(style.fontSize);
+    const section = article.querySelector('.poem-version.source');
+    const display = section?.querySelector('.poetry-kanbun-display');
+    const sectionWidth = section?.getBoundingClientRect().width || innerWidth;
+    const gap = Number.parseFloat(getComputedStyle(display).columnGap) || 12;
+    // Reserve 38px inside the iframe for glyph bounds/gutters, plus a
+    // safety margin. The title is typeset inside the frame.
+    const cap = Math.max(100,Math.floor(sectionWidth - gap - 44));
+    if (Number.isFinite(size))
+      frame.contentWindow.postMessage({
+        type:'hanpu-kanbun-preferences-v1',
+        fontSize:Math.max(20,Math.min(36,Math.round(size*1.35))),
+        foreground:style.color,
+        maxContentWidth:cap,
+      }, '*');
   }
   // Unlike the failed overlay, the visual iframe never owns source text.
   // Readers may select within it or use this explicit canonical-copy control.
@@ -111,6 +156,7 @@
   addEventListener('poetry-layout-applied', () => {
     apply();
     updateFontSizes();
+    watchAll({restart: true});
   });
   addEventListener('resize', () => {
     updateFontSizes();
@@ -121,8 +167,11 @@
                             m.attributeName === 'data-reading-contrast')) {
       apply();
       updateFontSizes();
+      watchAll({restart: true});
     }
   }).observe(root,{attributes:true,attributeFilter:['data-reading-simple','data-reading-large','data-reading-contrast']});
-  for (const {frame} of byWindow.values()) frame.addEventListener('load', updateFontSizes);
+  for (const entry of byWindow.values())
+    entry.frame.addEventListener('load', () => { sendPreferences(entry); watch(entry); });
   apply();
+  watchAll();
 })();
