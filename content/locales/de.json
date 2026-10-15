@@ -159,10 +159,10 @@
     "location": "London",
     "phonetics": {
       "kicker": "Phonetik / Phonologie · Prozess",
-      "title": "Akustische Analyse über die Aufgabe hinaus",
-      "note": "Eine Übung in Phonetik / Phonologie, die ich freiwillig schwieriger machte: aufnehmen, Wellenform und Spektrogramm untersuchen und die Analyse weiter treiben, als die Aufgabe verlangte.",
-      "caption": "Übung in Phonetik / Phonologie · akustische Analyse",
-      "alt": "Laptop mit Wellenform und Spektrogramm neben einer Kamera"
+      "title": "Akustische Analyse",
+      "note": "Eine Weihnachtsaufgabe in Phonetik und Phonologie: eine Aufnahme von „Santa“, untersucht als Wellenform und Spektrogramm, jedes Segment in Praat annotiert.",
+      "caption": "„Santa“: Wellenform und Spektrogramm",
+      "alt": "Laptop mit Wellenform und Spektrogramm einer Aufnahme in Adobe Audition, daneben ein Richtmikrofon"
     },
     "york": {
       "title": "York / Straßen",
