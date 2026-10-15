@@ -165,8 +165,10 @@ def main(write: bool = False) -> None:
     # a successful HTML render cannot establish the correct Japanese order.
     for tid, phrase, required in (
         ("jia-yi-a6-text", "似隔前生事", {0: "三", 1: "二", 4: "一"}),
+        # 2026-10-15: same order, school-standard form — 辭根 is a
+        # one-character return (一レ), so 恐 takes 二, not 三.
         ("jia-yi-b3-text", "恐花為我辭根",
-         {0: "三", 2: "レ", 4: "二", 5: "一"}),
+         {0: "二", 2: "レ", 4: "一レ"}),
         # 2026-10-14: the #47 書き下し reads these phrases with ordinary
         # returns (消 = 要する; 把 as a verb; 不 negating the whole clause).
         ("queqiaoxian-20181222-revised-202610", "未消尺素", {0: "レ", 1: "二", 3: "一"}),
