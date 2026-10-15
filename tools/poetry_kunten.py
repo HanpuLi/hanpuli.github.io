@@ -67,20 +67,41 @@ def check_marks(tid: str, source: str, marks: list[dict]) -> None:
     # Ordinary 二 / 一 points must balance within an authored line.
     # Do not split at commas: e.g. 朝中措「便作，銀磬微鳴」
     # intentionally carries a returned clause across a caesura.
+    # School-standard nesting: a one-character return is レ (二 directly
+    # before 一 is 一レ instead); 一二 inside 一二 makes the outer pair 上下;
+    # 上下 is used only around a complete 一二 pair.
     pairs = {mark["position"]: mark.get("kaeriten") for mark in marks}
     start = 0
     for line in source.splitlines(keepends=True):
         stack: list[int] = []
+        upper: list[bool] = []  # open 下 points: whether a 一二 pair closed inside
         for position in range(start, start + len(line)):
             point = pairs.get(position)
             if point == "二":
+                if stack:
+                    raise ValueError("一二 pair nested in 一二; use 上下 outside: " + tid)
+                if pairs.get(position + 1) == "一":
+                    raise ValueError("Adjacent 二一 return; use レ: " + tid)
                 stack.append(position)
             elif point in ("一", "一レ"):
                 if not stack:
                     raise ValueError("Orphan 一 point: " + tid)
                 stack.pop()
+                if upper:
+                    upper[-1] = True
+            elif point == "下":
+                if pairs.get(position + 1) == "上":
+                    raise ValueError("Adjacent 下上 return; use レ: " + tid)
+                upper.append(False)
+            elif point in ("上", "上レ"):
+                if not upper:
+                    raise ValueError("Orphan 上 point: " + tid)
+                if not upper.pop():
+                    raise ValueError("上下 without an inner 一二 pair; use 一二: " + tid)
         if stack:
             raise ValueError("Unpaired 二 point: " + tid)
+        if upper:
+            raise ValueError("Unpaired 下 point: " + tid)
         start += len(line)
 
 
