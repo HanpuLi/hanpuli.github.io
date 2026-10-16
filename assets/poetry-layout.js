@@ -22,8 +22,46 @@
       label.textContent = article.dataset.poetryLabel;
       dates.prepend(label, ' · ');
     }
-    records.push({body, title, composition, text:body.textContent,
+    const text = body.textContent, chars = Array.from(text);
+    const rhymes = new Set((body.dataset.poetryRhymes || '').split(',').filter(Boolean).map(Number));
+    // The closing full stop is the poem's one resting vermilion point.
+    const end = /[。！？]/u.test(chars.at(-1) || '') ? chars.length - 1 : -1;
+    records.push({body, title, composition, text, chars, rhymes, end,
       hiddenTitle:title.classList.contains('visually-hidden')});
+  }
+  // Rhyme and end marks wrap single characters; offsets count code points of
+  // the authored body, so text, clipboard and line breaks stay unchanged.
+  function marked(record, start, stop) {
+    const nodes = [];
+    let run = '';
+    for (let index = start; index < stop; index++) {
+      const kind = record.rhymes.has(index) ? 'poetry-rhyme' : index === record.end ? 'poetry-end' : '';
+      if (!kind) { run += record.chars[index]; continue; }
+      if (run) { nodes.push(document.createTextNode(run)); run = ''; }
+      const span = document.createElement('span');
+      span.className = kind;
+      span.textContent = record.chars[index];
+      nodes.push(span);
+    }
+    if (run) nodes.push(document.createTextNode(run));
+    return nodes;
+  }
+  const rhymeKey = 'hanpuli.poetryRhymes.v1';
+  const rhymeToggle = controls.querySelector('[data-poetry-rhymes-toggle]');
+  if (rhymeToggle) {
+    let rhymesOn = false;
+    try { rhymesOn = localStorage.getItem(rhymeKey) === 'on'; } catch { /* Storage is optional. */ }
+    const syncRhymes = () => {
+      root.dataset.poetryRhymes = rhymesOn ? 'on' : 'off';
+      rhymeToggle.setAttribute('aria-pressed', String(rhymesOn));
+    };
+    rhymeToggle.hidden = !records.some(record => record.rhymes.size);
+    rhymeToggle.addEventListener('click', () => {
+      rhymesOn = !rhymesOn;
+      try { localStorage.setItem(rhymeKey, rhymesOn ? 'on' : 'off'); } catch { /* Storage is optional. */ }
+      syncRhymes();
+    });
+    syncRhymes();
   }
   const requested = new URL(location.href).searchParams.get('layout');
   let preferred;
@@ -53,19 +91,22 @@
     const layout = simple ? 'horizontal' : preferred;
     root.dataset.poetryLayout = layout;
     for (const record of records) {
-      const {body, title, composition, text, hiddenTitle} = record;
+      const {body, title, composition, text, chars, hiddenTitle} = record;
       title.classList.toggle('visually-hidden', hiddenTitle && layout !== 'vertical');
       body.replaceChildren();
       if (layout === 'vertical') {
+        let offset = 0;
         text.split('\n\n').forEach((stanza, index) => {
           const paragraph = document.createElement('p');
           paragraph.className = 'poetry-stanza';
           paragraph.dataset.poetryStanza = String(index);
-          paragraph.textContent = stanza;
+          const length = Array.from(stanza).length;
+          paragraph.append(...marked(record, offset, offset + length));
+          offset += length + 2;
           if (index) body.append(document.createTextNode('\n\n'));
           body.append(paragraph);
         });
-      } else body.textContent = text;
+      } else body.append(...marked(record, 0, chars.length));
       PoetryFlow.update(composition, title, body);
     }
     syncButtons();

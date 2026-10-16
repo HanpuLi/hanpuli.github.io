@@ -31,7 +31,8 @@
     "layout_label": "Original layout",
     "layout_horizontal": "Horizontal",
     "layout_vertical": "Vertical",
-    "layout_simple": "Single-column reading uses horizontal text."
+    "layout_simple": "Single-column reading uses horizontal text.",
+    "layout_rhymes": "Mark rhymes"
   },
   "zh": {
     "heading": "詩歌",
@@ -65,7 +66,8 @@
     "layout_label": "原文排版",
     "layout_horizontal": "橫排",
     "layout_vertical": "豎排",
-    "layout_simple": "單欄閱讀使用橫排。"
+    "layout_simple": "單欄閱讀使用橫排。",
+    "layout_rhymes": "標韻"
   },
   "zh-hans": {
     "heading": "诗歌",
@@ -99,7 +101,8 @@
     "layout_label": "原文排版",
     "layout_horizontal": "横排",
     "layout_vertical": "竖排",
-    "layout_simple": "单栏阅读使用横排。"
+    "layout_simple": "单栏阅读使用横排。",
+    "layout_rhymes": "标韵"
   },
   "ja": {
     "heading": "詩歌",
@@ -133,7 +136,8 @@
     "layout_label": "原文の組み方",
     "layout_horizontal": "横書き",
     "layout_vertical": "縦書き",
-    "layout_simple": "単一列の表示では横書きになります。"
+    "layout_simple": "単一列の表示では横書きになります。",
+    "layout_rhymes": "韻字に印"
   },
   "de": {
     "heading": "Lyrik",
@@ -167,7 +171,8 @@
     "layout_label": "Layout des Originals",
     "layout_horizontal": "Horizontal",
     "layout_vertical": "Vertikal",
-    "layout_simple": "Die einspaltige Ansicht verwendet horizontalen Text."
+    "layout_simple": "Die einspaltige Ansicht verwendet horizontalen Text.",
+    "layout_rhymes": "Reime markieren"
   },
   "fr": {
     "heading": "Poésie",
@@ -201,7 +206,8 @@
     "layout_label": "Disposition de l’original",
     "layout_horizontal": "Horizontale",
     "layout_vertical": "Verticale",
-    "layout_simple": "La lecture en une colonne utilise le texte horizontal."
+    "layout_simple": "La lecture en une colonne utilise le texte horizontal.",
+    "layout_rhymes": "Marquer les rimes"
   },
   "ru": {
     "heading": "Поэзия",
@@ -235,6 +241,7 @@
     "layout_label": "Набор оригинала",
     "layout_horizontal": "Горизонтальный",
     "layout_vertical": "Вертикальный",
-    "layout_simple": "В одноколоночном режиме текст расположен горизонтально."
+    "layout_simple": "В одноколоночном режиме текст расположен горизонтально.",
+    "layout_rhymes": "Отметить рифмы"
   }
 }

@@ -53,3 +53,20 @@ html[data-poetry-layout="vertical"] .locale-zh.poetry-single .poetry-intro > h1 
 @media(max-width:620px) {
   html[data-poetry-layout="vertical"] .poetry-composition > h2 { font-size:1rem; }
 }
+/* Vermilion marks: one resting point at a poem's close, and an optional
+   rhyme reading aid set as 着重號 (right of a vertical character, below a
+   horizontal one). The toggle shows its own mark. */
+.poetry-layout-controls .poetry-rhyme-toggle { margin-inline-start:.75rem; }
+.poetry-layout-controls .poetry-rhyme-toggle[hidden] { display:none; }
+.poetry-rhyme-toggle::before { content:""; display:inline-block; width:.42em; height:.42em; margin-inline-end:.5em; border-radius:50%; background:var(--accent); vertical-align:.1em; opacity:.4; }
+.poetry-rhyme-toggle[aria-pressed="true"]::before { opacity:1; }
+.poem-version.source .poetry-end { color:var(--accent); }
+:root[data-poetry-rhymes="on"] .poem-version.source .poetry-rhyme {
+  -webkit-text-emphasis:filled dot var(--accent); text-emphasis:filled dot var(--accent);
+  -webkit-text-emphasis-position:under right; text-emphasis-position:under right;
+}
+@media (forced-colors:active) {
+  .poetry-rhyme-toggle::before { background:CanvasText; }
+  .poem-version.source .poetry-end { color:CanvasText; }
+  :root[data-poetry-rhymes="on"] .poem-version.source .poetry-rhyme { -webkit-text-emphasis-color:CanvasText; text-emphasis-color:CanvasText; }
+}

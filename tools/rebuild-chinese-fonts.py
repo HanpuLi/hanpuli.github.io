@@ -87,6 +87,9 @@ def collect():
         parser.feed((ROOT / name).read_text())
         chars.update(c for c in ''.join(parser.parts) if wanted(c))
     for path in (ROOT / 'content').rglob('*.json'):
+        # Rhyme marks repeat characters of the originals; their review notes are not published.
+        if path.name == 'rhymes.json':
+            continue
         for text in strings(json.loads(path.read_text())):
             chars.update(c for c in text if wanted(c))
     for name in ('i18n.js', 'shop-copy.js'):
