@@ -1,0 +1,1438 @@
+{
+ "schema": 1,
+ "basis": "謹按譜定韻位標註；句中偶韻不標；可韻可不韻之處依作者實際用韻。",
+ "texts": {
+  "jia-yi-a1-text": {
+   "source_body_sha256": "b160d95ab9301eab26d511c8ce71672cfe54641618ba4d46d3ae1e73e9f42c5a",
+   "form": "臨江仙 · 正體（雙調六十字，前後段各五句三平韻，7-6-7-5-5）",
+   "rhyme_group": "詞林正韻第三部（支微齊）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 13,
+     "char": "遲"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 6,
+     "char": "知"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "衣"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 13,
+     "char": "期"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "移"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 10,
+     "char": "時"
+    }
+   ],
+   "note": ""
+  },
+  "jia-yi-b1-text": {
+   "source_body_sha256": "13c9207617140f344449e2ad99058659de3c3b645ae155c31ddf49fc2ff8fee2",
+   "form": "臨江仙 · 正體（雙調六十字，前後段各五句三平韻，7-6-7-5-5）",
+   "rhyme_group": "詞林正韻第三部（支微齊；棲屬齊韻）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 13,
+     "char": "遲"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 6,
+     "char": "疑"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "知"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 13,
+     "char": "依"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "棲"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 10,
+     "char": "時"
+    }
+   ],
+   "note": ""
+  },
+  "jia-yi-a2-text": {
+   "source_body_sha256": "94b45df8f1367ce075de0cb4e5fbea554f08121b6618174deee2cf5a5e93a9c3",
+   "form": "臨江仙 · 正體（雙調六十字，前後段各五句三平韻，7-6-7-5-5）",
+   "rhyme_group": "詞林正韻第三部（支微）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 13,
+     "char": "知"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 6,
+     "char": "離"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "緋"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 13,
+     "char": "期"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "辭"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 10,
+     "char": "墀"
+    }
+   ],
+   "note": ""
+  },
+  "jia-yi-b2-text": {
+   "source_body_sha256": "29c41cb5fdb12fbbcccf7ffad20624b10b09a85a06ac222e8962cbd00968a25f",
+   "form": "踏莎行 · 正體（雙調五十八字，前後段各五句三仄韻，4-4-7-7-7）",
+   "rhyme_group": "詞林正韻第十一部仄聲（梗迥靜）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 8,
+     "char": "並"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 6,
+     "char": "暝"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 14,
+     "char": "冷"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 8,
+     "char": "省"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "艇"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 14,
+     "char": "靜"
+    }
+   ],
+   "note": "首句（四字）譜不韻，温、休不標。"
+  },
+  "jia-yi-b3-text": {
+   "source_body_sha256": "554484c69bb3a9885846914a32ed2d9367f4bafd086a292568c300bbee752ed7",
+   "form": "臨江仙 · 正體（雙調六十字，前後段各五句三平韻，7-6-7-5-5）",
+   "rhyme_group": "詞林正韻第六部（元魂痕）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 13,
+     "char": "温"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 6,
+     "char": "吞"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "門"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 13,
+     "char": "根"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "論"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 10,
+     "char": "恩"
+    }
+   ],
+   "note": ""
+  },
+  "jia-yi-b4-text": {
+   "source_body_sha256": "eacb763162bea211df5c11ae11daf8eaf3b847c37fecc58921c664badb2b9fe7",
+   "form": "渡江雲 · 周邦彥體（雙調一百字，平韻）",
+   "rhyme_group": "詞林正韻第七部（寒先元）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 15,
+     "char": "彈"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 15,
+     "char": "然"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 12,
+     "char": "言"
+    },
+    {
+     "stanza": 0,
+     "line": 3,
+     "index": 13,
+     "char": "沿"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 1,
+     "char": "闌"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 12,
+     "char": "安"
+    },
+    {
+     "stanza": 1,
+     "line": 3,
+     "index": 15,
+     "char": "年"
+    },
+    {
+     "stanza": 1,
+     "line": 4,
+     "index": 9,
+     "char": "餐"
+    }
+   ],
+   "note": "換頭「更闌」二字短韻。 未標（待作者確認）：短：下段第三句（對周詞「指長安日下」）。周詞「下」字以上聲叶平韻之說，各譜處理不一；本作「短」為第七部上聲（緩），與平韻同部，可視作平仄通叶，亦可視為非韻位。"
+  },
+  "jia-yi-b5-text": {
+   "source_body_sha256": "fda398b1d224751a130a36e90eea2c9c76bf28adbdac6db5cf7840bed40ba2db",
+   "form": "十六字令 · 正體（單調十六字，四句三平韻，1-7-3-5）",
+   "rhyme_group": "詞林正韻第一部（東冬）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 0,
+     "char": "銅"
+    },
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 8,
+     "char": "中"
+    },
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 18,
+     "char": "容"
+    }
+   ],
+   "note": "三字句「天寒了」譜不韻。"
+  },
+  "jia-yi-a3-text": {
+   "source_body_sha256": "232d5095093dd785ff40a180c85e638e5e7c9149e7224ae6059d6074324b9b07",
+   "form": "鷓鴣天 · 正體（雙調五十五字，前段四句三平韻，後段五句三平韻）",
+   "rhyme_group": "詞林正韻第六部（真諄魂）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 6,
+     "char": "珍"
+    },
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 14,
+     "char": "巡"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 14,
+     "char": "嗔"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 6,
+     "char": "勻"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "真"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 14,
+     "char": "温"
+    }
+   ],
+   "note": "後段首三字句「星欲墜」譜不韻。温屬魂韻，與真諄同部。"
+  },
+  "jia-yi-a4-text": {
+   "source_body_sha256": "077941e2c91c381fbcb08d55c9759a7b8cf6fd45652e7a1f084823f54a75522f",
+   "form": "臨江仙 · 又一體（雙調五十八字，前後段各五句三平韻，6-6-7-5-5）",
+   "rhyme_group": "詞林正韻第二部（陽江）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 12,
+     "char": "常"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 6,
+     "char": "量"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "長"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 12,
+     "char": "窗"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "光"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 10,
+     "char": "雙"
+    }
+   ],
+   "note": "窗、雙屬江韻，與陽同部。"
+  },
+  "jia-yi-a5-text": {
+   "source_body_sha256": "a2486f26540388355393b07e7209df68dd5f7812c5f122af3cc01f15068ac5ab",
+   "form": "臨江仙 · 又一體（雙調五十八字，前後段各五句三平韻，6-6-7-5-5）",
+   "rhyme_group": "詞林正韻第七部（寒桓先刪）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 12,
+     "char": "闌"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 6,
+     "char": "瞞"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "煙"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 12,
+     "char": "年"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "顏"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 10,
+     "char": "斑"
+    }
+   ],
+   "note": ""
+  },
+  "jia-yi-a6-text": {
+   "source_body_sha256": "78fc99fb42ce8d79035a1b1d0cd82677cb256b36ec295e9bd969ec4e22e1093d",
+   "form": "鷓鴣天 · 正體（雙調五十五字，前段四句三平韻，後段五句三平韻）",
+   "rhyme_group": "詞林正韻第十一部（庚清青蒸登）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 6,
+     "char": "生"
+    },
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 14,
+     "char": "明"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 14,
+     "char": "層"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 6,
+     "char": "驚"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "名"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 14,
+     "char": "青"
+    }
+   ],
+   "note": "層屬蒸登，青屬青韻，同部。"
+  },
+  "jia-yi-a7-text": {
+   "source_body_sha256": "9f9af432ea50debefb1ef372bc9412c7bca86160affafcc88d7df6b89f9bd8bc",
+   "form": "臨江仙 · 正體（雙調六十字，前後段各五句三平韻，7-6-7-5-5）",
+   "rhyme_group": "詞林正韻第六部（魂痕諄文）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 13,
+     "char": "温"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 6,
+     "char": "蓀"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "痕"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 13,
+     "char": "昏"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "輪"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 10,
+     "char": "聞"
+    }
+   ],
+   "note": ""
+  },
+  "jia-yi-b6-text": {
+   "source_body_sha256": "5e65a9328ee459c4124de64508c78ebfedfd1015e625d1ce22b33ad849f90a7c",
+   "form": "五言古體（組詩式，五段換韻，偶句押韻）",
+   "rhyme_group": "平水韻：元 / 蒸 / 齊微通押 / 尤 / 支",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 10,
+     "char": "痕"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 10,
+     "char": "根"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "昏"
+    },
+    {
+     "stanza": 0,
+     "line": 3,
+     "index": 10,
+     "char": "園"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 10,
+     "char": "增"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 10,
+     "char": "憑"
+    },
+    {
+     "stanza": 2,
+     "line": 0,
+     "index": 10,
+     "char": "泥"
+    },
+    {
+     "stanza": 2,
+     "line": 1,
+     "index": 10,
+     "char": "稀"
+    },
+    {
+     "stanza": 3,
+     "line": 0,
+     "index": 10,
+     "char": "繆"
+    },
+    {
+     "stanza": 3,
+     "line": 1,
+     "index": 10,
+     "char": "秋"
+    },
+    {
+     "stanza": 3,
+     "line": 2,
+     "index": 10,
+     "char": "酬"
+    },
+    {
+     "stanza": 3,
+     "line": 3,
+     "index": 10,
+     "char": "休"
+    },
+    {
+     "stanza": 4,
+     "line": 0,
+     "index": 10,
+     "char": "詩"
+    },
+    {
+     "stanza": 4,
+     "line": 1,
+     "index": 10,
+     "char": "枝"
+    },
+    {
+     "stanza": 4,
+     "line": 2,
+     "index": 10,
+     "char": "移"
+    },
+    {
+     "stanza": 4,
+     "line": 3,
+     "index": 10,
+     "char": "涯"
+    }
+   ],
+   "note": "第一段十三元（痕根昏園）；第二段十蒸（增憑）；第三段泥（八齊）、稀（五微）古體鄰韻通押；第四段十一尤（繆＝綢繆，尤韻；秋酬休）；第五段四支（詩枝移涯，涯取支韻讀）。各段首句不入韻。"
+  },
+  "jia-yi-a8-text": {
+   "source_body_sha256": "6d0e7e6a533e685c2f2d6974f91f40d7f2b9b134e3fd768fe3fe99fdf8be7e7b",
+   "form": "五言古體（兩段，先仄後平換韻）",
+   "rhyme_group": "平水韻：上聲七麌/六語、去聲六御通押 → 下平一先",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 10,
+     "char": "雨"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 10,
+     "char": "曙"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "縷"
+    },
+    {
+     "stanza": 0,
+     "line": 3,
+     "index": 10,
+     "char": "汝"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 10,
+     "char": "然"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 10,
+     "char": "弦"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 10,
+     "char": "年"
+    },
+    {
+     "stanza": 1,
+     "line": 3,
+     "index": 10,
+     "char": "傳"
+    }
+   ],
+   "note": "前段雨縷（麌）、汝（語）、曙（御）上去通押；後段然弦年傳（先）。"
+  },
+  "jia-yi-b7-text": {
+   "source_body_sha256": "ad7cae4062a7635a8e858f1404a114d7a05308d2fc35953db344bf3a7ea94e70",
+   "form": "五言古體 / 排律式（十二句，一韻到底）",
+   "rhyme_group": "平水韻：下平一先",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 10,
+     "char": "眠"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 10,
+     "char": "年"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "篇"
+    },
+    {
+     "stanza": 0,
+     "line": 3,
+     "index": 10,
+     "char": "前"
+    },
+    {
+     "stanza": 0,
+     "line": 4,
+     "index": 10,
+     "char": "天"
+    },
+    {
+     "stanza": 0,
+     "line": 5,
+     "index": 10,
+     "char": "邊"
+    }
+   ],
+   "note": "首句「詞」不入韻。若作五言排律看，第五聯「莫攀檐前柳，莫數落花天」平仄不合律，宜作古體。"
+  },
+  "jia-yi-a9-text": {
+   "source_body_sha256": "a6dee35d21767f6f620d9caefb473ce02606d3699ac6684417bba3b4536fdb8b",
+   "form": "鷓鴣天 · 正體（雙調五十五字，前段四句三平韻，後段五句三平韻）",
+   "rhyme_group": "詞林正韻第七部（先刪寒）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 6,
+     "char": "前"
+    },
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 14,
+     "char": "篇"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 14,
+     "char": "眠"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 6,
+     "char": "慳"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "餐"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 14,
+     "char": "難"
+    }
+   ],
+   "note": "後段「賓一哂」譜不韻。"
+  },
+  "jia-yi-a10-text": {
+   "source_body_sha256": "da0668b81d0a3722a314b59259a05ff7bb490f275f05f0c1064dc969bbf67338",
+   "form": "中呂 · 山坡羊（變格：首二句作三字，末尾單字句前多一七字句，共十二句）",
+   "rhyme_group": "中原音韻：齊微（此字借支思）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 6,
+     "char": "此"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 6,
+     "char": "至"
+    },
+    {
+     "stanza": 0,
+     "line": 3,
+     "index": 6,
+     "char": "立"
+    },
+    {
+     "stanza": 0,
+     "line": 4,
+     "index": 6,
+     "char": "記"
+    },
+    {
+     "stanza": 0,
+     "line": 5,
+     "index": 7,
+     "char": "記"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 0,
+     "char": "遲"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 0,
+     "char": "歸"
+    }
+   ],
+   "note": "正格 4-4-7-3-3-7-7-1-3-1-3，十一句。本作首二句作三字；「此」屬支思，借韻入齊微；「至」「記」去聲、「立」入作去、「遲」「歸」平聲，均齊微。兩單字句「遲」「歸」押齊微（單字句譜可韻可不韻，作者實押，故標）。「這點子氣味偏惦記」較正格多出一句（或「廿年」句為增句），與上句同押「記」字（重韻）。 未標（待作者確認）：面：首句「風迎面」為譜定韻位，「面」屬先天，未押；真：第四句「認不真」為譜定韻位，「真」屬真文，與齊微不叶；真：第五句「卻認真」為譜定韻位，同上，真文不叶（真真重字）；了：「是誤了」為譜定韻位（三字句），「了」屬蕭豪，不叶齊微；了：「也是誤了」為譜定韻位（三字句帶襯），「了」屬蕭豪，不叶；與前句重字"
+  },
+  "zhegutian-20260909-text": {
+   "source_body_sha256": "045259255504fac59f2dfd62b32daefe3aff5693c5bc525fd230af2ada086dc0",
+   "form": "鷓鴣天 · 正體（雙調五十五字，前段四句三平韻，後段五句三平韻）",
+   "rhyme_group": "詞林正韻第十一部（登庚蒸青）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 6,
+     "char": "燈"
+    },
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 14,
+     "char": "更"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 14,
+     "char": "凝"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 6,
+     "char": "零"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 14,
+     "char": "明"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 14,
+     "char": "成"
+    }
+   ],
+   "note": "後段「言漸杳」譜不韻，「露初零」韻。"
+  },
+  "linjiangxian-20260909-text": {
+   "source_body_sha256": "d039fe0c395d5f52861daa107a3fafc4553a9e2f539b3c9c1d0ffa1c90973613",
+   "form": "臨江仙 · 正體（雙調六十字，前後段各五句三平韻，7-6-7-5-5）",
+   "rhyme_group": "詞林正韻第七部（寒先）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 13,
+     "char": "干"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 6,
+     "char": "安"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "殘"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 13,
+     "char": "前"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "旋"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 10,
+     "char": "全"
+    }
+   ],
+   "note": ""
+  },
+  "linjiangxian-20180108-revised-202610": {
+   "source_body_sha256": "e4aa6daa823dbc01817737d921c417860ad6c7df6c81fe5b4aa059feda18d612",
+   "form": "臨江仙 · 正體（雙調六十字，前後段各五句三平韻，7-6-7-5-5）",
+   "rhyme_group": "詞林正韻第十二部（尤）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 13,
+     "char": "流"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 6,
+     "char": "留"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "秋"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 13,
+     "char": "樓"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "愁"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 10,
+     "char": "眸"
+    }
+   ],
+   "note": ""
+  },
+  "linjiangxianyin-20191028-revised-202610": {
+   "source_body_sha256": "b7f18f5c5f4d5c02f6f1a9f961379b2c5757ce073313a65d106ed79232b400a8",
+   "form": "臨江仙引 · 柳永體（雙調七十四字，前段四平韻，後段三平韻）",
+   "rhyme_group": "詞林正韻第七部（寒桓先刪山）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 12,
+     "char": "安"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 5,
+     "char": "年"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "桓"
+    },
+    {
+     "stanza": 0,
+     "line": 3,
+     "index": 14,
+     "char": "山"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 13,
+     "char": "還"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 10,
+     "char": "潺"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 12,
+     "char": "憐"
+    }
+   ],
+   "note": "起二字句「塢裂」「宴散」對柳詞「渡口」「向晚」，譜不韻。"
+  },
+  "chaozhongcuo-20181023-revised-202610": {
+   "source_body_sha256": "3242d799d4a815561f5d45a727d54f9a13ef3b4a98cec5af32c29d6fdebc2802",
+   "form": "朝中措 · 正體（雙調四十八字，前段四句三平韻，後段五句二平韻）",
+   "rhyme_group": "詞林正韻第十一部（庚清青）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 6,
+     "char": "英"
+    },
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 12,
+     "char": "停"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 12,
+     "char": "縈"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 13,
+     "char": "鳴"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 12,
+     "char": "聲"
+    }
+   ],
+   "note": "前段第三句「偶影欄前欲並」譜不韻（並為仄聲）。"
+  },
+  "fengrusong-20181102-revised-202610": {
+   "source_body_sha256": "daf4a83ba03b4edee117b0316474d33f157c41c0b2373ef4973e150e459be81b",
+   "form": "風入松 · 又一體（雙調七十四字，前後段各六句四平韻，第二句四字，如趙彥端體）",
+   "rhyme_group": "詞林正韻第二部（陽唐）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 6,
+     "char": "霜"
+    },
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 11,
+     "char": "陽"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 15,
+     "char": "長"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 12,
+     "char": "堂"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 6,
+     "char": "光"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 11,
+     "char": "香"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 15,
+     "char": "忘"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 12,
+     "char": "章"
+    }
+   ],
+   "note": ""
+  },
+  "mantingfang-20191219-revised-202610": {
+   "source_body_sha256": "c337a689bd21b02741261d4a76208fe6c272abc7e6dddc1e62bc5faa06b32af8",
+   "form": "滿庭芳 · 正體（雙調九十五字，前段四平韻，後段五平韻）",
+   "rhyme_group": "詞林正韻第七部（刪先寒）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 15,
+     "char": "彎"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 9,
+     "char": "弦"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 14,
+     "char": "間"
+    },
+    {
+     "stanza": 0,
+     "line": 3,
+     "index": 13,
+     "char": "寬"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 1,
+     "char": "顏"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 15,
+     "char": "瀾"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 9,
+     "char": "前"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 14,
+     "char": "山"
+    },
+    {
+     "stanza": 1,
+     "line": 3,
+     "index": 13,
+     "char": "邊"
+    }
+   ],
+   "note": "換頭「辭顏」二字短韻；其後三字句「名已熟」譜不韻。「把千里關山」之「山」為句中，非韻位。"
+  },
+  "manjianghong-2022-sewn-202610": {
+   "source_body_sha256": "1766d6bb016603e3c4224cc6ccf240506f5776a28d75576c482bcdd7af1300c7",
+   "form": "滿江紅 · 正體（雙調九十三字，仄韻，前段四韻後段五韻）",
+   "rhyme_group": "詞林正韻第十七部入聲（陌昔錫職緝）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 12,
+     "char": "客"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 12,
+     "char": "入"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 14,
+     "char": "積"
+    },
+    {
+     "stanza": 0,
+     "line": 3,
+     "index": 12,
+     "char": "隙"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 6,
+     "char": "易"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 14,
+     "char": "急"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 9,
+     "char": "璧"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 14,
+     "char": "席"
+    },
+    {
+     "stanza": 1,
+     "line": 3,
+     "index": 12,
+     "char": "跡"
+    }
+   ],
+   "note": "「瘦損腰圍衣尚窄」之窄、「初景寒柯違業識」之識在七言上句（譜不韻），偶然同部，不標；「燈未冷」「門不閉」三字句譜不韻。「易」取變易義，入聲昔韻。"
+  },
+  "manjianghong-2022-echo-202610": {
+   "source_body_sha256": "143780c998ba6e889061809c79f2ce384f420a5ce4b6d7af2a7fa2dc3009f78d",
+   "form": "滿江紅 · 正體（雙調九十三字，仄韻，前段四韻後段五韻）",
+   "rhyme_group": "詞林正韻第十七部入聲（德陌錫職昔）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 12,
+     "char": "塞"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 12,
+     "char": "客"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 14,
+     "char": "笛"
+    },
+    {
+     "stanza": 0,
+     "line": 3,
+     "index": 12,
+     "char": "積"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 6,
+     "char": "色"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 14,
+     "char": "拭"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 9,
+     "char": "璧"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 14,
+     "char": "席"
+    },
+    {
+     "stanza": 1,
+     "line": 3,
+     "index": 12,
+     "char": "息"
+    }
+   ],
+   "note": "「舊事還從新曆出」之出、「初景寒柯違業識」之識在不韻之七言上句，不標；「空空雪」「光易轉」三字句譜不韻。"
+  },
+  "manjianghong-rereading-202610-text": {
+   "source_body_sha256": "22da84361b21397c5b70a9665f1763d333cf60e3f586bcff4fe3efa4b0ed94d4",
+   "form": "滿江紅 · 正體（雙調九十三字，仄韻，前段四韻後段五韻）",
+   "rhyme_group": "詞林正韻第十七部入聲（職緝陌麥質）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 12,
+     "char": "力"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 12,
+     "char": "澀"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 14,
+     "char": "棘"
+    },
+    {
+     "stanza": 0,
+     "line": 3,
+     "index": 12,
+     "char": "隔"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 6,
+     "char": "濕"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 14,
+     "char": "逆"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 9,
+     "char": "息"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 14,
+     "char": "識"
+    },
+    {
+     "stanza": 1,
+     "line": 3,
+     "index": 12,
+     "char": "日"
+    }
+   ],
+   "note": "「鎖盡諸門身作鎖」「字入年輪方有響」為不韻之七言上句；「名復見」「言可續」三字句譜不韻。"
+  },
+  "queqiaoxian-20181222-revised-202610": {
+   "source_body_sha256": "a1c354b984efe0f7adb977a4e6a401586e05411a798433f450378bcf4dae2532",
+   "form": "鵲橋仙 · 秦觀體（雙調五十六字，前後段各五句兩仄韻）",
+   "rhyme_group": "詞林正韻第四部仄聲（語麌遇暮）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 15,
+     "char": "句"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 15,
+     "char": "許"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 15,
+     "char": "故"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 15,
+     "char": "路"
+    }
+   ],
+   "note": ""
+  },
+  "yingtianchang-20261008-text": {
+   "source_body_sha256": "abf7f22d1d630368513f83dd2e4dd72b43a1f1602d0372fc201109ffc5aef03d",
+   "form": "應天長 · 韋莊體（雙調五十字，前段五句四仄韻，後段五句四仄韻）",
+   "rhyme_group": "詞林正韻第三部仄聲（紙寘隊）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 6,
+     "char": "理"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 6,
+     "char": "指"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 6,
+     "char": "起"
+    },
+    {
+     "stanza": 0,
+     "line": 3,
+     "index": 6,
+     "char": "耳"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 6,
+     "char": "置"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 5,
+     "char": "齒"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 5,
+     "char": "退"
+    },
+    {
+     "stanza": 1,
+     "line": 3,
+     "index": 4,
+     "char": "水"
+    }
+   ],
+   "note": "前段「掩門初」、後段「指微蜷」三字句譜不韻。「退」屬隊韻（灰半入第三部），與紙寘同部。"
+  }
+ }
+}

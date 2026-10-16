@@ -15,6 +15,19 @@ window.PoetryFlow = (() => {
     });
   }
 
+  // Authored lines of a stanza as node lists, so inline marks survive a split.
+  function stanzaLines(stanza) {
+    const lines = [[]];
+    for (const node of stanza.childNodes) {
+      if (node.nodeType !== Node.TEXT_NODE) { lines.at(-1).push(node.cloneNode(true)); continue; }
+      node.data.split('\n').forEach((piece, index) => {
+        if (index) lines.push([]);
+        if (piece) lines.at(-1).push(document.createTextNode(piece));
+      });
+    }
+    return lines;
+  }
+
   function titlePhrases(text) {
     const phrases = text.match(/[^，。；：、·]*[，。；：、·][ \u00a0]*|[^，。；：、·]+$/gu) || [text];
     return phrases.join('') === text ? phrases : [text];
@@ -102,13 +115,16 @@ window.PoetryFlow = (() => {
     stanzas = stanzas.flatMap(stanza => {
       const box = stanza.getBoundingClientRect();
       if (box.width <= available + 0.25) return [stanza];
-      const lines = stanza.textContent.split('\n');
+      const lines = stanzaLines(stanza);
       const columns = Math.max(1, Math.floor(available / (box.width / lines.length)));
       const parts = [];
       for (let start = 0; start < lines.length; start += columns) {
         const part = stanza.cloneNode(false);
         part.dataset.flowContinuation = String(start);
-        part.textContent = lines.slice(start, start + columns).join('\n');
+        lines.slice(start, start + columns).forEach((line, index) => {
+          if (index) part.append(document.createTextNode('\n'));
+          part.append(...line);
+        });
         parts.push(part);
       }
       return parts;

@@ -13,6 +13,7 @@ from poetry_library import Library, LANGS, SHOP_LANGS, read
 from poetry_kundoku import Kundoku
 from poetry_kunten import Kunten
 from poetry_reading_aids import ReadingAids
+from poetry_rhymes import Rhymes
 
 
 def esc(value: Any) -> str:
@@ -36,6 +37,7 @@ class Pages:
         self.kundoku = Kundoku(self.lib)
         self.kunten = Kunten(self.lib)
         self.reading_aids = ReadingAids(self.lib)
+        self.rhymes = Rhymes(self.lib)
         self.ui = read(base.CONTENT / 'poetry/ui.json')
         self.template = (base.TEMPLATES / 'poetry.html').read_text(encoding='utf-8')
 
@@ -109,6 +111,7 @@ class Pages:
                                                      ('vertical',' data-poetry-kunten-choice="on"',ui['layout_vertical']+'＋訓点')]
                                                     if locale=='ja' and kunten else
                                                     [('horizontal','',ui['layout_horizontal']),('vertical','',ui['layout_vertical'])]))
+                + f'<button type="button" class="poetry-rhyme-toggle" data-poetry-rhymes-toggle aria-pressed="false">{esc(ui["layout_rhymes"])}</button>'
                 + '</div>')
 
     def presentation_title(self, title: str, code: str | None, locale: str) -> tuple[str, str]:
@@ -243,7 +246,7 @@ class Pages:
         title_class = ' class="visually-hidden"' if single and not translation else ''
         with_kunten = locale == 'ja' and classical and tid in self.kunten.texts
         rows.append(f'<h2{title_class} data-poetry-title="{esc(source_title)}">'
-                    f'{esc(original["title"])}</h2><div class="body">{esc(original["body"])}</div>'
+                    f'{esc(original["title"])}</h2><div class="body"{self.rhymes.attribute(tid) if classical else ""}>{esc(original["body"])}</div>'
                     + ('' if with_kunten else '</section>'))
         if with_kunten:
             digest = self.kunten.texts[tid]['source_body_sha256']

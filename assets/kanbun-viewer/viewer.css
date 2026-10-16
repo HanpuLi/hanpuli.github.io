@@ -65,6 +65,10 @@ body { padding:12px 15px; box-sizing:content-box; }
   margin-top:.9em; padding-top:.9em;
   border-top:1px solid color-mix(in srgb, currentColor 22%, transparent);
 }
+/* 返り点 in vermilion, after the 朱点 of glossed manuscripts; site accent values. */
+:root { --kanbun-vermilion:#8a2f1d; }
 @media(prefers-color-scheme:dark){
   html,body {color:#eae7e1;background:transparent;}
+  :root { --kanbun-vermilion:#cf765e; }
 }
+@media(forced-colors:active){ :root { --kanbun-vermilion:CanvasText; } }

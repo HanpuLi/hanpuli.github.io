@@ -924,7 +924,7 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
     about = ABOUT_SITE[locale_id]
     contexts = CONTEXTS[locale_id]
     primary = IDENTITY["primary_name"]
-    hero_name = html.escape(primary).replace(" ", "<br>", 1)
+    hero_name = html.escape(primary).replace(" ", "<br>", 1) + '<span class="hero-period" aria-hidden="true">.</span>'
     alt_name = IDENTITY["alternate_names"][0] if IDENTITY["alternate_names"] else ""
     if page == "index":
         meta_title = locale["home"]["meta_title"]

@@ -35,6 +35,14 @@ complete original and translations remain available horizontally. Poem blocks
 are centred without centring or rewriting the individual authored lines.
 `npm run qa:poetry-layout` exercises these behaviours in Chromium;
 `POETRY_LAYOUT_ENGINE=webkit npm run qa:poetry-layout` checks WebKit as well.
+Classical originals end in one vermilion full stop. An optional rhyme aid
+(`標韻`, remembered locally, off by default) sets a small vermilion 着重號 beside
+each rhyme character: right of a vertical character, below a horizontal one.
+Positions are the prescribed rhyme slots (谱定韵位) in `content/poetry/rhymes.json`,
+each recorded with its character and tied to the original's SHA-256; editing an
+original fails the build until its rhymes are reviewed again. Uncertain slots are
+left unmarked and described in that entry's note. Kunten 返り点 use the same
+vermilion.
 An experimental Japanese kanbun display layer is available only on reviewed
 text versions (all 29 classical texts now have source-aligned editorial pilot marks). It uses a sandboxed vertical kanbun
 visual document (the site's own typesetter) with the unmodified Chinese source available to assistive

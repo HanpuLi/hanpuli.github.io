@@ -68,7 +68,7 @@ def main() -> None:
                 errors.append('Unresolved template: '+str(path.relative_to(ROOT)))
             if route!='summer-2017':
                 for tid,body in re.findall(r'<article\b[^>]*data-poetry-text="([^"]+)"[^>]*>(.*?)</article>',document,re.S):
-                    actual=[html.unescape(s) for s in re.findall(r'<div class="body">(.*?)</div>',body,re.S)]
+                    actual=[html.unescape(s) for s in re.findall(r'<div class="body"(?: data-poetry-rhymes="[0-9,]+")?>(.*?)</div>',body,re.S)]
                     expected=[library.edition(tid,'zh-hans' if locale=='zh-hans' else 'zh')['body']]
                     if locale not in ('zh','zh-hans') and library.edition(tid,locale):
                         expected.append(library.edition(tid,locale)['body'])
