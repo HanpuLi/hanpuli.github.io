@@ -28,11 +28,11 @@
   "leading": "Zeilenhöhe der Quelle",
   "tracking": "Zeichenabstand",
   "face": "Gerenderte Schriften",
-  "site_end": "Das gemeinsame Raster macht nicht alle Seiten gleich. Diese Maße gelten für diesen Eintrag und Viewport. Die Linie trennt Projekte, die Nummer verortet den Eintrag, und die kleinere Belegspalte ergänzt Informationen, die der Titel allein nicht nachweisen kann.",
+  "site_end": "Diese Maße gelten für diesen Eintrag in diesen beiden Breiten; andere Seiten nutzen dasselbe Raster anders. Die Linie trennt Projekte, die Nummer verortet den Eintrag, und die schmalere Belegspalte enthält Stand und Daten, die hinter dem Titel stehen.",
   "pv_title": "Eine Ausgabe zerlegt",
   "pv_intro": "Ein neues B3-Muster aus dem aktuellen Shop-Renderer: ein Exemplar, traditionelles Chinesisch, Basispixelschrift mit 24 Punkten, ohne Übersetzung, simulierte Barzahlung. Die Anmerkungen folgen der tatsächlichen Ausgabe. Das ältere Muster oben zeigt eine separat datierte Szene.",
   "anatomy_title": "01 / Dem Streifen folgen",
-  "anatomy_note": "Der Streifen verbindet Kassenbeleg, CUT-HERE-Abschnitt und Gedichtbild in der Ausgabereihenfolge des Shops. Die Breite bleibt im selben Maßstab. Nummerierte Linien zeigen auf tatsächlich gedruckte Felder. Dies ist ein digitales Muster, kein Foto von Thermopapier.",
+  "anatomy_note": "Der Streifen verbindet Kassenbeleg, CUT-HERE-Abschnitt und Gedichtbild in der Ausgabereihenfolge des Shops. Die Breite bleibt im selben Maßstab. Nummerierte Linien zeigen auf die gedruckten Felder dieses digitalen Musters.",
   "callouts": [
     [
       "Aussteller und Szene",
@@ -65,7 +65,7 @@
   "image": "Bildbereich",
   "receipt_width": "Kassenzeile · 30 Zellen",
   "poem_width": "Satzbreite des Gedichts",
-  "dots_note": "Die Millimetermaße sind mit 8 Punkten/mm umgerechnet. Die Bildschirmgröße hängt von Zoom und Gerät ab; die Zeichnung zeigt Proportionen und ist kein Bildschirmlineal.",
+  "dots_note": "Die Millimetermaße sind mit 8 Punkten/mm umgerechnet. Die Bildschirmgröße hängt von Zoom und Gerät ab, daher zeigt die Zeichnung nur Proportionen.",
   "columns_title": "03 / Ein Beleg im festen Raster",
   "columns_intro": "Dies ist der tatsächliche Ausschnitt der Artikelkopfzeile. Vier Felder belegen 3, 11, 6 und 6 Zeichenzellen, getrennt durch je eine Leerzelle; eine weitere steht am Ende. Der Vorschub beträgt 12 Punkte je Zeichen. Die Buchstaben stammen aus eigenen Bitmapmustern des Renderers.",
   "columns": [
@@ -80,7 +80,7 @@
   "base": "Basis · Fusion Pixel",
   "upgrade": "Zusatz · Website-Schriften",
   "font_note": "Die Basis verwendet Fusion Pixel Zh HK im 12-Punkte-Raster, hier mit 32 Punkten Zeilenvorschub. Die Website-Option verwendet den chinesischen Serifenschriftstapel des Projekts, hier mit 31 Punkten. Beide Ausschnitte sind 1-Bit-Ausgaben; Konturen und Abstände bleiben in den Pixeln sichtbar.",
-  "detail_note": "Öffnen Sie das Bild für seine Originalpixel. Vergrößerungen behalten harte Pixelkanten. Die Muster dokumentieren digitale Ausgabe; Papierstruktur, Wärmeausbreitung und Verblassen werden nicht simuliert.",
+  "detail_note": "Öffnen Sie das Bild für seine Originalpixel. Vergrößerungen behalten harte Pixelkanten. Die Muster zeigen die digitale Ausgabe, ohne simulierte Papierstruktur, Wärmeausbreitung oder Verblassen.",
   "specimen": "B3 / 24. September 2026 / ein Exemplar / ohne Übersetzung",
   "original": "Der Originaltext bleibt auf der Gedichtseite lesbar.",
   "sample_leading": "Zeilenhöhe des Musters"

@@ -8,13 +8,13 @@
     "read": "Read the poems",
     "receipt": "01 / The receipt",
     "voucher": "02 / The poem",
-    "sample": "B3 · original · pixel type · fixed scene dated 22 Sep 2026 · continuous digital re-render, 24 Sep 2026. Not a photograph or a live order preview.",
+    "sample": "B3 · original · pixel type · fixed scene dated 22 Sep 2026 · continuous digital re-render, 24 Sep 2026.",
     "process": "From transaction to reading",
     "process_body": "Choose a poem, typeface and translations, then check out without paying. One receipt records the order; separately numbered vouchers carry the poems. Download the image proofs or a complete, offline-readable text copy.",
     "privacy": "Made on your device",
     "privacy_body": "Files are prepared in your browser. Catalogue selections are saved on this device; completed orders stay in the current tab. Nothing is uploaded and no money is taken. Ordinary browser use does not contact a printer. On the paired H10S terminal, printing starts only after an explicit local action.",
     "hardware": "A physical constraint",
-    "hardware_body": "This work is intended to be encountered on paper. The page now shows scans of two actual thermal-paper editions, B3 and B4. The earlier digital specimen remains a separate re-render, not a photograph of either print. Two prints do not establish calibration for every configuration.",
+    "hardware_body": "The work is meant for paper. Below are scans of two thermal-paper editions, B3 and B4; the digital specimen above is a separate re-render.",
     "back": "Project overview",
     "edit": "Browse the editions",
     "preview_alt": "Continuous B3 digital specimen: a fictional cash receipt, CUT HERE separator and Chinese poem voucher on the same strip.",
@@ -31,10 +31,10 @@
     "toc_label": "About this work",
     "specimen_open": "Open the complete digital specimen",
     "specimen_label": "One order, one strip",
-    "specimen_body": "The receipt comes first. A cut line offers a separation; it does not require one. Each poem copy carries its own order-linked number. The small image is a documentary specimen, not an actual-size reading proof.",
+    "specimen_body": "The receipt comes first, then a cut line where the strip may be separated. Each poem copy carries its own number, linked to the order.",
     "read_shi": "Read both drafts of The Roof Splits Open",
     "references_title": "References and comparisons",
-    "references_intro": "These sources clarify particular questions of measurement, reading and material form. They are not a retrospective account of the project’s origin.",
+    "references_intro": "These sources clarify particular questions of measurement, reading and material form.",
     "notes": [
       {
         "id": "origin",
@@ -44,21 +44,21 @@
         "feature": "",
         "body": [
           "The project began after I found a receipt printer and tried printing my own poems on it. The poems already existed. The question came from the everyday familiarity of a supermarket receipt: what would it feel like to acquire a piece of personal writing through a process meant to handle goods by the unit?",
-          "Writing can hold an uneven investment of time, attention, knowledge and attachment. The shop offers a different description: a title in a catalogue, a quantity, a base specification and a price. This is not a division between pure poetry and thoughtless commodities. Ordinary goods also contain labour and differences that their prices do not disclose. The work isolates one act of reduction rather than claiming an entire theory of markets.",
-          "The public catalogue is deliberately limited to my published texts. An earlier open-text Studio has been withdrawn. Choosing how a particular poem is issued is the invitation; composing an arbitrary printout is a different activity. This editorial boundary leaves the reader’s interpretation, and what happens to the copy afterwards, open."
+          "Writing can hold an uneven investment of time, attention, knowledge and attachment. The shop offers a different description: a title in a catalogue, a quantity, a base specification and a price. Ordinary goods also contain labour and differences that their prices do not disclose; the work isolates one such act of reduction and applies it to poems.",
+          "The catalogue holds only my published poems. The reader’s part is to choose how a particular poem is issued; how it is read, and what happens to the copy afterwards, is left open."
         ]
       },
       {
         "id": "pricing",
         "number": "02",
         "title": "What a price leaves out",
-        "dek": "PV3 counts the source, not the effort.",
+        "dek": "PV3 counts the text and nothing else.",
         "feature": "tariff",
         "body": [
-          "Espeland and Stevens describe commensuration as comparison through a common metric. [[commensuration]] PV3 supplies a small, inspectable instance: unlike poems become comparable sums by counting selected textual features. The formula is explicit about what it can see. It has no term for difficulty, revision, attachment or literary force.",
+          "Espeland and Stevens describe commensuration as comparison through a common metric. [[commensuration]] PV3 is a small instance of it: unlike poems become comparable sums once selected textual features are counted. The formula has no term for difficulty, revision, attachment or literary force.",
           "Only Unicode letters and numbers count as characters. Non-empty source lines and stanzas add to the base amount; automatic wrapping on the narrow paper does not. The base is raised to the lowest .99 price not below that amount. Extras are added afterwards, so the final total need not end in .99.",
-          "The Roof Splits Open costs £12.99 in its first draft and £9.99 in its second. The source changes from 380 to 225 counted characters while its lines and stanzas stay constant. Deletion becomes a price reduction, regardless of what it does to the poem. That discrepancy invites comparison; it does not prove that the cheaper draft is better.",
-          "The steps also hide differences and exaggerate thresholds. A non-literary test of forty x characters is £1.99 as one line and £2.99 as two. Other added breaks leave the displayed price unchanged. This is a chosen retail convention, not a fair measure of length across writing systems or a model of how all shops price their goods."
+          "The Roof Splits Open costs £12.99 in its first draft and £9.99 in its second. The source changes from 380 to 225 counted characters while its lines and stanzas stay constant. Deletion becomes a price reduction, whatever it does to the poem; both drafts can be read side by side.",
+          "The steps also hide differences and exaggerate thresholds. A non-literary test of forty x characters is £1.99 as one line and £2.99 as two, while other added breaks leave the displayed price unchanged. The rounding follows retail convention."
         ]
       },
       {
@@ -68,9 +68,9 @@
         "dek": "Presentation is part of the offer.",
         "feature": "",
         "body": [
-          "Pixel type is the included edition. The website typefaces are an optional upgrade, like a product whose advertised appearance depends on an extra configuration. The basic edition must still be complete and readable. Deliberately degrading it would replace the question with a rigged demonstration.",
-          "The storefront is not outside this arrangement. Its serif display type, space and alignment make the offer attractive while it sells typography as an extra. The project both uses and exposes that appeal. An austere receipt does not make its surrounding website innocent of the prestige that design can confer.",
-          "A translation adds another linguistic and cultural reading, and a physical print would occupy more paper. Its fixed surcharge does not calculate paper length, energy or a translator’s working time. The poems and published translations can be read freely on the site; the extra belongs to the fictional output configuration, not an entrance fee to understanding. Traditional and Simplified Chinese are alternative scripts of the original at the same base price."
+          "Pixel type is the included edition. The website typefaces are an optional upgrade, like a product whose advertised appearance depends on an extra configuration. The basic edition is complete and readable, so the upgrade changes only how the poem looks.",
+          "The storefront is part of this arrangement. Its serif display type, space and alignment make the offer attractive while it sells typography as an extra, so the project both uses that appeal and puts it on display.",
+          "A translation adds another linguistic and cultural reading, and a physical print would use more paper; the fixed surcharge takes no account of paper length, energy or a translator’s working time. The poems and published translations can all be read free on the site, so the charge applies only to the issued edition. Traditional and Simplified Chinese are two scripts of the original at the same base price."
         ]
       },
       {
@@ -80,43 +80,43 @@
         "dek": "A transaction can end before reading does.",
         "feature": "",
         "body": [
-          "The receipt records the order, its quantities, extras, amounts and simulated payment. The poem voucher carries the text, byline, source and identifying number, without repeating its price. These are two kinds of document on one continuous strip, not necessarily two pieces of paper: one order may contain several separately numbered poem copies.",
-          "CUT HERE makes separation available after receipt and poem have been encountered together. Someone can keep the whole strip, cut it, fold it or pass on a part. None is a correct response that the interface should enforce. Numbering keeps the parts attributable; it does not authenticate a purchase, establish ownership or make a copy scarce.",
-          "The till’s British wording, columns, tax analysis and payment details supply a familiar administrative rhythm. The fictional notices are integral to that form, not small print to remove in pursuit of realism. No payment is processed. Here the voucher delivers a poem; it is not a promise of later cash redemption."
+          "The receipt records the order, its quantities, extras, amounts and simulated payment. The poem voucher carries the text, byline, source and identifying number, without repeating its price. These are two kinds of document on one continuous strip, and one order may contain several separately numbered poem copies.",
+          "CUT HERE offers a separation once receipt and poem have been seen together. Someone can keep the whole strip, cut it, fold it or pass on a part, and the interface favours none of these. Numbering lets each part be traced back to its order.",
+          "The till’s British wording, columns, tax analysis and payment details supply a familiar administrative rhythm, and the printed notices that the purchase is fictional belong to the same form. No payment is processed. The voucher delivers a poem and cannot be redeemed for cash."
         ]
       },
       {
         "id": "reading",
         "number": "05",
-        "title": "The poems do not explain the machine",
-        "dek": "A possible reading is not an origin story.",
+        "title": "The poem after the receipt",
+        "dek": "A reading the juxtaposition allows.",
         "feature": "",
         "body": [
-          "B3 repeatedly delays an act of delivery: the writing stops, the unsealed paper is folded again, and host and guest do not become equal parties in a settled exchange. Read after a receipt, those actions may make the certainty of a completed transaction feel inadequate. This is a reading the juxtaposition permits. The poem was not written to demonstrate it, and a reader need not adopt it.",
-          "Other relations belong to the source publications: B6 responds across the A/B sequence, while The Roof Splits Open retains its dated drafts. Issuing one poem should not force someone to acquire a whole sequence, but neither should a standalone copy pretend that no sequence exists. Source links allow a return to that context.",
-          "Drucker’s account shifts materiality towards what occurs in use. [[drucker]] For this work, choosing, waiting, reading, cutting and giving are therefore questions to observe, not effects guaranteed by paper or code. A pocketable poem can be a gift, a joke, a keepsake or waste. The receipt does not need every one of its fields to encode a separate metaphor."
+          "B3 repeatedly delays an act of delivery: the writing stops, the unsealed paper is folded again, and host and guest do not become equal parties in a settled exchange. Read after a receipt, those actions may make the certainty of a completed transaction feel inadequate. It is one reading that placing the two together allows.",
+          "Other relations belong to the source publications: B6 responds across the A/B sequence, and The Roof Splits Open keeps its dated drafts. A single poem can be issued alone, and its source link leads back to the sequence it belongs to.",
+          "Drucker’s account shifts materiality towards what occurs in use. [[drucker]] For this work, choosing, waiting, reading, cutting and giving are things to observe as they happen. A pocketable poem can be a gift, a joke, a keepsake or waste."
         ]
       },
       {
         "id": "material",
         "number": "06",
         "title": "Paper and screen",
-        "dek": "The same rule does not make the same encounter.",
+        "dek": "The same rule reads differently on paper and on screen.",
         "feature": "",
         "body": [
-          "The output model uses narrow thermal paper. The one-bit image retains the constraints of receipt printing. Dense labels and narrow lines are part of the encounter, but smallness is not a virtue if the poem becomes unreadable. A sharp digital image does not establish the survival of fine strokes on a particular printer.",
-          "Direct thermal printing uses no ink or ribbon; heat, light and handling can change its legibility. [[thermal]] Fading is not a reliable countdown built into the poem. It remains a material possibility, not an observed life span of these particular prints, an environmental claim or a required metaphor for loss.",
-          "Early physical prints exist. The browser shop is the present public route while no exhibition venue is available; a future issuing table would add the handling and shared time that a download does not provide. The screen encounter is nevertheless real. The PDF keeps receipt and poems in one file, with continuations for long outputs. A self-contained HTML counterpart preserves their full text and relationship for offline reading; it does not turn the image PDF into an accessible text PDF."
+          "The output model uses narrow thermal paper, and the one-bit image keeps the constraints of receipt printing. Dense labels and narrow lines belong to the form up to the point where the poem stops being readable. Fine strokes that are sharp on screen may still break up on a particular printer.",
+          "Direct thermal printing uses no ink or ribbon; heat, light and handling can change its legibility. [[thermal]] These prints may fade, and how quickly has not been measured.",
+          "Early physical prints exist. Until there is an exhibition venue, the browser shop is the public route; an issuing table in a room would add handling and shared time. The PDF keeps receipt and poems in one file, with continuations for long outputs, and a self-contained HTML copy carries their full text for reading offline."
         ]
       },
       {
         "id": "implementation",
         "number": "07",
         "title": "Implementation",
-        "dek": "The mechanism is inspectable.",
+        "dek": "The source and build manifest are public.",
         "body": [
-          "Poetry Voucher is a static browser application built around a fixed catalogue of my published poems. The former public Studio is retired: a reader configures an edition rather than supplying arbitrary text. Catalogue choice, script, published translations, typeface, size and quantity enter the same pricing and issuing process. Ordinary use does not upload the poem or contact a payment service.",
-          "Checkout freezes the contents of the order before output is produced: texts, quantities, charges, the fictional payment scene and the public renderer identity belong to that issued order. Reopening it later does not silently reprice the poems from the current catalogue. If a different renderer is used, the result is identified as a re-render. The renderer identifier describes build inputs, not a promise of identical pixels.",
+          "Poetry Voucher is a static browser application built around a fixed catalogue of my published poems. A reader configures an edition: catalogue choice, script, published translations, typeface, size and quantity all enter the same pricing and issuing process. Nothing is uploaded and no payment service is contacted.",
+          "Checkout freezes the contents of the order before output is produced: texts, quantities, charges, the fictional payment scene and the public renderer identity belong to that issued order. A reopened order keeps its original prices, and a result made with a different renderer is labelled as a re-render. The renderer identifier records the build inputs.",
           "The frozen order is rendered into the narrow-paper image PDF and a separate self-contained HTML reading copy. The public website has no remote printer endpoint. On the paired H10S terminal only, an explicit print action can hand the already prepared order to its local print service."
         ],
         "feature": "implementation"
@@ -128,8 +128,8 @@
         "dek": "Different rules, different consequences.",
         "feature": "",
         "body": [
-          "Short Édition offers free scroll literature selected by reading duration. [[short-edition]] The comparison separates a distribution medium from a work’s specific mechanism. Poetry Voucher asks for a poem and a configured edition, then assigns a fictional amount. Its claim depends on what that purchasing routine adds to reading, not on being the first to print literature on a narrow roll.",
-          "In Broodthaers’s Pense-Bête, plaster obstructs access to the embedded books; readable copies were also exhibited nearby. [[broodthaers]] Here the relation is reversed: the printed text is intended to leave its apparatus. Yet the risk is shared. An intriguing object can draw attention away from the writing. Making the receipt more convincing is not automatically an improvement if nobody reaches the poem."
+          "Short Édition offers free scroll literature selected by reading duration. [[short-edition]] The comparison separates a distribution medium from a work’s mechanism: Poetry Voucher asks for a poem and a configured edition, then assigns a fictional amount, and its interest lies in what that purchasing routine adds to reading.",
+          "In Broodthaers’s Pense-Bête, plaster obstructs access to the embedded books; readable copies were also exhibited nearby. [[broodthaers]] Here the relation is reversed: the printed text is meant to leave its apparatus. The risk is shared, though. An intriguing object can draw attention away from the writing, and a more convincing receipt helps only if people still reach the poem."
         ]
       },
       {
@@ -139,9 +139,9 @@
         "dek": "A working edition; an open question of reception.",
         "feature": "",
         "body": [
-          "The catalogue, pricing and digital issuing process can be used now. The early prints are material trials, not evidence that every current configuration is calibrated. The suggestion of carrying a poem to give away came from an early reader and was reported in the author interview. It has not been turned into a claim about audiences in general. No comparative reader study or gallery presentation is claimed here.",
-          "The next material test is modest: issue a few chosen editions, let people read and handle them without a preliminary theory lesson, and record what changes or fails. That may justify a decision to retain the receipt, alter an order of presentation or relinquish a proposed interpretation. More features cannot answer that question.",
-          "Personal saving, printing and giving printed copies are permitted. The author wrote and built most of this work; AI was used to review the website’s interaction logic and visual presentation, with final decisions made by the author. The shop selects existing poems and generates no poem text."
+          "The catalogue, pricing and digital issuing process work now. The early prints were material trials. The idea of carrying a poem to give away came from an early reader and was reported in the author interview; there has not yet been a reader study or a gallery presentation.",
+          "The next material test is modest: issue a few chosen editions, let people read and handle them without a preliminary theory lesson, and record what changes or fails. That may justify a decision to retain the receipt, alter an order of presentation or relinquish a proposed interpretation.",
+          "Personal saving, printing and giving printed copies are permitted. I wrote the poems; AI tools helped write the shop’s code, its interface copy and these notes, and I reviewed the results and made the final decisions. The shop issues existing poems and generates no poem text."
         ]
       }
     ],
@@ -152,7 +152,7 @@
     "diagram_cut": "SEPARATION",
     "diagram_poem": "POEM",
     "diagram_receipt_note": "records order, quantity and simulated payment",
-    "diagram_cut_note": "offers a cut; does not require one",
+    "diagram_cut_note": "an optional place to cut",
     "diagram_poem_note": "keeps text, source and copy identity",
     "aesthetic_title": "Two visual registers",
     "aesthetic_screen_label": "STOREFRONT",
@@ -201,13 +201,13 @@
     "read": "閱讀原作",
     "receipt": "01 / 小票",
     "voucher": "02 / 詩券",
-    "sample": "乙三 · 原文 · 點陣體 · 固定場景日期為2026年9月22日 · 連續數位版重新渲染於2026年9月24日。不是實物照片或當前訂單預覽。",
+    "sample": "乙三 · 原文 · 點陣體 · 固定場景日期為2026年9月22日 · 連續數碼版重新渲染於2026年9月24日。",
     "process": "從交易到閱讀",
     "process_body": "選詩、字體及譯文，再作不扣款的結賬。一張小票記錄整單，各份詩券獨立編號。可下載圖像校樣，或可離線閲讀的完整文字版。",
     "privacy": "在你的裝置完成",
     "privacy_body": "檔案在瀏覽器內生成。目錄選購儲存在此裝置，已完成訂單留在當前分頁。不會上傳詩文，也不會扣款。一般瀏覽器使用不會連接打印機；只有在已配對的 H10S 終端上，明確執行本地打印操作後才會開始打印。",
     "hardware": "以紙面為尺度",
-    "hardware_body": "這件作品以紙上的取得與閱讀為方向。頁面現展示乙三、乙四兩份真實熱敏紙印本的掃描。較早的數位樣本仍是獨立的重新渲染，並非任何一份印本的照片。兩份實物不能證明所有配置都已校準。",
+    "hardware_body": "這件作品原是為紙而作。下方是乙三、乙四兩份熱敏紙印本的掃描；上方的數碼樣本是另行重新渲染的。",
     "back": "作品介紹",
     "edit": "瀏覽架上作品",
     "preview_alt": "乙三連續數位樣本：同一條紙上依次為虛構現金小票、CUT HERE 分隔線與中文詩券。",
@@ -224,10 +224,10 @@
     "toc_label": "關於這件作品",
     "specimen_open": "打開完整數位樣本",
     "specimen_label": "一張訂單，一條紙",
-    "specimen_body": "小票在前。切割線提供分開的可能，不要求執行。每份詩都有與訂單關聯的獨立編號。這張小圖是文獻樣本，不是實際尺寸的閲讀校樣。",
+    "specimen_body": "小票在前，接着是一條切割線，紙條可以在那裏分開。每份詩都有自己的編號，與訂單關聯。",
     "read_shi": "閲讀《屋頂裂開》的兩稿",
     "references_title": "參照與比較",
-    "references_intro": "這些來源幫助辨析計量、閲讀與材料形式中的具體問題，不是為項目補寫一段理論先行的起源。",
+    "references_intro": "這些來源幫助辨析計量、閲讀與材料形式中的具體問題。",
     "notes": [
       {
         "id": "origin",
@@ -237,21 +237,21 @@
         "feature": "",
         "body": [
           "這個項目起於我撿到一台小票打印機，試着把自己的詩打出來。詩已經寫好了。問題來自超市小票的日常感：把一份個人寫作，放進按件處理商品的程序中取得，會是什麼感覺？",
-          "寫作可能積累並不均勻的時間、注意力、知識與依戀。商店給出另一套描述：目錄裏的標題、數量、基本配置和價格。這不是把純粹的詩與沒有思考的商品劃開。普通商品同樣包含價格未必揭示的勞動與差別。作品截取一次化約行為，不聲稱由此解釋整個市場。",
-          "公開目錄有意只收錄我的已發表文本。較早允許任意文字的 Studio 已撤下。這裏邀請人選擇某首詩怎樣被髮行，而不是製作任意打印件；後者是另一種活動。這個編輯邊界並不封閉讀者的理解，也不控制一份詩離開商店後的去向。"
+          "寫作可能積累並不均勻的時間、注意力、知識與依戀。商店給出另一套描述：目錄裏的標題、數量、基本配置和價格。普通商品同樣包含價格未必揭示的勞動與差別；作品截取這樣一次化約行為，並把它施加於詩。",
+          "目錄只收錄我已發表的詩。讀者的角色是選擇某首詩以什麼方式發行；詩怎樣被閲讀、這份詩之後去向如何，都保持開放。"
         ]
       },
       {
         "id": "pricing",
         "number": "02",
         "title": "價格漏掉了什麼",
-        "dek": "PV3 計算源文本，不計算付出。",
+        "dek": "PV3 只計算文本。",
         "feature": "tariff",
         "body": [
-          "Espeland 與 Stevens 將通約化描述為借共同尺度進行比較。[[commensuration]] PV3 提供一個小而可檢查的例子：本不相同的詩，通過若干文本特徵被化為可比較的金額。公式明確表露它看得見什麼，其中沒有難度、修訂、依戀或文學強度這一項。",
+          "Espeland 與 Stevens 將通約化描述為借共同尺度來比較。[[commensuration]] PV3 是其中一個小例子：本不相同的詩，一旦計算若干選定的文本特徵，便化為可比較的金額。公式裏沒有難度、修訂、依戀或文學強度這一項。",
           "字符只計 Unicode 字母與數字。非空的源文本行與詩節增加基本金額，窄紙上的自動折行不參與計價。基本金額向上取不低於它的最低 .99 價位，附加項隨後加入，因此最終合計不一定以 .99 結尾。",
-          "《屋頂裂開》稿一為 £12.99，稿二為 £9.99。計費字符從380減至225，行數與詩節不變。不管刪削對詩做了什麼，在這裏它首先表現為價格下降。這個差異邀請比較，不證明更便宜的一稿就更好。",
-          "階梯也會遮蔽差別，或放大臨界點。用四十個 x 做非作品測試，寫成一行是 £1.99，分成兩行變為 £2.99；另外一些新增分行則不改變標價。這是選定的零售慣例，不是不同書寫系統之間公平的長度尺度，也不代表所有商店的定價方式。"
+          "《屋頂裂開》稿一為 £12.99，稿二為 £9.99。計費字符從380減至225，行數與詩節不變。不管刪削對詩做了什麼，在這裏它首先表現為價格下降；兩稿可以並排閲讀。",
+          "階梯也會遮蔽差別，或放大臨界點。用四十個 x 做非作品測試，寫成一行是 £1.99，分成兩行變為 £2.99；另外一些新增分行則不改變標價。這種取整方式沿用零售慣例。"
         ]
       },
       {
@@ -261,9 +261,9 @@
         "dek": "呈現本身屬於售賣的內容。",
         "feature": "",
         "body": [
-          "點陣體包含在基本版本中，網站字體作為可選升級，類似某件商品需要加購配置才能達到廣告中的外觀。基本版仍然必須完整可讀。故意把它做差，只會把問題變成一場安排好結論的演示。",
-          "商店頁面並不站在這套關係之外。它用襯線大字、留白與對齊使售賣顯得誘人，同時又把排印作為附加項出售。作品既使用這種吸引力，也把它暴露出來。小票樸素，不意味着包圍它的網站就與設計所賦予的聲望無關。",
-          "譯文帶來另一份語言與文化中的閲讀，實際打印也會佔用更多紙。固定附加費卻不核算紙長、耗能或譯者工時。原作與已發表譯文都可以在站上免費閲讀；加價針對虛構發行配置，不是理解詩的入場費。繁體與簡體是原文的兩種字形選擇，基本價相同。"
+          "點陣體包含在基本版本中，網站字體是可選升級，類似某件商品需要加購配置才能達到廣告中的外觀。基本版完整可讀，所以升級改變的只是詩的樣子。",
+          "商店頁面也屬於這套安排。它用襯線大字、留白與對齊讓售賣顯得誘人，而它所賣的附加項正是排印；所以作品既利用這種吸引力，也把它展示出來。",
+          "譯文帶來另一份語言與文化中的閲讀，實際打印也會佔用更多紙；固定附加費卻不核算紙長、耗能或譯者工時。原作與已發表譯文都可以在站上免費閲讀，所以加價只針對發行出來的版本。繁體與簡體是原文的兩種字形，基本價相同。"
         ]
       },
       {
@@ -273,43 +273,43 @@
         "dek": "交易可以結束，閲讀未必隨之結束。",
         "feature": "",
         "body": [
-          "小票記錄整單、數量、附加項、金額和模擬付款；詩券保留文字、署名、來源與編號，不重複標價。它們是一條連續紙上的兩種文書，不一定恰好是兩張紙：同一訂單可以有多份各自編號的詩。",
-          "CUT HERE 讓讀者在兩部分先被放在一起之後，可以決定分開。整條保存、切開、摺疊或送出一部分，都不是界面應當強制的正確答案。編號讓分開的部分仍有歸屬，不認證真實購買、不證明所有權，也不製造稀缺。",
-          "英式收銀措辭、欄目、税額分析和付款字段形成熟悉的行政節奏。虛構聲明屬於這個形式，不是為了更逼真就應刪除的小字。沒有處理付款；這裏的 voucher 交付一首詩，不承諾日後兑現現金。"
+          "小票記錄整單、數量、附加項、金額和模擬付款；詩券保留文字、署名、來源與編號，不重複標價。它們是一條連續紙上的兩種文書，同一訂單也可以有多份各自編號的詩。",
+          "CUT HERE 在小票與詩被一併看過之後，提供分開的可能。拿到的人可以整條保存、切開、摺疊，或把一部分送人，界面對這些做法一視同仁。編號讓每一部分都能追溯回所屬的訂單。",
+          "英式收銀措辭、欄目、税額分析和付款字段形成熟悉的行政節奏，票上聲明購買為虛構的字樣，也屬於同一形式。沒有處理付款。這張詩券 交付一首詩，不能兑換現金。"
         ]
       },
       {
         "id": "reading",
         "number": "05",
-        "title": "詩不負責解釋機器",
-        "dek": "一種可能的讀法，不是一段起源。",
+        "title": "小票之後的詩",
+        "dek": "並置所容許的一種讀法。",
         "feature": "",
         "body": [
-          "乙三反覆推遲一次交付：書寫停住，未封的紙又被折起，主客關係也未變成兩方對等而結清的交換。放在收據之後讀，這些動作可能讓“交易完成”的確定性顯得不足。這是並置所容許的讀法。詩不是為證明它而寫，讀者也不必採用它。",
-          "另一些關係屬於原有出版：乙六在甲乙序列中回應，另外《屋頂裂開》保留有日期的修訂稿。發行單首，不該強迫人同時取得全組；但獨立一份也不必假裝自己沒有前後文。來源鏈接保留返回語境的路徑。",
-          "Drucker 的論述把物質性引向使用中發生的事。[[drucker]] 因此，選擇、等待、閲讀、切開與贈送，是需要觀察的問題，不是紙張或代碼保證產生的效果。一首放進口袋的詩可以是禮物、笑話、紀念物，也可以被丟棄。小票不必讓每個字段各自編碼一層隱喻。"
+          "乙三反覆推遲一次交付：書寫停住，未封的紙又被折起，主客關係也未變成兩方對等而結清的交換。放在小票之後讀，這些動作可能讓「交易完成」的確定性顯得不足。這是兩者並置所容許的一種讀法。",
+          "另一些關係屬於原有出版：乙六在甲乙序列中回應，《屋頂裂開》則保留有日期的修訂稿。單首詩可以單獨發行，它的來源鏈接可以引回所屬的序列。",
+          "Drucker 的論述把物質性引向使用中發生的事。[[drucker]] 對這件作品而言，選擇、等待、閲讀、切開與贈送，都是要在發生時觀察的事。一首放進口袋的詩可以是禮物、笑話、紀念物，也可以被丟棄。"
         ]
       },
       {
         "id": "material",
         "number": "06",
         "title": "紙與屏幕",
-        "dek": "規則相同，不等於遭遇相同。",
+        "dek": "同一規則，在紙上和屏幕上讀來不同。",
         "feature": "",
         "body": [
-          "輸出模型使用窄幅熱敏紙。 一位黑白圖像保留小票打印的限制。密集標籤與窄行屬於閲讀條件，但小到讀不清時，小本身沒有價值。清晰的數位圖像不能證明某台機器能夠保住細筆畫。",
-          "直接熱敏打印不用墨或色帶；熱、光和日常處理可能改變可讀性。[[thermal]] 褪色不是內置於詩的可靠倒計時。它仍是一種材料可能，不是這些票樣已經觀察到的壽命，不是環保主張，也不是必須採用的失落隱喻。",
-          "已有早期實物試印。沒有展覽場地的當下，瀏覽器商店是公共入口；未來的發行桌可以增加下載所沒有的紙張處理與共同停留時間。屏幕上的遭遇同樣真實。PDF 把小票與詩保存在同一文件中，過長時保留接續；獨立 HTML 對應版讓全文與兩種文書的關係可離線閲讀，但不會使圖像 PDF 本身變成無障礙文字 PDF。"
+          "輸出模型使用窄幅熱敏紙，一位黑白圖像保留小票打印的限制。密集標籤與窄行屬於這個形式，但以詩仍然可讀為限。屏幕上清晰的細筆畫，到了某台打印機上仍可能斷開。",
+          "直接熱敏打印不用墨或色帶；熱、光和日常處理可能改變可讀性。[[thermal]] 這些印本可能褪色，褪色速度尚未測量。",
+          "已有早期實物試印。在有展覽場地之前，瀏覽器商店是公共入口；在實體空間裏擺一張發行桌，則會增加紙張處理與共同停留的時間。PDF 把小票與詩保存在同一文件中，過長時保留接續；獨立的 HTML 副本收錄兩者全文，可供離線閲讀。"
         ]
       },
       {
         "id": "implementation",
         "number": "07",
         "title": "實現方式",
-        "dek": "作品的運作機制可以查核。",
+        "dek": "源代碼與構建清單均已公開。",
         "body": [
-          "Poetry Voucher 是圍繞作者已發表詩作的固定目錄而建的靜態瀏覽器應用。先前公開的 Studio 已退役：讀者配置的是某一版詩券，而非上傳任意文字。目錄選擇、字形、已發表譯文、字體、大小與數量進入同一套計價與發行流程。一般使用不會上傳詩文，也不會聯繫支付服務。",
-          "結帳會在產生輸出前凍結訂單內容：文字、數量、費用、虛構的付款場景與公開渲染器識別碼，都屬於那份已發行訂單。日後重新打開時，不會暗中按現行目錄重新計價；若使用了不同渲染器，結果會標明為重新渲染。識別碼描述構建輸入，不保證像素完全相同。",
+          "Poetry Voucher 是圍繞我已發表詩作的固定目錄而建的靜態瀏覽器應用。讀者配置某一版詩券：目錄選擇、字形、已發表譯文、字體、大小與數量，都進入同一套計價與發行流程。不會上傳任何內容，也不會聯繫支付服務。",
+          "結帳會在產生輸出前凍結訂單內容：文字、數量、費用、虛構的付款場景與公開渲染器識別碼，都屬於那份已發行訂單。重新打開的訂單保留原來的價格；用不同渲染器產生的結果會標明為重新渲染。識別碼記錄構建輸入。",
           "凍結的訂單會被渲染成窄紙幅圖像 PDF，另有一份可獨立保存的 HTML 閲讀版。公開網站沒有遠程打印端點。只有在已配對的 H10S 終端上，明確執行打印操作後，已備妥的訂單才可交給其本地打印服務。"
         ],
         "feature": "implementation"
@@ -321,8 +321,8 @@
         "dek": "不同規則，產生不同後果。",
         "feature": "",
         "body": [
-          "Short Édition 以閲讀時長選擇免費捲紙文學。[[short-edition]] 這個比較把傳播媒介與某件作品的具體機制分開。詩券要求選擇作品與發行配置，再計算一個虛構金額。它能否成立，取決於購買程序為閲讀增加了什麼，不取決於是否第一個把文學印在窄紙捲上。",
-          "Broodthaers 的《Pense-Bête》中，石膏阻礙了被嵌入書本的閲讀；展覽附近也陳列過可讀的書。[[broodthaers]] 這裏反過來，希望文字能夠離開裝置。然而風險相通：引人好奇的物件可能把注意力從寫作上引開。若沒有人讀到詩，讓小票越來越逼真並不自動是進步。"
+          "Short Édition 提供免費的捲紙文學，讀者按閲讀時長選取。[[short-edition]] 這個比較把傳播媒介與作品的機制分開：詩券要求選擇作品與發行配置，再計算一個虛構金額；它有意思的地方，在於這套購買程序為閲讀增添了什麼。",
+          "Broodthaers 的《Pense-Bête》中，石膏阻礙了被嵌入書本的閲讀；展覽附近也陳列過可讀的書。[[broodthaers]] 這裏反過來，希望文字能夠離開裝置。不過風險相通。引人好奇的物件可能把注意力從寫作上引開；小票做得更逼真，也要人們仍然讀到詩，才算有幫助。"
         ]
       },
       {
@@ -332,9 +332,9 @@
         "dek": "可以使用的版本，仍待檢驗的接受。",
         "feature": "",
         "body": [
-          "目錄、計價與數位發行流程目前可以使用。早期打印件屬於材料試驗，不證明現行每種配置都已校準。“帶着一首詩，隨手送人”的建議來自早期讀者，並在作者訪談中提到，沒有被擴寫成對一般觀眾的結論。這裏不聲稱做過比較性讀者研究或畫廊呈現。",
-          "下一次材料測試可以很小：發行少量選定版本，讓人先閲讀和處理，不先上理論課，再記錄發生了什麼、哪裏失敗。這些結果可能支持保留小票、調整呈現順序，或放棄一種擬議解釋。更多功能不能代答這個問題。",
-          "允許個人保存、打印與贈送打印件。本作品大部分文字與實現由作者本人完成；AI 曾審閱網頁的互動邏輯與視覺呈現，最終決定由作者作出。商店只選用既有詩作，不生成詩句。"
+          "目錄、計價與數碼發行流程現已可用。早期打印件是材料試驗。把一首詩帶在身上、隨手送人的想法，來自一位早期讀者，並在作者訪談中提到；目前還沒有做過讀者研究，也還沒有在畫廊展示過。",
+          "下一次材料測試可以很小：發行少量選定版本，讓人閲讀、拿在手裏，不先上理論課，再記錄發生了什麼、哪裏失敗。這些結果可能支持保留小票、調整呈現順序，或放棄一種擬議解釋。",
+          "允許個人保存、打印與贈送打印件。詩由我創作；商店的代碼、界面文案與這些札記有 AI 工具協助撰寫，我審閲了結果，並作出最終決定。商店發行既有詩作，不生成詩句。"
         ]
       }
     ],
@@ -345,7 +345,7 @@
     "diagram_cut": "分隔",
     "diagram_poem": "詩",
     "diagram_receipt_note": "記錄訂單、數量與模擬付款",
-    "diagram_cut_note": "提供切開的位置，不要求切開",
+    "diagram_cut_note": "可選的切開位置",
     "diagram_poem_note": "保留文本、來源與每份身份",
     "aesthetic_title": "兩種視覺語域",
     "aesthetic_screen_label": "商店頁面",
@@ -394,13 +394,13 @@
     "read": "阅读原作",
     "receipt": "01 / 小票",
     "voucher": "02 / 诗券",
-    "sample": "乙三 · 原文 · 点阵体 · 固定场景日期为2026年9月22日 · 连续数字版重新渲染于2026年9月24日。不是实物照片或当前订单预览。",
+    "sample": "乙三 · 原文 · 点阵体 · 固定场景日期为2026年9月22日 · 连续数字版重新渲染于2026年9月24日。",
     "process": "从交易到阅读",
     "process_body": "选诗、字体及译文，再作不扣款的结账。一张小票记录整单，各份诗券独立编号。可下载图像校样，或可离线阅读的完整文字版。",
     "privacy": "在你的设备完成",
     "privacy_body": "文件在浏览器内生成。目录选购保存在此设备，已完成订单留在当前标签页。不会上传诗文，也不会扣款。一般浏览器使用不会连接打印机；只有在已配对的 H10S 终端上，明确执行本地打印操作后才会开始打印。",
     "hardware": "以纸面为尺度",
-    "hardware_body": "这件作品以纸上的取得与阅读为方向。页面现展示乙三、乙四两份真实热敏纸印本的扫描。较早的数字样本仍是独立的重新渲染，并非任何一份印本的照片。两份实物不能证明所有配置都已校准。",
+    "hardware_body": "这件作品原是为纸而作。下方是乙三、乙四两份热敏纸印本的扫描；上方的数字样本是另行重新渲染的。",
     "back": "作品介绍",
     "edit": "浏览架上作品",
     "preview_alt": "乙三连续数字样本：同一条纸上依次为虚构现金小票、CUT HERE 分隔线与中文诗券。",
@@ -417,10 +417,10 @@
     "toc_label": "关于这件作品",
     "specimen_open": "打开完整数字样本",
     "specimen_label": "一张订单，一条纸",
-    "specimen_body": "小票在前。切割线提供分开的可能，不要求执行。每份诗都有与订单关联的独立编号。这张小图是文献样本，不是实际尺寸的阅读校样。",
+    "specimen_body": "小票在前，接着是一条切割线，纸条可以在那里分开。每份诗都有自己的编号，与订单关联。",
     "read_shi": "阅读《屋顶裂开》的两稿",
     "references_title": "参照与比较",
-    "references_intro": "这些来源帮助辨析计量、阅读与材料形式中的具体问题，不是为项目补写一段理论先行的起源。",
+    "references_intro": "这些来源帮助辨析计量、阅读与材料形式中的具体问题。",
     "notes": [
       {
         "id": "origin",
@@ -430,21 +430,21 @@
         "feature": "",
         "body": [
           "这个项目起于我捡到一台小票打印机，试着把自己的诗打出来。诗已经写好了。问题来自超市小票的日常感：把一份个人写作，放进按件处理商品的程序中取得，会是什么感觉？",
-          "写作可能积累并不均匀的时间、注意力、知识与依恋。商店给出另一套描述：目录里的标题、数量、基本配置和价格。这不是把纯粹的诗与没有思考的商品划开。普通商品同样包含价格未必揭示的劳动与差别。作品截取一次化约行为，不声称由此解释整个市场。",
-          "公开目录有意只收录我的已发表文本。较早允许任意文字的 Studio 已撤下。这里邀请人选择某首诗怎样被发行，而不是制作任意打印件；后者是另一种活动。这个编辑边界并不封闭读者的理解，也不控制一份诗离开商店后的去向。"
+          "写作可能积累并不均匀的时间、注意力、知识与依恋。商店给出另一套描述：目录里的标题、数量、基本配置和价格。普通商品同样包含价格未必揭示的劳动与差别；作品截取这样一次化约行为，并把它施加于诗。",
+          "目录只收录我已发表的诗。读者的角色是选择某首诗以什么方式发行；诗怎样被阅读、这份诗之后去向如何，都保持开放。"
         ]
       },
       {
         "id": "pricing",
         "number": "02",
         "title": "价格漏掉了什么",
-        "dek": "PV3 计算源文本，不计算付出。",
+        "dek": "PV3 只计算文本。",
         "feature": "tariff",
         "body": [
-          "Espeland 与 Stevens 将通约化描述为借共同尺度进行比较。[[commensuration]] PV3 提供一个小而可检查的例子：本不相同的诗，通过若干文本特征被化为可比较的金额。公式明确表露它看得见什么，其中没有难度、修订、依恋或文学强度这一项。",
+          "Espeland 与 Stevens 将通约化描述为借共同尺度来比较。[[commensuration]] PV3 是其中一个小例子：本不相同的诗，一旦计算若干选定的文本特征，便化为可比较的金额。公式里没有难度、修订、依恋或文学强度这一项。",
           "字符只计 Unicode 字母与数字。非空的源文本行与诗节增加基本金额，窄纸上的自动折行不参与计价。基本金额向上取不低于它的最低 .99 价位，附加项随后加入，因此最终合计不一定以 .99 结尾。",
-          "《屋顶裂开》稿一为 £12.99，稿二为 £9.99。计费字符从380减至225，行数与诗节不变。不管删削对诗做了什么，在这里它首先表现为价格下降。这个差异邀请比较，不证明更便宜的一稿就更好。",
-          "阶梯也会遮蔽差别，或放大临界点。用四十个 x 做非作品测试，写成一行是 £1.99，分成两行变为 £2.99；另外一些新增分行则不改变标价。这是选定的零售惯例，不是不同书写系统之间公平的长度尺度，也不代表所有商店的定价方式。"
+          "《屋顶裂开》稿一为 £12.99，稿二为 £9.99。计费字符从380减至225，行数与诗节不变。不管删削对诗做了什么，在这里它首先表现为价格下降；两稿可以并排阅读。",
+          "阶梯也会遮蔽差别，或放大临界点。用四十个 x 做非作品测试，写成一行是 £1.99，分成两行变为 £2.99；另外一些新增分行则不改变标价。这种取整方式沿用零售惯例。"
         ]
       },
       {
@@ -454,9 +454,9 @@
         "dek": "呈现本身属于售卖的内容。",
         "feature": "",
         "body": [
-          "点阵体包含在基本版本中，网站字体作为可选升级，类似某件商品需要加购配置才能达到广告中的外观。基本版仍然必须完整可读。故意把它做差，只会把问题变成一场安排好结论的演示。",
-          "商店页面并不站在这套关系之外。它用衬线大字、留白与对齐使售卖显得诱人，同时又把排印作为附加项出售。作品既使用这种吸引力，也把它暴露出来。小票朴素，不意味着包围它的网站就与设计所赋予的声望无关。",
-          "译文带来另一份语言与文化中的阅读，实际打印也会占用更多纸。固定附加费却不核算纸长、耗能或译者工时。原作与已发表译文都可以在站上免费阅读；加价针对虚构发行配置，不是理解诗的入场费。繁体与简体是原文的两种字形选择，基本价相同。"
+          "点阵体包含在基本版本中，网站字体是可选升级，类似某件商品需要加购配置才能达到广告中的外观。基本版完整可读，所以升级改变的只是诗的样子。",
+          "商店页面也属于这套安排。它用衬线大字、留白与对齐让售卖显得诱人，而它所卖的附加项正是排印；所以作品既利用这种吸引力，也把它展示出来。",
+          "译文带来另一份语言与文化中的阅读，实际打印也会占用更多纸；固定附加费却不核算纸长、耗能或译者工时。原作与已发表译文都可以在站上免费阅读，所以加价只针对发行出来的版本。繁体与简体是原文的两种字形，基本价相同。"
         ]
       },
       {
@@ -466,43 +466,43 @@
         "dek": "交易可以结束，阅读未必随之结束。",
         "feature": "",
         "body": [
-          "小票记录整单、数量、附加项、金额和模拟付款；诗券保留文字、署名、来源与编号，不重复标价。它们是一条连续纸上的两种文书，不一定恰好是两张纸：同一订单可以有多份各自编号的诗。",
-          "CUT HERE 让读者在两部分先被放在一起之后，可以决定分开。整条保存、切开、折叠或送出一部分，都不是界面应当强制的正确答案。编号让分开的部分仍有归属，不认证真实购买、不证明所有权，也不制造稀缺。",
-          "英式收银措辞、栏目、税额分析和付款字段形成熟悉的行政节奏。虚构声明属于这个形式，不是为了更逼真就应删除的小字。没有处理付款；这里的 voucher 交付一首诗，不承诺日后兑现现金。"
+          "小票记录整单、数量、附加项、金额和模拟付款；诗券保留文字、署名、来源与编号，不重复标价。它们是一条连续纸上的两种文书，同一订单也可以有多份各自编号的诗。",
+          "CUT HERE 在小票与诗被一并看过之后，提供分开的可能。拿到的人可以整条保存、切开、折叠，或把一部分送人，界面对这些做法一视同仁。编号让每一部分都能追溯回所属的订单。",
+          "英式收银措辞、栏目、税额分析和付款字段形成熟悉的行政节奏，票上声明购买为虚构的字样，也属于同一形式。没有处理付款。这张诗券 交付一首诗，不能兑换现金。"
         ]
       },
       {
         "id": "reading",
         "number": "05",
-        "title": "诗不负责解释机器",
-        "dek": "一种可能的读法，不是一段起源。",
+        "title": "小票之后的诗",
+        "dek": "并置所容许的一种读法。",
         "feature": "",
         "body": [
-          "乙三反复推迟一次交付：书写停住，未封的纸又被折起，主客关系也未变成两方对等而结清的交换。放在收据之后读，这些动作可能让“交易完成”的确定性显得不足。这是并置所容许的读法。诗不是为证明它而写，读者也不必采用它。",
-          "另一些关系属于原有出版：乙六在甲乙序列中回应，另外《屋顶裂开》保留有日期的修订稿。发行单首，不该强迫人同时取得全组；但独立一份也不必假装自己没有前后文。来源链接保留返回语境的路径。",
-          "Drucker 的论述把物质性引向使用中发生的事。[[drucker]] 因此，选择、等待、阅读、切开与赠送，是需要观察的问题，不是纸张或代码保证产生的效果。一首放进口袋的诗可以是礼物、笑话、纪念物，也可以被丢弃。小票不必让每个字段各自编码一层隐喻。"
+          "乙三反复推迟一次交付：书写停住，未封的纸又被折起，主客关系也未变成两方对等而结清的交换。放在小票之后读，这些动作可能让“交易完成”的确定性显得不足。这是两者并置所容许的一种读法。",
+          "另一些关系属于原有出版：乙六在甲乙序列中回应，《屋顶裂开》则保留有日期的修订稿。单首诗可以单独发行，它的来源链接可以引回所属的序列。",
+          "Drucker 的论述把物质性引向使用中发生的事。[[drucker]] 对这件作品而言，选择、等待、阅读、切开与赠送，都是要在发生时观察的事。一首放进口袋的诗可以是礼物、笑话、纪念物，也可以被丢弃。"
         ]
       },
       {
         "id": "material",
         "number": "06",
         "title": "纸与屏幕",
-        "dek": "规则相同，不等于遭遇相同。",
+        "dek": "同一规则，在纸上和屏幕上读来不同。",
         "feature": "",
         "body": [
-          "输出模型使用窄幅热敏纸。 一位黑白图像保留小票打印的限制。密集标签与窄行属于阅读条件，但小到读不清时，小本身没有价值。清晰的数字图像不能证明某台机器能够保住细笔画。",
-          "直接热敏打印不用墨或色带；热、光和日常处理可能改变可读性。[[thermal]] 褪色不是内置于诗的可靠倒计时。它仍是一种材料可能，不是这些票样已经观察到的寿命，不是环保主张，也不是必须采用的失落隐喻。",
-          "已有早期实物试印。没有展览场地的当下，浏览器商店是公共入口；未来的发行桌可以增加下载所没有的纸张处理与共同停留时间。屏幕上的遭遇同样真实。PDF 把小票与诗保存在同一文件中，过长时保留接续；独立 HTML 对应版让全文与两种文书的关系可离线阅读，但不会使图像 PDF 本身变成无障碍文字 PDF。"
+          "输出模型使用窄幅热敏纸，一位黑白图像保留小票打印的限制。密集标签与窄行属于这个形式，但以诗仍然可读为限。屏幕上清晰的细笔画，到了某台打印机上仍可能断开。",
+          "直接热敏打印不用墨或色带；热、光和日常处理可能改变可读性。[[thermal]] 这些印本可能褪色，褪色速度尚未测量。",
+          "已有早期实物试印。在有展览场地之前，浏览器商店是公共入口；在实体空间里摆一张发行桌，则会增加纸张处理与共同停留的时间。PDF 把小票与诗保存在同一文件中，过长时保留接续；独立的 HTML 副本收录两者全文，可供离线阅读。"
         ]
       },
       {
         "id": "implementation",
         "number": "07",
         "title": "实现方式",
-        "dek": "作品的运行机制可以核查。",
+        "dek": "源代码与构建清单均已公开。",
         "body": [
-          "Poetry Voucher 是围绕作者已发表诗作的固定目录而建的静态浏览器应用。先前公开的 Studio 已退役：读者配置的是某一版诗券，而非上传任意文字。目录选择、字形、已发表译文、字体、大小与数量进入同一套计价与发行流程。一般使用不会上传诗文，也不会联系支付服务。",
-          "结账会在产生输出前冻结订单内容：文字、数量、费用、虚构的付款场景与公开渲染器标识，都属于那份已发行订单。日后重新打开时，不会暗中按现行目录重新计价；若使用了不同渲染器，结果会标明为重新渲染。标识描述构建输入，不保证像素完全相同。",
+          "Poetry Voucher 是围绕我已发表诗作的固定目录而建的静态浏览器应用。读者配置某一版诗券：目录选择、字形、已发表译文、字体、大小与数量，都进入同一套计价与发行流程。不会上传任何内容，也不会联系支付服务。",
+          "结账会在产生输出前冻结订单内容：文字、数量、费用、虚构的付款场景与公开渲染器标识，都属于那份已发行订单。重新打开的订单保留原来的价格；用不同渲染器产生的结果会标明为重新渲染。标识记录构建输入。",
           "冻结的订单会被渲染成窄纸幅图像 PDF，另有一份可独立保存的 HTML 阅读版。公开网站没有远程打印端点。只有在已配对的 H10S 终端上，明确执行打印操作后，已备妥的订单才可交给其本地打印服务。"
         ],
         "feature": "implementation"
@@ -514,8 +514,8 @@
         "dek": "不同规则，产生不同后果。",
         "feature": "",
         "body": [
-          "Short Édition 以阅读时长选择免费卷纸文学。[[short-edition]] 这个比较把传播媒介与某件作品的具体机制分开。诗券要求选择作品与发行配置，再计算一个虚构金额。它能否成立，取决于购买程序为阅读增加了什么，不取决于是否第一个把文学印在窄纸卷上。",
-          "Broodthaers 的《Pense-Bête》中，石膏阻碍了被嵌入书本的阅读；展览附近也陈列过可读的书。[[broodthaers]] 这里反过来，希望文字能够离开装置。然而风险相通：引人好奇的物件可能把注意力从写作上引开。若没有人读到诗，让小票越来越逼真并不自动是进步。"
+          "Short Édition 提供免费的卷纸文学，读者按阅读时长选取。[[short-edition]] 这个比较把传播媒介与作品的机制分开：诗券要求选择作品与发行配置，再计算一个虚构金额；它有意思的地方，在于这套购买程序为阅读增添了什么。",
+          "Broodthaers 的《Pense-Bête》中，石膏阻碍了被嵌入书本的阅读；展览附近也陈列过可读的书。[[broodthaers]] 这里反过来，希望文字能够离开装置。不过风险相通。引人好奇的物件可能把注意力从写作上引开；小票做得更逼真，也要人们仍然读到诗，才算有帮助。"
         ]
       },
       {
@@ -525,9 +525,9 @@
         "dek": "可以使用的版本，仍待检验的接受。",
         "feature": "",
         "body": [
-          "目录、计价与数字发行流程目前可以使用。早期打印件属于材料试验，不证明现行每种配置都已校准。“带着一首诗，随手送人”的建议来自早期读者，并在作者访谈中提到，没有被扩写成对一般观众的结论。这里不声称做过比较性读者研究或画廊呈现。",
-          "下一次材料测试可以很小：发行少量选定版本，让人先阅读和处理，不先上理论课，再记录发生了什么、哪里失败。这些结果可能支持保留小票、调整呈现顺序，或放弃一种拟议解释。更多功能不能代答这个问题。",
-          "允许个人保存、打印与赠送打印件。本作品大部分文字与实现由作者本人完成；AI 曾审阅网页的交互逻辑与视觉呈现，最终决定由作者作出。商店只选用既有诗作，不生成诗句。"
+          "目录、计价与数字发行流程现已可用。早期打印件是材料试验。把一首诗带在身上、随手送人的想法，来自一位早期读者，并在作者访谈中提到；目前还没有做过读者研究，也还没有在画廊展示过。",
+          "下一次材料测试可以很小：发行少量选定版本，让人阅读、拿在手里，不先上理论课，再记录发生了什么、哪里失败。这些结果可能支持保留小票、调整呈现顺序，或放弃一种拟议解释。",
+          "允许个人保存、打印与赠送打印件。诗由我创作；商店的代码、界面文案与这些札记有 AI 工具协助撰写，我审阅了结果，并作出最终决定。商店发行既有诗作，不生成诗句。"
         ]
       }
     ],
@@ -538,7 +538,7 @@
     "diagram_cut": "分隔",
     "diagram_poem": "诗",
     "diagram_receipt_note": "记录订单、数量与模拟付款",
-    "diagram_cut_note": "提供切开的位置，不要求切开",
+    "diagram_cut_note": "可选的切开位置",
     "diagram_poem_note": "保留文本、来源与每份身份",
     "aesthetic_title": "两种视觉语域",
     "aesthetic_screen_label": "商店页面",
@@ -587,13 +587,13 @@
     "read": "原作を読む",
     "receipt": "01 / レシート",
     "voucher": "02 / 詩の券",
-    "sample": "乙三 · 原文 · ドット書体 · 固定場面の日付は2026年9月22日 · 連続デジタル版の再描画は2026年9月24日。実物写真や現在の注文のプレビューではありません。",
+    "sample": "乙三 · 原文 · ドット書体 · 固定場面の日付は2026年9月22日 · 連続デジタル版の再描画は2026年9月24日。",
     "process": "会計から読書へ",
     "process_body": "詩、書体、翻訳を選び、支払いのない会計へ。一枚のレシートに注文を記録し、各券には個別の番号を付けます。画像の校正か、オフラインで読める全文テキスト版を保存できます。",
     "privacy": "端末の中で完結",
     "privacy_body": "ファイルはブラウザー内で作成します。カタログの選択は端末に保存され、完了した注文は現在のタブに残ります。詩のアップロードも課金もありません。通常のブラウザー利用ではプリンターに接続しません。ペアリング済みの H10S 端末では、明示的なローカル印刷操作の後にだけ印刷が始まります。",
     "hardware": "紙という制約",
-    "hardware_body": "この作品は紙を手に取り読むことを想定しています。ページには実際に感熱紙へ印刷した乙三と乙四の二点のスキャンを掲載しています。以前のデジタル見本は別個の再描画であり、印刷物の写真ではありません。二点の実物だけでは、すべての設定が校正済みとは言えません。",
+    "hardware_body": "この作品は紙を想定しています。下には感熱紙に印刷した二つの版、乙三と乙四のスキャンを掲載しています。上のデジタル見本は別個の再描画です。",
     "back": "作品について",
     "edit": "作品を見る",
     "preview_alt": "乙三の連続デジタル見本。同じ紙に架空の現金レシート、CUT HERE、中文の詩券が続きます。",
@@ -610,10 +610,10 @@
     "toc_label": "この作品について",
     "specimen_open": "完全なデジタル見本を開く",
     "specimen_label": "一つの注文、一続きの紙",
-    "specimen_body": "レシートが先に来ます。切り取り線は分離を提案しますが、強制はしません。各詩には注文に結びついた個別番号があります。小さな画像は記録用見本であり、実寸で読むための校正ではありません。",
+    "specimen_body": "まずレシートがあり、その後に紙片を切り離せる切り取り線が続きます。各詩には注文に結びついた個別番号があります。",
     "read_shi": "The Roof Splits Openの二稿を読む",
     "references_title": "参照と比較",
-    "references_intro": "計測、読書、物質的な形式の具体的な問いを明らかにする資料です。プロジェクトの起源を後から理論で書き換えるものではありません。",
+    "references_intro": "計測、読書、物質的な形式の具体的な問いを明らかにする資料です。",
     "notes": [
       {
         "id": "origin",
@@ -623,21 +623,21 @@
         "feature": "",
         "body": [
           "拾ったレシートプリンターで自作の詩を印刷してみたことから、このプロジェクトは始まりました。詩はすでに書かれていました。問いはスーパーのレシートの身近さから生じました。個人的な文章を、品物を一つずつ処理する手順で手に入れると、どんな感じがするのか。",
-          "書くことには、時間、注意、知識、愛着が一様ではなく積み重なります。ショップは別の記述を与えます。カタログの題名、数量、基本仕様、価格。純粋な詩と思考のない商品を分けるのではありません。日用品にも価格が明かさない労働や差異があります。この作品は一つの還元の動作を取り出すのであって、市場全体の理論を述べるものではありません。",
-          "公開カタログは意図的に私の発表済みの文章だけに限定しています。以前の自由入力Studioは終了しました。ここでの誘いは、ある詩をどの版で発行するかを選ぶことです。任意の印刷物を組み立てることは別の活動です。この編集上の境界は、読者の解釈や取得後の行方を閉じません。"
+          "書くことには、時間、注意、知識、愛着が一様ではなく積み重なります。ショップは別の記述を与えます。カタログの題名、数量、基本仕様、価格。日用品にも価格が明かさない労働や差異があります。この作品はそうした還元の動作を一つ取り出し、詩に当てはめます。",
+          "カタログには私の発表済みの詩だけを収めています。読者の役割は、ある詩をどの版で発行するかを選ぶことです。それがどう読まれ、手にした一枚がその後どうなるかは開かれたままです。"
         ]
       },
       {
         "id": "pricing",
         "number": "02",
         "title": "価格が取りこぼすもの",
-        "dek": "PV3は原文を数え、労力は数えません。",
+        "dek": "PV3は文章だけを数えます。",
         "feature": "tariff",
         "body": [
-          "EspelandとStevensは、通約化を共通の尺度による比較として述べています。[[commensuration]] PV3は小さく検証可能な一例です。異なる詩が、選んだ文章の特徴を数えることで比較可能な金額になります。式は何を見ているかを示しますが、難しさ、改稿、愛着、文学的な強さの項目はありません。",
+          "EspelandとStevensは、通約化を共通の尺度による比較として述べています。[[commensuration]] PV3はその小さな一例です。選んだ文章の特徴を数えると、異なる詩が比較可能な金額になります。式には難しさ、改稿、愛着、文学的な強さの項目がありません。",
           "文字として数えるのはUnicodeの字母と数字だけです。空でない原文の行と連は基本額に加算され、狭い紙で自動的に折り返す行は加算されません。基本額を下回らない最小の .99 価格まで引き上げ、その後で追加項目を足します。合計が .99 で終わるとは限りません。",
-          "The Roof Splits Openは第一稿で£12.99、第二稿で£9.99です。計測文字は380から225へ減りますが、行数と連の数は変わりません。削除が詩に何をもたらしたかにかかわらず、値下げになります。この差は比較を促しますが、安い稿のほうが良いことを証明しません。",
-          "段階式の価格は差異を隠す一方、境界を大きく見せます。文学作品ではない四十個のxの試験では、一行が£1.99、二行が£2.99です。他の改行では表示価格が変わらないこともあります。これは選んだ小売の慣例であって、書記体系間の公平な長さの尺度でも、すべての店舗の値付けモデルでもありません。"
+          "The Roof Splits Openは第一稿で£12.99、第二稿で£9.99です。計測文字は380から225へ減りますが、行数と連の数は変わりません。削除が詩に何をもたらしたかにかかわらず、値下げになります。二つの稿は並べて読めます。",
+          "段階式の価格は差異を隠す一方、境界を大きく見せます。文学作品ではない四十個のxの試験では、一行なら£1.99、二行なら£2.99ですが、ほかに改行を足しても表示価格は変わりません。価格の丸め方は小売の慣例に従っています。"
         ]
       },
       {
@@ -647,9 +647,9 @@
         "dek": "見せ方も売り物の一部です。",
         "feature": "",
         "body": [
-          "基本版にはドット書体を含み、サイト書体を追加仕様として扱います。広告どおりの外観にするには追加の構成が必要な商品に似ています。ただし基本版も全文が揃い、読めなければなりません。わざと質を落とせば、問いは結論を仕込んだ実演に変わってしまいます。",
-          "ショップの画面もこの関係の外にはいません。セリフ体の大きな題字、余白、整列で魅力的な売り場を作りながら、組版を追加料金にしています。作品はその魅力を利用すると同時に見せています。レシートが素朴でも、周囲のサイトがデザインの与える威信と無関係になるわけではありません。",
-          "翻訳は別の言語と文化による読解を加え、実際の印刷では紙も長くなります。しかし固定の追加料金は紙の長さ、エネルギー、翻訳者の労働時間を計算しません。原文と公開済みの翻訳はサイトで自由に読めます。追加料金は架空の出力仕様に属し、理解するための入場料ではありません。繁体字と簡体字は原文の表記の選択で、基本価格は同じです。"
+          "基本版にはドット書体を含み、サイト書体を追加仕様として扱います。広告どおりの外観にするには追加の構成が必要な商品に似ています。基本版も全文が揃っていて読めるので、追加仕様が変えるのは詩の見た目だけです。",
+          "ショップの画面もこの仕組みの一部です。セリフ体の大きな題字、余白、整列で魅力的な売り場を作りながら、組版を追加料金にしています。そのため作品は、その魅力を利用すると同時に、それ自体を展示してもいます。",
+          "翻訳は別の言語と文化による読解を加え、実際の印刷では紙も長くなりますが、固定の追加料金は紙の長さ、エネルギー、翻訳者の労働時間を考慮しません。詩も公開済みの翻訳も、すべてサイトで無料で読めます。料金がかかるのは発行する版だけです。繁体字と簡体字は原文の二つの表記で、基本価格は同じです。"
         ]
       },
       {
@@ -659,43 +659,43 @@
         "dek": "会計が終わっても、読書は終わりません。",
         "feature": "",
         "body": [
-          "レシートは注文、数量、追加仕様、金額、模擬の支払いを記録します。詩券は本文、署名、出典、番号を載せ、価格は繰り返しません。一続きの紙に二種類の文書があり、必ず二枚の紙になるわけではありません。一件の注文に、別々の番号を持つ複数の詩のコピーを含められます。",
-          "CUT HEREは、レシートと詩がまず一緒に現れた後で分離を可能にします。全体を残す、切る、折る、一部を渡す。そのどれも画面が強制すべき正解ではありません。番号は切り離した部分の帰属を保ちますが、購入の認証、所有権、希少性を作りません。",
-          "英国のレジの言葉、欄、税額一覧、支払い情報は、馴染みある事務的なリズムを作ります。架空であるとの表示もその形式の一部で、実物らしさのために取り除くべき小字ではありません。支払いは処理しません。ここでvoucherが渡すのは詩であって、将来の現金引換の約束ではありません。"
+          "レシートは注文、数量、追加仕様、金額、模擬の支払いを記録します。詩券は本文、署名、出典、番号を載せ、価格は繰り返しません。これらは一続きの紙に載る二種類の文書で、一件の注文に、別々の番号を持つ複数の詩のコピーを含められます。",
+          "CUT HEREは、レシートと詩が一緒に目に入った後で、切り離す選択肢を差し出します。全体を残す、切る、折る、一部を渡す。画面はそのどれも優先しません。番号があるので、どの部分も元の注文までたどれます。",
+          "英国のレジの言葉、欄、税額一覧、支払い情報は、馴染みある事務的なリズムを作ります。購入が架空であることを示す印字も、同じ形式の一部です。支払いは処理しません。voucherが渡すのは詩であり、現金とは引き換えられません。"
         ]
       },
       {
         "id": "reading",
         "number": "05",
-        "title": "詩は機械の説明ではない",
-        "dek": "可能な読みは起源の説明とは違います。",
+        "title": "レシートの後の詩",
+        "dek": "並べて置くことで生まれる読みです。",
         "feature": "",
         "body": [
-          "乙三では引き渡す動作が繰り返し遅れます。書く手が止まり、封じる前の紙をまた折り、主客は清算を終えた対等な交換相手にはなりません。レシートの後で読むと、その動作は完了した取引の確かさを足りないものに見せるかもしれません。並べることで可能になる読みです。詩はそれを実証するために書かれたものではなく、読者は採用しなくても構いません。",
-          "他の関係は元の出版物に属します。乙六は甲乙の連作の中で応答し、The Roof Splits Openは日付のある稿本を保っています。一篇を発行することは全体の取得を強制すべきではありませんが、単独の一枚が文脈の不在を装う必要もありません。出典リンクからその関係に戻れます。",
-          "Druckerは物質性を使用時に起こることへ向けます。[[drucker]] したがって選ぶ、待つ、読む、切る、贈ることは観察すべき問いであり、紙やコードが保証する効果ではありません。携帯できる詩は贈り物、冗談、記念品、不要物にもなります。レシートの各欄に別々の比喩を割り当てる必要はありません。"
+          "乙三では引き渡す動作が繰り返し遅れます。書く手が止まり、封じる前の紙をまた折り、主客は清算を終えた対等な交換相手にはなりません。レシートの後で読むと、その動作は完了した取引の確かさを足りないものに見せるかもしれません。二つを並べることで可能になる、一つの読みです。",
+          "他の関係は元の出版物に属します。乙六は甲乙の連作の中で応答し、The Roof Splits Openは日付のある稿本を保っています。一篇だけを発行することもでき、その出典リンクから所属する連作へ戻れます。",
+          "Druckerは物質性を使用時に起こることへ向けます。[[drucker]] この作品では、選ぶ、待つ、読む、切る、贈るといった行為を、起きるその場で観察します。携帯できる詩は贈り物、冗談、記念品、不要物にもなります。"
         ]
       },
       {
         "id": "material",
         "number": "06",
         "title": "紙と画面",
-        "dek": "同じ規則でも、出会いは同じではありません。",
+        "dek": "同じ規則でも、紙と画面では違って読めます。",
         "feature": "",
         "body": [
-          "出力モデルは幅の狭い感熱紙を用います。 一ビットの白黒画像はレシート印刷の制約を残します。密なラベルと狭い行は読む条件の一部ですが、読めないほど小さければ、小ささそのものに価値はありません。鮮明なデジタル画像だけでは、特定のプリンターで細い画線が残ると証明できません。",
-          "直接感熱印刷はインクもリボンも使わず、熱、光、扱い方によって可読性が変わります。[[thermal]] 退色は詩に組み込まれた確かなカウントダウンではありません。素材の可能性であり、この試し刷りの観察済み寿命、環境への主張、あるいは喪失を表す必須の比喩ではありません。",
-          "初期の実物出力はあります。展示会場のない現在、ブラウザーのショップが公開の入口です。将来の発行テーブルでは、ダウンロードにはない紙の扱いと居合わせる時間が加わります。しかし画面上での出会いも実際の経験です。PDFはレシートと詩を同じファイルに保ち、長い出力には接続表示を付けます。独立したHTML版は全文と関係をオフラインでも読めるようにしますが、画像PDF自体をアクセシブルな文字PDFへ変えるものではありません。"
+          "出力モデルは幅の狭い感熱紙を用い、一ビットの白黒画像はレシート印刷の制約を残します。密なラベルと狭い行は、詩が読めなくなる手前までは形式の一部です。画面では鮮明な細い画線も、特定のプリンターでは途切れることがあります。",
+          "直接感熱印刷はインクもリボンも使わず、熱、光、扱い方によって可読性が変わります。[[thermal]] これらの刷りは色あせることがあり、その速さは測っていません。",
+          "初期の実物出力はあります。展示会場ができるまでは、ブラウザーのショップが公開の入口です。部屋に発行テーブルを置けば、紙を手に取ることと居合わせる時間が加わるでしょう。PDFはレシートと詩を同じファイルに保ち、長い出力には接続表示を付けます。独立したHTML版には全文が収められ、オフラインでも読めます。"
         ]
       },
       {
         "id": "implementation",
         "number": "07",
         "title": "実装",
-        "dek": "仕組みは確かめられます。",
+        "dek": "ソースとビルドの記録を公開しています。",
         "body": [
-          "Poetry Voucher は、作者が発表済みの詩による固定カタログを中心にした静的なブラウザーアプリです。以前公開していた Studio は終了しました。読者は任意の文章をアップロードするのではなく、一つの版を設定します。作品、漢字字体、既発表の翻訳、書体、サイズ、部数の選択は、同じ価格計算と発行の過程に入ります。通常の利用では詩をアップロードせず、決済サービスにも接続しません。",
-          "チェックアウトでは出力前に注文内容を固定します。本文、部数、金額、架空の決済場面、公開レンダラーの識別子は、その発行済み注文に属します。後で開き直しても、現在のカタログで詩を黙って再計算しません。別のレンダラーを使った場合は再描画と明示します。識別子が示すのはビルドの入力であり、画素の完全な一致を保証するものではありません。",
+          "Poetry Voucher は、作者が発表済みの詩による固定カタログを中心にした静的なブラウザーアプリです。読者は一つの版を設定します。作品、漢字字体、既発表の翻訳、書体、サイズ、部数の選択は、すべて同じ価格計算と発行の過程に入ります。何もアップロードせず、決済サービスにも接続しません。",
+          "チェックアウトでは出力前に注文内容を固定します。本文、部数、金額、架空の決済場面、公開レンダラーの識別子は、その発行済み注文に属します。開き直した注文は元の価格を保ち、別のレンダラーで作った結果は再描画と明記します。レンダラーの識別子はビルドの入力を記録します。",
           "固定された注文から、幅の狭い紙に合わせた画像 PDF と、単独で保存できる HTML の読書用複製を生成します。公開サイトに遠隔印刷のエンドポイントはありません。ペアリング済みの H10S 端末でのみ、明示的な印刷操作により、準備済みの注文を端末のローカル印刷サービスへ渡せます。"
         ],
         "feature": "implementation"
@@ -707,8 +707,8 @@
         "dek": "規則が違えば、結果も違います。",
         "feature": "",
         "body": [
-          "Short Éditionは読書時間で選ぶ無料の巻紙文学を提供します。[[short-edition]] この比較は配布の媒体と作品固有の仕組みを切り分けます。Poetry Voucherでは詩と版の仕様を選び、架空の金額を割り当てます。意味を持つかどうかはその購入手順が読書に何を加えるかにかかり、文学を細い紙巻に初めて印刷したかどうかにはかかりません。",
-          "BroodthaersのPense-Bêteでは石膏が埋め込まれた本への読書を妨げ、その近くには読める本も展示されました。[[broodthaers]] ここでは関係を反転させ、印刷された文章が装置から離れることを目指します。ただし危険は共通しています。興味を引く物体が文章から注意をそらすこともある。詩にたどり着く人がいなければ、レシートが本物らしくなることは自動的な改善ではありません。"
+          "Short Éditionは読書時間で選ぶ無料の巻紙文学を提供します。[[short-edition]] この比較は配布の媒体と作品の仕組みを切り分けます。Poetry Voucherでは詩と版の仕様を選び、架空の金額を割り当てます。この作品の眼目は、その購入手順が読書に何を加えるかにあります。",
+          "BroodthaersのPense-Bêteでは石膏が埋め込まれた本への読書を妨げ、その近くには読める本も展示されました。[[broodthaers]] ここでは関係を反転させ、印刷された文章が装置から離れることを目指します。ただし危険は共通しています。興味を引く物体は文章から注意をそらすこともあり、レシートをより本物らしくしても、意味があるのは人がなお詩までたどり着く場合に限られます。"
         ]
       },
       {
@@ -718,9 +718,9 @@
         "dek": "使える版と、まだ開かれた受容の問い。",
         "feature": "",
         "body": [
-          "カタログ、料金計算、デジタル発行は現在利用できます。初期印刷物は素材の試験であって、現在の全仕様が校正済みだという証拠ではありません。携帯して人に詩を贈るという考えは初期の読者から出て、作者へのインタビューで報告されました。それを観客一般への結論に広げてはいません。比較読者調査やギャラリー展示の実施も主張しません。",
-          "次の素材試験は小さくできます。少数の版を発行し、理論を先に教えずに読んで扱ってもらい、変化や失敗を記録する。その結果はレシートの維持、順序の変更、考えていた解釈の放棄につながるかもしれません。機能を増やすだけでは答えられない問いです。",
-          "個人での保存、印刷、印刷物の贈与を認めます。この作品の文章と実装の大部分は作者自身が手がけました。AIにはウェブページの操作の論理と視覚的な表現について検討を求め、最終的な決定は作者が下しました。ショップは既存の詩を選ぶだけで、詩の文章を生成しません。"
+          "カタログ、料金計算、デジタル発行は現在動いています。初期印刷物は素材の試験でした。詩を持ち歩いて人に贈るという考えは初期の読者から出たもので、作者へのインタビューで紹介されました。読者調査やギャラリー展示はまだ行っていません。",
+          "次の素材試験は小さくできます。少数の版を発行し、理論を先に教えずに読んで扱ってもらい、変化や失敗を記録する。その結果はレシートの維持、順序の変更、考えていた解釈の放棄につながるかもしれません。",
+          "個人での保存、印刷、印刷物の贈与を認めます。詩は私が書きました。ショップのコード、画面の文言、そしてこのノートの執筆にはAIツールの助けを借り、その結果は私が確認して最終的な決定を下しました。ショップは既存の詩を発行するもので、詩の文章は生成しません。"
         ]
       }
     ],
@@ -731,7 +731,7 @@
     "diagram_cut": "分離",
     "diagram_poem": "詩",
     "diagram_receipt_note": "注文、数量、模擬支払いを記録",
-    "diagram_cut_note": "切る位置を示すが、要求はしない",
+    "diagram_cut_note": "任意の切り取り位置",
     "diagram_poem_note": "本文、出典、各部の識別を保つ",
     "aesthetic_title": "二つの視覚体系",
     "aesthetic_screen_label": "ストアフロント",
@@ -780,13 +780,13 @@
     "read": "Gedichte lesen",
     "receipt": "01 / Kassenbon",
     "voucher": "02 / Gedicht",
-    "sample": "B3 · Original · Pixelschrift · festgelegte Szene vom 22.09.2026 · durchgehender digitaler Neurender vom 24.09.2026. Kein Foto und keine Live-Bestellvorschau.",
+    "sample": "B3 · Original · Pixelschrift · festgelegte Szene vom 22.09.2026 · durchgehender digitaler Neurender vom 24.09.2026.",
     "process": "Vom Kauf zum Lesen",
     "process_body": "Gedicht, Schrift und Übersetzungen wählen, dann ohne Zahlung zur Kasse gehen. Ein Beleg hält die Bestellung fest; jeder Gedichtbon erhält eine eigene Nummer. Bildproben oder eine vollständige, offline lesbare Textfassung herunterladen.",
     "privacy": "Auf Ihrem Gerät",
     "privacy_body": "Die Dateien entstehen im Browser. Die Katalogauswahl wird auf diesem Gerät gespeichert; abgeschlossene Bestellungen bleiben im aktuellen Tab. Gedichte werden nicht hochgeladen und Geld wird nicht abgebucht. Bei gewöhnlicher Browsernutzung wird kein Drucker kontaktiert. Am gekoppelten H10S-Terminal beginnt der Druck erst nach einer ausdrücklichen lokalen Handlung.",
     "hardware": "Papier als Rahmen",
-    "hardware_body": "Die Arbeit ist für die Begegnung auf Papier gedacht. Die Seite zeigt jetzt Scans zweier tatsächlich auf Thermopapier gedruckter Ausgaben, B3 und B4. Das frühere digitale Muster bleibt ein eigenständiger Neurender und ist kein Foto dieser Drucke. Zwei Drucke belegen keine Kalibrierung sämtlicher Konfigurationen.",
+    "hardware_body": "Die Arbeit ist für Papier gedacht. Unten folgen Scans zweier Ausgaben auf Thermopapier, B3 und B4; das digitale Muster oben ist ein eigenständiger Neurender.",
     "back": "Projektübersicht",
     "edit": "Ausgaben ansehen",
     "preview_alt": "Durchgehendes digitales B3-Muster: fiktiver Barzahlungsbon, CUT HERE und chinesischer Gedichtbon auf demselben Streifen.",
@@ -803,10 +803,10 @@
     "toc_label": "Über diese Arbeit",
     "specimen_open": "Vollständiges digitales Muster öffnen",
     "specimen_label": "Eine Bestellung, ein Streifen",
-    "specimen_body": "Der Kassenbon steht zuerst. Die Schnittlinie bietet eine Trennung an, verlangt sie aber nicht. Jedes Gedichtexemplar erhält eine bestellungsbezogene Nummer. Das kleine Bild dokumentiert die Form; es ist kein Leseproof in Originalgröße.",
+    "specimen_body": "Zuerst kommt der Kassenbon, dann eine Schnittlinie, an der sich der Streifen trennen lässt. Jedes Gedichtexemplar trägt eine eigene Nummer, die mit der Bestellung verknüpft ist.",
     "read_shi": "Beide Fassungen von The Roof Splits Open lesen",
     "references_title": "Quellen und Vergleiche",
-    "references_intro": "Diese Quellen präzisieren einzelne Fragen zu Messung, Lesen und materieller Form. Sie erzählen nicht nachträglich den Ursprung des Projekts.",
+    "references_intro": "Diese Quellen präzisieren einzelne Fragen zu Messung, Lesen und materieller Form.",
     "notes": [
       {
         "id": "origin",
@@ -816,21 +816,21 @@
         "feature": "",
         "body": [
           "Das Projekt begann, nachdem ich einen Bondrucker gefunden und meine eigenen Gedichte darauf ausprobiert hatte. Die Gedichte gab es bereits. Die Frage entstand aus der Alltäglichkeit des Supermarktbelegs: Wie fühlt es sich an, persönliches Schreiben durch einen Vorgang zu erwerben, der Waren stückweise abwickelt?",
-          "Im Schreiben können Zeit, Aufmerksamkeit, Wissen und Bindung sehr ungleich verteilt sein. Der Shop liefert eine andere Beschreibung: Katalogtitel, Menge, Grundausstattung und Preis. Das trennt keine reine Poesie von gedankenlosen Waren. Auch Alltagswaren enthalten Arbeit und Unterschiede, die ihre Preise nicht offenlegen. Die Arbeit isoliert einen Reduktionsvorgang, statt eine gesamte Markttheorie zu behaupten.",
-          "Der öffentliche Katalog ist bewusst auf meine veröffentlichten Texte beschränkt. Ein früheres Studio für beliebige Eingaben wurde zurückgezogen. Die Einladung gilt der Ausgabe eines bestimmten Gedichts; einen beliebigen Ausdruck zusammenzustellen ist eine andere Tätigkeit. Diese redaktionelle Grenze lässt die Auslegung und den weiteren Weg des Exemplars offen."
+          "Im Schreiben können Zeit, Aufmerksamkeit, Wissen und Bindung sehr ungleich verteilt sein. Der Shop liefert eine andere Beschreibung: Katalogtitel, Menge, Grundausstattung und Preis. Auch Alltagswaren enthalten Arbeit und Unterschiede, die ihre Preise nicht offenlegen; das Projekt isoliert einen solchen Reduktionsvorgang und wendet ihn auf Gedichte an.",
+          "Der Katalog enthält nur meine veröffentlichten Gedichte. Lesende entscheiden, in welcher Ausgabe ein bestimmtes Gedicht erscheint; wie es gelesen wird und was danach mit dem Exemplar geschieht, bleibt offen."
         ]
       },
       {
         "id": "pricing",
         "number": "02",
         "title": "Was ein Preis auslässt",
-        "dek": "PV3 zählt den Quelltext, nicht den Aufwand.",
+        "dek": "PV3 zählt den Text und sonst nichts.",
         "feature": "tariff",
         "body": [
-          "Espeland und Stevens beschreiben Kommensurierung als Vergleich durch einen gemeinsamen Maßstab. [[commensuration]] PV3 liefert einen kleinen prüfbaren Fall: Verschiedene Gedichte werden durch ausgewählte Textmerkmale zu vergleichbaren Summen. Die Formel zeigt, was sie erfasst. Schwierigkeit, Überarbeitung, Bindung und literarische Kraft kommen darin nicht vor.",
+          "Espeland und Stevens beschreiben Kommensurierung als Vergleich durch einen gemeinsamen Maßstab. [[commensuration]] PV3 ist ein kleines Beispiel dafür: Verschiedene Gedichte werden zu vergleichbaren Summen, sobald ausgewählte Textmerkmale gezählt werden. Schwierigkeit, Überarbeitung, Bindung und literarische Kraft kommen in der Formel nicht vor.",
           "Als Zeichen zählen nur Unicode-Buchstaben und Zahlen. Nicht leere Quellzeilen und Strophen erhöhen den Grundbetrag; automatische Umbrüche auf schmalem Papier zählen nicht. Die Basis steigt auf den niedrigsten .99-Preis, der nicht unter diesem Betrag liegt. Extras kommen danach hinzu, weshalb die Endsumme nicht auf .99 enden muss.",
-          "The Roof Splits Open kostet in Fassung eins £12.99, in Fassung zwei £9.99. Die gezählten Zeichen sinken von 380 auf 225; Zeilen und Strophen bleiben gleich. Streichen wird zur Preissenkung, unabhängig davon, was es mit dem Gedicht macht. Der Unterschied lädt zum Vergleich ein; er beweist nicht, dass die günstigere Fassung besser ist.",
-          "Die Stufen verdecken zugleich Unterschiede und vergrößern Schwellen. Vierzig x als nichtliterarischer Test kosten einzeilig £1.99, zweizeilig £2.99. Andere zusätzliche Umbrüche lassen den sichtbaren Preis unverändert. Das ist eine gewählte Verkaufskonvention, weder ein fairer Längenvergleich zwischen Schriftsystemen noch ein Modell sämtlicher Warenpreise."
+          "The Roof Splits Open kostet in Fassung eins £12.99, in Fassung zwei £9.99. Die gezählten Zeichen sinken von 380 auf 225; Zeilen und Strophen bleiben gleich. Streichen wird zur Preissenkung, unabhängig davon, was es mit dem Gedicht macht; beide Fassungen lassen sich nebeneinander lesen.",
+          "Die Stufen verdecken zugleich Unterschiede und vergrößern Schwellen. Vierzig x als nichtliterarischer Test kosten einzeilig £1.99, zweizeilig £2.99, während andere zusätzliche Umbrüche den sichtbaren Preis unverändert lassen. Die Rundung folgt den Gepflogenheiten des Einzelhandels."
         ]
       },
       {
@@ -840,9 +840,9 @@
         "dek": "Die Präsentation gehört zum Angebot.",
         "feature": "",
         "body": [
-          "Pixelschrift ist in der Grundausgabe enthalten. Die Website-Schriften sind ein Upgrade, wie bei einem Produkt, dessen beworbene Erscheinung eine Zusatzkonfiguration verlangt. Die Basis muss vollständig und lesbar bleiben. Sie absichtlich zu verschlechtern würde die Frage durch eine manipulierte Demonstration ersetzen.",
-          "Der Shop steht nicht außerhalb dieses Verhältnisses. Serifentitel, Raum und Ausrichtung machen sein Angebot attraktiv, während Typografie als Extra verkauft wird. Die Arbeit verwendet und zeigt diesen Reiz zugleich. Ein nüchterner Bon befreit die umgebende Website nicht vom Prestige, das Gestaltung verleihen kann.",
-          "Eine Übersetzung bietet eine weitere sprachliche und kulturelle Lesart und würde beim Drucken mehr Papier beanspruchen. Der feste Zuschlag berechnet aber weder Papierlänge noch Energie oder Übersetzungsstunden. Gedichte und veröffentlichte Übersetzungen sind auf der Website frei lesbar. Der Aufpreis gilt der fiktiven Ausgabekonfiguration, nicht dem Zugang zum Verständnis. Traditionelles und vereinfachtes Chinesisch sind alternative Schriftfassungen zum selben Grundpreis."
+          "Pixelschrift ist in der Grundausgabe enthalten. Die Website-Schriften sind ein Upgrade, wie bei einem Produkt, dessen beworbene Erscheinung eine Zusatzkonfiguration verlangt. Die Grundausgabe ist vollständig und lesbar; das Upgrade ändert also nur, wie das Gedicht aussieht.",
+          "Der Shop gehört selbst zu diesem Gefüge. Serifentitel, Raum und Ausrichtung machen sein Angebot attraktiv, während Typografie als Extra verkauft wird. So nutzt das Projekt diesen Reiz und stellt ihn zugleich aus.",
+          "Eine Übersetzung bietet eine weitere sprachliche und kulturelle Lesart und würde gedruckt mehr Papier beanspruchen; der feste Zuschlag berücksichtigt weder Papierlänge noch Energie oder Übersetzungsstunden. Alle Gedichte und veröffentlichten Übersetzungen sind auf der Website frei lesbar; der Aufpreis gilt also nur für das ausgegebene Exemplar. Traditionelles und vereinfachtes Chinesisch sind zwei Schriftfassungen des Originals zum selben Grundpreis."
         ]
       },
       {
@@ -852,43 +852,43 @@
         "dek": "Die Transaktion kann enden, das Lesen nicht.",
         "feature": "",
         "body": [
-          "Der Kassenbon verzeichnet Bestellung, Mengen, Extras, Beträge und simulierte Zahlung. Der Gedichtbon trägt Text, Autorschaft, Quelle und Nummer, ohne den Preis zu wiederholen. Es sind zwei Dokumentarten auf einem durchgehenden Streifen, nicht zwingend zwei Papierstücke: Eine Bestellung kann mehrere einzeln nummerierte Gedichtexemplare enthalten.",
-          "CUT HERE bietet Trennung an, nachdem Bon und Gedicht gemeinsam erschienen sind. Man kann den Streifen behalten, schneiden, falten oder einen Teil weitergeben. Keine dieser Möglichkeiten ist eine richtige Antwort, die die Oberfläche erzwingen sollte. Nummern halten die Teile zuordenbar; sie bestätigen keinen Kauf, begründen kein Eigentum und erzeugen keine Knappheit.",
-          "Britische Kassensprache, Spalten, Steuerübersicht und Zahlungsfelder erzeugen einen vertrauten administrativen Rhythmus. Die Fiktionshinweise gehören dazu; sie sind kein Kleingedrucktes, das für mehr Realismus verschwinden sollte. Es wird keine Zahlung verarbeitet. Der Voucher übergibt hier ein Gedicht, kein Versprechen einer späteren Barauszahlung."
+          "Der Kassenbon verzeichnet Bestellung, Mengen, Extras, Beträge und simulierte Zahlung. Der Gedichtbon trägt Text, Autorschaft, Quelle und Nummer, ohne den Preis zu wiederholen. Es sind zwei Dokumentarten auf einem durchgehenden Streifen, und eine Bestellung kann mehrere einzeln nummerierte Gedichtexemplare enthalten.",
+          "CUT HERE bietet eine Trennung an, nachdem Bon und Gedicht zusammen zu sehen waren. Man kann den ganzen Streifen behalten, ihn schneiden, falten oder einen Teil weitergeben; die Oberfläche bevorzugt keine dieser Möglichkeiten. Über die Nummern lässt sich jeder Teil seiner Bestellung zuordnen.",
+          "Britische Kassensprache, Spalten, Steuerübersicht und Zahlungsfelder erzeugen einen vertrauten administrativen Rhythmus; die aufgedruckten Hinweise, dass der Kauf fiktiv ist, gehören zur selben Form. Es wird keine Zahlung verarbeitet. Der Voucher übergibt ein Gedicht und lässt sich nicht in Bargeld einlösen."
         ]
       },
       {
         "id": "reading",
         "number": "05",
-        "title": "Gedichte erklären keine Maschine",
-        "dek": "Eine mögliche Lesart ist keine Ursprungsgeschichte.",
+        "title": "Das Gedicht nach dem Bon",
+        "dek": "Eine Lesart, die die Gegenüberstellung erlaubt.",
         "feature": "",
         "body": [
-          "B3 verzögert wiederholt eine Übergabe: Das Schreiben stockt, das unverschlossene Papier wird erneut gefaltet, und Gastgeber und Gast werden nicht zu gleichberechtigten Parteien eines abgeschlossenen Tauschs. Nach einem Kassenbon gelesen, können diese Vorgänge dessen Gewissheit unzureichend erscheinen lassen. Die Gegenüberstellung ermöglicht diese Lesart; das Gedicht entstand nicht zu ihrem Beweis, und niemand muss sie übernehmen.",
-          "Andere Beziehungen gehören zu den Quellpublikationen: B6 antwortet innerhalb der A/B-Folge; The Roof Splits Open bewahrt datierte Entwürfe. Eine Einzelausgabe sollte niemanden zum Erwerb der ganzen Folge zwingen, aber auch nicht so tun, als gäbe es keinen Zusammenhang. Quellenlinks erlauben die Rückkehr dorthin.",
-          "Drucker richtet Materialität auf das Geschehen im Gebrauch. [[drucker]] Auswählen, Warten, Lesen, Schneiden und Schenken sind hier deshalb Beobachtungsfragen, keine von Papier oder Code garantierten Wirkungen. Ein Gedicht für die Tasche kann Geschenk, Scherz, Andenken oder Abfall werden. Nicht jedes Feld des Bons muss eine eigene Metapher codieren."
+          "B3 verzögert wiederholt eine Übergabe: Das Schreiben stockt, das unverschlossene Papier wird erneut gefaltet, und Gastgeber und Gast werden nicht zu gleichberechtigten Parteien eines abgeschlossenen Tauschs. Nach einem Kassenbon gelesen, können diese Vorgänge dessen Gewissheit unzureichend erscheinen lassen. Es ist eine Lesart, die das Nebeneinander von Bon und Gedicht zulässt.",
+          "Andere Beziehungen gehören zu den Quellpublikationen: B6 antwortet innerhalb der A/B-Folge, und The Roof Splits Open bewahrt seine datierten Entwürfe. Ein einzelnes Gedicht kann allein ausgegeben werden; sein Quellenlink führt zurück zu der Folge, zu der es gehört.",
+          "Drucker richtet Materialität auf das Geschehen im Gebrauch. [[drucker]] Bei dieser Arbeit sind Auswählen, Warten, Lesen, Schneiden und Schenken deshalb zu beobachten, während sie geschehen. Ein Gedicht für die Tasche kann Geschenk, Scherz, Andenken oder Abfall werden."
         ]
       },
       {
         "id": "material",
         "number": "06",
         "title": "Papier und Bildschirm",
-        "dek": "Gleiche Regeln sind nicht dieselbe Begegnung.",
+        "dek": "Dieselbe Regel liest sich auf Papier anders als am Bildschirm.",
         "feature": "",
         "body": [
-          "Das Ausgabemodell verwendet schmales Thermopapier. Das Einbitbild behält Beschränkungen des Bondrucks bei. Dichte Beschriftung und schmale Zeilen gehören dazu; Kleinheit ist jedoch kein Vorzug, wenn das Gedicht unlesbar wird. Ein scharfes digitales Bild belegt nicht, dass feine Striche auf einem bestimmten Drucker erhalten bleiben.",
-          "Thermodirektdruck braucht weder Tinte noch Farbband; Wärme, Licht und Handhabung können die Lesbarkeit verändern. [[thermal]] Verblassen ist kein verlässlicher Countdown des Gedichts. Es bleibt eine Materialmöglichkeit, keine beobachtete Lebensdauer dieser Drucke, keine Umweltbehauptung und keine vorgeschriebene Verlustmetapher.",
-          "Frühe physische Drucke existieren. Ohne Ausstellungsort ist der Browser-Shop der gegenwärtige öffentliche Zugang. Ein künftiger Ausgabetisch würde Papierhandhabung und gemeinsam verbrachte Zeit hinzufügen, die ein Download nicht bietet. Die Bildschirmbegegnung ist trotzdem real. Das PDF bewahrt Bon und Gedichte in einer Datei, bei langen Ausgaben mit Fortsetzungen. Eine eigenständige HTML-Fassung hält alle Texte und Beziehungen offline lesbar; sie verwandelt das Bild-PDF nicht in ein barrierefreies Text-PDF."
+          "Das Ausgabemodell verwendet schmales Thermopapier, und das Einbitbild behält die Beschränkungen des Bondrucks bei. Dichte Beschriftung und schmale Zeilen gehören zur Form, solange das Gedicht lesbar bleibt. Feine Striche, die am Bildschirm scharf sind, können auf einem bestimmten Drucker trotzdem brüchig werden.",
+          "Thermodirektdruck braucht weder Tinte noch Farbband; Wärme, Licht und Handhabung können die Lesbarkeit verändern. [[thermal]] Diese Drucke können verblassen; wie schnell, wurde nicht gemessen.",
+          "Frühe physische Drucke existieren. Solange es keinen Ausstellungsort gibt, ist der Browser-Shop der öffentliche Zugang; ein Ausgabetisch in einem Raum würde Papierhandhabung und gemeinsam verbrachte Zeit hinzufügen. Das PDF bewahrt Bon und Gedichte in einer Datei, bei langen Ausgaben mit Fortsetzungen, und eine eigenständige HTML-Fassung hält ihren vollständigen Text offline lesbar."
         ]
       },
       {
         "id": "implementation",
         "number": "07",
         "title": "Implementierung",
-        "dek": "Der Mechanismus lässt sich prüfen.",
+        "dek": "Quellcode und Build-Manifest sind öffentlich.",
         "body": [
-          "Poetry Voucher ist eine statische Browseranwendung mit einem festen Katalog meiner veröffentlichten Gedichte. Das früher öffentliche Studio ist eingestellt: Lesende konfigurieren eine Ausgabe, statt beliebigen Text hochzuladen. Werkwahl, Schriftvariante, veröffentlichte Übersetzungen, Schriftart, Größe und Anzahl durchlaufen dieselbe Berechnung und Ausgabe. Bei gewöhnlicher Nutzung werden weder Gedichte hochgeladen noch ein Zahlungsdienst kontaktiert.",
-          "Beim Checkout wird der Inhalt der Bestellung vor der Ausgabe fixiert: Texte, Mengen, Beträge, die fiktive Zahlungsszene und die Kennung des öffentlichen Renderers gehören zu dieser ausgegebenen Bestellung. Beim späteren Öffnen werden die Gedichte nicht unbemerkt nach dem aktuellen Katalog neu berechnet. Wird ein anderer Renderer benutzt, ist das Ergebnis als Neurender gekennzeichnet. Die Kennung beschreibt Build-Eingaben und verspricht keine identischen Pixel.",
+          "Poetry Voucher ist eine statische Browseranwendung mit einem festen Katalog meiner veröffentlichten Gedichte. Lesende konfigurieren eine Ausgabe: Werkwahl, Schriftvariante, veröffentlichte Übersetzungen, Schriftart, Größe und Anzahl durchlaufen alle dieselbe Berechnung und Ausgabe. Es wird nichts hochgeladen und kein Zahlungsdienst kontaktiert.",
+          "Beim Checkout wird der Inhalt der Bestellung vor der Ausgabe fixiert: Texte, Mengen, Beträge, die fiktive Zahlungsszene und die Kennung des öffentlichen Renderers gehören zu dieser ausgegebenen Bestellung. Eine später wieder geöffnete Bestellung behält ihre ursprünglichen Preise, und ein Ergebnis, das mit einem anderen Renderer erzeugt wurde, ist als Neurender gekennzeichnet. Die Renderer-Kennung verzeichnet die Build-Eingaben.",
           "Aus der fixierten Bestellung entstehen ein Bild-PDF für schmales Papier und eine separate, eigenständig speicherbare HTML-Lesefassung. Die öffentliche Website hat keinen Endpunkt für Ferndruck. Nur am gekoppelten H10S-Terminal kann eine ausdrückliche Druckhandlung die bereits vorbereitete Bestellung an dessen lokalen Druckdienst übergeben."
         ],
         "feature": "implementation"
@@ -900,8 +900,8 @@
         "dek": "Andere Regeln, andere Folgen.",
         "feature": "",
         "body": [
-          "Short Édition bietet kostenlose Rollenliteratur nach Lesedauer an. [[short-edition]] Der Vergleich trennt das Verteilungsmedium vom besonderen Mechanismus einer Arbeit. Poetry Voucher verlangt die Wahl eines Gedichts und seiner Ausstattung und berechnet dann einen fiktiven Betrag. Entscheidend ist, was dieser Einkaufsvorgang zum Lesen beiträgt, nicht die erstmalige Verwendung einer schmalen Papierrolle für Literatur.",
-          "Bei Broodthaers’ Pense-Bête erschwert Gips das Lesen der eingebetteten Bücher; daneben wurden auch lesbare Exemplare gezeigt. [[broodthaers]] Hier kehrt sich die Beziehung um: Der Text soll seinen Apparat verlassen können. Das Risiko bleibt verwandt. Ein faszinierendes Objekt kann vom Schreiben ablenken. Ein noch überzeugenderer Kassenbon ist kein Fortschritt, wenn niemand beim Gedicht ankommt."
+          "Short Édition bietet kostenlose Rollenliteratur nach Lesedauer an. [[short-edition]] Der Vergleich trennt das Verteilungsmedium vom Mechanismus einer Arbeit: Poetry Voucher verlangt die Wahl eines Gedichts und seiner Ausstattung und berechnet dann einen fiktiven Betrag. Interessant daran ist, was dieser Einkaufsvorgang dem Lesen hinzufügt.",
+          "Bei Broodthaers’ Pense-Bête erschwert Gips das Lesen der eingebetteten Bücher; daneben wurden auch lesbare Exemplare gezeigt. [[broodthaers]] Hier kehrt sich die Beziehung um: Der Text soll seinen Apparat verlassen können. Das Risiko bleibt verwandt. Ein faszinierendes Objekt kann vom Schreiben ablenken, und ein überzeugenderer Kassenbon hilft nur, wenn man trotzdem beim Gedicht ankommt."
         ]
       },
       {
@@ -911,9 +911,9 @@
         "dek": "Eine benutzbare Ausgabe; eine offene Rezeptionsfrage.",
         "feature": "",
         "body": [
-          "Katalog, Berechnung und digitale Ausgabe sind heute benutzbar. Frühe Drucke sind Materialversuche, kein Beleg für die Kalibrierung jeder heutigen Konfiguration. Der Gedanke, ein Gedicht zum Verschenken bei sich zu tragen, kam von einer frühen lesenden Person und wurde im Interview berichtet. Daraus wurde keine Aussage über ein allgemeines Publikum gemacht. Eine vergleichende Lesestudie oder Galeriepräsentation wird hier nicht behauptet.",
-          "Der nächste Materialversuch kann klein sein: wenige ausgewählte Ausgaben herstellen, Menschen ohne vorausgehende Theorieeinführung lesen und handeln lassen und festhalten, was sich verändert oder scheitert. Das kann für den Bon, eine andere Reihenfolge oder den Verzicht auf eine angenommene Deutung sprechen. Zusätzliche Funktionen beantworten diese Frage nicht.",
-          "Persönliches Speichern, Drucken und Verschenken gedruckter Exemplare sind erlaubt. Hanpu Li verfasste und erstellte den größten Teil dieser Arbeit selbst; KI wurde zur Prüfung der Interaktionslogik und visuellen Gestaltung der Website eingesetzt. Die endgültigen Entscheidungen traf Hanpu Li. Der Shop wählt vorhandene Gedichte aus und erzeugt keine Gedichttexte."
+          "Katalog, Berechnung und digitale Ausgabe funktionieren bereits. Die frühen Drucke waren Materialversuche. Der Gedanke, ein Gedicht zum Verschenken bei sich zu tragen, kam von einer frühen lesenden Person und wurde im Interview berichtet; eine Lesestudie oder Galeriepräsentation hat es bisher nicht gegeben.",
+          "Der nächste Materialversuch kann klein sein: wenige ausgewählte Ausgaben herstellen, Menschen ohne vorausgehende Theorieeinführung lesen und handeln lassen und festhalten, was sich verändert oder scheitert. Das kann für den Bon, eine andere Reihenfolge oder den Verzicht auf eine angenommene Deutung sprechen.",
+          "Persönliches Speichern, Drucken und Verschenken gedruckter Exemplare sind erlaubt. Die Gedichte habe ich geschrieben; KI-Werkzeuge halfen, den Code des Shops, seine Oberflächentexte und diese Notizen zu schreiben, und ich habe die Ergebnisse geprüft und die endgültigen Entscheidungen getroffen. Der Shop gibt vorhandene Gedichte aus und erzeugt keine Gedichttexte."
         ]
       }
     ],
@@ -924,7 +924,7 @@
     "diagram_cut": "TRENNUNG",
     "diagram_poem": "GEDICHT",
     "diagram_receipt_note": "zeichnet Bestellung, Menge und simulierte Zahlung auf",
-    "diagram_cut_note": "bietet einen Schnitt an, verlangt ihn nicht",
+    "diagram_cut_note": "hier kann geschnitten werden",
     "diagram_poem_note": "bewahrt Text, Quelle und Exemplarbezug",
     "aesthetic_title": "Zwei visuelle Register",
     "aesthetic_screen_label": "STOREFRONT",
@@ -973,13 +973,13 @@
     "read": "Lire les poèmes",
     "receipt": "01 / Le ticket",
     "voucher": "02 / Le poème",
-    "sample": "B3 · original · police pixel · scène fixe datée du 22/09/2026 · nouveau rendu numérique continu du 24/09/2026. Ni photographie ni aperçu d’une commande en cours.",
+    "sample": "B3 · original · police pixel · scène fixe datée du 22/09/2026 · nouveau rendu numérique continu du 24/09/2026.",
     "process": "De la transaction à la lecture",
     "process_body": "Choisissez un poème, une police et des traductions, puis passez en caisse sans payer. Un reçu consigne la commande ; chaque bon porte son propre numéro. Téléchargez les épreuves en image ou une version textuelle intégrale lisible hors ligne.",
     "privacy": "Sur votre appareil",
     "privacy_body": "Les fichiers sont préparés dans le navigateur. Les choix du catalogue sont enregistrés sur cet appareil ; les commandes achevées restent dans l’onglet courant. Les poèmes ne sont pas téléversés et aucun paiement n’est prélevé. L’usage ordinaire du navigateur ne contacte aucune imprimante. Sur le terminal H10S appairé, l’impression ne commence qu’après une action locale explicite.",
     "hardware": "La contrainte du papier",
-    "hardware_body": "Cette œuvre est destinée à être rencontrée sur papier. La page montre désormais les scans de deux éditions réellement imprimées sur papier thermique, B3 et B4. L’ancien spécimen numérique reste un nouveau rendu distinct, pas une photographie de ces tirages. Deux tirages ne prouvent pas que toutes les configurations sont calibrées.",
+    "hardware_body": "L’œuvre est destinée au papier. Ci-dessous, les scans de deux éditions sur papier thermique, B3 et B4 ; le spécimen numérique ci-dessus est un nouveau rendu distinct.",
     "back": "Présentation du projet",
     "edit": "Voir les éditions",
     "preview_alt": "Spécimen numérique continu B3 : ticket fictif en espèces, séparation CUT HERE et bon poétique chinois sur la même bande.",
@@ -996,10 +996,10 @@
     "toc_label": "À propos de cette œuvre",
     "specimen_open": "Ouvrir le spécimen numérique complet",
     "specimen_label": "Une commande, une bande",
-    "specimen_body": "Le ticket vient d’abord. La ligne de coupe propose une séparation sans l’exiger. Chaque exemplaire du poème porte un numéro relié à la commande. Cette petite image est documentaire, pas une épreuve de lecture à taille réelle.",
+    "specimen_body": "Le ticket vient d’abord, puis une ligne de coupe où la bande peut être séparée. Chaque exemplaire du poème porte son propre numéro, relié à la commande.",
     "read_shi": "Lire les deux versions de The Roof Splits Open",
     "references_title": "Références et comparaisons",
-    "references_intro": "Ces sources éclairent des questions précises de mesure, de lecture et de forme matérielle. Elles ne reconstruisent pas après coup l’origine du projet.",
+    "references_intro": "Ces sources éclairent des questions précises de mesure, de lecture et de forme matérielle.",
     "notes": [
       {
         "id": "origin",
@@ -1009,21 +1009,21 @@
         "feature": "",
         "body": [
           "Le projet a commencé après que j’ai trouvé une imprimante de tickets et essayé d’y imprimer mes propres poèmes. Ils existaient déjà. La question venait de la familiarité du reçu de supermarché : que ressent-on en obtenant une écriture personnelle par une procédure destinée à traiter des biens à l’unité ?",
-          "L’écriture peut accumuler inégalement temps, attention, savoir et attachement. La boutique en propose une autre description : titre au catalogue, quantité, configuration de base et prix. Il ne s’agit pas de séparer une poésie pure de marchandises sans pensée. Les objets ordinaires contiennent eux aussi du travail et des différences que leurs prix ne révèlent pas. L’œuvre isole une réduction, sans prétendre expliquer tous les marchés.",
-          "Le catalogue public est volontairement limité à mes textes publiés. L’ancien Studio à texte libre a été retiré. L’invitation consiste à choisir comment un poème précis sera édité ; composer n’importe quel imprimé est une autre activité. Cette limite éditoriale laisse ouvertes l’interprétation et la destination ultérieure de l’exemplaire."
+          "L’écriture peut accumuler inégalement temps, attention, savoir et attachement. La boutique en propose une autre description : titre au catalogue, quantité, configuration de base et prix. Les objets ordinaires contiennent eux aussi du travail et des différences que leurs prix ne révèlent pas ; l’œuvre isole un tel acte de réduction et l’applique à des poèmes.",
+          "Le catalogue ne contient que mes poèmes publiés. Au lecteur de choisir comment un poème précis sera édité ; la façon de le lire et ce que devient ensuite l’exemplaire restent ouverts."
         ]
       },
       {
         "id": "pricing",
         "number": "02",
         "title": "Ce que le prix omet",
-        "dek": "PV3 compte la source, pas l’effort.",
+        "dek": "PV3 compte le texte, et rien d’autre.",
         "feature": "tariff",
         "body": [
-          "Espeland et Stevens décrivent la commensuration comme une comparaison par une mesure commune. [[commensuration]] PV3 en donne un petit cas vérifiable : des poèmes différents deviennent des sommes comparables par quelques caractéristiques textuelles. La formule expose ce qu’elle voit. Elle ne possède aucun terme pour la difficulté, la révision, l’attachement ou la force littéraire.",
+          "Espeland et Stevens décrivent la commensuration comme une comparaison par une mesure commune. [[commensuration]] PV3 en donne un petit exemple : des poèmes différents deviennent des sommes comparables dès que l’on compte certaines caractéristiques textuelles. La formule ne possède aucun terme pour la difficulté, la révision, l’attachement ou la force littéraire.",
           "Seules les lettres et les nombres Unicode sont comptés comme caractères. Lignes sources non vides et strophes augmentent la base ; les retours automatiques sur papier étroit ne comptent pas. La base atteint le plus petit prix en .99 qui ne lui soit pas inférieur. Les options s’ajoutent ensuite : le total ne finit donc pas nécessairement en .99.",
-          "The Roof Splits Open coûte £12.99 dans sa première version, £9.99 dans sa seconde. Le poème passe de 380 à 225 caractères comptés, en gardant ses lignes et ses strophes. Supprimer devient une baisse de prix, quel que soit l’effet sur le poème. L’écart invite à comparer ; il ne prouve pas que la version moins chère est meilleure.",
-          "Les paliers cachent aussi des différences et amplifient des seuils. Quarante x, comme test non littéraire, coûtent £1.99 sur une ligne et £2.99 sur deux. D’autres sauts de ligne ne changent pas le prix affiché. C’est une convention commerciale choisie, ni une mesure équitable des longueurs entre écritures ni un modèle de tous les prix en magasin."
+          "The Roof Splits Open coûte £12.99 dans sa première version, £9.99 dans sa seconde. Le poème passe de 380 à 225 caractères comptés, en gardant ses lignes et ses strophes. Supprimer devient une baisse de prix, quel que soit l’effet sur le poème ; les deux versions peuvent se lire côte à côte.",
+          "Les paliers cachent aussi des différences et amplifient des seuils. Quarante x, comme test non littéraire, coûtent £1.99 sur une ligne et £2.99 sur deux, tandis que d’autres sauts de ligne ne changent pas le prix affiché. L’arrondi suit l’usage du commerce de détail."
         ]
       },
       {
@@ -1033,9 +1033,9 @@
         "dek": "La présentation fait partie de l’offre.",
         "feature": "",
         "body": [
-          "La police pixel est comprise dans l’édition de base. Les polices du site sont une option supérieure, comme un produit dont l’allure publicitaire dépend d’une configuration supplémentaire. La base doit rester complète et lisible. La dégrader volontairement remplacerait la question par une démonstration truquée.",
-          "La vitrine n’est pas extérieure à ce rapport. Ses grands caractères à empattements, ses espaces et ses alignements rendent l’offre séduisante, alors même qu’elle vend la typographie en supplément. L’œuvre emploie cet attrait et le montre. La sobriété du ticket n’innocente pas le site du prestige que peut conférer le design.",
-          "Une traduction apporte une autre lecture linguistique et culturelle et occuperait davantage de papier à l’impression. Son supplément fixe ne calcule pourtant ni longueur du papier, ni énergie, ni heures de traduction. Poèmes et traductions publiées sont librement lisibles sur le site. Le supplément concerne la configuration fictive de l’édition, pas un droit d’entrée à la compréhension. Chinois traditionnel et simplifié sont deux graphies de l’original au même prix de base."
+          "La police pixel est comprise dans l’édition de base. Les polices du site sont une option supérieure, comme un produit dont l’allure publicitaire dépend d’une configuration supplémentaire. L’édition de base est complète et lisible : l’option ne change donc que l’apparence du poème.",
+          "La vitrine fait elle-même partie de cet agencement. Ses grands caractères à empattements, ses espaces et ses alignements rendent l’offre séduisante, alors même que la vitrine vend la typographie en supplément ; le projet emploie donc cet attrait tout en l’exposant.",
+          "Une traduction apporte une autre lecture linguistique et culturelle, et un tirage physique occuperait davantage de papier ; le supplément fixe ne tient compte ni de la longueur du papier, ni de l’énergie, ni des heures de traduction. Les poèmes et les traductions publiées sont tous librement lisibles sur le site ; le supplément ne porte donc que sur l’édition émise. Chinois traditionnel et simplifié sont deux graphies de l’original au même prix de base."
         ]
       },
       {
@@ -1045,43 +1045,43 @@
         "dek": "La transaction peut finir avant la lecture.",
         "feature": "",
         "body": [
-          "Le ticket consigne commande, quantités, options, sommes et paiement simulé. Le bon poétique porte texte, signature, source et numéro, sans répéter son prix. Ce sont deux types de document sur une bande continue, pas forcément deux morceaux de papier : une commande peut comprendre plusieurs exemplaires numérotés séparément.",
-          "CUT HERE permet la séparation après que ticket et poème ont été présentés ensemble. On peut garder toute la bande, couper, plier ou transmettre une partie. Aucune de ces possibilités n’est une bonne réponse que l’interface devrait imposer. Les numéros maintiennent l’attribution des parties, sans authentifier un achat, établir une propriété ou rendre l’exemplaire rare.",
-          "Le vocabulaire britannique de caisse, les colonnes, le détail fiscal et les champs de paiement donnent un rythme administratif familier. Les mentions de fiction appartiennent à la forme ; ce ne sont pas de petites lignes à supprimer pour gagner en réalisme. Aucun paiement n’est traité. Ici, le voucher remet un poème, pas une promesse de remboursement futur en espèces."
+          "Le ticket consigne commande, quantités, options, sommes et paiement simulé. Le bon poétique porte texte, signature, source et numéro, sans répéter son prix. Ce sont deux types de document sur une bande continue, et une commande peut comprendre plusieurs exemplaires numérotés séparément.",
+          "CUT HERE propose une séparation une fois que ticket et poème ont été vus ensemble. On peut garder toute la bande, la couper, la plier ou en transmettre une partie, et l’interface ne privilégie aucune de ces possibilités. La numérotation permet de rattacher chaque partie à sa commande.",
+          "Le vocabulaire britannique de caisse, les colonnes, le détail fiscal et les champs de paiement donnent un rythme administratif familier, et les mentions imprimées indiquant que l’achat est fictif appartiennent à la même forme. Aucun paiement n’est traité. Le voucher remet un poème et ne peut pas être échangé contre des espèces."
         ]
       },
       {
         "id": "reading",
         "number": "05",
-        "title": "Les poèmes n’expliquent pas la machine",
-        "dek": "Une lecture possible n’est pas une origine.",
+        "title": "Le poème après le ticket",
+        "dek": "Une lecture que permet la juxtaposition.",
         "feature": "",
         "body": [
-          "B3 retarde plusieurs fois une remise : l’écriture s’arrête, le papier non scellé est replié et hôte et invité ne deviennent pas deux parties égales d’un échange réglé. Après un ticket, ces gestes peuvent faire paraître insuffisante la certitude d’une transaction achevée. C’est une lecture permise par le voisinage. Le poème n’a pas été écrit pour la démontrer et personne n’est tenu de l’adopter.",
-          "D’autres rapports appartiennent aux publications sources : B6 répond dans la séquence A/B ; The Roof Splits Open conserve ses états datés. Proposer un poème seul ne doit pas forcer l’acquisition d’un cycle entier, mais l’exemplaire isolé n’a pas non plus à faire croire qu’il n’a aucun contexte. Les liens sources permettent d’y revenir.",
-          "Drucker ramène la matérialité vers ce qui arrive dans l’usage. [[drucker]] Choisir, attendre, lire, couper et donner sont donc ici des questions à observer, non des effets garantis par le papier ou le code. Un poème de poche peut devenir cadeau, plaisanterie, souvenir ou déchet. Chaque champ du ticket n’a pas à coder sa propre métaphore."
+          "B3 retarde plusieurs fois une remise : l’écriture s’arrête, le papier non scellé est replié et hôte et invité ne deviennent pas deux parties égales d’un échange réglé. Après un ticket, ces gestes peuvent faire paraître insuffisante la certitude d’une transaction achevée. C’est une lecture que permet le rapprochement des deux.",
+          "D’autres rapports appartiennent aux publications sources : B6 répond dans la séquence A/B, et The Roof Splits Open conserve ses états datés. Un poème peut être émis seul, et son lien source ramène à la séquence dont il fait partie.",
+          "Drucker ramène la matérialité vers ce qui arrive dans l’usage. [[drucker]] Pour cette œuvre, choisir, attendre, lire, couper et donner sont donc des gestes à observer au moment où ils ont lieu. Un poème de poche peut devenir cadeau, plaisanterie, souvenir ou déchet."
         ]
       },
       {
         "id": "material",
         "number": "06",
         "title": "Papier et écran",
-        "dek": "Une même règle ne produit pas la même rencontre.",
+        "dek": "Une même règle se lit autrement sur papier et à l’écran.",
         "feature": "",
         "body": [
-          "Le modèle de sortie emploie du papier thermique étroit. L’image à un bit garde les contraintes du ticket. Mentions denses et lignes étroites participent à la rencontre ; la petitesse n’est toutefois pas une qualité si le poème devient illisible. Une image numérique nette ne prouve pas qu’une imprimante donnée conserve les traits fins.",
-          "L’impression thermique directe n’utilise ni encre ni ruban ; chaleur, lumière et manipulation peuvent affecter la lisibilité. [[thermal]] L’effacement n’est pas un compte à rebours fiable intégré au poème. Il reste une possibilité matérielle, non une durée de vie observée de ces tirages, une affirmation écologique ou une métaphore obligatoire de la perte.",
-          "Des premiers tirages physiques existent. Sans lieu d’exposition, la boutique est le passage public actuel ; une future table d’édition ajouterait la manipulation et le temps partagé qu’un téléchargement ne donne pas. La rencontre à l’écran est néanmoins réelle. Le PDF conserve ticket et poèmes dans un fichier unique, avec des continuations pour les longues sorties. Un équivalent HTML autonome garde tous les textes et leur relation lisibles hors ligne ; il ne transforme pas le PDF d’images en PDF textuel accessible."
+          "Le modèle de sortie emploie du papier thermique étroit, et l’image à un bit garde les contraintes du ticket. Mentions denses et lignes étroites appartiennent à la forme tant que le poème reste lisible. Des traits fins, nets à l’écran, peuvent encore se fragmenter sur une imprimante donnée.",
+          "L’impression thermique directe n’utilise ni encre ni ruban ; chaleur, lumière et manipulation peuvent affecter la lisibilité. [[thermal]] Ces tirages peuvent s’effacer, à un rythme qui n’a pas été mesuré.",
+          "Des premiers tirages physiques existent. En attendant un lieu d’exposition, la boutique est le passage public ; une table d’édition installée dans une salle ajouterait la manipulation et le temps partagé. Le PDF conserve ticket et poèmes dans un fichier unique, avec des continuations pour les longues sorties, et une copie HTML autonome en garde le texte intégral pour une lecture hors ligne."
         ]
       },
       {
         "id": "implementation",
         "number": "07",
         "title": "Réalisation",
-        "dek": "Le mécanisme peut être vérifié.",
+        "dek": "Le code source et le manifeste de construction sont publics.",
         "body": [
-          "Poetry Voucher est une application statique dans le navigateur, fondée sur un catalogue fixe de mes poèmes publiés. L’ancien Studio public est retiré : le lecteur configure une édition au lieu de téléverser un texte arbitraire. Choix du poème, écriture, traductions publiées, police, taille et quantité passent par le même processus de calcul du prix et d’émission. L’usage ordinaire ne téléverse pas le poème et ne contacte aucun service de paiement.",
-          "Lors de la validation, le contenu de la commande est figé avant la production : textes, quantités, montants, scène de paiement fictive et identité du moteur de rendu public appartiennent à cette commande émise. Sa réouverture ne recalcule pas discrètement les prix à partir du catalogue actuel. Si un autre moteur est employé, le résultat est signalé comme un nouveau rendu. Son identifiant décrit les entrées de la construction, sans garantir des pixels identiques.",
+          "Poetry Voucher est une application statique dans le navigateur, fondée sur un catalogue fixe de mes poèmes publiés. Le lecteur configure une édition : choix du poème, écriture, traductions publiées, police, taille et quantité passent tous par le même processus de calcul du prix et d’émission. Rien n’est téléversé et aucun service de paiement n’est contacté.",
+          "Lors de la validation, le contenu de la commande est figé avant la production : textes, quantités, montants, scène de paiement fictive et identité du moteur de rendu public appartiennent à cette commande émise. Une commande rouverte garde ses prix d’origine, et un résultat produit avec un autre moteur est signalé comme un nouveau rendu. L’identifiant du moteur de rendu consigne les entrées de la construction.",
           "La commande figée produit un PDF d’images pour papier étroit et une copie de lecture HTML autonome et distincte. Le site public n’a aucun point d’accès pour l’impression distante. Sur le seul terminal H10S appairé, une action d’impression explicite peut transmettre la commande déjà préparée à son service d’impression local."
         ],
         "feature": "implementation"
@@ -1093,8 +1093,8 @@
         "dek": "D’autres règles, d’autres conséquences.",
         "feature": "",
         "body": [
-          "Short Édition propose une littérature gratuite sur rouleau, choisie par durée de lecture. [[short-edition]] La comparaison distingue un support de diffusion du mécanisme particulier d’une œuvre. Poetry Voucher demande de choisir un poème et sa configuration, puis attribue un montant fictif. Son propos dépend de ce que l’achat ajoute à la lecture, pas d’une première impression de littérature sur rouleau étroit.",
-          "Dans Pense-Bête de Broodthaers, le plâtre gêne l’accès aux livres incorporés ; des exemplaires lisibles étaient également exposés à proximité. [[broodthaers]] Le rapport s’inverse ici : le texte imprimé doit pouvoir quitter son dispositif. Le risque reste commun. Un objet intrigant peut détourner l’attention de l’écriture. Rendre le ticket plus convaincant n’améliore pas nécessairement l’œuvre si personne n’arrive au poème."
+          "Short Édition propose une littérature gratuite sur rouleau, choisie par durée de lecture. [[short-edition]] La comparaison distingue un support de diffusion du mécanisme d’une œuvre : Poetry Voucher demande de choisir un poème et sa configuration, puis attribue un montant fictif, et son intérêt tient à ce que cette procédure d’achat ajoute à la lecture.",
+          "Dans Pense-Bête de Broodthaers, le plâtre gêne l’accès aux livres incorporés ; des exemplaires lisibles étaient également exposés à proximité. [[broodthaers]] Le rapport s’inverse ici : le texte imprimé doit pouvoir quitter son dispositif. Le risque reste commun. Un objet intrigant peut détourner l’attention de l’écriture, et un ticket plus convaincant n’aide que si l’on parvient encore jusqu’au poème."
         ]
       },
       {
@@ -1104,9 +1104,9 @@
         "dek": "Une édition utilisable ; une réception encore ouverte.",
         "feature": "",
         "body": [
-          "Catalogue, calcul et émission numérique sont utilisables aujourd’hui. Les premiers tirages sont des essais matériels, pas la preuve que toutes les configurations actuelles sont calibrées. L’idée de porter un poème pour le donner est venue d’un premier lecteur et a été rapportée dans l’entretien avec l’artiste. Elle ne devient pas une conclusion générale sur les publics. Aucune étude comparative de lecteurs ni présentation en galerie n’est revendiquée ici.",
-          "Le prochain essai matériel peut rester modeste : émettre quelques éditions choisies, laisser les gens lire et manipuler sans cours théorique préalable, puis noter ce qui change ou échoue. Cela peut justifier de garder le ticket, de déplacer l’ordre de présentation ou d’abandonner une interprétation envisagée. Davantage de fonctions ne répondent pas à cette question.",
-          "Sauvegarde personnelle, impression et don des exemplaires imprimés sont permis. Hanpu Li a rédigé et réalisé l’essentiel de cette œuvre ; l’IA a servi à examiner la logique d’interaction et la présentation visuelle du site. Les décisions finales revenaient à Hanpu Li. La boutique sélectionne des poèmes existants et ne génère aucun texte poétique."
+          "Catalogue, calcul et émission numérique fonctionnent déjà. Les premiers tirages étaient des essais matériels. L’idée de porter un poème pour le donner est venue d’un premier lecteur et a été rapportée dans l’entretien avec l’artiste ; il n’y a encore eu ni étude auprès de lecteurs ni présentation en galerie.",
+          "Le prochain essai matériel peut rester modeste : émettre quelques éditions choisies, laisser les gens lire et manipuler sans cours théorique préalable, puis noter ce qui change ou échoue. Cela peut justifier de garder le ticket, de déplacer l’ordre de présentation ou d’abandonner une interprétation envisagée.",
+          "Sauvegarde personnelle, impression et don des exemplaires imprimés sont permis. J’ai écrit les poèmes ; des outils d’IA ont aidé à écrire le code de la boutique, les textes de son interface et ces notes, et j’ai examiné les résultats et pris les décisions finales. La boutique émet des poèmes existants et ne génère aucun texte poétique."
         ]
       }
     ],
@@ -1117,7 +1117,7 @@
     "diagram_cut": "SÉPARATION",
     "diagram_poem": "POÈME",
     "diagram_receipt_note": "consigne commande, quantité et paiement simulé",
-    "diagram_cut_note": "propose une coupe sans l’exiger",
+    "diagram_cut_note": "emplacement de coupe facultatif",
     "diagram_poem_note": "conserve texte, source et identité de l’exemplaire",
     "aesthetic_title": "Deux registres visuels",
     "aesthetic_screen_label": "VITRINE",
@@ -1166,13 +1166,13 @@
     "read": "Читать стихи",
     "receipt": "01 / Чек",
     "voucher": "02 / Стихотворение",
-    "sample": "B3 · оригинал · пиксельный шрифт · фиксированная сцена датирована 22.09.2026 · непрерывный цифровой рендер выполнен заново 24.09.2026. Не фотография и не предпросмотр текущего заказа.",
+    "sample": "B3 · оригинал · пиксельный шрифт · фиксированная сцена датирована 22.09.2026 · непрерывный цифровой рендер выполнен заново 24.09.2026.",
     "process": "От покупки к чтению",
     "process_body": "Выберите стихотворение, шрифт и переводы, затем оформите заказ без оплаты. Один чек фиксирует заказ; каждый талон получает отдельный номер. Скачайте изображения или полную текстовую версию для чтения без сети.",
     "privacy": "На вашем устройстве",
     "privacy_body": "Файлы готовятся в браузере. Выбор из каталога сохраняется на этом устройстве; завершённые заказы остаются в текущей вкладке. Стихи не загружаются на сервер, деньги не списываются. При обычном использовании браузер не обращается к принтеру. На сопряжённом терминале H10S печать начинается только после явного локального действия.",
     "hardware": "В рамках бумаги",
-    "hardware_body": "Работа рассчитана на встречу с бумажным экземпляром. Теперь на странице показаны сканы двух действительно напечатанных на термобумаге выпусков, B3 и B4. Более ранний цифровой образец остаётся отдельным повторным рендером, а не фотографией этих отпечатков. Два отпечатка не доказывают, что все настройки откалиброваны.",
+    "hardware_body": "Работа рассчитана на бумагу. Ниже показаны сканы двух выпусков на термобумаге, B3 и B4; цифровой образец выше получен отдельным повторным рендером.",
     "back": "О проекте",
     "edit": "Посмотреть издания",
     "preview_alt": "Непрерывный цифровой образец B3: вымышленный кассовый чек, разделитель CUT HERE и китайский поэтический талон на одной ленте.",
@@ -1189,10 +1189,10 @@
     "toc_label": "Об этой работе",
     "specimen_open": "Открыть полный цифровой образец",
     "specimen_label": "Один заказ, одна лента",
-    "specimen_body": "Первым идёт чек. Линия разреза предлагает разделение, не требует его. Каждый экземпляр имеет номер, связанный с заказом. Маленькое изображение документирует форму, а не служит пробой чтения в натуральную величину.",
+    "specimen_body": "Сначала идёт чек, затем линия разреза, по которой ленту можно разделить. У каждого экземпляра стихотворения свой номер, связанный с заказом.",
     "read_shi": "Прочитать обе версии The Roof Splits Open",
     "references_title": "Источники и сопоставления",
-    "references_intro": "Эти материалы уточняют отдельные вопросы измерения, чтения и материальной формы, а не переписывают происхождение проекта задним числом.",
+    "references_intro": "Эти материалы уточняют отдельные вопросы измерения, чтения и материальной формы.",
     "notes": [
       {
         "id": "origin",
@@ -1202,21 +1202,21 @@
         "feature": "",
         "body": [
           "Началом проекта стал найденный мной принтер чеков и попытка напечатать на нём собственные стихи. Тексты уже существовали. Вопрос возник из повседневной знакомости супермаркетного чека: что чувствуешь, приобретая личное письмо через процедуру, предназначенную для поштучной обработки товаров?",
-          "В письме могут неравномерно накапливаться время, внимание, знания и привязанность. Магазин даёт другое описание: название в каталоге, количество, базовая комплектация и цена. Это не разделение чистой поэзии и бездумных товаров. Обычные вещи тоже содержат труд и различия, которых цена не раскрывает. Работа выделяет один акт сведения к счётным признакам, не претендуя на полную теорию рынков.",
-          "Публичный каталог намеренно ограничен моими опубликованными текстами. Прежняя Studio со свободным вводом закрыта. Приглашение состоит в выборе издания определённого стиха; составлять произвольную распечатку означает заниматься другим. Такая редакторская граница оставляет открытыми интерпретацию и дальнейшую судьбу экземпляра."
+          "В письме могут неравномерно накапливаться время, внимание, знания и привязанность. Магазин даёт другое описание: название в каталоге, количество, базовая комплектация и цена. Обычные вещи тоже содержат труд и различия, которых цена не раскрывает; работа выделяет один такой акт сведения к счётным признакам и применяет его к стихам.",
+          "В каталоге только мои опубликованные стихи. От читателя требуется выбрать, в каком виде выпустить конкретное стихотворение; как его читать и что потом станет с экземпляром, остаётся открытым."
         ]
       },
       {
         "id": "pricing",
         "number": "02",
         "title": "Что цена упускает",
-        "dek": "PV3 считает исходник, не затраченные усилия.",
+        "dek": "PV3 считает текст и ничего больше.",
         "feature": "tariff",
         "body": [
-          "Espeland и Stevens описывают соизмерение как сравнение через общую меру. [[commensuration]] PV3 даёт небольшой проверяемый случай: разные стихи становятся сопоставимыми суммами через подсчёт выбранных признаков текста. Формула показывает, что способна увидеть. В ней нет слагаемого для сложности, переработки, привязанности или литературной силы.",
+          "Espeland и Stevens описывают соизмерение как сравнение через общую меру. [[commensuration]] PV3 служит его небольшим примером: несхожие стихи превращаются в сопоставимые суммы, как только подсчитаны выбранные признаки текста. В формуле нет слагаемого для сложности, переработки, привязанности или литературной силы.",
           "Символами считаются только буквы и числа Unicode. Непустые строки исходника и строфы прибавляются к базе; автоматические переносы на узкой бумаге не учитываются. База поднимается до наименьшей отметки .99, которая не ниже исходной суммы. Дополнения прибавляются после этого, поэтому итог не обязательно заканчивается на .99.",
-          "The Roof Splits Open стоит £12.99 в первом варианте и £9.99 во втором. Число учтённых символов падает с 380 до 225 при неизменном числе строк и строф. Удаление становится снижением цены независимо от того, что делает со стихом. Разница предлагает сравнение, но не доказывает превосходства дешёвой версии.",
-          "Ступени также скрывают различия и усиливают пороги. Нелитературный тест из сорока x стоит £1.99 в одной строке и £2.99 в двух. Другие добавленные переносы не меняют видимой цены. Это выбранная розничная условность, а не справедливая мера длины между системами письма и не модель ценообразования всех магазинов."
+          "The Roof Splits Open стоит £12.99 в первом варианте и £9.99 во втором. Число учтённых символов падает с 380 до 225 при неизменном числе строк и строф. Удаление становится снижением цены независимо от того, что оно делает со стихом; оба варианта можно читать рядом.",
+          "Ступени также скрывают различия и усиливают пороги. Нелитературный тест из сорока x стоит £1.99 в одной строке и £2.99 в двух, а другие добавленные переносы не меняют видимой цены. Округление следует принятым в рознице правилам."
         ]
       },
       {
@@ -1226,9 +1226,9 @@
         "dek": "Представление входит в предложение.",
         "feature": "",
         "body": [
-          "Пиксельный шрифт включён в базовое издание. Шрифты сайта являются дополнительной опцией, как у товара, рекламный вид которого требует отдельной комплектации. Базовая версия всё равно должна быть полной и читаемой. Намеренно ухудшать её значило бы подменить вопрос демонстрацией с заранее заданным результатом.",
-          "Витрина не находится вне этого отношения. Крупные заголовки с засечками, пространство и выравнивание делают предложение привлекательным, пока типографика продаётся за доплату. Работа одновременно использует и обнаруживает эту привлекательность. Строгий чек не освобождает окружающий сайт от престижа, который способен придавать дизайн.",
-          "Перевод приносит ещё одно языковое и культурное прочтение и при печати занял бы больше бумаги. Однако фиксированная доплата не рассчитывает длину бумаги, энергию или часы переводчика. Стихи и опубликованные переводы свободно читаются на сайте. Доплата относится к вымышленной комплектации издания, а не к праву понять стих. Традиционные и упрощённые китайские знаки являются вариантами записи оригинала с одинаковой базовой ценой."
+          "Пиксельный шрифт включён в базовое издание. Шрифты сайта являются дополнительной опцией, как у товара, рекламный вид которого требует отдельной комплектации. Базовая версия полная и читаемая, поэтому улучшенная комплектация меняет лишь внешний вид стихотворения.",
+          "Витрина входит в ту же схему. Крупные заголовки с засечками, пространство и выравнивание делают предложение привлекательным, пока типографика продаётся за доплату, так что работа одновременно пользуется этой привлекательностью и выставляет её напоказ.",
+          "Перевод приносит ещё одно языковое и культурное прочтение и при печати занял бы больше бумаги; фиксированная доплата не учитывает ни длину бумаги, ни энергию, ни рабочее время переводчика. Все стихи и опубликованные переводы можно бесплатно читать на сайте, поэтому доплата относится только к выпущенному изданию. Оригинал доступен в традиционной и упрощённой китайской записи по одной базовой цене."
         ]
       },
       {
@@ -1238,43 +1238,43 @@
         "dek": "Транзакция может закончиться раньше чтения.",
         "feature": "",
         "body": [
-          "Чек записывает заказ, количество, опции, суммы и симулированную оплату. Поэтический талон несёт текст, подпись, источник и номер, не повторяя цену. Это два типа документа на одной непрерывной ленте, не обязательно два листка: заказ может включать несколько отдельно пронумерованных экземпляров стихов.",
-          "CUT HERE делает разделение возможным после совместного появления чека и стиха. Можно оставить всю ленту, разрезать, сложить или передать часть другому. Ни один вариант не является правильным ответом, который интерфейс должен навязать. Номера сохраняют принадлежность частей, но не удостоверяют покупку, не устанавливают собственность и не создают редкость.",
-          "Британская кассовая лексика, колонки, налоговая сводка и платёжные поля дают знакомый административный ритм. Указания на вымышленность входят в эту форму: их не следует убирать ради большей правдоподобности. Никакая оплата не обрабатывается. Здесь voucher передаёт стихотворение, а не обещает последующий обмен на наличные."
+          "Чек записывает заказ, количество, опции, суммы и симулированную оплату. Поэтический талон несёт текст, подпись, источник и номер, не повторяя цену. Это два типа документа на одной непрерывной ленте, и один заказ может включать несколько отдельно пронумерованных экземпляров стихов.",
+          "CUT HERE предлагает разрезать ленту, когда чек и стихотворение уже увидели вместе. Можно оставить всю ленту, разрезать, сложить или передать часть другому, и интерфейс ни одному из вариантов не отдаёт предпочтения. Номера позволяют проследить каждую часть до её заказа.",
+          "Британская кассовая лексика, колонки, налоговая сводка и платёжные поля дают знакомый административный ритм, и напечатанные указания на то, что покупка вымышлена, входят в ту же форму. Никакая оплата не обрабатывается. Талон передаёт стихотворение, и обменять его на наличные нельзя."
         ]
       },
       {
         "id": "reading",
         "number": "05",
-        "title": "Стихи не объясняют машину",
-        "dek": "Возможное прочтение не является историей возникновения.",
+        "title": "Стихотворение после чека",
+        "dek": "Прочтение, возможное благодаря соседству.",
         "feature": "",
         "body": [
-          "B3 несколько раз задерживает передачу: письмо останавливается, незапечатанная бумага складывается вновь, хозяин и гость не становятся равными сторонами завершённого обмена. После чека эти действия могут сделать недостаточной уверенность в оконченной транзакции. Такое чтение допускается соседством. Стихотворение не было написано ради его доказательства, а читатель не обязан его принимать.",
-          "Другие связи принадлежат исходным публикациям: B6 отвечает внутри последовательности A/B; The Roof Splits Open сохраняет датированные варианты. Отдельное издание не должно заставлять брать весь цикл, но и одиночному экземпляру незачем притворяться, будто последовательности нет. Ссылки на источник позволяют к ней вернуться.",
-          "Drucker направляет материальность к происходящему в использовании. [[drucker]] Поэтому выбор, ожидание, чтение, разрезание и дарение здесь являются вопросами для наблюдения, а не эффектами, гарантированными бумагой или кодом. Карманный стих может быть подарком, шуткой, памятной вещью или мусором. Каждое поле чека не обязано кодировать отдельную метафору."
+          "B3 несколько раз задерживает передачу: письмо останавливается, незапечатанная бумага складывается вновь, хозяин и гость не становятся равными сторонами завершённого обмена. После чека эти действия могут сделать недостаточной уверенность в оконченной транзакции. Это одно из прочтений, которые допускает соседство стихотворения с чеком.",
+          "Другие связи принадлежат исходным публикациям: B6 отвечает внутри последовательности A/B, а The Roof Splits Open сохраняет датированные варианты. Одно стихотворение можно выпустить отдельно, и ссылка на источник ведёт обратно к циклу, в который оно входит.",
+          "Drucker направляет материальность к происходящему в использовании. [[drucker]] В этой работе за выбором, ожиданием, чтением, разрезанием и дарением наблюдают по мере того, как они происходят. Карманный стих может быть подарком, шуткой, памятной вещью или мусором."
         ]
       },
       {
         "id": "material",
         "number": "06",
         "title": "Бумага и экран",
-        "dek": "Одинаковые правила не создают одинаковую встречу.",
+        "dek": "Одно и то же правило по-разному читается на бумаге и на экране.",
         "feature": "",
         "body": [
-          "Модель вывода использует узкую термобумагу. Однобитное изображение сохраняет ограничения чековой печати. Плотные подписи и узкие строки входят в условия чтения, но малый размер не достоинство, если стих перестаёт читаться. Резкость цифрового изображения не доказывает сохранность тонких штрихов на конкретном принтере.",
-          "Прямая термопечать не использует чернил или красящей ленты; тепло, свет и обращение могут менять читаемость. [[thermal]] Выцветание не является надёжным обратным отсчётом внутри стихотворения. Оно остаётся свойством с возможными последствиями, а не наблюдённым сроком жизни этих отпечатков, экологическим утверждением или обязательной метафорой утраты.",
-          "Ранние физические отпечатки существуют. Пока нет выставочной площадки, публичным входом служит браузерный магазин. Будущий стол выдачи добавил бы обращение с бумагой и совместное время, которых не даёт скачивание. Однако экранная встреча тоже реальна. PDF сохраняет чек и стихи в одном файле с продолжениями для длинных выпусков. Самостоятельная HTML-версия оставляет весь текст и отношения документов доступными офлайн; она не превращает PDF с изображениями в доступный текстовый PDF."
+          "Модель вывода использует узкую термобумагу, а однобитное изображение сохраняет ограничения чековой печати. Плотные подписи и узкие строки принадлежат форме до тех пор, пока стихотворение остаётся читаемым. Тонкие штрихи, резкие на экране, на конкретном принтере всё же могут распадаться.",
+          "Прямая термопечать не использует чернил или красящей ленты; тепло, свет и обращение могут менять читаемость. [[thermal]] Эти отпечатки могут выцвести, а с какой скоростью, пока не измерялось.",
+          "Ранние физические отпечатки существуют. Пока нет выставочной площадки, публичным входом служит браузерный магазин; стол выдачи в зале добавил бы обращение с бумагой и совместное время. PDF сохраняет чек и стихи в одном файле с продолжениями для длинных выпусков, а самостоятельная HTML-копия содержит их полный текст для чтения офлайн."
         ]
       },
       {
         "id": "implementation",
         "number": "07",
         "title": "Реализация",
-        "dek": "Механизм можно проверить.",
+        "dek": "Исходный код и манифест сборки открыты.",
         "body": [
-          "Poetry Voucher — статическое браузерное приложение с фиксированным каталогом моих опубликованных стихов. Прежняя публичная Studio выведена из использования: читатель настраивает выпуск, а не загружает произвольный текст. Выбор произведения, письменности, опубликованных переводов, шрифта, размера и количества входит в единый процесс расчёта цены и выпуска. При обычном использовании стихи не загружаются на сервер и не вызывается платёжный сервис.",
-          "При оформлении содержимое заказа фиксируется до создания вывода: тексты, количества, суммы, вымышленная сцена оплаты и идентификатор публичного рендерера относятся к конкретному выпущенному заказу. Позднее открытие не пересчитывает цену незаметно по текущему каталогу. Если применяется другой рендерер, результат помечается как повторный рендер. Идентификатор описывает входные данные сборки, а не гарантирует совпадение пикселей.",
+          "Poetry Voucher работает как статическое браузерное приложение, построенное вокруг фиксированного каталога моих опубликованных стихов. Читатель настраивает выпуск: выбор произведения, письменность, опубликованные переводы, шрифт, размер и количество входят в единый процесс расчёта цены и выпуска. Ничего не загружается на сервер, и платёжный сервис не вызывается.",
+          "При оформлении содержимое заказа фиксируется до создания вывода: тексты, количества, суммы, вымышленная сцена оплаты и идентификатор публичного рендерера относятся к конкретному выпущенному заказу. Повторно открытый заказ сохраняет исходные цены, а результат, созданный другим рендерером, помечается как повторный рендер. Идентификатор рендерера фиксирует входные данные сборки.",
           "Из зафиксированного заказа создаются графический PDF для узкой бумаги и отдельная автономная HTML-копия для чтения. У публичного сайта нет удалённого узла печати. Только на сопряжённом терминале H10S явное действие печати может передать уже подготовленный заказ его локальной службе печати."
         ],
         "feature": "implementation"
@@ -1286,8 +1286,8 @@
         "dek": "Другие правила, другие последствия.",
         "feature": "",
         "body": [
-          "Short Édition предлагает бесплатную литературу на рулоне с выбором по времени чтения. [[short-edition]] Это сравнение отделяет носитель распространения от особого механизма работы. Poetry Voucher предлагает выбрать стих и его комплектацию, затем назначает вымышленную сумму. Его значение зависит от того, что процедура покупки добавляет чтению, а не от первенства в печати литературы на узком рулоне.",
-          "В Pense-Bête Broodthaers гипс затрудняет чтение заключённых в нём книг; рядом также выставлялись читаемые экземпляры. [[broodthaers]] Здесь отношение обращено: текст должен покинуть свой аппарат. Но риск общий. Любопытный предмет может отвлечь от письма. Более убедительный чек не означает улучшения, если никто не доходит до стихотворения."
+          "Short Édition предлагает бесплатную литературу на рулоне с выбором по времени чтения. [[short-edition]] Это сравнение отделяет носитель распространения от механизма работы: Poetry Voucher предлагает выбрать стих и его комплектацию, затем назначает вымышленную сумму, и интересен он тем, что эта процедура покупки добавляет к чтению.",
+          "В Pense-Bête Broodthaers гипс затрудняет чтение заключённых в нём книг; рядом также выставлялись читаемые экземпляры. [[broodthaers]] Здесь отношение обращено: текст должен покинуть свой аппарат. Но риск общий. Любопытный предмет может отвлечь от письма, и более убедительный чек помогает лишь тогда, когда люди всё же доходят до стихотворения."
         ]
       },
       {
@@ -1297,9 +1297,9 @@
         "dek": "Действующее издание и открытый вопрос восприятия.",
         "feature": "",
         "body": [
-          "Каталогом, расчётом и цифровой выдачей можно пользоваться сейчас. Ранние отпечатки являются материальными пробами, не доказательством калибровки всех нынешних настроек. Предложение носить стих с собой и дарить его поступило от раннего читателя и было передано в авторском интервью. Оно не превращено в общий вывод о публике. Сравнительное читательское исследование или галерейный показ здесь не заявлены.",
-          "Следующая материальная проверка может быть небольшой: выдать несколько выбранных версий, дать людям читать и обращаться с ними без предварительной лекции и записать изменения или неудачи. Это может обосновать сохранение чека, смену порядка подачи или отказ от предполагаемой интерпретации. Новые функции сами по себе на этот вопрос не ответят.",
-          "Личное сохранение, печать и дарение отпечатков разрешены. Большая часть текстов и реализации этой работы создана самим автором; ИИ использовался для оценки логики взаимодействия и визуального оформления сайта. Окончательные решения оставались за автором. Магазин выбирает существующие стихи и не генерирует поэтический текст."
+          "Каталог, расчёт цены и цифровая выдача уже работают. Ранние отпечатки были материальными пробами. Предложение носить стих с собой и дарить его поступило от раннего читателя и было передано в авторском интервью; читательского исследования и галерейного показа пока не было.",
+          "Следующая материальная проверка может быть небольшой: выдать несколько выбранных версий, дать людям читать и обращаться с ними без предварительной лекции и записать изменения или неудачи. Это может обосновать сохранение чека, смену порядка подачи или отказ от предполагаемой интерпретации.",
+          "Личное сохранение, печать и дарение отпечатков разрешены. Стихи написала я; инструменты ИИ помогали писать код магазина, тексты его интерфейса и эти заметки, а я проверила результаты и приняла окончательные решения. Магазин выпускает существующие стихи и не генерирует поэтический текст."
         ]
       }
     ],
@@ -1310,7 +1310,7 @@
     "diagram_cut": "РАЗДЕЛЕНИЕ",
     "diagram_poem": "СТИХ",
     "diagram_receipt_note": "фиксирует заказ, количество и симулированную оплату",
-    "diagram_cut_note": "предлагает разрез, но не требует его",
+    "diagram_cut_note": "место для разреза по желанию",
     "diagram_poem_note": "сохраняет текст, источник и идентичность экземпляра",
     "aesthetic_title": "Два визуальных регистра",
     "aesthetic_screen_label": "ВИТРИНА",

@@ -41,7 +41,7 @@
     "lede": "I watch films. I also write ci.",
     "lede_note": "",
     "intro": "Most of my work starts with writing: criticism, research, poetry. I also make photographs, and build software when a method needs a tool.",
-    "method": "I care about what gets recorded, what gets left out, and whether the evidence actually supports the claim.",
+    "method": "Much of it turns on what gets recorded and whether the evidence can carry the claim made from it.",
     "sections": {
       "work": {
         "title": "Research / editions / systems",
@@ -100,7 +100,7 @@
         "film": "film",
         "instant": "instant"
       },
-      "note": "Digital photographs, 35 mm film and instant film — production, streets and interiors.",
+      "note": "Digital photographs, 35 mm film and instant film: production, streets and interiors.",
       "alt": {
         "01": "museum roof lattice, figure on the parapet",
         "02": "alone in the rows, bouquet beside her",
@@ -128,10 +128,10 @@
     },
     "writing": {
       "first_love_title": "On Takashi Miike’s <em>First Love</em>",
-      "first_love_description": "A long-form study of gender, obligation and genre form in Takashi Miike’s <em>First Love</em>, combining close formal analysis with reproducible checks.",
+      "first_love_description": "A long-form study of gender, obligation and genre form in Takashi Miike’s <em>First Love</em>, with close formal analysis and a published shot dataset.",
       "first_love_meta": "working manuscript · abstract",
       "film_essays_title": "On <em>Trainspotting</em>",
-      "film_essays_description": "An essay on voiceover, space, subjection and the limits of its own argument.",
+      "film_essays_description": "An essay on voiceover, space, subjection and the failure of care.",
       "film_essays_meta": "read full essay",
       "first_love_verify": "methods / verification companion",
       "first_love_data": "verification data · DOI",
@@ -181,16 +181,16 @@
     "other": {
       "eyebrow": "aside",
       "title": "Other work",
-      "intro": "A few things that do not need their own section.",
+      "intro": "A few smaller things.",
       "ink": {
         "title": "Works on paper",
-        "note": "Ink landscape. Kept here as a work, not a claim to a separate painting practice.",
+        "note": "An ink landscape.",
         "caption": "ink on paper",
         "alt": "ink landscape with trees, water, rocks and a small pavilion"
       },
       "hardware": {
         "title": "Hardware",
-        "note": "Hands-on maintenance of older server hardware: drives, dust and a screwdriver."
+        "note": "Hands-on maintenance of older server hardware."
       }
     }
   },

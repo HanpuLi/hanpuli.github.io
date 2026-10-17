@@ -2,8 +2,8 @@
   "en": {
     "title": "On Takashi Miike’s First Love",
     "eyebrow": "working manuscript · abstract",
-    "description": "A long-form study of gender, obligation and genre form in Takashi Miike’s First Love, combining close formal analysis with reproducible checks.",
-    "intro": "A concise account of the question and argument developed in a working study of Miike’s film.",
+    "description": "A long-form study of gender, obligation and genre form in Takashi Miike’s First Love, with close formal analysis and a published shot dataset.",
+    "intro": "The question and argument of a working study of Miike’s film, in brief.",
     "read": "Read the abstract",
     "note": "This study has not been peer reviewed.",
     "legacy_title": "First Love · study abstract",
@@ -11,14 +11,14 @@
     "about": "About this manuscript",
     "verification": "methods / verification companion",
     "data_label": "Verification materials and data:",
-    "data_note": "Scripts, archived outputs and an independently checkable Cinemetrics shot dataset (Zenodo, MIT licence); no film, subtitle or frame material is included. A frame-level audit of the author’s own Cinemetrics record found the curated headline figures (17 shots, ASL 8.7 s) correct but one internal cut displaced by seven frames; average shot length is insensitive to such boundary shifts.",
+    "data_note": "Scripts, archived outputs and the Cinemetrics shot dataset (Zenodo, MIT licence). No film, subtitle or frame material is included.",
     "abstract_label": "Abstract",
-    "abstract": "Takashi Miike’s First Love (2019) revisits the yakuza film’s familiar opposition between giri (duty) and ninjō (humanity). This study argues that the apparent conflict rests on an exclusion that neither term names: women are left outside the moral economy through which male obligation and humanity are defined. Reading the film’s treatment of Monica alongside genre history and Marxist feminist accounts of patriarchal capitalism and social reproduction, the study asks how control of her body persists when older forms of authority appear to weaken. It also examines the limits of critical models used to classify the genre’s gender politics and considers the production history against which the film is read. The aim is to account for the film’s formal contradictions without calling it either a straightforward break with the genre or a simple return to its conventions."
+    "abstract": "Takashi Miike’s First Love (2019) revisits the yakuza film’s familiar opposition between giri (duty) and ninjō (humanity). This study argues that the apparent conflict rests on an exclusion that neither term names: women are left outside the moral economy through which male obligation and humanity are defined. Reading the film’s treatment of Monica alongside genre history and Marxist feminist accounts of patriarchal capitalism and social reproduction, the study asks how control of her body persists when older forms of authority appear to weaken. It also examines the limits of critical models used to classify the genre’s gender politics and considers the production history against which the film is read."
   },
   "zh": {
     "title": "論三池崇史《初戀》",
     "eyebrow": "研究稿 · 摘要",
-    "description": "一篇關於三池崇史《初戀》中性別、義務與類型形式的長篇研究，結合形式細讀與可重現核驗。",
+    "description": "一篇關於三池崇史《初戀》中性別、義務與類型形式的長篇研究，包含形式細讀，並附一份已公開的鏡頭數據集。",
     "intro": "這裏簡述一篇關於三池崇史電影《初戀》的研究稿所提出的問題與論點。",
     "read": "閱讀摘要",
     "note": "本研究尚未經過同行評審。",
@@ -27,14 +27,14 @@
     "about": "關於此文稿",
     "verification": "方法／核驗附錄",
     "data_label": "核驗材料與數據：",
-    "data_note": "包括腳本、歸檔輸出，以及一份可獨立核驗的 Cinemetrics 鏡頭數據集（Zenodo，MIT 授權）；不含任何影片、字幕或截圖素材。對作者本人提交的一條 Cinemetrics 記錄逐格審核後發現，經策展修正的總體數字（17 個鏡頭，ASL 8.7 秒）正確，但一個內部剪接點偏移了 7 格；平均鏡頭長度對這類邊界偏移並不敏感。",
+    "data_note": "包括腳本、歸檔輸出，以及 Cinemetrics 鏡頭數據集（Zenodo，MIT 授權）。不含任何影片、字幕或截圖素材。",
     "abstract_label": "摘要",
-    "abstract": "三池崇史的《初戀》（2019）重新處理黑幫電影中常見的義理與人情對立。本研究認為，這場看似核心的衝突建基於兩個概念都未說出的排除：女性被置於界定男性義務與人性的道德經濟之外。本文把電影中 Monica 的處境與類型電影史、馬克思主義女性主義對父權資本主義及社會再生產的分析並置，追問舊有權威形式看似鬆動之際，對她身體的控制如何延續。研究亦檢視用來分類這一類型性別政治的批評框架有何局限，並參照電影所處的製作史。其目的是說明作品在形式上的矛盾，而不把它簡化為對類型傳統的明確突破或單純回歸。"
+    "abstract": "三池崇史的《初戀》（2019）重新處理黑幫電影中常見的義理與人情對立。本研究認為，這場看似核心的衝突建基於兩個概念都未説出的排除：女性被置於界定男性義務與人性的道德經濟之外。本文把電影中 Monica 的處境與類型電影史、馬克思主義女性主義對父權資本主義及社會再生產的分析並置，追問舊有權威形式看似鬆動之際，對她身體的控制如何延續。研究亦檢視用來分類這一類型性別政治的批評框架有何局限，並參照電影所處的製作史。"
   },
   "zh-hans": {
     "title": "论三池崇史《初恋》",
     "eyebrow": "研究稿 · 摘要",
-    "description": "一篇关于三池崇史《初恋》中性别、义务与类型形式的长篇研究，结合形式细读与可复现核验。",
+    "description": "一篇关于三池崇史《初恋》中性别、义务与类型形式的长篇研究，包含形式细读，并附一份已公开的镜头数据集。",
     "intro": "这里简述一篇关于三池崇史电影《初恋》的研究稿所提出的问题与论点。",
     "read": "阅读摘要",
     "note": "本研究尚未经过同行评审。",
@@ -43,14 +43,14 @@
     "about": "关于此文稿",
     "verification": "方法／核验附录",
     "data_label": "核验材料与数据：",
-    "data_note": "包括脚本、归档输出，以及一份可独立核验的 Cinemetrics 镜头数据集（Zenodo，MIT 许可）；不含任何影片、字幕或截图素材。对作者本人提交的一条 Cinemetrics 记录逐帧审核后发现，经策展修正的总体数字（17 个镜头，ASL 8.7 秒）正确，但一个内部剪接点偏移了 7 帧；平均镜头长度对这类边界偏移并不敏感。",
+    "data_note": "包括脚本、归档输出，以及 Cinemetrics 镜头数据集（Zenodo，MIT 许可）。不含任何影片、字幕或截图素材。",
     "abstract_label": "摘要",
-    "abstract": "三池崇史的《初恋》（2019）重新处理黑帮电影中常见的义理与人情对立。本研究认为，这场看似核心的冲突建立在两个概念都未说出的排除之上：女性被置于界定男性义务与人性的道德经济之外。本文将电影中 Monica 的处境与类型电影史、马克思主义女性主义对父权资本主义及社会再生产的分析并置，追问旧有权威形式看似松动之际，对她身体的控制如何延续。研究还检视用来划分这一类型性别政治的批评框架有何局限，并参照电影所处的制作史。其目的是说明作品在形式上的矛盾，而不把它简化为对类型传统的明确突破或简单回归。"
+    "abstract": "三池崇史的《初恋》（2019）重新处理黑帮电影中常见的义理与人情对立。本研究认为，这场看似核心的冲突建立在两个概念都未说出的排除之上：女性被置于界定男性义务与人性的道德经济之外。本文将电影中 Monica 的处境与类型电影史、马克思主义女性主义对父权资本主义及社会再生产的分析并置，追问旧有权威形式看似松动之际，对她身体的控制如何延续。研究还检视用来划分这一类型性别政治的批评框架有何局限，并参照电影所处的制作史。"
   },
   "ja": {
     "title": "三池崇史『First Love』論",
     "eyebrow": "研究原稿 · 要旨",
-    "description": "三池崇史『First Love』のジェンダー、義務、ジャンル形式を扱う長篇論考。形式分析と再現可能な検証を組み合わせる。",
+    "description": "三池崇史『First Love』のジェンダー、義務、ジャンル形式を扱う長篇論考。形式分析に加え、ショットデータセットも公開している。",
     "intro": "三池崇史の映画『初恋』をめぐる研究原稿の問いと議論を簡潔に紹介します。",
     "read": "要旨を読む",
     "note": "本研究は査読を受けていません。",
@@ -59,15 +59,15 @@
     "about": "この原稿について",
     "verification": "方法／検証資料",
     "data_label": "検証資料とデータ：",
-    "data_note": "スクリプト、アーカイブ済みの出力、独立して検証できる Cinemetrics ショットデータセットを収録（Zenodo、MIT ライセンス）。映像、字幕、フレーム画像は含みません。著者自身が登録した Cinemetrics の記録をフレーム単位で監査したところ、キュレーターによる修正後の主要値（17ショット、ASL 8.7秒）は正しかったものの、内部のカット点が1つ7フレームずれていました。平均ショット長はこの種の境界のずれに影響されにくい指標です。",
+    "data_note": "スクリプト、アーカイブ済みの出力、Cinemetrics ショットデータセットを収録（Zenodo、MIT ライセンス）。映像、字幕、フレーム画像は含みません。",
     "abstract_label": "要旨",
-    "abstract": "三池崇史の『初恋』（2019）は、ヤクザ映画で繰り返されてきた義理と人情の対立を改めて問い直す。本研究は、この見かけ上の対立が、どちらの語も明示しない排除に支えられていると論じる。男性の義務と人間性を定義する道徳的な仕組みから、女性が外されているのである。モニカの描かれ方を、ジャンルの歴史と、家父長制的資本主義および社会的再生産をめぐるマルクス主義フェミニズムの議論に照らし、従来の権威の形が弱まったように見えるときにも、彼女の身体への支配がいかに続くかを問う。さらに、ジャンルのジェンダー政治を分類してきた批評の枠組みの限界と、その制作史を検討する。作品を単純な革新とも慣習への回帰ともせず、その形式が抱える矛盾を捉えることを目指す。"
+    "abstract": "三池崇史の『初恋』（2019）は、ヤクザ映画で繰り返されてきた義理と人情の対立を改めて問い直す。本研究は、この見かけ上の対立が、どちらの語も明示しない排除に支えられていると論じる。男性の義務と人間性を定義する道徳的な仕組みから、女性が外されているのである。モニカの描かれ方を、ジャンルの歴史と、家父長制的資本主義および社会的再生産をめぐるマルクス主義フェミニズムの議論に照らし、従来の権威の形が弱まったように見えるときにも、彼女の身体への支配がいかに続くかを問う。さらに、ジャンルのジェンダー政治を分類してきた批評の枠組みの限界と、その制作史を検討する。"
   },
   "de": {
     "title": "Zu Takashi Miikes First Love",
     "eyebrow": "Forschungsmanuskript · Zusammenfassung",
-    "description": "Eine ausführliche Studie zu Geschlecht, Verpflichtung und Genreform in Takashi Miikes First Love, die formale Nahlektüre mit reproduzierbaren Prüfungen verbindet.",
-    "intro": "Eine kurze Darstellung der Frage und des Arguments einer noch nicht begutachteten Studie zu Miikes Film.",
+    "description": "Eine ausführliche Studie zu Geschlecht, Verpflichtung und Genreform in Takashi Miikes First Love, mit formaler Nahlektüre und einem veröffentlichten Datensatz zu Einstellungslängen.",
+    "intro": "Kurz gefasst: Frage und Argument einer laufenden Studie zu Miikes Film.",
     "read": "Zusammenfassung lesen",
     "note": "Diese Studie wurde nicht begutachtet.",
     "legacy_title": "First Love · Zusammenfassung der Studie",
@@ -75,15 +75,15 @@
     "about": "Über dieses Manuskript",
     "verification": "Methoden / Verifikationsmaterial",
     "data_label": "Verifikationsmaterial und Daten:",
-    "data_note": "Skripte, archivierte Ausgaben und ein unabhängig prüfbarer Cinemetrics-Datensatz zu Einstellungslängen (Zenodo, MIT-Lizenz); Film-, Untertitel- oder Standbildmaterial ist nicht enthalten. Eine bildgenaue Prüfung eines von Hanpu Li selbst eingereichten Cinemetrics-Eintrags ergab, dass die kuratierten Kennzahlen (17 Einstellungen, ASL 8,7 s) stimmen, ein innerer Schnitt jedoch um sieben Frames verschoben war; die durchschnittliche Einstellungslänge reagiert auf solche Grenzverschiebungen kaum.",
+    "data_note": "Skripte, archivierte Ausgaben und der Cinemetrics-Datensatz zu Einstellungslängen (Zenodo, MIT-Lizenz). Film-, Untertitel- oder Standbildmaterial ist nicht enthalten.",
     "abstract_label": "Zusammenfassung",
-    "abstract": "Takashi Miikes First Love (2019) greift den vertrauten Gegensatz zwischen giri (Pflicht) und ninjō (Menschlichkeit) im Yakuza-Film erneut auf. Die Studie argumentiert, dass dieser scheinbare Konflikt auf einem Ausschluss beruht, den keiner der beiden Begriffe benennt: Frauen stehen außerhalb der moralischen Ordnung, in der männliche Pflicht und Menschlichkeit bestimmt werden. Die Darstellung Monicas wird im Zusammenhang mit der Genregeschichte sowie marxistisch-feministischen Analysen des patriarchalen Kapitalismus und der sozialen Reproduktion gelesen. Gefragt wird, wie die Kontrolle über ihren Körper fortbesteht, wenn ältere Autoritätsformen an Kraft zu verlieren scheinen. Die Studie prüft außerdem die Grenzen kritischer Modelle zur Einordnung der Geschlechterpolitik des Genres und berücksichtigt dessen Produktionsgeschichte. So sollen die formalen Widersprüche des Films erklärt werden, ohne ihn als eindeutigen Bruch mit dem Genre oder als bloße Rückkehr zu seinen Konventionen zu beschreiben."
+    "abstract": "Takashi Miikes First Love (2019) greift den vertrauten Gegensatz zwischen giri (Pflicht) und ninjō (Menschlichkeit) im Yakuza-Film erneut auf. Die Studie argumentiert, dass dieser scheinbare Konflikt auf einem Ausschluss beruht, den keiner der beiden Begriffe benennt: Frauen stehen außerhalb der moralischen Ordnung, in der männliche Pflicht und Menschlichkeit bestimmt werden. Die Darstellung Monicas wird im Zusammenhang mit der Genregeschichte sowie marxistisch-feministischen Analysen des patriarchalen Kapitalismus und der sozialen Reproduktion gelesen. Gefragt wird, wie die Kontrolle über ihren Körper fortbesteht, wenn ältere Autoritätsformen an Kraft zu verlieren scheinen. Die Studie prüft außerdem die Grenzen kritischer Modelle zur Einordnung der Geschlechterpolitik des Genres und berücksichtigt dessen Produktionsgeschichte."
   },
   "fr": {
     "title": "Sur First Love de Takashi Miike",
     "eyebrow": "manuscrit de recherche · résumé",
-    "description": "Une étude approfondie de First Love de Takashi Miike, consacrée aux rapports de genre, à l’obligation et à la forme générique, avec analyse formelle et vérifications reproductibles.",
-    "intro": "Une brève présentation de la question et de l’argument développés dans une étude en cours sur le film de Miike.",
+    "description": "Une étude approfondie de First Love de Takashi Miike, consacrée aux rapports de genre, à l’obligation et à la forme générique, avec analyse formelle et jeu de données publié sur les plans.",
+    "intro": "En bref, la question et l’argument d’une étude en cours sur le film de Miike.",
     "read": "Lire le résumé",
     "note": "Cette étude n’a pas été évaluée par les pairs.",
     "legacy_title": "First Love · résumé de l’étude",
@@ -91,15 +91,15 @@
     "about": "À propos de ce manuscrit",
     "verification": "méthodes / dossier de vérification",
     "data_label": "Matériaux de vérification et données :",
-    "data_note": "Scripts, résultats archivés et jeu de données Cinemetrics sur les plans, vérifiable de manière indépendante (Zenodo, licence MIT) ; aucun extrait de film, sous-titre ni photogramme n’est inclus. Un audit image par image d’une fiche Cinemetrics soumise par Hanpu Li a montré que les chiffres principaux après correction par les curateurs (17 plans, ASL de 8,7 s) sont exacts, mais qu’une coupe interne était décalée de sept images ; la durée moyenne des plans est peu sensible à de tels décalages de limites.",
+    "data_note": "Scripts, résultats archivés et jeu de données Cinemetrics sur les plans (Zenodo, licence MIT). Aucun extrait de film, sous-titre ni photogramme n’est inclus.",
     "abstract_label": "Résumé",
-    "abstract": "First Love (2019) de Takashi Miike reprend l’opposition familière du cinéma yakuza entre giri (devoir) et ninjō (humanité). Cette étude soutient que ce conflit apparent repose sur une exclusion qu’aucun des deux termes ne nomme : les femmes restent hors de l’économie morale qui définit l’obligation et l’humanité masculines. Le traitement de Monica est lu à la lumière de l’histoire du genre et des analyses féministes marxistes du capitalisme patriarcal et de la reproduction sociale. Il s’agit de comprendre comment le contrôle de son corps persiste alors que les anciennes formes d’autorité semblent s’affaiblir. L’étude examine aussi les limites des modèles critiques servant à classer la politique de genre du cinéma yakuza et tient compte de son histoire de production. Elle cherche ainsi à rendre compte des contradictions formelles du film sans y voir une rupture nette avec le genre ni un simple retour à ses conventions."
+    "abstract": "First Love (2019) de Takashi Miike reprend l’opposition familière du cinéma yakuza entre giri (devoir) et ninjō (humanité). Cette étude soutient que ce conflit apparent repose sur une exclusion qu’aucun des deux termes ne nomme : les femmes restent hors de l’économie morale qui définit l’obligation et l’humanité masculines. Le traitement de Monica est lu à la lumière de l’histoire du genre et des analyses féministes marxistes du capitalisme patriarcal et de la reproduction sociale. Il s’agit de comprendre comment le contrôle de son corps persiste alors que les anciennes formes d’autorité semblent s’affaiblir. L’étude examine aussi les limites des modèles critiques servant à classer la politique de genre du cinéma yakuza et tient compte de son histoire de production."
   },
   "ru": {
     "title": "О First Love Такаси Миикэ",
     "eyebrow": "исследовательская рукопись · аннотация",
-    "description": "Развёрнутое исследование гендера, обязательства и жанровой формы в фильме Такаси Миикэ First Love с формальным анализом и воспроизводимыми проверками.",
-    "intro": "Краткое изложение вопроса и основного довода рабочей версии исследования фильма Миикэ.",
+    "description": "Развёрнутое исследование гендера, обязательства и жанровой формы в фильме Такаси Миикэ First Love с подробным формальным анализом и опубликованным набором данных о планах.",
+    "intro": "Коротко о вопросе, который ставит рабочее исследование фильма Миикэ, и о его основном доводе.",
     "read": "Читать аннотацию",
     "note": "Исследование не проходило рецензирование.",
     "legacy_title": "First Love · аннотация исследования",
@@ -107,8 +107,8 @@
     "about": "Об этой рукописи",
     "verification": "методы / материалы проверки",
     "data_label": "Материалы проверки и данные:",
-    "data_note": "Скрипты, архивированные результаты и независимо проверяемый набор данных Cinemetrics о планах (Zenodo, лицензия MIT); фрагменты фильма, субтитры и кадры не включены. Покадровая проверка записи Cinemetrics, поданной Hanpu Li, показала, что итоговые значения после исправления кураторами (17 планов, ASL 8,7 с) верны, но одна внутренняя склейка была смещена на семь кадров; средняя длина плана малочувствительна к таким смещениям границ.",
+    "data_note": "Скрипты, архивированные результаты и набор данных Cinemetrics о планах (Zenodo, лицензия MIT). Фрагменты фильма, субтитры и кадры не включены.",
     "abstract_label": "Аннотация",
-    "abstract": "Фильм Такаси Миикэ First Love (2019) вновь обращается к привычному для якудза-кино противопоставлению гири (долга) и ниндзё (человечности). В исследовании утверждается, что этот кажущийся конфликт основан на исключении, которое не называет ни одна из сторон: женщины остаются вне морального порядка, определяющего мужской долг и человечность. Образ Моники рассматривается в связи с историей жанра и марксистско-феминистскими исследованиями патриархального капитализма и социального воспроизводства. В центре внимания — вопрос о том, как контроль над её телом сохраняется, когда прежние формы власти, казалось бы, ослабевают. Работа также проверяет пределы критических моделей, описывающих гендерную политику жанра, и учитывает историю его производства. Цель — объяснить формальные противоречия фильма, не называя его ни однозначным разрывом с жанром, ни простым возвращением к его условностям."
+    "abstract": "Фильм Такаси Миикэ First Love (2019) вновь обращается к привычному для якудза-кино противопоставлению гири (долга) и ниндзё (человечности). В исследовании утверждается, что этот кажущийся конфликт основан на исключении, которое не называет ни одна из сторон: женщины остаются вне морального порядка, определяющего мужской долг и человечность. Образ Моники рассматривается в связи с историей жанра и марксистско-феминистскими исследованиями патриархального капитализма и социального воспроизводства. В центре внимания оказывается вопрос о том, как контроль над её телом сохраняется, когда прежние формы власти, казалось бы, ослабевают. Работа также проверяет пределы критических моделей, описывающих гендерную политику жанра, и учитывает историю производства, на фоне которой читается фильм."
   }
 }
