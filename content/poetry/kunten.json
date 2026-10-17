@@ -8715,6 +8715,320 @@
         "「說罷了」の了は口語結果表現。伝統的な再読文字との同一視はしない。",
         "全体は作者の現代創作を古典日本語に編集的に読み直したもので、歴史的伝本に対して付けられた校訂点ではない。"
       ]
+    },
+    "zhegutian-20261017-text": {
+      "source_body_sha256": "85d4626d77db1709e97a81b30c379f363cdc8838a652ea2acc1b7c28baf16da8",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 2,
+          "char": "含",
+          "okurigana": "ミテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 3,
+          "char": "霜",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 4,
+          "char": "到",
+          "okurigana": "リ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 6,
+          "char": "牙",
+          "okurigana": "ニ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 10,
+          "char": "待",
+          "okurigana": "チテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 11,
+          "char": "發",
+          "okurigana": "スルヲ"
+        },
+        {
+          "position": 13,
+          "char": "盈",
+          "furigana": "み",
+          "okurigana": "ツ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 14,
+          "char": "車",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 17,
+          "char": "點",
+          "okurigana": "ジ",
+          "kaeriten": "二",
+          "gofu": true
+        },
+        {
+          "position": 18,
+          "char": "來",
+          "okurigana": "タリテ"
+        },
+        {
+          "position": 20,
+          "char": "五",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 21,
+          "char": "聊",
+          "okurigana": "カ"
+        },
+        {
+          "position": 22,
+          "char": "充",
+          "furigana": "あ",
+          "okurigana": "テ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 23,
+          "char": "策",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 26,
+          "char": "衍",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 27,
+          "char": "分",
+          "okurigana": "カチテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 28,
+          "char": "蓍",
+          "furigana": "し",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 29,
+          "char": "一",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 30,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ず",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 31,
+          "char": "加",
+          "okurigana": "ヘ"
+        },
+        {
+          "position": 35,
+          "char": "呵",
+          "okurigana": "シテ"
+        },
+        {
+          "position": 36,
+          "char": "作",
+          "furigana": "な",
+          "okurigana": "リ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 37,
+          "char": "霧",
+          "okurigana": "ト"
+        },
+        {
+          "position": 40,
+          "char": "成",
+          "okurigana": "ル",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 41,
+          "char": "花",
+          "okurigana": "ト"
+        },
+        {
+          "position": 44,
+          "char": "中",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 45,
+          "char": "欹",
+          "furigana": "かたむ",
+          "okurigana": "キテ"
+        },
+        {
+          "position": 46,
+          "char": "復",
+          "okurigana": "タ"
+        },
+        {
+          "position": 47,
+          "char": "正",
+          "okurigana": "シク"
+        },
+        {
+          "position": 48,
+          "char": "疑",
+          "okurigana": "フ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 49,
+          "char": "斜",
+          "furigana": "なな",
+          "okurigana": "メナルヲ"
+        },
+        {
+          "position": 54,
+          "char": "暗",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 55,
+          "char": "替",
+          "okurigana": "ハリテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 56,
+          "char": "君",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 57,
+          "char": "搖",
+          "okurigana": "ラシ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 58,
+          "char": "首",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 60,
+          "char": "載",
+          "okurigana": "セテ"
+        },
+        {
+          "position": 61,
+          "char": "過",
+          "okurigana": "ギ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 62,
+          "char": "當",
+          "furigana": "まさ",
+          "okurigana": "ニ",
+          "saidoku_furigana": "べ",
+          "saidoku_okurigana": "キ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 63,
+          "char": "停",
+          "okurigana": "マル"
+        },
+        {
+          "position": 64,
+          "char": "處",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 65,
+          "char": "已",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 66,
+          "char": "賒",
+          "furigana": "はる",
+          "okurigana": "カナリ"
+        }
+      ],
+      "title": [
+        [],
+        [
+          {
+            "position": 1,
+            "char": "更",
+            "okurigana": "ニ"
+          },
+          {
+            "position": 2,
+            "char": "候",
+            "furigana": "ま",
+            "okurigana": "チ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 3,
+            "char": "車",
+            "okurigana": "ヲ"
+          },
+          {
+            "position": 5,
+            "char": "將",
+            "furigana": "まさ",
+            "okurigana": "ニ",
+            "saidoku_furigana": "し",
+            "saidoku_okurigana": "テ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 6,
+            "char": "宿",
+            "okurigana": "ラント",
+            "kaeriten": "二"
+          },
+          {
+            "position": 8,
+            "char": "舍",
+            "okurigana": "ニ",
+            "kaeriten": "一"
+          },
+          {
+            "position": 9,
+            "char": "伴",
+            "okurigana": "フ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 11,
+            "char": "奴",
+            "okurigana": "ニ",
+            "kaeriten": "一"
+          }
+        ]
+      ],
+      "notes": [
+        "「點來四五」は「四五を点じ来たる」。點來は動詞と方向補語の複合述語として合符で結び、二字の「四五」から二一点で返読する。",
+        "「一未加」は「一は未だ加えず」。未は再読文字。「一」に「は」を補読し、「加」は他動詞のまま訓む。",
+        "「輿中欹復正疑斜」は「輿中に欹きて復た正しく、斜めなるを疑う」。輿中は場所を示す語で「に」を補読する。欹は「かたむく」、斜は「ななめなり」と訓み、疑は斜からレ点で返る。",
+        "「載過當停處」は「載せて当に停まるべき処を過ぎ」。當（平声、応当の義）は再読文字でレ点、過（去声、越える義）は二点で「處」の一点から返る。",
+        "題「將宿他舍伴狸奴」は「将に他舎に宿らんとして狸奴に伴う」。伴は二字の「狸奴」から二一点で返るため、句全体を將の上下点で囲めない（一字に二点と上点を併記しない）。將の再読は「宿他舍」に係ける。"
+      ]
     }
   }
 }

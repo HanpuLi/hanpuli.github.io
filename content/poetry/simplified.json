@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_sha256": "b76cf20d5c17423495679cd9db62e94d9c6b0a3fe5bda73224ab2b98ea54d12e",
+  "source_sha256": "097ea0215f95edc68e56ed83e3287b77c7f6078890adc69d9231d9378554e888",
   "originals_sha256": {
     "jia-yi-a1-text": "fe600eea43a72197a2d8c371038d4bfceb5470e76e25bb68b4bf62eee2ca3cd6",
     "jia-yi-b1-text": "81fd9ad09f26c65e47f439d72f1a648fe6710a5a2f1ef5973b1abb8a5d68aefc",
@@ -35,7 +35,8 @@
     "roof-splits-draft-2-part-1": "8d3f7f086654de4c666ce4a37125a1393831a89f8daa91031f56fe8424fb6338",
     "roof-splits-draft-2-part-2": "b4156dd8e742906396ccb7c2cae3a3a237af009d2dcf1e21a7e868afede1ed60",
     "summer-2017-revised-20261008": "a8922dc9bc953ad662a416375ba34ff27d6662a7860b1b9bd08e767dca09821e",
-    "yingtianchang-20261008-text": "e0e6a3d7c5168bcd3d4419bda3f559a59ea4c3ddb5a1869521b58f40f1423990"
+    "yingtianchang-20261008-text": "e0e6a3d7c5168bcd3d4419bda3f559a59ea4c3ddb5a1869521b58f40f1423990",
+    "zhegutian-20261017-text": "9fededf05d1a8189566c2e2dd1335155514bfea9a0b4c42b1f31023bef35ccc5"
   },
   "texts": {
     "jia-yi-a1-text": {
@@ -173,6 +174,10 @@
     "yingtianchang-20261008-text": {
       "title": "《应天长·唤回》",
       "body": "唤回犹把空衣理，\n袖口余温留在指。\n掩门初，声又起，\n听尽无声偏侧耳。\n\n指微蜷，杯倒置，\n匙底尚留残齿。\n不许指温先退，\n土木火金水。"
+    },
+    "zhegutian-20261017-text": {
+      "title": "《鹧鸪天 · 二更候车，将宿他舍伴狸奴》",
+      "body": "片札含霜到齿牙，青骢待发果盈车。\n点来四五聊充策，大衍分蓍一未加。\n\n呵作雾，烬成花。舆中欹复正疑斜。\n筋骸暗替君摇首，载过当停处已赊。"
     }
   }
 }
