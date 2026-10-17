@@ -54,7 +54,8 @@ try{
         projectAesthetic:document.querySelectorAll('.pv-aesthetic-diagram').length}));
       assert.equal(counts.sections,kind==='site'?6:9,`${locale}/${kind}: section count`);
       assert(!counts.placeholders,`${locale}/${kind}: unexpanded copy`);
-      assert(counts.texts.every(n=>n>120),`${locale}/${kind}: missing paragraphs`);
+      const minimumCopy=['zh','zh-hans','ja'].includes(locale)?60:120; // CJK carries the same sentence in about a third of the characters
+      assert(counts.texts.every(n=>n>minimumCopy),`${locale}/${kind}: missing paragraphs`);
       assert(counts.citations.length>0&&counts.citations.every(x=>x.exists),`${locale}/${kind}: citation targets`);
       if(kind==='site')assert.equal(counts.siteVisual,1,`${locale}/site: visual grammar`);
       else{assert.equal(counts.projectStructure,1,`${locale}/project: structure diagram`);assert.equal(counts.projectAesthetic,1,`${locale}/project: aesthetic diagram`);}

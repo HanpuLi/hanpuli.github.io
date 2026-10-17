@@ -34,7 +34,7 @@ This directory is the source of truth for all user-facing portfolio copy.
 - `essays/<slug>.inc` — English source fragments for the public essays.
 - `essay-<name>.json` — per-locale discovery titles, metadata and the notice used by each language shell; the essay bodies and their canonical publication titles remain English. `display_title` may contain unnested `<em>` only and is used on locale home cards, never as the essay's citation title.
 - `about-site.json` — the seven editorial essays for About this site: selection, visual authority, translation, versions, reader adaptation, authorship and maintenance.
-- `contexts.json` — localised catalogue back matter for credit-name mapping, selected professional contexts and clearly identified first-party public records.
+- `contexts.json` — localised catalogue back matter for credit-name mapping, selected professional contexts and public records.
 
 Reader layout controls use the `layout_*` keys in `poetry/ui.json`, the shared
 `templates/poetry.html` shell and `assets/poetry-layout.{css,js}` /

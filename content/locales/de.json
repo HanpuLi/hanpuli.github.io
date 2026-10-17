@@ -40,7 +40,7 @@
     "lede": "Ich schaue Filme. Ich schreibe auch Ci.",
     "lede_note": "",
     "intro": "Vieles beginnt bei mir mit Schreiben: Kritik, Forschung, Lyrik. Ich fotografiere auch und baue Software, wenn eine Methode ein Werkzeug braucht.",
-    "method": "Mich interessiert, was aufgezeichnet wird, was herausfällt und ob die Belege die Behauptung tatsächlich tragen.",
+    "method": "Vieles davon hängt daran, was aufgezeichnet wird und ob die Belege die Behauptung tragen, die man auf sie stützt.",
     "sections": {
       "work": {
         "title": "Forschung / Editionen / Systeme",
@@ -127,10 +127,10 @@
     },
     "writing": {
       "first_love_title": "Zu Takashi Miikes <em>First Love</em>",
-      "first_love_description": "Eine ausführliche Studie zu Geschlecht, Verpflichtung und Genreform in Takashi Miikes <em>First Love</em>, die formale Nahlektüre mit reproduzierbaren Prüfungen verbindet.",
+      "first_love_description": "Eine ausführliche Studie zu Geschlecht, Verpflichtung und Genreform in Takashi Miikes <em>First Love</em>, mit formaler Nahlektüre und einem veröffentlichten Datensatz zu Einstellungslängen.",
       "first_love_meta": "Forschungsmanuskript · Zusammenfassung",
       "film_essays_title": "Zu <em>Trainspotting</em>",
-      "film_essays_description": "Ein Essay über Voice-over, Raum, Subjektivierung und die Grenzen der eigenen Argumentation.",
+      "film_essays_description": "Ein Essay über Voice-over, Raum, Subjektivierung und das Versagen der Fürsorge.",
       "film_essays_meta": "Essay lesen",
       "first_love_verify": "Methoden- und Prüfmaterial",
       "first_love_data": "Prüfdaten · DOI",
@@ -181,16 +181,16 @@
     "other": {
       "eyebrow": "nebenbei",
       "title": "Andere Arbeiten",
-      "intro": "Ein paar Dinge, die keinen eigenen Abschnitt brauchen.",
+      "intro": "Ein paar kleinere Dinge.",
       "ink": {
         "title": "Arbeiten auf Papier",
-        "note": "Tuschelandschaft. Hier als einzelne Arbeit, nicht als Behauptung einer eigenen Malereipraxis.",
+        "note": "Eine Tuschelandschaft.",
         "caption": "Tusche auf Papier",
         "alt": "Tuschelandschaft mit Bäumen, Wasser, Felsen und einem kleinen Pavillon"
       },
       "hardware": {
         "title": "Hardware",
-        "note": "Praktische Wartung älterer Serverhardware: Laufwerke, Staub und ein Schraubendreher."
+        "note": "Praktische Wartung älterer Serverhardware."
       }
     }
   },

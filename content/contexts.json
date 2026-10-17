@@ -1,13 +1,13 @@
 {
   "en": {
     "meta_title": "Credits & contexts · Hanpu Li",
-    "meta_description": "Selected credit names, professional contexts and public first-party records for Hanpu Li.",
+    "meta_description": "Selected credit names, professional contexts and public records for Hanpu Li.",
     "eyebrow": "catalogue back matter · selected records",
     "title": "Credits & contexts",
-    "lede": "A factual index of selected professional contexts, credit names and public records. It sits behind the work rather than replacing it.",
-    "principle": "A link appears only where a stable public record is available. First-party records are named as such; an unlinked entry stays unlinked rather than being made to look verified.",
+    "lede": "An index of selected professional contexts, credit names and public records.",
+    "principle": "Entries link to a public record where a stable one exists.",
     "link_label": "credits & contexts",
-    "footer_note": "Selected records only. External institutional links are added only when a stable public record is available.",
+    "footer_note": "Selected records only.",
     "credit_label": "credited as",
     "sections": [
       {
@@ -69,7 +69,7 @@
       {
         "id": "public-records",
         "number": "03",
-        "title": "Public work & first-party records",
+        "title": "Public work & records",
         "dek": "Authored work and method pages published by Hanpu Li.",
         "records": [
           {
@@ -117,7 +117,7 @@
             "title": "The Material Footprint of Virtual Production",
             "detail": "completed spatial phase of an ongoing study",
             "credit": "Hanpu Li",
-            "link_label": "first-party repository",
+            "link_label": "GitHub repository",
             "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
           },
           {
@@ -125,7 +125,7 @@
             "title": "ScopeRail",
             "detail": "open-source local execution runtime",
             "credit": "Hanpu Li",
-            "link_label": "first-party repository",
+            "link_label": "GitHub repository",
             "href": "https://github.com/HanpuLi/scoperail"
           }
         ]
@@ -134,13 +134,13 @@
   },
   "zh": {
     "meta_title": "署名與脈絡 · Hanpu Li",
-    "meta_description": "Hanpu Li 的節選署名、專業脈絡與公開第一方紀錄。",
+    "meta_description": "Hanpu Li 的節選署名、專業脈絡與公開紀錄。",
     "eyebrow": "目錄後記 · 節選紀錄",
     "title": "署名與脈絡",
-    "lede": "一份只列事實的索引：節選專業脈絡、署名及公開紀錄。它放在作品之後，不代替作品本身。",
-    "principle": "只有穩定的公開紀錄才加連結。第一方紀錄會明示為第一方；沒有連結的條目不靠措辭冒充已核實。",
+    "lede": "一份索引：節選專業脈絡、署名及公開紀錄。",
+    "principle": "凡有穩定的公開紀錄，條目便附上連結。",
     "link_label": "署名與脈絡",
-    "footer_note": "只列節選紀錄。只有在有穩定公開紀錄時，才加入外部機構連結。",
+    "footer_note": "只列節選紀錄。",
     "credit_label": "署名",
     "sections": [
       {
@@ -202,7 +202,7 @@
       {
         "id": "public-records",
         "number": "03",
-        "title": "公開作品與第一方紀錄",
+        "title": "公開作品與紀錄",
         "dek": "由 Hanpu Li 發佈的作品與方法頁。",
         "records": [
           {
@@ -250,7 +250,7 @@
             "title": "虛擬製作的物質足跡",
             "detail": "持續研究中已完成的空間階段",
             "credit": "Hanpu Li",
-            "link_label": "第一方 repository",
+            "link_label": "GitHub 倉庫",
             "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
           },
           {
@@ -258,7 +258,7 @@
             "title": "ScopeRail",
             "detail": "開源本機執行系統",
             "credit": "Hanpu Li",
-            "link_label": "第一方 repository",
+            "link_label": "GitHub 倉庫",
             "href": "https://github.com/HanpuLi/scoperail"
           }
         ]
@@ -267,13 +267,13 @@
   },
   "zh-hans": {
     "meta_title": "署名与脉络 · Hanpu Li",
-    "meta_description": "Hanpu Li 的节选署名、专业脉络与公开第一方记录。",
+    "meta_description": "Hanpu Li 的节选署名、专业脉络与公开记录。",
     "eyebrow": "目录后记 · 节选记录",
     "title": "署名与脉络",
-    "lede": "一份只列事实的索引：节选专业脉络、署名及公开记录。它放在作品之后，不代替作品本身。",
-    "principle": "只有稳定的公开记录才加链接。第一方记录会明示为第一方；没有链接的条目不靠措辞冒充已核实。",
+    "lede": "一份索引：节选专业脉络、署名及公开记录。",
+    "principle": "凡有稳定的公开记录，条目便附上链接。",
     "link_label": "署名与脉络",
-    "footer_note": "只列节选记录。只有在有稳定公开记录时，才加入外部机构链接。",
+    "footer_note": "只列节选记录。",
     "credit_label": "署名",
     "sections": [
       {
@@ -335,7 +335,7 @@
       {
         "id": "public-records",
         "number": "03",
-        "title": "公开作品与第一方记录",
+        "title": "公开作品与记录",
         "dek": "由 Hanpu Li 发布的作品与方法页。",
         "records": [
           {
@@ -383,7 +383,7 @@
             "title": "虚拟制作的物质足迹",
             "detail": "持续研究中已完成的空间阶段",
             "credit": "Hanpu Li",
-            "link_label": "第一方 repository",
+            "link_label": "GitHub 仓库",
             "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
           },
           {
@@ -391,7 +391,7 @@
             "title": "ScopeRail",
             "detail": "开源本机执行系统",
             "credit": "Hanpu Li",
-            "link_label": "第一方 repository",
+            "link_label": "GitHub 仓库",
             "href": "https://github.com/HanpuLi/scoperail"
           }
         ]
@@ -400,13 +400,13 @@
   },
   "ja": {
     "meta_title": "クレジットと活動歴 · Hanpu Li",
-    "meta_description": "Hanpu Li の主なクレジット名、職歴上の文脈、公開された第一者記録。",
+    "meta_description": "Hanpu Li の主なクレジット名、職歴上の文脈、公開記録。",
     "eyebrow": "カタログ後記 · 選択記録",
     "title": "クレジットと活動歴",
-    "lede": "主な職歴上の文脈、クレジット名、公開記録を事実として並べた索引です。作品そのものの代わりではなく、その後ろに置く情報です。",
-    "principle": "安定した公開記録がある場合だけリンクします。第一者記録はそのように明記し、リンクのない項目を文言だけで検証済みに見せません。",
+    "lede": "主な職歴上の文脈、クレジット名、公開記録の索引です。",
+    "principle": "安定した公開記録がある項目には、その記録へのリンクを付けています。",
     "link_label": "クレジットと活動歴",
-    "footer_note": "選択記録のみ。安定した公開記録がある場合に限り、外部機関のリンクを追加します。",
+    "footer_note": "選択記録のみ。",
     "credit_label": "クレジット",
     "sections": [
       {
@@ -468,7 +468,7 @@
       {
         "id": "public-records",
         "number": "03",
-        "title": "公開作品と第一者記録",
+        "title": "公開作品と記録",
         "dek": "Hanpu Li が公開した作品・方法ページ。",
         "records": [
           {
@@ -516,7 +516,7 @@
             "title": "The Material Footprint of Virtual Production",
             "detail": "継続研究のうち完了した空間分析フェーズ",
             "credit": "Hanpu Li",
-            "link_label": "第一者 repository",
+            "link_label": "GitHub リポジトリ",
             "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
           },
           {
@@ -524,7 +524,7 @@
             "title": "ScopeRail",
             "detail": "オープンソースのローカル実行環境",
             "credit": "Hanpu Li",
-            "link_label": "第一者 repository",
+            "link_label": "GitHub リポジトリ",
             "href": "https://github.com/HanpuLi/scoperail"
           }
         ]
@@ -533,13 +533,13 @@
   },
   "de": {
     "meta_title": "Credits & Kontexte · Hanpu Li",
-    "meta_description": "Ausgewählte Credit-Namen, berufliche Kontexte und öffentliche Eigenbelege von Hanpu Li.",
+    "meta_description": "Ausgewählte Credit-Namen, berufliche Kontexte und öffentliche Nachweise von Hanpu Li.",
     "eyebrow": "Kataloganhang · ausgewählte Nachweise",
     "title": "Credits & Kontexte",
-    "lede": "Ein sachlicher Index ausgewählter beruflicher Kontexte, Credit-Namen und öffentlicher Nachweise. Er steht hinter den Arbeiten und ersetzt sie nicht.",
-    "principle": "Verlinkt wird nur, wenn ein stabiler öffentlicher Nachweis vorhanden ist. Eigenbelege werden als solche bezeichnet; unverlinkte Einträge werden sprachlich nicht zu verifizierten Nachweisen aufgewertet.",
+    "lede": "Ein Index ausgewählter beruflicher Kontexte, Credit-Namen und öffentlicher Nachweise.",
+    "principle": "Wo ein stabiler öffentlicher Nachweis existiert, ist der Eintrag verlinkt.",
     "link_label": "Credits & Kontexte",
-    "footer_note": "Nur ausgewählte Einträge. Externe institutionelle Links werden erst ergänzt, wenn ein stabiler öffentlicher Nachweis vorliegt.",
+    "footer_note": "Nur ausgewählte Einträge.",
     "credit_label": "Credit",
     "sections": [
       {
@@ -601,7 +601,7 @@
       {
         "id": "public-records",
         "number": "03",
-        "title": "Öffentliche Arbeiten & Eigenbelege",
+        "title": "Öffentliche Arbeiten & Nachweise",
         "dek": "Von Hanpu Li veröffentlichte Arbeiten und Methodenseiten.",
         "records": [
           {
@@ -649,7 +649,7 @@
             "title": "The Material Footprint of Virtual Production",
             "detail": "abgeschlossene räumliche Phase einer laufenden Studie",
             "credit": "Hanpu Li",
-            "link_label": "Eigenbeleg im Repository",
+            "link_label": "GitHub-Repository",
             "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
           },
           {
@@ -657,7 +657,7 @@
             "title": "ScopeRail",
             "detail": "Open-Source-Laufzeit für lokale Ausführung",
             "credit": "Hanpu Li",
-            "link_label": "Eigenbeleg im Repository",
+            "link_label": "GitHub-Repository",
             "href": "https://github.com/HanpuLi/scoperail"
           }
         ]
@@ -666,13 +666,13 @@
   },
   "fr": {
     "meta_title": "Crédits & contextes · Hanpu Li",
-    "meta_description": "Noms de crédit, contextes professionnels et traces publiques de première main sélectionnés pour Hanpu Li.",
+    "meta_description": "Noms de crédit, contextes professionnels et traces publiques sélectionnés pour Hanpu Li.",
     "eyebrow": "annexe de catalogue · relevé choisi",
     "title": "Crédits & contextes",
-    "lede": "Un index factuel de contextes professionnels, de noms de crédit et de traces publiques sélectionnés. Il vient après les œuvres et ne les remplace pas.",
-    "principle": "Un lien n’apparaît que lorsqu’une trace publique stable existe. Les sources de première main sont nommées comme telles ; une entrée non liée ne devient pas « vérifiée » par la formulation.",
+    "lede": "Un index de contextes professionnels, de noms de crédit et de traces publiques sélectionnés.",
+    "principle": "Les entrées renvoient à une trace publique lorsqu’il en existe une stable.",
     "link_label": "crédits & contextes",
-    "footer_note": "Sélection seulement. Les liens institutionnels externes ne sont ajoutés que lorsqu’une trace publique stable est disponible.",
+    "footer_note": "Sélection seulement.",
     "credit_label": "crédit",
     "sections": [
       {
@@ -734,7 +734,7 @@
       {
         "id": "public-records",
         "number": "03",
-        "title": "Œuvres publiques & traces de première main",
+        "title": "Œuvres publiques & traces",
         "dek": "Œuvres et pages de méthode publiées par Hanpu Li.",
         "records": [
           {
@@ -782,7 +782,7 @@
             "title": "The Material Footprint of Virtual Production",
             "detail": "phase spatiale achevée d’une étude en cours",
             "credit": "Hanpu Li",
-            "link_label": "dépôt de première main",
+            "link_label": "dépôt GitHub",
             "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
           },
           {
@@ -790,7 +790,7 @@
             "title": "ScopeRail",
             "detail": "environnement local d’exécution open source",
             "credit": "Hanpu Li",
-            "link_label": "dépôt de première main",
+            "link_label": "dépôt GitHub",
             "href": "https://github.com/HanpuLi/scoperail"
           }
         ]
@@ -799,13 +799,13 @@
   },
   "ru": {
     "meta_title": "Титры и контексты · Hanpu Li",
-    "meta_description": "Избранные имена в титрах, профессиональные контексты и публичные записи от первого лица Hanpu Li.",
+    "meta_description": "Избранные имена в титрах, профессиональные контексты и публичные записи Hanpu Li.",
     "eyebrow": "приложение к каталогу · избранные записи",
     "title": "Титры и контексты",
-    "lede": "Фактический указатель избранных профессиональных контекстов, имён в титрах и публичных записей. Он расположен после работ и не заменяет их.",
-    "principle": "Ссылка появляется только там, где есть устойчивый публичный источник. Записи от первого лица так и обозначаются; отсутствие ссылки не маскируется более сильной формулировкой.",
+    "lede": "Указатель избранных профессиональных контекстов, имён в титрах и публичных записей.",
+    "principle": "Где существует устойчивый публичный источник, запись даёт на него ссылку.",
     "link_label": "титры и контексты",
-    "footer_note": "Только избранные записи. Внешние институциональные ссылки добавляются лишь при наличии устойчивого публичного источника.",
+    "footer_note": "Только избранные записи.",
     "credit_label": "титры",
     "sections": [
       {
@@ -867,7 +867,7 @@
       {
         "id": "public-records",
         "number": "03",
-        "title": "Публичные работы и записи от первого лица",
+        "title": "Публичные работы и записи",
         "dek": "Работы и методические страницы, опубликованные Hanpu Li.",
         "records": [
           {
@@ -915,7 +915,7 @@
             "title": "The Material Footprint of Virtual Production",
             "detail": "завершённый пространственный этап продолжающегося исследования",
             "credit": "Hanpu Li",
-            "link_label": "репозиторий от первого лица",
+            "link_label": "репозиторий GitHub",
             "href": "https://github.com/HanpuLi/shepperton-spatial-audit"
           },
           {
@@ -923,7 +923,7 @@
             "title": "ScopeRail",
             "detail": "локальная среда выполнения с открытым кодом",
             "credit": "Hanpu Li",
-            "link_label": "репозиторий от первого лица",
+            "link_label": "репозиторий GitHub",
             "href": "https://github.com/HanpuLi/scoperail"
           }
         ]
