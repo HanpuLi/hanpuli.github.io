@@ -162,7 +162,7 @@
         "title": "讀者可以改變頁面",
         "dek": "字體、間距、版式、動態與對比度都可以調整。",
         "body": [
-          "Drucker 把物質性放到系統的使用中考察，也兼顧其結構。[[drucker]] 在這裏，這個問題很具體：能否返回一闋詞、比較版本、追索來源，或者改變閲讀條件之後，仍然把握得住文本？",
+          "Drucker 所説的述行性物質性，把注意力引向使用中的系統，也兼顧其結構。[[drucker]] 在這裏，這個問題很具體：能否返回一闋詞、比較版本、追索來源，或者改變閲讀條件之後，仍然把握得住文本？",
           "閲讀設定可選用預設字體、無襯線字體或 OpenDyslexic，亦可調整字級、間距、行寬、版式、動態與對比度。鍵盤焦點、標題層級與文字替代也屬於出版工作，一併維護。",
           "自動檢查能找到部分標籤缺失與排版故障。圖像描述對使用屏幕閲讀器的人是否管用，只能從使用者本人那裏得知，所以測試通過以後，無障礙仍然是編輯的責任。"
         ],
@@ -174,7 +174,7 @@
         "title": "作者責任與證據",
         "dek": "記錄説明了什麼。",
         "body": [
-          "詩與文章由我撰寫，照片由我拍攝。其餘大部分工作都有 AI 工具協助：為本站挑選、排序照片並作後期處理；頁面版式、圖標與示意圖；轉換中文文本的繁簡字形，並對照我的標註加以核對；起草札記及其他文案、譯文，以及箋注、白話譯文與日文訓讀；修訂文章的網頁版；編寫並測試代碼。我審閲了這些結果，並作出最終決定。",
+          "詩與文章由我撰寫，照片由我拍攝。其餘大部分工作都有 AI 工具協助：為本站挑選、排序照片並作後期處理；頁面版式、圖標與示意圖；轉換中文文本的繁簡字形，並對照我的標註加以核對；起草札記及其他文案、譯文，以及箋注、白話譯文與日文訓讀；修訂文章的網頁版；編寫並測試程式碼。我審閲了這些結果，並作出最終決定。",
           "原始檔案、生成工具與版本歷史記錄了什麼被改過、當前展示的是什麼。本站描述自身項目時，會把描述與他人可核查的記錄分開，例如已公開的數據集和公開倉庫。",
           "這些頁面中的學術參照用於檢查具體決定。每項參照都引在比較能揭示差異或限制的地方。"
         ],
@@ -265,7 +265,7 @@
         "title": "读者可以改变页面",
         "dek": "字体、间距、版式、动态与对比度都可以调整。",
         "body": [
-          "Drucker 把物质性放到系统的使用中考察，也兼顾其结构。[[drucker]] 在这里，这个问题很具体：能否返回一阕词、比较版本、追索来源，或者改变阅读条件之后，仍然把握得住文本？",
+          "Drucker 所说的述行性物质性，把注意力引向使用中的系统，也兼顾其结构。[[drucker]] 在这里，这个问题很具体：能否返回一阕词、比较版本、追索来源，或者改变阅读条件之后，仍然把握得住文本？",
           "阅读设置可选用默认字体、无衬线字体或 OpenDyslexic，也可调整字号、间距、行宽、版式、动态与对比度。键盘焦点、标题层级与文字替代也属于出版工作，一并维护。",
           "自动检查能找到部分标签缺失与排版故障。图像描述对使用屏幕阅读器的人是否管用，只能从使用者本人那里得知，所以测试通过以后，无障碍仍然是编辑的责任。"
         ],
@@ -390,7 +390,7 @@
     "scope_title": "制作と維持",
     "scope_body": [
       "小さなPythonビルダーが構造化された内容とテンプレートから静的HTMLを作ります。画像とフォントはサイト側で配信し、書体にはEB Garamond、Courier Prime、Cousine、日本語にShippori Mincho、繁体字・簡体字中国語にI.MingCPを使います。レスポンシブな配置と任意の読書設定が文書を調整します。中核となる読書内容はJavaScriptなしでも利用でき、少数の段階的拡張機能とPoetry Voucherではブラウザー内でJavaScriptを使います。",
-      "リポジトリには、ビルド、言語、リンク、字体、ブラウザーの検査が含まれています。ソースのリポジトリは公開していますが、そこに含まれる創作物の再利用は許諾していません。詩券では別途、個人の保存、印刷、印刷物の贈与を認めています。"
+      "リポジトリには、ビルド、言語、リンク、字体、ブラウザーの検査が含まれています。ソースのリポジトリは公開していますが、そこに含まれる創作物の再利用は許諾していません。Poetry Voucherでは別途、個人の保存、印刷、印刷物の贈与を認めています。"
     ],
     "privacy_title": "ローカルな状態とホスティング",
     "privacy_body": "サイトは解析ツール、広告スクリプト、追跡cookieを追加しません。読書設定はブラウザーに残ります。Poetry Voucherは端末の買い物かごと現在のタブ内の完了注文も保持します。支払いは行わず、注文をプリンターへ送れるのはペアリング済みのH10S端末だけです。それも、その端末で明示的な操作をした後に限られます。サイトをホスティングしているGitHub Pagesは、独自にアクセスログを保存している場合があります。外部出典をたどると、その提供者のサイトへ移ります。",
@@ -484,7 +484,7 @@
         "dek": "Was die Nachweise zeigen.",
         "body": [
           "Ich habe die Gedichte und Essays geschrieben und die Fotografien aufgenommen. KI-Werkzeuge halfen bei den meisten übrigen Arbeiten: beim Auswählen, Ordnen und Entwickeln der Fotografien für die Website; bei Seitenlayout, Icons und Diagrammen; beim Umwandeln der chinesischen Texte zwischen den Schriftfassungen und beim Abgleichen mit meinen Anmerkungen; beim Entwerfen der Notizen und weiterer Texte, der Übersetzungen sowie der Anmerkungen, Paraphrasen und japanischen Kundoku-Lesungen; beim Überarbeiten der Webfassungen der Essays; schließlich beim Schreiben und Testen des Codes. Ich habe die Ergebnisse geprüft und die endgültigen Entscheidungen getroffen.",
-          "Quelldateien, Bauwerkzeuge und Versionsgeschichte verzeichnen, was geändert wurde und was zu sehen ist. Wo die Website ihre eigenen Projekte beschreibt, hält sie diese Beschreibung getrennt von Nachweisen, die andere prüfen können, etwa dem veröffentlichten Datensatz und dem öffentlichen Repository.",
+          "Quelldateien, Generierungswerkzeuge und Versionsgeschichte verzeichnen, was geändert wurde und was zu sehen ist. Wo die Website ihre eigenen Projekte beschreibt, hält sie diese Beschreibung getrennt von Nachweisen, die andere prüfen können, etwa dem veröffentlichten Datensatz und dem öffentlichen Repository.",
           "Die wissenschaftlichen Verweise auf diesen Seiten dienen dazu, konkrete Entscheidungen zu untersuchen. Zitiert wird jeweils dort, wo der Vergleich einen Unterschied oder eine Grenze sichtbar macht."
         ],
         "facts": []
@@ -655,7 +655,7 @@
         "dek": "Каждый перевод предлагает своё прочтение.",
         "body": [
           "Английская, гонконгская традиционная китайская, упрощённая китайская, японская, немецкая, французская и русская версии ведутся как отдельные издания. Английский служит входом по умолчанию, но многие работы написаны по-китайски, и китайский текст остаётся оригиналом при любом выбранном языке интерфейса. Некоторые длинные тексты опубликованы только на одном языке, и на их страницах это указано.",
-          "Каноническим источником сайта служит гонконгский традиционный китайский текст; упрощённая версия конвертируется из него и меняет только письменность. Переводу иногда приходится явно обозначить субъект, время или отношение там, где китайский текст оставляет их открытыми, и это может закрыть прочтение, которое стихотворение оставляло открытым. Скрипты проверяют, что членение на строки и строфы совпадает во всех изданиях; само прочтение остаётся предметом суждения.",
+          "Каноническим источником сайта служит гонконгский традиционный китайский текст; упрощённая версия конвертируется из него и меняет только начертание знаков. Переводу иногда приходится явно обозначить субъект, время или отношение там, где китайский текст оставляет их открытыми, и это может закрыть прочтение, которое стихотворение оставляло открытым. Скрипты проверяют, что членение на строки и строфы совпадает во всех изданиях; само прочтение остаётся предметом суждения.",
           "У изданий общая навигация и ссылки на источники, а длина строк и глифы меняются от языка к языку. Переводы не проходили независимой проверки носителями языка."
         ],
         "facts": []
