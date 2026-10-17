@@ -1433,6 +1433,50 @@
     }
    ],
    "note": "前段「掩門初」、後段「指微蜷」三字句譜不韻。「退」屬隊韻（灰半入第三部），與紙寘同部。"
+  },
+  "zhegutian-20261017-text": {
+   "source_body_sha256": "85d4626d77db1709e97a81b30c379f363cdc8838a652ea2acc1b7c28baf16da8",
+   "form": "鷓鴣天 · 正體（雙調五十五字，前段四句三平韻，後段五句三平韻）",
+   "rhyme_group": "詞林正韻第十部（麻）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 6,
+     "char": "牙"
+    },
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 14,
+     "char": "車"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 14,
+     "char": "加"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 6,
+     "char": "花"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 14,
+     "char": "斜"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 14,
+     "char": "賒"
+    }
+   ],
+   "note": "後段「呵作霧」譜不韻，「燼成花」韻。六韻字均屬平水韻下平六麻；車取麻韻讀，不取魚韻。"
   }
  }
 }

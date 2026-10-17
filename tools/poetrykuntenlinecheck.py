@@ -103,7 +103,7 @@ def main() -> None:
     else:
         if not p.exists() or p.read_text(encoding="utf-8")!=rendered:
             raise ValueError("Stale full-line collation; run this script with --write and review diff")
-    print(f"poetrykuntenlinecheck: {nlines} lines in 29 poems, "
+    print(f"poetrykuntenlinecheck: {nlines} lines in 30 poems, "
           "source/Japanese/markup line and stanza boundaries, source codepoint "
           "positions and manual annotation roundtrip PASS")
 
