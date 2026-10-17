@@ -29,6 +29,9 @@ This directory is the source of truth for all user-facing portfolio copy.
   paraphrases and annotations, pinned to each classical Chinese body by SHA-256;
   reference titles and original-source links are kept with this editorial layer.
 - `poetry/voucher-encoding.json` — non-literary artwork and barcode tables.
+- `poetry/receipt-codes.json` — append-only ledger of every Poetry Voucher receipt
+  code ever issued, with its paper edition and naming scheme. Codes are never edited,
+  removed or reused; see `docs/poetry-architecture.md`.
 - `ci-source.json`, `ci-simplified.json`, `ci-translations/`, `shi-source.json`, `shi-simplified.json`, `shi-translations/` and `summer-poem.json` — generated compatibility views. Do not author in them.
 - `essays.json` — registry of public essays, their source fragments, metadata files and social images.
 - `essays/<slug>.inc` — English source fragments for the public essays.

@@ -237,6 +237,16 @@ for(const work of data.works){
   assert.deepEqual(work.translations['zh-Hans'],simplifiedFor(text));
   for(const legacyId of offer.legacy_ids)assert.equal(data.aliases[legacyId],work.id);
 }
+// Receipt codes are permanent printed identifiers (content/poetry/receipt-codes.json):
+// unique, canonical, printable by the receipt face and short enough for the EDITION line.
+const receiptCodes=data.works.map(work=>work.source_id);
+assert.equal(new Set(receiptCodes).size,receiptCodes.length,'duplicate receipt code in the paper catalogue');
+for(const code of receiptCodes){
+  assert.equal(code,code.trim().split(/\s+/).join(' ').toUpperCase(),'receipt code is not canonical: '+code);
+  assert([...code].every(char=>data.patterns[char]),'receipt face cannot print receipt code: '+code);
+  assert(('EDITION '+code).length<=RECEIPT_CONFIG.lineChars,'receipt code does not fit the EDITION line: '+code);
+  assert(Array.from(receiptItemRows({...SKU_DEFINITIONS.poem,amount:299},code)).every(line=>line.length===RECEIPT_CONFIG.lineChars));
+}
 // Exercise the actual cart admission and pricing functions for every published variant.
 const shopPrefix=read('content/poetry-voucher-app/shop.js').split('  function notify(')[0];
 const shopCart=vm.runInNewContext(shopPrefix+'return {validateLine,quote};})()',{

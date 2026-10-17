@@ -42,6 +42,8 @@ class Library:
         self.texts = self._index('texts')
         self.collections = self._index('collections')
         self.offers = self._index('offers')
+        # Append-only ledger of every receipt code ever issued (see validate_receipt_codes).
+        self.receipt_codes = read(self.content / 'poetry/receipt-codes.json')
         self.memberships = {}
         for collection in self.collections.values():
             for wid in collection['members']:
@@ -108,6 +110,48 @@ class Library:
         for alias, tid in self.data['legacy']['catalogue'].items():
             if tid not in self.offers or alias not in self.offers[tid]['legacy_ids']:
                 raise ValueError('Invalid shop alias: ' + alias)
+        self.validate_receipt_codes()
+
+    def offer_work(self, offer: dict[str, Any]) -> dict[str, Any]:
+        vid = self.texts[offer['text']]['version'] if 'text' in offer else offer['version']
+        return self.works[self.versions[vid]['work']]
+
+    def validate_receipt_codes(self) -> None:
+        """Receipt codes are permanent identifiers printed on issued receipts.
+
+        Every offer's code must be in the append-only ledger, issued to that
+        offer, unique, and follow its scheme. Withdrawn offers keep their ledger
+        entries, so a code can never be reused for another poem.
+        """
+        ledger = self.receipt_codes
+        if ledger.get('schema') != 1:
+            raise ValueError('Unsupported receipt-code ledger schema')
+        issued: dict[str, dict[str, Any]] = {}
+        owners: set[str] = set()
+        for entry in ledger['codes']:
+            code = entry['code']
+            if not code or code != ' '.join(code.split()).upper():
+                raise ValueError('Receipt code is not in canonical form: ' + repr(code))
+            if entry.get('scheme') not in ledger['schemes']:
+                raise ValueError('Unknown receipt-code scheme for ' + code)
+            if code in issued:
+                raise ValueError('Receipt code issued twice: ' + code)
+            if entry['offer'] in owners:
+                raise ValueError('Paper edition has more than one receipt code: ' + entry['offer'])
+            issued[code] = entry
+            owners.add(entry['offer'])
+        for offer in self.offers.values():
+            code = offer['receipt_code']
+            entry = issued.get(code)
+            if entry is None:
+                raise ValueError('Receipt code missing from content/poetry/receipt-codes.json: ' + code)
+            if entry['offer'] != offer['id']:
+                raise ValueError(f"Receipt code {code} was issued to {entry['offer']}, not {offer['id']}")
+            work = self.offer_work(offer)
+            if entry['scheme'] == 'authorial' and code != work['authorial_label']:
+                raise ValueError('Authorial receipt code must equal the authorial label: ' + code)
+            if entry['scheme'] == 'dated' and work['composed']['start'].replace('-', '.') not in code.split(' '):
+                raise ValueError('Dated receipt code must carry its composition date: ' + code)
 
     def edition(self, tid: str, locale: str) -> dict[str, str] | None:
         if locale == 'zh-hans':
