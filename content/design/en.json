@@ -1,6 +1,6 @@
 {
   "site_title": "A page, measured",
-  "site_intro": "The following plates examine the research entry on the home page. They use the published HTML and its computed layout, at two stated viewport widths. The tinted rules are annotations; the text beneath them is the actual page.",
+  "site_intro": "The following plates examine the research entry on the home page. They use the published HTML and its computed layout, at two stated viewport widths. The tinted rules are annotations; the text beneath them is the page.",
   "layout_title": "01 / Columns become relationships",
   "desktop": "Desktop · 1440 CSS px viewport",
   "mobile": "Mobile · 390 CSS px viewport",
@@ -18,7 +18,7 @@
   "source": "Open the source page",
   "enlarge": "Open at native resolution",
   "type_title": "02 / Type performs different jobs",
-  "type_intro": "These are the actual words and computed settings from the desktop entry above. The font names report faces that the browser painted. The samples retain the measured typeface, size and tracking; their line spacing allows for reflow. Source and sample line heights are listed separately where they differ.",
+  "type_intro": "These are the words and computed settings from the desktop entry above. The font names report faces that the browser painted. The samples retain the measured typeface, size and tracking; their line spacing allows for reflow. Source and sample line heights are listed separately where they differ.",
   "roles": [
     "Metadata",
     "Project heading",
@@ -30,7 +30,7 @@
   "face": "Rendered faces",
   "site_end": "These measurements belong to this entry at these two widths; other pages use the same grid differently. The rule separates projects, the number locates the entry, and the narrower evidence column carries the status and data behind the title.",
   "pv_title": "An edition, taken apart",
-  "pv_intro": "A new B3 specimen made by the current shop renderer: one copy, Traditional Chinese, base pixel type at 24 dots, no translation, simulated cash payment. The annotation follows the actual output from receipt to poem. The older specimen above remains a separately dated scene.",
+  "pv_intro": "A new B3 specimen made by the current shop renderer: one copy, Traditional Chinese, base pixel type at 24 dots, no translation, simulated cash payment. The annotation follows the output from receipt to poem. The older specimen above remains a separately dated scene.",
   "anatomy_title": "01 / Read along the strip",
   "anatomy_note": "The strip below joins the shop’s receipt, CUT HERE segment and poem image in their output order. Widths retain the same scale throughout. Numbered leaders identify the printed fields of this digital specimen.",
   "callouts": [
@@ -67,16 +67,16 @@
   "poem_width": "Poem text measure",
   "dots_note": "Dimensions in millimetres are derived at 8 dots/mm. Screen size varies with zoom and device, so the drawing shows proportions only.",
   "columns_title": "03 / A receipt is a fixed grid",
-  "columns_intro": "This is the actual item-header crop. Four fields occupy 3, 11, 6 and 6 character cells, with one-cell separators and a final trailing cell. Every cell advances 12 dots. The receipt’s letters come from the renderer’s own bitmap patterns.",
+  "columns_intro": "This is the item-header crop. Four fields occupy 3, 11, 6 and 6 character cells, with one-cell separators and a final trailing cell. Every cell advances 12 dots. The receipt’s letters come from the renderer’s own bitmap patterns.",
   "columns": [
     "Quantity",
     "Description",
     "Unit price",
     "Amount"
   ],
-  "glyph_note": "The actual A pattern: 5 × 7 source cells. Each filled cell becomes 2 × 2 output dots; the advance is 12 dots and the normal line step is 24. For the total, the filled cells become 2 × 4 dots and the line step becomes 48.",
+  "glyph_note": "The A pattern: 5 × 7 source cells. Each filled cell becomes 2 × 2 output dots; the advance is 12 dots and the normal line step is 24. For the total, the filled cells become 2 × 4 dots and the line step becomes 48.",
   "font_title": "04 / One poem, two type settings",
-  "font_intro": "The same first lines of B3, at a 24-dot body setting and the same 352-dot text measure. These crops come from two real shop configurations with no translations. The website-typeface option changes the charge; it does not change the poem.",
+  "font_intro": "The same first lines of B3, at a 24-dot body setting and the same 352-dot text measure. These crops come from two shop configurations with no translations. The website-typeface option adds a charge and changes only the letterforms.",
   "base": "Base · Fusion Pixel",
   "upgrade": "Upgrade · website typefaces",
   "font_note": "The base uses Fusion Pixel Zh HK on its 12-dot grid, with 32-dot line steps here. The website setting uses the project’s CJK serif stack with 31-dot line steps here. Both crops are one-bit output; the different silhouettes and spacing are visible in the pixels.",

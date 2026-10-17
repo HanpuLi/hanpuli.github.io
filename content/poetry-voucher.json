@@ -52,12 +52,12 @@
         "id": "pricing",
         "number": "02",
         "title": "What a price leaves out",
-        "dek": "PV3 counts the text and nothing else.",
+        "dek": "PV3 counts letters, lines and stanzas.",
         "feature": "tariff",
         "body": [
           "Espeland and Stevens describe commensuration as comparison through a common metric. [[commensuration]] PV3 is a small instance of it: unlike poems become comparable sums once selected textual features are counted. The formula has no term for difficulty, revision, attachment or literary force.",
           "Only Unicode letters and numbers count as characters. Non-empty source lines and stanzas add to the base amount; automatic wrapping on the narrow paper does not. The base is raised to the lowest .99 price not below that amount. Extras are added afterwards, so the final total need not end in .99.",
-          "The Roof Splits Open costs £12.99 in its first draft and £9.99 in its second. The source changes from 380 to 225 counted characters while its lines and stanzas stay constant. Deletion becomes a price reduction, whatever it does to the poem; both drafts can be read side by side.",
+          "The Roof Splits Open costs £12.99 in its first draft and £9.99 in its second. The source changes from 380 to 225 counted characters while its lines and stanzas stay constant. Deletion becomes a price reduction, whatever it does to the poem.",
           "The steps also hide differences and exaggerate thresholds. A non-literary test of forty x characters is £1.99 as one line and £2.99 as two, while other added breaks leave the displayed price unchanged. The rounding follows retail convention."
         ]
       },
@@ -70,7 +70,7 @@
         "body": [
           "Pixel type is the included edition. The website typefaces are an optional upgrade, like a product whose advertised appearance depends on an extra configuration. The basic edition is complete and readable, so the upgrade changes only how the poem looks.",
           "The storefront is part of this arrangement. Its serif display type, space and alignment make the offer attractive while it sells typography as an extra, so the project both uses that appeal and puts it on display.",
-          "A translation adds another linguistic and cultural reading, and a physical print would use more paper; the fixed surcharge takes no account of paper length, energy or a translator’s working time. The poems and published translations can all be read free on the site, so the charge applies only to the issued edition. Traditional and Simplified Chinese are two scripts of the original at the same base price."
+          "A translation adds another linguistic and cultural reading, and a physical print would use more paper; the fixed surcharge takes no account of paper length, energy or a translator’s working time. The poems and published translations can all be read free on the site; the fictional charge applies only to the issued edition. Traditional and Simplified Chinese are two scripts of the original at the same base price."
         ]
       },
       {
@@ -92,8 +92,8 @@
         "dek": "A reading the juxtaposition allows.",
         "feature": "",
         "body": [
-          "B3 repeatedly delays an act of delivery: the writing stops, the unsealed paper is folded again, and host and guest do not become equal parties in a settled exchange. Read after a receipt, those actions may make the certainty of a completed transaction feel inadequate. It is one reading that placing the two together allows.",
-          "Other relations belong to the source publications: B6 responds across the A/B sequence, and The Roof Splits Open keeps its dated drafts. A single poem can be issued alone, and its source link leads back to the sequence it belongs to.",
+          "B3 repeatedly delays an act of delivery: the writing stops, the unsealed paper is folded again, and host and guest do not become equal parties in a settled exchange. Read after a receipt, those actions may make the certainty of a completed transaction feel inadequate.",
+          "Other relations belong to the source publications: B6 responds across the A/B sequence, and The Roof Splits Open keeps its dated drafts. A single poem can be issued alone; its source link leads back to the poem’s page, where any sequence or drafts are shown.",
           "Drucker’s account shifts materiality towards what occurs in use. [[drucker]] For this work, choosing, waiting, reading, cutting and giving are things to observe as they happen. A pocketable poem can be a gift, a joke, a keepsake or waste."
         ]
       },
@@ -106,7 +106,7 @@
         "body": [
           "The output model uses narrow thermal paper, and the one-bit image keeps the constraints of receipt printing. Dense labels and narrow lines belong to the form up to the point where the poem stops being readable. Fine strokes that are sharp on screen may still break up on a particular printer.",
           "Direct thermal printing uses no ink or ribbon; heat, light and handling can change its legibility. [[thermal]] These prints may fade, and how quickly has not been measured.",
-          "Early physical prints exist. Until there is an exhibition venue, the browser shop is the public route; an issuing table in a room would add handling and shared time. The PDF keeps receipt and poems in one file, with continuations for long outputs, and a self-contained HTML copy carries their full text for reading offline."
+          "Early physical prints exist. Until there is an exhibition venue, the browser shop is the public route; an issuing table in a room would add handling and shared time. The PDF keeps receipt and poems in one file, with continuations for long outputs. It is an image, so a self-contained HTML copy carries their full text for reading offline or with a screen reader."
         ]
       },
       {
@@ -135,13 +135,13 @@
       {
         "id": "status",
         "number": "09",
-        "title": "What is established",
+        "title": "Where it stands",
         "dek": "A working edition; an open question of reception.",
         "feature": "",
         "body": [
           "The catalogue, pricing and digital issuing process work now. The early prints were material trials. The idea of carrying a poem to give away came from an early reader and was reported in the author interview; there has not yet been a reader study or a gallery presentation.",
           "The next material test is modest: issue a few chosen editions, let people read and handle them without a preliminary theory lesson, and record what changes or fails. That may justify a decision to retain the receipt, alter an order of presentation or relinquish a proposed interpretation.",
-          "Personal saving, printing and giving printed copies are permitted. I wrote the poems; AI tools helped write the shop’s code, its interface copy and these notes, and I reviewed the results and made the final decisions. The shop issues existing poems and generates no poem text."
+          "Personal saving, printing and giving printed copies are permitted. I wrote the poems. AI tools helped draft the translations offered here, write the shop’s code and its interface copy in seven languages, design the receipt layout and write these notes; I reviewed the results and made the final decisions. The shop issues existing poems and generates no poem text."
         ]
       }
     ],
@@ -170,7 +170,7 @@
     "physical_configuration": "Original Chinese · website typefaces",
     "physical_open": "View full-size scan",
     "physical_read": "Read the poem",
-    "physical_provenance": "Scans of the actual prints. Straightened and cropped; the printed marks are preserved.",
+    "physical_provenance": "Scans of the prints. Straightened and cropped; the printed marks are preserved.",
     "physical_b3_alt": "Physical B3 edition: a receipt, cut line and complete Chinese poem on one strip of thermal paper",
     "physical_b4_alt": "Physical B4 edition: a receipt, cut line and complete Chinese poem on one strip of thermal paper",
     "implementation_flow_label": "The route from poem to issue",
@@ -245,12 +245,12 @@
         "id": "pricing",
         "number": "02",
         "title": "價格漏掉了什麼",
-        "dek": "PV3 只計算文本。",
+        "dek": "PV3 計算字數、行數與詩節數。",
         "feature": "tariff",
         "body": [
           "Espeland 與 Stevens 將通約化描述為借共同尺度來比較。[[commensuration]] PV3 是其中一個小例子：本不相同的詩，一旦計算若干選定的文本特徵，便化為可比較的金額。公式裏沒有難度、修訂、依戀或文學強度這一項。",
           "字符只計 Unicode 字母與數字。非空的源文本行與詩節增加基本金額，窄紙上的自動折行不參與計價。基本金額向上取不低於它的最低 .99 價位，附加項隨後加入，因此最終合計不一定以 .99 結尾。",
-          "《屋頂裂開》稿一為 £12.99，稿二為 £9.99。計費字符從380減至225，行數與詩節不變。不管刪削對詩做了什麼，在這裏它首先表現為價格下降；兩稿可以並排閲讀。",
+          "《屋頂裂開》稿一為 £12.99，稿二為 £9.99。計費字符從380減至225，行數與詩節不變。不管刪削對詩做了什麼，在這裏它首先表現為價格下降。",
           "階梯也會遮蔽差別，或放大臨界點。用四十個 x 做非作品測試，寫成一行是 £1.99，分成兩行變為 £2.99；另外一些新增分行則不改變標價。這種取整方式沿用零售慣例。"
         ]
       },
@@ -263,7 +263,7 @@
         "body": [
           "點陣體包含在基本版本中，網站字體是可選升級，類似某件商品需要加購配置才能達到廣告中的外觀。基本版完整可讀，所以升級改變的只是詩的樣子。",
           "商店頁面也屬於這套安排。它用襯線大字、留白與對齊讓售賣顯得誘人，而它所賣的附加項正是排印；所以作品既利用這種吸引力，也把它展示出來。",
-          "譯文帶來另一份語言與文化中的閲讀，實際打印也會佔用更多紙；固定附加費卻不核算紙長、耗能或譯者工時。原作與已發表譯文都可以在站上免費閲讀，所以加價只針對發行出來的版本。繁體與簡體是原文的兩種字形，基本價相同。"
+          "譯文帶來另一份語言與文化中的閲讀，實際打印也會佔用更多紙；固定附加費卻不核算紙長、耗能或譯者工時。原作與已發表譯文都可以在站上免費閲讀；這筆虛構的加價只針對發行出來的版本。繁體與簡體是原文的兩種字形，基本價相同。"
         ]
       },
       {
@@ -285,8 +285,8 @@
         "dek": "並置所容許的一種讀法。",
         "feature": "",
         "body": [
-          "乙三反覆推遲一次交付：書寫停住，未封的紙又被折起，主客關係也未變成兩方對等而結清的交換。放在小票之後讀，這些動作可能讓「交易完成」的確定性顯得不足。這是兩者並置所容許的一種讀法。",
-          "另一些關係屬於原有出版：乙六在甲乙序列中回應，《屋頂裂開》則保留有日期的修訂稿。單首詩可以單獨發行，它的來源鏈接可以引回所屬的序列。",
+          "乙三反覆推遲一次交付：書寫停住，未封的紙又被折起，主客關係也未變成兩方對等而結清的交換。放在小票之後讀，這些動作可能讓「交易完成」的確定性顯得不足。",
+          "另一些關係屬於原有出版：乙六在甲乙序列中回應，《屋頂裂開》則保留有日期的修訂稿。單首詩可以單獨發行；它的來源鏈接引回這首詩的頁面，如有所屬序列或修訂稿，都在該頁呈現。",
           "Drucker 的論述把物質性引向使用中發生的事。[[drucker]] 對這件作品而言，選擇、等待、閲讀、切開與贈送，都是要在發生時觀察的事。一首放進口袋的詩可以是禮物、笑話、紀念物，也可以被丟棄。"
         ]
       },
@@ -299,7 +299,7 @@
         "body": [
           "輸出模型使用窄幅熱敏紙，一位黑白圖像保留小票打印的限制。密集標籤與窄行屬於這個形式，但以詩仍然可讀為限。屏幕上清晰的細筆畫，到了某台打印機上仍可能斷開。",
           "直接熱敏打印不用墨或色帶；熱、光和日常處理可能改變可讀性。[[thermal]] 這些印本可能褪色，褪色速度尚未測量。",
-          "已有早期實物試印。在有展覽場地之前，瀏覽器商店是公共入口；在實體空間裏擺一張發行桌，則會增加紙張處理與共同停留的時間。PDF 把小票與詩保存在同一文件中，過長時保留接續；獨立的 HTML 副本收錄兩者全文，可供離線閲讀。"
+          "已有早期實物試印。在有展覽場地之前，瀏覽器商店是公共入口；在實體空間裏擺一張發行桌，則會增加紙張處理與共同停留的時間。PDF 把小票與詩保存在同一文件中，過長時保留接續。由於 PDF 是圖像，獨立的 HTML 副本另收錄兩者全文，供離線閲讀或以屏幕閲讀器讀取。"
         ]
       },
       {
@@ -328,13 +328,13 @@
       {
         "id": "status",
         "number": "09",
-        "title": "已經成立的部分",
+        "title": "現況",
         "dek": "可以使用的版本，仍待檢驗的接受。",
         "feature": "",
         "body": [
           "目錄、計價與數碼發行流程現已可用。早期打印件是材料試驗。把一首詩帶在身上、隨手送人的想法，來自一位早期讀者，並在作者訪談中提到；目前還沒有做過讀者研究，也還沒有在畫廊展示過。",
           "下一次材料測試可以很小：發行少量選定版本，讓人閲讀、拿在手裏，不先上理論課，再記錄發生了什麼、哪裏失敗。這些結果可能支持保留小票、調整呈現順序，或放棄一種擬議解釋。",
-          "允許個人保存、打印與贈送打印件。詩由我創作；商店的代碼、界面文案與這些札記有 AI 工具協助撰寫，我審閲了結果，並作出最終決定。商店發行既有詩作，不生成詩句。"
+          "允許個人保存、打印與贈送打印件。詩由我創作。AI 工具協助起草這裏提供的譯文，編寫商店的代碼與七種語言的界面文案，設計小票版式，並撰寫這些札記；我審閲了結果，並作出最終決定。商店發行既有詩作，不生成詩句。"
         ]
       }
     ],
@@ -363,7 +363,7 @@
     "physical_configuration": "中文原文 · 網站字體",
     "physical_open": "放大查看印本",
     "physical_read": "閱讀原詩",
-    "physical_provenance": "實體印本影像。校正角度並裁邊，保留原有印跡。",
+    "physical_provenance": "印本掃描。校正角度並裁邊，保留原有印跡。",
     "physical_b3_alt": "乙三實體印本：同一張熱敏紙上的收據、裁切線與完整中文詩作",
     "physical_b4_alt": "乙四實體印本：同一張熱敏紙上的收據、裁切線與完整中文詩作",
     "implementation_flow_label": "從詩作到發行",
@@ -438,12 +438,12 @@
         "id": "pricing",
         "number": "02",
         "title": "价格漏掉了什么",
-        "dek": "PV3 只计算文本。",
+        "dek": "PV3 计算字数、行数与诗节数。",
         "feature": "tariff",
         "body": [
           "Espeland 与 Stevens 将通约化描述为借共同尺度来比较。[[commensuration]] PV3 是其中一个小例子：本不相同的诗，一旦计算若干选定的文本特征，便化为可比较的金额。公式里没有难度、修订、依恋或文学强度这一项。",
           "字符只计 Unicode 字母与数字。非空的源文本行与诗节增加基本金额，窄纸上的自动折行不参与计价。基本金额向上取不低于它的最低 .99 价位，附加项随后加入，因此最终合计不一定以 .99 结尾。",
-          "《屋顶裂开》稿一为 £12.99，稿二为 £9.99。计费字符从380减至225，行数与诗节不变。不管删削对诗做了什么，在这里它首先表现为价格下降；两稿可以并排阅读。",
+          "《屋顶裂开》稿一为 £12.99，稿二为 £9.99。计费字符从380减至225，行数与诗节不变。不管删削对诗做了什么，在这里它首先表现为价格下降。",
           "阶梯也会遮蔽差别，或放大临界点。用四十个 x 做非作品测试，写成一行是 £1.99，分成两行变为 £2.99；另外一些新增分行则不改变标价。这种取整方式沿用零售惯例。"
         ]
       },
@@ -456,7 +456,7 @@
         "body": [
           "点阵体包含在基本版本中，网站字体是可选升级，类似某件商品需要加购配置才能达到广告中的外观。基本版完整可读，所以升级改变的只是诗的样子。",
           "商店页面也属于这套安排。它用衬线大字、留白与对齐让售卖显得诱人，而它所卖的附加项正是排印；所以作品既利用这种吸引力，也把它展示出来。",
-          "译文带来另一份语言与文化中的阅读，实际打印也会占用更多纸；固定附加费却不核算纸长、耗能或译者工时。原作与已发表译文都可以在站上免费阅读，所以加价只针对发行出来的版本。繁体与简体是原文的两种字形，基本价相同。"
+          "译文带来另一份语言与文化中的阅读，实际打印也会占用更多纸；固定附加费却不核算纸长、耗能或译者工时。原作与已发表译文都可以在站上免费阅读；这笔虚构的加价只针对发行出来的版本。繁体与简体是原文的两种字形，基本价相同。"
         ]
       },
       {
@@ -478,8 +478,8 @@
         "dek": "并置所容许的一种读法。",
         "feature": "",
         "body": [
-          "乙三反复推迟一次交付：书写停住，未封的纸又被折起，主客关系也未变成两方对等而结清的交换。放在小票之后读，这些动作可能让“交易完成”的确定性显得不足。这是两者并置所容许的一种读法。",
-          "另一些关系属于原有出版：乙六在甲乙序列中回应，《屋顶裂开》则保留有日期的修订稿。单首诗可以单独发行，它的来源链接可以引回所属的序列。",
+          "乙三反复推迟一次交付：书写停住，未封的纸又被折起，主客关系也未变成两方对等而结清的交换。放在小票之后读，这些动作可能让“交易完成”的确定性显得不足。",
+          "另一些关系属于原有出版：乙六在甲乙序列中回应，《屋顶裂开》则保留有日期的修订稿。单首诗可以单独发行；它的来源链接引回这首诗的页面，如有所属序列或修订稿，都在该页呈现。",
           "Drucker 的论述把物质性引向使用中发生的事。[[drucker]] 对这件作品而言，选择、等待、阅读、切开与赠送，都是要在发生时观察的事。一首放进口袋的诗可以是礼物、笑话、纪念物，也可以被丢弃。"
         ]
       },
@@ -492,7 +492,7 @@
         "body": [
           "输出模型使用窄幅热敏纸，一位黑白图像保留小票打印的限制。密集标签与窄行属于这个形式，但以诗仍然可读为限。屏幕上清晰的细笔画，到了某台打印机上仍可能断开。",
           "直接热敏打印不用墨或色带；热、光和日常处理可能改变可读性。[[thermal]] 这些印本可能褪色，褪色速度尚未测量。",
-          "已有早期实物试印。在有展览场地之前，浏览器商店是公共入口；在实体空间里摆一张发行桌，则会增加纸张处理与共同停留的时间。PDF 把小票与诗保存在同一文件中，过长时保留接续；独立的 HTML 副本收录两者全文，可供离线阅读。"
+          "已有早期实物试印。在有展览场地之前，浏览器商店是公共入口；在实体空间里摆一张发行桌，则会增加纸张处理与共同停留的时间。PDF 把小票与诗保存在同一文件中，过长时保留接续。由于 PDF 是图像，独立的 HTML 副本另收录两者全文，供离线阅读或用屏幕阅读器读取。"
         ]
       },
       {
@@ -521,13 +521,13 @@
       {
         "id": "status",
         "number": "09",
-        "title": "已经成立的部分",
+        "title": "现状",
         "dek": "可以使用的版本，仍待检验的接受。",
         "feature": "",
         "body": [
           "目录、计价与数字发行流程现已可用。早期打印件是材料试验。把一首诗带在身上、随手送人的想法，来自一位早期读者，并在作者访谈中提到；目前还没有做过读者研究，也还没有在画廊展示过。",
           "下一次材料测试可以很小：发行少量选定版本，让人阅读、拿在手里，不先上理论课，再记录发生了什么、哪里失败。这些结果可能支持保留小票、调整呈现顺序，或放弃一种拟议解释。",
-          "允许个人保存、打印与赠送打印件。诗由我创作；商店的代码、界面文案与这些札记有 AI 工具协助撰写，我审阅了结果，并作出最终决定。商店发行既有诗作，不生成诗句。"
+          "允许个人保存、打印与赠送打印件。诗由我创作。AI 工具协助起草这里提供的译文，编写商店的代码与七种语言的界面文案，设计小票版式，并撰写这些札记；我审阅了结果，并作出最终决定。商店发行既有诗作，不生成诗句。"
         ]
       }
     ],
@@ -556,7 +556,7 @@
     "physical_configuration": "中文原文 · 网站字体",
     "physical_open": "放大查看印本",
     "physical_read": "阅读原诗",
-    "physical_provenance": "实体印本图像。校正角度并裁边，保留原有印迹。",
+    "physical_provenance": "印本扫描。校正角度并裁边，保留原有印迹。",
     "physical_b3_alt": "乙三实体印本：同一张热敏纸上的收据、裁切线与完整中文诗作",
     "physical_b4_alt": "乙四实体印本：同一张热敏纸上的收据、裁切线与完整中文诗作",
     "implementation_flow_label": "从诗作到发行",
@@ -631,12 +631,12 @@
         "id": "pricing",
         "number": "02",
         "title": "価格が取りこぼすもの",
-        "dek": "PV3は文章だけを数えます。",
+        "dek": "PV3は文字、行、連を数えます。",
         "feature": "tariff",
         "body": [
           "EspelandとStevensは、通約化を共通の尺度による比較として述べています。[[commensuration]] PV3はその小さな一例です。選んだ文章の特徴を数えると、異なる詩が比較可能な金額になります。式には難しさ、改稿、愛着、文学的な強さの項目がありません。",
           "文字として数えるのはUnicodeの字母と数字だけです。空でない原文の行と連は基本額に加算され、狭い紙で自動的に折り返す行は加算されません。基本額を下回らない最小の .99 価格まで引き上げ、その後で追加項目を足します。合計が .99 で終わるとは限りません。",
-          "The Roof Splits Openは第一稿で£12.99、第二稿で£9.99です。計測文字は380から225へ減りますが、行数と連の数は変わりません。削除が詩に何をもたらしたかにかかわらず、値下げになります。二つの稿は並べて読めます。",
+          "The Roof Splits Openは第一稿で£12.99、第二稿で£9.99です。計測文字は380から225へ減りますが、行数と連の数は変わりません。削除が詩に何をもたらしたかにかかわらず、値下げになります。",
           "段階式の価格は差異を隠す一方、境界を大きく見せます。文学作品ではない四十個のxの試験では、一行なら£1.99、二行なら£2.99ですが、ほかに改行を足しても表示価格は変わりません。価格の丸め方は小売の慣例に従っています。"
         ]
       },
@@ -649,7 +649,7 @@
         "body": [
           "基本版にはドット書体を含み、サイト書体を追加仕様として扱います。広告どおりの外観にするには追加の構成が必要な商品に似ています。基本版も全文が揃っていて読めるので、追加仕様が変えるのは詩の見た目だけです。",
           "ショップの画面もこの仕組みの一部です。セリフ体の大きな題字、余白、整列で魅力的な売り場を作りながら、組版を追加料金にしています。そのため作品は、その魅力を利用すると同時に、それ自体を展示してもいます。",
-          "翻訳は別の言語と文化による読解を加え、実際の印刷では紙も長くなりますが、固定の追加料金は紙の長さ、エネルギー、翻訳者の労働時間を考慮しません。詩も公開済みの翻訳も、すべてサイトで無料で読めます。料金がかかるのは発行する版だけです。繁体字と簡体字は原文の二つの表記で、基本価格は同じです。"
+          "翻訳は別の言語と文化による読解を加え、実際の印刷では紙も長くなりますが、固定の追加料金は紙の長さ、エネルギー、翻訳者の労働時間を考慮しません。詩も公開済みの翻訳も、すべてサイトで無料で読めます。架空の料金がかかるのは、発行する版だけです。繁体字と簡体字は原文の二つの表記で、基本価格は同じです。"
         ]
       },
       {
@@ -671,8 +671,8 @@
         "dek": "並べて置くことで生まれる読みです。",
         "feature": "",
         "body": [
-          "乙三では引き渡す動作が繰り返し遅れます。書く手が止まり、封じる前の紙をまた折り、主客は清算を終えた対等な交換相手にはなりません。レシートの後で読むと、その動作は完了した取引の確かさを足りないものに見せるかもしれません。二つを並べることで可能になる、一つの読みです。",
-          "他の関係は元の出版物に属します。乙六は甲乙の連作の中で応答し、The Roof Splits Openは日付のある稿本を保っています。一篇だけを発行することもでき、その出典リンクから所属する連作へ戻れます。",
+          "乙三では引き渡す動作が繰り返し遅れます。書く手が止まり、封じる前の紙をまた折り、主客は清算を終えた対等な交換相手にはなりません。レシートの後で読むと、その動作は完了した取引の確かさを足りないものに見せるかもしれません。",
+          "他の関係は元の出版物に属します。乙六は甲乙の連作の中で応答し、The Roof Splits Openは日付のある稿本を保っています。一篇だけを発行することもできます。その出典リンクは詩のページへ戻り、連作や稿本があればそこに示されます。",
           "Druckerは物質性を使用時に起こることへ向けます。[[drucker]] この作品では、選ぶ、待つ、読む、切る、贈るといった行為を、起きるその場で観察します。携帯できる詩は贈り物、冗談、記念品、不要物にもなります。"
         ]
       },
@@ -685,7 +685,7 @@
         "body": [
           "出力モデルは幅の狭い感熱紙を用い、一ビットの白黒画像はレシート印刷の制約を残します。密なラベルと狭い行は、詩が読めなくなる手前までは形式の一部です。画面では鮮明な細い画線も、特定のプリンターでは途切れることがあります。",
           "直接感熱印刷はインクもリボンも使わず、熱、光、扱い方によって可読性が変わります。[[thermal]] これらの刷りは色あせることがあり、その速さは測っていません。",
-          "初期の実物出力はあります。展示会場ができるまでは、ブラウザーのショップが公開の入口です。部屋に発行テーブルを置けば、紙を手に取ることと居合わせる時間が加わるでしょう。PDFはレシートと詩を同じファイルに保ち、長い出力には接続表示を付けます。独立したHTML版には全文が収められ、オフラインでも読めます。"
+          "初期の実物出力はあります。展示会場ができるまでは、ブラウザーのショップが公開の入口です。部屋に発行テーブルを置けば、紙を手に取ることと居合わせる時間が加わるでしょう。PDFはレシートと詩を同じファイルに保ち、長い出力には接続表示を付けます。PDFは画像なので、独立したHTML版に全文を収め、オフラインでもスクリーンリーダーでも読めるようにしています。"
         ]
       },
       {
@@ -714,13 +714,13 @@
       {
         "id": "status",
         "number": "09",
-        "title": "確認できていること",
+        "title": "現状",
         "dek": "使える版と、まだ開かれた受容の問い。",
         "feature": "",
         "body": [
           "カタログ、料金計算、デジタル発行は現在動いています。初期印刷物は素材の試験でした。詩を持ち歩いて人に贈るという考えは初期の読者から出たもので、作者へのインタビューで紹介されました。読者調査やギャラリー展示はまだ行っていません。",
           "次の素材試験は小さくできます。少数の版を発行し、理論を先に教えずに読んで扱ってもらい、変化や失敗を記録する。その結果はレシートの維持、順序の変更、考えていた解釈の放棄につながるかもしれません。",
-          "個人での保存、印刷、印刷物の贈与を認めます。詩は私が書きました。ショップのコード、画面の文言、そしてこのノートの執筆にはAIツールの助けを借り、その結果は私が確認して最終的な決定を下しました。ショップは既存の詩を発行するもので、詩の文章は生成しません。"
+          "個人での保存、印刷、印刷物の贈与を認めます。詩は私が書きました。ここで提供する翻訳の下書き、ショップのコードと七つの言語による画面の文言の作成、レシートのレイアウトのデザイン、そしてこのノートの執筆にはAIツールの助けを借り、その結果は私が確認して最終的な決定を下しました。ショップは既存の詩を発行するもので、詩の文章は生成しません。"
         ]
       }
     ],
@@ -749,7 +749,7 @@
     "physical_configuration": "中国語原文 · ウェブサイトの書体",
     "physical_open": "スキャンを拡大表示",
     "physical_read": "詩を読む",
-    "physical_provenance": "実物のスキャン。傾きと余白を調整し、印刷された跡を保持。",
+    "physical_provenance": "印刷物のスキャン。傾きと余白を調整し、印刷された跡を保持。",
     "physical_b3_alt": "乙三の実物：一本の感熱紙にレシート、切り取り線、中国語の詩全文を印刷",
     "physical_b4_alt": "乙四の実物：一本の感熱紙にレシート、切り取り線、中国語の詩全文を印刷",
     "implementation_flow_label": "詩から発行まで",
@@ -824,12 +824,12 @@
         "id": "pricing",
         "number": "02",
         "title": "Was ein Preis auslässt",
-        "dek": "PV3 zählt den Text und sonst nichts.",
+        "dek": "PV3 zählt Buchstaben, Zeilen und Strophen.",
         "feature": "tariff",
         "body": [
           "Espeland und Stevens beschreiben Kommensurierung als Vergleich durch einen gemeinsamen Maßstab. [[commensuration]] PV3 ist ein kleines Beispiel dafür: Verschiedene Gedichte werden zu vergleichbaren Summen, sobald ausgewählte Textmerkmale gezählt werden. Schwierigkeit, Überarbeitung, Bindung und literarische Kraft kommen in der Formel nicht vor.",
           "Als Zeichen zählen nur Unicode-Buchstaben und Zahlen. Nicht leere Quellzeilen und Strophen erhöhen den Grundbetrag; automatische Umbrüche auf schmalem Papier zählen nicht. Die Basis steigt auf den niedrigsten .99-Preis, der nicht unter diesem Betrag liegt. Extras kommen danach hinzu, weshalb die Endsumme nicht auf .99 enden muss.",
-          "The Roof Splits Open kostet in Fassung eins £12.99, in Fassung zwei £9.99. Die gezählten Zeichen sinken von 380 auf 225; Zeilen und Strophen bleiben gleich. Streichen wird zur Preissenkung, unabhängig davon, was es mit dem Gedicht macht; beide Fassungen lassen sich nebeneinander lesen.",
+          "The Roof Splits Open kostet in Fassung eins £12.99, in Fassung zwei £9.99. Die gezählten Zeichen sinken von 380 auf 225; Zeilen und Strophen bleiben gleich. Streichen wird zur Preissenkung, unabhängig davon, was es mit dem Gedicht macht.",
           "Die Stufen verdecken zugleich Unterschiede und vergrößern Schwellen. Vierzig x als nichtliterarischer Test kosten einzeilig £1.99, zweizeilig £2.99, während andere zusätzliche Umbrüche den sichtbaren Preis unverändert lassen. Die Rundung folgt den Gepflogenheiten des Einzelhandels."
         ]
       },
@@ -842,7 +842,7 @@
         "body": [
           "Pixelschrift ist in der Grundausgabe enthalten. Die Website-Schriften sind ein Upgrade, wie bei einem Produkt, dessen beworbene Erscheinung eine Zusatzkonfiguration verlangt. Die Grundausgabe ist vollständig und lesbar; das Upgrade ändert also nur, wie das Gedicht aussieht.",
           "Der Shop gehört selbst zu diesem Gefüge. Serifentitel, Raum und Ausrichtung machen sein Angebot attraktiv, während Typografie als Extra verkauft wird. So nutzt das Projekt diesen Reiz und stellt ihn zugleich aus.",
-          "Eine Übersetzung bietet eine weitere sprachliche und kulturelle Lesart und würde gedruckt mehr Papier beanspruchen; der feste Zuschlag berücksichtigt weder Papierlänge noch Energie oder Übersetzungsstunden. Alle Gedichte und veröffentlichten Übersetzungen sind auf der Website frei lesbar; der Aufpreis gilt also nur für das ausgegebene Exemplar. Traditionelles und vereinfachtes Chinesisch sind zwei Schriftfassungen des Originals zum selben Grundpreis."
+          "Eine Übersetzung bietet eine weitere sprachliche und kulturelle Lesart und würde gedruckt mehr Papier beanspruchen; der feste Zuschlag berücksichtigt weder Papierlänge noch Energie oder Übersetzungsstunden. Alle Gedichte und veröffentlichten Übersetzungen sind auf der Website frei lesbar; der fiktive Aufpreis gilt nur für das ausgegebene Exemplar. Traditionelles und vereinfachtes Chinesisch sind zwei Schriftfassungen des Originals zum selben Grundpreis."
         ]
       },
       {
@@ -864,8 +864,8 @@
         "dek": "Eine Lesart, die die Gegenüberstellung erlaubt.",
         "feature": "",
         "body": [
-          "B3 verzögert wiederholt eine Übergabe: Das Schreiben stockt, das unverschlossene Papier wird erneut gefaltet, und Gastgeber und Gast werden nicht zu gleichberechtigten Parteien eines abgeschlossenen Tauschs. Nach einem Kassenbon gelesen, können diese Vorgänge dessen Gewissheit unzureichend erscheinen lassen. Es ist eine Lesart, die das Nebeneinander von Bon und Gedicht zulässt.",
-          "Andere Beziehungen gehören zu den Quellpublikationen: B6 antwortet innerhalb der A/B-Folge, und The Roof Splits Open bewahrt seine datierten Entwürfe. Ein einzelnes Gedicht kann allein ausgegeben werden; sein Quellenlink führt zurück zu der Folge, zu der es gehört.",
+          "B3 verzögert wiederholt eine Übergabe: Das Schreiben stockt, das unverschlossene Papier wird erneut gefaltet, und Gastgeber und Gast werden nicht zu gleichberechtigten Parteien eines abgeschlossenen Tauschs. Nach einem Kassenbon gelesen, können diese Vorgänge dessen Gewissheit unzureichend erscheinen lassen.",
+          "Andere Beziehungen gehören zu den Quellpublikationen: B6 antwortet innerhalb der A/B-Folge, und The Roof Splits Open bewahrt seine datierten Entwürfe. Ein einzelnes Gedicht kann allein ausgegeben werden; sein Quellenlink führt zurück zur Seite des Gedichts, auf der gegebenenfalls die Folge oder die Entwürfe gezeigt werden.",
           "Drucker richtet Materialität auf das Geschehen im Gebrauch. [[drucker]] Bei dieser Arbeit sind Auswählen, Warten, Lesen, Schneiden und Schenken deshalb zu beobachten, während sie geschehen. Ein Gedicht für die Tasche kann Geschenk, Scherz, Andenken oder Abfall werden."
         ]
       },
@@ -878,7 +878,7 @@
         "body": [
           "Das Ausgabemodell verwendet schmales Thermopapier, und das Einbitbild behält die Beschränkungen des Bondrucks bei. Dichte Beschriftung und schmale Zeilen gehören zur Form, solange das Gedicht lesbar bleibt. Feine Striche, die am Bildschirm scharf sind, können auf einem bestimmten Drucker trotzdem brüchig werden.",
           "Thermodirektdruck braucht weder Tinte noch Farbband; Wärme, Licht und Handhabung können die Lesbarkeit verändern. [[thermal]] Diese Drucke können verblassen; wie schnell, wurde nicht gemessen.",
-          "Frühe physische Drucke existieren. Solange es keinen Ausstellungsort gibt, ist der Browser-Shop der öffentliche Zugang; ein Ausgabetisch in einem Raum würde Papierhandhabung und gemeinsam verbrachte Zeit hinzufügen. Das PDF bewahrt Bon und Gedichte in einer Datei, bei langen Ausgaben mit Fortsetzungen, und eine eigenständige HTML-Fassung hält ihren vollständigen Text offline lesbar."
+          "Frühe physische Drucke existieren. Solange es keinen Ausstellungsort gibt, ist der Browser-Shop der öffentliche Zugang; ein Ausgabetisch in einem Raum würde Papierhandhabung und gemeinsam verbrachte Zeit hinzufügen. Das PDF bewahrt Bon und Gedichte in einer Datei, bei langen Ausgaben mit Fortsetzungen. Da es ein Bild ist, hält eine eigenständige HTML-Fassung ihren vollständigen Text offline und mit einem Screenreader lesbar."
         ]
       },
       {
@@ -907,13 +907,13 @@
       {
         "id": "status",
         "number": "09",
-        "title": "Was feststeht",
+        "title": "Stand der Dinge",
         "dek": "Eine benutzbare Ausgabe; eine offene Rezeptionsfrage.",
         "feature": "",
         "body": [
           "Katalog, Berechnung und digitale Ausgabe funktionieren bereits. Die frühen Drucke waren Materialversuche. Der Gedanke, ein Gedicht zum Verschenken bei sich zu tragen, kam von einer frühen lesenden Person und wurde im Interview berichtet; eine Lesestudie oder Galeriepräsentation hat es bisher nicht gegeben.",
           "Der nächste Materialversuch kann klein sein: wenige ausgewählte Ausgaben herstellen, Menschen ohne vorausgehende Theorieeinführung lesen und handeln lassen und festhalten, was sich verändert oder scheitert. Das kann für den Bon, eine andere Reihenfolge oder den Verzicht auf eine angenommene Deutung sprechen.",
-          "Persönliches Speichern, Drucken und Verschenken gedruckter Exemplare sind erlaubt. Die Gedichte habe ich geschrieben; KI-Werkzeuge halfen, den Code des Shops, seine Oberflächentexte und diese Notizen zu schreiben, und ich habe die Ergebnisse geprüft und die endgültigen Entscheidungen getroffen. Der Shop gibt vorhandene Gedichte aus und erzeugt keine Gedichttexte."
+          "Persönliches Speichern, Drucken und Verschenken gedruckter Exemplare sind erlaubt. Die Gedichte habe ich geschrieben. KI-Werkzeuge halfen, die hier angebotenen Übersetzungen zu entwerfen, den Code des Shops und seine Oberflächentexte in sieben Sprachen zu schreiben, das Layout des Bons zu gestalten und diese Notizen zu schreiben; ich habe die Ergebnisse geprüft und die endgültigen Entscheidungen getroffen. Der Shop gibt vorhandene Gedichte aus und erzeugt keine Gedichttexte."
         ]
       }
     ],
@@ -942,7 +942,7 @@
     "physical_configuration": "Chinesisches Original · Website-Schriften",
     "physical_open": "Scan in voller Größe ansehen",
     "physical_read": "Gedicht lesen",
-    "physical_provenance": "Scans der tatsächlichen Drucke. Begradigt und beschnitten; die Druckspuren bleiben erhalten.",
+    "physical_provenance": "Scans der Drucke. Begradigt und beschnitten; die Druckspuren bleiben erhalten.",
     "physical_b3_alt": "Gedruckte Ausgabe B3: Beleg, Schnittlinie und vollständiges chinesisches Gedicht auf einem Thermopapierstreifen",
     "physical_b4_alt": "Gedruckte Ausgabe B4: Beleg, Schnittlinie und vollständiges chinesisches Gedicht auf einem Thermopapierstreifen",
     "implementation_flow_label": "Vom Gedicht zur Ausgabe",
@@ -1017,12 +1017,12 @@
         "id": "pricing",
         "number": "02",
         "title": "Ce que le prix omet",
-        "dek": "PV3 compte le texte, et rien d’autre.",
+        "dek": "PV3 compte les lettres, les lignes et les strophes.",
         "feature": "tariff",
         "body": [
           "Espeland et Stevens décrivent la commensuration comme une comparaison par une mesure commune. [[commensuration]] PV3 en donne un petit exemple : des poèmes différents deviennent des sommes comparables dès que l’on compte certaines caractéristiques textuelles. La formule ne possède aucun terme pour la difficulté, la révision, l’attachement ou la force littéraire.",
           "Seules les lettres et les nombres Unicode sont comptés comme caractères. Lignes sources non vides et strophes augmentent la base ; les retours automatiques sur papier étroit ne comptent pas. La base atteint le plus petit prix en .99 qui ne lui soit pas inférieur. Les options s’ajoutent ensuite : le total ne finit donc pas nécessairement en .99.",
-          "The Roof Splits Open coûte £12.99 dans sa première version, £9.99 dans sa seconde. Le poème passe de 380 à 225 caractères comptés, en gardant ses lignes et ses strophes. Supprimer devient une baisse de prix, quel que soit l’effet sur le poème ; les deux versions peuvent se lire côte à côte.",
+          "The Roof Splits Open coûte £12.99 dans sa première version, £9.99 dans sa seconde. Le poème passe de 380 à 225 caractères comptés, en gardant ses lignes et ses strophes. Supprimer devient une baisse de prix, quel que soit l’effet sur le poème.",
           "Les paliers cachent aussi des différences et amplifient des seuils. Quarante x, comme test non littéraire, coûtent £1.99 sur une ligne et £2.99 sur deux, tandis que d’autres sauts de ligne ne changent pas le prix affiché. L’arrondi suit l’usage du commerce de détail."
         ]
       },
@@ -1035,7 +1035,7 @@
         "body": [
           "La police pixel est comprise dans l’édition de base. Les polices du site sont une option supérieure, comme un produit dont l’allure publicitaire dépend d’une configuration supplémentaire. L’édition de base est complète et lisible : l’option ne change donc que l’apparence du poème.",
           "La vitrine fait elle-même partie de cet agencement. Ses grands caractères à empattements, ses espaces et ses alignements rendent l’offre séduisante, alors même que la vitrine vend la typographie en supplément ; le projet emploie donc cet attrait tout en l’exposant.",
-          "Une traduction apporte une autre lecture linguistique et culturelle, et un tirage physique occuperait davantage de papier ; le supplément fixe ne tient compte ni de la longueur du papier, ni de l’énergie, ni des heures de traduction. Les poèmes et les traductions publiées sont tous librement lisibles sur le site ; le supplément ne porte donc que sur l’édition émise. Chinois traditionnel et simplifié sont deux graphies de l’original au même prix de base."
+          "Une traduction apporte une autre lecture linguistique et culturelle, et un tirage physique occuperait davantage de papier ; le supplément fixe ne tient compte ni de la longueur du papier, ni de l’énergie, ni des heures de traduction. Les poèmes et les traductions publiées sont tous librement lisibles sur le site ; le supplément fictif ne porte que sur l’édition émise. Chinois traditionnel et simplifié sont deux graphies de l’original au même prix de base."
         ]
       },
       {
@@ -1057,8 +1057,8 @@
         "dek": "Une lecture que permet la juxtaposition.",
         "feature": "",
         "body": [
-          "B3 retarde plusieurs fois une remise : l’écriture s’arrête, le papier non scellé est replié et hôte et invité ne deviennent pas deux parties égales d’un échange réglé. Après un ticket, ces gestes peuvent faire paraître insuffisante la certitude d’une transaction achevée. C’est une lecture que permet le rapprochement des deux.",
-          "D’autres rapports appartiennent aux publications sources : B6 répond dans la séquence A/B, et The Roof Splits Open conserve ses états datés. Un poème peut être émis seul, et son lien source ramène à la séquence dont il fait partie.",
+          "B3 retarde plusieurs fois une remise : l’écriture s’arrête, le papier non scellé est replié et hôte et invité ne deviennent pas deux parties égales d’un échange réglé. Après un ticket, ces gestes peuvent faire paraître insuffisante la certitude d’une transaction achevée.",
+          "D’autres rapports appartiennent aux publications sources : B6 répond dans la séquence A/B, et The Roof Splits Open conserve ses états datés. Un poème peut être émis seul ; son lien source ramène à la page du poème, où figurent, le cas échéant, la séquence ou les états.",
           "Drucker ramène la matérialité vers ce qui arrive dans l’usage. [[drucker]] Pour cette œuvre, choisir, attendre, lire, couper et donner sont donc des gestes à observer au moment où ils ont lieu. Un poème de poche peut devenir cadeau, plaisanterie, souvenir ou déchet."
         ]
       },
@@ -1071,7 +1071,7 @@
         "body": [
           "Le modèle de sortie emploie du papier thermique étroit, et l’image à un bit garde les contraintes du ticket. Mentions denses et lignes étroites appartiennent à la forme tant que le poème reste lisible. Des traits fins, nets à l’écran, peuvent encore se fragmenter sur une imprimante donnée.",
           "L’impression thermique directe n’utilise ni encre ni ruban ; chaleur, lumière et manipulation peuvent affecter la lisibilité. [[thermal]] Ces tirages peuvent s’effacer, à un rythme qui n’a pas été mesuré.",
-          "Des premiers tirages physiques existent. En attendant un lieu d’exposition, la boutique est le passage public ; une table d’édition installée dans une salle ajouterait la manipulation et le temps partagé. Le PDF conserve ticket et poèmes dans un fichier unique, avec des continuations pour les longues sorties, et une copie HTML autonome en garde le texte intégral pour une lecture hors ligne."
+          "Des premiers tirages physiques existent. En attendant un lieu d’exposition, la boutique est le passage public ; une table d’édition installée dans une salle ajouterait la manipulation et le temps partagé. Le PDF conserve ticket et poèmes dans un fichier unique, avec des continuations pour les longues sorties. Comme il s’agit d’une image, une copie HTML autonome en garde le texte intégral pour une lecture hors ligne ou avec un lecteur d’écran."
         ]
       },
       {
@@ -1100,13 +1100,13 @@
       {
         "id": "status",
         "number": "09",
-        "title": "Ce qui est établi",
+        "title": "État des lieux",
         "dek": "Une édition utilisable ; une réception encore ouverte.",
         "feature": "",
         "body": [
           "Catalogue, calcul et émission numérique fonctionnent déjà. Les premiers tirages étaient des essais matériels. L’idée de porter un poème pour le donner est venue d’un premier lecteur et a été rapportée dans l’entretien avec l’artiste ; il n’y a encore eu ni étude auprès de lecteurs ni présentation en galerie.",
           "Le prochain essai matériel peut rester modeste : émettre quelques éditions choisies, laisser les gens lire et manipuler sans cours théorique préalable, puis noter ce qui change ou échoue. Cela peut justifier de garder le ticket, de déplacer l’ordre de présentation ou d’abandonner une interprétation envisagée.",
-          "Sauvegarde personnelle, impression et don des exemplaires imprimés sont permis. J’ai écrit les poèmes ; des outils d’IA ont aidé à écrire le code de la boutique, les textes de son interface et ces notes, et j’ai examiné les résultats et pris les décisions finales. La boutique émet des poèmes existants et ne génère aucun texte poétique."
+          "Sauvegarde personnelle, impression et don des exemplaires imprimés sont permis. J’ai écrit les poèmes. Des outils d’IA ont aidé à ébaucher les traductions proposées ici, à écrire le code de la boutique et les textes de son interface en sept langues, à concevoir la mise en page du ticket et à écrire ces notes ; j’ai examiné les résultats et pris les décisions finales. La boutique émet des poèmes existants et ne génère aucun texte poétique."
         ]
       }
     ],
@@ -1135,7 +1135,7 @@
     "physical_configuration": "Original chinois · caractères du site",
     "physical_open": "Voir le scan en pleine taille",
     "physical_read": "Lire le poème",
-    "physical_provenance": "Scans des tirages réels. Redressés et recadrés ; les traces imprimées sont conservées.",
+    "physical_provenance": "Scans des tirages. Redressés et recadrés ; les traces imprimées sont conservées.",
     "physical_b3_alt": "Édition B3 imprimée : ticket, ligne de coupe et poème chinois intégral sur une bande de papier thermique",
     "physical_b4_alt": "Édition B4 imprimée : ticket, ligne de coupe et poème chinois intégral sur une bande de papier thermique",
     "implementation_flow_label": "Du poème à l’édition",
@@ -1210,12 +1210,12 @@
         "id": "pricing",
         "number": "02",
         "title": "Что цена упускает",
-        "dek": "PV3 считает текст и ничего больше.",
+        "dek": "PV3 считает буквы, строки и строфы.",
         "feature": "tariff",
         "body": [
           "Espeland и Stevens описывают соизмерение как сравнение через общую меру. [[commensuration]] PV3 служит его небольшим примером: несхожие стихи превращаются в сопоставимые суммы, как только подсчитаны выбранные признаки текста. В формуле нет слагаемого для сложности, переработки, привязанности или литературной силы.",
           "Символами считаются только буквы и числа Unicode. Непустые строки исходника и строфы прибавляются к базе; автоматические переносы на узкой бумаге не учитываются. База поднимается до наименьшей отметки .99, которая не ниже исходной суммы. Дополнения прибавляются после этого, поэтому итог не обязательно заканчивается на .99.",
-          "The Roof Splits Open стоит £12.99 в первом варианте и £9.99 во втором. Число учтённых символов падает с 380 до 225 при неизменном числе строк и строф. Удаление становится снижением цены независимо от того, что оно делает со стихом; оба варианта можно читать рядом.",
+          "The Roof Splits Open стоит £12.99 в первом варианте и £9.99 во втором. Число учтённых символов падает с 380 до 225 при неизменном числе строк и строф. Удаление становится снижением цены независимо от того, что оно делает со стихом.",
           "Ступени также скрывают различия и усиливают пороги. Нелитературный тест из сорока x стоит £1.99 в одной строке и £2.99 в двух, а другие добавленные переносы не меняют видимой цены. Округление следует принятым в рознице правилам."
         ]
       },
@@ -1228,7 +1228,7 @@
         "body": [
           "Пиксельный шрифт включён в базовое издание. Шрифты сайта являются дополнительной опцией, как у товара, рекламный вид которого требует отдельной комплектации. Базовая версия полная и читаемая, поэтому улучшенная комплектация меняет лишь внешний вид стихотворения.",
           "Витрина входит в ту же схему. Крупные заголовки с засечками, пространство и выравнивание делают предложение привлекательным, пока типографика продаётся за доплату, так что работа одновременно пользуется этой привлекательностью и выставляет её напоказ.",
-          "Перевод приносит ещё одно языковое и культурное прочтение и при печати занял бы больше бумаги; фиксированная доплата не учитывает ни длину бумаги, ни энергию, ни рабочее время переводчика. Все стихи и опубликованные переводы можно бесплатно читать на сайте, поэтому доплата относится только к выпущенному изданию. Оригинал доступен в традиционной и упрощённой китайской записи по одной базовой цене."
+          "Перевод приносит ещё одно языковое и культурное прочтение и при печати занял бы больше бумаги; фиксированная доплата не учитывает ни длину бумаги, ни энергию, ни рабочее время переводчика. Все стихи и опубликованные переводы можно бесплатно читать на сайте; вымышленная доплата относится только к выпущенному изданию. Оригинал доступен в традиционной и упрощённой китайской записи по одной базовой цене."
         ]
       },
       {
@@ -1250,8 +1250,8 @@
         "dek": "Прочтение, возможное благодаря соседству.",
         "feature": "",
         "body": [
-          "B3 несколько раз задерживает передачу: письмо останавливается, незапечатанная бумага складывается вновь, хозяин и гость не становятся равными сторонами завершённого обмена. После чека эти действия могут сделать недостаточной уверенность в оконченной транзакции. Это одно из прочтений, которые допускает соседство стихотворения с чеком.",
-          "Другие связи принадлежат исходным публикациям: B6 отвечает внутри последовательности A/B, а The Roof Splits Open сохраняет датированные варианты. Одно стихотворение можно выпустить отдельно, и ссылка на источник ведёт обратно к циклу, в который оно входит.",
+          "B3 несколько раз задерживает передачу: письмо останавливается, незапечатанная бумага складывается вновь, хозяин и гость не становятся равными сторонами завершённого обмена. После чека эти действия могут сделать недостаточной уверенность в оконченной транзакции.",
+          "Другие связи принадлежат исходным публикациям: B6 отвечает внутри последовательности A/B, а The Roof Splits Open сохраняет датированные варианты. Одно стихотворение можно выпустить отдельно; ссылка на источник ведёт обратно на страницу стихотворения, где показаны цикл или варианты, если они есть.",
           "Drucker направляет материальность к происходящему в использовании. [[drucker]] В этой работе за выбором, ожиданием, чтением, разрезанием и дарением наблюдают по мере того, как они происходят. Карманный стих может быть подарком, шуткой, памятной вещью или мусором."
         ]
       },
@@ -1264,7 +1264,7 @@
         "body": [
           "Модель вывода использует узкую термобумагу, а однобитное изображение сохраняет ограничения чековой печати. Плотные подписи и узкие строки принадлежат форме до тех пор, пока стихотворение остаётся читаемым. Тонкие штрихи, резкие на экране, на конкретном принтере всё же могут распадаться.",
           "Прямая термопечать не использует чернил или красящей ленты; тепло, свет и обращение могут менять читаемость. [[thermal]] Эти отпечатки могут выцвести, а с какой скоростью, пока не измерялось.",
-          "Ранние физические отпечатки существуют. Пока нет выставочной площадки, публичным входом служит браузерный магазин; стол выдачи в зале добавил бы обращение с бумагой и совместное время. PDF сохраняет чек и стихи в одном файле с продолжениями для длинных выпусков, а самостоятельная HTML-копия содержит их полный текст для чтения офлайн."
+          "Ранние физические отпечатки существуют. Пока нет выставочной площадки, публичным входом служит браузерный магазин; стол выдачи в зале добавил бы обращение с бумагой и совместное время. PDF сохраняет чек и стихи в одном файле с продолжениями для длинных выпусков. Это изображение, поэтому самостоятельная HTML-копия содержит их полный текст для чтения офлайн или с помощью программы экранного доступа."
         ]
       },
       {
@@ -1293,13 +1293,13 @@
       {
         "id": "status",
         "number": "09",
-        "title": "Что уже установлено",
+        "title": "Положение дел",
         "dek": "Действующее издание и открытый вопрос восприятия.",
         "feature": "",
         "body": [
           "Каталог, расчёт цены и цифровая выдача уже работают. Ранние отпечатки были материальными пробами. Предложение носить стих с собой и дарить его поступило от раннего читателя и было передано в авторском интервью; читательского исследования и галерейного показа пока не было.",
           "Следующая материальная проверка может быть небольшой: выдать несколько выбранных версий, дать людям читать и обращаться с ними без предварительной лекции и записать изменения или неудачи. Это может обосновать сохранение чека, смену порядка подачи или отказ от предполагаемой интерпретации.",
-          "Личное сохранение, печать и дарение отпечатков разрешены. Стихи написала я; инструменты ИИ помогали писать код магазина, тексты его интерфейса и эти заметки, а я проверила результаты и приняла окончательные решения. Магазин выпускает существующие стихи и не генерирует поэтический текст."
+          "Личное сохранение, печать и дарение отпечатков разрешены. Стихи написала я. Инструменты ИИ помогали готовить черновики предлагаемых здесь переводов, писать код магазина и тексты его интерфейса на семи языках, разрабатывать макет чека и писать эти заметки; я проверила результаты и приняла окончательные решения. Магазин выпускает существующие стихи и не генерирует поэтический текст."
         ]
       }
     ],
@@ -1328,7 +1328,7 @@
     "physical_configuration": "Китайский оригинал · шрифты сайта",
     "physical_open": "Открыть скан в полном размере",
     "physical_read": "Читать стихотворение",
-    "physical_provenance": "Сканы настоящих отпечатков. Наклон исправлен, поля обрезаны; следы печати сохранены.",
+    "physical_provenance": "Сканы отпечатков. Наклон исправлен, поля обрезаны; следы печати сохранены.",
     "physical_b3_alt": "Печатный выпуск B3: чек, линия отреза и полный китайский текст стихотворения на одной полосе термобумаги",
     "physical_b4_alt": "Печатный выпуск B4: чек, линия отреза и полный китайский текст стихотворения на одной полосе термобумаги",
     "implementation_flow_label": "От стихотворения к выпуску",
