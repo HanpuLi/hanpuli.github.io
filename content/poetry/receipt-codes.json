@@ -3,7 +3,7 @@
   "description": "Every Poetry Voucher receipt code ever issued. Append only: a code is never edited, removed or given to another paper edition, even after its offer is withdrawn, because receipts and orders already issued keep printing it. The build rejects an offer whose code is missing here, issued to another offer, duplicated, or (for the dated scheme) without its work’s composition date. tools/poetryarchitecturecheck.py pins the entries.",
   "schemes": {
     "authorial": "Collection members print their authorial label, e.g. A1, B7. The code must equal the work’s authorial_label.",
-    "dated": "Every other new code (from 17 October 2026): the tune or short title in capitals, then the work’s composition start date written with dots at its recorded precision (2026.10.17, 2026.10 or 2026), then a version or part word only when one work sells more than one paper edition (SEWN, ECHO, 1, 2). Example: ZHEGUTIAN 2026.10.17.",
+    "dated": "Every other new code (from 17 October 2026): the tune or short title in capitals, then the work’s composition start date written with dots at its recorded precision (2026.10.17, 2026.10 or 2026), then -2, -3 … on the date when an earlier work already holds the same title and date, then a version or part word only when one work sells more than one paper edition (SEWN, ECHO, 1, 2). Examples: ZHEGUTIAN 2026.10.17; a second ZHEGUTIAN written that day, ZHEGUTIAN 2026.10.17-2. A code too long for one receipt line wraps at a space.",
     "legacy": "Codes issued before 17 October 2026 in the form TUNE YEAR (plus a version word or part number where needed). They stay exactly as issued. No new code may use this scheme."
   },
   "codes": [

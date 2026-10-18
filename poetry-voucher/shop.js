@@ -377,7 +377,7 @@
     p.till('STORE '+meta.store,'TILL '+meta.till);p.till('OPERATOR '+meta.operator,'TRANS '+meta.transaction);
     p.till(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',day:'2-digit',month:'2-digit',year:'numeric'}).format(order.created),new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(order.created));
     p.till('ORDER',order.ref);p.till(sep);p.till(receiptItemLine('QTY','DESCRIPTION','RSP(£)','AMT(£)'));p.till(sep);
-    for(const line of order.lines){p.ensure(120);p.till('EDITION '+(line.work?.source_id||'CUSTOM'));for(const item of line.items)for(const text of receiptItemRows(item,line.work?.source_id||'CUSTOM'))p.till(text);p.space(8);}
+    for(const line of order.lines){p.ensure(120);for(const text of wrapTillField('EDITION '+(line.work?.source_id||'CUSTOM'),RECEIPT_CONFIG.lineChars))p.till(text);for(const item of line.items)for(const text of receiptItemRows(item,line.work?.source_id||'CUSTOM'))p.till(text);p.space(8);}
     p.till(sep);p.till('RSP/AMT INCLUDE VAT',null,true);p.till('SUBTOTAL','GBP '+priceText(order.total));p.till('TOTAL TO PAY','GBP '+priceText(order.total),false,true);
     p.till('NUMBER OF VOUCHERS',String(order.units));p.till('NUMBER OF ITEMS',String(order.items.reduce((sum,item)=>sum+item.quantity,0)));p.space(10);
     p.till('VAT SUMMARY',null,true);p.till('RATE','NET VAT GROSS');for(const row of vatSummary(order.items))p.till(row.code+' '+row.rate+'%',[row.net,row.vat,row.gross].map(priceText).join(' '));p.till('NOT A VAT INVOICE',null,true);p.space(12);

@@ -1325,8 +1325,8 @@
       },
       "publication": {
         "schema": 1,
-        "renderer": "pv-render-e29bbb2eec14e6b8",
-        "renderer_sha256": "e29bbb2eec14e6b896981e64641698c4603133c3d052a23f969531142e4f7564",
+        "renderer": "pv-render-36c67495bd656092",
+        "renderer_sha256": "36c67495bd656092cd7abb8efe6a015e8c0cea1135f85d772db7046f9264647e",
         "catalogue_sha256": "df92751107d311869027faad49f0ff168c7bccc1bd1c30d6390f4a8ad5cd86cd",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
@@ -1356,7 +1356,7 @@
           "content/poetry-voucher-app/order-reading.js": "bad98af82024d515e66ac811c7a5c1f5c17c0f2c88347e4e076668238fbea186",
           "content/poetry-voucher-app/shop-copy.js": "8ac8f70a53fc962767158fdb00fde095f38f1222c7a7e5dbeb1a3e8a08f0dae3",
           "content/poetry-voucher-app/shop.css": "b1a9b5274f01a2b2a04cdebfe60678c52695ea844abd7cd8a8e290f9b36d568b",
-          "content/poetry-voucher-app/shop.js": "ecc8181c4a2257e7f890a40a7d525225900fabccb4dbdb0ee0606123e7e118b9",
+          "content/poetry-voucher-app/shop.js": "d8274dcbd871c9206c5d338ee3cef4f1e4249f5c661644b1a7b45891ae7b96b9",
           "content/poetry-voucher-app/studio.css": "7ac809205ba6cf6a72346b1752bd54db20de1384cfeef54cb3ac2fc31931644c",
           "templates/poetry-voucher-shop.html": "7562646fa586f047208f8a2adb7d7a8199fd3c33d48d43132e0d5a368273618d"
         },
@@ -2009,7 +2009,7 @@
   "inputs": {
     "assets/site.css": "96ea0b939c643c5ec8eb23839c4df920799cfdbfc92b4d1015bb18eb116e05df",
     "content/poetry-voucher-app/gallery.js": "d09792e10524e95bbb1b5500c639e9fd0d20b8786b040bc321e2a242a72a26b8",
-    "content/poetry-voucher-app/shop.js": "ecc8181c4a2257e7f890a40a7d525225900fabccb4dbdb0ee0606123e7e118b9",
+    "content/poetry-voucher-app/shop.js": "d8274dcbd871c9206c5d338ee3cef4f1e4249f5c661644b1a7b45891ae7b96b9",
     "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
     "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
     "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",

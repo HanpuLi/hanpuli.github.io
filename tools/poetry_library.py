@@ -150,8 +150,20 @@ class Library:
             work = self.offer_work(offer)
             if entry['scheme'] == 'authorial' and code != work['authorial_label']:
                 raise ValueError('Authorial receipt code must equal the authorial label: ' + code)
-            if entry['scheme'] == 'dated' and work['composed']['start'].replace('-', '.') not in code.split(' '):
-                raise ValueError('Dated receipt code must carry its composition date: ' + code)
+            if entry['scheme'] == 'dated':
+                self.validate_dated_code(code, work['composed']['start'].replace('-', '.'), issued)
+
+    @staticmethod
+    def validate_dated_code(code: str, date: str, issued: dict[str, dict[str, Any]]) -> None:
+        """TITLE DATE[-N][ VERSION]: -N (2, 3 …) separates later works sharing a title and date."""
+        match = re.fullmatch(r'([A-Z]+(?: [A-Z]+)*) (' + re.escape(date) + r')(?:-([1-9][0-9]*))?( [A-Z0-9]+)?', code)
+        if match is None:
+            raise ValueError('Dated receipt code must be TITLE DATE[-N][ VERSION] with its composition date: ' + code)
+        title, day, n, version = match.groups()
+        if n is not None:
+            earlier = f"{title} {day}{'' if n == '2' else '-' + str(int(n) - 1)}{version or ''}"
+            if n == '1' or earlier not in issued:
+                raise ValueError(f'Receipt code {code} needs {earlier} issued first; -N only follows an earlier work with the same title and date')
 
     def edition(self, tid: str, locale: str) -> dict[str, str] | None:
         if locale == 'zh-hans':
