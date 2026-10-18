@@ -245,13 +245,13 @@ for(const code of receiptCodes){
   assert.equal(code,code.trim().split(/\s+/).join(' ').toUpperCase(),'receipt code is not canonical: '+code);
   assert([...code].every(char=>data.patterns[char]),'receipt face cannot print receipt code: '+code);
   assert(code.split(' ').every(word=>('EDITION '+word).length<=RECEIPT_CONFIG.lineChars),'receipt code word too long for the EDITION line: '+code);
-  const editionRows=wrapTillField('EDITION '+code,RECEIPT_CONFIG.lineChars);
+  const editionRows=Array.from(wrapTillField('EDITION '+code,RECEIPT_CONFIG.lineChars));
   assert(editionRows.every(line=>line.length<=RECEIPT_CONFIG.lineChars)&&editionRows.join(' ')==='EDITION '+code,'EDITION rows lose or split the receipt code: '+code);
   // A code that fits on one line still prints exactly as it did before long codes could wrap.
   if(('EDITION '+code).length<=RECEIPT_CONFIG.lineChars)assert.deepEqual(editionRows,['EDITION '+code]);
   assert(Array.from(receiptItemRows({...SKU_DEFINITIONS.poem,amount:299},code)).every(line=>line.length===RECEIPT_CONFIG.lineChars));
 }
-assert.deepEqual(wrapTillField('EDITION LINJIANGXIANYIN 2026.10.17-2',RECEIPT_CONFIG.lineChars),['EDITION LINJIANGXIANYIN','2026.10.17-2']);
+assert.deepEqual(Array.from(wrapTillField('EDITION LINJIANGXIANYIN 2026.10.17-2',RECEIPT_CONFIG.lineChars)),['EDITION LINJIANGXIANYIN','2026.10.17-2']);
 // Exercise the actual cart admission and pricing functions for every published variant.
 const shopPrefix=read('content/poetry-voucher-app/shop.js').split('  function notify(')[0];
 const shopCart=vm.runInNewContext(shopPrefix+'return {validateLine,quote};})()',{
