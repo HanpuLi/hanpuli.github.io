@@ -9,8 +9,8 @@ const file = path => readFileSync(new URL('../' + path, import.meta.url));
 const read = path => file(path).toString('utf8');
 const sha256 = path => createHash('sha256').update(file(path)).digest('hex');
 const source = read('content/poetry-voucher-app/gallery.js');
-const { quotePoem, automaticPayment, wrapText, typeSizes, bitmapFace, receiptReference, receiptTaxCode, vatSummary, receiptMeta, receiptItemLine, receiptItemRows, itemQuantity, itemUnitPrice, itemAmount, sku, TARIFF, UK_CASH, PAYMENT_SCENE, RECEIPT_CONFIG, PAPER_CONFIG, TYPE_CONFIG, SKU_DEFINITIONS } = vm.runInNewContext(
-  source.split('const $=')[0] + ';({quotePoem,automaticPayment,wrapText,typeSizes,bitmapFace,receiptReference,receiptTaxCode,vatSummary,receiptMeta,receiptItemLine,receiptItemRows,itemQuantity,itemUnitPrice,itemAmount,sku,TARIFF,UK_CASH,PAYMENT_SCENE,RECEIPT_CONFIG,PAPER_CONFIG,TYPE_CONFIG,SKU_DEFINITIONS})'
+const { quotePoem, automaticPayment, wrapText, typeSizes, bitmapFace, receiptReference, receiptTaxCode, vatSummary, receiptMeta, receiptItemLine, receiptItemRows, wrapTillField, itemQuantity, itemUnitPrice, itemAmount, sku, TARIFF, UK_CASH, PAYMENT_SCENE, RECEIPT_CONFIG, PAPER_CONFIG, TYPE_CONFIG, SKU_DEFINITIONS } = vm.runInNewContext(
+  source.split('const $=')[0] + ';({quotePoem,automaticPayment,wrapText,typeSizes,bitmapFace,receiptReference,receiptTaxCode,vatSummary,receiptMeta,receiptItemLine,receiptItemRows,wrapTillField,itemQuantity,itemUnitPrice,itemAmount,sku,TARIFF,UK_CASH,PAYMENT_SCENE,RECEIPT_CONFIG,PAPER_CONFIG,TYPE_CONFIG,SKU_DEFINITIONS})'
 );
 const count = parts => parts.reduce((sum, part) => sum + part.value * part.count, 0);
 assert.equal(Object.values(PAYMENT_SCENE.weights).reduce((sum,value)=>sum+value,0),1);
@@ -237,6 +237,21 @@ for(const work of data.works){
   assert.deepEqual(work.translations['zh-Hans'],simplifiedFor(text));
   for(const legacyId of offer.legacy_ids)assert.equal(data.aliases[legacyId],work.id);
 }
+// Receipt codes are permanent printed identifiers (content/poetry/receipt-codes.json):
+// unique, canonical, printable by the receipt face and short enough for the EDITION line.
+const receiptCodes=data.works.map(work=>work.source_id);
+assert.equal(new Set(receiptCodes).size,receiptCodes.length,'duplicate receipt code in the paper catalogue');
+for(const code of receiptCodes){
+  assert.equal(code,code.trim().split(/\s+/).join(' ').toUpperCase(),'receipt code is not canonical: '+code);
+  assert([...code].every(char=>data.patterns[char]),'receipt face cannot print receipt code: '+code);
+  assert(code.split(' ').every(word=>('EDITION '+word).length<=RECEIPT_CONFIG.lineChars),'receipt code word too long for the EDITION line: '+code);
+  const editionRows=Array.from(wrapTillField('EDITION '+code,RECEIPT_CONFIG.lineChars));
+  assert(editionRows.every(line=>line.length<=RECEIPT_CONFIG.lineChars)&&editionRows.join(' ')==='EDITION '+code,'EDITION rows lose or split the receipt code: '+code);
+  // A code that fits on one line still prints exactly as it did before long codes could wrap.
+  if(('EDITION '+code).length<=RECEIPT_CONFIG.lineChars)assert.deepEqual(editionRows,['EDITION '+code]);
+  assert(Array.from(receiptItemRows({...SKU_DEFINITIONS.poem,amount:299},code)).every(line=>line.length===RECEIPT_CONFIG.lineChars));
+}
+assert.deepEqual(Array.from(wrapTillField('EDITION LINJIANGXIANYIN 2026.10.17-2',RECEIPT_CONFIG.lineChars)),['EDITION LINJIANGXIANYIN','2026.10.17-2']);
 // Exercise the actual cart admission and pricing functions for every published variant.
 const shopPrefix=read('content/poetry-voucher-app/shop.js').split('  function notify(')[0];
 const shopCart=vm.runInNewContext(shopPrefix+'return {validateLine,quote};})()',{

@@ -1,0 +1,176 @@
+{
+  "schema": 1,
+  "description": "Every Poetry Voucher receipt code ever issued. Append only: a code is never edited, removed or given to another paper edition, even after its offer is withdrawn, because receipts and orders already issued keep printing it. The build rejects an offer whose code is missing here, issued to another offer, duplicated, or (for the dated scheme) without its work’s composition date. tools/poetryarchitecturecheck.py pins the entries.",
+  "schemes": {
+    "authorial": "Collection members print their authorial label, e.g. A1, B7. The code must equal the work’s authorial_label.",
+    "dated": "Every other new code (from 17 October 2026): the tune or short title in capitals, then the work’s composition start date written with dots at its recorded precision (2026.10.17, 2026.10 or 2026), then -2, -3 … on the date when an earlier work already holds the same title and date, then a version or part word only when one work sells more than one paper edition (SEWN, ECHO, 1, 2). Examples: ZHEGUTIAN 2026.10.17; a second ZHEGUTIAN written that day, ZHEGUTIAN 2026.10.17-2. A code too long for one receipt line wraps at a space.",
+    "legacy": "Codes issued before 17 October 2026 in the form TUNE YEAR (plus a version word or part number where needed). They stay exactly as issued. No new code may use this scheme."
+  },
+  "codes": [
+    {
+      "code": "A1",
+      "offer": "jia-yi-a1-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "B1",
+      "offer": "jia-yi-b1-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "A2",
+      "offer": "jia-yi-a2-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "B2",
+      "offer": "jia-yi-b2-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "B3",
+      "offer": "jia-yi-b3-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "B4",
+      "offer": "jia-yi-b4-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "B5",
+      "offer": "jia-yi-b5-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "A3",
+      "offer": "jia-yi-a3-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "A4",
+      "offer": "jia-yi-a4-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "A5",
+      "offer": "jia-yi-a5-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "A6",
+      "offer": "jia-yi-a6-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "A7",
+      "offer": "jia-yi-a7-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "B6",
+      "offer": "jia-yi-b6-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "A8",
+      "offer": "jia-yi-a8-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "B7",
+      "offer": "jia-yi-b7-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "A9",
+      "offer": "jia-yi-a9-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "A10",
+      "offer": "jia-yi-a10-text",
+      "scheme": "authorial"
+    },
+    {
+      "code": "ZHEGUTIAN 2026",
+      "offer": "zhegutian-20260909-text",
+      "scheme": "legacy"
+    },
+    {
+      "code": "LINJIANGXIAN 2026",
+      "offer": "linjiangxian-20260909-text",
+      "scheme": "legacy"
+    },
+    {
+      "code": "LINJIANGXIAN 2018",
+      "offer": "linjiangxian-20180108-revised-202610",
+      "scheme": "legacy"
+    },
+    {
+      "code": "LINJIANGXIANYIN 2019",
+      "offer": "linjiangxianyin-20191028-revised-202610",
+      "scheme": "legacy"
+    },
+    {
+      "code": "CHAOZHONGCUO 2018",
+      "offer": "chaozhongcuo-20181023-revised-202610",
+      "scheme": "legacy"
+    },
+    {
+      "code": "FENGRUSONG 2018",
+      "offer": "fengrusong-20181102-revised-202610",
+      "scheme": "legacy"
+    },
+    {
+      "code": "MANTINGFANG 2019",
+      "offer": "mantingfang-20191219-revised-202610",
+      "scheme": "legacy"
+    },
+    {
+      "code": "MANJIANGHONG 2022 SEWN",
+      "offer": "manjianghong-2022-sewn-202610",
+      "scheme": "legacy"
+    },
+    {
+      "code": "MANJIANGHONG 2022 ECHO",
+      "offer": "manjianghong-2022-echo-202610",
+      "scheme": "legacy"
+    },
+    {
+      "code": "MANJIANGHONG 2026",
+      "offer": "manjianghong-rereading-202610-text",
+      "scheme": "legacy"
+    },
+    {
+      "code": "QUEQIAOXIAN 2018",
+      "offer": "queqiaoxian-20181222-revised-202610",
+      "scheme": "legacy"
+    },
+    {
+      "code": "ROOF 1",
+      "offer": "roof-splits-draft-1",
+      "scheme": "legacy"
+    },
+    {
+      "code": "ROOF 2",
+      "offer": "roof-splits-draft-2",
+      "scheme": "legacy"
+    },
+    {
+      "code": "YINGTIANCHANG 2026",
+      "offer": "yingtianchang-20261008-text",
+      "scheme": "legacy"
+    },
+    {
+      "code": "SUMMER 2017",
+      "offer": "summer-2017-revised-20261008",
+      "scheme": "legacy"
+    },
+    {
+      "code": "ZHEGUTIAN 2026.10.17",
+      "offer": "zhegutian-20261017-text",
+      "scheme": "dated"
+    }
+  ]
+}

@@ -14,6 +14,45 @@ from poetry_reading_aids import ReadingAids
 ROOT=Path(__file__).resolve().parents[1]
 
 
+# Receipt codes already issued. Receipts and orders keep printing them, so they
+# may never change, disappear from the ledger or move to another paper edition.
+# Append a new pin when a code is issued; never edit or remove one.
+ISSUED_RECEIPT_CODES = (
+    ('A1', 'jia-yi-a1-text', 'authorial'),
+    ('B1', 'jia-yi-b1-text', 'authorial'),
+    ('A2', 'jia-yi-a2-text', 'authorial'),
+    ('B2', 'jia-yi-b2-text', 'authorial'),
+    ('B3', 'jia-yi-b3-text', 'authorial'),
+    ('B4', 'jia-yi-b4-text', 'authorial'),
+    ('B5', 'jia-yi-b5-text', 'authorial'),
+    ('A3', 'jia-yi-a3-text', 'authorial'),
+    ('A4', 'jia-yi-a4-text', 'authorial'),
+    ('A5', 'jia-yi-a5-text', 'authorial'),
+    ('A6', 'jia-yi-a6-text', 'authorial'),
+    ('A7', 'jia-yi-a7-text', 'authorial'),
+    ('B6', 'jia-yi-b6-text', 'authorial'),
+    ('A8', 'jia-yi-a8-text', 'authorial'),
+    ('B7', 'jia-yi-b7-text', 'authorial'),
+    ('A9', 'jia-yi-a9-text', 'authorial'),
+    ('A10', 'jia-yi-a10-text', 'authorial'),
+    ('ZHEGUTIAN 2026', 'zhegutian-20260909-text', 'legacy'),
+    ('LINJIANGXIAN 2026', 'linjiangxian-20260909-text', 'legacy'),
+    ('LINJIANGXIAN 2018', 'linjiangxian-20180108-revised-202610', 'legacy'),
+    ('LINJIANGXIANYIN 2019', 'linjiangxianyin-20191028-revised-202610', 'legacy'),
+    ('CHAOZHONGCUO 2018', 'chaozhongcuo-20181023-revised-202610', 'legacy'),
+    ('FENGRUSONG 2018', 'fengrusong-20181102-revised-202610', 'legacy'),
+    ('MANTINGFANG 2019', 'mantingfang-20191219-revised-202610', 'legacy'),
+    ('MANJIANGHONG 2022 SEWN', 'manjianghong-2022-sewn-202610', 'legacy'),
+    ('MANJIANGHONG 2022 ECHO', 'manjianghong-2022-echo-202610', 'legacy'),
+    ('MANJIANGHONG 2026', 'manjianghong-rereading-202610-text', 'legacy'),
+    ('QUEQIAOXIAN 2018', 'queqiaoxian-20181222-revised-202610', 'legacy'),
+    ('ROOF 1', 'roof-splits-draft-1', 'legacy'),
+    ('ROOF 2', 'roof-splits-draft-2', 'legacy'),
+    ('YINGTIANCHANG 2026', 'yingtianchang-20261008-text', 'legacy'),
+    ('SUMMER 2017', 'summer-2017-revised-20261008', 'legacy'),
+    ('ZHEGUTIAN 2026.10.17', 'zhegutian-20261017-text', 'dated'),
+)
+
 def main() -> None:
     library=Library(ROOT)
     kundoku=Kundoku(library)
@@ -125,6 +164,18 @@ def main() -> None:
         for work in library.standalone():
             if f'href="{library.work_url(work["id"],locale)}"' not in index:
                 errors.append('Independent/multipart work missing from catalogue: '+work['id'])
+    ledger=read(ROOT/'content/poetry/receipt-codes.json')
+    entries={entry['code']:entry for entry in ledger['codes']}
+    for code,offer,scheme in ISSUED_RECEIPT_CODES:
+        entry=entries.get(code)
+        if entry is None or entry['offer']!=offer or entry['scheme']!=scheme:
+            errors.append('Issued receipt code changed or removed: '+code)
+    pinned={code for code,_,_ in ISSUED_RECEIPT_CODES}
+    for entry in ledger['codes']:
+        if entry['code'] not in pinned:
+            errors.append('Receipt code issued without a pin in poetryarchitecturecheck: '+entry['code'])
+        elif entry['scheme']=='legacy' and entry['code'] not in {c for c,_,s in ISSUED_RECEIPT_CODES if s=='legacy'}:
+            errors.append('No new receipt code may use the legacy scheme: '+entry['code'])
     catalogue=read(ROOT/'poetry-voucher/editions.json')
     generated=library.shop_catalogue()
     if catalogue!=generated:
