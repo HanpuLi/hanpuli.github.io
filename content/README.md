@@ -18,11 +18,11 @@ This directory is the source of truth for all user-facing portfolio copy.
   manuscript of character readings and return points; the compiler verifies
   that stripping editorial marks yields the complete Chinese original.
 - `poetry/kunten.json` — compiled, character-indexed Japanese 返り点・
-  送り仮名・振り仮名 anchored by the original-text SHA-256; all 30
+  送り仮名・振り仮名 anchored by the original-text SHA-256; all 31
   classical versions have experimental source-aligned pilot readings.
   This is a technical representation, not a philologically certified edition.
 - `poetry/kunten-reader-notes.json` — short, independently edited Japanese
-  reader-facing lexical and interpretative glosses for all 30; technical
+  reader-facing lexical and interpretative glosses for all 31; technical
   audit notes remain in `kunten.json` and are not reproduced in the page.
   See `docs/poetry-kunten-renderer.md` for sandbox, licences and release gate.
 - `poetry/reading-aids.json` — Traditional and Simplified Chinese plain-language

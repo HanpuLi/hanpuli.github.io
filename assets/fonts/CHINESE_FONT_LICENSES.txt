@@ -62,3 +62,21 @@ The normal site loads only the small subsets. Providing these replacement
 instructions does not require normal visitors to download the full font.
 Further distributed derived fonts must comply with the same IPA agreement,
 including distinct names, the required materials and replacement means.
+
+Supplementary face for characters missing from I.MingCP 8.10
+------------------------------------------------------------
+hanpu-chinese-gap.woff2 (internal name Hanpu Chinese Gap) is not derived from
+I.MingCP. It holds the few characters the site needs that I.MingCP 8.10 does
+not contain (at present U+9E53). It is a static wght 300 instance of Noto Serif
+SC 2.003 (Google / Adobe), licensed under the SIL Open Font License 1.1
+(https://openfontlicense.org), subset to those characters, with its internal
+names changed and its copyright and licence records retained. The CSS gives it
+the family name "Hanpu Chinese" through a separate @font-face rule with its own
+unicode-range, so it is only loaded for those characters. Weight 300 was chosen
+because its stroke density matches I.MingCP on bird-radical characters
+(鵷鸳鸥鸣雏鸟: mean ink-coverage ratio 0.995).
+
+Unmodified original font:
+https://raw.githubusercontent.com/google/fonts/f2bd09badbc763d8757951d52deec29da27e85fb/ofl/notoserifsc/NotoSerifSC%5Bwght%5D.ttf
+Original SHA-256: 050080d9255a86808f2945bffac582b31ef32bc36411ce29563b4961670c66f9
+Character list: hanpu-chinese-gap-characters.txt; metadata in hanpu-chinese.meta.json.

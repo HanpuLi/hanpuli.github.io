@@ -436,7 +436,12 @@ def main() -> int:
         font_meta = load(font_meta_path)
         covered = set()
         faces = {face["file"]: face for face in font_meta.get("faces", [])}
-        for filename in ("hanpu-chinese-common.woff2", "hanpu-chinese.woff2"):
+        # The optional gap face holds characters missing from I.MingCP 8.10
+        # (built by rebuild-chinese-fonts.py from a pinned second source).
+        partitions = ("hanpu-chinese-common.woff2", "hanpu-chinese.woff2")
+        if "hanpu-chinese-gap.woff2" in faces:
+            partitions += ("hanpu-chinese-gap.woff2",)
+        for filename in partitions:
             font_path = font_dir / filename
             chars_path = font_dir / (filename.removesuffix(".woff2") + "-characters.txt")
             face = faces.get(filename)

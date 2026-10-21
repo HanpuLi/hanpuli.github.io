@@ -12,7 +12,9 @@ accessibility reading preferences retain their alternative fonts. The original
 bitmap voucher option remains available. Subsets have distinct internal names
 and preserve copyright/licence metadata. See
 `assets/fonts/CHINESE_FONT_LICENSES.txt` for the IPA licence, materials and
-original-font replacement instructions. Rebuild with
+original-font replacement instructions. Characters that I.MingCP 8.10 lacks
+(at present U+9E53) come from a one-character Noto Serif SC face that shares
+the "Hanpu Chinese" family through its own unicode-range. Rebuild with
 `uv run --with fonttools --with brotli python tools/rebuild-chinese-fonts.py`;
 `--check` verifies coverage, hashes and both CSS unicode ranges.
 
@@ -44,7 +46,7 @@ original fails the build until its rhymes are reviewed again. Uncertain slots ar
 left unmarked and described in that entry's note. Kunten 返り点 use the same
 vermilion.
 An experimental Japanese kanbun display layer is available only on reviewed
-text versions (all 30 classical texts now have source-aligned editorial pilot marks). It uses a sandboxed vertical kanbun
+text versions (all 31 classical texts now have source-aligned editorial pilot marks). It uses a sandboxed vertical kanbun
 visual document (the site's own typesetter) with the unmodified Chinese source available to assistive
 technology, the clipboard and script-disabled readers. See
 `docs/poetry-kunten-renderer.md`.

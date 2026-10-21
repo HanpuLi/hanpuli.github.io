@@ -9029,6 +9029,194 @@
         "「載過當停處」は「載せて当に停まるべき処を過ぎ」。當（平声、応当の義）は再読文字でレ点、過（去声、越える義）は二点で「處」の一点から返る。",
         "題「將宿他舍伴狸奴」は「将に他舎に宿らんとして狸奴に伴う」。伴は二字の「狸奴」から二一点で返るため、句全体を將の上下点で囲めない（一字に二点と上点を併記しない）。將の再読は「宿他舍」に係ける。"
       ]
+    },
+    "huanxisha-20261020-text": {
+      "source_body_sha256": "63eaac3ffb017b8cbf84501c821834503e5ef08e08a83b624f0826f70e65d1a9",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 0,
+          "char": "久",
+          "okurigana": "シク"
+        },
+        {
+          "position": 1,
+          "char": "餓",
+          "okurigana": "ヱタル"
+        },
+        {
+          "position": 2,
+          "char": "鵷",
+          "furigana": "えん"
+        },
+        {
+          "position": 3,
+          "char": "鶵",
+          "furigana": "すう"
+        },
+        {
+          "position": 6,
+          "char": "空",
+          "okurigana": "シ"
+        },
+        {
+          "position": 10,
+          "char": "家",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 11,
+          "char": "聊",
+          "okurigana": "カ"
+        },
+        {
+          "position": 12,
+          "char": "借",
+          "okurigana": "ル",
+          "kaeriten": "二"
+        },
+        {
+          "position": 14,
+          "char": "枝",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 15,
+          "char": "桐",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 19,
+          "char": "泉",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 20,
+          "char": "何",
+          "furigana": "いづ",
+          "okurigana": "レノ"
+        },
+        {
+          "position": 21,
+          "char": "處",
+          "okurigana": "ニカ"
+        },
+        {
+          "position": 22,
+          "char": "可",
+          "furigana": "べ",
+          "okurigana": "キ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 23,
+          "char": "澆",
+          "furigana": "そそ",
+          "okurigana": "グ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 24,
+          "char": "胸",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 28,
+          "char": "君",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 29,
+          "char": "奏",
+          "okurigana": "シテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 31,
+          "char": "韶",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 32,
+          "char": "娛",
+          "furigana": "たの",
+          "okurigana": "シマシメ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 34,
+          "char": "鳥",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 36,
+          "char": "儂",
+          "furigana": "われ",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 37,
+          "char": "羅",
+          "furigana": "つら",
+          "okurigana": "ネテ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 39,
+          "char": "俎",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 40,
+          "char": "饗",
+          "okurigana": "ス",
+          "kaeriten": "二"
+        },
+        {
+          "position": 42,
+          "char": "鴻",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 47,
+          "char": "未",
+          "furigana": "いま",
+          "okurigana": "ダ",
+          "saidoku_furigana": "ざ",
+          "saidoku_okurigana": "ルニ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 48,
+          "char": "舉",
+          "okurigana": "ゲ"
+        },
+        {
+          "position": 50,
+          "char": "先",
+          "okurigana": "ヅ"
+        },
+        {
+          "position": 51,
+          "char": "濛",
+          "furigana": "かす",
+          "okurigana": "ム"
+        }
+      ],
+      "title": [
+        []
+      ],
+      "notes": [
+        "「久餓鵷鶵」は「久しく餓えたる鵷鶵」。久餓を鵷鶵への連体修飾として訓み、返読しない。「練實空」は「練実空し」。",
+        "「醴泉何處可澆胸」は「醴泉は何れの処にか胸に澆ぐべき」。係助詞「か」を受けて可は連体形「べき」で結ぶ。胸→澆→可の順にレ点を重ねる。",
+        "過片「君奏咸韶娛海鳥，儂羅鼎俎饗飛鴻」は対句。各句とも二字の目的語から二一点で二度返読し、入れ子にしない。「君」「儂」に「は」を補読し、儂は一人称として「われ」と訓む。",
+        "「臠杯未舉」は「臠杯未だ挙げざるに」。未は再読文字。「濛」は目のかすむ意の文脈訓で「かすむ」と訓む。"
+      ]
     }
   }
 }
