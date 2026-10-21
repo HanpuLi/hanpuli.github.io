@@ -9031,7 +9031,7 @@
       ]
     },
     "huanxisha-20261020-text": {
-      "source_body_sha256": "63eaac3ffb017b8cbf84501c821834503e5ef08e08a83b624f0826f70e65d1a9",
+      "source_body_sha256": "3888cfcab00f9dd9701626172923b660948997ff0bebf1de5f0bd44bf8028272",
       "status": "pilot-reviewed",
       "marks": [
         {
@@ -9060,130 +9060,130 @@
           "okurigana": "シ"
         },
         {
-          "position": 10,
+          "position": 9,
           "char": "家",
           "okurigana": "ニ"
         },
         {
-          "position": 11,
+          "position": 10,
           "char": "聊",
           "okurigana": "カ"
         },
         {
-          "position": 12,
+          "position": 11,
           "char": "借",
           "okurigana": "ル",
           "kaeriten": "二"
         },
         {
-          "position": 14,
+          "position": 13,
           "char": "枝",
           "okurigana": "ノ"
         },
         {
-          "position": 15,
+          "position": 14,
           "char": "桐",
           "okurigana": "ヲ",
           "kaeriten": "一"
         },
         {
-          "position": 19,
+          "position": 18,
           "char": "泉",
           "okurigana": "ハ"
         },
         {
-          "position": 20,
+          "position": 19,
           "char": "何",
           "furigana": "いづ",
           "okurigana": "レノ"
         },
         {
-          "position": 21,
+          "position": 20,
           "char": "處",
           "okurigana": "ニカ"
         },
         {
-          "position": 22,
+          "position": 21,
           "char": "可",
           "furigana": "べ",
           "okurigana": "キ",
           "kaeriten": "レ"
         },
         {
-          "position": 23,
+          "position": 22,
           "char": "澆",
           "furigana": "そそ",
           "okurigana": "グ",
           "kaeriten": "レ"
         },
         {
-          "position": 24,
+          "position": 23,
           "char": "胸",
           "okurigana": "ニ"
         },
         {
-          "position": 28,
+          "position": 27,
           "char": "君",
           "okurigana": "ハ"
         },
         {
-          "position": 29,
+          "position": 28,
           "char": "奏",
           "okurigana": "シテ",
           "kaeriten": "二"
         },
         {
-          "position": 31,
+          "position": 30,
           "char": "韶",
           "okurigana": "ヲ",
           "kaeriten": "一"
         },
         {
-          "position": 32,
+          "position": 31,
           "char": "娛",
           "furigana": "たの",
           "okurigana": "シマシメ",
           "kaeriten": "二"
         },
         {
-          "position": 34,
+          "position": 33,
           "char": "鳥",
           "okurigana": "ヲ",
           "kaeriten": "一"
         },
         {
-          "position": 36,
+          "position": 35,
           "char": "儂",
           "furigana": "われ",
           "okurigana": "ハ"
         },
         {
-          "position": 37,
+          "position": 36,
           "char": "羅",
           "furigana": "つら",
           "okurigana": "ネテ",
           "kaeriten": "二"
         },
         {
-          "position": 39,
+          "position": 38,
           "char": "俎",
           "okurigana": "ヲ",
           "kaeriten": "一"
         },
         {
-          "position": 40,
+          "position": 39,
           "char": "饗",
           "okurigana": "ス",
           "kaeriten": "二"
         },
         {
-          "position": 42,
+          "position": 41,
           "char": "鴻",
           "okurigana": "ヲ",
           "kaeriten": "一"
         },
         {
-          "position": 47,
+          "position": 46,
           "char": "未",
           "furigana": "いま",
           "okurigana": "ダ",
@@ -9192,30 +9192,78 @@
           "kaeriten": "レ"
         },
         {
-          "position": 48,
+          "position": 47,
           "char": "舉",
           "okurigana": "ゲ"
         },
         {
-          "position": 50,
+          "position": 49,
           "char": "先",
           "okurigana": "ヅ"
         },
         {
-          "position": 51,
+          "position": 50,
           "char": "濛",
           "furigana": "かす",
           "okurigana": "ム"
         }
       ],
       "title": [
-        []
+        [],
+        [
+          {
+            "position": 0,
+            "char": "後",
+            "furigana": "のち"
+          },
+          {
+            "position": 4,
+            "char": "復",
+            "okurigana": "タ"
+          },
+          {
+            "position": 5,
+            "char": "宿",
+            "okurigana": "リ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 7,
+            "char": "舍",
+            "okurigana": "ニ",
+            "kaeriten": "一"
+          },
+          {
+            "position": 9,
+            "char": "臥",
+            "furigana": "ふ",
+            "okurigana": "シテ"
+          },
+          {
+            "position": 10,
+            "char": "不",
+            "okurigana": "ズ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 11,
+            "char": "安",
+            "okurigana": "ンゼ",
+            "kaeriten": "レ"
+          },
+          {
+            "position": 12,
+            "char": "席",
+            "okurigana": "ニ"
+          }
+        ]
       ],
       "notes": [
         "「久餓鵷鶵」は「久しく餓えたる鵷鶵」。久餓を鵷鶵への連体修飾として訓み、返読しない。「練實空」は「練実空し」。",
         "「醴泉何處可澆胸」は「醴泉は何れの処にか胸に澆ぐべき」。係助詞「か」を受けて可は連体形「べき」で結ぶ。胸→澆→可の順にレ点を重ねる。",
         "過片「君奏咸韶娛海鳥，儂羅鼎俎饗飛鴻」は対句。各句とも二字の目的語から二一点で二度返読し、入れ子にしない。「君」「儂」に「は」を補読し、儂は一人称として「われ」と訓む。",
-        "「臠杯未舉」は「臠杯未だ挙げざるに」。未は再読文字。「濛」は目のかすむ意の文脈訓で「かすむ」と訓む。"
+        "「臠杯未舉」は「臠杯未だ挙げざるに」。未は再読文字。「濛」は目のかすむ意の文脈訓で「かすむ」と訓む。",
+        "題「臥不安席」は「臥して席に安んぜず」。安は動詞として「席」からレ点で返り、不は「安」からレ点で返る（レ点の連用）。「宿他舍」は二字の「他舍」から二一点で返る。"
       ]
     }
   }
