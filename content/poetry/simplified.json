@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_sha256": "8e1ad8080daa5e78c45462038aadddee9c7ac42abf231e84c05e0470d5929c8f",
+  "source_sha256": "c53cd5efb3bd674badf56daaea93ad61986e87fa75e0863ab98877d8941574d8",
   "originals_sha256": {
     "jia-yi-a1-text": "fe600eea43a72197a2d8c371038d4bfceb5470e76e25bb68b4bf62eee2ca3cd6",
     "jia-yi-b1-text": "81fd9ad09f26c65e47f439d72f1a648fe6710a5a2f1ef5973b1abb8a5d68aefc",
@@ -37,7 +37,7 @@
     "summer-2017-revised-20261008": "a8922dc9bc953ad662a416375ba34ff27d6662a7860b1b9bd08e767dca09821e",
     "yingtianchang-20261008-text": "e0e6a3d7c5168bcd3d4419bda3f559a59ea4c3ddb5a1869521b58f40f1423990",
     "zhegutian-20261017-text": "9fededf05d1a8189566c2e2dd1335155514bfea9a0b4c42b1f31023bef35ccc5",
-    "huanxisha-20261020-text": "ca60e6c119969fc79892ea4bc52c5858b32e3619e572d831e9b68ff95e4de65b"
+    "huanxisha-20261020-text": "5d7dfadda70fbf67eb3518b9592a76849f20fd28bb3a12c0f7f876bdf6a65245"
   },
   "texts": {
     "jia-yi-a1-text": {
@@ -181,8 +181,8 @@
       "body": "片札含霜到齿牙，青骢待发果盈车。\n点来四五聊充策，大衍分蓍一未加。\n\n呵作雾，烬成花。舆中欹复正疑斜。\n筋骸暗替君摇首，载过当停处已赊。"
     },
     "huanxisha-20261020-text": {
-      "title": "《浣溪沙》",
-      "body": "久饿鹓雏练实空。\n他家聊借一枝桐。\n醴泉何处可浇胸。\n\n君奏咸韶娱海鸟，侬罗鼎俎飨飞鸿。\n脔杯未举目先濛。"
+      "title": "《浣溪沙 · 后三日，复宿他舍，卧不安席》",
+      "body": "久饿鹓雏练实空。他家聊借一枝桐。\n醴泉何处可浇胸。\n\n君奏咸韶娱海鸟，侬罗鼎俎飨飞鸿。\n脔杯未举目先濛。"
     }
   }
 }
