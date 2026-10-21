@@ -35,6 +35,17 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/contexts.html" />
   </url>
   <url>
+    <loc>https://hanpuli.github.io/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hanpuli.github.io/zh-hans/research.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://hanpuli.github.io/ja/research.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://hanpuli.github.io/de/research.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://hanpuli.github.io/fr/research.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/research.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/research.html" />
+  </url>
+  <url>
     <loc>https://hanpuli.github.io/poetry-voucher/</loc>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/poetry-voucher/" />
     <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/poetry-voucher/" />
@@ -352,6 +363,17 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://hanpuli.github.io/fr/contexts.html" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/contexts.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/contexts.html" />
+  </url>
+  <url>
+    <loc>https://hanpuli.github.io/zh/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hanpuli.github.io/zh-hans/research.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://hanpuli.github.io/ja/research.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://hanpuli.github.io/de/research.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://hanpuli.github.io/fr/research.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/research.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/research.html" />
   </url>
   <url>
     <loc>https://hanpuli.github.io/zh/poetry-voucher/</loc>
@@ -673,6 +695,17 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/contexts.html" />
   </url>
   <url>
+    <loc>https://hanpuli.github.io/zh-hans/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hanpuli.github.io/zh-hans/research.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://hanpuli.github.io/ja/research.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://hanpuli.github.io/de/research.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://hanpuli.github.io/fr/research.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/research.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/research.html" />
+  </url>
+  <url>
     <loc>https://hanpuli.github.io/zh-hans/poetry-voucher/</loc>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/poetry-voucher/" />
     <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/poetry-voucher/" />
@@ -990,6 +1023,17 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://hanpuli.github.io/fr/contexts.html" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/contexts.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/contexts.html" />
+  </url>
+  <url>
+    <loc>https://hanpuli.github.io/ja/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hanpuli.github.io/zh-hans/research.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://hanpuli.github.io/ja/research.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://hanpuli.github.io/de/research.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://hanpuli.github.io/fr/research.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/research.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/research.html" />
   </url>
   <url>
     <loc>https://hanpuli.github.io/ja/poetry-voucher/</loc>
@@ -1311,6 +1355,17 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/contexts.html" />
   </url>
   <url>
+    <loc>https://hanpuli.github.io/de/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hanpuli.github.io/zh-hans/research.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://hanpuli.github.io/ja/research.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://hanpuli.github.io/de/research.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://hanpuli.github.io/fr/research.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/research.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/research.html" />
+  </url>
+  <url>
     <loc>https://hanpuli.github.io/de/poetry-voucher/</loc>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/poetry-voucher/" />
     <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/poetry-voucher/" />
@@ -1630,6 +1685,17 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/contexts.html" />
   </url>
   <url>
+    <loc>https://hanpuli.github.io/fr/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hanpuli.github.io/zh-hans/research.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://hanpuli.github.io/ja/research.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://hanpuli.github.io/de/research.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://hanpuli.github.io/fr/research.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/research.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/research.html" />
+  </url>
+  <url>
     <loc>https://hanpuli.github.io/fr/poetry-voucher/</loc>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/poetry-voucher/" />
     <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/poetry-voucher/" />
@@ -1947,6 +2013,17 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://hanpuli.github.io/fr/contexts.html" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/contexts.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/contexts.html" />
+  </url>
+  <url>
+    <loc>https://hanpuli.github.io/ru/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://hanpuli.github.io/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant-HK" href="https://hanpuli.github.io/zh/research.html" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hanpuli.github.io/zh-hans/research.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://hanpuli.github.io/ja/research.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://hanpuli.github.io/de/research.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://hanpuli.github.io/fr/research.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hanpuli.github.io/ru/research.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hanpuli.github.io/research.html" />
   </url>
   <url>
     <loc>https://hanpuli.github.io/ru/poetry-voucher/</loc>

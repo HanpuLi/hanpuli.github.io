@@ -4634,6 +4634,47 @@ body.locale-ru a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not
   content: "внеш.";
 }
 
+/* Research and academic CV: the evidence list follows the existing editorial grid. */
+.research-cv-page .research-section {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  border-top: 1px solid var(--line);
+  padding-block: clamp(36px, 6vw, 76px);
+}
+.research-cv-page .research-section > .section-head {
+  grid-column: 1 / 5;
+  align-self: start;
+}
+.research-cv-page .research-section > .section-head h2 {
+  max-width: 18ch;
+  font-size: clamp(28px, 3.2vw, 46px);
+  font-weight: 400;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+.research-cv-page .research-section > .contexts-records {
+  grid-column: 5 / -1;
+  min-width: 0;
+}
+.research-cv-page .research-record .contexts-date {
+  overflow-wrap: break-word;
+}
+.research-cv-page .research-record a {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 760px) {
+  .research-cv-page .research-section {
+    display: block;
+    padding-block: 38px;
+  }
+  .research-cv-page .research-section > .section-head {
+    margin-block-end: 22px;
+  }
+}
+html[data-reading-simple] .research-cv-page .research-section { display: block; }
+html[data-reading-simple] .research-cv-page .research-section > .section-head { margin-block-end: 18px; }
+
 /* Credits & contexts */
 
 .site-home .profile-more {
