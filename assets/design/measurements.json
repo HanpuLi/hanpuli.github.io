@@ -1327,7 +1327,7 @@
         "schema": 1,
         "renderer": "pv-render-5a13777d0e49c6dc",
         "renderer_sha256": "5a13777d0e49c6dc95a2cc6daad7d74f757f7444f4e4df0f8f66255ee8131d8d",
-        "catalogue_sha256": "f3e0d82f528562cf64abd8111900d8a30ff68807ceb88f89b8a77339727c73ec",
+        "catalogue_sha256": "07c21775e2c39e4b5a2cb8df5376fb4b783e34e0a83fa7ee93265837efbda0e2",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
           "assets/fonts/cousine-cyrillic-400.woff2": "7fab714f77d035b9ce1e78083cda36ca6498569aa7f059bd887edb1c16ae9079",
