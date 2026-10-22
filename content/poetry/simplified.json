@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_sha256": "c53cd5efb3bd674badf56daaea93ad61986e87fa75e0863ab98877d8941574d8",
+  "source_sha256": "b33fd83eaf39167cbb84c072da0440cd8051a04ddc307bee0fe56f60a3b38191",
   "originals_sha256": {
     "jia-yi-a1-text": "fe600eea43a72197a2d8c371038d4bfceb5470e76e25bb68b4bf62eee2ca3cd6",
     "jia-yi-b1-text": "81fd9ad09f26c65e47f439d72f1a648fe6710a5a2f1ef5973b1abb8a5d68aefc",
@@ -37,7 +37,8 @@
     "summer-2017-revised-20261008": "a8922dc9bc953ad662a416375ba34ff27d6662a7860b1b9bd08e767dca09821e",
     "yingtianchang-20261008-text": "e0e6a3d7c5168bcd3d4419bda3f559a59ea4c3ddb5a1869521b58f40f1423990",
     "zhegutian-20261017-text": "9fededf05d1a8189566c2e2dd1335155514bfea9a0b4c42b1f31023bef35ccc5",
-    "huanxisha-20261020-text": "5d7dfadda70fbf67eb3518b9592a76849f20fd28bb3a12c0f7f876bdf6a65245"
+    "huanxisha-20261020-text": "5d7dfadda70fbf67eb3518b9592a76849f20fd28bb3a12c0f7f876bdf6a65245",
+    "pusaman-20261021-text": "1a801935390b82609980209e2a5f07b78f85aca64e31ee17eb6574edfe35ed83"
   },
   "texts": {
     "jia-yi-a1-text": {
@@ -183,6 +184,10 @@
     "huanxisha-20261020-text": {
       "title": "《浣溪沙 · 后三日，复宿他舍，卧不安席》",
       "body": "久饿鹓雏练实空。他家聊借一枝桐。\n醴泉何处可浇胸。\n\n君奏咸韶娱海鸟，侬罗鼎俎飨飞鸿。\n脔杯未举目先濛。"
+    },
+    "pusaman-20261021-text": {
+      "title": "《菩萨蛮 · 效花间体》",
+      "body": "一奁互绾云鬟堕，啼妆不待真珠涴。\n彩帛束蜂腰，点唇相试调。\n\n人前侬敛目，金凤低冠伏。\n对面画双眉，终同簪作笄。"
     }
   }
 }

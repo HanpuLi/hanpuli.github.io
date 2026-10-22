@@ -176,6 +176,11 @@
       "code": "HUANXISHA 2026.10.20",
       "offer": "huanxisha-20261020-text",
       "scheme": "dated"
+    },
+    {
+      "code": "PUSAMAN 2026.10.21",
+      "offer": "pusaman-20261021-text",
+      "scheme": "dated"
     }
   ]
 }

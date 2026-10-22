@@ -19,7 +19,7 @@ def main() -> None:
     repo = Path(__file__).resolve().parent.parent
     lib = Library(repo)
     kunten = Kunten(lib)
-    assert len(kunten.texts) == 31
+    assert len(kunten.texts) == 32
     count = 0
     for tid, expected in kunten.reader_notes.items():
         route = lib.work_for_text(tid)["route"]
