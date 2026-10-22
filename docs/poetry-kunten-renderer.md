@@ -34,8 +34,11 @@ poetry-kunten-collation.md for coverage, uncertainties and textual decisions.
   band starts at the body's right edge, beside the title block, or below
   it when fewer than four columns fit beside it; bands are separated by
   space and a hairline, and a band ends at a stanza break when that costs
-  at most two columns. A cell is as tall as its own readings plus a gap,
-  so every reading stays beside its own character. The generated page
+  at most two columns. No band holds a single column (2026-10-22): when a
+  full band would leave one column over, the band ends at its stanza break
+  (at least two columns in), or else hands one column on to the last
+  band. A cell is as tall as its own readings plus a gap, so every
+  reading stays beside its own character. The generated page
   keeps the source title parts, stanzas and lines; kanbun-render.js
   (flowKanbunColumns, bandKanbunColumns) sets them.
 - tools/poetry_kunten.py builds one standalone, noindex HTML presentation
