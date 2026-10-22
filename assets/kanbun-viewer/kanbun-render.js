@@ -209,7 +209,10 @@
   // Lays the body columns into bands right to left for root's current
   // font size and width cap, wrapping only between columns. A band ends
   // at a stanza break when that costs at most STANZA_PULL columns; a
-  // blank stanza column is not set at the edge of a band.
+  // blank stanza column is not set at the edge of a band. No band is
+  // left holding a single column (2026-10-22): when a full band would
+  // leave one column over, the band ends at its stanza break, or, with
+  // no stanza break in it, hands one column on to the last band.
   function bandKanbunColumns(root) {
     const body = root.kanbunBody;
     const text = root.querySelector(':scope > .kanbun-text');
@@ -247,6 +250,13 @@
         for (let t = take - 1; t >= Math.max(1, take - STANZA_PULL); t--) {
           if (body[start + t].dataset.kanbunColumn === 'gap') { take = t; break; }
         }
+      }
+      if (body.slice(start + take).filter(c => c.dataset.kanbunColumn !== 'gap').length === 1) {
+        let broken = false;
+        for (let t = take - 1; t >= 2; t--) {
+          if (body[start + t].dataset.kanbunColumn === 'gap') { take = t; broken = true; break; }
+        }
+        if (!broken && take > 1) take -= 1;
       }
       let list = body.slice(start, start + take);
       while (list.length && list[list.length - 1].dataset.kanbunColumn === 'gap') list.pop();

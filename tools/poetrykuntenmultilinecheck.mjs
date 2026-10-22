@@ -87,6 +87,11 @@ const inspect=async (frame, expected) => {
       const tops=[...b.children].map(c=>Math.round(box(c).top));
       if(new Set(tops).size>1)errors.push('band columns do not all start at the top');
     }
+    // No band holds a single body column once the body wraps (2026-10-22).
+    if(bands.length>1)bands.forEach((b,i)=>{
+      if([...b.children].filter(c=>c.dataset.kanbunColumn==='body').length===1)
+        errors.push((i===bands.length-1?'last ':'')+'band '+i+' holds a single column');
+    });
     // A preface is set 低二格 and broken after clauses, short clauses
     // joining the column before so no column holds only one or two.
     prefaces.forEach((c,i)=>{
