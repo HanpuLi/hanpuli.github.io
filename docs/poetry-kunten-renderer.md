@@ -1,6 +1,6 @@
 # Japanese kanbun reading layer: independent viewer prototype
 
-Status: experimental branch, not released. All 31 classical text versions
+Status: experimental branch, not released. All 32 classical text versions
 now have manually edited, source-anchored editorial pilot marks. The original
 Chinese corpus and separate 書き下し文 are unchanged by the mark renderer.
 A10 and 鵲橋仙 require explicit interpretative glosses rather than inventing
@@ -127,7 +127,7 @@ result does not certify the linguistic correctness of the markings.
 
 ## Next work
 
-1. Complete philological review of all 31 annotated versions, including
+1. Complete philological review of all 32 annotated versions, including
    modern/colloquial particles, nested returns, 再読文字 and variant glyphs.
    All manuscripts now have source-aligned pilot marks; no historical
    authenticity is implied by the completed structural coverage.

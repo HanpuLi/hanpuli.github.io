@@ -9265,6 +9265,218 @@
         "「臠杯未舉」は「臠杯未だ挙げざるに」。未は再読文字。「濛」は目のかすむ意の文脈訓で「かすむ」と訓む。",
         "題「臥不安席」は「臥して席に安んぜず」。安は動詞として「席」からレ点で返り、不は「安」からレ点で返る（レ点の連用）。「宿他舍」は二字の「他舍」から二一点で返る。"
       ]
+    },
+    "pusaman-20261021-text": {
+      "source_body_sha256": "600de3d717e62959ae8b484f9328b365eb223fe1a1708d8620cfd2d302e99baf",
+      "status": "pilot-reviewed",
+      "marks": [
+        {
+          "position": 1,
+          "char": "奩",
+          "furigana": "れん",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 2,
+          "char": "互",
+          "okurigana": "ヒニ"
+        },
+        {
+          "position": 3,
+          "char": "綰",
+          "furigana": "わが",
+          "okurigana": "ネテ"
+        },
+        {
+          "position": 6,
+          "char": "墮",
+          "okurigana": "チ"
+        },
+        {
+          "position": 9,
+          "char": "妝",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 10,
+          "char": "不",
+          "okurigana": "ズ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 11,
+          "char": "待",
+          "okurigana": "タ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 13,
+          "char": "珠",
+          "okurigana": "ノ"
+        },
+        {
+          "position": 14,
+          "char": "涴",
+          "furigana": "よご",
+          "okurigana": "スヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 19,
+          "char": "束",
+          "okurigana": "ネ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 21,
+          "char": "腰",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 23,
+          "char": "點",
+          "okurigana": "ジテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 24,
+          "char": "脣",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 26,
+          "char": "試",
+          "okurigana": "ミ"
+        },
+        {
+          "position": 27,
+          "char": "調",
+          "furigana": "ととの",
+          "okurigana": "フ"
+        },
+        {
+          "position": 32,
+          "char": "前",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 33,
+          "char": "儂",
+          "furigana": "われ"
+        },
+        {
+          "position": 34,
+          "char": "斂",
+          "furigana": "をさ",
+          "okurigana": "メ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 35,
+          "char": "目",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 38,
+          "char": "鳳",
+          "okurigana": "ハ"
+        },
+        {
+          "position": 39,
+          "char": "低",
+          "furigana": "た",
+          "okurigana": "レテ",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 40,
+          "char": "冠",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 41,
+          "char": "伏",
+          "okurigana": "ス"
+        },
+        {
+          "position": 45,
+          "char": "面",
+          "okurigana": "シテ"
+        },
+        {
+          "position": 46,
+          "char": "畫",
+          "okurigana": "キ",
+          "kaeriten": "二"
+        },
+        {
+          "position": 48,
+          "char": "眉",
+          "okurigana": "ヲ",
+          "kaeriten": "一"
+        },
+        {
+          "position": 50,
+          "char": "終",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 51,
+          "char": "同",
+          "furigana": "とも",
+          "okurigana": "ニ"
+        },
+        {
+          "position": 52,
+          "char": "簪",
+          "okurigana": "ヲ"
+        },
+        {
+          "position": 53,
+          "char": "作",
+          "furigana": "な",
+          "okurigana": "ス",
+          "kaeriten": "レ"
+        },
+        {
+          "position": 54,
+          "char": "笄",
+          "furigana": "けい",
+          "okurigana": "ト"
+        }
+      ],
+      "title": [
+        [],
+        [
+          {
+            "position": 0,
+            "char": "效",
+            "furigana": "なら",
+            "okurigana": "フ",
+            "kaeriten": "二"
+          },
+          {
+            "position": 2,
+            "char": "間",
+            "okurigana": "ノ"
+          },
+          {
+            "position": 3,
+            "char": "體",
+            "furigana": "たい",
+            "okurigana": "ニ",
+            "kaeriten": "一"
+          }
+        ]
+      ],
+      "notes": [
+        "「一奩互綰雲鬟墮」は「一奩に互いに綰ねて雲鬟堕ち」。七言の四・三の切れ目（一奩互綰｜雲鬟墮）に従って順に訓み、「雲鬟墮」を主述とする。綰ねる対象は続く雲鬟から読み取れるので返読しない。「雲鬟を綰ねて堕ち」と返読すると、堕つの主語が綰ねる側に移る。",
+        "「啼妝不待真珠涴」は「啼妝は真珠の涴すを待たず」。待は三字の「真珠涴」（真珠が涴す）から二一点で返り、不は待からレ点で返る（「不レ入二虎穴一」と同型）。",
+        "「金鳳低冠伏」は「金鳳は冠を低れて伏す」。低は「冠」からレ点で返り、李白「静夜思」の「頭を低れて」と同じく「たる」と訓む。冠は鳳の冠羽で平声。金鳳に「は」を補読して主語を明示する。",
+        "「終同簪作笄」は「終に同に簪を笄と作す」。同は副詞として「とも」と訓む。作は「笄」からレ点で返る。笄は音で「けい」と読む。訓「こうがい」は日本の髪具・刀装具の名として定着しているため採らない。",
+        "題「效花間體」は「花間の体に効う」。效は三字の「花間體」から二一点で返る。書き下しでは效を新字体「効」とし、體に「たい」と振り、詩体の意であることを示す。"
+      ]
     }
   }
 }

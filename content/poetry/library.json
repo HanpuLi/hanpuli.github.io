@@ -644,6 +644,24 @@
         "huanxisha-20261020-text"
       ],
       "related": []
+    },
+    {
+      "id": "pusaman-20261021",
+      "kind": "poem",
+      "form": "ci",
+      "composed": {
+        "start": "2026-10-21",
+        "end": "2026-10-21",
+        "basis": "work-date"
+      },
+      "route": "pusaman-20261021",
+      "fragment": "",
+      "voice": null,
+      "authorial_label": null,
+      "versions": [
+        "pusaman-20261021-text"
+      ],
+      "related": []
     }
   ],
   "versions": [
@@ -1292,6 +1310,25 @@
       },
       "parts": [
         "huanxisha-20261020-text"
+      ],
+      "fragment": ""
+    },
+    {
+      "id": "pusaman-20261021-text",
+      "work": "pusaman-20261021",
+      "date": "2026-10-21",
+      "kind": "text",
+      "label": {
+        "en": "",
+        "zh": "",
+        "zh-hans": "",
+        "ja": "",
+        "de": "",
+        "fr": "",
+        "ru": ""
+      },
+      "parts": [
+        "pusaman-20261021-text"
       ],
       "fragment": ""
     }
@@ -2448,6 +2485,38 @@
           "body": "Давно голодает феникс юаньчу; бамбуковых семян нет.\nВ другом доме на время взята одна ветка утуна.\nГде сладкий источник, которым можно оросить грудь?\n\nТы играешь «Сяньчи» и «Шао», чтобы порадовать морскую птицу;\nя расставляю треножники и подставки для мяса, чтобы угостить дикого гуся в полёте.\nКусок мяса и чаша ещё не подняты, а глаза уже затуманились."
         }
       }
+    },
+    {
+      "id": "pusaman-20261021-text",
+      "version": "pusaman-20261021-text",
+      "part": null,
+      "source_date": "二〇二六年十月二十一日作",
+      "editions": {
+        "zh": {
+          "title": "《菩薩蠻 · 效花間體》",
+          "body": "一奩互綰雲鬟墮，啼妝不待真珠涴。\n綵帛束蜂腰，點脣相試調。\n\n人前儂斂目，金鳳低冠伏。\n對面畫雙眉，終同簪作笄。"
+        },
+        "en": {
+          "title": "To the tune of Pusaman · In the manner of the Huajian songs",
+          "body": "At one dressing case, each coils the other’s cloud of hair, and the coils droop;\nthe weeping make-up need not wait for real pearls to smear it.\nColoured silk cinches the wasp waist;\ndotting the lips with rouge, each tries and blends the shade on the other.\n\nBefore others, I lower my eyes;\nthe gold phoenix lowers its crest and lies flat.\nFace to face, both brows are painted;\nin the end, together, making the hairpin a ji pin."
+        },
+        "ja": {
+          "title": "菩薩蛮の調べ · 花間集の詞風にならって",
+          "body": "一つの化粧箱を前に、互いに雲なす髪を結い、髷は低く垂れる。\n啼妝は、本物の真珠がよごすのを待つまでもない。\n色絹が蜂のように細い腰を締める。\n唇に紅を点して、互いに色を試しては調える。\n\n人前で、私は目を落とす。\n金の鳳は冠羽を低くして伏す。\n向かい合って、両の眉を描く。\nついには共に、簪を笄とする。"
+        },
+        "de": {
+          "title": "Nach der Melodie Pusaman · In der Art der Huajian-Lieder",
+          "body": "An einem einzigen Schminkkästchen schlingt man einander das Wolkenhaar zu tief herabhängenden Knoten;\ndie Tränenschminke braucht nicht zu warten, bis echte Perlen sie verwischen.\nFarbige Seide gürtet die Wespentaille;\ndie Lippen mit Rot betupft, prüft man wechselseitig den Farbton und stimmt ihn ab.\n\nVor anderen senke ich den Blick;\nder goldene Phönix senkt die Federkrone und liegt flach.\nVon Angesicht zu Angesicht werden die beiden Brauen gemalt;\nam Ende wird die Haarnadel gemeinsam zur Ji-Nadel gemacht."
+        },
+        "fr": {
+          "title": "Sur l’air de Pusaman · Dans le style Huajian",
+          "body": "Devant un même coffret, se coiffer mutuellement en chignons de nuage tombants ;\nle fard des pleurs n’a pas besoin d’attendre que de vraies perles le maculent.\nLa soie colorée ceint la taille de guêpe ;\nun point de rouge aux lèvres, la teinte réciproquement essayée et ajustée.\n\nDevant les autres, je baisse les yeux ;\nle phénix d’or abaisse sa huppe et se pose à plat.\nFace à face, peindre les deux sourcils ;\nà la fin, faire ensemble de l’épingle à cheveux une épingle ji."
+        },
+        "ru": {
+          "title": "На мелодию Pusaman · В манере «Хуацзянь»",
+          "body": "У одного туалетного ларца друг другу укладывают облачные волосы в низко спадающие узлы;\nплачущему гриму незачем ждать, пока его размажут настоящие жемчужины.\nЦветной шёлк стягивает осиную талию;\nгубы тронуты красным, оттенок пробуют и подбирают друг другу.\n\nПри людях я опускаю глаза;\nзолотой феникс опускает хохолок и пригибается.\nЛицом к лицу рисуют обе брови;\nпод конец вместе делают шпильку шпилькой цзи."
+        }
+      }
     }
   ],
   "offers": [
@@ -2719,6 +2788,12 @@
       "id": "huanxisha-20261020-text",
       "text": "huanxisha-20261020-text",
       "receipt_code": "HUANXISHA 2026.10.20",
+      "legacy_ids": []
+    },
+    {
+      "id": "pusaman-20261021-text",
+      "text": "pusaman-20261021-text",
+      "receipt_code": "PUSAMAN 2026.10.21",
       "legacy_ids": []
     }
   ],

@@ -52,6 +52,7 @@ ISSUED_RECEIPT_CODES = (
     ('SUMMER 2017', 'summer-2017-revised-20261008', 'legacy'),
     ('ZHEGUTIAN 2026.10.17', 'zhegutian-20261017-text', 'dated'),
     ('HUANXISHA 2026.10.20', 'huanxisha-20261020-text', 'dated'),
+    ('PUSAMAN 2026.10.21', 'pusaman-20261021-text', 'dated'),
 )
 
 def main() -> None:
