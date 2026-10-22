@@ -99,7 +99,7 @@ try{
   await page.evaluate(old=>{sessionStorage.removeItem('poetry-voucher-bag-v1');localStorage.setItem('poetry-voucher-bag-v1',JSON.stringify({version:1,lines:[{id:'old-selection',workId:old.id,title:old.title,author:old.author,poem:old.poem,locale:'zh-Hant',translations:['en'],font:'site',size:24,quantity:2}]}));},old);
   await page.goto(base+'/poetry-voucher/shop.html?lang=en');await ready(page);
   const basket=(await snapshot(page)).bag;
-  assert.equal(basket.length,1);assert.equal(basket[0].workId,target);assert.equal(basket[0].quantity,2);assert.equal(basket[0].poem,old.poem);
+  assert.equal(basket.length,1);assert.equal(basket[0].workId,target);assert.equal(basket[0].quantity,2);assert.equal(basket[0].poem,current.poem);
   assert.deepEqual(basket[0].translations,['en']);
   // The synthetic historic order uses the old W12 identity and unmodified snapshot.
   const historical=await page.evaluate(async old=>{
@@ -136,7 +136,7 @@ try{
   const issued=(await snapshot(page)).orders[0],line=issued.lines[0];
   assert.equal(line.work.id,target);assert.equal(line.work.source_id,'QUEQIAOXIAN 2018');
   assert.equal(line.work.source_url,'https://hanpuli.github.io/poetry/queqiaoxian-20181222/');
-  assert.equal(line.poem,old.poem);assert(!/\bW12\b/.test(await page.locator('.receipt-transcript').textContent()));
+  assert.equal(line.poem,current.poem);assert(!/\bW12\b/.test(await page.locator('.receipt-transcript').textContent()));
   assert((await page.locator('.order-reading').innerText()).includes(issued.ref+'-01'));
   assert.equal(issued.total,historical.order.total);
   if(screenshotDir)await page.screenshot({path:path.join(screenshotDir,'new-paper-edition.png'),fullPage:true});
