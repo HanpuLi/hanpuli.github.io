@@ -1115,7 +1115,6 @@ def specials_for(locale_id: str, page: str, locale: dict[str, Any]) -> dict[str,
         "CONTEXTS_LEDE": html.escape(contexts["lede"]),
         "CONTEXTS_PRINCIPLE": html.escape(contexts["principle"]),
         "CONTEXTS_SECTIONS": contexts_sections_html(locale_id),
-        "CONTEXTS_FOOTER_NOTE": html.escape(contexts["footer_note"]),
         "MATERIAL_URL": html.escape(SHARED["projects"]["material"]["url"], quote=True),
         "MATERIAL_TITLE": material_title_html(
             locale_id, locale["home"]["projects"]["material"]["title"]

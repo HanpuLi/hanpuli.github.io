@@ -214,7 +214,6 @@ def render(
             f'<section class="access-panel" aria-labelledby="abstract-heading">'
             f'<h2 id="abstract-heading">{html.escape(copy["abstract_label"])}</h2>'
             f'<p class="abstract-copy">{html.escape(copy["abstract"])}</p>'
-            f'<p class="reader-notice">{html.escape(copy["note"])}</p>'
             f'<p class="access-companion"><a href="https://github.com/HanpuLi/first-love-verification">'
             f'{html.escape(copy["verification"])}</a></p>'
             f'<p class="access-companion access-data">{html.escape(copy["data_label"])}'
