@@ -249,6 +249,7 @@ body:is(.about-page,.voucher-project) .page-topbar a {margin-block:0}
 body:is(.about-page,.voucher-project) .page-topbar > .reading-tools details {align-items:end}
 body:is(.about-page,.voucher-project) .page-topbar > .reading-tools .reading-panel {
   width:min(360px,calc(100vw - (2 * var(--gutter))));
+  max-width:none;
 }
 @media(max-width:760px) {
   body:is(.about-page,.voucher-project) .page-topbar > .reading-tools {grid-column:1/-1;grid-row:4;inline-size:100%;justify-self:stretch}

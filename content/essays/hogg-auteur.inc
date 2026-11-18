@@ -1,6 +1,6 @@
 <article class="essay">
   <header class="essay-intro">
-    <p class="essay-kicker">film criticism · revised October 2026</p>
+    <p class="essay-kicker">film criticism · revised&nbsp;October&nbsp;2026</p>
     <h1>How Praise Assigns a Film to One Author</h1>
     <p class="essay-deck">Joanna Hogg’s critical reception, the construction of authorship, and the gendered terms of its discovery</p>
     <p class="essay-byline">Hanpu Li</p>

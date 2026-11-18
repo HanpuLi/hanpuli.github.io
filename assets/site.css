@@ -181,6 +181,7 @@
 :root {
   color-scheme: light dark;
   --ink: #171614;
+  --shadow: rgb(23 22 20 / .12);
   --muted: #625e57;
   --faint: #6c665f;
   --paper: #f5f2eb;
@@ -257,6 +258,12 @@ html:lang(ja) {
   font-family: var(--serif);
 }
 
+html:lang(ja),
+[lang="ja"] {
+  /* No line may start with small kana or the prolonged sound mark. */
+  line-break: strict;
+}
+
 [lang="ja"] {
   /* Chinese source titles on Japanese pages use 書名号 and other CJK
      punctuation. Place the site's own CJK faces before system Georgia,
@@ -294,6 +301,8 @@ html:not([data-reading-sans]):not([data-reading-dyslexia]) :is(
 @media (prefers-color-scheme: dark) {
   :root {
     --ink: #e8e4dc;
+    /* A shadow, not a halo: --ink is light in this scheme. */
+    --shadow: rgb(0 0 0 / .55);
     --muted: #aaa49a;
     --faint: #918b83;
     --paper: #151412;
@@ -368,6 +377,13 @@ main[tabindex="-1"]:focus {
 
 [lang="en"] {
   font-kerning: normal;
+}
+
+/* letter-spacing other than 0 switches optional ligatures off in Blink and
+   WebKit; EB Garamond's overhanging f then collides with i, l and f in the
+   tightly tracked headings ('finished', 'Verification'). */
+html:not([data-reading-sans]):not([data-reading-dyslexia]) :is(h1, h2, h3):not(.literary-page h1, .shi-page h1) {
+  font-feature-settings: "liga" 1;
 }
 
 .visually-hidden {
@@ -448,7 +464,7 @@ main[tabindex="-1"]:focus {
   border: 1px solid var(--muted);
   background: var(--paper);
   color: var(--ink);
-  box-shadow: 0 4px 18px color-mix(in srgb, var(--ink) 10%, transparent);
+  box-shadow: 0 4px 18px var(--shadow);
   cursor: pointer;
   list-style: none;
   user-select: none;
@@ -493,7 +509,7 @@ main[tabindex="-1"]:focus {
   padding: 18px;
   border: 1px solid var(--line);
   background: var(--paper);
-  box-shadow: 0 8px 28px color-mix(in srgb, var(--ink) 14%, transparent);
+  box-shadow: 0 8px 28px var(--shadow);
   color: var(--ink);
 }
 
@@ -532,7 +548,7 @@ main[tabindex="-1"]:focus {
   flex: 0 0 auto;
   width: 20px;
   height: 20px;
-  accent-color: var(--accent);
+  accent-color: var(--ink);
 }
 
 .reading-option span {
@@ -739,6 +755,10 @@ html[data-reading-simple] .site-home .hero h1 {
   max-width: 10ch;
 }
 
+html[data-reading-simple] .site-home .hero-id {
+  margin-block-end: 0;
+}
+
 html[data-reading-simple] .site-home .hero-cover {
   width: min(100%, 760px);
 }
@@ -905,6 +925,12 @@ html[data-reading-motion] .site-home::before {
   .page-topbar .page-languages .current {
     border-color: currentColor;
   }
+
+  /* The transparent reserve border under the other editions would otherwise
+     become a visible bar, so the current edition would no longer stand alone. */
+  :is(.site-home .language-nav, .page-topbar .page-languages) a[href] {
+    border-bottom-color: Canvas;
+  }
 }
 
 /* Home — strict editorial grid, no floating collage. */
@@ -922,7 +948,10 @@ html[data-reading-motion] .site-home::before {
 
 .site-home .masthead-utility,
 .page-topbar .page-utility {
-  grid-column: 10 / 13;
+  /* Row 1 holds only the wordmark (1 / 4); the wider span lets the seven
+     language cells stay on one line in the 1180px essay shell, and
+     flex-end keeps the cluster on the right edge. */
+  grid-column: 4 / 13;
   grid-row: 1;
   display: flex;
   min-width: 0;
@@ -1016,10 +1045,11 @@ html[data-reading-motion] .site-home::before {
   border-bottom-color: var(--ink);
 }
 
-.site-home .language-nav [lang="zh-Hans"] .language-short,
-.page-topbar .page-languages [lang="zh-Hans"] .language-short {
+/* Han and kana labels sit .06em low against the Courier Prime capitals in the
+   default faces; the readable sans and OpenDyslexic modes need no shift. */
+html:not([data-reading-sans]):not([data-reading-dyslexia]) :is(.site-home .language-nav, .page-topbar .page-languages) :is([lang="zh-Hant-HK"], [lang="zh-Hans"], [lang="ja"]) .language-short {
   position: relative;
-  top: -1px;
+  top: -.06em;
 }
 
 .site-home .masthead > .reading-tools {
@@ -1048,6 +1078,12 @@ html[data-reading-motion] .site-home::before {
   line-height: 1.4;
   letter-spacing: .15em;
   text-transform: uppercase;
+  text-wrap: balance;
+}
+
+/* Keep CJK words whole when the kicker wraps on phones (ロン|ドン). */
+.site-home:is(.locale-zh, .locale-zh-hans, .locale-ja) .eyebrow {
+  word-break: keep-all;
 }
 
 .site-home .hero h1 {
@@ -1061,11 +1097,27 @@ html[data-reading-motion] .site-home::before {
   text-wrap: balance;
 }
 
+/* Optical edge for the two-line name: EB Garamond's left bearings (L .027em,
+   H .037em) set the ink of "Hanpu / Li." inside the column. The margin puts
+   the L on the edge; text-indent adds the H's extra .010em on line one.
+   Specific to H and L: change it if the name changes. */
+.site-home #hero-title {
+  margin-inline-start: -.027em;
+  text-indent: -.01em;
+}
+
+html:is([data-reading-sans], [data-reading-dyslexia]) .site-home #hero-title {
+  margin-inline-start: 0;
+  text-indent: 0;
+}
+
 .site-home .hero-id {
   grid-column: 5 / 8;
   grid-row: 3;
   align-self: end;
-  padding-bottom: .2em;
+  padding-bottom: 0;
+  /* (1.65 - 1.35) / 2: last baseline on the 13px caption's beside it. */
+  margin-block-end: -.15em;
   color: var(--muted);
   font-family: var(--mono);
   font-size: .8125rem;
@@ -1076,14 +1128,27 @@ html[data-reading-motion] .site-home::before {
   color: var(--ink);
 }
 
+.site-home .hero-id p {
+  text-wrap: balance;
+}
+
+.site-home:is(.locale-zh, .locale-zh-hans, .locale-ja) .hero-id p {
+  word-break: keep-all;
+}
+
 .site-home .hero-cover {
   grid-column: 8 / 13;
   grid-row: 1 / 4;
   align-self: center;
   justify-self: end;
   width: min(100%, calc((100svh - 150px) * .825));
-  margin: 0;
+  /* Photo top on the eyebrow's cap line, not its line-box top:
+     .3402em of the .8125rem Courier Prime eyebrow. */
+  margin: var(--hero-cover-cap, .2764rem) 0 0;
 }
+
+.site-home.locale-ru { --hero-cover-cap: .2498rem; } /* Cousine RU capitals */
+.site-home:is(.locale-zh, .locale-zh-hans, .locale-ja) { --hero-cover-cap: .125rem; } /* ideograph tops */
 
 .site-home .hero-cover picture,
 .site-home .hero-cover img {
@@ -1183,15 +1248,6 @@ html[data-reading-motion] .site-home::before {
   font-weight: 400;
   line-height: .98;
   letter-spacing: -.025em;
-}
-
-/* Optical correction for the short Latin “Ci” heading. */
-.site-home.locale-en #ci-heading {
-  margin-inline-start: -.045em;
-}
-
-html[data-reading-sans] .site-home.locale-en #ci-heading {
-  margin-inline-start: 0;
 }
 
 .site-home .section-kicker {
@@ -1386,11 +1442,18 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
 }
 
 .site-home .project-evidence-disclosure summary {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 20px;
-  align-items: center;
+  /* Flex wrap, not a 3-track grid: in long locales (ru/fr/de) at phone widths
+     the middle track collapsed to one character and broke words letter by
+     letter. Now the count wraps under the label as a whole phrase. */
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  align-content: center;
+  gap: .35em 20px;
   min-height: 44px;
+  padding-inline-end: calc(20px + .875rem * .6);
+  overflow-wrap: break-word;
   padding: 11px 0 10px;
   color: var(--muted);
   font-family: var(--mono);
@@ -1407,11 +1470,16 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
 }
 
 .site-home .project-evidence-disclosure summary span:nth-child(2) {
-  justify-self: end;
+  margin-inline-start: auto;
   color: var(--faint);
+  text-align: end;
 }
 
 .site-home .project-evidence-disclosure summary::after {
+  position: absolute;
+  inset-inline-end: 0;
+  top: 50%;
+  translate: 0 -50%;
   content: "+" / "";
   color: var(--faint);
   font-size: .875rem;
@@ -1921,6 +1989,12 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   letter-spacing: .05em;
 }
 
+/* Centre 李函璞 on the EB Garamond capitals (default faces only). */
+html:not([data-reading-sans]):not([data-reading-dyslexia]) :is(.site-home .wordmark, .page-topbar .page-wordmark) span {
+  position: relative;
+  top: .085em;
+}
+
 .page-topbar .page-nav {
   grid-column: 1 / 10;
   grid-row: 2;
@@ -2007,6 +2081,12 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
   line-height: 1;
   font-weight: 400;
   letter-spacing: .08em;
+}
+
+/* The .08em tracking belongs to the CJK title; Latin and Cyrillic lowercase
+   take the value the Russian shi page already uses. */
+.literary-page h1:not(:lang(zh), :lang(ja)) {
+  letter-spacing: .02em;
 }
 
 .shi-page.locale-ru h1 {
@@ -2682,6 +2762,7 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
     grid-column: 9 / 13;
     grid-row: auto;
     margin-top: 30px;
+    margin-block-end: 0;
   }
 
   .site-home .hero-cover {
@@ -3340,6 +3421,14 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
     }
   }
 
+  /* Six equal tracks, but never narrower than a label: '03 исследования'
+     at 761-800px otherwise squeezes its own number box. */
+  @container masthead (width > 45rem) {
+    .site-home .section-nav {
+      grid-template-columns: repeat(6, minmax(max-content, 1fr));
+    }
+  }
+
   @container work (max-width: 52rem) {
     .site-home .project-main,
     .site-home .project-feature .project-main {
@@ -3380,7 +3469,9 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
 
     .site-home .photo-triptych {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+      /* Three columns when three 14rem frames fit, otherwise one: never 2 + 1
+         with the third image alone beside a hole. */
+      grid-template-columns: repeat(auto-fit, minmax(max(calc((100% - 2 * var(--gap)) / 3), min(100%, calc((42rem + 2 * var(--gap) - 100%) * 999))), 1fr));
       gap: var(--gap);
     }
 
@@ -3411,6 +3502,40 @@ html[data-reading-sans] .site-home.locale-en #ci-heading {
     display: grid;
     grid-template-columns: minmax(0, var(--section-rail)) repeat(11, minmax(0, 1fr));
     column-gap: var(--module-gap);
+  }
+
+  @media (min-width: 761px) {
+    /* The phonetics figure and the York sequence sit on the section rail
+       (column 2), the edge every section heading uses, not one page column in. */
+    .site-home .process-note {
+      grid-column: 2 / -1;
+      width: auto;
+      margin-inline-start: 0;
+    }
+
+    .site-home .photo-city-sequence {
+      display: grid;
+      grid-template-columns: subgrid;
+      column-gap: inherit;
+    }
+
+    .site-home .photo-city-intro,
+    .site-home .photo-city-grid {
+      grid-column: 1 / -1;
+      grid-template-columns: subgrid;
+      column-gap: inherit;
+    }
+  }
+
+  @media (max-width: 760px) {
+    /* Stacked phone hero: same number rail as the sections, so the copy and
+       footnote (column 2) start on the section headings' edge. */
+    .site-home main > .hero {
+      --section-rail: clamp(2rem, 7.5cqi, 7.5rem);
+      --module-gap: clamp(.75rem, 1.25cqi, 1.5rem);
+      grid-template-columns: minmax(0, var(--section-rail)) repeat(11, minmax(0, 1fr));
+      column-gap: var(--module-gap);
+    }
   }
 
   .site-home .section-head,
@@ -3867,6 +3992,8 @@ html[data-reading-motion]::view-transition-new(root) {
 .about-page .about-toc {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
+  /* 'On this page' on the first entry's baseline, not 18px above it. */
+  align-items: first baseline;
   gap: 0 var(--gap);
   padding: 0 0 clamp(46px, 5vw, 72px);
 }
@@ -3946,6 +4073,9 @@ html[data-reading-motion]::view-transition-new(root) {
 .about-page .about-section h2,
 .about-page .about-coda h2 {
   max-width: 12ch;
+  /* 12ch is narrower than the longest Russian words; never break inside one. */
+  min-width: min-content;
+  overflow-wrap: break-word;
   font-size: clamp(32px, 3.5vw, 50px);
   font-weight: 400;
   line-height: 1.02;
@@ -4273,7 +4403,9 @@ html[data-reading-simple] .about-page .about-facts > div + div {
 }
 
 .essay-page .essay-noteref a {
-  color: var(--accent);
+  /* Vermilion is a point, one or two per view; footnote numerals are many,
+     so they take it only on hover, focus and :target. */
+  color: var(--muted);
   text-decoration: none;
   text-decoration-thickness: 1px;
   text-underline-offset: .16em;
@@ -4281,6 +4413,7 @@ html[data-reading-simple] .about-page .about-facts > div + div {
 
 .essay-page .essay-noteref a:hover,
 .essay-page .essay-noteref a:focus-visible {
+  color: var(--accent);
   text-decoration: underline;
 }
 
@@ -4572,7 +4705,9 @@ body[class] a[href]:not(.skip-link):not(.pv-cta):not(.pv-text-link):not(.shop-en
   text-decoration-color: currentColor;
 }
 
-body[class] :is(.masthead, .page-topbar, .site-footer, .page-footer, .poetry-index, .about-toc) a[href] {
+/* Same :not() chain as the content rule above, so this exemption keeps
+   winning on specificity (0,7,2 over 0,6,2) and not merely on source order. */
+body[class] :is(.masthead, .page-topbar, .site-footer, .page-footer, .poetry-index, .poetry-cycle, .poetry-view-nav, .about-toc, .notfound-copy) a[href]:not(.skip-link):not(.pv-cta):not(.pv-text-link):not(.shop-enter) {
   text-decoration-line: none;
 }
 
@@ -4662,8 +4797,14 @@ body.locale-ru a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not
   border-bottom: 1px solid var(--line);
 }
 
+.contexts-page .contexts-record {
+  --contexts-title-size: clamp(20px, 1.7vw, 28px);
+}
+
 .contexts-page .contexts-date {
-  padding-top: .35em;
+  /* Cap line on the title's: title cap offset .2615em (lh 1.12, EB Garamond),
+     date cap offset .365em (lh 1.45, Courier Prime). */
+  padding-top: max(0px, calc(.2615 * var(--contexts-title-size) - .365em));
   color: var(--faint);
   font-family: var(--mono);
   font-size: .75rem;
@@ -4673,7 +4814,7 @@ body.locale-ru a[href^="https://"]:not([href^="https://hanpuli.github.io/"]):not
 
 .contexts-page .contexts-record-main h3 {
   max-width: 32ch;
-  font-size: clamp(20px, 1.7vw, 28px);
+  font-size: var(--contexts-title-size);
   font-weight: 400;
   line-height: 1.12;
   letter-spacing: -.015em;
@@ -4949,6 +5090,7 @@ html[data-reading-simple] .contexts-page .contexts-date {
   grid-template-columns: minmax(0, 5fr) minmax(0, 3fr);
   gap: var(--gap);
   align-items: end;
+  align-items: last baseline;
 }
 
 .site-home .other-work-ink img {
@@ -5122,6 +5264,18 @@ html[data-reading-simple] .site-home .other-work-grid > article + article {
   background: var(--accent);
 }
 
+/* Ideographs sit higher than the Courier line box the point is centred on.
+   The reading sans and OpenDyslexic modes already centre it. */
+html:not([data-reading-sans], [data-reading-dyslexia]) .page-topbar .page-nav [aria-current="page"]:is(:lang(zh), :lang(ja))::after {
+  translate: 0 -.16em;
+}
+
+/* Inner-page nav labels are lowercase like the home nav ('02 Poetry' was the
+   only capital among them). German keeps its capitalised nouns. */
+:is(.locale-en, .locale-fr, .locale-ru) .page-topbar .page-nav > * {
+  text-transform: lowercase;
+}
+
 .site-home #hero-title .hero-period {
   color: var(--accent);
 }
@@ -5131,3 +5285,248 @@ html[data-reading-simple] .site-home .other-work-grid > article + article {
     background: CanvasText;
   }
 }
+
+/* Dark scheme: white paper scans and screen plates were the brightest thing
+   on the page, brighter than the text. Dim the image itself (not its link, so
+   focus rings keep full strength); light and high-contrast modes untouched. */
+@media (prefers-color-scheme: dark) and (prefers-contrast: no-preference) {
+  html:not([data-reading-contrast]) :is(.pv-physical-image, .pv-specimen-image, .plate-image-link, .plate-strip-art, .plate-till-grid, .site-home .evidence-frame) img {
+    filter: brightness(.9);
+  }
+}
+
+/* Headings set in the mono face keep their box edge: the generated optical
+   table below measures EB Garamond only. */
+.about-page .about-coda-copy h3.ol,
+:is(.pv-contents, .pv-specimen) h2.ol {
+  translate: none;
+  text-indent: 0;
+}
+
+/* BEGIN generated optical margins (tools/optical_margins.py) */
+/* EB Garamond left bearings measured from assets/fonts (do not edit by hand).
+   .ol is set by the build on display blocks whose first glyph is EB Garamond:
+   translate moves every line by the median bearing without reflow, text-indent
+   adds the first glyph's own difference. Sans and OpenDyslexic have other
+   bearings, so the correction is off in those reading modes. */
+.ol { --ol: -.027em; translate: -.027em 0; text-indent: calc(var(--ol) + .027em); }
+html:is([data-reading-sans], [data-reading-dyslexia]) .ol { translate: none; text-indent: 0; }
+.ol[data-ol="A"] { --ol: -.018em; }
+.ol[data-ol="B"] { --ol: -.019em; }
+.ol[data-ol="C"] { --ol: -.056em; }
+.ol[data-ol="D"] { --ol: -.029em; }
+.ol[data-ol="E"] { --ol: -.037em; }
+.ol[data-ol="F"] { --ol: -.03em; }
+.ol[data-ol="G"] { --ol: -.055em; }
+.ol[data-ol="H"] { --ol: -.037em; }
+.ol[data-ol="I"] { --ol: -.019em; }
+.ol[data-ol="J"] { --ol: -.031em; }
+.ol[data-ol="K"] { --ol: -.031em; }
+.ol[data-ol="L"] { --ol: -.027em; }
+.ol[data-ol="M"] { --ol: -.019em; }
+.ol[data-ol="N"] { --ol: -.012em; }
+.ol[data-ol="O"] { --ol: -.055em; }
+.ol[data-ol="P"] { --ol: -.024em; }
+.ol[data-ol="Q"] { --ol: -.055em; }
+.ol[data-ol="R"] { --ol: -.024em; }
+.ol[data-ol="S"] { --ol: -.05em; }
+.ol[data-ol="T"] { --ol: -.047em; }
+.ol[data-ol="U"] { --ol: -.024em; }
+.ol[data-ol="V"] { --ol: -.02em; }
+.ol[data-ol="W"] { --ol: -.02em; }
+.ol[data-ol="X"] { --ol: -.015em; }
+.ol[data-ol="Y"] { --ol: -.02em; }
+.ol[data-ol="Z"] { --ol: -.028em; }
+.ol[data-ol="a"] { --ol: -.037em; }
+.ol[data-ol="b"] { --ol: -.068em; }
+.ol[data-ol="c"] { --ol: -.035em; }
+.ol[data-ol="d"] { --ol: -.035em; }
+.ol[data-ol="e"] { --ol: -.03em; }
+.ol[data-ol="f"] { --ol: -.024em; }
+.ol[data-ol="g"] { --ol: -.039em; }
+.ol[data-ol="h"] { --ol: -.019em; }
+.ol[data-ol="i"] { --ol: -.024em; }
+.ol[data-ol="j"] { --ol: -.035em; }
+.ol[data-ol="k"] { --ol: -.019em; }
+.ol[data-ol="l"] { --ol: -.019em; }
+.ol[data-ol="m"] { --ol: -.024em; }
+.ol[data-ol="n"] { --ol: -.024em; }
+.ol[data-ol="o"] { --ol: -.035em; }
+.ol[data-ol="p"] { --ol: -.031em; }
+.ol[data-ol="q"] { --ol: -.035em; }
+.ol[data-ol="r"] { --ol: -.029em; }
+.ol[data-ol="s"] { --ol: -.029em; }
+.ol[data-ol="t"] { --ol: -.035em; }
+.ol[data-ol="u"] { --ol: -.029em; }
+.ol[data-ol="v"] { --ol: -.005em; }
+.ol[data-ol="w"] { --ol: -.005em; }
+.ol[data-ol="x"] { --ol: -.01em; }
+.ol[data-ol="y"] { --ol: -.005em; }
+.ol[data-ol="z"] { --ol: -.025em; }
+.ol[data-ol="0"] { --ol: -.045em; }
+.ol[data-ol="1"] { --ol: -.092em; }
+.ol[data-ol="2"] { --ol: -.032em; }
+.ol[data-ol="3"] { --ol: -.05em; }
+.ol[data-ol="4"] { --ol: -.019em; }
+.ol[data-ol="5"] { --ol: -.077em; }
+.ol[data-ol="6"] { --ol: -.047em; }
+.ol[data-ol="7"] { --ol: -.036em; }
+.ol[data-ol="8"] { --ol: -.065em; }
+.ol[data-ol="9"] { --ol: -.065em; }
+.ol[data-ol="&"] { --ol: -.038em; }
+.ol[data-ol="À"] { --ol: -.018em; }
+.ol[data-ol="Á"] { --ol: -.018em; }
+.ol[data-ol="Â"] { --ol: -.018em; }
+.ol[data-ol="Ä"] { --ol: -.018em; }
+.ol[data-ol="Ç"] { --ol: -.056em; }
+.ol[data-ol="É"] { --ol: -.037em; }
+.ol[data-ol="È"] { --ol: -.037em; }
+.ol[data-ol="Ê"] { --ol: -.037em; }
+.ol[data-ol="Ë"] { --ol: -.037em; }
+.ol[data-ol="Î"] { --ol: -.019em; }
+.ol[data-ol="Ï"] { --ol: -.019em; }
+.ol[data-ol="Ô"] { --ol: -.055em; }
+.ol[data-ol="Ö"] { --ol: -.055em; }
+.ol[data-ol="Ù"] { --ol: -.024em; }
+.ol[data-ol="Û"] { --ol: -.024em; }
+.ol[data-ol="Ü"] { --ol: -.024em; }
+.ol[data-ol="Œ"] { --ol: -.055em; }
+.ol[data-ol="А"] { --ol: -.018em; }
+.ol[data-ol="Б"] { --ol: -.037em; }
+.ol[data-ol="В"] { --ol: -.019em; }
+.ol[data-ol="Г"] { --ol: -.019em; }
+.ol[data-ol="Д"] { --ol: -.025em; }
+.ol[data-ol="Е"] { --ol: -.037em; }
+.ol[data-ol="Ё"] { --ol: -.037em; }
+.ol[data-ol="Ж"] { --ol: -.018em; }
+.ol[data-ol="З"] { --ol: -.035em; }
+.ol[data-ol="И"] { --ol: -.037em; }
+.ol[data-ol="Й"] { --ol: -.037em; }
+.ol[data-ol="К"] { --ol: -.031em; }
+.ol[data-ol="Л"] { --ol: -.025em; }
+.ol[data-ol="М"] { --ol: -.019em; }
+.ol[data-ol="Н"] { --ol: -.037em; }
+.ol[data-ol="О"] { --ol: -.055em; }
+.ol[data-ol="П"] { --ol: -.037em; }
+.ol[data-ol="Р"] { --ol: -.024em; }
+.ol[data-ol="С"] { --ol: -.056em; }
+.ol[data-ol="Т"] { --ol: -.047em; }
+.ol[data-ol="У"] { --ol: -.014em; }
+.ol[data-ol="Ф"] { --ol: -.05em; }
+.ol[data-ol="Х"] { --ol: -.015em; }
+.ol[data-ol="Ц"] { --ol: -.019em; }
+.ol[data-ol="Ч"] { --ol: -.016em; }
+.ol[data-ol="Ш"] { --ol: -.019em; }
+.ol[data-ol="Щ"] { --ol: -.019em; }
+.ol[data-ol="Э"] { --ol: -.065em; }
+.ol[data-ol="Ю"] { --ol: -.037em; }
+.ol[data-ol="Я"] { --ol: -.008em; }
+.ol[data-ol="а"] { --ol: -.037em; }
+.ol[data-ol="б"] { --ol: -.04em; }
+.ol[data-ol="в"] { --ol: -.024em; }
+.ol[data-ol="г"] { --ol: -.027em; }
+.ol[data-ol="д"] { --ol: -.002em; }
+.ol[data-ol="е"] { --ol: -.03em; }
+.ol[data-ol="ж"] { --ol: -.015em; }
+.ol[data-ol="з"] { --ol: -.045em; }
+.ol[data-ol="и"] { --ol: -.025em; }
+.ol[data-ol="й"] { --ol: -.025em; }
+.ol[data-ol="к"] { --ol: -.024em; }
+.ol[data-ol="л"] { --ol: -.002em; }
+.ol[data-ol="м"] { --ol: -.012em; }
+.ol[data-ol="н"] { --ol: -.024em; }
+.ol[data-ol="о"] { --ol: -.035em; }
+.ol[data-ol="п"] { --ol: -.024em; }
+.ol[data-ol="р"] { --ol: -.031em; }
+.ol[data-ol="с"] { --ol: -.035em; }
+.ol[data-ol="т"] { --ol: -.01em; }
+.ol[data-ol="у"] { --ol: -.005em; }
+.ol[data-ol="ф"] { --ol: -.035em; }
+.ol[data-ol="х"] { --ol: -.01em; }
+.ol[data-ol="ц"] { --ol: -.031em; }
+.ol[data-ol="ч"] { --ol: -.007em; }
+.ol[data-ol="ш"] { --ol: -.024em; }
+.ol[data-ol="щ"] { --ol: -.024em; }
+.ol[data-ol="э"] { --ol: -.04em; }
+.ol[data-ol="ю"] { --ol: -.024em; }
+.ol[data-ol="я"] { --ol: .015em; }
+.ol[data-ol="A"][data-ol-i] { --ol: .04em; }
+.ol[data-ol="B"][data-ol-i] { --ol: .02em; }
+.ol[data-ol="C"][data-ol-i] { --ol: -.088em; }
+.ol[data-ol="D"][data-ol-i] { --ol: .004em; }
+.ol[data-ol="E"][data-ol-i] { --ol: .032em; }
+.ol[data-ol="F"][data-ol-i] { --ol: .01em; }
+.ol[data-ol="G"][data-ol-i] { --ol: -.091em; }
+.ol[data-ol="H"][data-ol-i] { --ol: .02em; }
+.ol[data-ol="I"][data-ol-i] { --ol: .02em; }
+.ol[data-ol="J"][data-ol-i] { --ol: -.065em; }
+.ol[data-ol="K"][data-ol-i] { --ol: .017em; }
+.ol[data-ol="L"][data-ol-i] { --ol: .02em; }
+.ol[data-ol="M"][data-ol-i] { --ol: .05em; }
+.ol[data-ol="N"][data-ol-i] { --ol: .008em; }
+.ol[data-ol="O"][data-ol-i] { --ol: -.088em; }
+.ol[data-ol="P"][data-ol-i] { --ol: -.001em; }
+.ol[data-ol="Q"][data-ol-i] { --ol: -.089em; }
+.ol[data-ol="R"][data-ol-i] { --ol: -.003em; }
+.ol[data-ol="S"][data-ol-i] { --ol: .004em; }
+.ol[data-ol="T"][data-ol-i] { --ol: -.138em; }
+.ol[data-ol="U"][data-ol-i] { --ol: -.107em; }
+.ol[data-ol="V"][data-ol-i] { --ol: -.185em; }
+.ol[data-ol="W"][data-ol-i] { --ol: -.188em; }
+.ol[data-ol="X"][data-ol-i] { --ol: .041em; }
+.ol[data-ol="Y"][data-ol-i] { --ol: -.119em; }
+.ol[data-ol="Z"][data-ol-i] { --ol: .019em; }
+.ol[data-ol="a"][data-ol-i] { --ol: .006em; }
+.ol[data-ol="b"][data-ol-i] { --ol: -.051em; }
+.ol[data-ol="c"][data-ol-i] { --ol: -.015em; }
+.ol[data-ol="d"][data-ol-i] { --ol: -.005em; }
+.ol[data-ol="e"][data-ol-i] { --ol: -.014em; }
+.ol[data-ol="f"][data-ol-i] { --ol: -.061em; }
+.ol[data-ol="g"][data-ol-i] { --ol: -.055em; }
+.ol[data-ol="h"][data-ol-i] { --ol: -.039em; }
+.ol[data-ol="i"][data-ol-i] { --ol: -.027em; }
+.ol[data-ol="j"][data-ol-i] { --ol: -.047em; }
+.ol[data-ol="k"][data-ol-i] { --ol: -.016em; }
+.ol[data-ol="l"][data-ol-i] { --ol: -.011em; }
+.ol[data-ol="m"][data-ol-i] { --ol: -.057em; }
+.ol[data-ol="n"][data-ol-i] { --ol: -.036em; }
+.ol[data-ol="o"][data-ol-i] { --ol: -.017em; }
+.ol[data-ol="p"][data-ol-i] { --ol: -.04em; }
+.ol[data-ol="q"][data-ol-i] { --ol: -.001em; }
+.ol[data-ol="r"][data-ol-i] { --ol: -.035em; }
+.ol[data-ol="s"][data-ol-i] { --ol: .028em; }
+.ol[data-ol="t"][data-ol-i] { --ol: -.023em; }
+.ol[data-ol="u"][data-ol-i] { --ol: -.023em; }
+.ol[data-ol="v"][data-ol-i] { --ol: -.047em; }
+.ol[data-ol="w"][data-ol-i] { --ol: -.05em; }
+.ol[data-ol="x"][data-ol-i] { --ol: .017em; }
+.ol[data-ol="y"][data-ol-i] { --ol: -.042em; }
+.ol[data-ol="z"][data-ol-i] { --ol: -.001em; }
+.ol[data-ol="А"][data-ol-i] { --ol: .04em; }
+.ol[data-ol="Б"][data-ol-i] { --ol: .02em; }
+.ol[data-ol="В"][data-ol-i] { --ol: .02em; }
+.ol[data-ol="Г"][data-ol-i] { --ol: .02em; }
+.ol[data-ol="Д"][data-ol-i] { --ol: .027em; }
+.ol[data-ol="Е"][data-ol-i] { --ol: .032em; }
+.ol[data-ol="Ж"][data-ol-i] { --ol: .051em; }
+.ol[data-ol="З"][data-ol-i] { --ol: -.028em; }
+.ol[data-ol="И"][data-ol-i] { --ol: .02em; }
+.ol[data-ol="К"][data-ol-i] { --ol: .02em; }
+.ol[data-ol="Л"][data-ol-i] { --ol: .021em; }
+.ol[data-ol="М"][data-ol-i] { --ol: .05em; }
+.ol[data-ol="Н"][data-ol-i] { --ol: .02em; }
+.ol[data-ol="О"][data-ol-i] { --ol: -.088em; }
+.ol[data-ol="П"][data-ol-i] { --ol: .02em; }
+.ol[data-ol="Р"][data-ol-i] { --ol: -.001em; }
+.ol[data-ol="С"][data-ol-i] { --ol: -.088em; }
+.ol[data-ol="Т"][data-ol-i] { --ol: -.138em; }
+.ol[data-ol="У"][data-ol-i] { --ol: -.052em; }
+.ol[data-ol="Ф"][data-ol-i] { --ol: -.086em; }
+.ol[data-ol="Х"][data-ol-i] { --ol: .041em; }
+.ol[data-ol="Ц"][data-ol-i] { --ol: .009em; }
+.ol[data-ol="Ч"][data-ol-i] { --ol: -.142em; }
+.ol[data-ol="Ш"][data-ol-i] { --ol: .009em; }
+.ol[data-ol="Э"][data-ol-i] { --ol: -.029em; }
+.ol[data-ol="Ю"][data-ol-i] { --ol: .02em; }
+.ol[data-ol="Я"][data-ol-i] { --ol: .041em; }
+/* END generated optical margins */

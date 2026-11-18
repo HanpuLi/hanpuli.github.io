@@ -291,23 +291,30 @@ try {
     failures.push(`Selected language shifts navigation geometry: ${JSON.stringify(languageGeometry)}`);
   }
   await open(page, '/zh-hans/', 1440);
-  const hansGlyph = await page.locator('.language-nav [lang="zh-Hans"] .language-short').evaluate((element) => ({
-    top: getComputedStyle(element).top,
-    linkHeight: element.closest('a, .current').getBoundingClientRect().height,
-  }));
-  if (hansGlyph.top !== '-1px' || hansGlyph.linkHeight < 44) {
+  const hansGlyph = await page.evaluate(() => {
+    const short = (lang) => document.querySelector(`.language-nav [lang="${lang}"] .language-short`);
+    const hans = short('zh-Hans');
+    return { top: getComputedStyle(hans).top, hantTop: getComputedStyle(short('zh-Hant-HK')).top, linkHeight: hans.closest('a, .current').getBoundingClientRect().height };
+  });
+  if (hansGlyph.top !== hansGlyph.hantTop || hansGlyph.linkHeight < 44) {
     failures.push(`ZH-Hans language glyph/click target: ${JSON.stringify(hansGlyph)}`);
   }
 
   const ciContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
   const ciPage = await ciContext.newPage();
   await ciPage.goto(base + '/', { waitUntil: 'load' });
-  const serifCompensation = await ciPage.locator('#ci-heading').evaluate((element) => getComputedStyle(element).marginInlineStart);
+  // Optical left margins (tools/optical_margins.py) apply to EB Garamond only.
+  const opticalShift = (element) => {
+    const style = getComputedStyle(element);
+    return { tagged: element.classList.contains('ol'), translate: style.translate, indent: style.textIndent };
+  };
+  const serifCompensation = await ciPage.locator('#ci-heading').evaluate(opticalShift);
   await ciPage.locator('.reading-tools summary').click();
   await ciPage.locator('[data-reading-pref="sans"]').check();
-  const sansCompensation = await ciPage.locator('#ci-heading').evaluate((element) => getComputedStyle(element).marginInlineStart);
-  if (parseFloat(serifCompensation) >= -1 || parseFloat(sansCompensation) !== 0) {
-    failures.push(`EN Ci optical correction should apply to Garamond only: serif=${serifCompensation}, sans=${sansCompensation}`);
+  const sansCompensation = await ciPage.locator('#ci-heading').evaluate(opticalShift);
+  if (!serifCompensation.tagged || !(parseFloat(serifCompensation.translate) < -1) ||
+      sansCompensation.translate !== 'none' || parseFloat(sansCompensation.indent) !== 0) {
+    failures.push(`EN section heading optical margin should apply to Garamond only: serif=${JSON.stringify(serifCompensation)}, sans=${JSON.stringify(sansCompensation)}`);
   }
   await ciPage.goto(base + '/poetry-voucher/', { waitUntil: 'load' });
   const overviewSansCorrection = await ciPage.locator('.pv-heading h1 em').evaluate((element) => getComputedStyle(element).insetInlineStart);

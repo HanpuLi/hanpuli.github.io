@@ -390,6 +390,7 @@ class Pages:
                     work=next(w for w in self.lib.works.values() if w['route']==route)
                     rendered=self.work_page(work['id'],locale,copy)
                 path=self.base.ROOT/self.lib.path(route,locale).strip('/')/'index.html'
+                rendered=self.base.optical_tag(rendered)
                 if not rendered.endswith('\n'): rendered+='\n'
                 if not path.exists() or path.read_text(encoding='utf-8')!=rendered:
                     changed.append(path)
