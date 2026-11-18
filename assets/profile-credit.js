@@ -48,7 +48,8 @@
     if (educationSlot && typeof data.education === "string" && data.education) {
       const education = document.createElement("p");
       education.dataset.regionalEducation = "";
-      education.textContent = data.education;
+      // Bind each separator to the item before it, so no line starts with one.
+      education.textContent = data.education.replace(/ · /g, "\u00a0· ").replace(/・/g, "・\u2060");
       educationSlot.replaceWith(education);
     }
 

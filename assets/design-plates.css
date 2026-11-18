@@ -54,6 +54,8 @@
 .plate-cell-ruler span{border-inline-start:1px solid #d6c7b5;text-align:center;font:9px/2.1 var(--mono);color:#704b2e}
 .plate-glyph-detail{display:grid;grid-template-columns:132px minmax(0,1fr);gap:2.5rem;align-items:center;max-inline-size:54rem;margin:2.5rem auto}
 .plate-glyph svg{inline-size:132px;block-size:auto}
+/* The 5x7 cells are printer black on paper; in dark mode keep the paper behind them. */
+@media (prefers-color-scheme:dark){.plate-glyph svg{background:#fff}}
 .plate-glyph-detail .pixel-proof{max-inline-size:768px}
 .plate-font-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem;margin:2rem 0}
 .plate-font-pair>div{min-inline-size:0}.plate-font-pair .pixel-proof{border-block:1px solid var(--line)!important;padding-block:1rem}

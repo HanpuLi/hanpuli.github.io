@@ -6,7 +6,7 @@
       "views": {
         "390": {
           "width": 349.984375,
-          "height": 615.8125,
+          "height": 602.171875,
           "viewport": 390,
           "gap": 12,
           "columns": [
@@ -55,7 +55,7 @@
               "x": 44,
               "y": 499.46875,
               "w": 305.984375,
-              "h": 94.75,
+              "h": 81.109375,
               "column": "2 / 13"
             }
           ],
@@ -706,7 +706,7 @@
       "views": {
         "390": {
           "width": 349.984375,
-          "height": 642.359375,
+          "height": 610.53125,
           "viewport": 390,
           "gap": 12,
           "columns": [
@@ -755,7 +755,7 @@
               "x": 44,
               "y": 526.015625,
               "w": 305.984375,
-              "h": 94.75,
+              "h": 62.921875,
               "column": "2 / 13"
             }
           ],
@@ -872,7 +872,7 @@
       "views": {
         "390": {
           "width": 349.984375,
-          "height": 717.0625,
+          "height": 648.859375,
           "viewport": 390,
           "gap": 12,
           "columns": [
@@ -921,7 +921,7 @@
               "x": 44,
               "y": 546.15625,
               "w": 305.984375,
-              "h": 149.3125,
+              "h": 81.109375,
               "column": "2 / 13"
             }
           ],
@@ -1038,7 +1038,7 @@
       "views": {
         "390": {
           "width": 349.984375,
-          "height": 996.265625,
+          "height": 709.8125,
           "viewport": 390,
           "gap": 12,
           "columns": [
@@ -1087,7 +1087,7 @@
               "x": 44,
               "y": 607.109375,
               "w": 305.984375,
-              "h": 367.5625,
+              "h": 81.109375,
               "column": "2 / 13"
             }
           ],
@@ -1325,8 +1325,8 @@
       },
       "publication": {
         "schema": 1,
-        "renderer": "pv-render-c4c719e0cdef9f71",
-        "renderer_sha256": "c4c719e0cdef9f7155d0c4cba884a6f0365fcc72dbb8c920d24eeb2ced90d9f3",
+        "renderer": "pv-render-04c58c428c4b242c",
+        "renderer_sha256": "04c58c428c4b242c15de12300534b48a5596e6f1c925290433a4553fa6669197",
         "catalogue_sha256": "157eebc7881c75bf041e06e3c6eab1ae10fdaeefb635ac45d3f91d4cd7ef152b",
         "files": {
           "assets/fonts/courier-prime-latin-400.woff2": "21bf7ff8d9e067443a3fe0832ee8e4364faee9ace1fb0ec3e625cd09d231802f",
@@ -1349,16 +1349,16 @@
           "assets/fonts/shippori-mincho-subset.woff2": "3bab7667784ef752a4863e3f349ce51ad3ef38926c1f9ce3abc605c3d97b187c",
           "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
           "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
-          "content/poetry-voucher-app/accessibility.css": "bae3f01375e791c836f606f1e32d16085413962177500c4e5ab3fe07d6ca1a14",
+          "content/poetry-voucher-app/accessibility.css": "5c9534b964a9f5508417afef499c6bb9acfbdfe2885605787dc04fe9dccc39ef",
           "content/poetry-voucher-app/gallery.js": "d09792e10524e95bbb1b5500c639e9fd0d20b8786b040bc321e2a242a72a26b8",
           "content/poetry-voucher-app/h10-print.js": "0608cb1d261f9444b5e19b4f397477ee4a15c8bdc3644cd249f7d47acde94f79",
           "content/poetry-voucher-app/i18n.js": "43f87866fbef971ec3341ecebda5ddd3a777935520b6ae691ce39374364a1d85",
           "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
           "content/poetry-voucher-app/order-reading.js": "bad98af82024d515e66ac811c7a5c1f5c17c0f2c88347e4e076668238fbea186",
-          "content/poetry-voucher-app/shop-copy.js": "4c9decc85032521e972e7b305b45a58759d8b842cb3b88f3c9f36779e785fb03",
-          "content/poetry-voucher-app/shop.css": "b1a9b5274f01a2b2a04cdebfe60678c52695ea844abd7cd8a8e290f9b36d568b",
+          "content/poetry-voucher-app/shop-copy.js": "ce17c9e70f22cf539ce062162aa902b84d6522e5b1105b17b9dc8d1f7cc40f18",
+          "content/poetry-voucher-app/shop.css": "bdcf71090fa206a79c130054094ba6a77f1b8608ffb9ec8db8380e69eba6a520",
           "content/poetry-voucher-app/shop.js": "d8274dcbd871c9206c5d338ee3cef4f1e4249f5c661644b1a7b45891ae7b96b9",
-          "content/poetry-voucher-app/studio.css": "76f44f5d27256b07d271af18deaddb815fa11ec4f693c3799c51ea9f3843736d",
+          "content/poetry-voucher-app/studio.css": "a251a70d0f0fce5d566213f57105fd6ae46ad9d990df3c423f541ebfae6964b2",
           "templates/poetry-voucher-shop.html": "6729bb67f11bccb2b0b71d04c8565eeee4b4f04007bfaae0fad992243358860b"
         },
         "textSnapshotSha256": "f6e24f6ce9a034b4c44080f5784966afce008f97fafb74f9fa76617b3ab148b8"
@@ -2008,7 +2008,7 @@
     "totalY": 462
   },
   "inputs": {
-    "assets/site.css": "f2d26da569d175f7845643c5c66694824e9ab60f8042692ab3423511da83da0b",
+    "assets/site.css": "2cf15a14342725e2f98c589c9422059c0381c18d9a1f253f9d6f4ad4ebf92963",
     "content/poetry-voucher-app/gallery.js": "d09792e10524e95bbb1b5500c639e9fd0d20b8786b040bc321e2a242a72a26b8",
     "content/poetry-voucher-app/shop.js": "d8274dcbd871c9206c5d338ee3cef4f1e4249f5c661644b1a7b45891ae7b96b9",
     "content/poetry-voucher-app/order-core.js": "f9a8fb466e9464b76789fe64faff4b1899627b2eb3f0348829c918dedacbfa50",
@@ -2037,12 +2037,12 @@
     "assets/fonts/shippori-mincho-subset.woff2": "3bab7667784ef752a4863e3f349ce51ad3ef38926c1f9ce3abc605c3d97b187c",
     "assets/fonts/site-mono-symbols.woff2": "fadbd0f4d13c2c485e8e6024af69843425886bfc2037dceedbcabfe49cc5c391",
     "assets/fonts/site-serif-symbols.woff2": "c3dd102ffc0fcc9a88312c7fb2a1664bee53fb4e17df0f59d6655688e90cf74c",
-    "index.html": "682b017f8a4d318eac3df9ef5b5fc9ce5e2441410f495278c106a33c290c5505",
-    "zh/index.html": "a5577f8f6d2b776850164e0e777f64eda66357557168ba7ba5c77e77796dbb7f",
-    "zh-hans/index.html": "2519e2f78a8dbfab654342a9574306f651ce6ce2b49f18091b52b956696bd5f7",
-    "ja/index.html": "76577a74ea0ea8b283b294bb3075a744a0bc79bf80698e81cc5ca2c71caf69bb",
-    "de/index.html": "638bbfaf44e34584abdbf7f0ab7f4838aa1dc6eec7cb6cb89046494d007bd576",
-    "fr/index.html": "12ad7a9b8c2ee80ff201df7fe1afae7be28f46322914699e737dcdd20d9869cc",
-    "ru/index.html": "b23dbcbc90570d7032ba10ca8443510b25e44eb897b938c2589764f8b9e812bf"
+    "index.html": "a34b080f1c2be0cdc9df00043236129d99417cca7c09f404e1322536dcb532d4",
+    "zh/index.html": "635f84a82700cc02fbbd8906df5e40520b8e4450305a6cb8dd3f35868d02e147",
+    "zh-hans/index.html": "f544eb24d058a593550254272627136deb142687e1bb2887b56edb02fd7d579d",
+    "ja/index.html": "09d011d3cec395eca557973b81902748a71877168193b98433cf913c7d7172d9",
+    "de/index.html": "34130a661e838da12d8055345871c304d174f17daca0992d2139a9ae95b9a012",
+    "fr/index.html": "7421fc6f6b23e539d3be8404e12afd28481195dc92eb730c474564795b38a3b0",
+    "ru/index.html": "0469278a79c690c1af04fc8048b349fe62678ef6b6aa3f4940093bc648bf93dd"
   }
 }

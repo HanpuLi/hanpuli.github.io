@@ -15,7 +15,7 @@
 .reading-panel legend{margin-bottom:6px;font-size:18px;font-weight:700;line-height:1.3}
 .reading-description{margin-bottom:12px;color:var(--muted);font-size:15px;line-height:1.5}
 .reading-option{display:flex;min-height:44px;align-items:center;gap:12px;padding:7px 0;cursor:pointer}
-.reading-option input{flex:0 0 auto;width:20px;height:20px;accent-color:var(--accent)}
+.reading-option input{flex:0 0 auto;width:20px;height:20px;accent-color:var(--ink)}
 .reading-option span{flex:1 1 auto}
 .reading-reset{min-width:88px;min-height:44px;margin-top:12px;padding:8px 14px;border:1px solid var(--muted);background:var(--panel);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
 .reading-tools summary:hover,.reading-reset:hover{border-color:var(--accent)}
@@ -32,6 +32,8 @@ html[data-reading-simple] .shop-page .product-grid,html[data-reading-simple] .st
 html[data-reading-simple] .shop-page .product-card:nth-child(n){border-inline-start:0;padding-inline:0}
 @media(prefers-color-scheme:light){html[data-reading-contrast] :is(body.shop-page,body.studio-page){--ink:#000;--muted:#202020;--line:#707070;--accent:#701b0d;--bg:#fff;--panel:#f3f3f3;--field:#fff}}
 @media(prefers-color-scheme:dark){html[data-reading-contrast] :is(body.shop-page,body.studio-page){--ink:#fff;--muted:#e0e0e0;--line:#aaa;--accent:#ff9a7f;--bg:#000;--panel:#181818;--field:#080808}}
+@media(prefers-contrast:more) and (prefers-color-scheme:light){:is(body.shop-page,body.studio-page){--ink:#000;--muted:#202020;--line:#707070;--accent:#701b0d;--bg:#fff;--panel:#f3f3f3;--field:#fff}}
+@media(prefers-contrast:more) and (prefers-color-scheme:dark){:is(body.shop-page,body.studio-page){--ink:#fff;--muted:#e0e0e0;--line:#aaa;--accent:#ff9a7f;--bg:#000;--panel:#181818;--field:#080808}}
 @media print{.reading-tools{display:none!important}}
 
 @font-face{font-family:OpenDyslexic;src:url('/assets/fonts/opendyslexic-regular.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}

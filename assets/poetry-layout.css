@@ -2,7 +2,8 @@
 .poetry-layout-controls[hidden] { display:none; }
 .poetry-layout-controls > span { margin-inline-end:.75rem; }
 .poetry-layout-controls button { position:relative; min-height:44px; padding:.6rem .625rem; border:0; background:transparent; color:var(--muted); font:inherit; cursor:pointer; }
-.poetry-layout-controls button::after { content:""; position:absolute; inset-inline:.625rem; bottom:.4rem; height:1px; background:currentColor; opacity:0; }
+/* A border, not a background: forced colours keep borders, so the pressed layout stays visible. */
+.poetry-layout-controls button::after { content:""; position:absolute; inset-inline:.625rem; bottom:.4rem; height:0; border-top:1px solid currentColor; opacity:0; }
 .poetry-layout-controls button[aria-pressed="true"] { color:var(--ink); }
 .poetry-layout-controls button[aria-pressed="true"]::after { opacity:1; }
 .poetry-layout-controls button:hover { color:var(--ink); }
@@ -59,6 +60,7 @@ html[data-poetry-layout="vertical"] .locale-zh.poetry-single .poetry-intro > h1 
 .poetry-layout-controls .poetry-rhyme-toggle { margin-inline-start:.75rem; }
 .poetry-layout-controls .poetry-rhyme-toggle[hidden] { display:none; }
 .poetry-rhyme-toggle::before { content:""; display:inline-block; width:.42em; height:.42em; margin-inline-end:.5em; border-radius:50%; background:var(--accent); vertical-align:.1em; opacity:.4; }
+.poetry-rhyme-toggle:is(:lang(zh-Hant), :lang(ja))::before { vertical-align:.19em; }
 .poetry-rhyme-toggle[aria-pressed="true"]::before { opacity:1; }
 .poem-version.source .poetry-end { color:var(--accent); }
 :root[data-poetry-rhymes="on"] .poem-version.source .poetry-rhyme {
@@ -70,3 +72,9 @@ html[data-poetry-layout="vertical"] .locale-zh.poetry-single .poetry-intro > h1 
   .poem-version.source .poetry-end { color:CanvasText; }
   :root[data-poetry-rhymes="on"] .poem-version.source .poetry-rhyme { -webkit-text-emphasis-color:CanvasText; text-emphasis-color:CanvasText; }
 }
+
+/* Title and lines form one centred block with a shared left edge; the lines themselves stay uncentred. */
+.poetry-page .poem-version.translation:has(> :is(h2,h3) + .body),
+html:not([data-poetry-layout="vertical"]) .poetry-page .poem-version.source:has(> :is(h2,h3) + .body) { display:grid; grid-template-columns:minmax(0,max-content); justify-content:center; }
+.poetry-page .poem-version.translation:has(> :is(h2,h3) + .body) > .body,
+html:not([data-poetry-layout="vertical"]) .poetry-page .poem-version.source:has(> :is(h2,h3) + .body) > .body { width:auto; margin-inline:0; }

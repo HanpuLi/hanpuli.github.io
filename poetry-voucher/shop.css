@@ -178,8 +178,8 @@ html:has(body.edition-page){scroll-padding-bottom:calc(var(--edition-bar,84px) +
 .edition-page #product-editor .proof-toolbar h2{position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap}
 .edition-page #product-editor #preview-status:not(.is-error){position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap;margin:0}
 .edition-page #product-editor #preview-status.is-error{margin:0 0 12px;font-size:calc(13px*var(--edition-scale))}
-.edition-page #product-editor .view-switch{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
-.edition-page #product-editor .view-switch button{min-width:0;min-height:44px;padding:6px 4px;font:calc(12px*var(--edition-scale))/1.35 var(--mono);overflow-wrap:anywhere;text-wrap:balance}
+.edition-page #product-editor .view-switch{display:flex;flex-wrap:wrap;gap:6px}
+.edition-page #product-editor .view-switch button{flex:1 1 0;min-width:min-content;min-height:44px;padding:6px 4px;font:calc(12px*var(--edition-scale))/1.35 var(--mono);overflow-wrap:break-word;text-wrap:balance}
 :lang(zh) .edition-page #product-editor .view-switch button,:lang(ja) .edition-page #product-editor .view-switch button{font-size:calc(13px*var(--edition-scale))}
 /* The paper is the page: natural length, no inner scroll box, no scroll trap. */
 .edition-page #product-editor .proof-desk{display:block!important;min-height:0;max-height:none;overflow:visible;padding:28px;border:1px solid var(--line);background:var(--panel)}
@@ -441,3 +441,10 @@ html:is([lang^="zh"],[lang="ja"]) .shop-page{--lh-title:1.5;--lh-body:1.85;--lh-
 .product-excerpt{white-space:normal;line-height:var(--lh-body)}
 .product-excerpt .excerpt-line{display:block;padding-inline-start:1em;text-indent:-1em}
 .product-excerpt .excerpt-line+.excerpt-line{margin-top:.15em}
+/* Baselines: labels and their values share a line (they rode 1-8px apart under align-items:start/center). */
+.total-line,.line-specs div,.checkout-line,.order-lines li{align-items:baseline}
+.catalogue-tools{align-items:baseline}.catalogue-tools label{margin:0}
+.dialog-heading{align-items:baseline}.dialog-heading>.dialog-close{margin-block-start:-1.1667em}
+.edition-page #product-editor :is(.option-card,.translation-grid label):has(.option-price:empty) .option-name{grid-row:1 / span 2}
+/* The shop main already carries the side inset; the order section must not add a second one. */
+.shop-page main#shop .order-section{padding-inline:0}

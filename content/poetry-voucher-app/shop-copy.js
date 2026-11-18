@@ -59,7 +59,7 @@ editorDeck:['Choose the poem, configure the edition, take one with you.','選詩
 stageContent:['CONTENT','內容','内容','内容','INHALT','CONTENU','СОДЕРЖАНИЕ'],
 stageLayout:['EDITION','版本','版本','版','AUSGABE','ÉDITION','ИЗДАНИЕ'],
 stageProof:['PROOF','校樣','校样','校正','PROOF','ÉPREUVE','ПРОБА'],
-viewPair:['Receipt + voucher','小票＋詩券','小票＋诗券','レシート＋詩券','Kassenbon + Gedichtbon','Ticket + bon','Чек + талон'],
+viewPair:['Receipt\u00a0+ voucher','小票＋詩券','小票＋诗券','レシート＋詩券','Kassenbon\u00a0+ Gedichtbon','Ticket\u00a0+ bon','Чек\u00a0+ талон'],
 viewFull:['Full strip','連續紙條','连续纸条','連続紙','Gesamter Streifen','Bande entière','Полная лента'],
 viewText:['Read text','讀文字','读文字','テキストを読む','Text lesen','Lire le texte','Читать текст'],
 takeWork:['Take the edition','帶走版本','带走版本','版を持ち帰る','Ausgabe mitnehmen','Emporter l’édition','Забрать издание'],

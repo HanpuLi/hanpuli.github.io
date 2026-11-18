@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any
 
 from first_love_public_pages import build as build_first_love_pages, path_for as first_love_page_path
+from optical_margins import tag as optical_tag
 from design_plates import site_html as design_site, voucher_html as design_voucher, specimen_css
 from editorial_notes import sections_html as editorial_sections, references_html as editorial_references, project_toc
 from poetry_library import Library, materialize as materialize_poetry
@@ -719,7 +720,8 @@ def contexts_sections_html(locale_id: str) -> str:
                 '        <article class="contexts-record">\n'
                 f'          <p class="contexts-date">{html.escape(record["date"])}</p>\n'
                 '          <div class="contexts-record-main">\n'
-                f'            <h3>{html.escape(record["title"])}</h3>\n'
+                # Bind each ' / ' separator to the name before it, so no line starts with '/'.
+            f'            <h3>{html.escape(record["title"]).replace(" / ", chr(0xA0) + "/ ")}</h3>\n'
                 f'            <p class="contexts-detail">{html.escape(record["detail"])}</p>\n'
                 f'{credit}'
                 f'{link}'
@@ -844,8 +846,8 @@ def notfound_locale_template(locale_id: str) -> str:
         f'      <div class="page-languages" data-label="{language_nav_label}" data-notfound-languages>\n'
         f'        {language_switcher(locale_id, "404")}\n'
         '      </div>\n'
-        f'      {reading_tools(locale, inert=True)}\n'
         '    </div>\n'
+        f'    {reading_tools(locale, inert=True)}\n'
         '  </div>\n'
         '  <div class="notfound-shell" data-notfound-main tabindex="-1">\n'
         '    <p class="notfound-code" aria-hidden="true">404</p>\n'
@@ -1281,7 +1283,7 @@ def build(check: bool = False) -> list[Path]:
             target = output_path(lid, page)
             if not check:
                 target.parent.mkdir(parents=True, exist_ok=True)
-            rendered = render_page(lid, page, locale)
+            rendered = optical_tag(render_page(lid, page, locale))
             if not rendered.endswith("\n"):
                 rendered += "\n"
             old = target.read_text(encoding="utf-8") if target.exists() else None
@@ -1363,6 +1365,7 @@ def build(check: bool = False) -> list[Path]:
                     "ESSAY_CANONICAL": html.escape(essay_url, quote=True),
                 },
             )
+            essay_rendered = optical_tag(essay_rendered)
             if not essay_rendered.endswith("\n"):
                 essay_rendered += "\n"
             old_essay = essay_target.read_text(encoding="utf-8") if essay_target.exists() else None
@@ -1374,7 +1377,7 @@ def build(check: bool = False) -> list[Path]:
     summer_template = (TEMPLATES / "summer-poem.html").read_text(encoding="utf-8")
     for lid, locale in locales.items():
         target = summer_output_path(lid)
-        content = render_summer_page(lid, locale, summer_template)
+        content = optical_tag(render_summer_page(lid, locale, summer_template))
         if not content.endswith("\n"):
             content += "\n"
         old = target.read_text(encoding="utf-8") if target.exists() else None
