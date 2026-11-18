@@ -66,6 +66,10 @@ class Library:
         for work in self.works.values():
             if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', work['id']):
                 raise ValueError('Invalid work slug: ' + work['id'])
+            if work['composed'].get('basis') not in ('work-date', 'collection-date', 'not-later-than'):
+                raise ValueError('Unknown composition-date basis: ' + work['id'])
+            if work['composed'].get('basis') == 'not-later-than' and work['composed']['start'] != work['composed']['end']:
+                raise ValueError('A not-later-than date is a single attested date: ' + work['id'])
             if work['voice'] not in (None, 'jia', 'yi'):
                 raise ValueError('Voice is a narrator, not collection membership')
             if not work['versions']:

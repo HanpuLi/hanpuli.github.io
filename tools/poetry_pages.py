@@ -147,6 +147,13 @@ class Pages:
             links.append(f'<a href="{self.lib.path(group["route"],locale)}">{esc(group["title"][locale])}</a>')
         return '<nav class="poetry-breadcrumbs" aria-label="'+esc(ui['back'])+'">'+'<span aria-hidden="true"> / </span>'.join(links)+'</nav>'
 
+    def dated(self, dates: dict[str, str], locale: str) -> str:
+        """A date range; an undated work shows only the latest date its text is attested by."""
+        value = date_range(dates)
+        if dates.get('basis') == 'not-later-than':
+            value = esc(self.ui[locale]['not_later_than']).replace('{date}', value)
+        return value
+
     def excerpt(self, wid: str, locale: str) -> str:
         tid = self.lib.first_text(wid)
         edition = self.lib.edition(tid,locale) or self.lib.edition(tid,'zh')
@@ -162,7 +169,7 @@ class Pages:
         ui, wid = self.ui[locale], work['id']
         versions = len(work['versions'])
         badge = esc(ui[work['form']]) + (' · '+str(versions)+' '+esc(ui['versions']) if versions>1 else '')
-        return (f'<li class="poetry-catalogue-entry"><div class="poetry-entry-meta">{date_range(work["composed"])}<span>{badge}</span></div>'
+        return (f'<li class="poetry-catalogue-entry"><div class="poetry-entry-meta">{self.dated(work["composed"],locale)}<span>{badge}</span></div>'
                 f'<h3><a href="{self.lib.work_url(wid,locale)}">{esc(self.lib.title(wid,locale))}</a></h3>'
                 + self.excerpt(wid,locale) + '</li>')
 
@@ -186,14 +193,14 @@ class Pages:
         entries += [(w['composed']['start'],w['composed'],self.lib.title(w['id'],locale),self.lib.work_url(w['id'],locale),ui['parts_versions'] if w['id']=='roof-splits' else ui[w['form']]) for w in self.lib.standalone()]
         rows = ['<ol class="poetry-timeline">']
         for _,dates,title,url,label in sorted(entries,key=lambda x:(x[0],x[2])):
-            rows.append('<li><div class="poetry-entry-meta">'+date_range(dates)+f'<span>{esc(label)}</span></div><h2><a href="{url}">{esc(title)}</a></h2></li>')
+            rows.append('<li><div class="poetry-entry-meta">'+self.dated(dates,locale)+f'<span>{esc(label)}</span></div><h2><a href="{url}">{esc(title)}</a></h2></li>')
         rows.append('</ol>')
         return self.shell(route='chronology',locale=locale,copy=copy,heading=ui['by_date'],content='\n'.join(rows),intro='<p>'+esc(ui['original_date'])+'</p>',switcher=self.view_switch(locale,True),page_class='poetry-index')
 
     def metadata(self, work: dict[str, Any], version: dict[str, Any], locale: str) -> str:
         ui = self.ui[locale]
         date_label='collection_date' if work['composed'].get('basis')=='collection-date' else 'original_date'
-        value = esc(ui[date_label])+' '+date_range(work['composed'])
+        value = esc(ui[date_label])+' '+self.dated(work['composed'],locale)
         if version['kind'] in ('revision','draft') and version['date']!=work['composed']['start']:
             value += ' <span aria-hidden="true">·</span> '+esc(ui['revision_date'])+' '+date_span(version['date'])
         return '<p class="poetry-dates">'+value+'</p>'

@@ -662,6 +662,42 @@
         "pusaman-20261021-text"
       ],
       "related": []
+    },
+    {
+      "id": "linjiangxianyin-2018",
+      "kind": "poem",
+      "form": "ci",
+      "composed": {
+        "start": "2018",
+        "end": "2018",
+        "basis": "work-date"
+      },
+      "route": "linjiangxianyin-2018",
+      "fragment": "",
+      "voice": null,
+      "authorial_label": null,
+      "versions": [
+        "linjiangxianyin-2018-revised-202611"
+      ],
+      "related": []
+    },
+    {
+      "id": "linjiangxian-chongzuo",
+      "kind": "poem",
+      "form": "ci",
+      "composed": {
+        "start": "2026-06-29",
+        "end": "2026-06-29",
+        "basis": "not-later-than"
+      },
+      "route": "linjiangxian-chongzuo",
+      "fragment": "",
+      "voice": null,
+      "authorial_label": null,
+      "versions": [
+        "linjiangxian-chongzuo-revised-202611"
+      ],
+      "related": []
     }
   ],
   "versions": [
@@ -1329,6 +1365,44 @@
       },
       "parts": [
         "pusaman-20261021-text"
+      ],
+      "fragment": ""
+    },
+    {
+      "id": "linjiangxianyin-2018-revised-202611",
+      "work": "linjiangxianyin-2018",
+      "date": "2026-11",
+      "kind": "revision",
+      "label": {
+        "en": "Revised November 2026",
+        "zh": "二〇二六年十一月修訂",
+        "zh-hans": "二〇二六年十一月修订",
+        "ja": "2026年11月改稿",
+        "de": "Überarbeitet im November 2026",
+        "fr": "Révision de novembre 2026",
+        "ru": "Редакция ноября 2026 года"
+      },
+      "parts": [
+        "linjiangxianyin-2018-revised-202611"
+      ],
+      "fragment": ""
+    },
+    {
+      "id": "linjiangxian-chongzuo-revised-202611",
+      "work": "linjiangxian-chongzuo",
+      "date": "2026-11",
+      "kind": "revision",
+      "label": {
+        "en": "Revised November 2026",
+        "zh": "二〇二六年十一月修訂",
+        "zh-hans": "二〇二六年十一月修订",
+        "ja": "2026年11月改稿",
+        "de": "Überarbeitet im November 2026",
+        "fr": "Révision de novembre 2026",
+        "ru": "Редакция ноября 2026 года"
+      },
+      "parts": [
+        "linjiangxian-chongzuo-revised-202611"
       ],
       "fragment": ""
     }
@@ -2515,6 +2589,70 @@
         "ru": {
           "title": "На мелодию Pusaman · В манере «Хуацзянь»",
           "body": "У одного туалетного ларца друг другу укладывают облачные волосы в низко спадающие узлы;\nплачущему гриму незачем ждать, пока его размажут настоящие жемчужины.\nЦветной шёлк стягивает осиную талию;\nгубы тронуты красным, оттенок пробуют и подбирают друг другу.\n\nПри людях я опускаю глаза;\nзолотой феникс опускает хохолок и пригибается.\nЛицом к лицу рисуют обе брови;\nпод конец вместе делают шпильку шпилькой цзи."
+        }
+      }
+    },
+    {
+      "id": "linjiangxianyin-2018-revised-202611",
+      "version": "linjiangxianyin-2018-revised-202611",
+      "part": null,
+      "source_date": "二〇一八年作；二〇二六年十一月修訂",
+      "editions": {
+        "zh": {
+          "title": "《臨江仙引》",
+          "body": "滯促，四顧，芳徊路，觸無緣。\n猶思細語平安。\n降露脣邊芷，炭封口中荃。\n憑高念遠，野岸即軒，何處見歐蘭。\n\n納步昌庭回院路，韶華敍意綿綿。\n更話書箋語，碎情尚嗔天。\n當明掙挫一筆，可生兩處華田。"
+        },
+        "en": {
+          "title": "To the tune of Linjiangxian Yin",
+          "body": "Halting, hurried; looking all around; the fragrant path of lingering; every touch, no fated bond.\nStill thinking of the soft words: be safe.\nDew comes down on the angelica at the lips; charcoal seals the fragrant herb in the mouth.\nLeaning from a height, thinking of the far-off; the wild shore for a balcony; where to see Ou Lan.\n\nSteps drawn in at the flourishing court, on the path back into the yard; in the bright years, the heart’s meaning told on and on.\nAnd again, speaking the words on letter paper; shattered feeling still rails at heaven.\nWhen it dawns, one stroke of the pen, wrung from struggle, can grow flowering fields in two places."
+        },
+        "ja": {
+          "title": "臨江仙引の調べ",
+          "body": "滞り、急かされ、あたりを見回す。香る道を行きつ戻りつし、触れるものには縁がない。\n今もなお、「無事で」というささやきを思う。\n唇もとの白芷に露が降り、炭は口のなかの荃を封じる。\n高みに寄りかかって遠くを思う。野の岸がそのまま欄干となる。どこで欧蘭を見られるのだろう。\n\n栄える庭、中庭へ戻る道で、歩みを納める。うるわしい年月に、思いを語ることは綿々と尽きない。\nさらに便箋の言葉を口にする。砕けた情は、なお天をなじる。\n明らむとき、もがいて引く一筆が、二つの場所に花の田を生むことができる。"
+        },
+        "de": {
+          "title": "Nach der Melodie Linjiangxian Yin",
+          "body": "Stockend, gedrängt; nach allen Seiten blickend; der duftende Pfad des Verweilens; jede Berührung ohne Fügung.\nNoch im Sinn die leisen Worte: Bleib behütet.\nTau sinkt herab auf die Engelwurz an den Lippen; Holzkohle versiegelt das Duftkraut im Mund.\nVon der Höhe aus an die Ferne denkend; das wilde Ufer als Veranda; wo Ou Lan zu sehen wäre.\n\nDen Schritt verhalten im prächtigen Hof, auf dem Weg zurück in den Innenhof; in der Blüte der Jahre wird das Empfinden fort und fort erzählt.\nUnd wieder von den Worten auf den Briefbögen gesprochen; zerbrochenes Gefühl grollt noch dem Himmel.\nWenn es dämmert, kann ein einziger Strich, mühsam abgerungen, an zwei Orten blühende Felder hervorbringen."
+        },
+        "fr": {
+          "title": "Sur l’air de Linjiangxian Yin",
+          "body": "Enlisement, hâte ; regard tout alentour ; le chemin parfumé où l’on erre ; à chaque contact, nul lien.\nEncore en pensée les mots murmurés : porte-toi bien.\nLa rosée descend sur l’angélique au bord des lèvres ; le charbon scelle l’herbe odorante dans la bouche.\nDepuis la hauteur, songer au lointain ; la rive sauvage pour balcon ; en quel lieu voir Ou Lan.\n\nLes pas retenus dans la cour florissante, sur le chemin du retour vers l’enclos ; aux belles années, le cœur se raconte sans fin.\nEt dire encore les mots des feuillets de lettres ; le sentiment en éclats en veut toujours au ciel.\nQuand le jour se fait, un seul trait arraché à la lutte peut faire naître des champs de fleurs en deux lieux."
+        },
+        "ru": {
+          "title": "На мелодию Linjiangxian Yin",
+          "body": "Вязнуть, спешить; озираться по сторонам; благоуханная тропа блужданий; чего ни коснёшься, ни с чем не судьба.\nВсё ещё в мыслях тихие слова: береги себя.\nРоса нисходит на ангелику у губ; уголь запечатывает душистую траву во рту.\nС высоты думать о далёком; дикий берег и есть веранда; где взору явится Оу Лань.\n\nШаг сдержан в цветущем дворе, на обратном пути во внутренний двор; в прекрасные годы речь о чувствах льётся без конца.\nИ снова говорить словами писем; разбитое чувство всё ещё сердится на небо.\nКогда забрезжит, один росчерк, выведенный через силу, может взрастить в двух местах цветущие поля."
+        }
+      }
+    },
+    {
+      "id": "linjiangxian-chongzuo-revised-202611",
+      "version": "linjiangxian-chongzuo-revised-202611",
+      "part": null,
+      "source_date": "二〇二六年六月二十九日以前作；二〇二六年十一月修訂",
+      "editions": {
+        "zh": {
+          "title": "《臨江仙 · 重坐舊廊，如昔燃燈，逐跡尋前，竟不復得當時之情》",
+          "body": "舊廊秋夜重燃燭，故時節候相當。\n還移竹椅舊時方。\n燈前獨默坐，待覺夜初長。\n\n逐一重尋前跡處，寒燈秋影秋涼。\n故廊獨倚月微黃。\n只差人一氣，終不似尋常。"
+        },
+        "en": {
+          "title": "To the tune of Linjiangxian · Sitting again in the old corridor; lighting the lamp as before; following the traces in search of the past; and not, after all, finding the feeling of that time again",
+          "body": "In the old corridor, on an autumn night, a candle lit again;\nthe season the same as in former times.\nOnce more the bamboo chair is moved to its old place.\nBefore the lamp, alone, sitting silent,\nwaiting to feel the nights begin to lengthen.\n\nOne by one, again seeking where the earlier traces were:\ncold lamp, autumn shadow, autumn chill.\nIn the corridor of former days, leaning alone; the moon faintly yellow.\nShort only by someone’s single breath,\nin the end it is not like the ordinary."
+        },
+        "ja": {
+          "title": "臨江仙の調べ · ふたたび古い廊下に座り、昔のように灯をともし、跡をたどって以前を探したが、ついにあのときの気持ちは戻らなかった",
+          "body": "古い廊下で、秋の夜、ふたたび蝋燭をともす。\n季節は、かつてのころと同じ。\nまた竹の椅子を、以前の場所へ移す。\n灯の前で、ひとり黙って座り、\n夜が長くなりはじめたと感じるのを待つ。\n\nひとつひとつ、前の跡のあったところを、ふたたびたずねる。\n寒い灯、秋の影、秋の涼しさ。\nかつての廊下で、ひとり寄りかかる。月はかすかに黄色い。\nただ、人の息ひとつだけが足りない。\nどうしても、ありふれたことのようにはならない。"
+        },
+        "de": {
+          "title": "Nach der Melodie Linjiangxian · Wieder im alten Gang sitzend; die Lampe wie einst angezündet; den Spuren folgend, das Frühere suchend; und das Gefühl von damals doch nicht wiedergefunden",
+          "body": "Im alten Gang, in einer Herbstnacht, wieder eine Kerze angezündet;\ndie Jahreszeit dieselbe wie in früheren Tagen.\nNoch einmal der Bambusstuhl an seinen alten Platz gerückt.\nVor der Lampe, allein, schweigend sitzend,\nwartend, bis zu spüren ist, wie die Nächte länger werden.\n\nStelle um Stelle wieder suchend, wo die früheren Spuren waren:\nkalte Lampe, Herbstschatten, Herbstkühle.\nIm Gang vergangener Tage allein gelehnt; der Mond blassgelb.\nEs fehlt nur ein Atemzug von jemandem,\nund am Ende ist es nicht wie gewöhnlich."
+        },
+        "fr": {
+          "title": "Sur l’air de Linjiangxian · Se rasseoir dans le vieux corridor ; allumer la lampe comme autrefois ; suivre les traces en quête du passé ; et pourtant ne plus retrouver le sentiment d’alors",
+          "body": "Dans le vieux corridor, une nuit d’automne, une bougie rallumée ;\nla saison, la même qu’autrefois.\nDe nouveau la chaise de bambou ramenée à sa place d’antan.\nDevant la lampe, dans la solitude, rester en silence,\nattendre de sentir les nuits commencer à s’allonger.\n\nUn à un, rechercher les lieux où étaient les traces d’avant :\nlampe froide, ombre d’automne, fraîcheur d’automne.\nDans le corridor d’autrefois, s’accouder dans la solitude ; la lune d’un jaune pâle.\nIl ne manque qu’un souffle, celui de quelqu’un,\net finalement ce n’est pas comme d’ordinaire."
+        },
+        "ru": {
+          "title": "На мелодию Linjiangxian · Снова сидеть в старой галерее; как прежде, зажечь лампу; идти по следам в поисках минувшего; и так и не обрести вновь чувства того времени",
+          "body": "В старой галерее, осенней ночью, снова зажжена свеча;\nвремя года такое же, как прежде.\nИ снова бамбуковый стул передвинут на старое место.\nПеред лампой молча сидеть в одиночестве,\nждать, когда почувствуется, как ночи начинают удлиняться.\n\nОдно за другим снова искать места, где были прежние следы:\nхолодная лампа, осенняя тень, осенняя прохлада.\nВ былой галерее опереться в одиночестве; луна чуть желтеет.\nНе хватает лишь чьего-то дыхания,\nи в конце концов ничего обычного."
         }
       }
     }

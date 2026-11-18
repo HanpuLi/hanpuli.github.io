@@ -1571,6 +1571,100 @@
     }
    ],
    "note": "四換韻：前段墮、涴仄韻，腰、調平韻；後段目、伏入聲韻，眉、笄平韻。墮屬果韻上聲，涴屬過韻去聲，上去通押；調讀平聲（徒聊切），調和義。"
+  },
+  "linjiangxianyin-2018-revised-202611": {
+   "source_body_sha256": "eae8cbe1d773aad92a749327c1f8c5e8d165ef074c42aee0d21908d2bb3d4488",
+   "form": "臨江仙引 · 柳永體（雙調七十四字，前段四平韻，後段三平韻）",
+   "rhyme_group": "詞林正韻第七部（寒先仙）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 12,
+     "char": "緣"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 5,
+     "char": "安"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "荃"
+    },
+    {
+     "stanza": 0,
+     "line": 3,
+     "index": 14,
+     "char": "蘭"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 13,
+     "char": "綿"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 10,
+     "char": "天"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 12,
+     "char": "田"
+    }
+   ],
+   "note": "起首二字句「滯促」「四顧」，譜不韻。"
+  },
+  "linjiangxian-chongzuo-revised-202611": {
+   "source_body_sha256": "8125c340aa7244033f90d645a8c35cc793619d31cdde4cdf6fc4533eb879d8fe",
+   "form": "臨江仙 · 正體（雙調六十字，前後段各五句三平韻，7-6-7-5-5）",
+   "rhyme_group": "詞林正韻第二部（陽唐）",
+   "rhymes": [
+    {
+     "stanza": 0,
+     "line": 0,
+     "index": 13,
+     "char": "當"
+    },
+    {
+     "stanza": 0,
+     "line": 1,
+     "index": 6,
+     "char": "方"
+    },
+    {
+     "stanza": 0,
+     "line": 2,
+     "index": 10,
+     "char": "長"
+    },
+    {
+     "stanza": 1,
+     "line": 0,
+     "index": 13,
+     "char": "涼"
+    },
+    {
+     "stanza": 1,
+     "line": 1,
+     "index": 6,
+     "char": "黃"
+    },
+    {
+     "stanza": 1,
+     "line": 2,
+     "index": 10,
+     "char": "常"
+    }
+   ],
+   "note": "當、黃屬唐韻，方、長、涼、常屬陽韻，陽唐同用。"
   }
  }
 }

@@ -282,6 +282,7 @@ def main(write: bool = False) -> None:
         ("yingtianchang-20261008-text", "聽盡無聲", "無聲聽盡"),
         ("mantingfang-20191219-revised-202610", "驚散夢中弦", "夢中弦驚散"),
         ("linjiangxian-20260909-text", "垂到地", "地垂到"),
+        ("linjiangxianyin-2018-revised-202611", "掙挫一筆", "一筆掙挫"),
     ):
         source = lib.edition(tid, "zh")["body"]
         start = source.index(phrase)

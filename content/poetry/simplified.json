@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_sha256": "c3275d549492686ec22389898949756d2a5552c319200aea81c769d24becf840",
+  "source_sha256": "1389bc46e16e36d507abbabc9c5c6522c0acecc4e83de6d7a0c3768265699799",
   "originals_sha256": {
     "jia-yi-a1-text": "fe600eea43a72197a2d8c371038d4bfceb5470e76e25bb68b4bf62eee2ca3cd6",
     "jia-yi-b1-text": "81fd9ad09f26c65e47f439d72f1a648fe6710a5a2f1ef5973b1abb8a5d68aefc",
@@ -38,7 +38,9 @@
     "yingtianchang-20261008-text": "e0e6a3d7c5168bcd3d4419bda3f559a59ea4c3ddb5a1869521b58f40f1423990",
     "zhegutian-20261017-text": "9fededf05d1a8189566c2e2dd1335155514bfea9a0b4c42b1f31023bef35ccc5",
     "huanxisha-20261020-text": "5d7dfadda70fbf67eb3518b9592a76849f20fd28bb3a12c0f7f876bdf6a65245",
-    "pusaman-20261021-text": "1a801935390b82609980209e2a5f07b78f85aca64e31ee17eb6574edfe35ed83"
+    "pusaman-20261021-text": "1a801935390b82609980209e2a5f07b78f85aca64e31ee17eb6574edfe35ed83",
+    "linjiangxianyin-2018-revised-202611": "d574b382349da406977077e4a5f99ccb08790ccfd7154c8648f0a0c05865816f",
+    "linjiangxian-chongzuo-revised-202611": "0a26e2768818f413f45f9a3e7b3a53d52686d651851f288b39d31f4526f54738"
   },
   "texts": {
     "jia-yi-a1-text": {
@@ -188,6 +190,14 @@
     "pusaman-20261021-text": {
       "title": "《菩萨蛮 · 效花间体》",
       "body": "一奁互绾云鬟堕，啼妆不待真珠涴。\n彩帛束蜂腰，点唇相试调。\n\n人前侬敛目，金凤低冠伏。\n对面画双眉，终同簪作笄。"
+    },
+    "linjiangxianyin-2018-revised-202611": {
+      "title": "《临江仙引》",
+      "body": "滞促，四顾，芳徊路，触无缘。\n犹思细语平安。\n降露唇边芷，炭封口中荃。\n凭高念远，野岸即轩，何处见欧兰。\n\n纳步昌庭回院路，韶华叙意绵绵。\n更话书笺语，碎情尚嗔天。\n当明挣挫一笔，可生两处华田。"
+    },
+    "linjiangxian-chongzuo-revised-202611": {
+      "title": "《临江仙 · 重坐旧廊，如昔燃灯，逐迹寻前，竟不复得当时之情》",
+      "body": "旧廊秋夜重燃烛，故时节候相当。\n还移竹椅旧时方。\n灯前独默坐，待觉夜初长。\n\n逐一重寻前迹处，寒灯秋影秋凉。\n故廊独倚月微黄。\n只差人一气，终不似寻常。"
     }
   }
 }

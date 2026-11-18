@@ -129,3 +129,31 @@ The cycle becomes weaker if translation decides the dispute between its two voic
 - Keep Chang’an District as an unspecified district name; do not infer a city or substitute historical Chang’an. The flowers shake their heads; no wind or other physical cause is supplied.
 - The repeated songs and lines remain things sung by the addressee and read by the speaker respectively. 「幸而那時遇見了你」 remains the meeting at that time, not a retrospective judgement that the relationship succeeded.
 - Preserve the ordinary birthday greeting and the completed act of writing the poem. No explanatory reading has been appended to the literary text.
+
+## Two Linjiangxian lyrics published in November 2026
+
+### 《臨江仙引》, first written in 2018; revised November 2026
+
+- This is a separate work from the 2019 《臨江仙引》 (W6). Do not carry imagery or readings between them.
+- 歐蘭 is a personal name. Transliterate it (Ou Lan; Оу Лань; the Japanese keeps 欧蘭) and add nothing to it.
+- 滯促 pairs being held back with being pressed or hurried. 觸無緣 says that whatever is touched or met has no affinity.
+- 平安 is the content of the remembered soft words, a wish for safety. Do not turn it into a farewell scene.
+- 芷 and 荃 stay fragrant herbs (angelica; a fragrant herb). Translations keep 荃 as a fragrant herb; the Chinese note gives Wang Yi's gloss.
+- 降露脣邊芷 and 炭封口中荃 are a pair: dew at the lips, charcoal sealing inside the mouth; outside and inside, cold and hot. Do not turn the charcoal into fire, burning words or a burnt mouth.
+- 野岸即軒: the wild shore serves as, or is, the balcony. No building is asserted.
+- 何處見歐蘭 ends with a full stop in the original. Keep the question unasked; do not add a question mark.
+- 納步 has two readings: the old courteous request that a host stop and not see one further (留步), and stepping in. Prefer wording that holds both; if one must be chosen, take the halting side and keep it light.
+- 當明 holds both daybreak and "ought to understand". Keep both where the language allows (When it dawns; Wenn es dämmert; Quand le jour se fait).
+- 一筆 is a single stroke, struggled for. 兩處華田 are flowering fields in two places. Do not render 兩處 as "the two of us" or "two hearts", and do not report the fields as already grown: 可生 says they can grow.
+- Wording that this lyric shares with earlier poets' lines (for example 憑高念遠) is not to be presented as allusion in any layer.
+- The speaker's gender is not stated. French and Russian must avoid gendered agreement for the speaker.
+
+### 《臨江仙 · 重坐舊廊，如昔燃燈，逐跡尋前，竟不復得當時之情》, attested no later than 29 June 2026; revised November 2026
+
+- No composition date is recorded. The site gives only the date by which the text is attested. Do not supply a year or season of writing beyond the poem's own autumn night.
+- The lyric shares wording with A1 and A4: 同默坐 / 獨默坐, 但覺夜初長 / 待覺夜初長, 當時只道尋常 / 終不似尋常. Reuse each language's established A1/A4 wording so that the echo is audible, and use the same word for 廊 as A4's 虛廊.
+- 舊廊 in the first stanza and 故廊 in the second are distinct: the old corridor still present, then the corridor become past. Keep two different words.
+- 待覺 waits to feel the lengthening night, where A4's 但覺 only felt it.
+- 只差人一氣: 差 is level-tone chā, to lack. What is missing is one breath of a person; 一 counts the breath, not the person. Do not render it as popularity (人氣) or vigour.
+- 竟 in the preface marks the outcome as contrary to expectation.
+- The speaker's gender is not stated. French and Russian must avoid gendered agreement for the speaker.
