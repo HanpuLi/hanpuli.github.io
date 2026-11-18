@@ -1,6 +1,6 @@
 <article class="essay">
   <header class="essay-intro">
-    <p class="essay-kicker">film essay · revised October 2026</p>
+    <p class="essay-kicker">film essay · revised&nbsp;October&nbsp;2026</p>
     <h1>From Gears to Gasp</h1>
     <p class="essay-deck"><em>Trainspotting</em> and the body’s investment in its own subjection</p>
     <p class="essay-byline">Hanpu Li</p>

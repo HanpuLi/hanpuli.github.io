@@ -1,6 +1,6 @@
 <article class="essay">
   <header class="essay-intro">
-    <p class="essay-kicker">applied linguistics · revised October 2026</p>
+    <p class="essay-kicker">applied linguistics · revised&nbsp;October&nbsp;2026</p>
     <h1>The Listener Inside the Accent Score</h1>
     <p class="essay-deck">Accentedness, comprehensibility and intelligibility as findings about a speaker, a listener and a task</p>
     <p class="essay-byline">Hanpu Li</p>

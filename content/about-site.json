@@ -496,7 +496,7 @@
   },
   "fr": {
     "meta_title": "À propos du site · Hanpu Li",
-    "meta_description": "Notes éditoriales sur le site multilingue de Hanpu Li : sélection, design, traduction, versions, options de lecture, attribution et maintenance.",
+    "meta_description": "Notes éditoriales sur le site multilingue de Hanpu Li : sélection, design, traduction, versions, options de lecture, attribution et maintenance.",
     "eyebrow": "Notes éditoriales · 2026",
     "title": "À propos du site",
     "lede": "Ce site réunit des textes, des ci, des photographies, des recherches et quelques expériences de publication. Ces notes consignent la manière dont s’y font la sélection, la conception, la traduction et l’entretien.",
@@ -508,7 +508,7 @@
         "title": "Une publication sélective",
         "dek": "La sélection fait partie du travail.",
         "body": [
-          "Un essai demande une lecture suivie ; une photographie, un regard ; un projet de recherche, un chemin vers ses méthodes et ses preuves. Chacun est achevé selon son propre critère. Le site est à la fois une publication et un portfolio sélectif.",
+          "Un essai demande une lecture suivie ; une photographie, un regard ; un projet de recherche, un chemin vers ses méthodes et ses preuves. Chacun est achevé selon son propre critère. Le site est à la fois une publication et un portfolio sélectif.",
           "Les travaux viennent en premier. Crédits, activités antérieures et documents publics se trouvent sur une page à part, à la fin."
         ],
         "facts": []
@@ -519,8 +519,8 @@
         "title": "L’autorité d’une page",
         "dek": "Le design prête de l’autorité à une page.",
         "body": [
-          "Fond chaud, caractères sombres, filets fins et numéros marginaux reprennent l’organisation d’une publication éditée. Prose et vers disposent de leur espace ; les mentions à chasse fixe indiquent les dates, l’ordre et les autres données de publication. Des alignements récurrents permettent à des matériaux différents de partager une page tout en gardant chacun sa forme.",
-          "Cette retenue a un effet propre : une grille soignée peut faire paraître achevé un projet qui ne l’est pas. Indications d’état, sources et dates de version disent où en est réellement chaque chose. Poetry Voucher en fait son sujet, en vendant la typographie comme une option supérieure dans une boutique élégante.",
+          "Fond chaud, caractères sombres, filets fins et numéros marginaux reprennent l’organisation d’une publication éditée. Prose et vers disposent de leur espace ; les mentions à chasse fixe indiquent les dates, l’ordre et les autres données de publication. Des alignements récurrents permettent à des matériaux différents de partager une page tout en gardant chacun sa forme.",
+          "Cette retenue a un effet propre : une grille soignée peut faire paraître achevé un projet qui ne l’est pas. Indications d’état, sources et dates de version disent où en est réellement chaque chose. Poetry Voucher en fait son sujet, en vendant la typographie comme une option supérieure dans une boutique élégante.",
           "Les familles de caractères sont réparties selon les systèmes d’écriture et leur fonction dans la lecture. Les polices chinoises et japonaises partagent les mêmes métriques de ligne mais gardent leurs propres formes de glyphes."
         ],
         "facts": []
@@ -532,7 +532,7 @@
         "dek": "Chaque traduction est une lecture.",
         "body": [
           "L’anglais, le chinois traditionnel de Hong Kong, le chinois simplifié, le japonais, l’allemand, le français et le russe sont des éditions entretenues séparément. L’anglais est l’entrée par défaut, mais beaucoup d’œuvres ont été écrites en chinois, et le texte chinois reste l’original quelle que soit la langue de l’interface choisie. Certains textes longs ne sont publiés qu’en une seule langue, comme l’indique chaque page.",
-          "Le texte en chinois traditionnel de Hong Kong est la source de référence du site ; le texte simplifié en est issu par conversion et ne change que la graphie. Une traduction doit parfois expliciter un sujet, un temps ou une relation que le chinois laisse en suspens, et cela peut refermer une lecture que le poème laissait ouverte."
+          "Le texte en chinois traditionnel de Hong Kong est la source de référence du site ; le texte simplifié en est issu par conversion et ne change que la graphie. Une traduction doit parfois expliciter un sujet, un temps ou une relation que le chinois laisse en suspens, et cela peut refermer une lecture que le poème laissait ouverte."
         ],
         "facts": []
       },
@@ -543,7 +543,7 @@
         "dek": "Une date ou un voisinage change une lecture.",
         "body": [
           "La séquence A/B, les autres poèmes et les deux états datés de The Roof Splits Open restent distincts. L’état le plus récent figure à côté du précédent, pour que la révision elle-même puisse se lire.",
-          "Chaque légende indique de quel type d’image il s’agit : une photographie choisie, une figure de recherche ou un spécimen numérique de ticket."
+          "Chaque légende indique de quel type d’image il s’agit : une photographie choisie, une figure de recherche ou un spécimen numérique de ticket."
         ],
         "facts": []
       },
@@ -553,7 +553,7 @@
         "title": "Une page modifiable",
         "dek": "Les caractères, l’espacement, la disposition, le mouvement et le contraste sont réglables.",
         "body": [
-          "La matérialité performative de Drucker porte l’attention sur le système en usage autant que sur sa structure. [[drucker]] Ici, la question est pratique : peut-on revenir à une strophe, comparer des versions, suivre une source ou modifier les conditions de lecture tout en gardant prise sur le texte ?",
+          "La matérialité performative de Drucker porte l’attention sur le système en usage autant que sur sa structure. [[drucker]] Ici, la question est pratique : peut-on revenir à une strophe, comparer des versions, suivre une source ou modifier les conditions de lecture tout en gardant prise sur le texte ?",
           "Les commandes de lecture proposent la police par défaut, une police sans empattement ou OpenDyslexic, et modifient la taille, l’espacement, la longueur des lignes, la disposition, le mouvement et le contraste. Le focus clavier, les titres et les équivalents textuels sont entretenus comme partie intégrante de la publication."
         ],
         "facts": []
@@ -564,18 +564,18 @@
         "title": "Attribution",
         "dek": "Qui a fait quoi.",
         "body": [
-          "J’ai écrit les poèmes et les essais et pris les photographies. Des outils d’IA ont aidé pour la majeure partie du reste : la sélection, la mise en ordre et le développement des photographies pour le site ; la mise en page, les icônes et les schémas ; la conversion des textes chinois d’une graphie à l’autre et leur vérification au regard de mes annotations ; l’ébauche des notes et des autres textes, des traductions, ainsi que des annotations, des paraphrases et des lectures kundoku japonaises ; la révision des versions web des essais ; enfin, l’écriture et le test du code. J’ai examiné les résultats et pris les décisions finales."
+          "J’ai écrit les poèmes et les essais et pris les photographies. Des outils d’IA ont aidé pour la majeure partie du reste : la sélection, la mise en ordre et le développement des photographies pour le site ; la mise en page, les icônes et les schémas ; la conversion des textes chinois d’une graphie à l’autre et leur vérification au regard de mes annotations ; l’ébauche des notes et des autres textes, des traductions, ainsi que des annotations, des paraphrases et des lectures kundoku japonaises ; la révision des versions web des essais ; enfin, l’écriture et le test du code. J’ai examiné les résultats et pris les décisions finales."
         ],
         "facts": []
       }
     ],
     "scope_title": "Fabriquer et entretenir",
     "scope_body": [
-      "Un petit générateur Python transforme contenus structurés et modèles en HTML statique. Images et polices sont hébergées avec le site ; le système typographique comprend EB Garamond, Courier Prime, Cousine, Shippori Mincho pour le japonais et I.MingCP pour le chinois traditionnel et simplifié. La mise en page adaptative et les commandes facultatives ajustent les documents. Le contenu principal reste accessible sans JavaScript ; quelques améliorations progressives et la boutique Poetry Voucher l’utilisent dans le navigateur.",
-      "Le dépôt source est public et comprend des vérifications de génération, de langues, de liens, de caractères et de navigateur. Les œuvres qu’il contient restent protégées par le droit d’auteur ; les éditions de Poetry Voucher peuvent être sauvegardées, imprimées et données sous forme de tirages."
+      "Un petit générateur Python transforme contenus structurés et modèles en HTML statique. Images et polices sont hébergées avec le site ; le système typographique comprend EB Garamond, Courier Prime, Cousine, Shippori Mincho pour le japonais et I.MingCP pour le chinois traditionnel et simplifié. La mise en page adaptative et les commandes facultatives ajustent les documents. Le contenu principal reste accessible sans JavaScript ; quelques améliorations progressives et la boutique Poetry Voucher l’utilisent dans le navigateur.",
+      "Le dépôt source est public et comprend des vérifications de génération, de langues, de liens, de caractères et de navigateur. Les œuvres qu’il contient restent protégées par le droit d’auteur ; les éditions de Poetry Voucher peuvent être sauvegardées, imprimées et données sous forme de tirages."
     ],
     "privacy_title": "État local et hébergement",
-    "privacy_body": "Le site n’ajoute ni outils d’analyse, ni scripts publicitaires, ni cookies de suivi. Les préférences de lecture restent dans votre navigateur ; Poetry Voucher conserve votre panier sur cet appareil et les commandes achevées dans l’onglet courant. GitHub Pages, qui héberge le site, peut conserver ses propres journaux d’accès.",
+    "privacy_body": "Le site n’ajoute ni outils d’analyse, ni scripts publicitaires, ni cookies de suivi. Les préférences de lecture restent dans votre navigateur ; Poetry Voucher conserve votre panier sur cet appareil et les commandes achevées dans l’onglet courant. GitHub Pages, qui héberge le site, peut conserver ses propres journaux d’accès.",
     "footer_link": "à propos du site",
     "source_link": "source du site",
     "toc_label": "Sur cette page",
@@ -591,7 +591,7 @@
     "design_grid_label": "Alignement",
     "design_grid_note": "Une grille de douze colonnes donne des repères communs à des œuvres différentes.",
     "design_rule_label": "Séparation",
-    "design_rule_note": "Des filets fins séparent états et sections ; l’œuvre elle-même reste sans cadre."
+    "design_rule_note": "Des filets fins séparent états et sections ; l’œuvre elle-même reste sans cadre."
   },
   "ru": {
     "meta_title": "О сайте · Hanpu Li",

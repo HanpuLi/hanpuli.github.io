@@ -18,7 +18,7 @@
   "source": "Ouvrir la page source",
   "enlarge": "Ouvrir à la résolution native",
   "type_title": "02 / Les fonctions des caractères",
-  "type_intro": "Les mots et réglages calculés de la notice ci-dessus, dans les polices dessinées par le navigateur. Les spécimens gardent la police, le corps et l’approche mesurés, mais avec un interligne plus lâche qui permet de nouveaux retours à la ligne ; les deux hauteurs de ligne sont indiquées lorsqu’elles diffèrent.",
+  "type_intro": "Les mots et réglages calculés de la notice ci-dessus, dans les polices dessinées par le navigateur. Les spécimens gardent la police, le corps et l’approche mesurés, mais avec un interligne plus lâche qui permet de nouveaux retours à la ligne ; les deux hauteurs de ligne sont indiquées lorsqu’elles diffèrent.",
   "roles": [
     "Métadonnées",
     "Titre du projet",
@@ -30,7 +30,7 @@
   "face": "Polices effectivement affichées",
   "site_end": "Les autres pages utilisent la même grille autrement. Ici, le filet sépare les projets, le numéro situe la notice et la colonne de preuves, plus étroite, porte l’état et les données qui sous-tendent le titre.",
   "pv_title": "Une édition décomposée",
-  "pv_intro": "Un spécimen B3 produit par le moteur actuel de la boutique : un exemplaire, chinois traditionnel, caractères pixel de base à 24 points, sans traduction, paiement comptant simulé. Les annotations suivent la sortie, du ticket jusqu’au poème.",
+  "pv_intro": "Un spécimen B3 produit par le moteur actuel de la boutique : un exemplaire, chinois traditionnel, caractères pixel de base à 24 points, sans traduction, paiement comptant simulé. Les annotations suivent la sortie, du ticket jusqu’au poème.",
   "anatomy_title": "01 / Suivre la bande",
   "anatomy_note": "La bande assemble le reçu, le segment CUT HERE et l’image du poème dans l’ordre de sortie de la boutique, le tout à une même échelle. Les repères numérotés désignent les champs imprimés.",
   "callouts": [
@@ -40,7 +40,7 @@
     ],
     [
       "Colonnes des articles",
-      "Quantité et description commencent à des positions fixes ; prix et montant sont alignés à droite. Une description longue continue à la ligne suivante."
+      "Quantité et description commencent à des positions fixes ; prix et montant sont alignés à droite. Une description longue continue à la ligne suivante."
     ],
     [
       "Total et paiement",
@@ -60,12 +60,12 @@
     ]
   ],
   "geometry_title": "02 / Papier, image, texte",
-  "geometry_intro": "Trois largeurs emboîtées règlent la sortie : papier du PDF, image matricielle, puis texte avec ses propres retraits. Le PDF centre l’image avec 5 mm de chaque côté.",
+  "geometry_intro": "Trois largeurs emboîtées règlent la sortie : papier du PDF, image matricielle, puis texte avec ses propres retraits. Le PDF centre l’image avec 5 mm de chaque côté.",
   "paper": "Largeur du papier PDF",
   "image": "Zone d’image",
   "receipt_width": "Ligne de caisse · 30 cases",
   "poem_width": "Justification du poème",
-  "dots_note": "Les dimensions en millimètres sont calculées à 8 points par mm ; le dessin respecte les proportions.",
+  "dots_note": "Les dimensions en millimètres sont calculées à 8 points par mm ; le dessin respecte les proportions.",
   "columns_title": "03 / La grille fixe du reçu",
   "columns_intro": "Voici le détail de l’en-tête des articles. Les quatre champs occupent 3, 11, 6 et 6 cases de caractères, avec une case de séparation et une dernière case libre. Chaque caractère avance de 12 points. Le reçu utilise les propres matrices de lettres du moteur.",
   "columns": [
@@ -74,13 +74,13 @@
     "Prix unitaire",
     "Montant"
   ],
-  "glyph_note": "La matrice du A comporte 5 × 7 cases. Chaque case noire devient 2 × 2 points ; l’avance est de 12 points et le pas de ligne normal de 24. Pour le total, les cases font 2 × 4 points et le pas de ligne 48.",
+  "glyph_note": "La matrice du A comporte 5 × 7 cases. Chaque case noire devient 2 × 2 points ; l’avance est de 12 points et le pas de ligne normal de 24. Pour le total, les cases font 2 × 4 points et le pas de ligne 48.",
   "font_title": "04 / Un poème, deux compositions",
   "font_intro": "Les mêmes premières lignes de B3, avec un corps de 24 points et une justification de 352 points. Les extraits viennent de deux configurations de la boutique, sans traduction. L’option des caractères du site ajoute un supplément et ne change que la forme des lettres.",
   "base": "Base · Fusion Pixel",
   "upgrade": "Option · caractères du site",
-  "font_note": "La base emploie Fusion Pixel Zh HK sur sa grille de 12 points, avec un pas de ligne de 32 points ici. L’option du site utilise sa pile de caractères chinois à empattements, avec un pas de 31 points. Les deux extraits sont des images à un bit : contours et espacements restent visibles dans les pixels.",
-  "detail_note": "Ouvrez une image pour voir ses pixels d’origine ; les agrandissements conservent les contours nets.",
+  "font_note": "La base emploie Fusion Pixel Zh HK sur sa grille de 12 points, avec un pas de ligne de 32 points ici. L’option du site utilise sa pile de caractères chinois à empattements, avec un pas de 31 points. Les deux extraits sont des images à un bit : contours et espacements restent visibles dans les pixels.",
+  "detail_note": "Ouvrez une image pour voir ses pixels d’origine ; les agrandissements conservent les contours nets.",
   "specimen": "B3 / 24 septembre 2026 / un exemplaire / sans traduction",
   "original": "Le texte original reste disponible sur la page des poèmes.",
   "sample_leading": "Hauteur de ligne du spécimen"

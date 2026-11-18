@@ -1,6 +1,6 @@
 <article class="essay">
   <header class="essay-intro">
-    <p class="essay-kicker">screen industries · revised October 2026</p>
+    <p class="essay-kicker">screen industries · revised&nbsp;October&nbsp;2026</p>
     <h1>One Carbon Number Cannot Do Two Jobs</h1>
     <p class="essay-deck">Inventories, counterfactual savings, and the passage from a technical benefit to a claim of sustainability</p>
     <p class="essay-byline">Hanpu Li</p>

@@ -166,7 +166,7 @@
     "physical_label": "On paper",
     "physical_heading": "The receipt ends.\nThe poem continues.",
     "physical_body": "Two printed editions, B3 and B4. The transaction and the poem share one strip; a cut line offers a place to separate them.",
-    "physical_material": "Thermal paper · 26 September 2026",
+    "physical_material": "Thermal paper · 26 September 2026",
     "physical_configuration": "Original Chinese · website typefaces",
     "physical_open": "View full-size scan",
     "physical_read": "Read the poem",
@@ -938,7 +938,7 @@
     "physical_label": "Auf Papier",
     "physical_heading": "Der Beleg endet.\nDas Gedicht geht weiter.",
     "physical_body": "Zwei gedruckte Ausgaben, B3 und B4. Transaktion und Gedicht teilen einen Papierstreifen; eine Schnittlinie bietet eine Stelle, sie zu trennen.",
-    "physical_material": "Thermopapier · 26. September 2026",
+    "physical_material": "Thermopapier · 26. September 2026",
     "physical_configuration": "Chinesisches Original · Website-Schriften",
     "physical_open": "Scan in voller Größe ansehen",
     "physical_read": "Gedicht lesen",
@@ -975,14 +975,14 @@
     "voucher": "02 / Le poème",
     "sample": "B3 · original · police pixel · scène fixe datée du 22/09/2026 · nouveau rendu numérique continu du 24/09/2026.",
     "process": "De la transaction à la lecture",
-    "process_body": "Choisissez un poème, une police et des traductions, puis passez en caisse sans payer. Un reçu consigne la commande ; chaque bon porte son propre numéro. Téléchargez les épreuves en image ou une version textuelle intégrale lisible hors ligne.",
+    "process_body": "Choisissez un poème, une police et des traductions, puis passez en caisse sans payer. Un reçu consigne la commande ; chaque bon porte son propre numéro. Téléchargez les épreuves en image ou une version textuelle intégrale lisible hors ligne.",
     "privacy": "Sur votre appareil",
-    "privacy_body": "Les fichiers sont préparés dans le navigateur. Les choix du catalogue sont enregistrés sur cet appareil ; les commandes achevées restent dans l’onglet courant. Les poèmes ne sont pas téléversés et aucun paiement n’est prélevé. L’usage ordinaire du navigateur ne contacte aucune imprimante. Sur le terminal H10S appairé, l’impression ne commence qu’après une action locale explicite.",
+    "privacy_body": "Les fichiers sont préparés dans le navigateur. Les choix du catalogue sont enregistrés sur cet appareil ; les commandes achevées restent dans l’onglet courant. Les poèmes ne sont pas téléversés et aucun paiement n’est prélevé. L’usage ordinaire du navigateur ne contacte aucune imprimante. Sur le terminal H10S appairé, l’impression ne commence qu’après une action locale explicite.",
     "hardware": "La contrainte du papier",
-    "hardware_body": "L’œuvre est destinée au papier. Ci-dessous, les scans de deux éditions sur papier thermique, B3 et B4 ; le spécimen numérique ci-dessus est un nouveau rendu distinct.",
+    "hardware_body": "L’œuvre est destinée au papier. Ci-dessous, les scans de deux éditions sur papier thermique, B3 et B4 ; le spécimen numérique ci-dessus est un nouveau rendu distinct.",
     "back": "Présentation du projet",
     "edit": "Voir les éditions",
-    "preview_alt": "Spécimen numérique continu B3 : ticket fictif en espèces, séparation CUT HERE et bon poétique chinois sur la même bande.",
+    "preview_alt": "Spécimen numérique continu B3 : ticket fictif en espèces, séparation CUT HERE et bon poétique chinois sur la même bande.",
     "editorial_sample": "B3 · polices du site + anglais · spécimen numérique",
     "editorial_preview_alt": "Épreuve éditoriale B3 avec ticket de paiement par carte et bon poétique en chinois original et en traduction anglaise publiée",
     "tariff_base": "Base",
@@ -1008,9 +1008,9 @@
         "dek": "L’imprimante est venue d’abord.",
         "feature": "",
         "body": [
-          "Le projet a commencé après que j’ai trouvé une imprimante de tickets et essayé d’y imprimer mes propres poèmes. La question venait de la familiarité du reçu de supermarché : que ressent-on en obtenant une écriture personnelle par une procédure destinée à traiter des biens à l’unité ?",
-          "L’écriture peut accumuler inégalement temps, attention, savoir et attachement. La boutique en propose une autre description : titre au catalogue, quantité, configuration de base et prix. Les objets ordinaires contiennent eux aussi du travail et des différences que leurs prix ne révèlent pas ; l’œuvre isole un tel acte de réduction et l’applique à des poèmes.",
-          "Le catalogue contient mes poèmes publiés. Le lecteur choisit comment un poème précis sera édité ; la façon de le lire et ce que devient ensuite l’exemplaire restent ouverts."
+          "Le projet a commencé après que j’ai trouvé une imprimante de tickets et essayé d’y imprimer mes propres poèmes. La question venait de la familiarité du reçu de supermarché : que ressent-on en obtenant une écriture personnelle par une procédure destinée à traiter des biens à l’unité ?",
+          "L’écriture peut accumuler inégalement temps, attention, savoir et attachement. La boutique en propose une autre description : titre au catalogue, quantité, configuration de base et prix. Les objets ordinaires contiennent eux aussi du travail et des différences que leurs prix ne révèlent pas ; l’œuvre isole un tel acte de réduction et l’applique à des poèmes.",
+          "Le catalogue contient mes poèmes publiés. Le lecteur choisit comment un poème précis sera édité ; la façon de le lire et ce que devient ensuite l’exemplaire restent ouverts."
         ]
       },
       {
@@ -1020,8 +1020,8 @@
         "dek": "PV3 compte les lettres, les lignes et les strophes.",
         "feature": "tariff",
         "body": [
-          "Espeland et Stevens décrivent la commensuration comme une comparaison par une mesure commune. [[commensuration]] PV3 en donne un petit exemple : des poèmes différents deviennent des sommes comparables dès que l’on compte certaines caractéristiques textuelles. La formule ne possède aucun terme pour la difficulté, la révision, l’attachement ou la force littéraire.",
-          "Seules les lettres et les nombres Unicode sont comptés comme caractères. Lignes sources non vides et strophes augmentent la base ; les retours automatiques sur papier étroit ne comptent pas. La base atteint le plus petit prix en .99 qui ne lui soit pas inférieur. Les options s’ajoutent ensuite : le total ne finit donc pas nécessairement en .99.",
+          "Espeland et Stevens décrivent la commensuration comme une comparaison par une mesure commune. [[commensuration]] PV3 en donne un petit exemple : des poèmes différents deviennent des sommes comparables dès que l’on compte certaines caractéristiques textuelles. La formule ne possède aucun terme pour la difficulté, la révision, l’attachement ou la force littéraire.",
+          "Seules les lettres et les nombres Unicode sont comptés comme caractères. Lignes sources non vides et strophes augmentent la base ; les retours automatiques sur papier étroit ne comptent pas. La base atteint le plus petit prix en .99 qui ne lui soit pas inférieur. Les options s’ajoutent ensuite : le total ne finit donc pas nécessairement en .99.",
           "The Roof Splits Open coûte £12.99 dans sa première version, £9.99 dans sa seconde. Le poème passe de 380 à 225 caractères comptés, en gardant ses lignes et ses strophes. Supprimer devient une baisse de prix, quel que soit l’effet sur le poème.",
           "Les paliers cachent aussi des différences et amplifient des seuils. Quarante x, comme test non littéraire, coûtent £1.99 sur une ligne et £2.99 sur deux, tandis que d’autres sauts de ligne ne changent pas le prix affiché. L’arrondi suit l’usage du commerce de détail."
         ]
@@ -1033,9 +1033,9 @@
         "dek": "La présentation fait partie de l’offre.",
         "feature": "",
         "body": [
-          "La police pixel est comprise dans l’édition de base. Les polices du site sont une option supérieure, comme un produit dont l’allure publicitaire dépend d’une configuration supplémentaire. L’édition de base est complète ; l’option ne change que l’apparence du poème.",
-          "La vitrine fait elle-même partie de cet agencement. Ses grands caractères à empattements, ses espaces et ses alignements rendent l’offre séduisante, alors même que la vitrine vend la typographie en supplément ; le projet emploie donc cet attrait tout en l’exposant.",
-          "Une traduction apporte une autre lecture linguistique et culturelle, et un tirage physique occuperait davantage de papier ; le supplément fixe ne tient compte ni de la longueur du papier, ni de l’énergie, ni des heures de traduction. Tout le contenu du catalogue est librement lisible sur le site ; le supplément porte sur l’édition émise. Chinois traditionnel et simplifié sont deux graphies de l’original au même prix de base."
+          "La police pixel est comprise dans l’édition de base. Les polices du site sont une option supérieure, comme un produit dont l’allure publicitaire dépend d’une configuration supplémentaire. L’édition de base est complète ; l’option ne change que l’apparence du poème.",
+          "La vitrine fait elle-même partie de cet agencement. Ses grands caractères à empattements, ses espaces et ses alignements rendent l’offre séduisante, alors même que la vitrine vend la typographie en supplément ; le projet emploie donc cet attrait tout en l’exposant.",
+          "Une traduction apporte une autre lecture linguistique et culturelle, et un tirage physique occuperait davantage de papier ; le supplément fixe ne tient compte ni de la longueur du papier, ni de l’énergie, ni des heures de traduction. Tout le contenu du catalogue est librement lisible sur le site ; le supplément porte sur l’édition émise. Chinois traditionnel et simplifié sont deux graphies de l’original au même prix de base."
         ]
       },
       {
@@ -1057,8 +1057,8 @@
         "dek": "Une lecture que permet la juxtaposition.",
         "feature": "",
         "body": [
-          "B3 retarde plusieurs fois une remise : l’écriture s’arrête, le papier non scellé est replié et hôte et invité ne deviennent pas deux parties égales d’un échange réglé. Après un ticket, ces gestes peuvent faire paraître insuffisante la certitude d’une transaction achevée.",
-          "D’autres rapports appartiennent aux publications sources : B6 répond dans la séquence A/B, et The Roof Splits Open conserve ses états datés. Un poème peut être émis seul ; son lien source ramène à la page du poème, où figurent, le cas échéant, la séquence ou les états.",
+          "B3 retarde plusieurs fois une remise : l’écriture s’arrête, le papier non scellé est replié et hôte et invité ne deviennent pas deux parties égales d’un échange réglé. Après un ticket, ces gestes peuvent faire paraître insuffisante la certitude d’une transaction achevée.",
+          "D’autres rapports appartiennent aux publications sources : B6 répond dans la séquence A/B, et The Roof Splits Open conserve ses états datés. Un poème peut être émis seul ; son lien source ramène à la page du poème, où figurent, le cas échéant, la séquence ou les états.",
           "Drucker ramène la matérialité vers ce qui arrive dans l’usage. [[drucker]] Pour cette œuvre, choisir, attendre, lire, couper et donner sont donc des gestes à observer au moment où ils ont lieu. Un poème de poche peut devenir cadeau, plaisanterie, souvenir ou déchet."
         ]
       },
@@ -1070,8 +1070,8 @@
         "feature": "",
         "body": [
           "Le modèle de sortie emploie du papier thermique étroit, et l’image à un bit garde les contraintes du ticket. Mentions denses et lignes étroites appartiennent à la forme tant que le poème reste lisible. Des traits fins, nets à l’écran, peuvent encore se fragmenter sur une imprimante donnée.",
-          "L’impression thermique directe n’utilise ni encre ni ruban ; chaleur, lumière et manipulation affectent la lisibilité avec le temps. [[thermal]] Ces tirages s’effaceront.",
-          "En attendant un lieu, la boutique est le passage public ; une table d’édition installée dans une salle ajouterait la manipulation et le temps partagé. Le PDF conserve ticket et poèmes dans un fichier unique, avec des continuations pour les longues sorties. Comme il s’agit d’une image, une copie HTML autonome en garde le texte intégral pour une lecture hors ligne ou avec un lecteur d’écran."
+          "L’impression thermique directe n’utilise ni encre ni ruban ; chaleur, lumière et manipulation affectent la lisibilité avec le temps. [[thermal]] Ces tirages s’effaceront.",
+          "En attendant un lieu, la boutique est le passage public ; une table d’édition installée dans une salle ajouterait la manipulation et le temps partagé. Le PDF conserve ticket et poèmes dans un fichier unique, avec des continuations pour les longues sorties. Comme il s’agit d’une image, une copie HTML autonome en garde le texte intégral pour une lecture hors ligne ou avec un lecteur d’écran."
         ]
       },
       {
@@ -1080,8 +1080,8 @@
         "title": "Réalisation",
         "dek": "Le code source et le manifeste de construction sont publics.",
         "body": [
-          "Poetry Voucher est une application statique dans le navigateur, fondée sur un catalogue fixe de mes poèmes publiés. Le lecteur configure une édition : choix du poème, écriture, traductions publiées, police, taille et quantité passent tous par le même processus de calcul du prix et d’émission.",
-          "Lors de la validation, le contenu de la commande est figé avant la production : textes, quantités, montants, scène de paiement fictive et identité du moteur de rendu public appartiennent à cette commande émise. Une commande rouverte garde ses prix d’origine, et un résultat produit avec un autre moteur est signalé comme un nouveau rendu. L’identifiant du moteur de rendu consigne les entrées de la construction.",
+          "Poetry Voucher est une application statique dans le navigateur, fondée sur un catalogue fixe de mes poèmes publiés. Le lecteur configure une édition : choix du poème, écriture, traductions publiées, police, taille et quantité passent tous par le même processus de calcul du prix et d’émission.",
+          "Lors de la validation, le contenu de la commande est figé avant la production : textes, quantités, montants, scène de paiement fictive et identité du moteur de rendu public appartiennent à cette commande émise. Une commande rouverte garde ses prix d’origine, et un résultat produit avec un autre moteur est signalé comme un nouveau rendu. L’identifiant du moteur de rendu consigne les entrées de la construction.",
           "La commande figée produit un PDF d’images pour papier étroit et une copie de lecture HTML autonome et distincte. L’impression n’a lieu que sur le terminal H10S appairé, où une action d’impression explicite transmet la commande préparée à son service d’impression local."
         ],
         "feature": "implementation"
@@ -1093,25 +1093,25 @@
         "dek": "D’autres règles, d’autres conséquences.",
         "feature": "",
         "body": [
-          "Short Édition propose une littérature gratuite sur rouleau, choisie par durée de lecture. [[short-edition]] La comparaison distingue un support de diffusion du mécanisme d’une œuvre : Poetry Voucher demande de choisir un poème et sa configuration, puis attribue un montant fictif, et son intérêt tient à ce que cette procédure d’achat ajoute à la lecture.",
-          "Dans Pense-Bête de Broodthaers, le plâtre gêne l’accès aux livres incorporés ; des exemplaires lisibles étaient également exposés à proximité. [[broodthaers]] Le rapport s’inverse ici : le texte imprimé doit pouvoir quitter son dispositif. Le risque reste commun. Un objet intrigant peut détourner l’attention de l’écriture, et un ticket plus convaincant n’aide que si l’on parvient encore jusqu’au poème."
+          "Short Édition propose une littérature gratuite sur rouleau, choisie par durée de lecture. [[short-edition]] La comparaison distingue un support de diffusion du mécanisme d’une œuvre : Poetry Voucher demande de choisir un poème et sa configuration, puis attribue un montant fictif, et son intérêt tient à ce que cette procédure d’achat ajoute à la lecture.",
+          "Dans Pense-Bête de Broodthaers, le plâtre gêne l’accès aux livres incorporés ; des exemplaires lisibles étaient également exposés à proximité. [[broodthaers]] Le rapport s’inverse ici : le texte imprimé doit pouvoir quitter son dispositif. Le risque reste commun. Un objet intrigant peut détourner l’attention de l’écriture, et un ticket plus convaincant n’aide que si l’on parvient encore jusqu’au poème."
         ]
       },
       {
         "id": "status",
         "number": "09",
         "title": "État des lieux",
-        "dek": "Une édition utilisable ; une réception encore ouverte.",
+        "dek": "Une édition utilisable ; une réception encore ouverte.",
         "feature": "",
         "body": [
-          "Catalogue, calcul et émission numérique fonctionnent déjà ; les premiers tirages étaient des essais matériels. L’idée de porter un poème pour le donner est venue d’un premier lecteur.",
-          "Le prochain essai est modeste : émettre quelques éditions choisies, laisser les gens lire et manipuler sans cours théorique préalable, puis noter ce qui change ou échoue. Les résultats pourront conduire à garder le ticket tel quel, à modifier l’ordre de présentation ou à abandonner une interprétation proposée ici.",
-          "Sauvegarde personnelle, impression et don des exemplaires imprimés sont permis. J’ai écrit les poèmes. Des outils d’IA ont aidé à ébaucher les traductions proposées ici, à écrire le code de la boutique et les textes de son interface en sept langues, à concevoir la mise en page du ticket et à écrire ces notes ; j’ai examiné les résultats et pris les décisions finales."
+          "Catalogue, calcul et émission numérique fonctionnent déjà ; les premiers tirages étaient des essais matériels. L’idée de porter un poème pour le donner est venue d’un premier lecteur.",
+          "Le prochain essai est modeste : émettre quelques éditions choisies, laisser les gens lire et manipuler sans cours théorique préalable, puis noter ce qui change ou échoue. Les résultats pourront conduire à garder le ticket tel quel, à modifier l’ordre de présentation ou à abandonner une interprétation proposée ici.",
+          "Sauvegarde personnelle, impression et don des exemplaires imprimés sont permis. J’ai écrit les poèmes. Des outils d’IA ont aidé à ébaucher les traductions proposées ici, à écrire le code de la boutique et les textes de son interface en sept langues, à concevoir la mise en page du ticket et à écrire ces notes ; j’ai examiné les résultats et pris les décisions finales."
         ]
       }
     ],
     "tariff_detail": "Le tarif exact",
-    "tariff_note": "Par exemplaire d’un original non vide. Les lettres et les nombres sont comptés après normalisation NFC. Ponctuation et espaces sont exclus du nombre de caractères ; une ligne non vide de ponctuation reste comptée et peut former une strophe.",
+    "tariff_note": "Par exemplaire d’un original non vide. Les lettres et les nombres sont comptés après normalisation NFC. Ponctuation et espaces sont exclus du nombre de caractères ; une ligne non vide de ponctuation reste comptée et peut former une strophe.",
     "diagram_title": "Organisation de la bande",
     "diagram_receipt": "TRANSACTION",
     "diagram_cut": "SÉPARATION",
@@ -1130,14 +1130,14 @@
     "aesthetic_bridge_note": "La police facultative du site transporte l’autorité visuelle de la vitrine dans le poème émis.",
     "physical_label": "Sur papier",
     "physical_heading": "Le ticket se termine.\nLe poème continue.",
-    "physical_body": "Deux éditions imprimées, B3 et B4. La transaction et le poème partagent une même bande ; une ligne de coupe propose un endroit pour les séparer.",
-    "physical_material": "Papier thermique · 26 septembre 2026",
+    "physical_body": "Deux éditions imprimées, B3 et B4. La transaction et le poème partagent une même bande ; une ligne de coupe propose un endroit pour les séparer.",
+    "physical_material": "Papier thermique · 26 septembre 2026",
     "physical_configuration": "Original chinois · caractères du site",
     "physical_open": "Voir le scan en pleine taille",
     "physical_read": "Lire le poème",
     "physical_provenance": "Scans des tirages, redressés et recadrés.",
-    "physical_b3_alt": "Édition B3 imprimée : ticket, ligne de coupe et poème chinois intégral sur une bande de papier thermique",
-    "physical_b4_alt": "Édition B4 imprimée : ticket, ligne de coupe et poème chinois intégral sur une bande de papier thermique",
+    "physical_b3_alt": "Édition B3 imprimée : ticket, ligne de coupe et poème chinois intégral sur une bande de papier thermique",
+    "physical_b4_alt": "Édition B4 imprimée : ticket, ligne de coupe et poème chinois intégral sur une bande de papier thermique",
     "implementation_flow_label": "Du poème à l’édition",
     "implementation_build_label": "Moteur public actuel",
     "implementation_paper_label": "Modèle de papier",
@@ -1324,7 +1324,7 @@
     "physical_label": "На бумаге",
     "physical_heading": "Чек заканчивается.\nСтихотворение продолжается.",
     "physical_body": "Два печатных выпуска, B3 и B4. Сделка и стихотворение занимают одну бумажную полосу; линия отреза предлагает место, где их можно разделить.",
-    "physical_material": "Термобумага · 26 сентября 2026",
+    "physical_material": "Термобумага · 26 сентября 2026",
     "physical_configuration": "Китайский оригинал · шрифты сайта",
     "physical_open": "Открыть скан в полном размере",
     "physical_read": "Читать стихотворение",

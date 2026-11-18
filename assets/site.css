@@ -4403,7 +4403,9 @@ html[data-reading-simple] .about-page .about-facts > div + div {
 }
 
 .essay-page .essay-noteref a {
-  color: var(--accent);
+  /* Vermilion is a point, one or two per view; footnote numerals are many,
+     so they take it only on hover, focus and :target. */
+  color: var(--muted);
   text-decoration: none;
   text-decoration-thickness: 1px;
   text-underline-offset: .16em;
@@ -4411,6 +4413,7 @@ html[data-reading-simple] .about-page .about-facts > div + div {
 
 .essay-page .essay-noteref a:hover,
 .essay-page .essay-noteref a:focus-visible {
+  color: var(--accent);
   text-decoration: underline;
 }
 
@@ -5280,6 +5283,15 @@ html:not([data-reading-sans], [data-reading-dyslexia]) .page-topbar .page-nav [a
 @media (forced-colors: active) {
   .page-topbar .page-nav [aria-current="page"]::after {
     background: CanvasText;
+  }
+}
+
+/* Dark scheme: white paper scans and screen plates were the brightest thing
+   on the page, brighter than the text. Dim the image itself (not its link, so
+   focus rings keep full strength); light and high-contrast modes untouched. */
+@media (prefers-color-scheme: dark) and (prefers-contrast: no-preference) {
+  html:not([data-reading-contrast]) :is(.pv-physical-image, .pv-specimen-image, .plate-image-link, .plate-strip-art, .plate-till-grid, .site-home .evidence-frame) img {
+    filter: brightness(.9);
   }
 }
 
