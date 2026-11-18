@@ -60,7 +60,7 @@ try{
   await page.screenshot({path:'/tmp/pv-config-'+lang+'.png'});
   await page.locator('#save-line').click();await page.locator('#bag-dialog').waitFor({state:'visible',timeout:30000});assert.equal(await page.locator('#bag-count').textContent(),'1');
   assert(await page.locator('#bag-dialog').isVisible(),'returning to a reviewed bag after adding');
-  assert((await page.locator('.bag-footer').innerText()).includes(lang==='en'?'No money':'')||lang!=='en');
+  assert((await page.locator('.bag-footer').innerText()).includes(lang==='en'?'fictional':'')||lang!=='en');
   await page.locator('#to-checkout').click();
   assert.equal(await page.locator('#checkout-dialog').isVisible(),true);
   await page.locator('#place-order').click();
@@ -68,7 +68,7 @@ try{
   await page.waitForFunction(()=>window.poetryShop?.snapshot().orders.length===1,{timeout:30000});
   assert(await page.locator('.studio-nav [data-order-link]').isVisible(),'the order link appears once an order exists in this tab');
   const payment=await page.locator('.order-record [data-order-field="payment"]').textContent();
-  assert(payment.includes(lang==='en'?'No money charged':lang==='zh-Hant'?'未收取款項':'Aucun débit'),payment);
+  assert(payment.includes(lang==='en'?'Simulated payment':lang==='zh-Hant'?'模擬付款':'Paiement simulé'),payment);
   const pending=page.waitForEvent('download');
   await page.locator('.order-record a').first().click();
   const result=await pending;
