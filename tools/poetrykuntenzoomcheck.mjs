@@ -50,7 +50,7 @@ try{
             const raw=document.querySelector('[data-poetry-text="jia-yi-a10-text"]');
             const rows=raw?.querySelectorAll('.flow-row').length??0;
             const marked=raw?.querySelector('.source')?.classList.contains('poetry-kanbun-showing');
-            // All 17 classical Jia-Yi texts now have marks, including A10.
+            // All classical Jia-Yi texts (17 members and the A4 draft) have marks, including A10.
             // When marked, the original is deliberately visually clipped;
             // an absent flow-row is correct. When off, the original must
             // be laid out as real, complete bands again.

@@ -220,7 +220,8 @@
       "voice": "jia",
       "authorial_label": "A4",
       "versions": [
-        "jia-yi-a4-text"
+        "jia-yi-a4-text",
+        "linjiangxian-chongzuo-revised-202611"
       ],
       "related": []
     },
@@ -678,24 +679,6 @@
       "authorial_label": null,
       "versions": [
         "linjiangxianyin-2018-revised-202611"
-      ],
-      "related": []
-    },
-    {
-      "id": "linjiangxian-chongzuo",
-      "kind": "poem",
-      "form": "ci",
-      "composed": {
-        "start": "2026-06-29",
-        "end": "2026-06-29",
-        "basis": "not-later-than"
-      },
-      "route": "linjiangxian-chongzuo",
-      "fragment": "",
-      "voice": null,
-      "authorial_label": null,
-      "versions": [
-        "linjiangxian-chongzuo-revised-202611"
       ],
       "related": []
     }
@@ -1389,22 +1372,22 @@
     },
     {
       "id": "linjiangxian-chongzuo-revised-202611",
-      "work": "linjiangxian-chongzuo",
+      "work": "jia-yi-a4",
       "date": "2026-11",
       "kind": "revision",
       "label": {
-        "en": "Revised November 2026",
-        "zh": "二〇二六年十一月修訂",
-        "zh-hans": "二〇二六年十一月修订",
-        "ja": "2026年11月改稿",
-        "de": "Überarbeitet im November 2026",
-        "fr": "Révision de novembre 2026",
-        "ru": "Редакция ноября 2026 года"
+        "en": "Another draft",
+        "zh": "又稿",
+        "zh-hans": "又稿",
+        "ja": "別稿",
+        "de": "Weitere Fassung",
+        "fr": "Autre version",
+        "ru": "Другая редакция"
       },
       "parts": [
         "linjiangxian-chongzuo-revised-202611"
       ],
-      "fragment": ""
+      "fragment": "jia-4-chongzuo"
     }
   ],
   "texts": [
@@ -3259,7 +3242,10 @@
       "w9",
       "w10",
       "w12"
-    ]
+    ],
+    "moved": {
+      "linjiangxian-chongzuo": "linjiangxian-chongzuo-revised-202611"
+    }
   },
   "summer_metadata": {
     "dates": {

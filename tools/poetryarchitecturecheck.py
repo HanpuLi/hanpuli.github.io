@@ -83,6 +83,8 @@ def main() -> None:
         errors.append('Two rewritings of Manjianghong lost their common work')
     if library.versions['manjianghong-rereading-202610-text']['work']=='manjianghong-2022':
         errors.append('The independent later response was collapsed into a draft')
+    if library.works['jia-yi-a4']['versions']!=['jia-yi-a4-text','linjiangxian-chongzuo-revised-202611']:
+        errors.append('The Chongzuo lyric is another draft of A4, after the A4 text, not a separate work')
     # Edition order belongs to version metadata. The unnumbered Chinese title
     # must not silently acquire “I”/“一” in any translated literary title.
     for lid in ('en','ja','de','fr','ru'):
@@ -159,6 +161,18 @@ def main() -> None:
             for old,target in targets.items():
                 if old and (f'id="{old}"' not in document or f'href="{target}"' not in document):
                     errors.append('No-script recovery missing: '+old)
+        for route,vid in library.moved().items():
+            # A former work address stays a noindex bridge to where its text now lives.
+            moved=ROOT/library.path(route,locale).strip('/')/'index.html'
+            document=moved.read_text(encoding='utf-8') if moved.is_file() else ''
+            target=library.version_url(vid,locale)
+            match=re.search(r'<script id="poetry-legacy-map" type="application/json">(.*?)</script>',document,re.S)
+            if not match or json.loads(match[1])!={'':target} or 'content="noindex,follow"' not in document \
+               or f'href="{target}"' not in document:
+                errors.append('Moved reading address lost its bridge: '+str(moved.relative_to(ROOT)))
+            page=(ROOT/target.partition('#')[0].strip('/')/'index.html').read_text(encoding='utf-8')
+            if f'id="{target.partition("#")[2]}" data-poetry-text="{library.versions[vid]["parts"][0]}"' not in page:
+                errors.append('Moved reading address points nowhere: '+target)
         index=(ROOT/library.path('',locale).strip('/')/'index.html').read_text()
         for group in library.collections.values():
             if f'href="{library.path(group["route"],locale)}"' not in index:

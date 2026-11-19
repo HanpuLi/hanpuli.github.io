@@ -114,6 +114,12 @@ class Library:
         for alias, tid in self.data['legacy']['catalogue'].items():
             if tid not in self.offers or alias not in self.offers[tid]['legacy_ids']:
                 raise ValueError('Invalid shop alias: ' + alias)
+        current = {w['route'] for w in self.works.values()} | {c['route'] for c in self.collections.values()}
+        for route, vid in self.moved().items():
+            if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', route) or route in current or route in ('', 'chronology'):
+                raise ValueError('A moved reading address must not shadow a current route: ' + route)
+            if vid not in self.versions:
+                raise ValueError('Moved reading address without a version: ' + route)
         self.validate_receipt_codes()
 
     def offer_work(self, offer: dict[str, Any]) -> dict[str, Any]:
@@ -230,6 +236,10 @@ class Library:
     def routes(self) -> list[str]:
         return list(dict.fromkeys(['', 'chronology'] + [c['route'] for c in self.collections.values()]
                                  + [w['route'] for w in self.works.values()]))
+
+    def moved(self) -> dict[str, str]:
+        """Former work routes, kept as redirects to the version that now lives elsewhere."""
+        return self.data['legacy'].get('moved', {})
 
     def legacy_targets(self, page: str, locale: str) -> dict[str, str]:
         prefix = '/' if locale == 'en' else '/' + locale + '/'

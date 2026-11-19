@@ -133,6 +133,17 @@ class Pages:
             title = title[:match.start()] + title[match.end():]
         return label, title
 
+    @staticmethod
+    def authorial(code: str, locale: str) -> str:
+        if locale in ('zh','zh-hans','ja'):
+            return ('甲' if code[0]=='A' else '乙')+dict(zip(range(1,11),'一二三四五六七八九十'))[int(code[1:])]
+        return code
+
+    def version_label(self, work: dict[str, Any], version: dict[str, Any], locale: str) -> str:
+        """A version's own label; an unlabelled first text is named by its work."""
+        return (version['label'][locale] or (self.authorial(work['authorial_label'],locale) if work['authorial_label'] else '')
+                or version['date'].replace('-','.'))
+
     def view_switch(self, locale: str, chronology: bool = False) -> str:
         ui = self.ui[locale]
         return '<nav class="poetry-view-nav" aria-label="'+esc(ui['heading'])+'">' + ''.join(
@@ -247,6 +258,9 @@ class Pages:
         pair = 'poem-pair' + ('' if translation else ' source-only')
         classical = work['form'] in ('ci','shi','qu')
         label, _ = self.presentation_title((translation or original)['title'],work['authorial_label'],locale)
+        if work['authorial_label'] and version['id']!=work['versions'][0] and version['label'][locale]:
+            # A further draft of a cycle member is labelled as that member's draft.
+            label = self.authorial(work['authorial_label'],locale)+' · '+version['label'][locale]
         _, source_title = self.presentation_title(original['title'],work['authorial_label'],original_locale)
         attrs = (' data-poetry-classical' if classical else '') + (f' data-poetry-label="{esc(label)}"' if label else '')
         rows = [f'<article class="poem reader-poem" id="{esc(fragment)}" data-poetry-text="{esc(tid)}"{attrs}>',self.metadata(work,version,locale),f'<div class="{pair}">',f'<section class="poem-version source" lang="{tag}">']
@@ -328,13 +342,13 @@ class Pages:
             rows.append('<nav class="poetry-version-nav" aria-label="'+esc(ui['versions'])+'">')
             for vid in work['versions']:
                 v=lib.versions[vid]
-                rows.append(f'<a href="#{esc(v["fragment"])}">{esc(v["label"][locale])}</a>')
+                rows.append(f'<a href="#{esc(v["fragment"])}">{esc(self.version_label(work,v,locale))}</a>')
             rows.append('</nav>')
         for vid in work['versions']:
             version=lib.versions[vid]
             if len(version['parts'])>1:
                 rows.append(f'<section class="poetry-version" id="{esc(version["fragment"])}"><h2>{esc(version["label"][locale])} · {date_span(version["date"])}</h2>')
-            elif len(work['versions'])>1:
+            elif len(work['versions'])>1 and version['label'][locale]:
                 rows.append('<p class="poetry-version-label">'+esc(version['label'][locale])+'</p>')
             rows.extend(self.text_html(t,locale,single=not sequence and len(version['parts'])==1 and len(work['versions'])==1) for t in version['parts'])
             if len(version['parts'])>1: rows.append('</section>')
@@ -384,10 +398,28 @@ class Pages:
         rows.append('<script id="poetry-legacy-map" type="application/json">'+payload+'</script>')
         return self.shell(route='' if page=='ci' else 'roof-splits',locale=locale,copy=copy,heading=self.ui[locale]['heading'],content='\n'.join(rows),extra_head='<meta name="robots" content="noindex,follow">',canonical=self.base.BASE_URL+default,page_class='poetry-legacy')
 
+    def moved(self, route: str, vid: str, locale: str, copy: dict[str, Any]) -> str:
+        """A former work address: noindex, canonical to its new page, script and no-script link onward."""
+        lib, ui = self.lib, self.ui[locale]
+        version = lib.versions[vid]
+        work = lib.works[version['work']]
+        target = lib.version_url(vid,locale)
+        names = [lib.collections[lib.memberships[work['id']]]['title'][locale]] if work['id'] in lib.memberships else [lib.title(work['id'],locale)]
+        if work['authorial_label']: names.append(self.authorial(work['authorial_label'],locale))
+        names.append(self.version_label(work,version,locale))
+        rows=['<p>'+esc(ui['moved'])+'</p><ul class="poetry-legacy-links">',
+              f'<li><a href="{target}">{esc(" · ".join(names))}</a></li></ul>']
+        payload=json.dumps({'':target},ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')
+        rows.append('<script id="poetry-legacy-map" type="application/json">'+payload+'</script>')
+        return self.shell(route=work['route'],locale=locale,copy=copy,heading=ui['heading'],content='\n'.join(rows),
+                          extra_head='<meta name="robots" content="noindex,follow">',
+                          canonical=self.base.BASE_URL+lib.path(work['route'],locale),page_class='poetry-legacy')
+
     def build(self, locales: dict[str,Any], *, check: bool = False) -> list[Path]:
         changed=[]
         collection_routes={c['route']:c['id'] for c in self.lib.collections.values()}
         for locale,copy in locales.items():
+            pages=[]
             for route in self.lib.routes():
                 if route=='summer-2017': continue  # Keeps the existing author-approved mirrored layout.
                 if route=='': rendered=self.index(locale,copy)
@@ -396,6 +428,9 @@ class Pages:
                 else:
                     work=next(w for w in self.lib.works.values() if w['route']==route)
                     rendered=self.work_page(work['id'],locale,copy)
+                pages.append((route,rendered))
+            pages += [(route,self.moved(route,vid,locale,copy)) for route,vid in self.lib.moved().items()]
+            for route,rendered in pages:
                 path=self.base.ROOT/self.lib.path(route,locale).strip('/')/'index.html'
                 if not rendered.endswith('\n'): rendered+='\n'
                 if not path.exists() or path.read_text(encoding='utf-8')!=rendered:
