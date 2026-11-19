@@ -9,6 +9,10 @@ const root=process.cwd(), fixtures=JSON.parse(await readFile('tools/fixtures/poe
 const library=JSON.parse(await readFile('content/poetry/library.json','utf8'));
 const collectedWorks=new Set(library.collections.flatMap(collection=>collection.members));
 const standaloneWorks=library.works.filter(work=>!collectedWorks.has(work.id) && work.layout!=='summer-mirror');
+// A cycle member may carry a further draft: the A/B page reads one article per text part.
+const cycleTexts=library.collections.find(c=>c.id==='jia-yi').members
+  .flatMap(id=>library.works.find(w=>w.id===id).versions)
+  .flatMap(id=>library.versions.find(v=>v.id===id).parts).length;
 const catalogue=JSON.parse(await readFile('poetry-voucher/editions.json','utf8'));
 const target='queqiaoxian-20181222-revised-202610';
 const old=fixtures.legacy_catalogue_examples.find(w=>w.id==='ci-w12');
@@ -48,8 +52,15 @@ try{
     await page.waitForURL(base+prefix+'poetry/queqiaoxian-20181222/');redirects++;
     await page.goto(base+prefix+'ci.html#a10');
     await page.waitForURL(base+prefix+'poetry/jia-yi/#jia-10');
-    assert.equal(await page.locator('.reader-poem').count(),17);
+    assert.equal(await page.locator('.reader-poem').count(),cycleTexts);
+    assert.equal(await page.locator('.poetry-member-nav li').count(),17);
     assert(!(await page.locator('#jia-10').textContent()).includes('集外'));redirects++;
+    for(const [route,version] of Object.entries(library.legacy.moved)){
+      await page.goto(base+prefix+'poetry/'+route+'/');
+      const fragment=library.versions.find(v=>v.id===version).fragment;
+      await page.waitForURL(base+prefix+'poetry/jia-yi/#'+fragment);
+      assert.equal(await page.locator('#'+fragment).getAttribute('data-poetry-text'),version);redirects++;
+    }
     await page.goto(base+prefix+'shi.html#summer-archive-link-title');
     await page.waitForURL(base+prefix+'poetry/summer-2017/');redirects++;
     for(const legacyPage of ['ci','shi']){

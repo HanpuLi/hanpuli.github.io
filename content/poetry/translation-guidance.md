@@ -148,10 +148,10 @@ The cycle becomes weaker if translation decides the dispute between its two voic
 - Wording that this lyric shares with earlier poets' lines (for example 憑高念遠) is not to be presented as allusion in any layer.
 - The speaker's gender is not stated. French and Russian must avoid gendered agreement for the speaker.
 
-### 《臨江仙 · 重坐舊廊，如昔燃燈，逐跡尋前，竟不復得當時之情》, attested no later than 29 June 2026; revised November 2026
+### Another draft of A4: 《臨江仙 · 重坐舊廊，如昔燃燈，逐跡尋前，竟不復得當時之情》; revised November 2026
 
-- No composition date is recorded. The site gives only the date by which the text is attested. Do not supply a year or season of writing beyond the poem's own autumn night.
-- The lyric shares wording with A1 and A4: 同默坐 / 獨默坐, 但覺夜初長 / 待覺夜初長, 當時只道尋常 / 終不似尋常. Reuse each language's established A1/A4 wording so that the echo is audible, and use the same word for 廊 as A4's 虛廊.
+- The site publishes this lyric in A and B as a second version of A4, labelled 又稿 (Another draft), not as a separate work. No composition date is recorded: the text is attested no later than 29 June 2026, within the cycle's dates, and the page carries the cycle date. Do not supply a year or season of writing beyond the poem's own autumn night.
+- This draft shares wording with A4 and A1: 但覺夜初長 / 待覺夜初長 and 當時只道尋常 / 終不似尋常 with A4, 同默坐 / 獨默坐 with A1. Reuse each language's established A4/A1 wording so that the echo is audible, and use the same word for 廊 as A4's 虛廊.
 - 舊廊 in the first stanza and 故廊 in the second are distinct: the old corridor still present, then the corridor become past. Keep two different words.
 - 待覺 waits to feel the lengthening night, where A4's 但覺 only felt it.
 - 只差人一氣: 差 is level-tone chā, to lack. What is missing is one breath of a person; 一 counts the breath, not the person. Do not render it as popularity (人氣) or vigour.

@@ -8,6 +8,10 @@ import {chromium, webkit} from 'playwright';
 
 const root = process.cwd();
 const library = JSON.parse(await readFile(path.join(root, 'content/poetry/library.json'), 'utf8'));
+// One article per text part: a cycle member may carry a further draft (A4).
+const cycleTexts = library.collections.find(c => c.id === 'jia-yi').members
+  .flatMap(id => library.works.find(w => w.id === id).versions)
+  .flatMap(id => library.versions.find(v => v.id === id).parts).length;
 const kundoku = JSON.parse(await readFile(path.join(root, 'content/poetry/kundoku.json'), 'utf8'));
 const readingAids = JSON.parse(await readFile(path.join(root, 'content/poetry/reading-aids.json'), 'utf8'));
 const classicalRoutes = [...new Set(library.works.filter(work => ['ci', 'shi', 'qu'].includes(work.form))
@@ -104,11 +108,11 @@ try {
     const route = `${prefix}/poetry/jia-yi/`;
     const expected = await original(plain, route);
     sources.set(locale, expected);
-    assert.equal(Object.keys(expected.sources).length, 17);
+    assert.equal(Object.keys(expected.sources).length, cycleTexts);
     await page.goto(base + route, {waitUntil:'load'});
-    assert.equal(await page.locator('.poetry-kundoku').count(), locale === 'ja' ? 17 : 0);
-    assert.equal(await page.locator('[data-poetry-paraphrase]').count(), ['zh', 'zh-hans'].includes(locale) ? 17 : 0);
-    assert.equal(await page.locator('[data-poetry-notes]').count(), ['zh', 'zh-hans'].includes(locale) ? 17 : 0);
+    assert.equal(await page.locator('.poetry-kundoku').count(), locale === 'ja' ? cycleTexts : 0);
+    assert.equal(await page.locator('[data-poetry-paraphrase]').count(), ['zh', 'zh-hans'].includes(locale) ? cycleTexts : 0);
+    assert.equal(await page.locator('[data-poetry-notes]').count(), ['zh', 'zh-hans'].includes(locale) ? cycleTexts : 0);
     const initial = locale === 'zh-hans' ? 'horizontal' : 'vertical';
     await inspect(page, expected, initial);
     await page.locator(locale === 'ja' ? '[data-poetry-kunten-choice="on"]' : 'button[data-poetry-layout="vertical"]').click();
